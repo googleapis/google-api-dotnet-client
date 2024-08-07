@@ -517,26 +517,26 @@ namespace Google.Apis.CertificateManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter expression to restrict the Certificates Configs returned.</summary>
+                    /// <summary>Optional. Filter expression to restrict the Certificates Configs returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// A list of Certificate Config field names used to specify the order of the returned results. The
-                    /// default sorting order is ascending. To specify descending order for a field, add a suffix `"
-                    /// desc"`.
+                    /// Optional. A list of Certificate Config field names used to specify the order of the returned
+                    /// results. The default sorting order is ascending. To specify descending order for a field, add a
+                    /// suffix `" desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Maximum number of certificate configs to return per call.</summary>
+                    /// <summary>Optional. Maximum number of certificate configs to return per call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value returned by the last `ListCertificateIssuanceConfigsResponse`. Indicates that this is
-                    /// a continuation of a prior `ListCertificateIssuanceConfigs` call, and that the system should
-                    /// return the next page of data.
+                    /// Optional. The value returned by the last `ListCertificateIssuanceConfigsResponse`. Indicates
+                    /// that this is a continuation of a prior `ListCertificateIssuanceConfigs` call, and that the
+                    /// system should return the next page of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -589,6 +589,81 @@ namespace Google.Apis.CertificateManager.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a CertificateIssuanceConfig.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. A user-defined name of the certificate issuance config. CertificateIssuanceConfig names
+                /// must be unique globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CertificateManager.v1.Data.CertificateIssuanceConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a CertificateIssuanceConfig.</summary>
+                public class PatchRequest : CertificateManagerBaseServiceRequest<Google.Apis.CertificateManager.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CertificateManager.v1.Data.CertificateIssuanceConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. A user-defined name of the certificate issuance config. CertificateIssuanceConfig
+                    /// names must be unique globally and match pattern
+                    /// `projects/*/locations/*/certificateIssuanceConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CertificateManager.v1.Data.CertificateIssuanceConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/certificateIssuanceConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -833,30 +908,32 @@ namespace Google.Apis.CertificateManager.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Filter expression to restrict the returned Certificate Map Entries.</summary>
+                        /// <summary>
+                        /// Optional. Filter expression to restrict the returned Certificate Map Entries.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// A list of Certificate Map Entry field names used to specify the order of the returned
-                        /// results. The default sorting order is ascending. To specify descending order for a field,
-                        /// add a suffix `" desc"`.
+                        /// Optional. A list of Certificate Map Entry field names used to specify the order of the
+                        /// returned results. The default sorting order is ascending. To specify descending order for a
+                        /// field, add a suffix `" desc"`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Maximum number of certificate map entries to return. The service may return fewer than this
-                        /// value. If unspecified, at most 50 certificate map entries will be returned. The maximum
-                        /// value is 1000; values above 1000 will be coerced to 1000.
+                        /// Optional. Maximum number of certificate map entries to return. The service may return fewer
+                        /// than this value. If unspecified, at most 50 certificate map entries will be returned. The
+                        /// maximum value is 1000; values above 1000 will be coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// The value returned by the last `ListCertificateMapEntriesResponse`. Indicates that this is a
-                        /// continuation of a prior `ListCertificateMapEntries` call, and that the system should return
-                        /// the next page of data.
+                        /// Optional. The value returned by the last `ListCertificateMapEntriesResponse`. Indicates that
+                        /// this is a continuation of a prior `ListCertificateMapEntries` call, and that the system
+                        /// should return the next page of data.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -920,8 +997,9 @@ namespace Google.Apis.CertificateManager.v1
                     /// <summary>Updates a CertificateMapEntry.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique
-                    /// globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
+                    /// Identifier. A user-defined name of the Certificate Map Entry. Certificate Map Entry names must
+                    /// be unique globally and match pattern
+                    /// `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CertificateManager.v1.Data.CertificateMapEntry body, string name)
                     {
@@ -940,8 +1018,8 @@ namespace Google.Apis.CertificateManager.v1
                         }
 
                         /// <summary>
-                        /// A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique
-                        /// globally and match pattern
+                        /// Identifier. A user-defined name of the Certificate Map Entry. Certificate Map Entry names
+                        /// must be unique globally and match pattern
                         /// `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1199,24 +1277,24 @@ namespace Google.Apis.CertificateManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter expression to restrict the Certificates Maps returned.</summary>
+                    /// <summary>Optional. Filter expression to restrict the Certificates Maps returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// A list of Certificate Map field names used to specify the order of the returned results. The
-                    /// default sorting order is ascending. To specify descending order for a field, add a suffix `"
-                    /// desc"`.
+                    /// Optional. A list of Certificate Map field names used to specify the order of the returned
+                    /// results. The default sorting order is ascending. To specify descending order for a field, add a
+                    /// suffix `" desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Maximum number of certificate maps to return per call.</summary>
+                    /// <summary>Optional. Maximum number of certificate maps to return per call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value returned by the last `ListCertificateMapsResponse`. Indicates that this is a
+                    /// Optional. The value returned by the last `ListCertificateMapsResponse`. Indicates that this is a
                     /// continuation of a prior `ListCertificateMaps` call, and that the system should return the next
                     /// page of data.
                     /// </summary>
@@ -1282,8 +1360,8 @@ namespace Google.Apis.CertificateManager.v1
                 /// <summary>Updates a CertificateMap.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match
-                /// pattern `projects/*/locations/*/certificateMaps/*`.
+                /// Identifier. A user-defined name of the Certificate Map. Certificate Map names must be unique
+                /// globally and match pattern `projects/*/locations/*/certificateMaps/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateManager.v1.Data.CertificateMap body, string name)
                 {
@@ -1302,8 +1380,8 @@ namespace Google.Apis.CertificateManager.v1
                     }
 
                     /// <summary>
-                    /// A user-defined name of the Certificate Map. Certificate Map names must be unique globally and
-                    /// match pattern `projects/*/locations/*/certificateMaps/*`.
+                    /// Identifier. A user-defined name of the Certificate Map. Certificate Map names must be unique
+                    /// globally and match pattern `projects/*/locations/*/certificateMaps/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1570,24 +1648,26 @@ namespace Google.Apis.CertificateManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter expression to restrict the Certificates returned.</summary>
+                    /// <summary>Optional. Filter expression to restrict the Certificates returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// A list of Certificate field names used to specify the order of the returned results. The default
-                    /// sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
+                    /// Optional. A list of Certificate field names used to specify the order of the returned results.
+                    /// The default sorting order is ascending. To specify descending order for a field, add a suffix `"
+                    /// desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Maximum number of certificates to return per call.</summary>
+                    /// <summary>Optional. Maximum number of certificates to return per call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value returned by the last `ListCertificatesResponse`. Indicates that this is a continuation
-                    /// of a prior `ListCertificates` call, and that the system should return the next page of data.
+                    /// Optional. The value returned by the last `ListCertificatesResponse`. Indicates that this is a
+                    /// continuation of a prior `ListCertificates` call, and that the system should return the next page
+                    /// of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1651,8 +1731,8 @@ namespace Google.Apis.CertificateManager.v1
                 /// <summary>Updates a Certificate.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// A user-defined name of the certificate. Certificate names must be unique globally and match pattern
-                /// `projects/*/locations/*/certificates/*`.
+                /// Identifier. A user-defined name of the certificate. Certificate names must be unique globally and
+                /// match pattern `projects/*/locations/*/certificates/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateManager.v1.Data.Certificate body, string name)
                 {
@@ -1671,8 +1751,8 @@ namespace Google.Apis.CertificateManager.v1
                     }
 
                     /// <summary>
-                    /// A user-defined name of the certificate. Certificate names must be unique globally and match
-                    /// pattern `projects/*/locations/*/certificates/*`.
+                    /// Identifier. A user-defined name of the certificate. Certificate names must be unique globally
+                    /// and match pattern `projects/*/locations/*/certificates/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1940,26 +2020,26 @@ namespace Google.Apis.CertificateManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter expression to restrict the Dns Authorizations returned.</summary>
+                    /// <summary>Optional. Filter expression to restrict the Dns Authorizations returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// A list of Dns Authorization field names used to specify the order of the returned results. The
-                    /// default sorting order is ascending. To specify descending order for a field, add a suffix `"
-                    /// desc"`.
+                    /// Optional. A list of Dns Authorization field names used to specify the order of the returned
+                    /// results. The default sorting order is ascending. To specify descending order for a field, add a
+                    /// suffix `" desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Maximum number of dns authorizations to return per call.</summary>
+                    /// <summary>Optional. Maximum number of dns authorizations to return per call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value returned by the last `ListDnsAuthorizationsResponse`. Indicates that this is a
-                    /// continuation of a prior `ListDnsAuthorizations` call, and that the system should return the next
-                    /// page of data.
+                    /// Optional. The value returned by the last `ListDnsAuthorizationsResponse`. Indicates that this is
+                    /// a continuation of a prior `ListDnsAuthorizations` call, and that the system should return the
+                    /// next page of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2023,8 +2103,8 @@ namespace Google.Apis.CertificateManager.v1
                 /// <summary>Updates a DnsAuthorization.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and
-                /// match pattern `projects/*/locations/*/dnsAuthorizations/*`.
+                /// Identifier. A user-defined name of the dns authorization. DnsAuthorization names must be unique
+                /// globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateManager.v1.Data.DnsAuthorization body, string name)
                 {
@@ -2043,8 +2123,8 @@ namespace Google.Apis.CertificateManager.v1
                     }
 
                     /// <summary>
-                    /// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and
-                    /// match pattern `projects/*/locations/*/dnsAuthorizations/*`.
+                    /// Identifier. A user-defined name of the dns authorization. DnsAuthorization names must be unique
+                    /// globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2488,8 +2568,8 @@ namespace Google.Apis.CertificateManager.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The current etag of the TrustConfig. If an etag is provided and does not match the current etag
-                    /// of the resource, deletion will be blocked and an ABORTED error will be returned.
+                    /// Optional. The current etag of the TrustConfig. If an etag is provided and does not match the
+                    /// current etag of the resource, deletion will be blocked and an ABORTED error will be returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -2604,24 +2684,26 @@ namespace Google.Apis.CertificateManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter expression to restrict the TrustConfigs returned.</summary>
+                    /// <summary>Optional. Filter expression to restrict the TrustConfigs returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// A list of TrustConfig field names used to specify the order of the returned results. The default
-                    /// sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
+                    /// Optional. A list of TrustConfig field names used to specify the order of the returned results.
+                    /// The default sorting order is ascending. To specify descending order for a field, add a suffix `"
+                    /// desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Maximum number of TrustConfigs to return per call.</summary>
+                    /// <summary>Optional. Maximum number of TrustConfigs to return per call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value returned by the last `ListTrustConfigsResponse`. Indicates that this is a continuation
-                    /// of a prior `ListTrustConfigs` call, and that the system should return the next page of data.
+                    /// Optional. The value returned by the last `ListTrustConfigsResponse`. Indicates that this is a
+                    /// continuation of a prior `ListTrustConfigs` call, and that the system should return the next page
+                    /// of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2685,8 +2767,8 @@ namespace Google.Apis.CertificateManager.v1
                 /// <summary>Updates a TrustConfig.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern
-                /// `projects/*/locations/*/trustConfigs/*`.
+                /// Identifier. A user-defined name of the trust config. TrustConfig names must be unique globally and
+                /// match pattern `projects/*/locations/*/trustConfigs/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateManager.v1.Data.TrustConfig body, string name)
                 {
@@ -2705,8 +2787,8 @@ namespace Google.Apis.CertificateManager.v1
                     }
 
                     /// <summary>
-                    /// A user-defined name of the trust config. TrustConfig names must be unique globally and match
-                    /// pattern `projects/*/locations/*/trustConfigs/*`.
+                    /// Identifier. A user-defined name of the trust config. TrustConfig names must be unique globally
+                    /// and match pattern `projects/*/locations/*/trustConfigs/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2919,7 +3001,7 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; }
 
-        /// <summary>Domain name of the authorization attempt.</summary>
+        /// <summary>Output only. Domain name of the authorization attempt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
@@ -2982,7 +3064,7 @@ namespace Google.Apis.CertificateManager.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>One or more paragraphs of text description of a certificate.</summary>
+        /// <summary>Optional. One or more paragraphs of text description of a certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -3023,7 +3105,7 @@ namespace Google.Apis.CertificateManager.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Set of labels associated with a Certificate.</summary>
+        /// <summary>Optional. Set of labels associated with a Certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -3032,8 +3114,8 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual ManagedCertificate Managed { get; set; }
 
         /// <summary>
-        /// A user-defined name of the certificate. Certificate names must be unique globally and match pattern
-        /// `projects/*/locations/*/certificates/*`.
+        /// Identifier. A user-defined name of the certificate. Certificate names must be unique globally and match
+        /// pattern `projects/*/locations/*/certificates/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3050,7 +3132,7 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sanDnsnames")]
         public virtual System.Collections.Generic.IList<string> SanDnsnames { get; set; }
 
-        /// <summary>Immutable. The scope of the certificate.</summary>
+        /// <summary>Optional. Immutable. The scope of the certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
 
@@ -3173,7 +3255,7 @@ namespace Google.Apis.CertificateManager.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>One or more paragraphs of text description of a CertificateIssuanceConfig.</summary>
+        /// <summary>Optional. One or more paragraphs of text description of a CertificateIssuanceConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -3181,7 +3263,7 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
         public virtual string KeyAlgorithm { get; set; }
 
-        /// <summary>Set of labels associated with a CertificateIssuanceConfig.</summary>
+        /// <summary>Optional. Set of labels associated with a CertificateIssuanceConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -3190,8 +3272,8 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual object Lifetime { get; set; }
 
         /// <summary>
-        /// A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique
-        /// globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`.
+        /// Identifier. A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be
+        /// unique globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3284,7 +3366,7 @@ namespace Google.Apis.CertificateManager.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>One or more paragraphs of text description of a certificate map.</summary>
+        /// <summary>Optional. One or more paragraphs of text description of a certificate map.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -3295,13 +3377,13 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gclbTargets")]
         public virtual System.Collections.Generic.IList<GclbTarget> GclbTargets { get; set; }
 
-        /// <summary>Set of labels associated with a Certificate Map.</summary>
+        /// <summary>Optional. Set of labels associated with a Certificate Map.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern
-        /// `projects/*/locations/*/certificateMaps/*`.
+        /// Identifier. A user-defined name of the Certificate Map. Certificate Map names must be unique globally and
+        /// match pattern `projects/*/locations/*/certificateMaps/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3351,8 +3433,9 @@ namespace Google.Apis.CertificateManager.v1.Data
     public class CertificateMapEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each
-        /// Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+        /// Optional. A set of Certificates defines for the given `hostname`. There can be defined up to four
+        /// certificates in each Certificate Map Entry. Each certificate must match pattern
+        /// `projects/*/locations/*/certificates/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificates")]
         public virtual System.Collections.Generic.IList<string> Certificates { get; set; }
@@ -3394,7 +3477,7 @@ namespace Google.Apis.CertificateManager.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>One or more paragraphs of text description of a certificate map entry.</summary>
+        /// <summary>Optional. One or more paragraphs of text description of a certificate map entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -3405,7 +3488,7 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
 
-        /// <summary>Set of labels associated with a Certificate Map Entry.</summary>
+        /// <summary>Optional. Set of labels associated with a Certificate Map Entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -3414,8 +3497,8 @@ namespace Google.Apis.CertificateManager.v1.Data
         public virtual string Matcher { get; set; }
 
         /// <summary>
-        /// A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and
-        /// match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
+        /// Identifier. A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique
+        /// globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3507,7 +3590,7 @@ namespace Google.Apis.CertificateManager.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>One or more paragraphs of text description of a DnsAuthorization.</summary>
+        /// <summary>Optional. One or more paragraphs of text description of a DnsAuthorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -3523,20 +3606,20 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
-        /// <summary>Set of labels associated with a DnsAuthorization.</summary>
+        /// <summary>Optional. Set of labels associated with a DnsAuthorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match
-        /// pattern `projects/*/locations/*/dnsAuthorizations/*`.
+        /// Identifier. A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and
+        /// match pattern `projects/*/locations/*/dnsAuthorizations/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: -
-        /// in location `global`: FIXED_RECORD, - in other locations: PER_PROJECT_RECORD.
+        /// Optional. Immutable. Type of DnsAuthorization. If unset during resource creation the following default will
+        /// be used: - in location `global`: FIXED_RECORD, - in other locations: PER_PROJECT_RECORD.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -3880,21 +3963,23 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationAttemptInfo")]
         public virtual System.Collections.Generic.IList<AuthorizationAttemptInfo> AuthorizationAttemptInfo { get; set; }
 
-        /// <summary>Immutable. Authorizations that will be used for performing domain authorization.</summary>
+        /// <summary>
+        /// Optional. Immutable. Authorizations that will be used for performing domain authorization.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsAuthorizations")]
         public virtual System.Collections.Generic.IList<string> DnsAuthorizations { get; set; }
 
         /// <summary>
-        /// Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only
-        /// supported with DNS challenge resolution.
+        /// Optional. Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are
+        /// only supported with DNS challenge resolution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
         public virtual System.Collections.Generic.IList<string> Domains { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in
-        /// the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates
-        /// will instead be publicly signed as documented at
+        /// Optional. Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI
+        /// certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set,
+        /// the certificates will instead be publicly signed as documented at
         /// https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuanceConfig")]
@@ -4085,13 +4170,13 @@ namespace Google.Apis.CertificateManager.v1.Data
     public class SelfManagedCertificate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones
-        /// if any.
+        /// Optional. Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by
+        /// intermediate ones if any.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
         public virtual string PemCertificate { get; set; }
 
-        /// <summary>Input only. The PEM-encoded private key of the leaf certificate.</summary>
+        /// <summary>Optional. Input only. The PEM-encoded private key of the leaf certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemPrivateKey")]
         public virtual string PemPrivateKey { get; set; }
 
@@ -4190,7 +4275,7 @@ namespace Google.Apis.CertificateManager.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>One or more paragraphs of text description of a TrustConfig.</summary>
+        /// <summary>Optional. One or more paragraphs of text description of a TrustConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4201,21 +4286,21 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Set of labels associated with a TrustConfig.</summary>
+        /// <summary>Optional. Set of labels associated with a TrustConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern
-        /// `projects/*/locations/*/trustConfigs/*`.
+        /// Identifier. A user-defined name of the trust config. TrustConfig names must be unique globally and match
+        /// pattern `projects/*/locations/*/trustConfigs/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Set of trust stores to perform validation against. This field is supported when TrustConfig is configured
-        /// with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore
-        /// specified is currently allowed.
+        /// Optional. Set of trust stores to perform validation against. This field is supported when TrustConfig is
+        /// configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one
+        /// TrustStore specified is currently allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustStores")]
         public virtual System.Collections.Generic.IList<TrustStore> TrustStores { get; set; }
@@ -4262,13 +4347,15 @@ namespace Google.Apis.CertificateManager.v1.Data
     public class TrustStore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Set of intermediate CA certificates used for the path building phase of chain validation. The field is
-        /// currently not supported if TrustConfig is used for the workload certificate feature.
+        /// Optional. Set of intermediate CA certificates used for the path building phase of chain validation. The
+        /// field is currently not supported if TrustConfig is used for the workload certificate feature.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intermediateCas")]
         public virtual System.Collections.Generic.IList<IntermediateCA> IntermediateCas { get; set; }
 
-        /// <summary>List of Trust Anchors to be used while performing validation against a given TrustStore.</summary>
+        /// <summary>
+        /// Optional. List of Trust Anchors to be used while performing validation against a given TrustStore.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustAnchors")]
         public virtual System.Collections.Generic.IList<TrustAnchor> TrustAnchors { get; set; }
 
