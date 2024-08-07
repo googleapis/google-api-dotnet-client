@@ -2663,6 +2663,72 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. Aggregation type. The default is 'DAILY'.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("aggregation", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<AggregationEnum> Aggregation { get; set; }
+
+                    /// <summary>Optional. Aggregation type. The default is 'DAILY'.</summary>
+                    public enum AggregationEnum
+                    {
+                        /// <summary>Unspecified.</summary>
+                        [Google.Apis.Util.StringValueAttribute("AGGREGATION_UNSPECIFIED")]
+                        AGGREGATIONUNSPECIFIED = 0,
+
+                        /// <summary>Insight should be aggregated at hourly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("HOURLY")]
+                        HOURLY = 1,
+
+                        /// <summary>Insight should be aggregated at daily level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DAILY")]
+                        DAILY = 2,
+
+                        /// <summary>Insight should be aggregated at weekly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("WEEKLY")]
+                        WEEKLY = 3,
+
+                        /// <summary>Insight should be aggregated at monthly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("MONTHLY")]
+                        MONTHLY = 4,
+
+                        /// <summary>
+                        /// Insight should be aggregated at the custom date range passed in as the start and end time in
+                        /// the request.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CUSTOM_DATE_RANGE")]
+                        CUSTOMDATERANGE = 5,
+                    }
+
+                    private object _endTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                    public virtual object EndTime
+                    {
+                        get => _endTime;
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _endTime = value;
+                        }
+                    }
+
                     /// <summary>
                     /// Optional. Filter expression to restrict the insights returned. Supported filter fields: * `type`
                     /// * `category` * `subCategory` Examples: * "category = application AND type = count" * "category =
@@ -2690,6 +2756,37 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     /// <summary>Optional. A token identifying a page of results the server should return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    private object _startTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>Required. List only metadata or full data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -2735,6 +2832,22 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                         });
+                        RequestParameters.Add("aggregation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2762,6 +2875,14 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8819,6 +8940,72 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. Aggregation type. The default is 'DAILY'.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("aggregation", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<AggregationEnum> Aggregation { get; set; }
+
+                    /// <summary>Optional. Aggregation type. The default is 'DAILY'.</summary>
+                    public enum AggregationEnum
+                    {
+                        /// <summary>Unspecified.</summary>
+                        [Google.Apis.Util.StringValueAttribute("AGGREGATION_UNSPECIFIED")]
+                        AGGREGATIONUNSPECIFIED = 0,
+
+                        /// <summary>Insight should be aggregated at hourly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("HOURLY")]
+                        HOURLY = 1,
+
+                        /// <summary>Insight should be aggregated at daily level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DAILY")]
+                        DAILY = 2,
+
+                        /// <summary>Insight should be aggregated at weekly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("WEEKLY")]
+                        WEEKLY = 3,
+
+                        /// <summary>Insight should be aggregated at monthly level.</summary>
+                        [Google.Apis.Util.StringValueAttribute("MONTHLY")]
+                        MONTHLY = 4,
+
+                        /// <summary>
+                        /// Insight should be aggregated at the custom date range passed in as the start and end time in
+                        /// the request.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CUSTOM_DATE_RANGE")]
+                        CUSTOMDATERANGE = 5,
+                    }
+
+                    private object _endTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                    public virtual object EndTime
+                    {
+                        get => _endTime;
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _endTime = value;
+                        }
+                    }
+
                     /// <summary>
                     /// Optional. Filter expression to restrict the insights returned. Supported filter fields: * `type`
                     /// * `category` * `subCategory` Examples: * "category = application AND type = count" * "category =
@@ -8846,6 +9033,37 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     /// <summary>Optional. A token identifying a page of results the server should return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    private object _startTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string StartTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                    public virtual object StartTime
+                    {
+                        get => _startTime;
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _startTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                        set
+                        {
+                            StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _startTime = value;
+                        }
+                    }
 
                     /// <summary>Required. List only metadata or full data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -8891,6 +9109,22 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
+                        RequestParameters.Add("aggregation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -8918,6 +9152,14 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
