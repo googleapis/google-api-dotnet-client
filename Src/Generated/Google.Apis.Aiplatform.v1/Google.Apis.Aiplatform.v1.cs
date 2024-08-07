@@ -41689,6 +41689,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -42568,6 +42576,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minReplicaCount")]
         public virtual System.Nullable<int> MinReplicaCount { get; set; }
+
+        /// <summary>
+        /// Optional. If true, schedule the deployment workload on [spot
+        /// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spot")]
+        public virtual System.Nullable<bool> Spot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47631,9 +47646,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseSchema")]
         public virtual GoogleCloudAiplatformV1Schema ResponseSchema { get; set; }
 
-        /// <summary>Optional. Seed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
-        public virtual System.Nullable<int> Seed { get; set; }
+        /// <summary>Optional. Routing configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingConfig")]
+        public virtual GoogleCloudAiplatformV1GenerationConfigRoutingConfig RoutingConfig { get; set; }
 
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
@@ -47650,6 +47665,46 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. If specified, nucleus sampling will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topP")]
         public virtual System.Nullable<float> TopP { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Routing config.</summary>
+    public class GoogleCloudAiplatformV1GenerationConfigRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Automated routing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoMode")]
+        public virtual GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode AutoMode { get; set; }
+
+        /// <summary>Manual routing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualMode")]
+        public virtual GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode ManualMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// When automated routing is specified, the routing will be determined by the pretrained routing model and customer
+    /// provided model routing preference.
+    /// </summary>
+    public class GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The model routing preference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelRoutingPreference")]
+        public virtual string ModelRoutingPreference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When manual routing is set, the specified model will be used directly.</summary>
+    public class GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The model name to use. Only the public LLM models are accepted. e.g. gemini-1.5-pro-001.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48048,6 +48103,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. The desired number of Trials to run in parallel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parallelTrialCount")]
         public virtual System.Nullable<int> ParallelTrialCount { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _startTimeRaw;
 
@@ -49991,6 +50054,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Configuration controlling how this resource pool consumes reservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
+        public virtual GoogleCloudAiplatformV1ReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>
         /// Immutable. The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example:
@@ -52481,6 +52550,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nasJobSpec")]
         public virtual GoogleCloudAiplatformV1NasJobSpec NasJobSpec { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -53220,6 +53297,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Customer-managed encryption key spec for the notebook execution job. This field is auto-populated if the
+        /// NotebookRuntimeTemplate has an encryption spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudAiplatformV1EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>Max running time of the execution job in seconds (default 86400s / 24 hrs).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionTimeout")]
@@ -55108,6 +55192,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectAllowlist")]
         public virtual System.Collections.Generic.IList<string> ProjectAllowlist { get; set; }
 
+        /// <summary>
+        /// Output only. The name of the generated service attachment resource. This is only populated if the endpoint
+        /// is deployed with PrivateServiceConnect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
+        public virtual string ServiceAttachment { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -56346,6 +56437,35 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Response message for IndexService.RemoveDatapoints</summary>
     public class GoogleCloudAiplatformV1RemoveDatapointsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute
+    /// Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+    /// </summary>
+    public class GoogleCloudAiplatformV1ReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name,
+        /// use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Required. Specifies the reservation affinity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinityType")]
+        public virtual string ReservationAffinityType { get; set; }
+
+        /// <summary>
+        /// Optional. Corresponds to the label values of a reservation resource. This must be the full resource name of
+        /// the reservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
