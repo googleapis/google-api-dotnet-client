@@ -21,6 +21,14 @@
     "BASIC",
     "FULL"
   ],
+  "Google.Apis.BeyondCorp.v1alpha.OrganizationsResource+LocationsResource+InsightsResource+ListRequest.AggregationEnum": [
+    "AGGREGATION_UNSPECIFIED",
+    "HOURLY",
+    "DAILY",
+    "WEEKLY",
+    "MONTHLY",
+    "CUSTOM_DATE_RANGE"
+  ],
   "Google.Apis.BeyondCorp.v1alpha.OrganizationsResource+LocationsResource+InsightsResource+ListRequest.ViewEnum": [
     "INSIGHT_VIEW_UNSPECIFIED",
     "BASIC",
@@ -38,6 +46,14 @@
     "INSIGHT_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
+  ],
+  "Google.Apis.BeyondCorp.v1alpha.ProjectsResource+LocationsResource+InsightsResource+ListRequest.AggregationEnum": [
+    "AGGREGATION_UNSPECIFIED",
+    "HOURLY",
+    "DAILY",
+    "WEEKLY",
+    "MONTHLY",
+    "CUSTOM_DATE_RANGE"
   ],
   "Google.Apis.BeyondCorp.v1alpha.ProjectsResource+LocationsResource+InsightsResource+ListRequest.ViewEnum": [
     "INSIGHT_VIEW_UNSPECIFIED",
