@@ -1957,7 +1957,10 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Barrier runnable blocks until all tasks in a taskgroup reach it.</summary>
+    /// <summary>
+    /// A barrier runnable automatically blocks the execution of subsequent runnables until all the tasks in the task
+    /// group reach the barrier.
+    /// </summary>
     public class Barrier : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2056,8 +2059,9 @@ namespace Google.Apis.Batch.v1.Data
         public virtual System.Nullable<bool> BlockExternalNetwork { get; set; }
 
         /// <summary>
-        /// Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or
-        /// with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
+        /// Required for some container images. Overrides the `CMD` specified in the container. If there is an
+        /// `ENTRYPOINT` (either in the container image or with the `entrypoint` field below) then these commands are
+        /// appended as arguments to the `ENTRYPOINT`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commands")]
         public virtual System.Collections.Generic.IList<string> Commands { get; set; }
@@ -2075,17 +2079,20 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableImageStreaming")]
         public virtual System.Nullable<bool> EnableImageStreaming { get; set; }
 
-        /// <summary>Overrides the `ENTRYPOINT` specified in the container.</summary>
+        /// <summary>
+        /// Required for some container images. Overrides the `ENTRYPOINT` specified in the container.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
         public virtual string Entrypoint { get; set; }
 
-        /// <summary>The URI to pull the container image from.</summary>
+        /// <summary>Required. The URI to pull the container image from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; }
 
         /// <summary>
-        /// Arbitrary additional options to include in the "docker run" command when running this container, e.g.
-        /// "--network host".
+        /// Required for some container images. Arbitrary additional options to include in the `docker run` command when
+        /// running this container—for example, `--network host`. For the `--volume` option, use the `volumes` field for
+        /// the container.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; }
@@ -2117,12 +2124,12 @@ namespace Google.Apis.Batch.v1.Data
 
         /// <summary>
         /// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to
-        /// match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is
-        /// specified but this field is not, Batch will mount each volume from the host machine to the container with
-        /// the same mount path by default. In this case, the default mount option for containers will be read-only (ro)
-        /// for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount
-        /// options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure
-        /// them in this field.
+        /// match `--volume` option for the `docker run` command—for example, `/foo:/bar` or `/foo:/bar:ro`. If the
+        /// `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host
+        /// machine to the container with the same mount path by default. In this case, the default mount option for
+        /// containers will be read-only (`ro`) for existing persistent disks and read-write (`rw`) for other volume
+        /// types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount
+        /// settings, you can explicitly configure them in this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<string> Volumes { get; set; }
@@ -2151,8 +2158,8 @@ namespace Google.Apis.Batch.v1.Data
         /// Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the
         /// image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in
         /// short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian
-        /// images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. *
-        /// `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
+        /// images. * `batch-cos`: use Batch Container-Optimized images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux
+        /// images.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
@@ -3071,19 +3078,21 @@ namespace Google.Apis.Batch.v1.Data
     public class Script : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang
-        /// line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute
-        /// the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script
-        /// using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by
-        /// default be executed by `/bin/sh`.
+        /// The path to a script file that is accessible from the host VM(s). Unless the script file supports the
+        /// default `#!/bin/sh` shell interpreter, you must specify an interpreter by including a [shebang
+        /// line](https://en.wikipedia.org/wiki/Shebang_(Unix) as the first line of the file. For example, to execute
+        /// the script using bash, include `#!/bin/bash` as the first line of the file. Alternatively, to execute the
+        /// script using Python3, include `#!/usr/bin/env python3` as the first line of the file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
         /// <summary>
-        /// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example,
-        /// to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`,
-        /// `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
+        /// The text for a script. Unless the script text supports the default `#!/bin/sh` shell interpreter, you must
+        /// specify an interpreter by including a [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix) at the
+        /// beginning of the text. For example, to execute the script using bash, include `#!/bin/bash\n` at the
+        /// beginning of the text. Alternatively, to execute the script using Python3, include `#!/usr/bin/env
+        /// python3\n` at the beginning of the text.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -3370,12 +3379,13 @@ namespace Google.Apis.Batch.v1.Data
         public virtual object MaxRunDuration { get; set; }
 
         /// <summary>
-        /// The sequence of scripts or containers to run for this Task. Each Task using this TaskSpec executes its list
-        /// of runnables in order. The Task succeeds if all of its runnables either exit with a zero status or any that
-        /// exit with a non-zero status have the ignore_exit_status flag. Background runnables are killed automatically
-        /// (if they have not already exited) a short time after all foreground runnables have completed. Even though
-        /// this is likely to result in a non-zero exit status for the background runnable, these automatic kills are
-        /// not treated as Task failures.
+        /// Required. The sequence of one or more runnables (executable scripts, executable containers, and/or barriers)
+        /// for each task in this task group to run. Each task runs this list of runnables in order. For a task to
+        /// succeed, all of its script and container runnables each must either exit with a zero status or enable the
+        /// `ignore_exit_status` subfield and exit with any status. Background runnables are killed automatically (if
+        /// they have not already exited) a short time after all foreground runnables have completed. Even though this
+        /// is likely to result in a non-zero exit status for the background runnable, these automatic kills are not
+        /// treated as Task failures.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runnables")]
         public virtual System.Collections.Generic.IList<Runnable> Runnables { get; set; }
