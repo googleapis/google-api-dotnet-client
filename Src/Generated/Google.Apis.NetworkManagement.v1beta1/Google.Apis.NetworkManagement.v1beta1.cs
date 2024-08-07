@@ -2159,8 +2159,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     }
 
     /// <summary>
-    /// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical
-    /// firewall policy rule.
+    /// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a firewall
+    /// policy rule.
     /// </summary>
     public class FirewallInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2173,8 +2173,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string Direction { get; set; }
 
         /// <summary>
-        /// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy
-        /// rules.
+        /// The display name of the firewall rule. This field might be empty for firewall policy rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -2191,11 +2190,18 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string NetworkUri { get; set; }
 
         /// <summary>
-        /// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC
-        /// firewall rules.
+        /// The name of the firewall policy that this rule is associated with. This field is not applicable to VPC
+        /// firewall rules and implied VPC firewall rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual string Policy { get; set; }
+
+        /// <summary>
+        /// The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC
+        /// firewall rules and implied VPC firewall rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyUri")]
+        public virtual string PolicyUri { get; set; }
 
         /// <summary>The priority of the firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
@@ -2206,16 +2212,12 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> TargetServiceAccounts { get; set; }
 
         /// <summary>
-        /// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall
-        /// policy rules.
+        /// The target tags defined by the VPC firewall rule. This field is not applicable to firewall policy rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetTags")]
         public virtual System.Collections.Generic.IList<string> TargetTags { get; set; }
 
-        /// <summary>
-        /// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical
-        /// firewall policy rules.
-        /// </summary>
+        /// <summary>The URI of the firewall rule. This field is not applicable to implied VPC firewall rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
