@@ -1128,6 +1128,67 @@ namespace Google.Apis.CloudRetail.v2alpha
                             }
                         }
 
+                        /// <summary>Exports multiple Products.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. Resource name of a Branch, and `default_branch` for branch_id component is
+                        /// supported. For example
+                        /// `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch`
+                        /// </param>
+                        public virtual ExportRequest Export(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaExportProductsRequest body, string parent)
+                        {
+                            return new ExportRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Exports multiple Products.</summary>
+                        public class ExportRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Export request.</summary>
+                            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaExportProductsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of a Branch, and `default_branch` for branch_id component is
+                            /// supported. For example
+                            /// `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaExportProductsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "export";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2alpha/{+parent}/products:export";
+
+                            /// <summary>Initializes Export parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>Gets a Product.</summary>
                         /// <param name="name">
                         /// Required. Full resource name of Product, such as
@@ -7605,7 +7666,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2alphaAlertConfigAlertPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The feature that provides alerting capability. Supported value is only `search-data-quality` for now.
+        /// The feature that provides alerting capability. Supported value: - `search-data-quality` for retail search
+        /// customers. - `conv-data-quality` for retail conversation customers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertGroup")]
         public virtual string AlertGroup { get; set; }
@@ -8370,7 +8432,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// <summary>Resource that represents attribute results.</summary>
     public class GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of suggestions for the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
         public virtual System.Collections.Generic.IList<string> Suggestions { get; set; }
 
@@ -9082,6 +9143,43 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ExportProducts method.</summary>
+    public class GoogleCloudRetailV2alphaExportProductsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filtering expression to specify restrictions on returned events. The expression is a sequence of terms.
+        /// Each term applies a restriction to the returned products. Use this expression to restrict results to a
+        /// specific time range, tag, or stock state or to filter products by product type. For example,
+        /// `lastModifiedTime &amp;gt; "2012-04-23T18:25:43.511Z" lastModifiedTime&amp;lt;"2012-04-23T18:25:43.511Z"
+        /// productType=primary` We expect only four types of fields: * `lastModifiedTime`: This can be specified twice,
+        /// once with a less than operator and once with a greater than operator. The `lastModifiedTime` restriction
+        /// should result in one, contiguous, valid, last-modified, time range. * `productType`: Supported values are
+        /// `primary` and `variant`. The Boolean operators `OR` and `NOT` are supported if the expression is enclosed in
+        /// parentheses and must be separated from the `productType` values by a space. * `availability`: Supported
+        /// values are `IN_STOCK`, `OUT_OF_STOCK`, `PREORDER`, and `BACKORDER`. Boolean operators `OR` and `NOT` are
+        /// supported if the expression is enclosed in parentheses and must be separated from the `availability` values
+        /// by a space. * `Tag expressions`: Restricts output to products that match all of the specified tags. Boolean
+        /// operators `OR` and `NOT` are supported if the expression is enclosed in parentheses and the operators are
+        /// separated from the tag values by a space. Also supported is '`-"tagA"`', which is equivalent to '`NOT
+        /// "tagA"`'. Tag values must be double-quoted, UTF-8 encoded strings and have a size limit of 1,000 characters.
+        /// Some examples of valid filters expressions: * Example 1: `lastModifiedTime &amp;gt;
+        /// "2012-04-23T18:25:43.511Z" lastModifiedTime &amp;lt; "2012-04-23T18:30:43.511Z"` * Example 2:
+        /// `lastModifiedTime &amp;gt; "2012-04-23T18:25:43.511Z" productType = "variant"` * Example 3: `tag=("Red" OR
+        /// "Blue") tag="New-Arrival" tag=(NOT "promotional") productType = "primary" lastModifiedTime &amp;lt;
+        /// "2018-04-23T18:30:43.511Z"` * Example 4: `lastModifiedTime &amp;gt; "2012-04-23T18:25:43.511Z"` * Example 5:
+        /// `availability = (IN_STOCK OR BACKORDER)`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The output location of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudRetailV2alphaOutputConfig OutputConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
