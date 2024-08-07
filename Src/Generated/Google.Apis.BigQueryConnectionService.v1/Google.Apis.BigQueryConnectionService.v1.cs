@@ -1209,7 +1209,8 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         public virtual System.Nullable<bool> HasCredential { get; set; }
 
         /// <summary>
-        /// Optional. The Cloud KMS key that is used for encryption. Example:
+        /// Optional. The Cloud KMS key that is used for credentials encryption. If omitted, internal Google owned
+        /// encryption keys are used. Example:
         /// `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
