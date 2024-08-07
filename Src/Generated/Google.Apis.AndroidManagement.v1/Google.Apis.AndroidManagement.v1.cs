@@ -2653,9 +2653,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// Controls Common Criteria Mode—security standards defined in the Common Criteria for Information Technology
         /// Security Evaluation (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases
         /// certain security components on a device, including AES-GCM encryption of Bluetooth Long Term Keys, and Wi-Fi
-        /// configuration stores.Warning: Common Criteria Mode enforces a strict security model typically only required
-        /// for IT products used in national security systems and other highly sensitive organizations. Standard device
-        /// use may be affected. Only enabled if required.
+        /// configuration stores.Common Criteria Mode is only supported on company-owned devices running Android 11 or
+        /// above.Warning: Common Criteria Mode enforces a strict security model typically only required for IT products
+        /// used in national security systems and other highly sensitive organizations. Standard device use may be
+        /// affected. Only enabled if required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaMode")]
         public virtual string CommonCriteriaMode { get; set; }
@@ -3921,7 +3922,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Information about Common Criteria Mode—security standards defined in the Common Criteria for Information
         /// Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is only
-        /// available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy.
+        /// available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy the device is
+        /// company-owned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaModeInfo")]
         public virtual CommonCriteriaModeInfo CommonCriteriaModeInfo { get; set; }
@@ -7292,7 +7294,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applicationReportsEnabled")]
         public virtual System.Nullable<bool> ApplicationReportsEnabled { get; set; }
 
-        /// <summary>Whether Common Criteria Mode reporting is enabled.</summary>
+        /// <summary>
+        /// Whether Common Criteria Mode reporting is enabled. This is supported only on company-owned devices.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaModeEnabled")]
         public virtual System.Nullable<bool> CommonCriteriaModeEnabled { get; set; }
 
