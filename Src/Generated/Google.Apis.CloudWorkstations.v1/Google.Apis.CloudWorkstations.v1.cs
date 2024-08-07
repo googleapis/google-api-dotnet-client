@@ -3067,8 +3067,8 @@ namespace Google.Apis.CloudWorkstations.v1.Data
 
         /// <summary>
         /// Optional. Resource manager tags to be bound to this instance. Tag keys and values have the same definition
-        /// as https://cloud.google.com/resource-manager/docs/tags/tags-overview Keys must be in the format
-        /// `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`.
+        /// as [resource manager tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview). Keys must be
+        /// in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmTags")]
         public virtual System.Collections.Generic.IDictionary<string, string> VmTags { get; set; }
@@ -3722,11 +3722,17 @@ namespace Google.Apis.CloudWorkstations.v1.Data
     /// </summary>
     public class PortRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Starting port number for the current range of ports.</summary>
+        /// <summary>
+        /// Required. Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the
+        /// range 1024-65535.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("first")]
         public virtual System.Nullable<int> First { get; set; }
 
-        /// <summary>Required. Ending port number for the current range of ports.</summary>
+        /// <summary>
+        /// Required. Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the
+        /// range 1024-65535.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("last")]
         public virtual System.Nullable<int> Last { get; set; }
 
@@ -4316,8 +4322,9 @@ namespace Google.Apis.CloudWorkstations.v1.Data
     public class WorkstationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A Single or Range of ports externally accessible in the workstation. If not specified defaults to
-        /// ports 22, 80 and ports 1024-65535.
+        /// Optional. A list of PortRanges specifying single ports or ranges of ports that are externally accessible in
+        /// the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults
+        /// to ports 22, 80, and ports 1024-65535.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPorts")]
         public virtual System.Collections.Generic.IList<PortRange> AllowedPorts { get; set; }
