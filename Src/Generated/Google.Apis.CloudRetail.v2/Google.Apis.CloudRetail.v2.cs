@@ -6061,6 +6061,13 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2CompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// A map of matched attribute suggestions. This field is only available for "cloud-retail" dataset. Current
+        /// supported keys: * `brands` * `categories`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeResults")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2CompleteQueryResponseAttributeResult> AttributeResults { get; set; }
+
+        /// <summary>
         /// A unique complete token. This should be included in the UserEvent.completion_detail for search events
         /// resulting from this completion, which enables accurate attribution of complete model performance.
         /// </summary>
@@ -6083,6 +6090,16 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentSearchResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult> RecentSearchResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource that represents attribute results.</summary>
+    public class GoogleCloudRetailV2CompleteQueryResponseAttributeResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
+        public virtual System.Collections.Generic.IList<string> Suggestions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
