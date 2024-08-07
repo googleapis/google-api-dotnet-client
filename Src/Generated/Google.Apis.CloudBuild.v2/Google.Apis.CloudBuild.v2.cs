@@ -3300,7 +3300,7 @@ namespace Google.Apis.CloudBuild.v2.Data
     /// <summary>PipelineRef can be used to refer to a specific instance of a Pipeline.</summary>
     public class PipelineRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the Pipeline.</summary>
+        /// <summary>Optional. Name of the Pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4449,7 +4449,7 @@ namespace Google.Apis.CloudBuild.v2.Data
     /// </summary>
     public class TaskRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the task.</summary>
+        /// <summary>Optional. Name of the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
