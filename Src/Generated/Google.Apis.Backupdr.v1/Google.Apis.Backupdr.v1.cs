@@ -578,7 +578,7 @@ namespace Google.Apis.Backupdr.v1
 
                         /// <summary>Updates the settings of a Backup.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Output only. Name of the resource.</param>
+                        /// <param name="name">Output only. Identifier. Name of the resource.</param>
                         public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.Backup body, string name)
                         {
                             return new PatchRequest(this.service, body, name);
@@ -595,7 +595,7 @@ namespace Google.Apis.Backupdr.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Output only. Name of the resource.</summary>
+                            /// <summary>Output only. Identifier. Name of the resource.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -1068,7 +1068,7 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>Updates the settings of a DataSource.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. The resource name.</param>
+                    /// <param name="name">Output only. Identifier. The resource name.</param>
                     public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.DataSource body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -1085,7 +1085,7 @@ namespace Google.Apis.Backupdr.v1
                             InitParameters();
                         }
 
-                        /// <summary>Output only. The resource name.</summary>
+                        /// <summary>Output only. Identifier. The resource name.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1787,7 +1787,7 @@ namespace Google.Apis.Backupdr.v1
 
                 /// <summary>Updates the settings of a BackupVault.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The resource name.</param>
+                /// <param name="name">Output only. Identifier. The resource name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.BackupVault body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -1804,13 +1804,13 @@ namespace Google.Apis.Backupdr.v1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The resource name.</summary>
+                    /// <summary>Output only. Identifier. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// Optional. If set to true, will not check plan duration against backup vault enforcement
-                    /// duration. Non-standard field.
+                    /// duration.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
@@ -3045,6 +3045,45 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Provides the mapping of a cloud asset to a direct physical location or to a proxy that defines the location on
+    /// its behalf.
+    /// </summary>
+    public class AssetLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants that use CCFE RMS for storing
+        /// resource metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ccfeRmsPath")]
+        public virtual string CcfeRmsPath { get; set; }
+
+        /// <summary>
+        /// Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state of the region at the time of
+        /// asset creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expected")]
+        public virtual IsolationExpectations Expected { get; set; }
+
+        /// <summary>Defines extra parameters required for specific asset types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraParameters")]
+        public virtual System.Collections.Generic.IList<ExtraParameter> ExtraParameters { get; set; }
+
+        /// <summary>Contains all kinds of physical location definitions for this asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationData")]
+        public virtual System.Collections.Generic.IList<LocationData> LocationData { get; set; }
+
+        /// <summary>
+        /// Defines parents assets if any in order to allow later generation of child_asset_location data via child
+        /// assets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentAsset")]
+        public virtual System.Collections.Generic.IList<CloudAsset> ParentAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An instance-attached disk resource.</summary>
     public class AttachedDisk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3081,16 +3120,16 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; }
 
-        /// <summary>Optional. Specifies the type of the disk.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
-        public virtual string DiskType { get; set; }
-
         /// <summary>
         /// Optional. Output only. The URI of the disk type resource. For example:
         /// projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diskTypeUri")]
-        public virtual string DiskTypeUri { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>Specifies the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskTypeDeprecated")]
+        public virtual string DiskTypeDeprecated { get; set; }
 
         /// <summary>
         /// Optional. A list of features to enable on the guest operating system. Applicable only for bootable images.
@@ -3125,6 +3164,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
+
+        /// <summary>Optional. Specifies the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3185,6 +3228,7 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Message describing a Backup object.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Backup Appliance specific backup properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceBackupProperties")]
         public virtual BackupApplianceBackupProperties BackupApplianceBackupProperties { get; set; }
 
@@ -3192,9 +3236,11 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceLocks")]
         public virtual System.Collections.Generic.IList<BackupLock> BackupApplianceLocks { get; set; }
 
+        /// <summary>Output only. Type of the backup, unspecified, scheduled or ondemand.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
         public virtual string BackupType { get; set; }
 
+        /// <summary>Output only. Compute Engine specific backup properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceBackupProperties")]
         public virtual ComputeInstanceBackupProperties ComputeInstanceBackupProperties { get; set; }
 
@@ -3368,7 +3414,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. Name of the resource.</summary>
+        /// <summary>Output only. Identifier. Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3872,7 +3918,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The resource name.</summary>
+        /// <summary>Output only. Identifier. The resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4006,9 +4052,43 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Policy ID that identified data placement in Blobstore as per
+    /// go/blobstore-user-guide#data-metadata-placement-and-failure-domains
+    /// </summary>
+    public class BlobstoreLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
+        public virtual System.Collections.Generic.IList<string> PolicyId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("assetName")]
+        public virtual string AssetName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAssetComposition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("childAsset")]
+        public virtual System.Collections.Generic.IList<CloudAsset> ChildAsset { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4181,7 +4261,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupCount")]
         public virtual System.Nullable<long> BackupCount { get; set; }
 
-        /// <summary>The backup configuration state.</summary>
+        /// <summary>Output only. The backup configuration state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configState")]
         public virtual string ConfigState { get; set; }
 
@@ -4246,7 +4326,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The resource name.</summary>
+        /// <summary>Output only. Identifier. The resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4364,6 +4444,15 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class DirectLocationAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual System.Collections.Generic.IList<LocationAssignment> Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -4433,6 +4522,19 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines parameters that should only be used for specific asset types.</summary>
+    public class ExtraParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Details about zones used by regional compute.googleapis.com/InstanceGroupManager to create instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalMigDistributionPolicy")]
+        public virtual RegionalMigDistributionPolicy RegionalMigDistributionPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4811,6 +4913,48 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class IsolationExpectations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Explicit overrides for ZI and ZS requirements to be used for resources that should be excluded from ZI/ZS
+        /// verification logic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirementOverride")]
+        public virtual RequirementOverride RequirementOverride { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ziOrgPolicy")]
+        public virtual string ZiOrgPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionPolicy")]
+        public virtual string ZiRegionPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionState")]
+        public virtual string ZiRegionState { get; set; }
+
+        /// <summary>
+        /// Deprecated: use zi_org_policy, zi_region_policy and zi_region_state instead for setting ZI expectations as
+        /// per go/zicy-publish-physical-location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneIsolation")]
+        public virtual string ZoneIsolation { get; set; }
+
+        /// <summary>
+        /// Deprecated: use zs_org_policy, and zs_region_stateinstead for setting Zs expectations as per
+        /// go/zicy-publish-physical-location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneSeparation")]
+        public virtual string ZoneSeparation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsOrgPolicy")]
+        public virtual string ZsOrgPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsRegionState")]
+        public virtual string ZsRegionState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing BackupVaults.</summary>
     public class ListBackupVaultsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4964,6 +5108,42 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LocationAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
+        public virtual string LocationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LocationData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("blobstoreLocation")]
+        public virtual BlobstoreLocation BlobstoreLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("childAssetLocation")]
+        public virtual CloudAssetComposition ChildAssetLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("directLocation")]
+        public virtual DirectLocationAssignment DirectLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectProxy")]
+        public virtual TenantProjectProxy GcpProjectProxy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("placerLocation")]
+        public virtual PlacerLocation PlacerLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerLocation")]
+        public virtual SpannerLocation SpannerLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5440,6 +5620,17 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message describing that the location of the customer resource is tied to placer allocations</summary>
+    public class PlacerLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Directory with a config related to it in placer (e.g. "/placer/prod/home/my-root/my-dir")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placerConfig")]
+        public virtual string PlacerConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
@@ -5517,6 +5708,26 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>
+    /// To be used for specifying the intended distribution of regional compute.googleapis.com/InstanceGroupManager
+    /// instances
+    /// </summary>
+    public class RegionalMigDistributionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The shape in which the group converges around distribution of resources. Instance of proto2 enum
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetShape")]
+        public virtual System.Nullable<int> TargetShape { get; set; }
+
+        /// <summary>Cloud zones used by regional MIG to create instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<ZoneConfiguration> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for deleting a DataSource.</summary>
     public class RemoveDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5531,6 +5742,18 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RequirementOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ziOverride")]
+        public virtual string ZiOverride { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsOverride")]
+        public virtual string ZsOverride { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5659,7 +5882,7 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Request message for SetStatusInternal method.</summary>
     public class SetInternalStatusRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The new BackupConfigState to set for the DataSource.</summary>
+        /// <summary>Required. Output only. The new BackupConfigState to set for the DataSource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfigState")]
         public virtual string BackupConfigState { get; set; }
 
@@ -5680,6 +5903,23 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SpannerLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Set of backups used by the resource with name in the same format as what is available at
+        /// http://table/spanner_automon.backup_metadata
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupName")]
+        public virtual System.Collections.Generic.IList<string> BackupName { get; set; }
+
+        /// <summary>Set of databases used by the resource in format /span//</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbName")]
+        public virtual System.Collections.Generic.IList<string> DbName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5722,6 +5962,15 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<string> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TenantProjectProxy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumbers")]
+        public virtual System.Collections.Generic.IList<string> ProjectNumbers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5778,6 +6027,15 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Output only. Third party OAuth Client ID for External Identity Providers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOauth2ClientId")]
         public virtual string ThirdPartyOauth2ClientId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
