@@ -1160,7 +1160,11 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A Google Docs document.</summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The main body of the document.</summary>
+        /// <summary>
+        /// Output only. The main body of the document. Legacy field: Instead, use Document.tabs.documentTab.body, which
+        /// exposes the actual document content from all tabs when the includeTabsContent parameter is set to `true`. If
+        /// `false` or unset, this field contains information about the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual Body Body { get; set; }
 
@@ -1168,39 +1172,83 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual string DocumentId { get; set; }
 
-        /// <summary>Output only. The style of the document.</summary>
+        /// <summary>
+        /// Output only. The style of the document. Legacy field: Instead, use Document.tabs.documentTab.documentStyle,
+        /// which exposes the actual document content from all tabs when the includeTabsContent parameter is set to
+        /// `true`. If `false` or unset, this field contains information about the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentStyle")]
         public virtual DocumentStyle DocumentStyle { get; set; }
 
-        /// <summary>Output only. The footers in the document, keyed by footer ID.</summary>
+        /// <summary>
+        /// Output only. The footers in the document, keyed by footer ID. Legacy field: Instead, use
+        /// Document.tabs.documentTab.footers, which exposes the actual document content from all tabs when the
+        /// includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about
+        /// the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footers")]
         public virtual System.Collections.Generic.IDictionary<string, Footer> Footers { get; set; }
 
-        /// <summary>Output only. The footnotes in the document, keyed by footnote ID.</summary>
+        /// <summary>
+        /// Output only. The footnotes in the document, keyed by footnote ID. Legacy field: Instead, use
+        /// Document.tabs.documentTab.footnotes, which exposes the actual document content from all tabs when the
+        /// includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about
+        /// the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footnotes")]
         public virtual System.Collections.Generic.IDictionary<string, Footnote> Footnotes { get; set; }
 
-        /// <summary>Output only. The headers in the document, keyed by header ID.</summary>
+        /// <summary>
+        /// Output only. The headers in the document, keyed by header ID. Legacy field: Instead, use
+        /// Document.tabs.documentTab.headers, which exposes the actual document content from all tabs when the
+        /// includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about
+        /// the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string, Header> Headers { get; set; }
 
-        /// <summary>Output only. The inline objects in the document, keyed by object ID.</summary>
+        /// <summary>
+        /// Output only. The inline objects in the document, keyed by object ID. Legacy field: Instead, use
+        /// Document.tabs.documentTab.inlineObjects, which exposes the actual document content from all tabs when the
+        /// includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about
+        /// the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineObjects")]
         public virtual System.Collections.Generic.IDictionary<string, InlineObject> InlineObjects { get; set; }
 
-        /// <summary>Output only. The lists in the document, keyed by list ID.</summary>
+        /// <summary>
+        /// Output only. The lists in the document, keyed by list ID. Legacy field: Instead, use
+        /// Document.tabs.documentTab.lists, which exposes the actual document content from all tabs when the
+        /// includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about
+        /// the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lists")]
         public virtual System.Collections.Generic.IDictionary<string, List> Lists { get; set; }
 
-        /// <summary>Output only. The named ranges in the document, keyed by name.</summary>
+        /// <summary>
+        /// Output only. The named ranges in the document, keyed by name. Legacy field: Instead, use
+        /// Document.tabs.documentTab.namedRanges, which exposes the actual document content from all tabs when the
+        /// includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about
+        /// the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRanges")]
         public virtual System.Collections.Generic.IDictionary<string, NamedRanges> NamedRanges { get; set; }
 
-        /// <summary>Output only. The named styles of the document.</summary>
+        /// <summary>
+        /// Output only. The named styles of the document. Legacy field: Instead, use
+        /// Document.tabs.documentTab.namedStyles, which exposes the actual document content from all tabs when the
+        /// includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about
+        /// the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedStyles")]
         public virtual NamedStyles NamedStyles { get; set; }
 
-        /// <summary>Output only. The positioned objects in the document, keyed by object ID.</summary>
+        /// <summary>
+        /// Output only. The positioned objects in the document, keyed by object ID. Legacy field: Instead, use
+        /// Document.tabs.documentTab.positionedObjects, which exposes the actual document content from all tabs when
+        /// the includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information
+        /// about the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionedObjects")]
         public virtual System.Collections.Generic.IDictionary<string, PositionedObject> PositionedObjects { get; set; }
 
@@ -1217,12 +1265,20 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
 
-        /// <summary>Output only. The suggested changes to the style of the document, keyed by suggestion ID.</summary>
+        /// <summary>
+        /// Output only. The suggested changes to the style of the document, keyed by suggestion ID. Legacy field:
+        /// Instead, use Document.tabs.documentTab.suggestedDocumentStyleChanges, which exposes the actual document
+        /// content from all tabs when the includeTabsContent parameter is set to `true`. If `false` or unset, this
+        /// field contains information about the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedDocumentStyleChanges")]
         public virtual System.Collections.Generic.IDictionary<string, SuggestedDocumentStyle> SuggestedDocumentStyleChanges { get; set; }
 
         /// <summary>
-        /// Output only. The suggested changes to the named styles of the document, keyed by suggestion ID.
+        /// Output only. The suggested changes to the named styles of the document, keyed by suggestion ID. Legacy
+        /// field: Instead, use Document.tabs.documentTab.suggestedNamedStylesChanges, which exposes the actual document
+        /// content from all tabs when the includeTabsContent parameter is set to `true`. If `false` or unset, this
+        /// field contains information about the first tab in the document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedNamedStylesChanges")]
         public virtual System.Collections.Generic.IDictionary<string, SuggestedNamedStyles> SuggestedNamedStylesChanges { get; set; }
@@ -1236,7 +1292,7 @@ namespace Google.Apis.Docs.v1.Data
 
         /// <summary>
         /// Tabs that are part of a document. Tabs can contain child tabs, a tab nested within another tab. Child tabs
-        /// are represented by the Tab.child_tabs field.
+        /// are represented by the Tab.childTabs field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabs")]
         public virtual System.Collections.Generic.IList<Tab> Tabs { get; set; }
@@ -2297,25 +2353,39 @@ namespace Google.Apis.Docs.v1.Data
     {
         /// <summary>
         /// A bookmark in this document. In documents containing a single tab, links to bookmarks within the singular
-        /// tab continue to return Link.bookmark_id when the includeTabsContent parameter is set to `false` or unset.
+        /// tab continue to return Link.bookmarkId when the includeTabsContent parameter is set to `false` or unset.
         /// Otherwise, this field is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bookmark")]
         public virtual BookmarkLink Bookmark { get; set; }
 
-        /// <summary>The ID of a bookmark in this document.</summary>
+        /// <summary>
+        /// The ID of a bookmark in this document. Legacy field: Instead, set includeTabsContent to `true` and use
+        /// Link.bookmark for read and write operations. This field is only returned when includeTabsContent is set to
+        /// `false` in documents containing a single tab and links to a bookmark within the singular tab. Otherwise,
+        /// Link.bookmark is returned. If this field is used in a write request, the bookmark is considered to be from
+        /// the tab ID specified in the request. If a tab ID is not specified in the request, it is considered to be
+        /// from the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bookmarkId")]
         public virtual string BookmarkId { get; set; }
 
         /// <summary>
         /// A heading in this document. In documents containing a single tab, links to headings within the singular tab
-        /// continue to return Link.heading_id when the includeTabsContent parameter is set to `false` or unset.
+        /// continue to return Link.headingId when the includeTabsContent parameter is set to `false` or unset.
         /// Otherwise, this field is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heading")]
         public virtual HeadingLink Heading { get; set; }
 
-        /// <summary>The ID of a heading in this document.</summary>
+        /// <summary>
+        /// The ID of a heading in this document. Legacy field: Instead, set includeTabsContent to `true` and use
+        /// Link.heading for read and write operations. This field is only returned when includeTabsContent is set to
+        /// `false` in documents containing a single tab and links to a heading within the singular tab. Otherwise,
+        /// Link.heading is returned. If this field is used in a write request, the heading is considered to be from the
+        /// tab ID specified in the request. If a tab ID is not specified in the request, it is considered to be from
+        /// the first tab in the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headingId")]
         public virtual string HeadingId { get; set; }
 
@@ -4329,7 +4399,7 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Properties of a tab.</summary>
     public class TabProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The index of the tab within the parent.</summary>
+        /// <summary>The zero-based index of the tab within the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
 
