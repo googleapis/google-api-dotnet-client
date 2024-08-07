@@ -663,6 +663,14 @@ namespace Google.Apis.GKEHub.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If set to true, the response will return partial results when some regions are
+                    /// unreachable and the unreachable field in Feature proto will be populated. If set to false, the
+                    /// request will fail when some regions are unreachable.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -683,6 +691,14 @@ namespace Google.Apis.GKEHub.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/features/[^/]+$",
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -825,6 +841,14 @@ namespace Google.Apis.GKEHub.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set to true, the response will return partial results when some regions are
+                    /// unreachable and the unreachable field in Feature proto will be populated. If set to false, the
+                    /// request will fail when some regions are unreachable.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -873,6 +897,14 @@ namespace Google.Apis.GKEHub.v1alpha
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6327,7 +6359,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual string Management { get; set; }
 
-        /// <summary>Policy Controller configuration for the cluster.</summary>
+        /// <summary>
+        /// Policy Controller configuration for the cluster. Deprecated: Configuring Policy Controller through the
+        /// configmanagement feature is no longer recommended. Use the policycontroller feature instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyController")]
         public virtual ConfigManagementPolicyController PolicyController { get; set; }
 
@@ -6974,6 +7009,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. The Hub-wide Feature state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual CommonFeatureState State { get; set; }
+
+        /// <summary>Output only. List of locations that could not be reached while fetching this feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         private string _updateTimeRaw;
 
