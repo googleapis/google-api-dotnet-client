@@ -6227,6 +6227,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internalclientRatelimitThreshold")]
         public virtual System.Nullable<long> InternalclientRatelimitThreshold { get; set; }
 
+        /// <summary>Max Instance Request Conncurrency for Cloud Run service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
+        public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
+
         /// <summary>Indicate whether connector is being migrated to cloud run deployment model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrateDeploymentModel")]
         public virtual System.Nullable<bool> MigrateDeploymentModel { get; set; }
@@ -6323,6 +6327,14 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventingConfigTemplate")]
         public virtual EventingConfigTemplate EventingConfigTemplate { get; set; }
 
+        /// <summary>Output only. Is custom actions supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isCustomActionsSupported")]
+        public virtual System.Nullable<bool> IsCustomActionsSupported { get; set; }
+
+        /// <summary>Output only. Is custom entities supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isCustomEntitiesSupported")]
+        public virtual System.Nullable<bool> IsCustomEntitiesSupported { get; set; }
+
         /// <summary>
         /// Output only. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for
         /// more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -6367,6 +6379,14 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Information about the runtime features supported by the Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedRuntimeFeatures")]
         public virtual SupportedRuntimeFeatures SupportedRuntimeFeatures { get; set; }
+
+        /// <summary>Output only. Supported standard actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedStandardActions")]
+        public virtual System.Collections.Generic.IList<StandardAction> SupportedStandardActions { get; set; }
+
+        /// <summary>Output only. Supported standard entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedStandardEntities")]
+        public virtual System.Collections.Generic.IList<StandardEntity> SupportedStandardEntities { get; set; }
 
         /// <summary>Output only. Unsupported connection types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unsupportedConnectionTypes")]
@@ -6438,6 +6458,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Max QPS supported for internal requests originating from Connd.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalclientRatelimitThreshold")]
         public virtual System.Nullable<long> InternalclientRatelimitThreshold { get; set; }
+
+        /// <summary>Output only. Max instance request concurrency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
+        public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
 
         /// <summary>Output only. Max QPS supported by the connector version before throttling of requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratelimitThreshold")]
@@ -9990,6 +10014,28 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Controls the ssl type for the given connector version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslType")]
         public virtual string SslType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Standard action</summary>
+    public class StandardAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the standard action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Standard entity</summary>
+    public class StandardEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the standard entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
