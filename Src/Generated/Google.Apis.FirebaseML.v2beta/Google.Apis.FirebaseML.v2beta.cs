@@ -946,7 +946,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
         public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
 
-        /// <summary>Number of tokens in the request.</summary>
+        /// <summary>
+        /// Number of tokens in the request. When `cached_content` is set, this is still the total effective prompt size
+        /// meaning this includes the number of tokens in the cached content.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
 
