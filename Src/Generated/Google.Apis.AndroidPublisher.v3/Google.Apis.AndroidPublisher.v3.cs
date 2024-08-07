@@ -8702,10 +8702,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
                 /// <summary>
-                /// Migrates subscribers who are receiving an historical subscription price to the currently-offered
-                /// price for the specified region. Requests will cause price change notifications to be sent to users
-                /// who are currently receiving an historical price older than the supplied timestamp. Subscribers who
-                /// do not agree to the new price will have their subscription ended at the next renewal.
+                /// Migrates subscribers from one or more legacy price cohorts to the current price. Requests result in
+                /// Google Play notifying affected subscribers. Only up to 250 simultaneous legacy price cohorts are
+                /// supported.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="packageName">
@@ -8725,10 +8724,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
                 /// <summary>
-                /// Migrates subscribers who are receiving an historical subscription price to the currently-offered
-                /// price for the specified region. Requests will cause price change notifications to be sent to users
-                /// who are currently receiving an historical price older than the supplied timestamp. Subscribers who
-                /// do not agree to the new price will have their subscription ended at the next renewal.
+                /// Migrates subscribers from one or more legacy price cohorts to the current price. Requests result in
+                /// Google Play notifying affected subscribers. Only up to 250 simultaneous legacy price cohorts are
+                /// supported.
                 /// </summary>
                 public class MigratePricesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.MigrateBasePlanPricesResponse>
                 {
@@ -15105,7 +15103,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for a price migration.</summary>
+    /// <summary>Configuration for migration of a legacy price cohort.</summary>
     public class RegionalPriceMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _oldestAllowedPriceVersionTimeRaw;
@@ -15113,11 +15111,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         private object _oldestAllowedPriceVersionTime;
 
         /// <summary>
-        /// Required. The cutoff time for historical prices that subscribers can remain paying. Subscribers on prices
-        /// which were available at this cutoff time or later will stay on their existing price. Subscribers on older
-        /// prices will be migrated to the currently-offered price. The migrated subscribers will receive a notification
-        /// that they will be paying a different price. Subscribers who do not agree to the new price will have their
-        /// subscription ended at the next renewal.
+        /// Required. Subscribers in all legacy price cohorts before this time will be migrated to the current price.
+        /// Subscribers in any newer price cohorts are unaffected. Affected subscribers will receive one or more
+        /// notifications from Google Play about the price change. Price decreases occur at the subscriber's next
+        /// billing date. Price increases occur at the subscriber's next billing date following a notification period
+        /// that varies by region and price increase type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldestAllowedPriceVersionTime")]
         public virtual string OldestAllowedPriceVersionTimeRaw
@@ -15155,11 +15153,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
             set => OldestAllowedPriceVersionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Optional. The behavior the caller wants users to see when there is a price increase during migration. If
-        /// left unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN. Note that the first opt-out price increase
-        /// migration for each app must be initiated in Play Console.
-        /// </summary>
+        /// <summary>Optional. The requested type of price increase</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceIncreaseType")]
         public virtual string PriceIncreaseType { get; set; }
 
