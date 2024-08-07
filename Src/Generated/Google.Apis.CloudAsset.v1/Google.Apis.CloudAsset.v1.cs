@@ -5502,9 +5502,10 @@ namespace Google.Apis.CloudAsset.v1.Data
     {
         /// <summary>
         /// A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user,
-        /// service account, Google group, or third-party identity. The `v1` identities that have the prefix `user`,
-        /// `group`, `serviceAccount`, `principal`, and `principalSet` in
-        /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
+        /// service account, Google group, or third-party identity. For third-party identity, only single identities are
+        /// supported and other identity types are not supported. The `v1` identities that have the prefix `user`,
+        /// `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are
+        /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -5629,9 +5630,10 @@ namespace Google.Apis.CloudAsset.v1.Data
     {
         /// <summary>
         /// A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user,
-        /// service account, Google group, or third-party identity. The `v1` identities that have the prefix `user`,
-        /// `group`, `serviceAccount`, `principal`, and `principalSet` in
-        /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
+        /// service account, Google group, or third-party identity. For third-party identity, only single identities are
+        /// supported and other identity types are not supported. The `v1` identities that have the prefix `user`,
+        /// `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are
+        /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -6958,8 +6960,9 @@ namespace Google.Apis.CloudAsset.v1.Data
     {
         /// <summary>
         /// The query response, which can be either an `error` or a valid `response`. If `done` == `false` and the query
-        /// result is being saved in a output, the output_config field will be set. If `done` == `true`, exactly one of
-        /// `error`, `query_result` or `output_config` will be set.
+        /// result is being saved in an output, the output_config field will be set. If `done` == `true`, exactly one of
+        /// `error`, `query_result` or `output_config` will be set. [done] is unset unless the [QueryAssetsResponse]
+        /// contains a [QueryAssetsResponse.job_reference].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
@@ -6973,8 +6976,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string JobReference { get; set; }
 
         /// <summary>
-        /// Output configuration which indicates instead of being returned in API response on the fly, the query result
-        /// will be saved in a specific output.
+        /// Output configuration, which indicates that instead of being returned in an API response on the fly, the
+        /// query result will be saved in a specific output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual QueryAssetsOutputConfig OutputConfig { get; set; }
