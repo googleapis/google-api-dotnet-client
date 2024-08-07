@@ -6948,6 +6948,31 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for value generation for an identity column.</summary>
+    public class IdentityColumnInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Dictates when system generated values are used to populate the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedMode")]
+        public virtual string GeneratedMode { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum difference between two successive generated values. Should be INTEGER compatible. Can
+        /// be negative or positive but not 0. The default value is 1 if the field is not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("increment")]
+        public virtual string Increment { get; set; }
+
+        /// <summary>
+        /// Optional. The first generated value. Should be INTEGER compatible. The default value is 1 if the field is
+        /// not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual string Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Reason about why no search index was used in the search query (or sub-query).</summary>
     public class IndexUnusedReason : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11443,6 +11468,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foreignTypeDefinition")]
         public virtual string ForeignTypeDefinition { get; set; }
+
+        /// <summary>
+        /// Optional. Definition of how values are generated for the field. Setting this option means that the field is
+        /// an identity column. Only valid for top-level schema INTEGER fields (not nested fields).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityColumnInfo")]
+        public virtual IdentityColumnInfo IdentityColumnInfo { get; set; }
 
         /// <summary>
         /// Optional. Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no
