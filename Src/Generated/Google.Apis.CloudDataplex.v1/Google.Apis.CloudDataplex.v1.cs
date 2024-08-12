@@ -18897,15 +18897,17 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The name of the resource that the configuration is applied to, in the format
+        /// Output only. Identifier. The name of the resource that the configuration is applied to, in the format
         /// projects/{project_number}/locations/{location_id}/metadataJobs/{metadata_job_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Metadata job status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleCloudDataplexV1MetadataJobStatus Status { get; set; }
 
+        /// <summary>Required. Metadata job type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
