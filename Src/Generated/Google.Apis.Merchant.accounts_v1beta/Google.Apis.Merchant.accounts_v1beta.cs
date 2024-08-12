@@ -3442,8 +3442,10 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual Account Account { get; set; }
 
         /// <summary>
-        /// Optional. If specified, an account service between the account to be created and the provider account is
-        /// initialized as part of the creation.
+        /// Required. An account service between the account to be created and the provider account is initialized as
+        /// part of the creation. At least one such service needs to be provided. Currently only `account_aggregation`
+        /// is supported which means the newly created account will be a subaccount of the provider defined in the
+        /// `account_aggregation` service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual System.Collections.Generic.IList<AddAccountService> Service { get; set; }
