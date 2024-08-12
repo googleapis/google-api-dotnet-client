@@ -3880,6 +3880,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matterPermissions")]
         public virtual System.Collections.Generic.IList<MatterPermission> MatterPermissions { get; set; }
 
+        /// <summary>Optional. The requested data region for the matter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matterRegion")]
+        public virtual string MatterRegion { get; set; }
+
         /// <summary>The name of the matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
