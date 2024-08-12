@@ -2425,6 +2425,13 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// Optional. The minimum CPU platform to use for this instance. The list of valid values can be found in
+        /// https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; }
+
         /// <summary>Optional. The network interfaces for the VM. Supports only one interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
