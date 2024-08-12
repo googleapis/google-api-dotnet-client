@@ -6059,7 +6059,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The specification of a Looker data source.</summary>
     public class LookerDataSourceSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of a LookerML model explore.</summary>
+        /// <summary>Name of a Looker model explore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explore")]
         public virtual string Explore { get; set; }
 
@@ -6067,7 +6067,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceUri")]
         public virtual string InstanceUri { get; set; }
 
-        /// <summary>Name of a LookerML model.</summary>
+        /// <summary>Name of a Looker model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
