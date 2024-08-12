@@ -17246,6 +17246,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>Output only. Whether the referenced Document can be found in the data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joined")]
+        public virtual System.Nullable<bool> Joined { get; set; }
+
         /// <summary>
         /// The Document resource full name, of the form:
         /// `projects/{project_id}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/branches/{branch_id}/documents/{document_id}`
@@ -17305,6 +17309,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
         /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
         /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
+        /// supported. * `xlsx`: Override parsing config for XLSX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
@@ -17814,6 +17819,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
         public virtual string GcsStagingDir { get; set; }
+
+        /// <summary>
+        /// The FHIR resource types to import. The resource types should be a subset of all [supported FHIR resource
+        /// types](https://cloud.google.com/generative-ai-app-builder/docs/fhir-schema-reference#resource-level-specification).
+        /// Default to all supported FHIR resource types if empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23509,6 +23522,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
         /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
         /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
+        /// supported. * `xlsx`: Override parsing config for XLSX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
@@ -24311,104 +24325,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleQuerySet")]
         public virtual string SampleQuerySet { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata related to the progress of the Export operation. This is returned by the
-    /// google.longrunning.Operation.metadata field.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaExportUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Operation create time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the ExportUserEventsRequest. If the long running operation was successful, then this message is
-    /// returned by the google.longrunning.Operations.response field.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The status of the export operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29065,6 +28981,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
         /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
         /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
+        /// supported. * `xlsx`: Override parsing config for XLSX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
