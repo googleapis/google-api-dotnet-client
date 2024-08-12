@@ -392,8 +392,9 @@ namespace Google.Apis.FirebaseML.v2beta
                     /// <summary>Generate content with multimodal inputs.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="model">
-                    /// Required. The name of the publisher model requested to serve the prediction. Format:
-                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                    /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned
+                    /// model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                     /// </param>
                     public virtual GenerateContentRequest GenerateContent(Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentRequest body, string model)
                     {
@@ -412,8 +413,9 @@ namespace Google.Apis.FirebaseML.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The name of the publisher model requested to serve the prediction. Format:
-                        /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                        /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Model { get; private set; }
@@ -451,8 +453,9 @@ namespace Google.Apis.FirebaseML.v2beta
                     /// <summary>Generate content with multimodal inputs with streaming support.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="model">
-                    /// Required. The name of the publisher model requested to serve the prediction. Format:
-                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                    /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned
+                    /// model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                     /// </param>
                     public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentRequest body, string model)
                     {
@@ -471,8 +474,9 @@ namespace Google.Apis.FirebaseML.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The name of the publisher model requested to serve the prediction. Format:
-                        /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                        /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Model { get; private set; }
@@ -1000,6 +1004,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("routingConfig")]
         public virtual GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig RoutingConfig { get; set; }
 
+        /// <summary>Optional. Seed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
+        public virtual System.Nullable<int> Seed { get; set; }
+
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
         public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }
@@ -1020,7 +1028,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Routing config.</summary>
+    /// <summary>The configuration for routing the request to a specific model.</summary>
     public class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Automated routing.</summary>
@@ -1052,7 +1060,9 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>When manual routing is set, the specified model will be used directly.</summary>
     public class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The model name to use. Only the public LLM models are accepted. e.g. gemini-1.5-pro-001.</summary>
+        /// <summary>
+        /// The model name to use. Only the public LLM models are accepted. e.g. 'gemini-1.5-pro-001'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; }
 
