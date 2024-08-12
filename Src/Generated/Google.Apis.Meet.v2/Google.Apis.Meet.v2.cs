@@ -1417,8 +1417,9 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>
             /// Optional. Field mask used to specify the fields to be updated in the space. If update_mask isn't
-            /// provided, it defaults to '*' and updates all fields provided in the request, including deleting fields
-            /// not set in the request.
+            /// provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields
+            /// provided with values in the request. Using "*" as update_mask will update all fields, including deleting
+            /// fields not set in the request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
