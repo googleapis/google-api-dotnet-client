@@ -3022,9 +3022,13 @@ namespace Google.Apis.Batch.v1.Data
         public virtual System.Nullable<bool> AlwaysRun { get; set; }
 
         /// <summary>
-        /// This flag allows a Runnable to continue running in the background while the Task executes subsequent
-        /// Runnables. This is useful to provide services to other Runnables (or to provide debugging support tools like
-        /// SSH servers).
+        /// Normally, a runnable that doesn't exit causes its task to fail. However, you can set this field to `true` to
+        /// configure a background runnable. Background runnables are allowed continue running in the background while
+        /// the task executes subsequent runnables. For example, background runnables are useful for providing services
+        /// to other runnables or providing debugging-support tools like SSH servers. Specifically, background runnables
+        /// are killed automatically (if they have not already exited) a short time after all foreground runnables have
+        /// completed. Even though this is likely to result in a non-zero exit status for the background runnable, these
+        /// automatic kills are not treated as task failures.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("background")]
         public virtual System.Nullable<bool> Background { get; set; }
@@ -3052,8 +3056,9 @@ namespace Google.Apis.Batch.v1.Data
         public virtual Environment Environment { get; set; }
 
         /// <summary>
-        /// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to
-        /// continue instead.
+        /// Normally, a runnable that returns a non-zero exit status fails and causes the task to fail. However, you can
+        /// set this field to `true` to allow the task to continue executing its other runnables even if this runnable
+        /// fails.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreExitStatus")]
         public virtual System.Nullable<bool> IgnoreExitStatus { get; set; }
@@ -3381,11 +3386,9 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>
         /// Required. The sequence of one or more runnables (executable scripts, executable containers, and/or barriers)
         /// for each task in this task group to run. Each task runs this list of runnables in order. For a task to
-        /// succeed, all of its script and container runnables each must either exit with a zero status or enable the
-        /// `ignore_exit_status` subfield and exit with any status. Background runnables are killed automatically (if
-        /// they have not already exited) a short time after all foreground runnables have completed. Even though this
-        /// is likely to result in a non-zero exit status for the background runnable, these automatic kills are not
-        /// treated as Task failures.
+        /// succeed, all of its script and container runnables each must meet at least one of the following conditions:
+        /// + The runnable exited with a zero status. + The runnable didn't finish, but you enabled its `background`
+        /// subfield. + The runnable exited with a non-zero status, but you enabled its `ignore_exit_status` subfield.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runnables")]
         public virtual System.Collections.Generic.IList<Runnable> Runnables { get; set; }
