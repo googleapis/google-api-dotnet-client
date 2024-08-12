@@ -14500,7 +14500,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a list of apis.</summary>
+    /// <summary>Represents a list of ABIs.</summary>
     public class MultiAbi : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of targeted ABIs, as represented by the Android Platform</summary>
