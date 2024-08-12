@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Pubsub.v1beta1a Client Library</Title>
-    <Version>1.68.0.3337</Version>
+    <Version>1.68.0.3498</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
