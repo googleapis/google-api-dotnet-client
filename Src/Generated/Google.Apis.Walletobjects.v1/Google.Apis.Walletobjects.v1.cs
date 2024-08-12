@@ -7897,6 +7897,20 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
+        /// linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard,
+        /// transit and boarding pass that should be automatically attached to this event ticket object. If a user had
+        /// saved this event ticket, then these linked_object_ids would be automatically pushed to the user's wallet
+        /// (unless they turned off the setting to receive such linked passes). Make sure that objects present in
+        /// linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be
+        /// unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects
+        /// that can be linked to a single object. After the limit is reached, new linked objects in the call will be
+        /// ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by
+        /// Google and the latter is chosen by you.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedObjectIds")]
+        public virtual System.Collections.Generic.IList<string> LinkedObjectIds { get; set; }
+
+        /// <summary>
         /// A list of offer objects linked to this event ticket. The offer objects must already exist. Offer object IDs
         /// should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by
         /// you.
@@ -8605,6 +8619,20 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
+        /// linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard,
+        /// transit and boarding pass that should be automatically attached to this flight object. If a user had saved
+        /// this boarding pass, then these linked_object_ids would be automatically pushed to the user's wallet (unless
+        /// they turned off the setting to receive such linked passes). Make sure that objects present in
+        /// linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be
+        /// unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects
+        /// that can be linked to a single object. After the limit is reached, new linked objects in the call will be
+        /// ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by
+        /// Google and the latter is chosen by you.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedObjectIds")]
+        public virtual System.Collections.Generic.IList<string> LinkedObjectIds { get; set; }
+
+        /// <summary>
         /// Links module data. If links module data is also defined on the class, both will be displayed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
@@ -8937,6 +8965,20 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageModulesData")]
         public virtual System.Collections.Generic.IList<ImageModuleData> ImageModulesData { get; set; }
+
+        /// <summary>
+        /// linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard,
+        /// transit and boarding pass that should be automatically attached to this generic object. If a user had saved
+        /// this generic card, then these linked_object_ids would be automatically pushed to the user's wallet (unless
+        /// they turned off the setting to receive such linked passes). Make sure that objects present in
+        /// linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be
+        /// unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects
+        /// that can be linked to a single object. After the limit is reached, new linked objects in the call will be
+        /// ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by
+        /// Google and the latter is chosen by you.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedObjectIds")]
+        public virtual System.Collections.Generic.IList<string> LinkedObjectIds { get; set; }
 
         /// <summary>
         /// Links module data. If `linksModuleData` is also defined on the class, both will be displayed. The maximum
@@ -9421,6 +9463,20 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard,
+        /// transit and boarding pass that should be automatically attached to this giftcard object. If a user had saved
+        /// this gift card, then these linked_object_ids would be automatically pushed to the user's wallet (unless they
+        /// turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids
+        /// are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You
+        /// cannot link objects belonging to another issuer. There is a limit to the number of objects that can be
+        /// linked to a single object. After the limit is reached, new linked objects in the call will be ignored
+        /// silently. Object IDs should follow the format issuer ID. identifier where the former is issued by Google and
+        /// the latter is chosen by you.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedObjectIds")]
+        public virtual System.Collections.Generic.IList<string> LinkedObjectIds { get; set; }
 
         /// <summary>
         /// Links module data. If links module data is also defined on the class, both will be displayed.
@@ -10272,6 +10328,20 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard,
+        /// transit and boarding pass that should be automatically attached to this loyalty object. If a user had saved
+        /// this loyalty card, then these linked_object_ids would be automatically pushed to the user's wallet (unless
+        /// they turned off the setting to receive such linked passes). Make sure that objects present in
+        /// linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be
+        /// unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects
+        /// that can be linked to a single object. After the limit is reached, new linked objects in the call will be
+        /// ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by
+        /// Google and the latter is chosen by you.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedObjectIds")]
+        public virtual System.Collections.Generic.IList<string> LinkedObjectIds { get; set; }
 
         /// <summary>
         /// A list of offer objects linked to this loyalty card. The offer objects must already exist. Offer object IDs
@@ -11162,6 +11232,20 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard,
+        /// transit and boarding pass that should be automatically attached to this offer object. If a user had saved
+        /// this offer, then these linked_object_ids would be automatically pushed to the user's wallet (unless they
+        /// turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids
+        /// are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You
+        /// cannot link objects belonging to another issuer. There is a limit to the number of objects that can be
+        /// linked to a single object. After the limit is reached, new linked objects in the call will be ignored
+        /// silently. Object IDs should follow the format issuer ID.identifier where the former is issued by Google and
+        /// the latter is chosen by you.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedObjectIds")]
+        public virtual System.Collections.Generic.IList<string> LinkedObjectIds { get; set; }
 
         /// <summary>
         /// Links module data. If links module data is also defined on the class, both will be displayed.
@@ -12413,6 +12497,20 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Deprecated. Use textModulesData instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoModuleData")]
         public virtual InfoModuleData InfoModuleData { get; set; }
+
+        /// <summary>
+        /// linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard,
+        /// transit and boarding pass that should be automatically attached to this transit object. If a user had saved
+        /// this transit card, then these linked_object_ids would be automatically pushed to the user's wallet (unless
+        /// they turned off the setting to receive such linked passes). Make sure that objects present in
+        /// linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be
+        /// unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects
+        /// that can be linked to a single object. After the limit is reached, new linked objects in the call will be
+        /// ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by
+        /// Google and the latter is chosen by you.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedObjectIds")]
+        public virtual System.Collections.Generic.IList<string> LinkedObjectIds { get; set; }
 
         /// <summary>
         /// Links module data. If links module data is also defined on the class, both will be displayed.
