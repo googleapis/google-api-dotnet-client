@@ -4593,9 +4593,7 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>
     /// A Document has changed. May be the result of multiple writes, including deletes, that ultimately resulted in a
     /// new value for the Document. Multiple DocumentChange messages may be returned for the same logical change, if
-    /// multiple targets are affected. For PipelineQueryTargets, `document` will be in the new pipeline format, For a
-    /// Listen stream with both QueryTargets and PipelineQueryTargets present, if a document matches both types of
-    /// queries, then a separate DocumentChange messages will be sent out one for each set.
+    /// multiple targets are affected.
     /// </summary>
     public class DocumentChange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5482,6 +5480,23 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration options for using CMEK (Customer Managed Encryption Key) encryption.</summary>
+    public class GoogleFirestoreAdminV1CustomerManagedEncryptionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Only keys in the same location as the database are allowed to be used for encryption. For
+        /// Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3
+        /// multi-region, this corresponds to Cloud KMS multi-region europe. See
+        /// https://cloud.google.com/kms/docs/locations. The expected format is
+        /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a recurring schedule that runs every day. The time zone is UTC.</summary>
     public class GoogleFirestoreAdminV1DailyRecurrence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5732,6 +5747,28 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Metadata related to the delete database operation.</summary>
     public class GoogleFirestoreAdminV1DeleteDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encryption configuration for a new database being created from another source. The source could be a Backup or a
+    /// DatabaseSnapshot.
+    /// </summary>
+    public class GoogleFirestoreAdminV1EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use Customer Managed Encryption Keys (CMEK) for encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
+        public virtual GoogleFirestoreAdminV1CustomerManagedEncryptionOptions CustomerManagedEncryption { get; set; }
+
+        /// <summary>Use Google default encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDefaultEncryption")]
+        public virtual GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions GoogleDefaultEncryption { get; set; }
+
+        /// <summary>The database will use the same encryption configuration as the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSourceEncryption")]
+        public virtual GoogleFirestoreAdminV1SourceEncryptionOptions UseSourceEncryption { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6122,6 +6159,13 @@ namespace Google.Apis.Firestore.v1.Data
 
     /// <summary>An index that stores vectors in a flat data structure, and supports exhaustive search.</summary>
     public class GoogleFirestoreAdminV1FlatIndex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration options for using Google default encryption.</summary>
+    public class GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6715,26 +6759,19 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string DatabaseId { get; set; }
 
         /// <summary>
-        /// Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the same location as the restored
-        /// database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud
-        /// KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe.
-        /// See https://cloud.google.com/kms/docs/locations. The expected format is
-        /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// Optional. Encryption configuration for the restored database. If this field is not specified, the restored
+        /// database will use the same encryption configuration as the backup, namely use_source_encryption.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
-        public virtual string KmsKeyName { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual GoogleFirestoreAdminV1EncryptionConfig EncryptionConfig { get; set; }
 
-        /// <summary>
-        /// The restored database will use the same encryption configuration as the backup. This is the default option
-        /// when no `encryption_config` is specified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useBackupEncryption")]
-        public virtual Empty UseBackupEncryption { get; set; }
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
 
-        /// <summary>Use Google default encryption.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useGoogleDefaultEncryption")]
-        public virtual Empty UseGoogleDefaultEncryption { get; set; }
-
+    /// <summary>The configuration options for using the same encryption method as the source.</summary>
+    public class GoogleFirestoreAdminV1SourceEncryptionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
