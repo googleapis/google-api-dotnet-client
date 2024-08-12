@@ -2388,6 +2388,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Permissions granted to the AW Partner SA account for the customer workload</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Allow partner to view support case details for an AXT log</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessTransparencyLogsSupportCaseViewer")]
+        public virtual System.Nullable<bool> AccessTransparencyLogsSupportCaseViewer { get; set; }
+
         /// <summary>Optional. Allow partner to view violation alerts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assuredWorkloadsMonitoring")]
         public virtual System.Nullable<bool> AssuredWorkloadsMonitoring { get; set; }
