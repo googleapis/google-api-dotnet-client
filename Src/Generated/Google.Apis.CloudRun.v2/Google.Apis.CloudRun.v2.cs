@@ -4870,6 +4870,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
+        /// <summary>Enables service mesh connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceMesh")]
+        public virtual GoogleCloudRunV2ServiceMesh ServiceMesh { get; set; }
+
         /// <summary>Enable session affinity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
         public virtual System.Nullable<bool> SessionAffinity { get; set; }
@@ -5035,6 +5039,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Optional. Enables service mesh connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceMesh")]
+        public virtual GoogleCloudRunV2ServiceMesh ServiceMesh { get; set; }
 
         /// <summary>Optional. Enable session affinity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
@@ -5488,6 +5496,19 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. The main URI in which this Service is serving traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+    }
+
+    /// <summary>Service mesh configuration.</summary>
+    public class GoogleCloudRunV2ServiceMesh : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The service mesh resource name. Format: projects/{project_number}/locations/global/meshes/{mesh}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
+        public virtual string Mesh { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Scaling settings applied at the service level rather than at the revision level.</summary>
