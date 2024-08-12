@@ -3587,6 +3587,18 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual System.Collections.Generic.IList<string> DetectedAttributes { get; set; }
 
         /// <summary>
+        /// Output only. IDs of the detected categories, if any. The taxonomy in which the categories are expressed is
+        /// specified by the detected_categories_taxonomy field. Can be used to filter the response of the
+        /// creatives.list method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedCategories")]
+        public virtual System.Collections.Generic.IList<string> DetectedCategories { get; set; }
+
+        /// <summary>Output only. The taxonomy in which the detected_categories field is expressed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedCategoriesTaxonomy")]
+        public virtual string DetectedCategoriesTaxonomy { get; set; }
+
+        /// <summary>
         /// The set of detected destination URLs for the creative. Can be used to filter the response of the
         /// creatives.list method.
         /// </summary>
