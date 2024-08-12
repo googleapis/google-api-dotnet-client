@@ -414,6 +414,13 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If true, the data policy will be deleted even when it is referenced by one or more
+                    /// table columns.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -434,6 +441,14 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -685,6 +700,13 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If set to true, and the data policy is not found, a new data policy will be created.
+                    /// In this situation, update_mask is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// The update mask applies to the resource. For the `FieldMask` definition, see
                     /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not
                     /// set, defaults to all of the fields that are allowed to update. Updates to the `name` and
@@ -719,6 +741,14 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
