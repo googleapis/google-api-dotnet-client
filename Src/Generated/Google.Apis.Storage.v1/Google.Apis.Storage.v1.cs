@@ -1184,14 +1184,18 @@ namespace Google.Apis.Storage.v1
             this.service = service;
         }
 
-        /// <summary>Permanently deletes an empty bucket.</summary>
+        /// <summary>
+        /// Deletes an empty bucket. Deletions are permanent unless soft delete is enabled on the bucket.
+        /// </summary>
         /// <param name="bucket">Name of a bucket.</param>
         public virtual DeleteRequest Delete(string bucket)
         {
             return new DeleteRequest(this.service, bucket);
         }
 
-        /// <summary>Permanently deletes an empty bucket.</summary>
+        /// <summary>
+        /// Deletes an empty bucket. Deletions are permanent unless soft delete is enabled on the bucket.
+        /// </summary>
         public class DeleteRequest : StorageBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1287,6 +1291,12 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
+            /// If present, specifies the generation of the bucket. This is required if softDeleted is true.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> Generation { get; set; }
+
+            /// <summary>
             /// Makes the return of the bucket metadata conditional on whether the bucket's current metageneration
             /// matches the given value.
             /// </summary>
@@ -1316,6 +1326,13 @@ namespace Google.Apis.Storage.v1
                 NoAcl = 1,
             }
 
+            /// <summary>
+            /// If true, return the soft-deleted version of this bucket. The default is false. For more information, see
+            /// [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("softDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SoftDeleted { get; set; }
+
             /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
@@ -1341,6 +1358,14 @@ namespace Google.Apis.Storage.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
                 {
                     Name = "ifMetagenerationMatch",
@@ -1360,6 +1385,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("softDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "softDeleted",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1755,6 +1788,13 @@ namespace Google.Apis.Storage.v1
                 NoAcl = 1,
             }
 
+            /// <summary>
+            /// If true, only soft-deleted bucket versions will be returned. The default is false. For more information,
+            /// see [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("softDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SoftDeleted { get; set; }
+
             /// <summary>The project to be billed for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
@@ -1807,6 +1847,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("softDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "softDeleted",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2088,6 +2136,77 @@ namespace Google.Apis.Storage.v1
                 {
                     Name = "projection",
                     IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Restores a soft-deleted bucket.</summary>
+        /// <param name="bucket">Name of a bucket.</param>
+        /// <param name="generation">Generation of a bucket.</param>
+        public virtual RestoreRequest Restore(string bucket, long generation)
+        {
+            return new RestoreRequest(this.service, bucket, generation);
+        }
+
+        /// <summary>Restores a soft-deleted bucket.</summary>
+        public class RestoreRequest : StorageBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Restore request.</summary>
+            public RestoreRequest(Google.Apis.Services.IClientService service, string bucket, long generation) : base(service)
+            {
+                Bucket = bucket;
+                Generation = generation;
+                InitParameters();
+            }
+
+            /// <summary>Name of a bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Generation of a bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual long Generation { get; private set; }
+
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "restore";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/restore";
+
+            /// <summary>Initializes Restore parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -5881,7 +6000,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>
             /// If true, only soft-deleted object versions will be listed. The default is false. For more information,
-            /// see Soft Delete.
+            /// see [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("softDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SoftDeleted { get; set; }
@@ -6727,7 +6846,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>
             /// If true, only soft-deleted object versions will be listed. The default is false. For more information,
-            /// see Soft Delete.
+            /// see [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("softDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SoftDeleted { get; set; }
@@ -9262,6 +9381,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>The generation of this bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
         /// <summary>The bucket's hierarchical namespace configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchicalNamespace")]
         public virtual HierarchicalNamespaceData HierarchicalNamespace { get; set; }
@@ -9349,6 +9472,10 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rpo")]
         public virtual string Rpo { get; set; }
+
+        /// <summary>Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPZI")]
+        public virtual System.Nullable<bool> SatisfiesPZI { get; set; }
 
         /// <summary>Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPZS")]
