@@ -4917,16 +4917,16 @@ namespace Google.Apis.Spanner.v1
                 }
 
                 /// <summary>
-                /// ChangeQuorum is strictly restricted to databases that use dual region instance configurations.
-                /// Initiates a background operation to change quorum a database from dual-region mode to single-region
-                /// mode and vice versa. The returned long-running operation will have a name of the format
+                /// `ChangeQuorum` is strictly restricted to databases that use dual-region instance configurations.
+                /// Initiates a background operation to change the quorum of a database from dual-region mode to
+                /// single-region mode or vice versa. The returned long-running operation has a name of the format
                 /// `projects//instances//databases//operations/` and can be used to track execution of the
-                /// ChangeQuorum. The metadata field type is ChangeQuorumMetadata. Authorization requires
+                /// `ChangeQuorum`. The metadata field type is ChangeQuorumMetadata. Authorization requires
                 /// `spanner.databases.changequorum` permission on the resource database.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the database in which to apply the ChangeQuorum. Values are of the form
+                /// Required. Name of the database in which to apply `ChangeQuorum`. Values are of the form
                 /// `projects//instances//databases/`.
                 /// </param>
                 public virtual ChangequorumRequest Changequorum(Google.Apis.Spanner.v1.Data.ChangeQuorumRequest body, string name)
@@ -4935,11 +4935,11 @@ namespace Google.Apis.Spanner.v1
                 }
 
                 /// <summary>
-                /// ChangeQuorum is strictly restricted to databases that use dual region instance configurations.
-                /// Initiates a background operation to change quorum a database from dual-region mode to single-region
-                /// mode and vice versa. The returned long-running operation will have a name of the format
+                /// `ChangeQuorum` is strictly restricted to databases that use dual-region instance configurations.
+                /// Initiates a background operation to change the quorum of a database from dual-region mode to
+                /// single-region mode or vice versa. The returned long-running operation has a name of the format
                 /// `projects//instances//databases//operations/` and can be used to track execution of the
-                /// ChangeQuorum. The metadata field type is ChangeQuorumMetadata. Authorization requires
+                /// `ChangeQuorum`. The metadata field type is ChangeQuorumMetadata. Authorization requires
                 /// `spanner.databases.changequorum` permission on the resource database.
                 /// </summary>
                 public class ChangequorumRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
@@ -4953,7 +4953,7 @@ namespace Google.Apis.Spanner.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the database in which to apply the ChangeQuorum. Values are of the form
+                    /// Required. Name of the database in which to apply `ChangeQuorum`. Values are of the form
                     /// `projects//instances//databases/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8809,8 +8809,8 @@ namespace Google.Apis.Spanner.v1.Data
     public class ChangeQuorumRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The etag is the hash of the QuorumInfo. The ChangeQuorum operation will only be performed if the
-        /// etag matches that of the QuorumInfo in the current database resource. Otherwise the API will return an
+        /// Optional. The etag is the hash of the `QuorumInfo`. The `ChangeQuorum` operation is only performed if the
+        /// etag matches that of the `QuorumInfo` in the current database resource. Otherwise the API returns an
         /// `ABORTED` error. The etag is used for optimistic concurrency control as a way to help prevent simultaneous
         /// change quorum requests that could create a race condition.
         /// </summary>
@@ -8818,13 +8818,13 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Required. Name of the database in which to apply the ChangeQuorum. Values are of the form
+        /// Required. Name of the database in which to apply `ChangeQuorum`. Values are of the form
         /// `projects//instances//databases/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The type of this Quorum.</summary>
+        /// <summary>Required. The type of this quorum.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quorumType")]
         public virtual QuorumType QuorumType { get; set; }
     }
@@ -9884,7 +9884,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Applicable only for databases that use dual region instance configurations. Contains
+        /// Output only. Applicable only for databases that use dual-region instance configurations. Contains
         /// information about the quorum.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quorumInfo")]
@@ -11053,9 +11053,9 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Nullable<int> ProcessingUnits { get; set; }
 
         /// <summary>
-        /// Output only. The names of the backups that reference this instance partition. Referencing backups should
-        /// share the parent instance. The existence of any referencing backup prevents the instance partition from
-        /// being deleted.
+        /// Output only. Deprecated: This field is not populated. Output only. The names of the backups that reference
+        /// this instance partition. Referencing backups should share the parent instance. The existence of any
+        /// referencing backup prevents the instance partition from being deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencingBackups")]
         public virtual System.Collections.Generic.IList<string> ReferencingBackups { get; set; }
@@ -12330,17 +12330,17 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about the dual region quorum.</summary>
+    /// <summary>Information about the dual-region quorum.</summary>
     public class QuorumInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. The etag is used for optimistic concurrency control as a way to help prevent simultaneous
-        /// ChangeQuorum requests that could create a race condition.
+        /// `ChangeQuorum` requests that might create a race condition.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Output only. Whether this ChangeQuorum is a Google or User initiated.</summary>
+        /// <summary>Output only. Whether this `ChangeQuorum` is Google or User initiated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
         public virtual string Initiator { get; set; }
 
@@ -12389,15 +12389,15 @@ namespace Google.Apis.Spanner.v1.Data
     }
 
     /// <summary>
-    /// Information about the database quorum type. this applies only for dual region instance configs.
+    /// Information about the database quorum type. This only applies to dual-region instance configs.
     /// </summary>
     public class QuorumType : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Dual region quorum type.</summary>
+        /// <summary>Dual-region quorum type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dualRegion")]
         public virtual DualRegionQuorum DualRegion { get; set; }
 
-        /// <summary>Single region quorum type.</summary>
+        /// <summary>Single-region quorum type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleRegion")]
         public virtual SingleRegionQuorum SingleRegion { get; set; }
 
@@ -13318,9 +13318,9 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>
         /// Required. The location of the serving region, e.g. "us-central1". The location must be one of the regions
-        /// within the dual region instance configuration of your database. The list of valid locations is available via
-        /// [GetInstanceConfig[InstanceAdmin.GetInstanceConfig] API. This should only be used if you plan to change
-        /// quorum in single-region quorum type.
+        /// within the dual-region instance configuration of your database. The list of valid locations is available
+        /// using the GetInstanceConfig API. This should only be used if you plan to change quorum to the single-region
+        /// quorum type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingLocation")]
         public virtual string ServingLocation { get; set; }
