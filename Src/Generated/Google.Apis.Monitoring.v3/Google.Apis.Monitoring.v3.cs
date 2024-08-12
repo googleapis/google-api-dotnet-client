@@ -4474,32 +4474,32 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// If provided, this field specifies the criteria that must be met by notification channels to be
-                /// included in the response.For more details, see sorting and filtering
+                /// Optional. If provided, this field specifies the criteria that must be met by notification channels
+                /// to be included in the response.For more details, see sorting and filtering
                 /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// A comma-separated list of fields by which to sort the result. Supports the same set of fields as in
-                /// filter. Entries can be prefixed with a minus sign to sort in descending rather than ascending
-                /// order.For more details, see sorting and filtering
+                /// Optional. A comma-separated list of fields by which to sort the result. Supports the same set of
+                /// fields as in filter. Entries can be prefixed with a minus sign to sort in descending rather than
+                /// ascending order.For more details, see sorting and filtering
                 /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return in a single response. If not set to a positive number, a
-                /// reasonable value will be chosen by the service.
+                /// Optional. The maximum number of results to return in a single response. If not set to a positive
+                /// number, a reasonable value will be chosen by the service.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// If non-empty, page_token must contain a value returned as the next_page_token in a previous response
-                /// to request the next set of results.
+                /// Optional. If non-empty, page_token must contain a value returned as the next_page_token in a
+                /// previous response to request the next set of results.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -4601,7 +4601,7 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The fields to update.</summary>
+                /// <summary>Optional. The fields to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -11305,7 +11305,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE,
         /// or DISTRIBUTION. The unit defines the representation of the stored metric values. This field can only be
-        /// changed through CreateTimeSeries when it is empty or "1".
+        /// changed through CreateTimeSeries when it is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
