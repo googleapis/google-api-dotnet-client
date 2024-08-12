@@ -16268,6 +16268,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("muteAnnotation")]
         public virtual string MuteAnnotation { get; set; }
 
+        /// <summary>
+        /// Optional. All findings matching the given filter will have their mute state set to this value. The default
+        /// value is `MUTED`. Setting this to `UNDEFINED` will clear the mute state on all matching findings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteState")]
+        public virtual string MuteState { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16711,6 +16718,45 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssv3")]
         public virtual Cvssv3 Cvssv3 { get; set; }
 
+        private string _exploitReleaseDateRaw;
+
+        private object _exploitReleaseDate;
+
+        /// <summary>Date the first publicly available exploit or PoC was released.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitReleaseDate")]
+        public virtual string ExploitReleaseDateRaw
+        {
+            get => _exploitReleaseDateRaw;
+            set
+            {
+                _exploitReleaseDate = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _exploitReleaseDateRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExploitReleaseDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExploitReleaseDateDateTimeOffset instead.")]
+        public virtual object ExploitReleaseDate
+        {
+            get => _exploitReleaseDate;
+            set
+            {
+                _exploitReleaseDateRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _exploitReleaseDate = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExploitReleaseDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExploitReleaseDateDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExploitReleaseDateRaw);
+            set => ExploitReleaseDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The exploitation activity of the vulnerability in the wild.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exploitationActivity")]
         public virtual string ExploitationActivity { get; set; }
@@ -16889,6 +16935,58 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
         public virtual string RelativePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The record of a dynamic mute rule that matches the finding.</summary>
+    public class DynamicMuteRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _matchTimeRaw;
+
+        private object _matchTime;
+
+        /// <summary>When the dynamic mute rule first matched the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchTime")]
+        public virtual string MatchTimeRaw
+        {
+            get => _matchTimeRaw;
+            set
+            {
+                _matchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _matchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MatchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MatchTimeDateTimeOffset instead.")]
+        public virtual object MatchTime
+        {
+            get => _matchTime;
+            set
+            {
+                _matchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _matchTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="MatchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MatchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MatchTimeRaw);
+            set => MatchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The relative resource name of the mute rule, represented by a mute config, that created this record, for
+        /// example `organizations/123/muteConfigs/mymuteconfig` or
+        /// `organizations/123/locations/global/muteConfigs/mymuteconfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteConfig")]
+        public virtual string MuteConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17447,6 +17545,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mute")]
         public virtual string Mute { get; set; }
+
+        /// <summary>Output only. The mute information regarding this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteInfo")]
+        public virtual MuteInfo MuteInfo { get; set; }
 
         /// <summary>
         /// Records additional information about the mute operation, for example, the [mute
@@ -18210,6 +18312,46 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        private string _expiryTimeRaw;
+
+        private object _expiryTime;
+
+        /// <summary>
+        /// Optional. The expiry of the mute config. Only applicable for dynamic configs. If the expiry is set, when the
+        /// config expires, it is removed from all findings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
+        public virtual string ExpiryTimeRaw
+        {
+            get => _expiryTimeRaw;
+            set
+            {
+                _expiryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expiryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpiryTimeDateTimeOffset instead.")]
+        public virtual object ExpiryTime
+        {
+            get => _expiryTime;
+            set
+            {
+                _expiryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expiryTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Required. An expression that defines the filter to apply across create/update events of findings. While
         /// creating a filter string, be mindful of the scope in which the mute configuration is being created. E.g., If
@@ -18240,6 +18382,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The type of the mute config, which determines what type of mute state the config affects. The
+        /// static mute state takes precedence over the dynamic mute state. Immutable after creation. STATIC by default
+        /// if not set during creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         private string _updateTimeRaw;
 
@@ -19988,6 +20138,45 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssv3")]
         public virtual GoogleCloudSecuritycenterV2Cvssv3 Cvssv3 { get; set; }
 
+        private string _exploitReleaseDateRaw;
+
+        private object _exploitReleaseDate;
+
+        /// <summary>Date the first publicly available exploit or PoC was released.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitReleaseDate")]
+        public virtual string ExploitReleaseDateRaw
+        {
+            get => _exploitReleaseDateRaw;
+            set
+            {
+                _exploitReleaseDate = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _exploitReleaseDateRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExploitReleaseDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExploitReleaseDateDateTimeOffset instead.")]
+        public virtual object ExploitReleaseDate
+        {
+            get => _exploitReleaseDate;
+            set
+            {
+                _exploitReleaseDateRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _exploitReleaseDate = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExploitReleaseDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExploitReleaseDateDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExploitReleaseDateRaw);
+            set => ExploitReleaseDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The exploitation activity of the vulnerability in the wild.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exploitationActivity")]
         public virtual string ExploitationActivity { get; set; }
@@ -20166,6 +20355,58 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
         public virtual string RelativePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The record of a dynamic mute rule that matches the finding.</summary>
+    public class GoogleCloudSecuritycenterV2DynamicMuteRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _matchTimeRaw;
+
+        private object _matchTime;
+
+        /// <summary>When the dynamic mute rule first matched the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchTime")]
+        public virtual string MatchTimeRaw
+        {
+            get => _matchTimeRaw;
+            set
+            {
+                _matchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _matchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MatchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MatchTimeDateTimeOffset instead.")]
+        public virtual object MatchTime
+        {
+            get => _matchTime;
+            set
+            {
+                _matchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _matchTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="MatchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MatchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MatchTimeRaw);
+            set => MatchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The relative resource name of the mute rule, represented by a mute config, that created this record, for
+        /// example `organizations/123/muteConfigs/mymuteconfig` or
+        /// `organizations/123/locations/global/muteConfigs/mymuteconfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteConfig")]
+        public virtual string MuteConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20736,6 +20977,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mute")]
         public virtual string Mute { get; set; }
 
+        /// <summary>Output only. The mute information regarding this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteInfo")]
+        public virtual GoogleCloudSecuritycenterV2MuteInfo MuteInfo { get; set; }
+
         /// <summary>
         /// Records additional information about the mute operation, for example, the [mute
         /// configuration](https://cloud.google.com/security-command-center/docs/how-to-mute-findings) that muted the
@@ -21240,6 +21485,46 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        private string _expiryTimeRaw;
+
+        private object _expiryTime;
+
+        /// <summary>
+        /// Optional. The expiry of the mute config. Only applicable for dynamic configs. If the expiry is set, when the
+        /// config expires, it is removed from all findings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
+        public virtual string ExpiryTimeRaw
+        {
+            get => _expiryTimeRaw;
+            set
+            {
+                _expiryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expiryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpiryTimeDateTimeOffset instead.")]
+        public virtual object ExpiryTime
+        {
+            get => _expiryTime;
+            set
+            {
+                _expiryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expiryTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Required. An expression that defines the filter to apply across create/update events of findings. While
         /// creating a filter string, be mindful of the scope in which the mute configuration is being created. E.g., If
@@ -21318,6 +21603,27 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Mute information about the finding, including whether the finding has a static mute or any matching dynamic mute
+    /// rules.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2MuteInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of dynamic mute rules that currently match the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicMuteRecords")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2DynamicMuteRecord> DynamicMuteRecords { get; set; }
+
+        /// <summary>
+        /// If set, the static mute applied to this finding. Static mutes override dynamic mutes. If unset, there is no
+        /// static mute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticMute")]
+        public virtual GoogleCloudSecuritycenterV2StaticMute StaticMute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22139,6 +22445,60 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
         public virtual string PrincipalSubject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the static mute state. A static mute state overrides any dynamic mute rules that apply to this
+    /// finding. The static mute state can be set by a static mute rule or by muting the finding directly.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2StaticMute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _applyTimeRaw;
+
+        private object _applyTime;
+
+        /// <summary>When the static mute was applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyTime")]
+        public virtual string ApplyTimeRaw
+        {
+            get => _applyTimeRaw;
+            set
+            {
+                _applyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _applyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ApplyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ApplyTimeDateTimeOffset instead.")]
+        public virtual object ApplyTime
+        {
+            get => _applyTime;
+            set
+            {
+                _applyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _applyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ApplyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ApplyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApplyTimeRaw);
+            set => ApplyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The static mute state. If the value is `MUTED` or `UNMUTED`, then the finding's overall mute state will have
+        /// the same value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23322,6 +23682,27 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The MITRE ATT&amp;CK version referenced by the above fields. E.g. "8".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Mute information about the finding, including whether the finding has a static mute or any matching dynamic mute
+    /// rules.
+    /// </summary>
+    public class MuteInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of dynamic mute rules that currently match the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicMuteRecords")]
+        public virtual System.Collections.Generic.IList<DynamicMuteRecord> DynamicMuteRecords { get; set; }
+
+        /// <summary>
+        /// If set, the static mute applied to this finding. Static mutes override dynamic mutes. If unset, there is no
+        /// static mute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticMute")]
+        public virtual StaticMute StaticMute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24538,6 +24919,60 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the static mute state. A static mute state overrides any dynamic mute rules that apply to this
+    /// finding. The static mute state can be set by a static mute rule or by muting the finding directly.
+    /// </summary>
+    public class StaticMute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _applyTimeRaw;
+
+        private object _applyTime;
+
+        /// <summary>When the static mute was applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyTime")]
+        public virtual string ApplyTimeRaw
+        {
+            get => _applyTimeRaw;
+            set
+            {
+                _applyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _applyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ApplyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ApplyTimeDateTimeOffset instead.")]
+        public virtual object ApplyTime
+        {
+            get => _applyTime;
+            set
+            {
+                _applyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _applyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ApplyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ApplyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApplyTimeRaw);
+            set => ApplyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The static mute state. If the value is `MUTED` or `UNMUTED`, then the finding's overall mute state will have
+        /// the same value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
