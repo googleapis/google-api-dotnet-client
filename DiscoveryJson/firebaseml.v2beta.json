@@ -151,7 +151,7 @@
                       ],
                       "parameters": {
                         "model": {
-                          "description": "Required. The name of the publisher model requested to serve the prediction. Format: `projects/{project}/locations/{location}/publishers/*/models/*`",
+                          "description": "Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/publishers/[^/]+/models/[^/]+$",
                           "required": true,
@@ -179,7 +179,7 @@
                       ],
                       "parameters": {
                         "model": {
-                          "description": "Required. The name of the publisher model requested to serve the prediction. Format: `projects/{project}/locations/{location}/publishers/*/models/*`",
+                          "description": "Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/publishers/[^/]+/models/[^/]+$",
                           "required": true,
@@ -206,7 +206,7 @@
       }
     }
   },
-  "revision": "20240802",
+  "revision": "20240808",
   "rootUrl": "https://firebaseml.googleapis.com/",
   "schemas": {
     "Date": {
@@ -718,6 +718,11 @@
           "$ref": "GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig",
           "description": "Optional. Routing configuration."
         },
+        "seed": {
+          "description": "Optional. Seed.",
+          "format": "int32",
+          "type": "integer"
+        },
         "stopSequences": {
           "description": "Optional. Stop sequences.",
           "items": {
@@ -744,7 +749,7 @@
       "type": "object"
     },
     "GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig": {
-      "description": "Routing config.",
+      "description": "The configuration for routing the request to a specific model.",
       "id": "GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig",
       "properties": {
         "autoMode": {
@@ -786,7 +791,7 @@
       "id": "GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode",
       "properties": {
         "modelName": {
-          "description": "The model name to use. Only the public LLM models are accepted. e.g. gemini-1.5-pro-001.",
+          "description": "The model name to use. Only the public LLM models are accepted. e.g. 'gemini-1.5-pro-001'.",
           "type": "string"
         }
       },
