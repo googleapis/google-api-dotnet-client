@@ -5384,8 +5384,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<int> MultiSelectMinQueryLength { get; set; }
 
         /// <summary>
-        /// The name that identifies the selection input in a form input event. For details about working with form
-        /// inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
+        /// Required. The name that identifies the selection input in a form input event. For details about working with
+        /// form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
