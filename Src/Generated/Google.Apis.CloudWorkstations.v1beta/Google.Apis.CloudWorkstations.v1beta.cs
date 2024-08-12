@@ -4450,6 +4450,17 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>
+        /// Optional. Maximum number of workstations under this config a user can have `workstations.workstation.use`
+        /// permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request. Can be
+        /// overridden by: - granting a user workstations.workstationConfigs.exemptMaxUsableWorkstationLimit permission,
+        /// or - having a user with that permission create a workstation and granting another user
+        /// `workstations.workstation.use` permission on that workstation. If not specified defaults to 0 which
+        /// indicates unlimited.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxUsableWorkstations")]
+        public virtual System.Nullable<int> MaxUsableWorkstations { get; set; }
+
         /// <summary>Identifier. Full name of this workstation configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
