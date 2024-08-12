@@ -6060,6 +6060,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Representative description of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDescription")]
+        public virtual string DisplayDescription { get; set; }
+
         /// <summary>The representative name for the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
