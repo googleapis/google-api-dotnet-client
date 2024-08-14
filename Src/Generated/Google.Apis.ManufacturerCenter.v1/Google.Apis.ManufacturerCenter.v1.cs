@@ -1182,6 +1182,15 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         public virtual System.Collections.Generic.IList<string> IncludedDestination { get; set; }
 
         /// <summary>
+        /// Optional. List of countries to show this product in. Countries provided in this attribute will override any
+        /// of the countries configured at feed level. The values should be: the [CLDR territory
+        /// code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the countries in which this item
+        /// will be shown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intendedCountry")]
+        public virtual System.Collections.Generic.IList<string> IntendedCountry { get; set; }
+
+        /// <summary>
         /// The item group id of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#itemgroupid.
         /// </summary>
@@ -1414,9 +1423,23 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
     /// <summary>The destination status.</summary>
     public class DestinationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is approved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedCountries")]
+        public virtual System.Collections.Generic.IList<string> ApprovedCountries { get; set; }
+
         /// <summary>The name of the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
+
+        /// <summary>Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountries")]
+        public virtual System.Collections.Generic.IList<string> DisapprovedCountries { get; set; }
+
+        /// <summary>
+        /// Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCountries")]
+        public virtual System.Collections.Generic.IList<string> PendingCountries { get; set; }
 
         /// <summary>The status of the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -1885,6 +1908,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>The status of the destinations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStatuses")]
         public virtual System.Collections.Generic.IList<DestinationStatus> DestinationStatuses { get; set; }
+
+        /// <summary>Optional. The feed label for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
+        public virtual string FeedLabel { get; set; }
 
         /// <summary>A server-generated list of issues associated with the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issues")]
