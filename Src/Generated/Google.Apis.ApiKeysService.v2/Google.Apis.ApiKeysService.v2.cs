@@ -1068,8 +1068,9 @@ namespace Google.Apis.ApiKeysService.v2.Data
 
         /// <summary>
         /// The service for this restriction. It should be the canonical service name, for example:
-        /// `translate.googleapis.com`. You can use [`gcloud services list`](/sdk/gcloud/reference/services/list) to get
-        /// a list of services that are enabled in the project.
+        /// `translate.googleapis.com`. You can use [`gcloud services
+        /// list`](https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of services that are
+        /// enabled in the project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
