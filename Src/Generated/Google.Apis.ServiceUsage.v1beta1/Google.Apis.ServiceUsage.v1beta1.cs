@@ -2482,6 +2482,75 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A message to group the analysis information.</summary>
+    public class Analysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Analysis result of updating a policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
+        public virtual AnalysisResult AnalysisValue { get; set; }
+
+        /// <summary>Output only. The type of analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisType")]
+        public virtual string AnalysisType { get; set; }
+
+        /// <summary>
+        /// Output only. The user friendly display name of the analysis type. E.g. service dependency analysis, service
+        /// resource usage analysis, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The names of the service that has analysis result of warnings or blockers. Example:
+        /// `services/storage.googleapis.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An analysis result including blockers and warnings.</summary>
+    public class AnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Blocking information that would prevent the policy changes at runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockers")]
+        public virtual System.Collections.Generic.IList<Impact> Blockers { get; set; }
+
+        /// <summary>
+        /// Warning information indicating that the policy changes might be unsafe, but will not block the changes at
+        /// runtime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<Impact> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the `AnalyzeConsumerPolicy` method.</summary>
+    public class AnalyzeConsumerPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of analyzing a consumer policy update.</summary>
+    public class AnalyzeConsumerPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of analyses returned from performing the intended policy update analysis. The analysis is grouped
+        /// by service name and different analysis types. The empty analysis list means that the consumer policy can be
+        /// updated without any warnings or blockers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
+        public virtual System.Collections.Generic.IList<Analysis> Analysis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer
     /// services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API
@@ -4372,6 +4441,21 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// <summary>Selects a method to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message to group impacts of updating a policy.</summary>
+    public class Impact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. User friendly impact detail in a free form message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>Output only. The type of impact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impactType")]
+        public virtual string ImpactType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
