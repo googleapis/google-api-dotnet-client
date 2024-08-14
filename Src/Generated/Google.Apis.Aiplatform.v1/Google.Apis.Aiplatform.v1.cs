@@ -38476,6 +38476,10 @@ namespace Google.Apis.Aiplatform.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Optional. Token used to access Hugging Face gated models.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("huggingFaceToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string HuggingFaceToken { get; set; }
+
                 /// <summary>Optional. Boolean indicates whether the requested model is a Hugging Face model.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("isHuggingFaceModel", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IsHuggingFaceModel { get; set; }
@@ -38531,6 +38535,14 @@ namespace Google.Apis.Aiplatform.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^publishers/[^/]+/models/[^/]+$",
+                    });
+                    RequestParameters.Add("huggingFaceToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "huggingFaceToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("isHuggingFaceModel", new Google.Apis.Discovery.Parameter
                     {
@@ -40598,6 +40610,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>A response candidate generated from the model.</summary>
     public class GoogleCloudAiplatformV1Candidate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Average log probability score of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avgLogprobs")]
+        public virtual System.Nullable<double> AvgLogprobs { get; set; }
+
         /// <summary>Output only. Source attribution of the generated content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
         public virtual GoogleCloudAiplatformV1CitationMetadata CitationMetadata { get; set; }
@@ -43735,6 +43751,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offlineStorageTtlDays")]
         public virtual System.Nullable<int> OfflineStorageTtlDays { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -43869,6 +43893,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groundednessInput")]
         public virtual GoogleCloudAiplatformV1GroundednessInput GroundednessInput { get; set; }
 
+        /// <summary>Input for pairwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pairwiseMetricInput")]
+        public virtual GoogleCloudAiplatformV1PairwiseMetricInput PairwiseMetricInput { get; set; }
+
         /// <summary>Input for pairwise question answering quality metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairwiseQuestionAnsweringQualityInput")]
         public virtual GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput PairwiseQuestionAnsweringQualityInput { get; set; }
@@ -43876,6 +43904,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Input for pairwise summarization quality metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairwiseSummarizationQualityInput")]
         public virtual GoogleCloudAiplatformV1PairwiseSummarizationQualityInput PairwiseSummarizationQualityInput { get; set; }
+
+        /// <summary>Input for pointwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointwiseMetricInput")]
+        public virtual GoogleCloudAiplatformV1PointwiseMetricInput PointwiseMetricInput { get; set; }
 
         /// <summary>Input for question answering correctness metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questionAnsweringCorrectnessInput")]
@@ -43963,6 +43995,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groundednessResult")]
         public virtual GoogleCloudAiplatformV1GroundednessResult GroundednessResult { get; set; }
 
+        /// <summary>Result for pairwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pairwiseMetricResult")]
+        public virtual GoogleCloudAiplatformV1PairwiseMetricResult PairwiseMetricResult { get; set; }
+
         /// <summary>Result for pairwise question answering quality metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairwiseQuestionAnsweringQualityResult")]
         public virtual GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResult PairwiseQuestionAnsweringQualityResult { get; set; }
@@ -43970,6 +44006,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Result for pairwise summarization quality metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairwiseSummarizationQualityResult")]
         public virtual GoogleCloudAiplatformV1PairwiseSummarizationQualityResult PairwiseSummarizationQualityResult { get; set; }
+
+        /// <summary>Generic metrics. Result for pointwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointwiseMetricResult")]
+        public virtual GoogleCloudAiplatformV1PointwiseMetricResult PointwiseMetricResult { get; set; }
 
         /// <summary>Result for question answering correctness metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questionAnsweringCorrectnessResult")]
@@ -45751,6 +45791,28 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityIdColumns")]
         public virtual System.Collections.Generic.IList<string> EntityIdColumns { get; set; }
 
+        /// <summary>
+        /// Optional. If the source is a time-series source, this can be set to control how downstream sources (ex:
+        /// FeatureOnlineStore.FeatureView) will treat time series sources. If not set, will treat the source as a
+        /// time-series source with feature_timestamp as timestamp column and no scan boundary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
+        public virtual GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries TimeSeries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Column hosting timestamp values for a time-series source. Will be used to determine the latest
+        /// featureValues for each entity. Optional. If not provided, a feature_timestamp column of type TIMESTAMP will
+        /// be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampColumn")]
+        public virtual string TimestampColumn { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -45906,6 +45968,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimized")]
         public virtual GoogleCloudAiplatformV1FeatureOnlineStoreOptimized Optimized { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. State of the featureOnlineStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -46400,6 +46470,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest
         /// featureValues for each entityId of this FeatureView are made ready for online serving.
@@ -46653,6 +46731,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
         public virtual GoogleTypeInterval RunTime { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. Summary of the sync job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncSummary")]
         public virtual GoogleCloudAiplatformV1FeatureViewSyncSyncSummary SyncSummary { get; set; }
@@ -46785,6 +46871,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlineStorageTtlDays")]
         public virtual System.Nullable<int> OnlineStorageTtlDays { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. State of the featurestore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -47599,7 +47693,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
         public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
 
-        /// <summary>Number of tokens in the request.</summary>
+        /// <summary>
+        /// Number of tokens in the request. When `cached_content` is set, this is still the total effective prompt size
+        /// meaning this includes the number of tokens in the cached content.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
 
@@ -47649,6 +47746,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Routing configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingConfig")]
         public virtual GoogleCloudAiplatformV1GenerationConfigRoutingConfig RoutingConfig { get; set; }
+
+        /// <summary>Optional. Seed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
+        public virtual System.Nullable<int> Seed { get; set; }
 
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
@@ -48609,6 +48710,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -48902,6 +49011,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. If true, the deployed index will be accessible through public endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpointEnabled")]
         public virtual System.Nullable<bool> PublicEndpointEnabled { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
@@ -51546,6 +51663,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("samplePredictInstance")]
         public virtual object SamplePredictInstance { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. Schedule state when the monitoring job is in Running state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleState")]
         public virtual string ScheduleState { get; set; }
@@ -53872,6 +53997,63 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Input for pairwise metric.</summary>
+    public class GoogleCloudAiplatformV1PairwiseMetricInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Pairwise metric instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual GoogleCloudAiplatformV1PairwiseMetricInstance Instance { get; set; }
+
+        /// <summary>Required. Spec for pairwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricSpec")]
+        public virtual GoogleCloudAiplatformV1PairwiseMetricSpec MetricSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Pairwise metric instance. Usually one instance corresponds to one row in an evaluation dataset.
+    /// </summary>
+    public class GoogleCloudAiplatformV1PairwiseMetricInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Instance specified as a json string. String key-value pairs are expected in the json_instance to render
+        /// PairwiseMetricSpec.instance_prompt_template.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonInstance")]
+        public virtual string JsonInstance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spec for pairwise metric result.</summary>
+    public class GoogleCloudAiplatformV1PairwiseMetricResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Explanation for pairwise metric score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        /// <summary>Output only. Pairwise metric choice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pairwiseChoice")]
+        public virtual string PairwiseChoice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spec for pairwise metric.</summary>
+    public class GoogleCloudAiplatformV1PairwiseMetricSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Metric prompt template for pairwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricPromptTemplate")]
+        public virtual string MetricPromptTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Input for pairwise question answering quality metric.</summary>
     public class GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -54954,6 +55136,63 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input for pointwise metric.</summary>
+    public class GoogleCloudAiplatformV1PointwiseMetricInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Pointwise metric instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual GoogleCloudAiplatformV1PointwiseMetricInstance Instance { get; set; }
+
+        /// <summary>Required. Spec for pointwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricSpec")]
+        public virtual GoogleCloudAiplatformV1PointwiseMetricSpec MetricSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Pointwise metric instance. Usually one instance corresponds to one row in an evaluation dataset.
+    /// </summary>
+    public class GoogleCloudAiplatformV1PointwiseMetricInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Instance specified as a json string. String key-value pairs are expected in the json_instance to render
+        /// PointwiseMetricSpec.instance_prompt_template.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonInstance")]
+        public virtual string JsonInstance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spec for pointwise metric result.</summary>
+    public class GoogleCloudAiplatformV1PointwiseMetricResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Explanation for pointwise metric score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        /// <summary>Output only. Pointwise metric score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spec for pointwise metric.</summary>
+    public class GoogleCloudAiplatformV1PointwiseMetricSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Metric prompt template for pointwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricPromptTemplate")]
+        public virtual string MetricPromptTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
