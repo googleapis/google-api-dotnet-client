@@ -6865,7 +6865,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>
             /// If true, lists all versions of an object as distinct results. The default is false. For more
-            /// information, see Object Versioning.
+            /// information, see [Object Versioning](https://cloud.google.com/storage/docs/object-versioning).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("versions", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Versions { get; set; }
@@ -7241,8 +7241,8 @@ namespace Google.Apis.Storage.v1
         /// <summary>Restores a soft-deleted object.</summary>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="generation">Selects a specific revision of this object.</param>
         public virtual RestoreRequest Restore(string bucket, string storageObject, long generation)
@@ -7267,8 +7267,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -8355,7 +8355,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>
             /// If true, lists all versions of an object as distinct results. The default is false. For more
-            /// information, see Object Versioning.
+            /// information, see [Object Versioning](https://cloud.google.com/storage/docs/object-versioning).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("versions", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Versions { get; set; }
@@ -9058,7 +9058,9 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
-            /// Updates the state of an HMAC key. See the HMAC Key resource descriptor for valid states.
+            /// Updates the state of an HMAC key. See the [HMAC Key resource
+            /// descriptor](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys/update#request-body) for
+            /// valid states.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Project ID owning the service account of the updated key.</param>
@@ -9069,7 +9071,9 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
-            /// Updates the state of an HMAC key. See the HMAC Key resource descriptor for valid states.
+            /// Updates the state of an HMAC key. See the [HMAC Key resource
+            /// descriptor](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys/update#request-body) for
+            /// valid states.
             /// </summary>
             public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.HmacKeyMetadata>
             {
@@ -9413,13 +9417,17 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The bucket's lifecycle configuration. See lifecycle management for more information.</summary>
+        /// <summary>
+        /// The bucket's lifecycle configuration. See [Lifecycle
+        /// Management](https://cloud.google.com/storage/docs/lifecycle) for more information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
         public virtual LifecycleData Lifecycle { get; set; }
 
         /// <summary>
         /// The location of the bucket. Object data for objects in the bucket resides in physical storage within this
-        /// region. Defaults to US. See the developer's guide for the authoritative list.
+        /// region. Defaults to US. See the [Developer's Guide](https://cloud.google.com/storage/docs/locations) for the
+        /// authoritative list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -9497,7 +9505,7 @@ namespace Google.Apis.Storage.v1.Data
         /// This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values
         /// include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY.
         /// If this value is not specified when the bucket is created, it will default to STANDARD. For more
-        /// information, see storage classes.
+        /// information, see [Storage Classes](https://cloud.google.com/storage/docs/storage-classes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
         public virtual string StorageClass { get; set; }
@@ -9550,7 +9558,8 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>
         /// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a
-        /// web site. See the Static Website Examples for more information.
+        /// web site. See the [Static Website Examples](https://cloud.google.com/storage/docs/static-website) for more
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("website")]
         public virtual WebsiteData Website { get; set; }
@@ -9835,7 +9844,10 @@ namespace Google.Apis.Storage.v1.Data
             }
         }
 
-        /// <summary>The bucket's lifecycle configuration. See lifecycle management for more information.</summary>
+        /// <summary>
+        /// The bucket's lifecycle configuration. See [Lifecycle
+        /// Management](https://cloud.google.com/storage/docs/lifecycle) for more information.
+        /// </summary>
         public class LifecycleData
         {
             /// <summary>
@@ -10105,7 +10117,8 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>
         /// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a
-        /// web site. See the Static Website Examples for more information.
+        /// web site. See the [Static Website Examples](https://cloud.google.com/storage/docs/static-website) for more
+        /// information.
         /// </summary>
         public class WebsiteData
         {
@@ -11050,7 +11063,8 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>
         /// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For
-        /// more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.
+        /// more information about using the CRC32c checksum, see [Data Validation and Change
+        /// Detection](https://cloud.google.com/storage/docs/data-validation).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crc32c")]
         public virtual string Crc32c { get; set; }
@@ -11143,8 +11157,8 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
-        /// MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and
-        /// ETags: Best Practices.
+        /// MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see [Data
+        /// Validation and Change Detection](https://cloud.google.com/storage/docs/data-validation).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
         public virtual string Md5Hash { get; set; }
