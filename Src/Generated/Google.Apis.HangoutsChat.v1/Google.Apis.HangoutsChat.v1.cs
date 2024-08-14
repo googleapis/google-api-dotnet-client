@@ -4161,9 +4161,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual CommonEventObject Common { get; set; }
 
         /// <summary>
-        /// The URL the Chat app should redirect the user to after they have completed an authorization or configuration
-        /// flow outside of Google Chat. For more information, see [Connect a Chat app with other services &amp;amp;
-        /// tools](https://developers.google.com/workspace/chat/connect-web-services-tools).
+        /// For `MESSAGE` interaction events, the URL that users must be redirected to after they complete an
+        /// authorization or configuration flow outside of Google Chat. For more information, see [Connect a Chat app
+        /// with other services and tools](https://developers.google.com/workspace/chat/connect-web-services-tools).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; }
@@ -7503,7 +7503,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Thread : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Resource name of the thread. Example: `spaces/{space}/threads/{thread}`</summary>
+        /// <summary>Resource name of the thread. Example: `spaces/{space}/threads/{thread}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
