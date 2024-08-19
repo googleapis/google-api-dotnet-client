@@ -7926,8 +7926,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>
         /// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default
         /// it to the next stage in the promotion flow. The value of this field could be one of the following: * The
-        /// last segment of a target name. It only needs the ID to determine if the target is one of the stages in the
-        /// promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+        /// last segment of a target name * "@next", the next target in the promotion sequence
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTargetId")]
         public virtual string DestinationTargetId { get; set; }
@@ -9525,7 +9524,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target
-        /// name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+        /// name * "*", all targets in a location
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
