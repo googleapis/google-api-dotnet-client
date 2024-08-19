@@ -6784,6 +6784,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryLimitBytes")]
         public virtual System.Nullable<long> MemoryLimitBytes { get; set; }
 
+        /// <summary>Optional. Number of total physical cores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalCoreCount")]
+        public virtual System.Nullable<int> PhysicalCoreCount { get; set; }
+
+        /// <summary>Optional. Number of total physical cores limited by db deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalCoreLimit")]
+        public virtual System.Nullable<int> PhysicalCoreLimit { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6833,9 +6841,32 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
         public virtual string InstanceName { get; set; }
 
+        /// <summary>Optional. Networking details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual DatabaseInstanceNetwork Network { get; set; }
+
         /// <summary>The instance role in the database engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network details of a database instance.</summary>
+    public class DatabaseInstanceNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The instance's host names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostNames")]
+        public virtual System.Collections.Generic.IList<string> HostNames { get; set; }
+
+        /// <summary>Optional. The instance's IP addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
+        public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
+
+        /// <summary>Optional. The instance's primary MAC address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryMacAddress")]
+        public virtual string PrimaryMacAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10104,6 +10135,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostDatabaseLicensing")]
         public virtual Money MonthlyCostDatabaseLicensing { get; set; }
 
+        /// <summary>Output only. GCVE Protected nodes cost for this preference set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostGcveProtected")]
+        public virtual Money MonthlyCostGcveProtected { get; set; }
+
         /// <summary>
         /// Output only. Network Egress monthly cost for this preference set. Only present for virtual machines.
         /// </summary>
@@ -10120,6 +10155,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. Miscellaneous monthly cost for this preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostOther")]
         public virtual Money MonthlyCostOther { get; set; }
+
+        /// <summary>
+        /// Output only. VMware portable license monthly cost for this preference set. Only present for VMware target
+        /// with portable license service type. This cost is not paid to google, but is an estimate of license costs
+        /// paid to VMware.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostPortableVmwareLicense")]
+        public virtual Money MonthlyCostPortableVmwareLicense { get; set; }
 
         /// <summary>Output only. Storage monthly cost for this preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostStorage")]
@@ -10794,6 +10837,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Specific details for a SqlServer database.</summary>
     public class SqlServerSchemaDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. SqlServer number of CLR objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clrObjectCount")]
+        public virtual System.Nullable<int> ClrObjectCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10960,6 +11007,31 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UriExpirationTimeRaw);
             set => UriExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The type of machines to consider when calculating virtual machine migration insights and recommendations for
+    /// VMware Engine. Not all machine types are available in all zones and regions.
+    /// </summary>
+    public class VMwareEngineMachinePreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. VMware Engine on Google Cloud machine series to consider for insights and recommendations. If
+        /// empty, no restriction is applied on the machine series.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedMachineSeries")]
+        public virtual System.Collections.Generic.IList<MachineSeries> AllowedMachineSeries { get; set; }
+
+        /// <summary>Optional. Whether to use VMware Engine Protected offering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedNodes")]
+        public virtual string ProtectedNodes { get; set; }
+
+        /// <summary>Optional. Whether to use storage-only nodes, if those are available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageOnlyNodes")]
+        public virtual string StorageOnlyNodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11360,9 +11432,26 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuOvercommitRatio")]
         public virtual System.Nullable<double> CpuOvercommitRatio { get; set; }
 
+        /// <summary>
+        /// Optional. Discount percentage for the license type offered to you by Broadcom. Must be between 0 and 100.
+        /// Only valid when service_type is set to SERVICE_TYPE_PORTABLE_LICENSE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseDiscountPercentage")]
+        public virtual System.Nullable<float> LicenseDiscountPercentage { get; set; }
+
+        /// <summary>
+        /// Optional. Preferences concerning the machine types to consider on Google Cloud VMware Engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machinePreferences")]
+        public virtual VMwareEngineMachinePreferences MachinePreferences { get; set; }
+
         /// <summary>Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryOvercommitRatio")]
         public virtual System.Nullable<double> MemoryOvercommitRatio { get; set; }
+
+        /// <summary>Optional. VMWare Service Type (Fully Licensed or Portable License).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceType")]
+        public virtual string ServiceType { get; set; }
 
         /// <summary>
         /// The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data
