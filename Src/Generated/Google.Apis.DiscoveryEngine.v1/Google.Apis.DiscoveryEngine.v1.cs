@@ -517,6 +517,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         CompletionSuggestions = new CompletionSuggestionsResource(service);
                         Controls = new ControlsResource(service);
                         Conversations = new ConversationsResource(service);
+                        CustomModels = new CustomModelsResource(service);
                         Models = new ModelsResource(service);
                         Operations = new OperationsResource(service);
                         Schemas = new SchemasResource(service);
@@ -1301,6 +1302,73 @@ namespace Google.Apis.DiscoveryEngine.v1
                                         Pattern = null,
                                     });
                                 }
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets index freshness metadata for Documents. Supported for website search only.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The parent branch resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                        /// </param>
+                        public virtual BatchGetDocumentsMetadataRequest BatchGetDocumentsMetadata(string parent)
+                        {
+                            return new BatchGetDocumentsMetadataRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// Gets index freshness metadata for Documents. Supported for website search only.
+                        /// </summary>
+                        public class BatchGetDocumentsMetadataRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse>
+                        {
+                            /// <summary>Constructs a new BatchGetDocumentsMetadata request.</summary>
+                            public BatchGetDocumentsMetadataRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent branch resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>The exact URIs to match by.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("matcher.urisMatcher.uris", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> MatcherUrisMatcherUris { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "batchGetDocumentsMetadata";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/batchGetDocumentsMetadata";
+
+                            /// <summary>Initializes BatchGetDocumentsMetadata parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+$",
+                                });
+                                RequestParameters.Add("matcher.urisMatcher.uris", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "matcher.urisMatcher.uris",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
                         }
                     }
@@ -2280,6 +2348,77 @@ namespace Google.Apis.DiscoveryEngine.v1
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the CustomModels resource.</summary>
+                    public virtual CustomModelsResource CustomModels { get; }
+
+                    /// <summary>The "customModels" collection of methods.</summary>
+                    public class CustomModelsResource
+                    {
+                        private const string Resource = "customModels";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CustomModelsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets a list of all the custom models.</summary>
+                        /// <param name="dataStore">
+                        /// Required. The resource name of the parent Data Store, such as
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`.
+                        /// This field is used to identify the data store where to fetch the models from.
+                        /// </param>
+                        public virtual ListRequest List(string dataStore)
+                        {
+                            return new ListRequest(this.service, dataStore);
+                        }
+
+                        /// <summary>Gets a list of all the custom models.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ListCustomModelsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string dataStore) : base(service)
+                            {
+                                DataStore = dataStore;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the parent Data Store, such as
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`.
+                            /// This field is used to identify the data store where to fetch the models from.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string DataStore { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+dataStore}/customModels";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dataStore",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
                                 });
                             }
                         }
@@ -5938,6 +6077,67 @@ namespace Google.Apis.DiscoveryEngine.v1
                             });
                         }
                     }
+
+                    /// <summary>Trains a custom model.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataStore">
+                    /// Required. The resource name of the Data Store, such as
+                    /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`. This
+                    /// field is used to identify the data store where to train the models.
+                    /// </param>
+                    public virtual TrainCustomModelRequest TrainCustomModel(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1TrainCustomModelRequest body, string dataStore)
+                    {
+                        return new TrainCustomModelRequest(this.service, body, dataStore);
+                    }
+
+                    /// <summary>Trains a custom model.</summary>
+                    public class TrainCustomModelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new TrainCustomModel request.</summary>
+                        public TrainCustomModelRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1TrainCustomModelRequest body, string dataStore) : base(service)
+                        {
+                            DataStore = dataStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Data Store, such as
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`.
+                        /// This field is used to identify the data store where to train the models.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataStore { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1TrainCustomModelRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "trainCustomModel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+dataStore}:trainCustomModel";
+
+                        /// <summary>Initializes TrainCustomModel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Engines resource.</summary>
@@ -8947,6 +9147,73 @@ namespace Google.Apis.DiscoveryEngine.v1
                                     Pattern = null,
                                 });
                             }
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets index freshness metadata for Documents. Supported for website search only.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The parent branch resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                    /// </param>
+                    public virtual BatchGetDocumentsMetadataRequest BatchGetDocumentsMetadata(string parent)
+                    {
+                        return new BatchGetDocumentsMetadataRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Gets index freshness metadata for Documents. Supported for website search only.
+                    /// </summary>
+                    public class BatchGetDocumentsMetadataRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse>
+                    {
+                        /// <summary>Constructs a new BatchGetDocumentsMetadata request.</summary>
+                        public BatchGetDocumentsMetadataRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent branch resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The exact URIs to match by.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("matcher.urisMatcher.uris", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> MatcherUrisMatcherUris { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchGetDocumentsMetadata";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/batchGetDocumentsMetadata";
+
+                        /// <summary>Initializes BatchGetDocumentsMetadata parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+$",
+                            });
+                            RequestParameters.Add("matcher.urisMatcher.uris", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "matcher.urisMatcher.uris",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
                     }
                 }
@@ -14121,7 +14388,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string LocationId { get; set; }
 
         /// <summary>
-        /// The project ID that the AlloyDB source is in with a length limit of 128 characters. If not specified,
+        /// The project ID that contains the AlloyDB source. Has a length limit of 128 characters. If not specified,
         /// inherits the project ID from the parent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -15135,6 +15402,82 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for DocumentService.BatchGetDocumentsMetadata method.</summary>
+    public class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The metadata of the Documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentsMetadata")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata> DocumentsMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata of a Document.</summary>
+    public class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastRefreshedTimeRaw;
+
+        private object _lastRefreshedTime;
+
+        /// <summary>The timestamp of the last time the Document was last indexed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshedTime")]
+        public virtual string LastRefreshedTimeRaw
+        {
+            get => _lastRefreshedTimeRaw;
+            set
+            {
+                _lastRefreshedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRefreshedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRefreshedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRefreshedTimeDateTimeOffset instead.")]
+        public virtual object LastRefreshedTime
+        {
+            get => _lastRefreshedTime;
+            set
+            {
+                _lastRefreshedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRefreshedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRefreshedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRefreshedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshedTimeRaw);
+            set => LastRefreshedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The value of the matcher that was used to match the Document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matcherValue")]
+        public virtual GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue MatcherValue { get; set; }
+
+        /// <summary>The status of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The value of the matcher that was used to match the Document.</summary>
+    public class GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If match by URI, the URI of the Document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for SiteSearchEngineService.BatchVerifyTargetSites method.</summary>
     public class GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15173,7 +15516,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleTypeDate PartitionDate { get; set; }
 
         /// <summary>
-        /// The project ID (can be project # or ID) that the BigQuery source is in with a length limit of 128
+        /// The project ID or the project number that contains the BigQuery source. Has a length limit of 128
         /// characters. If not specified, inherits the project ID from the parent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -15300,7 +15643,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string InstanceId { get; set; }
 
         /// <summary>
-        /// The project ID that the Bigtable source is in with a length limit of 128 characters. If not specified,
+        /// The project ID that contains the Bigtable source. Has a length limit of 128 characters. If not specified,
         /// inherits the project ID from the parent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -15401,6 +15744,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingCheckRequired")]
         public virtual System.Nullable<bool> GroundingCheckRequired { get; set; }
+
+        /// <summary>Confidence score for the claim in the answer candidate, in the range of [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
 
         /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
@@ -15568,7 +15915,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Nullable<bool> Offload { get; set; }
 
         /// <summary>
-        /// The project ID that the Cloud SQL source is in with a length limit of 128 characters. If not specified,
+        /// The project ID that contains the Cloud SQL source. Has a length limit of 128 characters. If not specified,
         /// inherits the project ID from the parent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -15804,7 +16151,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1Control : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. List of all ServingConfig ids this control is attached to. May take up to 10 minutes to update
+        /// Output only. List of all ServingConfig IDs this control is attached to. May take up to 10 minutes to update
         /// after changes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedServingConfigIds")]
@@ -16577,6 +16924,113 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata that describes a custom tuned model.</summary>
+    public class GoogleCloudDiscoveryengineV1CustomTuningModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Timestamp the Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The display name of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The metrics of the trained model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
+        /// <summary>The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelState")]
+        public virtual string ModelState { get; set; }
+
+        /// <summary>The version of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual System.Nullable<long> ModelVersion { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`
+        /// model must be an alpha-numerical string with limit of 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _trainingStartTimeRaw;
+
+        private object _trainingStartTime;
+
+        /// <summary>Timestamp the model training was initiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
+        public virtual string TrainingStartTimeRaw
+        {
+            get => _trainingStartTimeRaw;
+            set
+            {
+                _trainingStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _trainingStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TrainingStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TrainingStartTimeDateTimeOffset instead.")]
+        public virtual object TrainingStartTime
+        {
+            get => _trainingStartTime;
+            set
+            {
+                _trainingStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _trainingStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TrainingStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TrainingStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TrainingStartTimeRaw);
+            set => TrainingStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1DataStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16669,6 +17123,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startingSchema")]
         public virtual GoogleCloudDiscoveryengineV1Schema StartingSchema { get; set; }
+
+        /// <summary>
+        /// Config to store data store type configuration for workspace data. This must be set when
+        /// DataStore.content_config is set as DataStore.ContentConfig.GOOGLE_WORKSPACE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaceConfig")]
+        public virtual GoogleCloudDiscoveryengineV1WorkspaceConfig WorkspaceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18629,6 +19090,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Pagination token, if not returned indicates the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SearchTuningService.ListCustomModels method.</summary>
+    public class GoogleCloudDiscoveryengineV1ListCustomModelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of custom tuning models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1CustomTuningModel> Models { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21048,7 +21520,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string InstanceId { get; set; }
 
         /// <summary>
-        /// The project ID that the Spanner source is in with a length limit of 128 characters. If not specified,
+        /// The project ID that contains the Spanner source. Has a length limit of 128 characters. If not specified,
         /// inherits the project ID from the parent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -21208,6 +21680,191 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Text input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("input")]
         public virtual string Input { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the TrainCustomModel operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1TrainCustomModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SearchTuningService.TrainCustomModel method.</summary>
+    public class GoogleCloudDiscoveryengineV1TrainCustomModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired location of errors incurred during the data ingestion and training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1ImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>Cloud Storage training input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsTrainingInput")]
+        public virtual GoogleCloudDiscoveryengineV1TrainCustomModelRequestGcsTrainingInput GcsTrainingInput { get; set; }
+
+        /// <summary>If not provided, a UUID will be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>
+        /// Model to be trained. Supported values are: * **search-tuning**: Fine tuning the search system based on data
+        /// provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
+        public virtual string ModelType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud Storage training data input.</summary>
+    public class GoogleCloudDiscoveryengineV1TrainCustomModelRequestGcsTrainingInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Cloud Storage corpus data which could be associated in train data. The data path format is `gs:///`. A
+        /// newline delimited jsonl/ndjson file. For search-tuning model, each line should have the _id, title and text.
+        /// Example: `{"_id": "doc1", title: "relevant doc", "text": "relevant text"}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("corpusDataPath")]
+        public virtual string CorpusDataPath { get; set; }
+
+        /// <summary>
+        /// The gcs query data which could be associated in train data. The data path format is `gs:///`. A newline
+        /// delimited jsonl/ndjson file. For search-tuning model, each line should have the _id and text. Example:
+        /// {"_id": "query1", "text": "example query"}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryDataPath")]
+        public virtual string QueryDataPath { get; set; }
+
+        /// <summary>
+        /// Cloud Storage test data. Same format as train_data_path. If not provided, a random 80/20 train/test split
+        /// will be performed on train_data_path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testDataPath")]
+        public virtual string TestDataPath { get; set; }
+
+        /// <summary>
+        /// Cloud Storage training data path whose format should be `gs:///`. The file should be in tsv format. Each
+        /// line should have the doc_id and query_id and score (number). For search-tuning model, it should have the
+        /// query-id corpus-id score as tsv file header. The score should be a number in `[0, inf+)`. The larger the
+        /// number is, the more relevant the pair is. Example: * `query-id\tcorpus-id\tscore` * `query1\tdoc1\t1`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainDataPath")]
+        public virtual string TrainDataPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the TrainCustomModelRequest. This message is returned by the google.longrunning.Operations.response
+    /// field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1TrainCustomModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1ImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>The metrics of the trained model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
+        /// <summary>Fully qualified name of the CustomTuningModel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
+
+        /// <summary>
+        /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
+        /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training job
+        /// creation is in progress. * **training**: Model is actively training. * **evaluating**: The model is
+        /// evaluating trained metrics. * **indexing**: The model trained metrics are indexing. * **ready**: The model
+        /// is ready for serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelStatus")]
+        public virtual string ModelStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21657,6 +22314,21 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config to store data store type configuration for workspace data</summary>
+    public class GoogleCloudDiscoveryengineV1WorkspaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Obfuscated Dasher customer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
+        public virtual string DasherCustomerId { get; set; }
+
+        /// <summary>The Google Workspace data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22354,7 +23026,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1alphaControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. List of all ServingConfig ids this control is attached to. May take up to 10 minutes to update
+        /// Output only. List of all ServingConfig IDs this control is attached to. May take up to 10 minutes to update
         /// after changes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedServingConfigIds")]
@@ -23063,6 +23735,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startingSchema")]
         public virtual GoogleCloudDiscoveryengineV1alphaSchema StartingSchema { get; set; }
+
+        /// <summary>
+        /// Config to store data store type configuration for workspace data. This must be set when
+        /// DataStore.content_config is set as DataStore.ContentConfig.GOOGLE_WORKSPACE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaceConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaWorkspaceConfig WorkspaceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27622,6 +28301,21 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config to store data store type configuration for workspace data</summary>
+    public class GoogleCloudDiscoveryengineV1alphaWorkspaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Obfuscated Dasher customer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
+        public virtual string DasherCustomerId { get; set; }
+
+        /// <summary>The Google Workspace data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -27838,7 +28532,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1betaControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. List of all ServingConfig ids this control is attached to. May take up to 10 minutes to update
+        /// Output only. List of all ServingConfig IDs this control is attached to. May take up to 10 minutes to update
         /// after changes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedServingConfigIds")]
@@ -28522,6 +29216,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startingSchema")]
         public virtual GoogleCloudDiscoveryengineV1betaSchema StartingSchema { get; set; }
+
+        /// <summary>
+        /// Config to store data store type configuration for workspace data. This must be set when
+        /// DataStore.content_config is set as DataStore.ContentConfig.GOOGLE_WORKSPACE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaceConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaWorkspaceConfig WorkspaceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30905,6 +31606,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        /// <summary>
+        /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
+        /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
+        public virtual string RelevanceThreshold { get; set; }
+
         /// <summary>Whether to turn on safe search. This is only supported for website search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
         public virtual System.Nullable<bool> SafeSearch { get; set; }
@@ -32099,6 +32808,21 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config to store data store type configuration for workspace data</summary>
+    public class GoogleCloudDiscoveryengineV1betaWorkspaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Obfuscated Dasher customer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
+        public virtual string DasherCustomerId { get; set; }
+
+        /// <summary>The Google Workspace data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
