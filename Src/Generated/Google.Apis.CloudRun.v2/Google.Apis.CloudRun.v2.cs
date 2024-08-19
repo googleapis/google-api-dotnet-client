@@ -292,9 +292,87 @@ namespace Google.Apis.CloudRun.v2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Builds = new BuildsResource(service);
                 Jobs = new JobsResource(service);
                 Operations = new OperationsResource(service);
                 Services = new ServicesResource(service);
+            }
+
+            /// <summary>Gets the Builds resource.</summary>
+            public virtual BuildsResource Builds { get; }
+
+            /// <summary>The "builds" collection of methods.</summary>
+            public class BuildsResource
+            {
+                private const string Resource = "builds";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BuildsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Submits a build in a given project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project and location to build in. Location must be a region, e.g., 'us-central1' or
+                /// 'global' if the global builder is to be used. Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual SubmitRequest Submit(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2SubmitBuildRequest body, string parent)
+                {
+                    return new SubmitRequest(this.service, body, parent);
+                }
+
+                /// <summary>Submits a build in a given project.</summary>
+                public class SubmitRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2SubmitBuildResponse>
+                {
+                    /// <summary>Constructs a new Submit request.</summary>
+                    public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2SubmitBuildRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location to build in. Location must be a region, e.g., 'us-central1'
+                    /// or 'global' if the global builder is to be used. Format: projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2SubmitBuildRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "submit";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/builds:submit";
+
+                    /// <summary>Initializes Submit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Jobs resource.</summary>
@@ -3059,6 +3137,47 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Build the source using Buildpacks.</summary>
+    public class GoogleCloudRunV2BuildpacksBuild : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The base image used to opt into automatic base image updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseImage")]
+        public virtual string BaseImage { get; set; }
+
+        /// <summary>
+        /// Optional. cache_image_uri is the GCR/AR URL where the cache image will be stored. cache_image_uri is
+        /// optional and omitting it will disable caching. This URL must be stable across builds. It is used to derive a
+        /// build-specific temporary URL by substituting the tag with the build ID. The build will clean up the
+        /// temporary image on a best-effort basis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheImageUri")]
+        public virtual string CacheImageUri { get; set; }
+
+        /// <summary>
+        /// Optional. Whether or not the application container will be enrolled in automatic base image updates. When
+        /// true, the application will be built on a scratch base image, so the base layers can be appended at run time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticUpdates")]
+        public virtual System.Nullable<bool> EnableAutomaticUpdates { get; set; }
+
+        /// <summary>Optional. User-provided build-time environment variables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the function target if the source is a function source. Required for function builds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionTarget")]
+        public virtual string FunctionTarget { get; set; }
+
+        /// <summary>The runtime name, e.g. 'go113'. Leave blank for generic builds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
+        public virtual string Runtime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for deleting an Execution.</summary>
     public class GoogleCloudRunV2CancelExecutionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3291,6 +3410,13 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Build the source using Docker. This means the source has a Dockerfile.</summary>
+    public class GoogleCloudRunV2DockerBuild : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data
     /// is destroyed with it (it does not persist across sandbox runs).
@@ -3326,11 +3452,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the
-        /// container and any route environment variables. If a variable cannot be resolved, the reference in the input
-        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-        /// references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the
-        /// maximum length is 32768 bytes.
+        /// Literal value of the environment variable. Defaults to "", and the maximum length is 32768 bytes. Variable
+        /// references are not supported in Cloud Run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -5520,6 +5643,95 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
         public virtual System.Nullable<int> MinInstanceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of the source in an archive file in Google Cloud Storage.</summary>
+    public class GoogleCloudRunV2StorageSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Google Cloud Storage bucket containing the source (see [Bucket Name
+        /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Optional. Google Cloud Storage generation for the object. If the generation is omitted, the latest
+        /// generation will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>
+        /// Required. Google Cloud Storage object containing the source. This object must be a gzipped archive file
+        /// (`.tar.gz`) containing source to build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for submitting a Build.</summary>
+    public class GoogleCloudRunV2SubmitBuildRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Build the source using Buildpacks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildpackBuild")]
+        public virtual GoogleCloudRunV2BuildpacksBuild BuildpackBuild { get; set; }
+
+        /// <summary>Build the source using Docker. This means the source has a Dockerfile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerBuild")]
+        public virtual GoogleCloudRunV2DockerBuild DockerBuild { get; set; }
+
+        /// <summary>Required. Artifact Registry URI to store the built image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to use for the build. If not set, the default Cloud Build service account for
+        /// the project will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Required. Source for the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
+        public virtual GoogleCloudRunV2StorageSource StorageSource { get; set; }
+
+        /// <summary>Optional. Additional tags to annotate the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format
+        /// of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and
+        /// {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the
+        /// short name of the worker pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for submitting a Build.</summary>
+    public class GoogleCloudRunV2SubmitBuildResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// URI of the base builder image in Artifact Registry being used in the build. Used to opt into automatic base
+        /// image updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseImageUri")]
+        public virtual string BaseImageUri { get; set; }
+
+        /// <summary>Cloud Build operation to be polled via CloudBuild API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildOperation")]
+        public virtual GoogleLongrunningOperation BuildOperation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
