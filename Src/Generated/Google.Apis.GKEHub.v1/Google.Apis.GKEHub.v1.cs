@@ -5592,6 +5592,33 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture.
+    /// </summary>
+    public class CompliancePostureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of enabled compliance standards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceStandards")]
+        public virtual System.Collections.Generic.IList<ComplianceStandard> ComplianceStandards { get; set; }
+
+        /// <summary>Defines the enablement mode for Compliance Posture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ComplianceStandard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the compliance standard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standard")]
+        public virtual string Standard { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for Config Sync</summary>
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6406,6 +6433,13 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Optional. Enable/Disable binary authorization features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorizationConfig")]
         public virtual BinaryAuthorizationConfig BinaryAuthorizationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Enable/Disable Compliance Posture features for the cluster. Note that on UpdateFleet, only full
+        /// replacement of this field is allowed. Users are not allowed for partial updates through field mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliancePostureConfig")]
+        public virtual CompliancePostureConfig CompliancePostureConfig { get; set; }
 
         /// <summary>Enable/Disable Security Posture features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
