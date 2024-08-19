@@ -6988,7 +6988,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelInfo")]
         public virtual LabelInfoData LabelInfo { get; set; }
 
-        /// <summary>Output only. The last user to modify the file.</summary>
+        /// <summary>
+        /// Output only. The last user to modify the file. This field is only populated when the last modification was
+        /// performed by a signed-in user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyingUser")]
         public virtual User LastModifyingUser { get; set; }
 
@@ -7090,10 +7093,11 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IList<User> Owners { get; set; }
 
         /// <summary>
-        /// The IDs of the parent folders which contain the file. If not specified as part of a create request, the file
-        /// is placed directly in the user's My Drive folder. If not specified as part of a copy request, the file
-        /// inherits any discoverable parents of the source file. Update requests must use the `addParents` and
-        /// `removeParents` parameters to modify the parents list.
+        /// The ID of the parent folder containing the file. A file can only have one parent folder; specifying multiple
+        /// parents isn't supported. If not specified as part of a create request, the file is placed directly in the
+        /// user's My Drive folder. If not specified as part of a copy request, the file inherits any discoverable
+        /// parent of the source file. Update requests must use the `addParents` and `removeParents` parameters to
+        /// modify the parents list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parents")]
         public virtual System.Collections.Generic.IList<string> Parents { get; set; }
@@ -8373,7 +8377,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Output only. The last user to modify this revision.</summary>
+        /// <summary>
+        /// Output only. The last user to modify this revision. This field is only populated when the last modification
+        /// was performed by a signed-in user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyingUser")]
         public virtual User LastModifyingUser { get; set; }
 
