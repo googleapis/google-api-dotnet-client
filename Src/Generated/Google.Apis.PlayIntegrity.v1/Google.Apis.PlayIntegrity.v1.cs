@@ -512,7 +512,7 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains the device attestation information. Next tag: 4</summary>
+    /// <summary>Contains the device attestation information.</summary>
     public class DeviceIntegrity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Details about the device recall bits set by the developer.</summary>
@@ -531,7 +531,7 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains the recall bits per device set by the developer. Next tag: 3</summary>
+    /// <summary>Contains the recall bits per device set by the developer.</summary>
     public class DeviceRecall : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Contains the recall bits values.</summary>
@@ -703,11 +703,7 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     /// <summary>Request to write device recall bits.</summary>
     public class WriteDeviceRecallRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. Integrity token obtained from calling Play Integrity API. Note that the integrity token contains
-        /// the existing device recall bits. The write will only succeed if those bits in the integrity token are up to
-        /// date.
-        /// </summary>
+        /// <summary>Required. Integrity token obtained from calling Play Integrity API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrityToken")]
         public virtual string IntegrityToken { get; set; }
 
