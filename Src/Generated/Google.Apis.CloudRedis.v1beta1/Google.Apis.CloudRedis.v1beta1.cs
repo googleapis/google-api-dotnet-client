@@ -2191,6 +2191,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Cross cluster replication config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossClusterReplicationConfig")]
+        public virtual CrossClusterReplicationConfig CrossClusterReplicationConfig { get; set; }
+
         /// <summary>Optional. The delete operation will fail when the value is set to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionProtectionEnabled")]
         public virtual System.Nullable<bool> DeletionProtectionEnabled { get; set; }
@@ -2245,7 +2249,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
         public virtual System.Nullable<int> ReplicaCount { get; set; }
 
-        /// <summary>Required. Number of shards for the Redis cluster.</summary>
+        /// <summary>Optional. Number of shards for the Redis cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<int> ShardCount { get; set; }
 
@@ -2321,45 +2325,92 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Any custom metadata associated with the resource. i.e. A spanner instance can have multiple databases with its
-    /// own unique metadata. Information for these individual databases can be captured in custom metadata data
-    /// </summary>
-    public class CustomMetadataData : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Cross cluster replication config.</summary>
+    public class CrossClusterReplicationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("databaseMetadata")]
-        public virtual System.Collections.Generic.IList<DatabaseMetadata> DatabaseMetadata { get; set; }
+        /// <summary>The role of the cluster in cross cluster replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterRole")]
+        public virtual string ClusterRole { get; set; }
+
+        /// <summary>
+        /// Output only. An output only view of all the member clusters participating in the cross cluster replication.
+        /// This view will be provided by every member cluster irrespective of its cluster role(primary or secondary). A
+        /// primary cluster can provide information about all the secondary clusters replicating from it. However, a
+        /// secondary cluster only knows about the primary cluster from which it is replicating. However, for scenarios,
+        /// where the primary cluster is unavailable(e.g. regional outage), a GetCluster request can be sent to any
+        /// other member cluster and this field will list all the member clusters participating in cross cluster
+        /// replication.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual Membership Membership { get; set; }
+
+        /// <summary>
+        /// Details of the primary cluster that is used as the replication source for this secondary cluster. This field
+        /// is only set for a secondary cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryCluster")]
+        public virtual RemoteCluster PrimaryCluster { get; set; }
+
+        /// <summary>
+        /// List of secondary clusters that are replicating from this primary cluster. This field is only set for a
+        /// primary cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryClusters")]
+        public virtual System.Collections.Generic.IList<RemoteCluster> SecondaryClusters { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last time cross cluster replication config was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>
-    /// Metadata for individual databases created in an instance. i.e. spanner instance can have multiple databases with
-    /// unique configuration settings.
+    /// Any custom metadata associated with the resource. e.g. A spanner instance can have multiple databases with its
+    /// own unique metadata. Information for these individual databases can be captured in custom metadata data
     /// </summary>
-    public class DatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    public class CustomMetadataData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Backup configuration for this database</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
-        public virtual BackupConfiguration BackupConfiguration { get; set; }
-
-        /// <summary>Information about the last backup attempt for this database</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
-        public virtual BackupRun BackupRun { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual Product Product { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual DatabaseResourceId ResourceId { get; set; }
-
         /// <summary>
-        /// Required. Database name. Resource name to follow CAIS resource_name format as noted here
-        /// go/condor-common-datamodel
+        /// Metadata for individual internal resources in an instance. e.g. spanner instance can have multiple databases
+        /// with unique configuration.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("internalResourceMetadata")]
+        public virtual System.Collections.Generic.IList<InternalResourceMetadata> InternalResourceMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2532,6 +2583,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signalId")]
         public virtual string SignalId { get; set; }
 
+        /// <summary>The severity of the signal, such as if it's a HIGH or LOW severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalSeverity")]
+        public virtual string SignalSeverity { get; set; }
+
         /// <summary>
         /// Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `LOGGING_MOST_ERRORS`, etc.
         /// </summary>
@@ -2559,7 +2614,9 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>
         /// Required. The type of resource this ID is identifying. Ex redis.googleapis.com/Instance,
         /// redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance,
-        /// spanner.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
+        /// spanner.googleapis.com/Instance, spanner.googleapis.com/Database, firestore.googleapis.com/Database,
+        /// sqladmin.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
+        /// bigtableadmin.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -3354,6 +3411,37 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata for individual internal resources in an instance. e.g. spanner instance can have multiple databases
+    /// with unique configuration settings. Similarly bigtable can have multiple clusters within same bigtable instance.
+    /// </summary>
+    public class InternalResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup configuration for this database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
+        public virtual BackupConfiguration BackupConfiguration { get; set; }
+
+        /// <summary>Information about the last backup attempt for this database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual BackupRun BackupRun { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual Product Product { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual DatabaseResourceId ResourceId { get; set; }
+
+        /// <summary>
+        /// Required. internal resource name for spanner this will be database name
+        /// e.g."spanner.googleapis.com/projects/123/abc/instances/inst1/databases/db1"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListClusters.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3720,6 +3808,25 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>The PEM encoded CA certificate chains for redis managed server authentication</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caCerts")]
         public virtual System.Collections.Generic.IList<CertChain> CaCerts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An output only view of all the member clusters participating in the cross cluster replication.
+    /// </summary>
+    public class Membership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The primary cluster that acts as the source of replication for the secondary clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryCluster")]
+        public virtual RemoteCluster PrimaryCluster { get; set; }
+
+        /// <summary>Output only. The list of secondary clusters replicating from the primary cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryClusters")]
+        public virtual System.Collections.Generic.IList<RemoteCluster> SecondaryClusters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4221,6 +4328,25 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Excluisive action returned by the CLH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
         public virtual string ExclusiveAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details of the remote cluster associated with this cluster in a cross cluster replication setup.
+    /// </summary>
+    public class RemoteCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full resource path of the remote cluster in the format: projects//locations//clusters/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        /// <summary>Output only. The unique identifier of the remote cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
