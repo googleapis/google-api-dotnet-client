@@ -5248,6 +5248,20 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Data policy option proto, it currently supports name only, will support precedence later.</summary>
+    public class DataPolicyOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Data policy resource name in the form of
+        /// projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Data split result. This contains references to the training and evaluation data tables that were used to train
     /// the model.
@@ -6943,31 +6957,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>1-based index of the trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialId")]
         public virtual System.Nullable<long> TrialId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for value generation for an identity column.</summary>
-    public class IdentityColumnInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Dictates when system generated values are used to populate the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generatedMode")]
-        public virtual string GeneratedMode { get; set; }
-
-        /// <summary>
-        /// Optional. The minimum difference between two successive generated values. Should be INTEGER compatible. Can
-        /// be negative or positive but not 0. The default value is 1 if the field is not specified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("increment")]
-        public virtual string Increment { get; set; }
-
-        /// <summary>
-        /// Optional. The first generated value. Should be INTEGER compatible. The default value is 1 if the field is
-        /// not specified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual string Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11447,6 +11436,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collation")]
         public virtual string Collation { get; set; }
 
+        /// <summary>Optional. Data policy options, will replace the data_policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPolicies")]
+        public virtual System.Collections.Generic.IList<DataPolicyOption> DataPolicies { get; set; }
+
         /// <summary>
         /// Optional. A SQL expression to specify the [default value]
         /// (https://cloud.google.com/bigquery/docs/default-values) for this field.
@@ -11468,13 +11461,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foreignTypeDefinition")]
         public virtual string ForeignTypeDefinition { get; set; }
-
-        /// <summary>
-        /// Optional. Definition of how values are generated for the field. Setting this option means that the field is
-        /// an identity column. Only valid for top-level schema INTEGER fields (not nested fields).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("identityColumnInfo")]
-        public virtual IdentityColumnInfo IdentityColumnInfo { get; set; }
 
         /// <summary>
         /// Optional. Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no
