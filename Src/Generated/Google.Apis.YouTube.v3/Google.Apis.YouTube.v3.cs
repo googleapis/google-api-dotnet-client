@@ -4733,7 +4733,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="liveChatId">The id of the live chat for which comments should be returned.</param>
         /// <param name="part">
         /// The *part* parameter specifies the liveChatComment resource parts that the API response will include.
-        /// Supported values are id and snippet.
+        /// Supported values are id, snippet, and authorDetails.
         /// </param>
         public virtual ListRequest List(string liveChatId, Google.Apis.Util.Repeatable<string> part)
         {
@@ -4757,7 +4757,7 @@ namespace Google.Apis.YouTube.v3
 
             /// <summary>
             /// The *part* parameter specifies the liveChatComment resource parts that the API response will include.
-            /// Supported values are id and snippet.
+            /// Supported values are id, snippet, and authorDetails.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
@@ -15455,6 +15455,10 @@ namespace Google.Apis.YouTube.v3.Data
 
     public class PlaylistStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The playlist's podcast status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podcastStatus")]
+        public virtual string PodcastStatus { get; set; }
+
         /// <summary>The playlist's privacy status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
         public virtual string PrivacyStatus { get; set; }
