@@ -7568,6 +7568,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeExportRanges")]
         public virtual System.Collections.Generic.IList<string> IncludeExportRanges { get; set; }
 
+        /// <summary>
+        /// Output only. The list of Producer VPC spokes that this VPC spoke is a service consumer VPC spoke for. These
+        /// producer VPCs are connected through VPC peering to this spoke's backing VPC network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerVpcSpokes")]
+        public virtual System.Collections.Generic.IList<string> ProducerVpcSpokes { get; set; }
+
         /// <summary>Required. The URI of the VPC network resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
