@@ -4793,6 +4793,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>A backup of a Cloud Bigtable table.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Indicates the backup type of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
+        public virtual string BackupType { get; set; }
+
         /// <summary>Output only. The encryption information for the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
         public virtual EncryptionInfo EncryptionInfo { get; set; }
@@ -4842,9 +4846,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         private object _expireTime;
 
         /// <summary>
-        /// Required. The expiration time of the backup. When creating a backup or updating its `expire_time`, the new
-        /// value must: - Be at most 90 days in the future - Be at least 6 hours in the future Once the `expire_time`
-        /// has passed, Cloud Bigtable will delete the backup.
+        /// Required. The expiration time of the backup. When creating a backup or updating its `expire_time`, the value
+        /// must be greater than the backup creation time by: - At least 6 hours - At most 90 days Once the
+        /// `expire_time` has passed, Cloud Bigtable will delete the backup.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
@@ -4876,6 +4880,50 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _hotToStandardTimeRaw;
+
+        private object _hotToStandardTime;
+
+        /// <summary>
+        /// The time at which the hot backup will be converted to a standard backup. Once the `hot_to_standard_time` has
+        /// passed, Cloud Bigtable will convert the hot backup to a standard backup. This value must be greater than the
+        /// backup creation time by: - At least 24 hours This field only applies for hot backups. When creating or
+        /// updating a standard backup, attempting to set this field will fail the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotToStandardTime")]
+        public virtual string HotToStandardTimeRaw
+        {
+            get => _hotToStandardTimeRaw;
+            set
+            {
+                _hotToStandardTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _hotToStandardTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="HotToStandardTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use HotToStandardTimeDateTimeOffset instead.")]
+        public virtual object HotToStandardTime
+        {
+            get => _hotToStandardTime;
+            set
+            {
+                _hotToStandardTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _hotToStandardTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="HotToStandardTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? HotToStandardTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(HotToStandardTimeRaw);
+            set => HotToStandardTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
