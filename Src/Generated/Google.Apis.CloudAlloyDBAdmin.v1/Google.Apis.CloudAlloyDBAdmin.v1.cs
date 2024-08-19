@@ -4241,6 +4241,40 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         }
     }
 
+    /// <summary>Upgrade details of a cluster. This cluster can be primary or secondary.</summary>
+    public class ClusterUpgradeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cluster type which can either be primary or secondary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterType")]
+        public virtual string ClusterType { get; set; }
+
+        /// <summary>
+        /// Database version of the cluster after the upgrade operation. This will be the target version if the upgrade
+        /// was successful otherwise it remains the same as that before the upgrade operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>Upgrade details of the instances directly associated with this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceUpgradeDetails")]
+        public virtual System.Collections.Generic.IList<InstanceUpgradeDetails> InstanceUpgradeDetails { get; set; }
+
+        /// <summary>Normalized name of the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Array containing stage info associated with this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageInfo")]
+        public virtual System.Collections.Generic.IList<StageInfo> StageInfo { get; set; }
+
+        /// <summary>Upgrade status of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeStatus")]
+        public virtual string UpgradeStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ConnectionInfo singleton resource. https://google.aip.dev/156</summary>
     public class ConnectionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4900,6 +4934,25 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details regarding the upgrade of instaces associated with a cluster.</summary>
+    public class InstanceUpgradeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Instance type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
+        public virtual string InstanceType { get; set; }
+
+        /// <summary>Normalized name of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Upgrade status of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeStatus")]
+        public virtual string UpgradeStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Restrictions on INTEGER type values.</summary>
     public class IntegerRestrictions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5505,6 +5558,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     public class RestartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Full name of the nodes as obtained from INSTANCE_VIEW_FULL to restart upon. Only applicable for
+        /// read instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeIds")]
+        public virtual System.Collections.Generic.IList<string> NodeIds { get; set; }
+
+        /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
         /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
@@ -5602,6 +5662,28 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslMode")]
         public virtual string SslMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stage information for different stages in the upgrade process.</summary>
+    public class StageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// logs_url is the URL for the logs associated with a stage if that stage has logs. Right now, only three
+        /// stages have logs: ALLOYDB_PRECHECK, PG_UPGRADE_CHECK, PRIMARY_INSTANCE_UPGRADE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logsUrl")]
+        public virtual string LogsUrl { get; set; }
+
+        /// <summary>The stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stage")]
+        public virtual string Stage { get; set; }
+
+        /// <summary>Status of the stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5793,44 +5875,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     }
 
     /// <summary>
-    /// Any custom metadata associated with the resource. i.e. A spanner instance can have multiple databases with its
+    /// Any custom metadata associated with the resource. e.g. A spanner instance can have multiple databases with its
     /// own unique metadata. Information for these individual databases can be captured in custom metadata data
     /// </summary>
     public class StorageDatabasecenterPartnerapiV1mainCustomMetadataData : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("databaseMetadata")]
-        public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainDatabaseMetadata> DatabaseMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata for individual databases created in an instance. i.e. spanner instance can have multiple databases with
-    /// unique configuration settings.
-    /// </summary>
-    public class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Backup configuration for this database</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
-        public virtual StorageDatabasecenterPartnerapiV1mainBackupConfiguration BackupConfiguration { get; set; }
-
-        /// <summary>Information about the last backup attempt for this database</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
-        public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual StorageDatabasecenterProtoCommonProduct Product { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
-
         /// <summary>
-        /// Required. Database name. Resource name to follow CAIS resource_name format as noted here
-        /// go/condor-common-datamodel
+        /// Metadata for individual internal resources in an instance. e.g. spanner instance can have multiple databases
+        /// with unique configuration.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("internalResourceMetadata")]
+        public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata> InternalResourceMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5883,7 +5938,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feedType")]
         public virtual string FeedType { get; set; }
 
-        /// <summary>More feed data would be added in subsequent CLs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMetricData")]
         public virtual StorageDatabasecenterPartnerapiV1mainObservabilityMetricData ObservabilityMetricData { get; set; }
 
@@ -6004,6 +6058,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signalId")]
         public virtual string SignalId { get; set; }
 
+        /// <summary>The severity of the signal, such as if it's a HIGH or LOW severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalSeverity")]
+        public virtual string SignalSeverity { get; set; }
+
         /// <summary>
         /// Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `LOGGING_MOST_ERRORS`, etc.
         /// </summary>
@@ -6031,7 +6089,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>
         /// Required. The type of resource this ID is identifying. Ex redis.googleapis.com/Instance,
         /// redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance,
-        /// spanner.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
+        /// spanner.googleapis.com/Instance, spanner.googleapis.com/Database, firestore.googleapis.com/Database,
+        /// sqladmin.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
+        /// bigtableadmin.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -6308,6 +6368,37 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>An enum that represents the type of this entitlement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata for individual internal resources in an instance. e.g. spanner instance can have multiple databases
+    /// with unique configuration settings. Similarly bigtable can have multiple clusters within same bigtable instance.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup configuration for this database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupConfiguration BackupConfiguration { get; set; }
+
+        /// <summary>Information about the last backup attempt for this database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual StorageDatabasecenterProtoCommonProduct Product { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
+
+        /// <summary>
+        /// Required. internal resource name for spanner this will be database name
+        /// e.g."spanner.googleapis.com/projects/123/abc/instances/inst1/databases/db1"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6638,6 +6729,43 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        private string _graceEndTimeRaw;
+
+        private object _graceEndTime;
+
+        /// <summary>grace end time of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graceEndTime")]
+        public virtual string GraceEndTimeRaw
+        {
+            get => _graceEndTimeRaw;
+            set
+            {
+                _graceEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _graceEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="GraceEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use GraceEndTimeDateTimeOffset instead.")]
+        public virtual object GraceEndTime
+        {
+            get => _graceEndTime;
+            set
+            {
+                _graceEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _graceEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="GraceEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? GraceEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(GraceEndTimeRaw);
+            set => GraceEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -6711,6 +6839,31 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpgradeTimeRaw);
             set => UpgradeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UpgradeClusterResponse contains the response for upgrade cluster operation.</summary>
+    public class UpgradeClusterResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Array of upgrade details for the current cluster and all the secondary clusters associated with this
+        /// cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUpgradeDetails")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeDetails> ClusterUpgradeDetails { get; set; }
+
+        /// <summary>
+        /// A user friendly message summarising the upgrade operation details and the next steps for the user if there
+        /// is any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Status of upgrade operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
