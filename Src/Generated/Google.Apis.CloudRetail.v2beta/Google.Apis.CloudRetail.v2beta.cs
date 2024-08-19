@@ -11834,7 +11834,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaRuleForceReturnFacetAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Each instance corresponds to a force return attribute for the given condition. There can't be more 3
+        /// Each instance corresponds to a force return attribute for the given condition. There can't be more 15
         /// instances here.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facetPositionAdjustments")]
