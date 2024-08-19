@@ -15447,12 +15447,25 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class RevocationContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Used when users should be refunded the full amount of the latest order of the subscription.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
+        public virtual RevocationContextFullRefund FullRefund { get; set; }
+
+        /// <summary>
         /// Optional. Used when users should be refunded a prorated amount they paid for their subscription based on the
         /// amount of time remaining in a subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proratedRefund")]
         public virtual RevocationContextProratedRefund ProratedRefund { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used to determine if the refund type in the RevocationContext is a full refund.</summary>
+    public class RevocationContextFullRefund : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
