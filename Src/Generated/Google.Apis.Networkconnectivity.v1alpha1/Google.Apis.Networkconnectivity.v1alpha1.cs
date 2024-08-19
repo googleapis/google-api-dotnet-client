@@ -3048,6 +3048,10 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Optional. Should be present if usage is set to FOR_MIGRATION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migration")]
+        public virtual Migration Migration { get; set; }
+
         /// <summary>
         /// Immutable. The name of an internal range. Format:
         /// projects/{project}/locations/{location}/internalRanges/{internal_range} See:
@@ -3251,6 +3255,29 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for migration with source and target resource names.</summary>
+    public class Migration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Resource path as an URI of the source resource, for example a subnet. The project for the source
+        /// resource should match the project for the InternalRange. An example:
+        /// /projects/{project}/regions/{region}/subnetworks/{subnet}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource path of the target resource. The target project can be different, as in the cases when
+        /// migrating to peer networks. The resource For example:
+        /// /projects/{project}/regions/{region}/subnetworks/{subnet}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
