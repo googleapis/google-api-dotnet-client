@@ -4924,22 +4924,6 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Nullable<int> BackupRetentionDays { get; set; }
 
         /// <summary>
-        /// Optional. TODO b/341576760: Remove deprecated BV and Datasource field form BP and BPA once UI removed all
-        /// dependencies on them Required. Resource name of backup vault which will be used as storage location for
-        /// backups. Format: projects/{project}/locations/{location}/backupVaults/{backupvault}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupVault")]
-        public virtual string BackupVault { get; set; }
-
-        /// <summary>
-        /// Output only. TODO b/341576760: Remove deprecated BV and Datasource field form BP and BPA once UI removed all
-        /// dependencies on them Output only. The Google Cloud Platform Service Account to be used by the BackupVault
-        /// for taking backups. Specify the email address of the Backup Vault Service Account.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupVaultServiceAccount")]
-        public virtual string BackupVaultServiceAccount { get; set; }
-
-        /// <summary>
         /// Required. Immutable. The unique id of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.The
         /// `rule_id` must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens.
         /// Pattern, /a-z{,62}/.
@@ -7216,15 +7200,6 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Message for rules config info.</summary>
     public class RuleConfigInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. TODO b/341576760: Remove deprecated BV and Datasource field form BP and BPA once UI removed all
-        /// dependencies on them Output Only. Resource name of data source which will be used as storage location for
-        /// backups taken by specified rule. Format :
-        /// projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
-        public virtual string DataSource { get; set; }
-
         /// <summary>Output only. Output Only. google.rpc.Status object to store the last backup error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastBackupError")]
         public virtual Status LastBackupError { get; set; }
