@@ -1180,6 +1180,87 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
             }
 
+            /// <summary>Lists all IP overrides for a key.</summary>
+            /// <param name="parent">
+            /// Required. The parent key for which the IP overrides are listed, in the format
+            /// `projects/{project}/keys/{key}`.
+            /// </param>
+            public virtual ListIpOverridesRequest ListIpOverrides(string parent)
+            {
+                return new ListIpOverridesRequest(this.service, parent);
+            }
+
+            /// <summary>Lists all IP overrides for a key.</summary>
+            public class ListIpOverridesRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse>
+            {
+                /// <summary>Constructs a new ListIpOverrides request.</summary>
+                public ListIpOverridesRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent key for which the IP overrides are listed, in the format
+                /// `projects/{project}/keys/{key}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of overrides to return. Default is 10. Max limit is 100. If the number
+                /// of overrides is less than the page_size, all overrides are returned. If the page size is more than
+                /// 100, it is coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. The next_page_token value returned from a previous ListIpOverridesRequest, if any.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "listIpOverrides";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:listIpOverrides";
+
+                /// <summary>Initializes ListIpOverrides parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/keys/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>
             /// Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is migrated, it can be used
             /// from either product. SiteVerify requests are billed as CreateAssessment calls. You must be authenticated
@@ -1315,6 +1396,73 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Removes an IP override from a key. The following restrictions hold: * If the IP isn't found in an
+            /// existing IP override, a `NOT_FOUND` error will be returned. * If the IP is found in an existing IP
+            /// override, but the override type does not match, a `NOT_FOUND` error will be returned.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the key from which the IP override is removed, in the format
+            /// `projects/{project}/keys/{key}`.
+            /// </param>
+            public virtual RemoveIpOverrideRequest RemoveIpOverride(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest body, string name)
+            {
+                return new RemoveIpOverrideRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Removes an IP override from a key. The following restrictions hold: * If the IP isn't found in an
+            /// existing IP override, a `NOT_FOUND` error will be returned. * If the IP is found in an existing IP
+            /// override, but the override type does not match, a `NOT_FOUND` error will be returned.
+            /// </summary>
+            public class RemoveIpOverrideRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse>
+            {
+                /// <summary>Constructs a new RemoveIpOverride request.</summary>
+                public RemoveIpOverrideRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the key from which the IP override is removed, in the format
+                /// `projects/{project}/keys/{key}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "removeIpOverride";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:removeIpOverride";
+
+                /// <summary>Initializes RemoveIpOverride parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/keys/[^/]+$",
                     });
                 }
             }
@@ -2543,6 +2691,23 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for ListIpOverrides.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IP Overrides details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipOverrides")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1IpOverrideData> IpOverrides { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results. If this field is empty, no keys remain in the results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to request to list keys in a project.</summary>
     public class GoogleCloudRecaptchaenterpriseV1ListKeysResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2763,6 +2928,24 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The removeIpOverride request message.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. IP override to be removed from the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipOverrideData")]
+        public virtual GoogleCloudRecaptchaenterpriseV1IpOverrideData IpOverrideData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for RemoveIpOverride.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
