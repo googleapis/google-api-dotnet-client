@@ -9993,7 +9993,10 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual LabelsData Labels { get; set; }
 
-        /// <summary>Output only. The last user to modify this file.</summary>
+        /// <summary>
+        /// Output only. The last user to modify this file. This field is only populated when the last modification was
+        /// performed by a signed-in user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyingUser")]
         public virtual User LastModifyingUser { get; set; }
 
@@ -10151,10 +10154,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual System.Collections.Generic.IList<User> Owners { get; set; }
 
         /// <summary>
-        /// Collection of parent folders which contain this file. If not specified as part of an insert request, the
-        /// file will be placed directly in the user's My Drive folder. If not specified as part of a copy request, the
-        /// file will inherit any discoverable parents of the source file. Update requests can also use the `addParents`
-        /// and `removeParents` parameters to modify the parents list.
+        /// The ID of the parent folder containing the file. A file can only have one parent folder; specifying multiple
+        /// parents isn't supported. If not specified as part of an insert request, the file is placed directly in the
+        /// user's My Drive folder. If not specified as part of a copy request, the file inherits any discoverable
+        /// parent of the source file. Update requests must use the `addParents` and `removeParents` parameters to
+        /// modify the parents list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parents")]
         public virtual System.Collections.Generic.IList<ParentReference> Parents { get; set; }
@@ -11097,8 +11101,9 @@ namespace Google.Apis.Drive.v2.Data
     }
 
     /// <summary>
-    /// A reference to a file's parent. Some resource methods (such as `parents.get`) require a `parentId`. Use the
-    /// `parents.list` method to retrieve the ID for a parent.
+    /// A reference to a file's parent. A file can only have one parent folder; specifying multiple parents isn't
+    /// supported. Some resource methods (such as `parents.get`) require a `parentId`. Use the `parents.list` method to
+    /// retrieve the ID for a parent.
     /// </summary>
     public class ParentReference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11474,7 +11479,10 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Output only. The last user to modify this revision.</summary>
+        /// <summary>
+        /// Output only. The last user to modify this revision. This field is only populated when the last modification
+        /// was performed by a signed-in user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyingUser")]
         public virtual User LastModifyingUser { get; set; }
 
