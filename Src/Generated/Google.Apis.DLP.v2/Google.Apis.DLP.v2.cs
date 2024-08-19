@@ -327,7 +327,7 @@ namespace Google.Apis.DLP.v2
             public virtual string LocationId { get; set; }
 
             /// <summary>
-            /// The parent resource name. The format of this value is as follows: locations/ LOCATION_ID
+            /// The parent resource name. The format of this value is as follows: `locations/{location_id}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -418,7 +418,7 @@ namespace Google.Apis.DLP.v2
             /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
             /// </summary>
             /// <param name="parent">
-            /// The parent resource name. The format of this value is as follows: locations/ LOCATION_ID
+            /// The parent resource name. The format of this value is as follows: `locations/{location_id}`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -439,7 +439,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// The parent resource name. The format of this value is as follows: locations/ LOCATION_ID
+                /// The parent resource name. The format of this value is as follows: `locations/{location_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -557,11 +557,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
@@ -588,10 +588,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -754,11 +754,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -783,10 +783,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -971,11 +971,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
@@ -1001,10 +1001,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -1165,11 +1165,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -1194,10 +1194,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -1598,8 +1598,8 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization): + Projects scope: `projects/`PROJECT_ID`/locations/`LOCATION_ID +
-                /// Organizations scope: `organizations/`ORG_ID`/locations/`LOCATION_ID
+                /// request (project or organization): + Projects scope: `projects/{project_id}/locations/{location_id}`
+                /// + Organizations scope: `organizations/{org_id}/locations/{location_id}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateConnectionRequest body, string parent)
                 {
@@ -1620,8 +1620,8 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization): + Projects scope:
-                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Organizations scope:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID
+                    /// `projects/{project_id}/locations/{location_id}` + Organizations scope:
+                    /// `organizations/{org_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2029,10 +2029,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -2060,12 +2060,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2227,10 +2227,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -2256,12 +2256,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2440,9 +2440,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization): + Projects scope: `projects/`PROJECT_ID`/locations/`LOCATION_ID +
-                /// Organizations scope: `organizations/`ORG_ID`/locations/`LOCATION_ID The following example `parent`
-                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// request (project or organization): + Projects scope: `projects/{project_id}/locations/{location_id}`
+                /// + Organizations scope: `organizations/{org_id}/locations/{location_id}` The following example
+                /// `parent` string specifies a parent project with the identifier `example-project`, and specifies the
                 /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest body, string parent)
@@ -2464,10 +2464,10 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization): + Projects scope:
-                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Organizations scope:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// `projects/{project_id}/locations/{location_id}` + Organizations scope:
+                    /// `organizations/{org_id}/locations/{location_id}` The following example `parent` string specifies
+                    /// a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                    /// location for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2607,7 +2607,7 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Lists discovery configurations.</summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value is as follows:
-                /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                /// `projects/{project_id}/locations/{location_id}` The following example `parent` string specifies a
                 /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -2628,9 +2628,9 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value is as follows:
-                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// `projects/{project_id}/locations/{location_id}` The following example `parent` string specifies
+                    /// a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                    /// location for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2790,10 +2790,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2818,8 +2818,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
                     /// [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -3233,10 +3233,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -3264,12 +3264,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3431,10 +3431,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -3460,12 +3460,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3650,10 +3650,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
                 {
@@ -3679,8 +3679,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
                     /// [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -3840,10 +3840,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3867,8 +3867,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
                     /// [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -4285,10 +4285,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -4315,12 +4315,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4482,10 +4482,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4509,8 +4509,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -4943,11 +4943,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
@@ -4973,10 +4973,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -5137,9 +5137,9 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` The following example `parent` string specifies
+            /// a parent project with the identifier `example-project`, and specifies the `europe-west3` location for
             /// processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -5164,10 +5164,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5376,8 +5376,8 @@ namespace Google.Apis.DLP.v2
             /// <param name="parent">
             /// Parent resource name. The format of this value varies depending on whether you have [specified a
             /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+            /// location specified (defaults to global): `projects/{project_id}` The following example `parent` string
             /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
             /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
@@ -5406,9 +5406,9 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
                 /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope,
-                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
-                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
+                /// `parent` string specifies a parent project with the identifier `example-project`, and specifies the
                 /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -5456,8 +5456,8 @@ namespace Google.Apis.DLP.v2
             /// <param name="parent">
             /// Parent resource name. The format of this value varies depending on whether you have [specified a
             /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+            /// location specified (defaults to global): `projects/{project_id}` The following example `parent` string
             /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
             /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
@@ -5487,9 +5487,9 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
                 /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope,
-                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
-                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
+                /// `parent` string specifies a parent project with the identifier `example-project`, and specifies the
                 /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -5534,8 +5534,8 @@ namespace Google.Apis.DLP.v2
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
             /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+            /// location specified (defaults to global): `projects/{project_id}` The following example `parent` string
             /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
             /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
@@ -5563,10 +5563,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5629,11 +5629,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
@@ -5660,10 +5660,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -5826,11 +5826,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -5855,10 +5855,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -6108,8 +6108,8 @@ namespace Google.Apis.DLP.v2
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
             /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+            /// location specified (defaults to global): `projects/{project_id}` The following example `parent` string
             /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
             /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
@@ -6139,10 +6139,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6293,8 +6293,8 @@ namespace Google.Apis.DLP.v2
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
             /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+            /// location specified (defaults to global): `projects/{project_id}` The following example `parent` string
             /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
             /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
@@ -6321,10 +6321,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6491,8 +6491,8 @@ namespace Google.Apis.DLP.v2
             /// <param name="parent">
             /// Parent resource name. The format of this value varies depending on whether you have [specified a
             /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+            /// location specified (defaults to global): `projects/{project_id}` The following example `parent` string
             /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
             /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
@@ -6522,9 +6522,9 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
                 /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope,
-                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
-                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
+                /// `parent` string specifies a parent project with the identifier `example-project`, and specifies the
                 /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -6587,11 +6587,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
@@ -6617,10 +6617,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -6781,11 +6781,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -6810,10 +6810,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -7062,8 +7062,8 @@ namespace Google.Apis.DLP.v2
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
             /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+            /// location specified (defaults to global): `projects/{project_id}` The following example `parent` string
             /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
             /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
@@ -7091,10 +7091,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -7250,8 +7250,8 @@ namespace Google.Apis.DLP.v2
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
             /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+            /// location specified (defaults to global): `projects/{project_id}` The following example `parent` string
             /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
             /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
@@ -7277,10 +7277,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -7731,8 +7731,8 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization): + Projects scope: `projects/`PROJECT_ID`/locations/`LOCATION_ID +
-                /// Organizations scope: `organizations/`ORG_ID`/locations/`LOCATION_ID
+                /// request (project or organization): + Projects scope: `projects/{project_id}/locations/{location_id}`
+                /// + Organizations scope: `organizations/{org_id}/locations/{location_id}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateConnectionRequest body, string parent)
                 {
@@ -7753,8 +7753,8 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization): + Projects scope:
-                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Organizations scope:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID
+                    /// `projects/{project_id}/locations/{location_id}` + Organizations scope:
+                    /// `organizations/{org_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8164,9 +8164,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="parent">
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
                 /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope,
-                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
-                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
+                /// `parent` string specifies a parent project with the identifier `example-project`, and specifies the
                 /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
@@ -8196,8 +8196,8 @@ namespace Google.Apis.DLP.v2
                     /// Parent resource name. The format of this value varies depending on whether you have [specified a
                     /// processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -8247,9 +8247,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="parent">
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
                 /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope,
-                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
-                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
+                /// `parent` string specifies a parent project with the identifier `example-project`, and specifies the
                 /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
@@ -8279,8 +8279,8 @@ namespace Google.Apis.DLP.v2
                     /// Parent resource name. The format of this value varies depending on whether you have [specified a
                     /// processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -8328,10 +8328,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent)
                 {
@@ -8357,8 +8357,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
                     /// [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -8424,10 +8424,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -8455,12 +8455,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -8622,10 +8622,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -8651,12 +8651,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -8835,9 +8835,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization): + Projects scope: `projects/`PROJECT_ID`/locations/`LOCATION_ID +
-                /// Organizations scope: `organizations/`ORG_ID`/locations/`LOCATION_ID The following example `parent`
-                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// request (project or organization): + Projects scope: `projects/{project_id}/locations/{location_id}`
+                /// + Organizations scope: `organizations/{org_id}/locations/{location_id}` The following example
+                /// `parent` string specifies a parent project with the identifier `example-project`, and specifies the
                 /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDiscoveryConfigRequest body, string parent)
@@ -8859,10 +8859,10 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization): + Projects scope:
-                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Organizations scope:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// `projects/{project_id}/locations/{location_id}` + Organizations scope:
+                    /// `organizations/{org_id}/locations/{location_id}` The following example `parent` string specifies
+                    /// a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                    /// location for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -9002,7 +9002,7 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Lists discovery configurations.</summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value is as follows:
-                /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
+                /// `projects/{project_id}/locations/{location_id}` The following example `parent` string specifies a
                 /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -9023,9 +9023,9 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value is as follows:
-                    /// `projects/`PROJECT_ID`/locations/`LOCATION_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// `projects/{project_id}/locations/{location_id}` The following example `parent` string specifies
+                    /// a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                    /// location for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -9252,10 +9252,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent)
                 {
@@ -9284,8 +9284,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
                     /// [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -9564,10 +9564,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -9592,8 +9592,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
                     /// [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -10009,9 +10009,9 @@ namespace Google.Apis.DLP.v2
                 /// <param name="parent">
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
                 /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope,
-                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
-                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
+                /// `parent` string specifies a parent project with the identifier `example-project`, and specifies the
                 /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
@@ -10041,8 +10041,8 @@ namespace Google.Apis.DLP.v2
                     /// Parent resource name. The format of this value varies depending on whether you have [specified a
                     /// processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -10108,10 +10108,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -10139,12 +10139,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -10306,10 +10306,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -10335,12 +10335,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -10590,10 +10590,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
                 {
@@ -10619,8 +10619,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
                     /// [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -10845,10 +10845,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
                 /// [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -10872,8 +10872,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
                     /// [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -11290,10 +11290,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
@@ -11320,12 +11320,12 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
-                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
-                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
-                    /// string specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` + Organizations
+                    /// scope, location specified: `organizations/{org_id}/locations/{location_id}` + Organizations
+                    /// scope, no location specified (defaults to global): `organizations/{org_id}` The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -11487,10 +11487,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -11514,8 +11514,8 @@ namespace Google.Apis.DLP.v2
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
-                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects
-                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// Projects scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects
+                    /// scope, no location specified (defaults to global): `projects/{project_id}` The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
                     /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
@@ -11948,11 +11948,11 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` + Organizations scope, location specified:
+            /// `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location specified (defaults
+            /// to global): `organizations/{org_id}` The following example `parent` string specifies a parent project
+            /// with the identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
@@ -11978,10 +11978,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
-                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
-                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` + Organizations scope, location
+                /// specified: `organizations/{org_id}/locations/{location_id}` + Organizations scope, no location
+                /// specified (defaults to global): `organizations/{org_id}` The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
                 /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
@@ -12142,9 +12142,9 @@ namespace Google.Apis.DLP.v2
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-            /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+            /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no location
+            /// specified (defaults to global): `projects/{project_id}` The following example `parent` string specifies
+            /// a parent project with the identifier `example-project`, and specifies the `europe-west3` location for
             /// processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -12169,10 +12169,10 @@ namespace Google.Apis.DLP.v2
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
-                /// scope, location specified: `projects/`PROJECT_ID`/locations/` LOCATION_ID + Projects scope, no
-                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// scope, location specified: `projects/{project_id}/locations/{location_id}` + Projects scope, no
+                /// location specified (defaults to global): `projects/{project_id}` The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -13874,8 +13874,7 @@ namespace Google.Apis.DLP.v2.Data
         /// happens before/after encryption/decryption. Each character listed must appear only once. Number of
         /// characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not
         /// matter. The full list of allowed characters is:
-        /// 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-        /// ~`!@#$%^&amp;amp;*()_-+={[}]|\:;"'&amp;lt;,&amp;gt;.?/
+        /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~`!@#$%^&amp;amp;*()_-+={[}]|\:;"'&amp;lt;,&amp;gt;.?/``
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAlphabet")]
         public virtual string CustomAlphabet { get; set; }
@@ -13986,6 +13985,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Publish a message into the Pub/Sub topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubSubNotification")]
         public virtual GooglePrivacyDlpV2PubSubNotification PubSubNotification { get; set; }
+
+        /// <summary>Tags the profiled resources with the specified tag values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagResources")]
+        public virtual GooglePrivacyDlpV2TagResources TagResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14956,6 +14959,13 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If
+        /// not set, changing the template will not cause a data profile to update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateModifiedCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence InspectTemplateModifiedCadence { get; set; }
+
+        /// <summary>
         /// Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field,
         /// profiles are refreshed at this frequency regardless of whether the underlying tables have changed. Defaults
         /// to never.
@@ -15816,11 +15826,17 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileClusterType")]
         public virtual GooglePrivacyDlpV2FileClusterType FileClusterType { get; set; }
 
-        /// <summary>A sample of file types scanned in this cluster. Empty if no files were scanned.</summary>
+        /// <summary>
+        /// A sample of file types scanned in this cluster. Empty if no files were scanned. File extensions can be
+        /// derived from the file name or the file content.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileExtensionsScanned")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileExtensionInfo> FileExtensionsScanned { get; set; }
 
-        /// <summary>A sample of file types seen in this cluster. Empty if no files were seen.</summary>
+        /// <summary>
+        /// A sample of file types seen in this cluster. Empty if no files were seen. File extensions can be derived
+        /// from the file name or the file content.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileExtensionsSeen")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileExtensionInfo> FileExtensionsSeen { get; set; }
 
@@ -19776,6 +19792,72 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The tag to attach to profiles matching the condition. At most one `TagCondition` can be specified per
+    /// sensitivity level.
+    /// </summary>
+    public class GooglePrivacyDlpV2TagCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Conditions attaching the tag to a resource on its profile having this sensitivity score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>The tag value to attach to resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual GooglePrivacyDlpV2TagValue Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// If set, attaches the [tags] (https://cloud.google.com/resource-manager/docs/tags/tags-overview) provided to
+    /// profiled resources. Tags support [access control](https://cloud.google.com/iam/docs/tags-access-control). You
+    /// can conditionally grant or deny access to a resource based on whether the resource has a specific tag.
+    /// </summary>
+    public class GooglePrivacyDlpV2TagResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in
+        /// conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all
+        /// principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the
+        /// data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of
+        /// a table data profile also reduces the data risk of the constituent column data profiles.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowerDataRiskToLow")]
+        public virtual System.Nullable<bool> LowerDataRiskToLow { get; set; }
+
+        /// <summary>
+        /// The profile generations for which the tag should be attached to resources. If you attach a tag to only new
+        /// profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By
+        /// default, this field includes only new profiles. To include both new and updated profiles for tagging, this
+        /// field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileGenerationsToTag")]
+        public virtual System.Collections.Generic.IList<string> ProfileGenerationsToTag { get; set; }
+
+        /// <summary>The tags to associate with different conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagConditions")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TagCondition> TagConditions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A value of a tag.</summary>
+    public class GooglePrivacyDlpV2TagValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The namespaced name for the tag value to attach to resources. Must be in the format
+        /// `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespacedValue")]
+        public virtual string NamespacedValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A column with a semantic tag attached.</summary>
     public class GooglePrivacyDlpV2TaggedField : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19943,17 +20025,17 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore
-        /// and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given
+        /// and BigQuery. **For BigQuery** If this value is not specified and the table was modified between the given
         /// start and end times, the entire table will be scanned. If this value is specified, then rows are filtered
         /// based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are
         /// skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and
         /// `DATETIME`. If your BigQuery table is [partitioned at ingestion
         /// time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the
         /// following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are
-        /// case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is
-        /// specified, then entities are filtered based on the given start and end times. If an entity does not contain
-        /// the provided timestamp property or contains empty or invalid values, then it is included. Valid data types
-        /// of the provided timestamp property are: `TIMESTAMP`. See the [known
+        /// case sensitive. - `_PARTITIONTIME` - `_PARTITIONDATE` - `_PARTITION_LOAD_TIME` **For Datastore** If this
+        /// value is specified, then entities are filtered based on the given start and end times. If an entity does not
+        /// contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data
+        /// types of the provided timestamp property are: `TIMESTAMP`. See the [known
         /// issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this
         /// operation.
         /// </summary>
