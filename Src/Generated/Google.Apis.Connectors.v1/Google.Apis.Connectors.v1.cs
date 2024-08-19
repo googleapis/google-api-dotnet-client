@@ -5491,6 +5491,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Whether the auth config is the default one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5838,6 +5842,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventingRuntimeData")]
         public virtual EventingRuntimeData EventingRuntimeData { get; set; }
 
+        /// <summary>Output only. The name of the Hostname of the Service Directory service with TLS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
         /// <summary>
         /// Output only. GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
         /// </summary>
@@ -5901,6 +5909,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Suspended indicates if a user has suspended a connection or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
         public virtual System.Nullable<bool> Suspended { get; set; }
+
+        /// <summary>Output only. The name of the Service Directory service with TLS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsServiceDirectory")]
+        public virtual string TlsServiceDirectory { get; set; }
 
         private string _updateTimeRaw;
 
@@ -6326,6 +6338,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Eventing configuration supported by the Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventingConfigTemplate")]
         public virtual EventingConfigTemplate EventingConfigTemplate { get; set; }
+
+        /// <summary>Output only. Is async operations supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAsyncOperationsSupported")]
+        public virtual System.Nullable<bool> IsAsyncOperationsSupported { get; set; }
 
         /// <summary>Output only. Is custom actions supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCustomActionsSupported")]
