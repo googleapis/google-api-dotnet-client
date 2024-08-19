@@ -19778,17 +19778,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for CreateDocument operation.</summary>
-    public class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
     public class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19817,17 +19806,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>The type of the connected data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
         public virtual string DataStoreType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for DeleteDocument operation.</summary>
-    public class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20437,39 +20415,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
-    public class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Output only. The current state of this operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for ImportDocuments operation.</summary>
-    public class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for Documents.ImportDocuments.</summary>
-    public class GoogleCloudDialogflowCxV3ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Includes details about skipped documents or any other warnings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21098,17 +21043,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for ReloadDocument operation.</summary>
-    public class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Represents a response message that can be returned by a conversational agent. Response messages are also used
     /// for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present,
@@ -21367,7 +21301,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
         public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
 
-        /// <summary>Required. A collection of text responses.</summary>
+        /// <summary>
+        /// Required. A collection of text response variants. If multiple variants are defined, only one text response
+        /// variant is returned at runtime.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
 
@@ -21808,17 +21745,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
         public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for UpdateDocument operation.</summary>
-    public class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22560,17 +22486,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for CreateDocument operation.</summary>
-    public class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
     public class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22599,17 +22514,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>The type of the connected data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
         public virtual string DataStoreType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for DeleteDocument operation.</summary>
-    public class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23219,39 +23123,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
-    public class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Output only. The current state of this operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for ImportDocuments operation.</summary>
-    public class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for Documents.ImportDocuments.</summary>
-    public class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Includes details about skipped documents or any other warnings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23884,17 +23755,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for ReloadDocument operation.</summary>
-    public class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Represents a response message that can be returned by a conversational agent. Response messages are also used
     /// for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present,
@@ -24153,7 +24013,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
         public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
 
-        /// <summary>Required. A collection of text responses.</summary>
+        /// <summary>
+        /// Required. A collection of text response variants. If multiple variants are defined, only one text response
+        /// variant is returned at runtime.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
 
@@ -24651,17 +24514,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
         public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for UpdateDocument operation.</summary>
-    public class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33441,7 +33293,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The text response message.</summary>
     public class GoogleCloudDialogflowV2beta1ResponseMessageText : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A collection of text responses.</summary>
+        /// <summary>
+        /// A collection of text response variants. If multiple variants are defined, only one text response variant is
+        /// returned at runtime.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
 
@@ -33567,7 +33422,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual GoogleCloudDialogflowV2beta1TextInput Query { get; set; }
 
         /// <summary>
-        /// Optional. The ID of the search session. The session_id can be combined with Dialogflow V3 Agent ID retrieved
+        /// Required. The ID of the search session. The session_id can be combined with Dialogflow V3 Agent ID retrieved
         /// from conversation profile or on its own to identify a search session. The search history of the same session
         /// will impact the search result. It's up to the API caller to choose an appropriate `Session ID`. It can be a
         /// random number or some type of session identifiers (preferably hashed). The length must not exceed 36
@@ -34934,72 +34789,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for CreateDocument operation.</summary>
-    public class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for DeleteDocument operation.</summary>
-    public class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
-    public class GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Output only. The current state of this operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for ImportDocuments operation.</summary>
-    public class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for Documents.ImportDocuments.</summary>
-    public class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Includes details about skipped documents or any other warnings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for ReloadDocument operation.</summary>
-    public class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Collection of all signals that were extracted for a single turn of the conversation.</summary>
     public class GoogleCloudDialogflowV3alpha1TurnSignals : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -35052,17 +34841,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
         public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for UpdateDocument operation.</summary>
-    public class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generic information of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
