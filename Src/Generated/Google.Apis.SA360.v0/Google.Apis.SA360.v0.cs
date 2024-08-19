@@ -665,6 +665,17 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A text asset used inside an ad.</summary>
+    public class GoogleAdsSearchads360V0CommonAdTextAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Asset text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An age range criterion.</summary>
     public class GoogleAdsSearchads360V0CommonAgeRangeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1177,6 +1188,10 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageCpm")]
         public virtual System.Nullable<double> AverageCpm { get; set; }
+
+        /// <summary>The average quality score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageQualityScore")]
+        public virtual System.Nullable<double> AverageQualityScore { get; set; }
 
         /// <summary>The number of clicks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clicks")]
@@ -1885,6 +1900,18 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adTrackingId")]
         public virtual System.Nullable<long> AdTrackingId { get; set; }
 
+        /// <summary>
+        /// List of text assets for descriptions. When the ad serves the descriptions will be selected from this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonAdTextAsset> Descriptions { get; set; }
+
+        /// <summary>
+        /// List of text assets for headlines. When the ad serves the headlines will be selected from this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonAdTextAsset> Headlines { get; set; }
+
         /// <summary>Text appended to the auto-generated visible URL with a delimiter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path1")]
         public virtual string Path1 { get; set; }
@@ -1973,6 +2000,26 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Device to which metrics apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual string Device { get; set; }
+
+        /// <summary>Resource name of the geo target constant that represents a city.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargetCity")]
+        public virtual string GeoTargetCity { get; set; }
+
+        /// <summary>Resource name of the geo target constant that represents a country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargetCountry")]
+        public virtual string GeoTargetCountry { get; set; }
+
+        /// <summary>Resource name of the geo target constant that represents a metro.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargetMetro")]
+        public virtual string GeoTargetMetro { get; set; }
+
+        /// <summary>Resource name of the geo target constant that represents a region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargetRegion")]
+        public virtual string GeoTargetRegion { get; set; }
+
+        /// <summary>Hour of day as a number between 0 and 23, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hour")]
+        public virtual System.Nullable<int> Hour { get; set; }
 
         /// <summary>Keyword criterion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
@@ -2329,9 +2376,9 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<long> CpcBidCeilingMicros { get; set; }
 
         /// <summary>
-        /// The spend target under which to maximize clicks. A TargetSpend bidder will attempt to spend the smaller of
-        /// this value or the natural throttling spend amount. If not specified, the budget is used as the spend target.
-        /// This field is deprecated and should no longer be used. See
+        /// Deprecated: The spend target under which to maximize clicks. A TargetSpend bidder will attempt to spend the
+        /// smaller of this value or the natural throttling spend amount. If not specified, the budget is used as the
+        /// spend target. This field is deprecated and should no longer be used. See
         /// https://ads-developers.googleblog.com/2020/05/reminder-about-sunset-creation-of.html for details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSpendMicros")]
@@ -2370,7 +2417,7 @@ namespace Google.Apis.SA360.v0.Data
     public class GoogleAdsSearchads360V0CommonTextLabel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Background color of the label in RGB format. This string must match the regular expression
+        /// Background color of the label in HEX format. This string must match the regular expression
         /// '^\#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$'. Note: The background color may not be visible for manager accounts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
@@ -2809,7 +2856,7 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>SearchAds360-specific error.</summary>
+    /// <summary>Search Ads 360-specific error.</summary>
     public class GoogleAdsSearchads360V0ErrorsSearchAds360Error : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3235,8 +3282,8 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string CreationTime { get; set; }
 
         /// <summary>
-        /// Output only. ID of the ad in the external engine account. This field is for SearchAds 360 account only, for
-        /// example, Yahoo Japan, Microsoft, Baidu etc. For non-SearchAds 360 entity, use "ad_group_ad.ad.id" instead.
+        /// Output only. ID of the ad in the external engine account. This field is for Search Ads 360 account only, for
+        /// example, Yahoo Japan, Microsoft, Baidu etc. For non-Search Ads 360 entity, use "ad_group_ad.ad.id" instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engineId")]
         public virtual string EngineId { get; set; }
@@ -4871,8 +4918,8 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>
-        /// Output only. The SearchAds360 inventory account ID containing the product that was clicked on. SearchAds360
-        /// generates this ID when you link an inventory account in SearchAds360.
+        /// Output only. The Search Ads 360 inventory account ID containing the product that was clicked on. Search Ads
+        /// 360 generates this ID when you link an inventory account in Search Ads 360.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<long> MerchantId { get; set; }
@@ -4917,7 +4964,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Output only. The SearchAds360 visit ID that the conversion is attributed to.</summary>
+        /// <summary>Output only. The Search Ads 360 visit ID that the conversion is attributed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitId")]
         public virtual System.Nullable<long> VisitId { get; set; }
 
@@ -5502,6 +5549,13 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when the CustomerManagerLink was created. The timestamp is in the customer's time
+        /// zone and in "yyyy-MM-dd HH:mm:ss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; }
 
         /// <summary>Status of the link between the customer and the manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
