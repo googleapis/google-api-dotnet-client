@@ -1647,7 +1647,6 @@ namespace Google.Apis.VMMigrationService.v1
                 {
                     this.service = service;
                     DatacenterConnectors = new DatacenterConnectorsResource(service);
-                    DiskMigrationJobs = new DiskMigrationJobsResource(service);
                     MigratingVms = new MigratingVmsResource(service);
                     UtilizationReports = new UtilizationReportsResource(service);
                 }
@@ -2030,130 +2029,6 @@ namespace Google.Apis.VMMigrationService.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/datacenterConnectors/[^/]+$",
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Gets the DiskMigrationJobs resource.</summary>
-                public virtual DiskMigrationJobsResource DiskMigrationJobs { get; }
-
-                /// <summary>The "diskMigrationJobs" collection of methods.</summary>
-                public class DiskMigrationJobsResource
-                {
-                    private const string Resource = "diskMigrationJobs";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public DiskMigrationJobsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Cancels the disk migration job.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The name of the DiskMigrationJob.</param>
-                    public virtual CancelRequest Cancel(Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest body, string name)
-                    {
-                        return new CancelRequest(this.service, body, name);
-                    }
-
-                    /// <summary>Cancels the disk migration job.</summary>
-                    public class CancelRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Cancel request.</summary>
-                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The name of the DiskMigrationJob.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "cancel";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:cancel";
-
-                        /// <summary>Initializes Cancel parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Runs the disk migration job.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The name of the DiskMigrationJob.</param>
-                    public virtual RunRequest Run(Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest body, string name)
-                    {
-                        return new RunRequest(this.service, body, name);
-                    }
-
-                    /// <summary>Runs the disk migration job.</summary>
-                    public class RunRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Run request.</summary>
-                        public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. The name of the DiskMigrationJob.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "run";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:run";
-
-                        /// <summary>Initializes Run parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
                             });
                         }
                     }
@@ -5265,12 +5140,6 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> MigrationResourcesUserTags { get; set; }
 
         /// <summary>
-        /// Output only. Information about the network coniguration of the source. Only gatherred upon request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkInsights")]
-        public virtual NetworkInsights NetworkInsights { get; set; }
-
-        /// <summary>
         /// Output only. The source's public IP. All communication initiated by this source will originate from this IP.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIp")]
@@ -5592,13 +5461,6 @@ namespace Google.Apis.VMMigrationService.v1.Data
 
     /// <summary>Request message for 'CancelCutoverJob' request.</summary>
     public class CancelCutoverJobRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for 'CancelDiskMigrationJob' request.</summary>
-    public class CancelDiskMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5947,6 +5809,14 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }
 
+        /// <summary>
+        /// Optional. By default the virtual machine will keep its existing boot option. Setting this property will
+        /// trigger an internal process which will convert the virtual machine from using the existing boot option to
+        /// another.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootConversion")]
+        public virtual string BootConversion { get; set; }
+
         /// <summary>Output only. The VM Boot Option, as set in the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
         public virtual string BootOption { get; set; }
@@ -5958,6 +5828,20 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The disk type to use in the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Defines whether the instance has integrity monitoring enabled. This can be set to true only if the
+        /// VM boot option is EFI, and vTPM is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>
+        /// Optional. Defines whether the instance has vTPM enabled. This can be set to true only if the VM boot option
+        /// is EFI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
 
         /// <summary>Optional. Immutable. The encryption to apply to the VM disks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
@@ -6038,6 +5922,14 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }
 
+        /// <summary>
+        /// Optional. By default the virtual machine will keep its existing boot option. Setting this property will
+        /// trigger an internal process which will convert the virtual machine from using the existing boot option to
+        /// another.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootConversion")]
+        public virtual string BootConversion { get; set; }
+
         /// <summary>The VM Boot Option, as set in the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
         public virtual string BootOption { get; set; }
@@ -6049,6 +5941,14 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The disk type to use in the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
+
+        /// <summary>Optional. Defines whether the instance has integrity monitoring enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>Optional. Defines whether the instance has vTPM enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
 
         /// <summary>Optional. The encryption to apply to the VM disks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
@@ -6821,6 +6721,14 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>Optional. Compute instance scheduling information (if empty default is used).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
         public virtual ComputeScheduling ComputeScheduling { get; set; }
+
+        /// <summary>Optional. Defines whether the instance has integrity monitoring enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>Optional. Defines whether the instance has vTPM enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
 
         /// <summary>Optional. The encryption to apply to the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
@@ -8202,23 +8110,6 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about the network coniguration of the source.</summary>
-    public class NetworkInsights : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The gathered network configuration of the source. Presented in json format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceNetworkConfig")]
-        public virtual string SourceNetworkConfig { get; set; }
-
-        /// <summary>
-        /// Output only. The gathered network configuration of the source. Presented in terraform format.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceNetworkTerraform")]
-        public virtual string SourceNetworkTerraform { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>NetworkInterface represents a NIC of a VM.</summary>
     public class NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8238,8 +8129,8 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Optional. The networking tier used for configuring network access configuration. If left empty, will default
-        /// to PREMIUM.
+        /// Optional. The networking tier used for optimizing connectivity between instances and systems on the
+        /// internet. Applies only for external ephemeral IP addresses. If left empty, will default to PREMIUM.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; }
@@ -8708,13 +8599,6 @@ namespace Google.Apis.VMMigrationService.v1.Data
 
     /// <summary>Request message for 'ResumeMigration' request.</summary>
     public class ResumeMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for 'RunDiskMigrationJobRequest' request.</summary>
-    public class RunDiskMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
