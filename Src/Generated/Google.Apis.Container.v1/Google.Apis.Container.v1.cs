@@ -7200,6 +7200,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
+        /// <summary>Secret CSI driver configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerConfig")]
+        public virtual SecretManagerConfig SecretManagerConfig { get; set; }
+
         /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
@@ -7559,6 +7563,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired configuration for exporting resource usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; }
+
+        /// <summary>Enable/Disable Secret Manager Config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredSecretManagerConfig")]
+        public virtual SecretManagerConfig DesiredSecretManagerConfig { get; set; }
 
         /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredSecurityPostureConfig")]
@@ -9254,6 +9262,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spot")]
         public virtual System.Nullable<bool> Spot { get; set; }
 
+        /// <summary>List of Storage Pools where boot disks are provisioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePools")]
+        public virtual System.Collections.Generic.IList<string> StoragePools { get; set; }
+
         /// <summary>
         /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for
         /// network firewalls and are specified by the client during cluster or node pool creation. Each tag within the
@@ -10411,6 +10423,17 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class SecondaryBootDiskUpdateStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SecretManagerConfig is config for secret manager enablement.</summary>
+    public class SecretManagerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable/Disable Secret Manager Config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11602,6 +11625,13 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
         public virtual ResourceManagerTags ResourceManagerTags { get; set; }
+
+        /// <summary>
+        /// List of Storage Pools where boot disks are provisioned. Existing Storage Pools will be replaced with
+        /// storage-pools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePools")]
+        public virtual System.Collections.Generic.IList<string> StoragePools { get; set; }
 
         /// <summary>
         /// The desired network tags to be applied to all nodes in the node pool. If this field is not present, the tags
