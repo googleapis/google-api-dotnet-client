@@ -5789,6 +5789,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDocument")]
         public virtual GoogleCloudDocumentaiV1GcsDocument GcsDocument { get; set; }
 
+        /// <summary>Optional. Option to remove images from the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagelessMode")]
+        public virtual System.Nullable<bool> ImagelessMode { get; set; }
+
         /// <summary>An inline document proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineDocument")]
         public virtual GoogleCloudDocumentaiV1Document InlineDocument { get; set; }
