@@ -4150,7 +4150,10 @@ namespace Google.Apis.Dataflow.v1b3
 
                 /// <summary>
                 /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
-                /// string values using the API.
+                /// string values using the API. To create a job, we recommend using
+                /// `projects.locations.templates.create` with a [regional endpoint]
+                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
@@ -4167,7 +4170,10 @@ namespace Google.Apis.Dataflow.v1b3
 
                 /// <summary>
                 /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
-                /// string values using the API.
+                /// string values using the API. To create a job, we recommend using
+                /// `projects.locations.templates.create` with a [regional endpoint]
+                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`.
                 /// </summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
@@ -4229,7 +4235,12 @@ namespace Google.Apis.Dataflow.v1b3
                     }
                 }
 
-                /// <summary>Get the template associated with a template.</summary>
+                /// <summary>
+                /// Get the template associated with a template. To get the template, we recommend using
+                /// `projects.locations.templates.get` with a [regional endpoint]
+                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get`
+                /// is not recommended, because only templates that are running in `us-central1` are retrieved.
+                /// </summary>
                 /// <param name="projectId">
                 /// Required. The ID of the Cloud Platform project that the job belongs to.
                 /// </param>
@@ -4242,7 +4253,12 @@ namespace Google.Apis.Dataflow.v1b3
                     return new GetRequest(this.service, projectId, location);
                 }
 
-                /// <summary>Get the template associated with a template.</summary>
+                /// <summary>
+                /// Get the template associated with a template. To get the template, we recommend using
+                /// `projects.locations.templates.get` with a [regional endpoint]
+                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get`
+                /// is not recommended, because only templates that are running in `us-central1` are retrieved.
+                /// </summary>
                 public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetTemplateResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4333,7 +4349,12 @@ namespace Google.Apis.Dataflow.v1b3
                     }
                 }
 
-                /// <summary>Launch a template.</summary>
+                /// <summary>
+                /// Launches a template. To launch a template, we recommend using `projects.locations.templates.launch`
+                /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+                /// Using `projects.templates.launch` is not recommended, because jobs launched from the template will
+                /// always start in `us-central1`.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. The ID of the Cloud Platform project that the job belongs to.
@@ -4347,7 +4368,12 @@ namespace Google.Apis.Dataflow.v1b3
                     return new LaunchRequest(this.service, body, projectId, location);
                 }
 
-                /// <summary>Launch a template.</summary>
+                /// <summary>
+                /// Launches a template. To launch a template, we recommend using `projects.locations.templates.launch`
+                /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+                /// Using `projects.templates.launch` is not recommended, because jobs launched from the template will
+                /// always start in `us-central1`.
+                /// </summary>
                 public class LaunchRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LaunchTemplateResponse>
                 {
                     /// <summary>Constructs a new Launch request.</summary>
@@ -4719,7 +4745,9 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>
             /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
-            /// string values using the API.
+            /// string values using the API. To create a job, we recommend using `projects.locations.templates.create`
+            /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
@@ -4730,7 +4758,9 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>
             /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
-            /// string values using the API.
+            /// string values using the API. To create a job, we recommend using `projects.locations.templates.create`
+            /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`.
             /// </summary>
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
@@ -4776,14 +4806,24 @@ namespace Google.Apis.Dataflow.v1b3
                 }
             }
 
-            /// <summary>Get the template associated with a template.</summary>
+            /// <summary>
+            /// Get the template associated with a template. To get the template, we recommend using
+            /// `projects.locations.templates.get` with a [regional endpoint]
+            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get` is
+            /// not recommended, because only templates that are running in `us-central1` are retrieved.
+            /// </summary>
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual GetRequest Get(string projectId)
             {
                 return new GetRequest(this.service, projectId);
             }
 
-            /// <summary>Get the template associated with a template.</summary>
+            /// <summary>
+            /// Get the template associated with a template. To get the template, we recommend using
+            /// `projects.locations.templates.get` with a [regional endpoint]
+            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get` is
+            /// not recommended, because only templates that are running in `us-central1` are retrieved.
+            /// </summary>
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetTemplateResponse>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -4871,7 +4911,12 @@ namespace Google.Apis.Dataflow.v1b3
                 }
             }
 
-            /// <summary>Launch a template.</summary>
+            /// <summary>
+            /// Launches a template. To launch a template, we recommend using `projects.locations.templates.launch` with
+            /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.templates.launch` is not recommended, because jobs launched from the template will always
+            /// start in `us-central1`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual LaunchRequest Launch(Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId)
@@ -4879,7 +4924,12 @@ namespace Google.Apis.Dataflow.v1b3
                 return new LaunchRequest(this.service, body, projectId);
             }
 
-            /// <summary>Launch a template.</summary>
+            /// <summary>
+            /// Launches a template. To launch a template, we recommend using `projects.locations.templates.launch` with
+            /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.templates.launch` is not recommended, because jobs launched from the template will always
+            /// start in `us-central1`.
+            /// </summary>
             public class LaunchRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LaunchTemplateResponse>
             {
                 /// <summary>Constructs a new Launch request.</summary>
@@ -7584,6 +7634,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>Optional. The project number of the project this worker belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
+
         /// <summary>The initial lease period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedLeaseDuration")]
         public virtual object RequestedLeaseDuration { get; set; }
@@ -8610,6 +8664,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
+
+        /// <summary>Optional. The project number of the project which owns the WorkItem's job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
 
         /// <summary>Untranslated bag-of-bytes WorkProgressUpdateRequest from UnifiedWorker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unifiedWorkerRequest")]
