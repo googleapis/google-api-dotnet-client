@@ -912,6 +912,126 @@ namespace Google.Apis.CloudAsset.v1
         }
 
         /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The name of the operation resource to be cancelled.</param>
+        public virtual CancelRequest Cancel(Google.Apis.CloudAsset.v1.Data.CancelOperationRequest body, string name)
+        {
+            return new CancelRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// </summary>
+        public class CancelRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.CancelOperationRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation resource to be cancelled.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudAsset.v1.Data.CancelOperationRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
+        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.
+        /// </summary>
+        /// <param name="name">The name of the operation resource to be deleted.</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
+        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.
+        /// </summary>
+        public class DeleteRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation resource to be deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result
         /// at intervals as recommended by the API service.
         /// </summary>
@@ -3459,6 +3579,20 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The enhanced metadata information for a resource.</summary>
+    public class AssetEnrichment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource owners for a resource. Note that this field only contains the members that have "roles/owner"
+        /// role in the resource's IAM Policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceOwners")]
+        public virtual ResourceOwners ResourceOwners { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Attached resource representation, which is defined by the corresponding service provider. It represents an
     /// attached resource's payload.
@@ -3699,6 +3833,13 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7203,6 +7344,17 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The resource owners information.</summary>
+    public class ResourceOwners : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of resource owners.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceOwners")]
+        public virtual System.Collections.Generic.IList<string> ResourceOwnersValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A result of Resource Search, containing information of a cloud resource.</summary>
     public class ResourceSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7308,6 +7460,10 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveTags")]
         public virtual System.Collections.Generic.IList<EffectiveTagDetails> EffectiveTags { get; set; }
+
+        /// <summary>Enrichments of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrichments")]
+        public virtual System.Collections.Generic.IList<AssetEnrichment> Enrichments { get; set; }
 
         /// <summary>
         /// The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available
