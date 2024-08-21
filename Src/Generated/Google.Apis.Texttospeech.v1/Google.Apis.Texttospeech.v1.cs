@@ -1167,10 +1167,7 @@ namespace Google.Apis.Texttospeech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
         public virtual AudioConfig AudioConfig { get; set; }
 
-        /// <summary>
-        /// Required. The Synthesizer requires either plain text or SSML as input. While Long Audio is in preview, SSML
-        /// is temporarily unsupported.
-        /// </summary>
+        /// <summary>Required. The Synthesizer requires either plain text or SSML as input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("input")]
         public virtual SynthesisInput Input { get; set; }
 
