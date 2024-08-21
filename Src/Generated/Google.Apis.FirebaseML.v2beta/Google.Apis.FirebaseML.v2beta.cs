@@ -842,7 +842,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The function response in JSON object format.</summary>
+        /// <summary>
+        /// Required. The function response in JSON object format. Use "output" key to specify function output and
+        /// "error" key to specify error details (if any). If "output" and "error" keys are not specified, then whole
+        /// "response" is treated as function output.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
@@ -946,6 +950,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Usage metadata about response(s).</summary>
     public class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Number of tokens in the cached part in the input (the cached content).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cachedContentTokenCount")]
+        public virtual System.Nullable<int> CachedContentTokenCount { get; set; }
+
         /// <summary>Number of tokens in the response(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
         public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
@@ -957,6 +965,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
 
+        /// <summary>Total token count for prompt and response candidates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
         public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
