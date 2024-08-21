@@ -2776,6 +2776,16 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual System.Collections.Generic.IList<SecondaryIpRangeSpec> SecondaryIpRangeSpecs { get; set; }
 
         /// <summary>
+        /// Optional. Skips validating if the requested_address is in use by SN VPC’s peering group. Compute Engine will
+        /// still perform this check and fail the request if the requested_address is in use. Note that Compute Engine
+        /// does not check for the existence of dynamic routes when performing this check. Caller of this API should
+        /// make sure that there are no dynamic routes overlapping with the requested_address/prefix_length IP address
+        /// range otherwise the created subnet could cause misrouting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipRequestedAddressValidation")]
+        public virtual System.Nullable<bool> SkipRequestedAddressValidation { get; set; }
+
+        /// <summary>
         /// Required. A name for the new subnet. For information about the naming requirements, see
         /// [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in the Compute API documentation.
         /// </summary>
