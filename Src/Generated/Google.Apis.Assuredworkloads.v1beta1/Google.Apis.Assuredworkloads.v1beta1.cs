@@ -2256,6 +2256,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions PartnerPermissions { get; set; }
 
         /// <summary>
+        /// Optional. Billing account necessary for purchasing services from Sovereign Partners. This field is required
+        /// for creating SIA/PSN partner workloads. The caller should have 'billing.resourceAssociations.create' IAM
+        /// permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerServicesBillingAccount")]
+        public virtual string PartnerServicesBillingAccount { get; set; }
+
+        /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
         /// folder resource which is a child of the Workload parent. If not specified all resources are created under
         /// the parent organization. Format: folders/{folder_id}
