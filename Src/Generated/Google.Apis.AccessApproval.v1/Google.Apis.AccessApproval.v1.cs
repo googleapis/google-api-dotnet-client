@@ -2309,6 +2309,10 @@ namespace Google.Apis.AccessApproval.v1.Data
             set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>This field contains the augmented information of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedAugmentedInfo")]
+        public virtual AugmentedInfo RequestedAugmentedInfo { get; set; }
+
         /// <summary>The requested access duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedDuration")]
         public virtual object RequestedDuration { get; set; }
@@ -2547,6 +2551,20 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// <summary>The signature for the ApprovalRequest and details on how it was signed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureInfo")]
         public virtual SignatureInfo SignatureInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This field contains the augmented information of the request.</summary>
+    public class AugmentedInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For command-line tools, the full command-line exactly as entered by the actor without adding any additional
+        /// characters (such as quotation marks).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual string Command { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
