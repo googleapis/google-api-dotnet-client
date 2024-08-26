@@ -1626,6 +1626,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>
+                            /// Required. The FHIR resources to match by. Format:
+                            /// projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("matcher.fhirMatcher.fhirResources", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> MatcherFhirMatcherFhirResources { get; set; }
+
                             /// <summary>The exact URIs to match by.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("matcher.urisMatcher.uris", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> MatcherUrisMatcherUris { get; set; }
@@ -1650,6 +1657,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+$",
+                                });
+                                RequestParameters.Add("matcher.fhirMatcher.fhirResources", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "matcher.fhirMatcher.fhirResources",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("matcher.urisMatcher.uris", new Google.Apis.Discovery.Parameter
                                 {
@@ -10625,6 +10640,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>
+                        /// Required. The FHIR resources to match by. Format:
+                        /// projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("matcher.fhirMatcher.fhirResources", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> MatcherFhirMatcherFhirResources { get; set; }
+
                         /// <summary>The exact URIs to match by.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("matcher.urisMatcher.uris", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> MatcherUrisMatcherUris { get; set; }
@@ -10649,6 +10671,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+$",
+                            });
+                            RequestParameters.Add("matcher.fhirMatcher.fhirResources", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "matcher.fhirMatcher.fhirResources",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("matcher.urisMatcher.uris", new Google.Apis.Discovery.Parameter
                             {
@@ -22392,6 +22422,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>The metadata of a Document.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The data ingestion source of the Document. Allowed values are: * `batch`: Data ingested via Batch API, e.g.,
+        /// ImportDocuments. * `streaming` Data ingested via Streaming API, e.g., FHIR streaming.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataIngestionSource")]
+        public virtual string DataIngestionSource { get; set; }
+
         private string _lastRefreshedTimeRaw;
 
         private object _lastRefreshedTime;
@@ -22446,6 +22483,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>The value of the matcher that was used to match the Document.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Required. Format:
+        /// projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirResource")]
+        public virtual string FhirResource { get; set; }
+
         /// <summary>If match by URI, the URI of the Document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -30071,7 +30115,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// A unique search token. This should be included in the UserEvent logs resulting from this search, which
-        /// enables accurate attribution of search model performance.
+        /// enables accurate attribution of search model performance. This also helps to identify a request during the
+        /// customer support scenarios.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionToken")]
         public virtual string AttributionToken { get; set; }
@@ -30359,6 +30404,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Name of the numerical field as defined in the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
         public virtual string FieldName { get; set; }
+
+        /// <summary>Identifies the keywords within the search query that match a filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySegment")]
+        public virtual string QuerySegment { get; set; }
 
         /// <summary>The value specified in the numerical constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
