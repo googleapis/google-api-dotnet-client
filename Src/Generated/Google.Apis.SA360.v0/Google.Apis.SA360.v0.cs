@@ -3332,6 +3332,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
+        /// <summary>Output only. The ID of the Customer which owns the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
+
         /// <summary>
         /// Immutable. The resource name of the ad group ad label. Ad group ad label resource names have the form:
         /// `customers/{customer_id}/adGroupAdLabels/{ad_group_id}~{ad_id}~{label_id}`
@@ -3591,6 +3595,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
+        /// <summary>Output only. The ID of the Customer which owns the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
+
         /// <summary>
         /// Immutable. The resource name of the ad group criterion label. Ad group criterion label resource names have
         /// the form: `customers/{customer_id}/adGroupCriterionLabels/{ad_group_id}~{criterion_id}~{label_id}`
@@ -3640,6 +3648,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Immutable. The label assigned to the ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
+
+        /// <summary>Output only. The ID of the Customer which owns the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the ad group label. Ad group label resource names have the form:
@@ -4696,6 +4708,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
+        /// <summary>Output only. The ID of the Customer which owns the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
+
         /// <summary>
         /// Immutable. Name of the resource. Campaign label resource names have the form:
         /// `customers/{customer_id}/campaignLabels/{campaign_id}~{label_id}`
@@ -5303,6 +5319,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Output only. True when the custom column is referring to one or more metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencesMetrics")]
         public virtual System.Nullable<bool> ReferencesMetrics { get; set; }
+
+        /// <summary>Output only. How the result value of the custom column should be interpreted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderType")]
+        public virtual string RenderType { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the custom column. Custom column resource names have the form:
