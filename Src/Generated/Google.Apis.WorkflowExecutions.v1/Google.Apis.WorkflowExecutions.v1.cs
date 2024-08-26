@@ -482,6 +482,29 @@ namespace Google.Apis.WorkflowExecutions.v1
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
+                            /// <summary>Deprecated field.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>Deprecated field.</summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>The default/unset value.</summary>
+                                [Google.Apis.Util.StringValueAttribute("EXECUTION_ENTRY_VIEW_UNSPECIFIED")]
+                                EXECUTIONENTRYVIEWUNSPECIFIED = 0,
+
+                                /// <summary>
+                                /// Include basic information in the step entries. All fields in StepEntry are returned
+                                /// except for variable_data.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("EXECUTION_ENTRY_VIEW_BASIC")]
+                                EXECUTIONENTRYVIEWBASIC = 1,
+
+                                /// <summary>Include all data.</summary>
+                                [Google.Apis.Util.StringValueAttribute("EXECUTION_ENTRY_VIEW_DETAILED")]
+                                EXECUTIONENTRYVIEWDETAILED = 2,
+                            }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
@@ -503,6 +526,14 @@ namespace Google.Apis.WorkflowExecutions.v1
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+/stepEntries/[^/]+$",
                                 });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
                         }
 
@@ -512,7 +543,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                         /// </summary>
                         /// <param name="parent">
                         /// Required. Name of the workflow execution to list entries for. Format:
-                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/
+                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -534,7 +565,7 @@ namespace Google.Apis.WorkflowExecutions.v1
 
                             /// <summary>
                             /// Required. Name of the workflow execution to list entries for. Format:
-                            /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/
+                            /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -542,9 +573,9 @@ namespace Google.Apis.WorkflowExecutions.v1
                             /// <summary>
                             /// Optional. Filters applied to the `[StepEntries.ListStepEntries]` results. The following
                             /// fields are supported for filtering: `entryId`, `createTime`, `updateTime`, `routine`,
-                            /// `step`, `stepType`, `state`. For details, see AIP-160. For example, if you are using the
-                            /// Google APIs Explorer: `state="SUCCEEDED"` or `createTime&amp;gt;"2023-08-01" AND
-                            /// state="FAILED"`
+                            /// `step`, `stepType`, `parent`, `state`. For details, see AIP-160. For example, if you are
+                            /// using the Google APIs Explorer: `state="SUCCEEDED"` or `createTime&amp;gt;"2023-08-01"
+                            /// AND state="FAILED"`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -579,6 +610,29 @@ namespace Google.Apis.WorkflowExecutions.v1
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("skip", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> Skip { get; set; }
+
+                            /// <summary>Deprecated field.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>Deprecated field.</summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>The default/unset value.</summary>
+                                [Google.Apis.Util.StringValueAttribute("EXECUTION_ENTRY_VIEW_UNSPECIFIED")]
+                                EXECUTIONENTRYVIEWUNSPECIFIED = 0,
+
+                                /// <summary>
+                                /// Include basic information in the step entries. All fields in StepEntry are returned
+                                /// except for variable_data.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("EXECUTION_ENTRY_VIEW_BASIC")]
+                                EXECUTIONENTRYVIEWBASIC = 1,
+
+                                /// <summary>Include all data.</summary>
+                                [Google.Apis.Util.StringValueAttribute("EXECUTION_ENTRY_VIEW_DETAILED")]
+                                EXECUTIONENTRYVIEWDETAILED = 2,
+                            }
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
@@ -636,6 +690,14 @@ namespace Google.Apis.WorkflowExecutions.v1
                                 RequestParameters.Add("skip", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "skip",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -767,6 +829,65 @@ namespace Google.Apis.WorkflowExecutions.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes all step entries for an execution.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Name of the execution for which step entries should be deleted. Format:
+                    /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                    /// </param>
+                    public virtual DeleteExecutionHistoryRequest DeleteExecutionHistory(Google.Apis.WorkflowExecutions.v1.Data.DeleteExecutionHistoryRequest body, string name)
+                    {
+                        return new DeleteExecutionHistoryRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Deletes all step entries for an execution.</summary>
+                    public class DeleteExecutionHistoryRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new DeleteExecutionHistory request.</summary>
+                        public DeleteExecutionHistoryRequest(Google.Apis.Services.IClientService service, Google.Apis.WorkflowExecutions.v1.Data.DeleteExecutionHistoryRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the execution for which step entries should be deleted. Format:
+                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.WorkflowExecutions.v1.Data.DeleteExecutionHistoryRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deleteExecutionHistory";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:deleteExecutionHistory";
+
+                        /// <summary>Initializes DeleteExecutionHistory parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+$",
                             });
                         }
                     }
@@ -1183,6 +1304,24 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
 
     /// <summary>Request for the CancelExecution method.</summary>
     public class CancelExecutionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the DeleteExecutionHistory method.</summary>
+    public class DeleteExecutionHistoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1822,6 +1961,10 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The VariableData associated to this step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableData")]
+        public virtual VariableData VariableData { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1879,6 +2022,17 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual string Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VariableData contains the variable data for this step.</summary>
+    public class VariableData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Variables that are associated with this step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variables")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Variables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
