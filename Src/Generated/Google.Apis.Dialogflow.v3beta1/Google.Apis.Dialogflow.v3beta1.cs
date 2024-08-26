@@ -14598,6 +14598,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("avatarUri")]
         public virtual string AvatarUri { get; set; }
 
+        /// <summary>Optional. Settings for custom client certificates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificateSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AgentClientCertificateSettings ClientCertificateSettings { get; set; }
+
         /// <summary>
         /// Required. Immutable. The default language of the agent as a language tag. See [Language
         /// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently
@@ -14717,6 +14721,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAnswerFeedback")]
         public virtual System.Nullable<bool> EnableAnswerFeedback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for custom client certificates.</summary>
+    public class GoogleCloudDialogflowCxV3beta1AgentClientCertificateSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should
+        /// be left unset if the private key is not encrypted. Format:
+        /// `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passphrase")]
+        public virtual string Passphrase { get; set; }
+
+        /// <summary>
+        /// Required. The name of the SecretManager secret version resource storing the private key encoded in PEM
+        /// format. Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
+        public virtual string PrivateKey { get; set; }
+
+        /// <summary>
+        /// Required. The ssl certificate encoded in PEM format. This string must include the begin header and end
+        /// footer lines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCertificate")]
+        public virtual string SslCertificate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
