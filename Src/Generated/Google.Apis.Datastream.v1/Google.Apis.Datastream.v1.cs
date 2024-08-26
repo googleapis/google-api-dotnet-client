@@ -2549,8 +2549,7 @@ namespace Google.Apis.Datastream.v1
                 }
 
                 /// <summary>
-                /// Use this method to start, resume or recover a stream with a non default CDC strategy. NOTE: This
-                /// feature is currently experimental.
+                /// Use this method to start, resume or recover a stream with a non default CDC strategy.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2563,8 +2562,7 @@ namespace Google.Apis.Datastream.v1
                 }
 
                 /// <summary>
-                /// Use this method to start, resume or recover a stream with a non default CDC strategy. NOTE: This
-                /// feature is currently experimental.
+                /// Use this method to start, resume or recover a stream with a non default CDC strategy.
                 /// </summary>
                 public class RunRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.Operation>
                 {
