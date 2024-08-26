@@ -5996,6 +5996,13 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Ports { get; set; }
 
         /// <summary>
+        /// Optional. The routing mode of the Gateway. This field is configurable only for gateways of type
+        /// SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingMode")]
+        public virtual string RoutingMode { get; set; }
+
+        /// <summary>
         /// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration
         /// for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to
         /// the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have
@@ -6349,7 +6356,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The specifications for retries.</summary>
+    /// <summary>
+    /// The specifications for retries. Specifies one or more conditions for which this retry rule applies. Valid values
+    /// are:
+    /// </summary>
     public class GrpcRouteRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
