@@ -7338,6 +7338,12 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual ProtectConfig ProtectConfig { get; set; }
 
         /// <summary>
+        /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rbacBindingConfig")]
+        public virtual RBACBindingConfig RbacBindingConfig { get; set; }
+
+        /// <summary>
         /// Release channel configuration. If left unspecified on cluster creation and a version is specified, the
         /// cluster is enrolled in the most mature release channel where the version is available (first checking
         /// STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is
@@ -7771,6 +7777,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredProtectConfig")]
         public virtual ProtectConfig DesiredProtectConfig { get; set; }
+
+        /// <summary>
+        /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredRbacBindingConfig")]
+        public virtual RBACBindingConfig DesiredRbacBindingConfig { get; set; }
 
         /// <summary>The desired release channel configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredReleaseChannel")]
@@ -9139,6 +9151,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>
         /// Output only. Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
+        /// Issued only if client_certificate_config is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
         public virtual string ClientCertificate { get; set; }
@@ -10614,6 +10627,28 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created.
+    /// </summary>
+    public class RBACBindingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInsecureBindingSystemAuthenticated")]
+        public virtual System.Nullable<bool> EnableInsecureBindingSystemAuthenticated { get; set; }
+
+        /// <summary>
+        /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjets system:anonymous or
+        /// system:unauthenticated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInsecureBindingSystemUnauthenticated")]
+        public virtual System.Nullable<bool> EnableInsecureBindingSystemUnauthenticated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
