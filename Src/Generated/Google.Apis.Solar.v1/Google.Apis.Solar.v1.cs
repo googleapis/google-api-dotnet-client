@@ -305,6 +305,34 @@ namespace Google.Apis.Solar.v1
                 InitParameters();
             }
 
+            /// <summary>Optional. Specifies the pre-GA features to enable.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="ExperimentsList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("experiments", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ExperimentsEnum> Experiments { get; set; }
+
+            /// <summary>Optional. Specifies the pre-GA features to enable.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Experiments"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("experiments", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ExperimentsEnum> ExperimentsList { get; set; }
+
+            /// <summary>Optional. Specifies the pre-GA features to enable.</summary>
+            public enum ExperimentsEnum
+            {
+                /// <summary>No experiments are specified.</summary>
+                [Google.Apis.Util.StringValueAttribute("EXPERIMENT_UNSPECIFIED")]
+                EXPERIMENTUNSPECIFIED = 0,
+
+                /// <summary>Expands the geographic region available for querying solar data.</summary>
+                [Google.Apis.Util.StringValueAttribute("EXPANDED_COVERAGE")]
+                EXPANDEDCOVERAGE = 1,
+            }
+
             /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
             [Google.Apis.Util.RequestParameterAttribute("location.latitude", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<double> LocationLatitude { get; set; }
@@ -346,6 +374,10 @@ namespace Google.Apis.Solar.v1
                 /// <summary>Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel.</summary>
                 [Google.Apis.Util.StringValueAttribute("LOW")]
                 LOW = 3,
+
+                /// <summary>Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel.</summary>
+                [Google.Apis.Util.StringValueAttribute("BASE")]
+                BASE__ = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -361,6 +393,14 @@ namespace Google.Apis.Solar.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("experiments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "experiments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("location.latitude", new Google.Apis.Discovery.Parameter
                 {
                     Name = "location.latitude",
@@ -433,6 +473,34 @@ namespace Google.Apis.Solar.v1
             [Google.Apis.Util.RequestParameterAttribute("exactQualityRequired", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ExactQualityRequired { get; set; }
 
+            /// <summary>Optional. Specifies the pre-GA experiments to enable.</summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="ExperimentsList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("experiments", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ExperimentsEnum> Experiments { get; set; }
+
+            /// <summary>Optional. Specifies the pre-GA experiments to enable.</summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="Experiments"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("experiments", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ExperimentsEnum> ExperimentsList { get; set; }
+
+            /// <summary>Optional. Specifies the pre-GA experiments to enable.</summary>
+            public enum ExperimentsEnum
+            {
+                /// <summary>No experiments are specified.</summary>
+                [Google.Apis.Util.StringValueAttribute("EXPERIMENT_UNSPECIFIED")]
+                EXPERIMENTUNSPECIFIED = 0,
+
+                /// <summary>Expands the geographic region available for querying solar data.</summary>
+                [Google.Apis.Util.StringValueAttribute("EXPANDED_COVERAGE")]
+                EXPANDEDCOVERAGE = 1,
+            }
+
             /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
             [Google.Apis.Util.RequestParameterAttribute("location.latitude", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<double> LocationLatitude { get; set; }
@@ -493,6 +561,10 @@ namespace Google.Apis.Solar.v1
                 /// <summary>Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel.</summary>
                 [Google.Apis.Util.StringValueAttribute("LOW")]
                 LOW = 3,
+
+                /// <summary>Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel.</summary>
+                [Google.Apis.Util.StringValueAttribute("BASE")]
+                BASE__ = 4,
             }
 
             /// <summary>Optional. The desired subset of the data to return.</summary>
@@ -543,6 +615,14 @@ namespace Google.Apis.Solar.v1
                 RequestParameters.Add("exactQualityRequired", new Google.Apis.Discovery.Parameter
                 {
                     Name = "exactQualityRequired",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("experiments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "experiments",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
