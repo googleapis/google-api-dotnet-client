@@ -4474,6 +4474,14 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>
+        /// Optional. Grant creator of a workstation `roles/workstations.policyAdmin` role along with
+        /// `roles/workstations.user` role on the workstation created by them. This allows workstation users to share
+        /// access to either their entire workstation, or individual ports. Defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grantWorkstationAdminRoleOnCreate")]
+        public virtual System.Nullable<bool> GrantWorkstationAdminRoleOnCreate { get; set; }
+
         /// <summary>Optional. Runtime host for the workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual Host Host { get; set; }
@@ -4494,6 +4502,17 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum number of workstations under this config a user can have `workstations.workstation.use`
+        /// permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request. Can be
+        /// overridden by: - granting a user workstations.workstationConfigs.exemptMaxUsableWorkstationLimit permission,
+        /// or - having a user with that permission create a workstation and granting another user
+        /// `workstations.workstation.use` permission on that workstation. If not specified defaults to 0 which
+        /// indicates unlimited.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxUsableWorkstations")]
+        public virtual System.Nullable<int> MaxUsableWorkstations { get; set; }
 
         /// <summary>Identifier. Full name of this workstation configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
