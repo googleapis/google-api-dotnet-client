@@ -1458,8 +1458,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
                 /// <summary>
-                /// Must be set to true if the app bundle installation may trigger a warning on user devices (for
-                /// example, if installation size may be over a threshold, typically 100 MB).
+                /// Deprecated. The installation warning has been removed, it's not necessary to set this field anymore.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
@@ -1643,8 +1642,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
                 /// <summary>
-                /// Must be set to true if the app bundle installation may trigger a warning on user devices (for
-                /// example, if installation size may be over a threshold, typically 100 MB).
+                /// Deprecated. The installation warning has been removed, it's not necessary to set this field anymore.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
@@ -13257,6 +13255,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about the first time a user/device completed a transaction using external offers.</summary>
+    public class ExternalOfferInitialAcquisitionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The external transaction id of the first completed purchase made by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalTransactionId")]
+        public virtual string ExternalTransactionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of an external subscription.</summary>
     public class ExternalSubscription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13324,6 +13333,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentTaxAmount")]
         public virtual Price CurrentTaxAmount { get; set; }
+
+        /// <summary>
+        /// Optional. Details about the first time a user/device completed a transaction using external offers. Not
+        /// required for transactions made using user choice billing or alternative billing only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalOfferInitialAcquisitionDetails")]
+        public virtual ExternalOfferInitialAcquisitionDetails ExternalOfferInitialAcquisitionDetails { get; set; }
 
         /// <summary>
         /// Output only. The id of this transaction. All transaction ids under the same package name must be unique. Set
