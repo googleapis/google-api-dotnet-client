@@ -1099,6 +1099,63 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                     }
                 }
 
+                /// <summary>RestoreInstance restores an Instance from a BackupSource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual RestoreRequest Restore(Google.Apis.AIPlatformNotebooks.v2.Data.RestoreInstanceRequest body, string name)
+                {
+                    return new RestoreRequest(this.service, body, name);
+                }
+
+                /// <summary>RestoreInstance restores an Instance from a BackupSource.</summary>
+                public class RestoreRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Restore request.</summary>
+                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.RestoreInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.RestoreInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restore";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:restore";
+
+                    /// <summary>Initializes Restore parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Rollbacks a notebook instance to the previous version.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -3020,6 +3077,17 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for restoring the notebook instance from a BackupSource.</summary>
+    public class RestoreInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Snapshot to be used for restore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual Snapshot Snapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for rollbacking a notebook instance</summary>
     public class RollbackInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3097,6 +3165,24 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// <summary>Optional. Defines whether the VM instance has the vTPM enabled. Enabled by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
         public virtual System.Nullable<bool> EnableVtpm { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Snapshot represents the snapshot of the data disk used to restore the Workbench Instance from. Refers to:
+    /// compute/v1/projects/{project_id}/global/snapshots/{snapshot_id}
+    /// </summary>
+    public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The project ID of the snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Required. The ID of the snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotId")]
+        public virtual string SnapshotId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
