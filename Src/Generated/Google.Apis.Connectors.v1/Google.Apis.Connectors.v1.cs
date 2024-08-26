@@ -2622,6 +2622,32 @@ namespace Google.Apis.Connectors.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. Specifies which fields of the EndpointAttachment are returned in the response.
+                    /// Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specifies which fields of the EndpointAttachment are returned in the response.
+                    /// Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED")]
+                        ENDPOINTATTACHMENTVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Do not include status.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENDPOINT_ATTACHMENT_VIEW_BASIC")]
+                        ENDPOINTATTACHMENTVIEWBASIC = 1,
+
+                        /// <summary>Includes Status.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENDPOINT_ATTACHMENT_VIEW_FULL")]
+                        ENDPOINTATTACHMENTVIEWFULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -2642,6 +2668,14 @@ namespace Google.Apis.Connectors.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/endpointAttachments/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2686,6 +2720,32 @@ namespace Google.Apis.Connectors.v1
                     /// <summary>Page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specifies which fields of the EndpointAttachment are returned in the response.
+                    /// Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specifies which fields of the EndpointAttachment are returned in the response.
+                    /// Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED")]
+                        ENDPOINTATTACHMENTVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Do not include status.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENDPOINT_ATTACHMENT_VIEW_BASIC")]
+                        ENDPOINTATTACHMENTVIEWBASIC = 1,
+
+                        /// <summary>Includes Status.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENDPOINT_ATTACHMENT_VIEW_FULL")]
+                        ENDPOINTATTACHMENTVIEWFULL = 2,
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -2735,6 +2795,14 @@ namespace Google.Apis.Connectors.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7110,6 +7178,13 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Required. The path of the service attachment</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
         public virtual string ServiceAttachment { get; set; }
+
+        /// <summary>
+        /// Output only. The Private Service Connect Connection Endpoint State. This value is only available in the Full
+        /// view.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         private string _updateTimeRaw;
 
