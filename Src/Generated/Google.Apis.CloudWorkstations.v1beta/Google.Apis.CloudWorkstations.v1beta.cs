@@ -4423,6 +4423,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>
+        /// Optional. Grant creator of a workstation `roles/workstations.policyAdmin` role along with
+        /// `roles/workstations.user` role on the workstation created by them. This allows workstation users to share
+        /// access to either their entire workstation, or individual ports. Defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grantWorkstationAdminRoleOnCreate")]
+        public virtual System.Nullable<bool> GrantWorkstationAdminRoleOnCreate { get; set; }
+
         /// <summary>Optional. Runtime host for the workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual Host Host { get; set; }
