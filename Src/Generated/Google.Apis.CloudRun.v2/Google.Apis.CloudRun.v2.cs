@@ -5619,6 +5619,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. The main URI in which this Service is serving traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>Output only. All URLs serving traffic for this Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urls")]
+        public virtual System.Collections.Generic.IList<string> Urls { get; set; }
     }
 
     /// <summary>Service mesh configuration.</summary>
