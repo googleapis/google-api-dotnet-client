@@ -57,7 +57,7 @@ namespace Google.Apis.GKEOnPrem.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Anthos On-Prem API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the GDC Virtual API.</summary>
         public class Scope
         {
             /// <summary>
@@ -67,7 +67,7 @@ namespace Google.Apis.GKEOnPrem.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Anthos On-Prem API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the GDC Virtual API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -511,6 +511,15 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the
+                    /// creation fails during standalone preflight checks. In that case the subsequent create call will
+                    /// fail with "cluster already exists" error and hence a update cluster is required to fix the
+                    /// cluster.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowPreflightFailure", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowPreflightFailure { get; set; }
+
+                    /// <summary>
                     /// Required. User provided identifier that is used as part of the resource name; must conform to
                     /// RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to:
                     /// /^a-z+[a-z0-9]$/
@@ -548,6 +557,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowPreflightFailure", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowPreflightFailure",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("bareMetalAdminClusterId", new Google.Apis.Discovery.Parameter
                         {
@@ -665,6 +682,12 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, return BareMetal Admin Cluster including the one that only exists in RMS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// View for bare metal admin cluster. When `BASIC` is specified, only the cluster resource name and
                     /// membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as
                     /// `FULL', which returns the complete cluster configuration details.
@@ -718,6 +741,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/bareMetalAdminClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                         {
@@ -838,6 +869,13 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, return list of BareMetal Admin Clusters including the ones that only exists
+                    /// in RMS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// Requested page size. Server may return fewer items than requested. If unspecified, at most 50
                     /// clusters will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
                     /// </summary>
@@ -902,6 +940,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -2628,6 +2674,15 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the
+                    /// creation fails during standalone preflight checks. In that case the subsequent create call will
+                    /// fail with "cluster already exists" error and hence a update cluster is required to fix the
+                    /// cluster.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowPreflightFailure", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowPreflightFailure { get; set; }
+
+                    /// <summary>
                     /// Required. User provided identifier that is used as part of the resource name; must conform to
                     /// RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to:
                     /// /^a-z+[a-z0-9]$/
@@ -2665,6 +2720,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowPreflightFailure", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowPreflightFailure",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("bareMetalClusterId", new Google.Apis.Discovery.Parameter
                         {
@@ -2905,6 +2968,12 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, return BareMetal Cluster including the one that only exists in RMS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// View for bare metal user cluster. When `BASIC` is specified, only the cluster resource name and
                     /// admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the
                     /// same as `FULL', which returns the complete cluster configuration details.
@@ -2958,6 +3027,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/bareMetalClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                         {
@@ -3078,6 +3155,12 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, return list of BareMetal Clusters including the ones that only exists in RMS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// A resource filtering expression following https://google.aip.dev/160. When non-empty, only
                     /// resource's whose attributes field matches the filter are returned.
                     /// </summary>
@@ -3149,6 +3232,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
@@ -4185,6 +4276,12 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, return Vmware Admin Cluster including the one that only exists in RMS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// View for VMware admin cluster. When `BASIC` is specified, only the cluster resource name and
                     /// membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as
                     /// `FULL', which returns the complete cluster configuration details.
@@ -4238,6 +4335,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareAdminClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                         {
@@ -4358,6 +4463,13 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, return list of Vmware Admin Clusters including the ones that only exists in
+                    /// RMS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// Requested page size. Server may return fewer items than requested. If unspecified, at most 50
                     /// clusters will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
                     /// </summary>
@@ -4422,6 +4534,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -6028,6 +6148,15 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the
+                    /// creation fails during standalone preflight checks. In that case the subsequent create call will
+                    /// fail with "cluster already exists" error and hence a update cluster is required to fix the
+                    /// cluster.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowPreflightFailure", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowPreflightFailure { get; set; }
+
                     /// <summary>Validate the request without actually doing any updates.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -6065,6 +6194,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowPreflightFailure", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowPreflightFailure",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
                         {
@@ -6305,6 +6442,12 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, return Vmware Cluster including the one that only exists in RMS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// View for VMware user cluster. When `BASIC` is specified, only the cluster resource name and
                     /// admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the
                     /// same as `FULL', which returns the complete cluster configuration details.
@@ -6358,6 +6501,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                         {
@@ -6478,6 +6629,12 @@ namespace Google.Apis.GKEOnPrem.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, return list of Vmware Clusters including the ones that only exists in RMS.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
                     /// A resource filtering expression following https://google.aip.dev/160. When non-empty, only
                     /// resource's whose attributes field matches the filter are returned.
                     /// </summary>
@@ -6549,6 +6706,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
@@ -8112,6 +8277,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// <summary>BareMetalClusterUpgradePolicy defines the cluster upgrade policy.</summary>
     public class BareMetalClusterUpgradePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Pause is used to show the upgrade pause status. It's view only for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pause")]
+        public virtual System.Nullable<bool> Pause { get; set; }
+
         /// <summary>Specifies which upgrade policy to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual string Policy { get; set; }
@@ -9865,6 +10034,14 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
 
+        /// <summary>Reflect current version of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>Shows the mapping of a given version to the number of machines under this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual Versions Versions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10017,6 +10194,34 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>Individual checks which failed as part of the Preflight check execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual System.Collections.Generic.IList<ValidationCheckResult> Result { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Version describes the number of nodes at a given version under a resource.</summary>
+    public class Version : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of machines under the above version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Resource version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string VersionValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Versions describes the mapping of a given version to the number of machines under this version.
+    /// </summary>
+    public class Versions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Shows the mapping of a given version to the number of machines under this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<Version> VersionsValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10274,6 +10479,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. ValidationCheck represents the result of the preflight check job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationCheck")]
+        public virtual ValidationCheck ValidationCheck { get; set; }
 
         /// <summary>The VMware admin cluster VCenter configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenter")]
