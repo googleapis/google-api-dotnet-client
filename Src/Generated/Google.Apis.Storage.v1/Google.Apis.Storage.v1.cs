@@ -9389,6 +9389,29 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
+        /// <summary>The hard delete time of the bucket in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardDeleteTime")]
+        public virtual string HardDeleteTimeRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="HardDeleteTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? HardDeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(HardDeleteTimeRaw);
+            set => HardDeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="HardDeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use HardDeleteTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? HardDeleteTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(HardDeleteTimeRaw);
+            set => HardDeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
         /// <summary>The bucket's hierarchical namespace configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchicalNamespace")]
         public virtual HierarchicalNamespaceData HierarchicalNamespace { get; set; }
@@ -9499,6 +9522,29 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softDeletePolicy")]
         public virtual SoftDeletePolicyData SoftDeletePolicy { get; set; }
+
+        /// <summary>The soft delete time of the bucket in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softDeleteTime")]
+        public virtual string SoftDeleteTimeRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SoftDeleteTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SoftDeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(SoftDeleteTimeRaw);
+            set => SoftDeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SoftDeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SoftDeleteTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? SoftDeleteTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(SoftDeleteTimeRaw);
+            set => SoftDeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object.
