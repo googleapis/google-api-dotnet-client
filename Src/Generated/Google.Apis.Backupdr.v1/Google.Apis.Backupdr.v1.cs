@@ -5042,10 +5042,6 @@ namespace Google.Apis.Backupdr.v1.Data
             set => EffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The default retention period for each backup in the backup vault (Deprecated).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enforcedRetentionDuration")]
-        public virtual object EnforcedRetentionDuration { get; set; }
-
         /// <summary>
         /// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from
         /// overwiting each other.
