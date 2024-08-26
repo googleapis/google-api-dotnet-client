@@ -3368,6 +3368,14 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual CustomerService CustomerService { get; set; }
 
         /// <summary>
+        /// Optional. The 10-digit [Korean business registration
+        /// number](https://support.google.com/merchants/answer/9037766) separated with dashes in the format:
+        /// XXX-XX-XXXXX.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("koreanBusinessRegistrationNumber")]
+        public virtual string KoreanBusinessRegistrationNumber { get; set; }
+
+        /// <summary>
         /// Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
