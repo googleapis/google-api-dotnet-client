@@ -1792,7 +1792,7 @@ namespace Google.Apis.Translate.v3
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Identifier. The resource name of the entry. Format:
-                    /// "projects/*/locations/*/glossaries/*/glossaryEntries/*"
+                    /// `projects/*/locations/*/glossaries/*/glossaryEntries/*`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Translate.v3.Data.GlossaryEntry body, string name)
                     {
@@ -1812,7 +1812,7 @@ namespace Google.Apis.Translate.v3
 
                         /// <summary>
                         /// Identifier. The resource name of the entry. Format:
-                        /// "projects/*/locations/*/glossaries/*/glossaryEntries/*"
+                        /// `projects/*/locations/*/glossaries/*/glossaryEntries/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -4090,7 +4090,7 @@ namespace Google.Apis.Translate.v3.Data
         /// the model, otherwise an INVALID_ARGUMENT (400) error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossaryConfig")]
-        public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; }
+        public virtual GlossaryConfig GlossaryConfig { get; set; }
 
         /// <summary>Configuration for caller provided reference sentences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceSentenceConfig")]
@@ -4648,7 +4648,7 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>
         /// Output only. The resource name of the example, in form of
-        /// `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}/examples/{example_id}'
+        /// `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}/examples/{example_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4862,6 +4862,27 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configures which glossary is used for a specific target language and defines options for applying that glossary.
+    /// </summary>
+    public class GlossaryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The `glossary` to be applied for this translation. The format depends on the glossary: -
+        /// User-provided custom glossary:
+        /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossary")]
+        public virtual string Glossary { get; set; }
+
+        /// <summary>Optional. Indicates match is case insensitive. The default value is `false` if missing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
+        public virtual System.Nullable<bool> IgnoreCase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a single entry in a glossary.</summary>
     public class GlossaryEntry : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4870,7 +4891,7 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
+        /// Identifier. The resource name of the entry. Format: `projects/*/locations/*/glossaries/*/glossaryEntries/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
