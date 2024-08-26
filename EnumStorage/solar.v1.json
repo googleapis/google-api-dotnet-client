@@ -1,15 +1,25 @@
 {
+  "Google.Apis.Solar.v1.BuildingInsightsResource+FindClosestRequest.ExperimentsEnum": [
+    "EXPERIMENT_UNSPECIFIED",
+    "EXPANDED_COVERAGE"
+  ],
   "Google.Apis.Solar.v1.BuildingInsightsResource+FindClosestRequest.RequiredQualityEnum": [
     "IMAGERY_QUALITY_UNSPECIFIED",
     "HIGH",
     "MEDIUM",
-    "LOW"
+    "LOW",
+    "BASE"
+  ],
+  "Google.Apis.Solar.v1.DataLayersResource+GetRequest.ExperimentsEnum": [
+    "EXPERIMENT_UNSPECIFIED",
+    "EXPANDED_COVERAGE"
   ],
   "Google.Apis.Solar.v1.DataLayersResource+GetRequest.RequiredQualityEnum": [
     "IMAGERY_QUALITY_UNSPECIFIED",
     "HIGH",
     "MEDIUM",
-    "LOW"
+    "LOW",
+    "BASE"
   ],
   "Google.Apis.Solar.v1.DataLayersResource+GetRequest.ViewEnum": [
     "DATA_LAYER_VIEW_UNSPECIFIED",
