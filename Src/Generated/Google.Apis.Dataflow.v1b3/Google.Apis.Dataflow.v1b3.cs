@@ -10062,6 +10062,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userStepToStateFamilyNameMap")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserStepToStateFamilyNameMap { get; set; }
 
+        /// <summary>Binary encoded proto to control runtime behavior of the java runner v1 user worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userWorkerRunnerV1Settings")]
+        public virtual string UserWorkerRunnerV1Settings { get; set; }
+
+        /// <summary>Binary encoded proto to control runtime behavior of the runner v2 user worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userWorkerRunnerV2Settings")]
+        public virtual string UserWorkerRunnerV2Settings { get; set; }
+
         /// <summary>
         /// If present, the worker must use this endpoint to communicate with Windmill Service dispatchers, otherwise
         /// the worker must continue to use whatever endpoint it had been using.
