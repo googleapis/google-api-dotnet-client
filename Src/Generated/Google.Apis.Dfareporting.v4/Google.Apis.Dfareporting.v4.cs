@@ -21347,6 +21347,60 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains additional information about cart data.</summary>
+    public class CartData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data of the items purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<CartDataItem> Items { get; set; }
+
+        /// <summary>
+        /// The feed labels associated with the feed where your items are uploaded. For more information, please refer
+        /// to ​​ https://support.google.com/merchants/answer/12453549. This is a required field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLabel")]
+        public virtual string MerchantFeedLabel { get; set; }
+
+        /// <summary>
+        /// The language associated with the feed where your items are uploaded. Use ISO 639-1 language codes. This
+        /// field is needed only when item IDs are not unique across multiple Merchant Center feeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLanguage")]
+        public virtual string MerchantFeedLanguage { get; set; }
+
+        /// <summary>The Merchant Center ID where the items are uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<long> MerchantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains data of the items purchased.</summary>
+    public class CartDataItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The shopping id of the item. Must be equal to the Merchant Center product identifier. This is a required
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; }
+
+        /// <summary>Number of items sold. This is a required field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<int> Quantity { get; set; }
+
+        /// <summary>
+        /// Unit price excluding tax, shipping, and any transaction level discounts. Interpreted in CM360 Floodlight
+        /// config parent advertiser's currency code. This is a required field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
+        public virtual System.Nullable<double> UnitPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a change that a user has made to a resource.</summary>
     public class ChangeLog : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21770,6 +21824,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>This represents consent for ad user data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adUserDataConsent")]
         public virtual string AdUserDataConsent { get; set; }
+
+        /// <summary>The cart data associated with this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cartData")]
+        public virtual CartData CartData { get; set; }
 
         /// <summary>
         /// Whether this particular request may come from a user under the age of 13, under COPPA compliance.
@@ -24005,6 +24063,18 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. Default publisher specification ID of video placements under this directory site. Possible
+        /// values are: * `1`, Hulu * `2`, NBC * `3`, CBS * `4`, CBS Desktop * `5`, Discovery * `6`, VEVO HD * `7`, VEVO
+        /// Vertical * `8`, Fox * `9`, CW Network * `10`, Disney * `11`, IGN * `12`, NFL.com * `13`, Turner Broadcasting
+        /// * `14`, Tubi on Fox * `15`, Hearst Corporation * `16`, Twitch Desktop * `17`, ABC * `18`, Univision * `19`,
+        /// MLB.com * `20`, MLB.com Mobile * `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `24`, Mediaset * `25`,
+        /// Antena 3 * `26`, Mediamond * `27`, Sky Italia * `28`, Tubi on CBS * `29`, Spotify * `30`, Paramount * `31`,
+        /// Max
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherSpecificationId")]
+        public virtual System.Nullable<long> PublisherSpecificationId { get; set; }
+
         /// <summary>Directory site settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
         public virtual DirectorySiteSettings Settings { get; set; }
@@ -26153,6 +26223,17 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual System.Nullable<bool> AdBlockingOptOut { get; set; }
 
         /// <summary>
+        /// Optional. Ad serving platform ID to identify the ad serving platform used by the placement. Measurement
+        /// partners can use this field to add ad-server specific macros. Possible values are: * `1`, Adelphic * `2`,
+        /// Adform * `3`, Adobe * `4`, Amobee * `5`, Basis (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360 (DBM) *
+        /// `9`, Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`, TabMo Hawk * `13`, The Trade Desk * `14`,
+        /// Xandr Invest DSP * `15`, Yahoo DSP * `16`, Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn *
+        /// `20`, Teads * `21`, Quantcast * `22`, Cognitiv
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adServingPlatformId")]
+        public virtual System.Nullable<long> AdServingPlatformId { get; set; }
+
+        /// <summary>
         /// Additional sizes associated with this placement. When inserting or updating a placement, only the size ID
         /// field is used.
         /// </summary>
@@ -26313,6 +26394,13 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>Dimension value for the ID of the site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteIdDimensionValue")]
         public virtual DimensionValue SiteIdDimensionValue { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the ads in the placement are served by another platform and CM is only used for tracking
+        /// or they are served by CM. A false value indicates the ad is served by CM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteServed")]
+        public virtual System.Nullable<bool> SiteServed { get; set; }
 
         /// <summary>
         /// Size associated with this placement. When inserting or updating a placement, only the size ID field is used.
@@ -27863,6 +27951,18 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<long> AccountId { get; set; }
 
+        /// <summary>
+        /// Optional. Ad serving platform ID to identify the ad serving platform used by the site. Measurement partners
+        /// can use this field to add ad-server specific macros. If set, this value acts as the default during placement
+        /// creation. Possible values are: * `1`, Adelphic * `2`, Adform * `3`, Adobe * `4`, Amobee * `5`, Basis
+        /// (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360 (DBM) * `9`, Innovid * `10`, MediaMath * `11`, Roku
+        /// OneView DSP * `12`, TabMo Hawk * `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP * `16`,
+        /// Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`, Teads * `21`, Quantcast * `22`,
+        /// Cognitiv
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adServingPlatformId")]
+        public virtual System.Nullable<long> AdServingPlatformId { get; set; }
+
         /// <summary>Whether this site is approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approved")]
         public virtual System.Nullable<bool> Approved { get; set; }
@@ -28127,7 +28227,12 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>
         /// Publisher specification ID used to identify site-associated publisher requirements and automatically
         /// populate transcode settings. If publisher specification ID is specified, it will take precedence over
-        /// transcode settings.
+        /// transcode settings. Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS * `4`, CBS Desktop * `5`,
+        /// Discovery * `6`, VEVO HD * `7`, VEVO Vertical * `8`, Fox * `9`, CW Network * `10`, Disney * `11`, IGN *
+        /// `12`, NFL.com * `13`, Turner Broadcasting * `14`, Tubi on Fox * `15`, Hearst Corporation * `16`, Twitch
+        /// Desktop * `17`, ABC * `18`, Univision * `19`, MLB.com * `20`, MLB.com Mobile * `21`, MLB.com OTT * `22`,
+        /// Polsat * `23`, TVN * `24`, Mediaset * `25`, Antena 3 * `26`, Mediamond * `27`, Sky Italia * `28`, Tubi on
+        /// CBS * `29`, Spotify * `30`, Paramount * `31`, Max
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherSpecificationId")]
         public virtual System.Nullable<long> PublisherSpecificationId { get; set; }
@@ -29089,7 +29194,14 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
         public virtual string Orientation { get; set; }
 
-        /// <summary>Publisher specification ID of a video placement.</summary>
+        /// <summary>
+        /// Publisher specification ID of a video placement. Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS *
+        /// `4`, CBS Desktop * `5`, Discovery * `6`, VEVO HD * `7`, VEVO Vertical * `8`, Fox * `9`, CW Network * `10`,
+        /// Disney * `11`, IGN * `12`, NFL.com * `13`, Turner Broadcasting * `14`, Tubi on Fox * `15`, Hearst
+        /// Corporation * `16`, Twitch Desktop * `17`, ABC * `18`, Univision * `19`, MLB.com * `20`, MLB.com Mobile *
+        /// `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `24`, Mediaset * `25`, Antena 3 * `26`, Mediamond * `27`, Sky
+        /// Italia * `28`, Tubi on CBS * `29`, Spotify * `30`, Paramount * `31`, Max
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherSpecificationId")]
         public virtual System.Nullable<long> PublisherSpecificationId { get; set; }
 
