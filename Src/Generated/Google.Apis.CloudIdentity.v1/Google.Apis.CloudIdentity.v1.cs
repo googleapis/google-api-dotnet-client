@@ -2106,7 +2106,7 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <summary>
                 /// This view contains all devices imported by the company admin. Each device in the response contains
                 /// all information specified by the company admin when importing the device (i.e. asset tags). This
-                /// includes devices that may be unaassigned or assigned to users.
+                /// includes devices that may be unassigned or assigned to users.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("COMPANY_INVENTORY")]
                 COMPANYINVENTORY = 1,
