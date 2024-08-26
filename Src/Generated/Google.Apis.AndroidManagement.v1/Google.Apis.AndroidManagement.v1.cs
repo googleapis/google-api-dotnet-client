@@ -7489,6 +7489,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
         public virtual string CarrierName { get; set; }
 
+        /// <summary>Output only. The ICCID associated with this SIM card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iccId")]
+        public virtual string IccId { get; set; }
+
         /// <summary>The phone number associated with this SIM card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
