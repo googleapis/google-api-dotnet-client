@@ -5517,7 +5517,7 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CommonFeatureSpec contains Hub-wide configuration information</summary>
+    /// <summary>CommonFeatureSpec contains Fleet-wide configuration information</summary>
     public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Appdevexperience specific spec.</summary>
@@ -5544,7 +5544,7 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CommonFeatureState contains Hub-wide Feature status information.</summary>
+    /// <summary>CommonFeatureState contains Fleet-wide Feature status information.</summary>
     public class CommonFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Appdevexperience specific state.</summary>
@@ -5559,7 +5559,7 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
         public virtual FleetObservabilityFeatureState Fleetobservability { get; set; }
 
-        /// <summary>Output only. The "running state" of the Feature in this Hub.</summary>
+        /// <summary>Output only. The "running state" of the Feature in this Fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual FeatureState State { get; set; }
 
@@ -6006,7 +6006,11 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configSync")]
         public virtual ConfigManagementConfigSync ConfigSync { get; set; }
 
-        /// <summary>Hierarchy Controller configuration for the cluster.</summary>
+        /// <summary>
+        /// Hierarchy Controller configuration for the cluster. Deprecated: Configuring Hierarchy Controller through the
+        /// configmanagement feature is no longer recommended. Use
+        /// https://github.com/kubernetes-sigs/hierarchical-namespaces instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
         public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
 
@@ -6518,7 +6522,7 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Feature represents the settings and status of any Hub Feature.</summary>
+    /// <summary>Feature represents the settings and status of any Fleet Feature.</summary>
     public class Feature : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -6658,13 +6662,13 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, ScopeFeatureState> ScopeStates { get; set; }
 
         /// <summary>
-        /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this
-        /// field may be unused.
+        /// Optional. Fleet-wide Feature configuration. If this Feature does not support any Fleet-wide configuration,
+        /// this field may be unused.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual CommonFeatureSpec Spec { get; set; }
 
-        /// <summary>Output only. The Hub-wide Feature state.</summary>
+        /// <summary>Output only. The Fleet-wide Feature state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual CommonFeatureState State { get; set; }
 
@@ -6715,7 +6719,7 @@ namespace Google.Apis.GKEHub.v1.Data
 
     /// <summary>
     /// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the
-    /// "running state" of the Feature in the Hub and across Memberships.
+    /// "running state" of the Feature in the Fleet and across Memberships.
     /// </summary>
     public class FeatureResourceState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8368,10 +8372,7 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in
-    /// your feature name.
-    /// </summary>
+    /// <summary>MembershipFeatureSpec contains configuration information for a single Membership.</summary>
     public class MembershipFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Config Management-specific spec.</summary>
