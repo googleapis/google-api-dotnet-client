@@ -329,6 +329,12 @@ namespace Google.Apis.CustomSearchAPI.v1
                 [Google.Apis.Util.RequestParameterAttribute("dateRestrict", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DateRestrict { get; set; }
 
+                /// <summary>
+                /// Optional. Enables routing of Programmable Search Engine requests to an alternate search handler.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("enableAlternateSearchHandler", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> EnableAlternateSearchHandler { get; set; }
+
                 /// <summary>Identifies a phrase that all documents in the search results must contain.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("exactTerms", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ExactTerms { get; set; }
@@ -806,6 +812,14 @@ namespace Google.Apis.CustomSearchAPI.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("enableAlternateSearchHandler", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enableAlternateSearchHandler",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("exactTerms", new Google.Apis.Discovery.Parameter
                     {
                         Name = "exactTerms",
@@ -1088,6 +1102,12 @@ namespace Google.Apis.CustomSearchAPI.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dateRestrict", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DateRestrict { get; set; }
+
+            /// <summary>
+            /// Optional. Enables routing of Programmable Search Engine requests to an alternate search handler.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("enableAlternateSearchHandler", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnableAlternateSearchHandler { get; set; }
 
             /// <summary>Identifies a phrase that all documents in the search results must contain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("exactTerms", Google.Apis.Util.RequestParameterType.Query)]
@@ -1558,6 +1578,14 @@ namespace Google.Apis.CustomSearchAPI.v1
                 RequestParameters.Add("dateRestrict", new Google.Apis.Discovery.Parameter
                 {
                     Name = "dateRestrict",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enableAlternateSearchHandler", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enableAlternateSearchHandler",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
