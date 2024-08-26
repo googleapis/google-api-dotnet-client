@@ -856,6 +856,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkEventStats")]
         public virtual System.Collections.Generic.IList<DynamicLinkEventStat> LinkEventStats { get; set; }
 
+        /// <summary>Optional warnings associated this API request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<DynamicLinkWarning> Warnings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1109,6 +1113,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Scion term value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmTerm")]
         public virtual string UtmTerm { get; set; }
+
+        /// <summary>Optional warnings associated this API request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual System.Collections.Generic.IList<DynamicLinkWarning> Warning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
