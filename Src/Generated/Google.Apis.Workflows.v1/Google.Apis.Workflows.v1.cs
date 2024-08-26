@@ -1533,6 +1533,10 @@ namespace Google.Apis.Workflows.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Optional. Describes the level of the execution history feature to apply to this workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionHistoryLevel")]
+        public virtual string ExecutionHistoryLevel { get; set; }
+
         /// <summary>
         /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no
         /// longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and
