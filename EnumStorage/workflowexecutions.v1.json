@@ -9,6 +9,16 @@
     "BASIC",
     "FULL"
   ],
+  "Google.Apis.WorkflowExecutions.v1.ProjectsResource+LocationsResource+WorkflowsResource+ExecutionsResource+StepEntriesResource+GetRequest.ViewEnum": [
+    "EXECUTION_ENTRY_VIEW_UNSPECIFIED",
+    "EXECUTION_ENTRY_VIEW_BASIC",
+    "EXECUTION_ENTRY_VIEW_DETAILED"
+  ],
+  "Google.Apis.WorkflowExecutions.v1.ProjectsResource+LocationsResource+WorkflowsResource+ExecutionsResource+StepEntriesResource+ListRequest.ViewEnum": [
+    "EXECUTION_ENTRY_VIEW_UNSPECIFIED",
+    "EXECUTION_ENTRY_VIEW_BASIC",
+    "EXECUTION_ENTRY_VIEW_DETAILED"
+  ],
   "Google.Apis.WorkflowExecutions.v1.WorkflowExecutionsBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",

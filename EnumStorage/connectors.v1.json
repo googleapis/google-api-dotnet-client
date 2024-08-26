@@ -26,6 +26,16 @@
     "BASIC",
     "FULL"
   ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+EndpointAttachmentsResource+GetRequest.ViewEnum": [
+    "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED",
+    "ENDPOINT_ATTACHMENT_VIEW_BASIC",
+    "ENDPOINT_ATTACHMENT_VIEW_FULL"
+  ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+EndpointAttachmentsResource+ListRequest.ViewEnum": [
+    "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED",
+    "ENDPOINT_ATTACHMENT_VIEW_BASIC",
+    "ENDPOINT_ATTACHMENT_VIEW_FULL"
+  ],
   "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+GlobalResource+ProvidersResource+ConnectorsResource+VersionsResource+GetRequest.ViewEnum": [
     "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
     "CONNECTOR_VERSION_VIEW_BASIC",
