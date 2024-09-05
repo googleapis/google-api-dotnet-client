@@ -94,7 +94,7 @@ curl -v -i -X POST \
   -H "Content-Type:application/json" \
   -H "accept: */*" \
   -d "$prRequestBody" \
-  --fail-with-body
+  --fail
 
 # All done :)
 echo "Success - Discovery libraries generation completed."
