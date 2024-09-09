@@ -2702,6 +2702,17 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Fixed IOPS (input/output operations per second) parameters.</summary>
+    public class FixedIOPS : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Maximum raw read IOPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
+        public virtual System.Nullable<long> MaxReadIops { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Instance represents the interface for SLM services to actuate the state of control plane resources. Example
     /// Instance in JSON, where consumer-project-number=123456, producer-project-id=cloud-sql:
@@ -3204,6 +3215,17 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB).</summary>
+    public class IOPSPerTB : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Maximum read IOPS per TiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReadIopsPerTb")]
+        public virtual System.Nullable<long> MaxReadIopsPerTb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Filestore instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3217,6 +3239,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Output only. The increase/decrease capacity step size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityStepSizeGb")]
         public virtual System.Nullable<long> CapacityStepSizeGb { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether this instance's performance is configurable. If enabled, adjust it using the
+        /// 'performance_config' field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurablePerformanceEnabled")]
+        public virtual System.Nullable<bool> ConfigurablePerformanceEnabled { get; set; }
 
         private string _createTimeRaw;
 
@@ -3321,6 +3350,14 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; }
+
+        /// <summary>Optional. Used to configure performance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceConfig")]
+        public virtual PerformanceConfig PerformanceConfig { get; set; }
+
+        /// <summary>Output only. Used for getting performance limits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceLimits")]
+        public virtual PerformanceLimits PerformanceLimits { get; set; }
 
         /// <summary>
         /// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is
@@ -3917,6 +3954,62 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Used for setting the performance configuration. If the user doesn't specify PerformanceConfig, automatically
+    /// provision the default performance settings as described in https://cloud.google.com/filestore/docs/performance.
+    /// Larger instances will be linearly set to more IOPS. If the instance's capacity is increased or decreased, its
+    /// performance will be automatically adjusted upwards or downwards accordingly (respectively).
+    /// </summary>
+    public class PerformanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Choose a fixed provisioned IOPS value for the instance, which will remain constant regardless of instance
+        /// capacity. Value must be a multiple of 1000. If the chosen value is outside the supported range for the
+        /// instance's capacity during instance creation, instance creation will fail with an `InvalidArgument` error.
+        /// Similarly, if an instance capacity update would result in a value outside the supported range, the update
+        /// will fail with an `InvalidArgument` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedIops")]
+        public virtual FixedIOPS FixedIops { get; set; }
+
+        /// <summary>
+        /// Provision IOPS dynamically based on the capacity of the instance. Provisioned read IOPS will be calculated
+        /// by multiplying the capacity of the instance in TiB by the `iops_per_tb` value. For example, for a 2 TiB
+        /// instance with an `iops_per_tb` value of 17000 the provisioned read IOPS will be 34000. If the calculated
+        /// value is outside the supported range for the instance's capacity during instance creation, instance creation
+        /// will fail with an `InvalidArgument` error. Similarly, if an instance capacity update would result in a value
+        /// outside the supported range, the update will fail with an `InvalidArgument` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iopsPerTb")]
+        public virtual IOPSPerTB IopsPerTb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The enforced performance limits, calculated from the instance's performance configuration.</summary>
+    public class PerformanceLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The max read IOPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
+        public virtual System.Nullable<long> MaxReadIops { get; set; }
+
+        /// <summary>Output only. The max read throughput in bytes per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReadThroughputBps")]
+        public virtual System.Nullable<long> MaxReadThroughputBps { get; set; }
+
+        /// <summary>Output only. The max write IOPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWriteIops")]
+        public virtual System.Nullable<long> MaxWriteIops { get; set; }
+
+        /// <summary>Output only. The max write throughput in bytes per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWriteThroughputBps")]
+        public virtual System.Nullable<long> MaxWriteThroughputBps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
