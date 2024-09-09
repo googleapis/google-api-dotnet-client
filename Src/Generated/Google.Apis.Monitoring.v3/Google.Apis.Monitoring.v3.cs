@@ -6242,7 +6242,11 @@ namespace Google.Apis.Monitoring.v3
                 }
             }
 
-            /// <summary>Queries time series using Monitoring Query Language.</summary>
+            /// <summary>
+            /// Queries time series by using Monitoring Query Language (MQL). We recommend using PromQL instead of MQL.
+            /// For more information about the status of MQL, see the MQL deprecation notice
+            /// (https://cloud.google.com/stackdriver/docs/deprecations/mql).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
@@ -6253,7 +6257,11 @@ namespace Google.Apis.Monitoring.v3
                 return new QueryRequest(this.service, body, name);
             }
 
-            /// <summary>Queries time series using Monitoring Query Language.</summary>
+            /// <summary>
+            /// Queries time series by using Monitoring Query Language (MQL). We recommend using PromQL instead of MQL.
+            /// For more information about the status of MQL, see the MQL deprecation notice
+            /// (https://cloud.google.com/stackdriver/docs/deprecations/mql).
+            /// </summary>
             public class QueryRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.QueryTimeSeriesResponse>
             {
                 /// <summary>Constructs a new Query request.</summary>
@@ -9900,6 +9908,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("samplePeriod")]
         public virtual object SamplePeriod { get; set; }
 
+        /// <summary>The scope of the timeseries data of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesResourceHierarchyLevel")]
+        public virtual System.Collections.Generic.IList<string> TimeSeriesResourceHierarchyLevel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10672,7 +10684,10 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The QueryTimeSeries request.</summary>
+    /// <summary>
+    /// The QueryTimeSeries request. For information about the status of Monitoring Query Language (MQL), see the MQL
+    /// deprecation notice (https://cloud.google.com/stackdriver/docs/deprecations/mql).
+    /// </summary>
     public class QueryTimeSeriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A positive number that is the maximum number of time_series_data to return.</summary>
@@ -10697,7 +10712,10 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The QueryTimeSeries response.</summary>
+    /// <summary>
+    /// The QueryTimeSeries response. For information about the status of Monitoring Query Language (MQL), see the MQL
+    /// deprecation notice (https://cloud.google.com/stackdriver/docs/deprecations/mql).
+    /// </summary>
     public class QueryTimeSeriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
