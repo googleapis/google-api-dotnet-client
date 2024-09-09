@@ -19967,7 +19967,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Configuration for the version.</summary>
     public class GoogleCloudDialogflowCxV3EnvironmentVersionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Format: projects//locations//agents//flows//versions/.</summary>
+        /// <summary>
+        /// Required. Both flow and playbook versions are supported. Format for flow version:
+        /// projects//locations//agents//flows//versions/. Format for playbook version:
+        /// projects//locations//agents//playbooks//versions/.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -22675,7 +22679,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Configuration for the version.</summary>
     public class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Format: projects//locations//agents//flows//versions/.</summary>
+        /// <summary>
+        /// Required. Both flow and playbook versions are supported. Format for flow version:
+        /// projects//locations//agents//flows//versions/. Format for playbook version:
+        /// projects//locations//agents//playbooks//versions/.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
