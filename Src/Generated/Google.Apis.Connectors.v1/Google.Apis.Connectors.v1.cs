@@ -4454,6 +4454,91 @@ namespace Google.Apis.Connectors.v1
                             }
                         }
 
+                        /// <summary>
+                        /// fetch and return the list of auth config variables required to override the connection
+                        /// backend auth.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. Parent resource of the Connector Version, of the form:
+                        /// `projects/*/locations/*/providers/*/connectors/*/versions/*`
+                        /// </param>
+                        public virtual FetchAuthSchemaRequest FetchAuthSchema(string name)
+                        {
+                            return new FetchAuthSchemaRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// fetch and return the list of auth config variables required to override the connection
+                        /// backend auth.
+                        /// </summary>
+                        public class FetchAuthSchemaRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.FetchAuthSchemaResponse>
+                        {
+                            /// <summary>Constructs a new FetchAuthSchema request.</summary>
+                            public FetchAuthSchemaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Parent resource of the Connector Version, of the form:
+                            /// `projects/*/locations/*/providers/*/connectors/*/versions/*`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Optional. View of the AuthSchema. The default value is BASIC.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>Optional. View of the AuthSchema. The default value is BASIC.</summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>Default value.</summary>
+                                [Google.Apis.Util.StringValueAttribute("AUTH_SCHEMA_VIEW_UNSPECIFIED")]
+                                AUTHSCHEMAVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Basic view of the AuthSchema.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                                BASIC = 1,
+
+                                /// <summary>JSON schema view of the AuthSchema.</summary>
+                                [Google.Apis.Util.StringValueAttribute("JSON_SCHEMA")]
+                                JSONSCHEMA = 2,
+                            }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "fetchAuthSchema";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:fetchAuthSchema";
+
+                            /// <summary>Initializes FetchAuthSchema parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+/connectors/[^/]+/versions/[^/]+$",
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>Gets details of a single connector version.</summary>
                         /// <param name="name">
                         /// Required. Resource name of the form:
@@ -5516,6 +5601,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2AuthCodeFlow")]
         public virtual Oauth2AuthCodeFlow Oauth2AuthCodeFlow { get; set; }
 
+        /// <summary>Oauth2AuthCodeFlowGoogleManaged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2AuthCodeFlowGoogleManaged")]
+        public virtual Oauth2AuthCodeFlowGoogleManaged Oauth2AuthCodeFlowGoogleManaged { get; set; }
+
         /// <summary>Oauth2ClientCredentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientCredentials")]
         public virtual Oauth2ClientCredentials Oauth2ClientCredentials { get; set; }
@@ -5560,6 +5649,106 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>Whether the auth config is the default one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AuthField defines a field in an authentication type.</summary>
+    public class AuthField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data type of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Description of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Key of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AuthObject defines a JSON schema of an authentication type.</summary>
+    public class AuthObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the object has additional properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalProperties")]
+        public virtual System.Nullable<bool> AdditionalProperties { get; set; }
+
+        /// <summary>Auth key of the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
+        public virtual string AuthKey { get; set; }
+
+        /// <summary>Auth type of the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authType")]
+        public virtual string AuthType { get; set; }
+
+        /// <summary>Description of the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Whether the object is the default one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>Properties of the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, AuthProperty> Properties { get; set; }
+
+        /// <summary>Type of the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AuthProperty defines a property of an authentication type.</summary>
+    public class AuthProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Type of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AuthSchema defines the schema of an authentication type.</summary>
+    public class AuthSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of AuthFields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authFields")]
+        public virtual System.Collections.Generic.IList<AuthField> AuthFields { get; set; }
+
+        /// <summary>Auth key of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
+        public virtual string AuthKey { get; set; }
+
+        /// <summary>Auth type of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authType")]
+        public virtual string AuthType { get; set; }
+
+        /// <summary>Description of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Whether the auth schema is the default one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
@@ -5812,6 +6001,13 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
         public virtual AuthConfig AuthConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Auth override enabled for the connection. If Auth Override is enabled, Connection allows the
+        /// backend service auth to be overridden in the entities/actions API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authOverrideEnabled")]
+        public virtual System.Nullable<bool> AuthOverrideEnabled { get; set; }
 
         /// <summary>Output only. Billing config for the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
@@ -6315,6 +6511,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("migrateDeploymentModel")]
         public virtual System.Nullable<bool> MigrateDeploymentModel { get; set; }
 
+        /// <summary>Indicate whether connector is being migrated to TLS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrateTls")]
+        public virtual System.Nullable<bool> MigrateTls { get; set; }
+
         /// <summary>Max QPS supported by the connector version before throttling of requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratelimitThreshold")]
         public virtual System.Nullable<long> RatelimitThreshold { get; set; }
@@ -6562,6 +6762,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. The name of shared connector deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDeployment")]
         public virtual string SharedDeployment { get; set; }
+
+        /// <summary>Output only. Status of the TLS migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsMigrationState")]
+        public virtual string TlsMigrationState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7762,6 +7966,24 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for Connectors.GetAuthSchema.</summary>
+    public class FetchAuthSchemaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of AuthSchemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authSchemas")]
+        public virtual System.Collections.Generic.IList<AuthSchema> AuthSchemas { get; set; }
+
+        /// <summary>
+        /// JSON schema of the AuthSchemas. This is only populated if the view is JSON_SCHEMA. The schema is in draft-07
+        /// format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonAuthSchema JsonSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata of an entity field.</summary>
     public class Field : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8122,6 +8344,21 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Type of the JMS Source. i.e. Queue or Topic</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>JsonAuthSchema defines the JSON schema of all authentication types.</summary>
+    public class JsonAuthSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>JSON schema of the AuthSchemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("$schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>List of AuthObjects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneOf")]
+        public virtual System.Collections.Generic.IList<AuthObject> OneOf { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9107,6 +9344,28 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string RedirectUri { get; set; }
 
         /// <summary>Scopes the connection will request when the user performs the auth code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google Provided OAuth Client. See
+    /// https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.
+    /// </summary>
+    public class Oauth2AuthCodeFlowGoogleManaged : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Authorization code to be exchanged for access and refresh tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
+        public virtual string AuthCode { get; set; }
+
+        /// <summary>Optional. Redirect URI to be provided during the auth code exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>Required. Scopes the connection will request when the user performs the auth code flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
