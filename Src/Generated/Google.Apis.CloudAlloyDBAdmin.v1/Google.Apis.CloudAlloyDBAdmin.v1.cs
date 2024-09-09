@@ -3065,6 +3065,59 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                         });
                     }
                 }
+
+                /// <summary>Upgrades a single Cluster. Imperative only.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The resource name of the cluster.</param>
+                public virtual UpgradeRequest Upgrade(Google.Apis.CloudAlloyDBAdmin.v1.Data.UpgradeClusterRequest body, string name)
+                {
+                    return new UpgradeRequest(this.service, body, name);
+                }
+
+                /// <summary>Upgrades a single Cluster. Imperative only.</summary>
+                public class UpgradeRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Upgrade request.</summary>
+                    public UpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1.Data.UpgradeClusterRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAlloyDBAdmin.v1.Data.UpgradeClusterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "upgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:upgrade";
+
+                    /// <summary>Initializes Upgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -4832,6 +4885,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
 
+        /// <summary>Output only. All outbound public IP addresses configured for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outboundPublicIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> OutboundPublicIpAddresses { get; set; }
+
         /// <summary>Optional. The configuration for Private Service Connect (PSC) for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceConfig")]
         public virtual PscInstanceConfig PscInstanceConfig { get; set; }
@@ -4925,6 +4982,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Optional. A list of external network authorized to access this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedExternalNetworks")]
         public virtual System.Collections.Generic.IList<AuthorizedNetwork> AuthorizedExternalNetworks { get; set; }
+
+        /// <summary>
+        /// Optional. Enabling an outbound public IP address to support a database server sending requests out into the
+        /// internet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableOutboundPublicIp")]
+        public virtual System.Nullable<bool> EnableOutboundPublicIp { get; set; }
 
         /// <summary>Optional. Enabling public ip for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePublicIp")]
@@ -5721,6 +5785,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     /// <summary>Configuration for availability of database instance</summary>
     public class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Checks for existence of (multi-cluster) routing configuration that allows automatic failover to a different
+        /// zone/region in case of an outage. Applicable to Bigtable resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticFailoverRoutingConfigured")]
+        public virtual System.Nullable<bool> AutomaticFailoverRoutingConfigured { get; set; }
+
         /// <summary>
         /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that
         /// zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a
@@ -6844,6 +6915,40 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Upgrades a cluster.</summary>
+    public class UpgradeClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The current etag of the Cluster. If an etag is provided and does not match the current etag of the
+        /// Cluster, upgrade will be blocked and an ABORTED error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
+        /// does not actually execute the upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>Required. The version the cluster is going to be upgraded to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+    }
+
     /// <summary>UpgradeClusterResponse contains the response for upgrade cluster operation.</summary>
     public class UpgradeClusterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6878,6 +6983,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseRoles")]
         public virtual System.Collections.Generic.IList<string> DatabaseRoles { get; set; }
+
+        /// <summary>Input only. If the user already exists and it has additional roles, keep them granted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepExtraRoles")]
+        public virtual System.Nullable<bool> KeepExtraRoles { get; set; }
 
         /// <summary>
         /// Output only. Name of the resource in the form of
