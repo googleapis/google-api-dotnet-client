@@ -5939,6 +5939,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     public class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Checks for existence of (multi-cluster) routing configuration that allows automatic failover to a different
+        /// zone/region in case of an outage. Applicable to Bigtable resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticFailoverRoutingConfigured")]
+        public virtual System.Nullable<bool> AutomaticFailoverRoutingConfigured { get; set; }
+
+        /// <summary>
         /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that
         /// zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a
         /// region (it is highly available).
@@ -7140,6 +7147,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseRoles")]
         public virtual System.Collections.Generic.IList<string> DatabaseRoles { get; set; }
+
+        /// <summary>Input only. If the user already exists and it has additional roles, keep them granted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepExtraRoles")]
+        public virtual System.Nullable<bool> KeepExtraRoles { get; set; }
 
         /// <summary>
         /// Output only. Name of the resource in the form of
