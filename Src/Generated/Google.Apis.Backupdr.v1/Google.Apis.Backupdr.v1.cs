@@ -5289,6 +5289,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyRevocationActionType")]
         public virtual string KeyRevocationActionType { get; set; }
 
+        /// <summary>Labels to apply to instances that are created from these properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>The machine type to use for instances that are created from these properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
