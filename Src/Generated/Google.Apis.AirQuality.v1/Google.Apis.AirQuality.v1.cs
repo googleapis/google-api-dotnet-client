@@ -766,7 +766,7 @@ namespace Google.Apis.AirQuality.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual string Units { get; set; }
 
-        /// <summary>Value of pollutant concentration.</summary>
+        /// <summary>Value of the pollutant concentration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<float> Value { get; set; }
 
@@ -1546,8 +1546,8 @@ namespace Google.Apis.AirQuality.v1.Data
         public virtual AdditionalInfo AdditionalInfo { get; set; }
 
         /// <summary>
-        /// The pollutant's code name. For example: "so2". A list of all available codes could be found
-        /// [here](/maps/documentation/air-quality/pollutants#reported_pollutants).
+        /// The pollutant's code name (for example, "so2"). For a list of supported pollutant codes, see [Reported
+        /// pollutants](/maps/documentation/air-quality/pollutants#reported_pollutants).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
@@ -1564,7 +1564,7 @@ namespace Google.Apis.AirQuality.v1.Data
 
         /// <summary>
         /// The pollutant's full name. For chemical compounds, this is the IUPAC name. Example: "Sulfur Dioxide". For
-        /// more information about the IUPAC names table, see https://iupac.org/what-we-do/periodic-table-of-elements/
+        /// more information about the IUPAC names table, see https://iupac.org/what-we-do/periodic-table-of-elements/.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; }
