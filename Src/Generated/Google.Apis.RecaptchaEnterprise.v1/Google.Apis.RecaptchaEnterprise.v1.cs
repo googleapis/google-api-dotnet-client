@@ -2168,7 +2168,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Optional. Flag for a reCAPTCHA express request for an assessment without a token. If enabled, `site_key`
-        /// must reference a SCORE key with WAF feature set to EXPRESS.
+        /// must reference an Express site key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("express")]
         public virtual System.Nullable<bool> Express { get; set; }
@@ -2247,6 +2247,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("wafTokenAssessment")]
         public virtual System.Nullable<bool> WafTokenAssessment { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings specific to keys that can be used for reCAPTCHA Express.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ExpressKeySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2643,6 +2650,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Required. Human-readable display name of this key. Modifiable by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Settings for keys that can be used by reCAPTCHA Express.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressSettings")]
+        public virtual GoogleCloudRecaptchaenterpriseV1ExpressKeySettings ExpressSettings { get; set; }
 
         /// <summary>Settings for keys that can be used by iOS apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosSettings")]
