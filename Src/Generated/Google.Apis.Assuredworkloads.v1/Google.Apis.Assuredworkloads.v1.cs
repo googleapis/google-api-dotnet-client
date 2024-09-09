@@ -2242,8 +2242,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>
         /// Optional. Billing account necessary for purchasing services from Sovereign Partners. This field is required
-        /// for creating SIA/PSN partner workloads. The caller should have 'billing.resourceAssociations.create' IAM
-        /// permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC
+        /// for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create'
+        /// IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerServicesBillingAccount")]
         public virtual string PartnerServicesBillingAccount { get; set; }
