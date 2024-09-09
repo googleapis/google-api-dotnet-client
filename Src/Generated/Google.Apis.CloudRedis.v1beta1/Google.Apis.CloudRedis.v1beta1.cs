@@ -773,6 +773,67 @@ namespace Google.Apis.CloudRedis.v1beta1
                         });
                     }
                 }
+
+                /// <summary>Reschedules upcoming maintenance event.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Redis Cluster instance resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to
+                /// a GCP region.
+                /// </param>
+                public virtual RescheduleClusterMaintenanceRequest RescheduleClusterMaintenance(Google.Apis.CloudRedis.v1beta1.Data.RescheduleClusterMaintenanceRequest body, string name)
+                {
+                    return new RescheduleClusterMaintenanceRequest(this.service, body, name);
+                }
+
+                /// <summary>Reschedules upcoming maintenance event.</summary>
+                public class RescheduleClusterMaintenanceRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RescheduleClusterMaintenance request.</summary>
+                    public RescheduleClusterMaintenanceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1beta1.Data.RescheduleClusterMaintenanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Redis Cluster instance resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers
+                    /// to a GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1beta1.Data.RescheduleClusterMaintenanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rescheduleClusterMaintenance";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:rescheduleClusterMaintenance";
+
+                    /// <summary>Initializes RescheduleClusterMaintenance parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Instances resource.</summary>
@@ -1976,9 +2037,55 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Provides the mapping of a cloud asset to a direct physical location or to a proxy that defines the location on
+    /// its behalf.
+    /// </summary>
+    public class AssetLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants that use CCFE RMS for storing
+        /// resource metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ccfeRmsPath")]
+        public virtual string CcfeRmsPath { get; set; }
+
+        /// <summary>
+        /// Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state of the region at the time of
+        /// asset creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expected")]
+        public virtual IsolationExpectations Expected { get; set; }
+
+        /// <summary>Defines extra parameters required for specific asset types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraParameters")]
+        public virtual System.Collections.Generic.IList<ExtraParameter> ExtraParameters { get; set; }
+
+        /// <summary>Contains all kinds of physical location definitions for this asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationData")]
+        public virtual System.Collections.Generic.IList<LocationData> LocationData { get; set; }
+
+        /// <summary>
+        /// Defines parents assets if any in order to allow later generation of child_asset_location data via child
+        /// assets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentAsset")]
+        public virtual System.Collections.Generic.IList<CloudAsset> ParentAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for availability of database instance</summary>
     public class AvailabilityConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Checks for existence of (multi-cluster) routing configuration that allows automatic failover to a different
+        /// zone/region in case of an outage. Applicable to Bigtable resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticFailoverRoutingConfigured")]
+        public virtual System.Nullable<bool> AutomaticFailoverRoutingConfigured { get; set; }
+
         /// <summary>
         /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that
         /// zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a
@@ -2117,6 +2224,19 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Policy ID that identified data placement in Blobstore as per
+    /// go/blobstore-user-guide#data-metadata-placement-and-failure-domains
+    /// </summary>
+    public class BlobstoreLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
+        public virtual System.Collections.Generic.IList<string> PolicyId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class CertChain : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The certificates that form the CA chain, from leaf to root order.</summary>
@@ -2139,6 +2259,27 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("assetName")]
+        public virtual string AssetName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAssetComposition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("childAsset")]
+        public virtual System.Collections.Generic.IList<CloudAsset> ChildAsset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2205,6 +2346,14 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryEndpoints")]
         public virtual System.Collections.Generic.IList<DiscoveryEndpoint> DiscoveryEndpoints { get; set; }
+
+        /// <summary>Optional. ClusterMaintenancePolicy determines when to allow or deny updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
+        public virtual ClusterMaintenancePolicy MaintenancePolicy { get; set; }
+
+        /// <summary>Output only. ClusterMaintenanceSchedule Output only Published maintenance schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
+        public virtual ClusterMaintenanceSchedule MaintenanceSchedule { get; set; }
 
         /// <summary>
         /// Required. Identifier. Unique name of the resource in this scope including project and location using the
@@ -2291,6 +2440,220 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Maintenance policy per cluster.</summary>
+    public class ClusterMaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. The time when the policy was created i.e. Maintenance Window or Deny Period was assigned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The time when the policy was updated i.e. Maintenance Window or Deny Period was updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current
+        /// version, the maximum number of weekly_maintenance_window is expected to be one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyMaintenanceWindow")]
+        public virtual System.Collections.Generic.IList<ClusterWeeklyMaintenanceWindow> WeeklyMaintenanceWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Upcoming maitenance schedule.</summary>
+    public class ClusterMaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The end time of any upcoming scheduled maintenance for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _scheduleDeadlineTimeRaw;
+
+        private object _scheduleDeadlineTime;
+
+        /// <summary>
+        /// Output only. The deadline that the maintenance schedule start time can not go beyond, including reschedule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
+        public virtual string ScheduleDeadlineTimeRaw
+        {
+            get => _scheduleDeadlineTimeRaw;
+            set
+            {
+                _scheduleDeadlineTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduleDeadlineTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleDeadlineTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleDeadlineTimeDateTimeOffset instead.")]
+        public virtual object ScheduleDeadlineTime
+        {
+            get => _scheduleDeadlineTime;
+            set
+            {
+                _scheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduleDeadlineTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleDeadlineTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleDeadlineTimeRaw);
+            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The start time of any upcoming scheduled maintenance for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of the persistence functionality.</summary>
     public class ClusterPersistenceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2305,6 +2668,25 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Optional. RDB configuration. This field will be ignored if mode is not RDB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rdbConfig")]
         public virtual RDBConfig RdbConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Time window specified for weekly operations.</summary>
+    public class ClusterWeeklyMaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allows to define schedule that runs specified day of the week.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>Duration of the time window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Start time of the window in UTC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2632,7 +3014,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata.</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 21</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -2748,6 +3130,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Optional. Tags associated with this resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsSet")]
+        public virtual Tags TagsSet { get; set; }
 
         private string _updationTimeRaw;
 
@@ -2883,6 +3269,15 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class DirectLocationAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual System.Collections.Generic.IList<LocationAssignment> Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Endpoints on each network, for Redis clients to connect to the cluster.</summary>
     public class DiscoveryEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2937,6 +3332,19 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Required. Specify data to be exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual OutputConfig OutputConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines parameters that should only be used for specific asset types.</summary>
+    public class ExtraParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Details about zones used by regional compute.googleapis.com/InstanceGroupManager to create instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalMigDistributionPolicy")]
+        public virtual RegionalMigDistributionPolicy RegionalMigDistributionPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3442,6 +3850,48 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class IsolationExpectations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Explicit overrides for ZI and ZS requirements to be used for resources that should be excluded from ZI/ZS
+        /// verification logic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirementOverride")]
+        public virtual RequirementOverride RequirementOverride { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ziOrgPolicy")]
+        public virtual string ZiOrgPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionPolicy")]
+        public virtual string ZiRegionPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionState")]
+        public virtual string ZiRegionState { get; set; }
+
+        /// <summary>
+        /// Deprecated: use zi_org_policy, zi_region_policy and zi_region_state instead for setting ZI expectations as
+        /// per go/zicy-publish-physical-location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneIsolation")]
+        public virtual string ZoneIsolation { get; set; }
+
+        /// <summary>
+        /// Deprecated: use zs_org_policy, and zs_region_stateinstead for setting Zs expectations as per
+        /// go/zicy-publish-physical-location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneSeparation")]
+        public virtual string ZoneSeparation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsOrgPolicy")]
+        public virtual string ZsOrgPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsRegionState")]
+        public virtual string ZsRegionState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListClusters.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3558,6 +4008,42 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LocationAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
+        public virtual string LocationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LocationData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("blobstoreLocation")]
+        public virtual BlobstoreLocation BlobstoreLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("childAssetLocation")]
+        public virtual CloudAssetComposition ChildAssetLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("directLocation")]
+        public virtual DirectLocationAssignment DirectLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectProxy")]
+        public virtual TenantProjectProxy GcpProjectProxy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("placerLocation")]
+        public virtual PlacerLocation PlacerLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerLocation")]
+        public virtual SpannerLocation SpannerLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4195,6 +4681,17 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message describing that the location of the customer resource is tied to placer allocations</summary>
+    public class PlacerLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Directory with a config related to it in placer (e.g. "/placer/prod/home/my-root/my-dir")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placerConfig")]
+        public virtual string PlacerConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Product specification for Condor resources.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4334,6 +4831,26 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     }
 
     /// <summary>
+    /// To be used for specifying the intended distribution of regional compute.googleapis.com/InstanceGroupManager
+    /// instances
+    /// </summary>
+    public class RegionalMigDistributionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The shape in which the group converges around distribution of resources. Instance of proto2 enum
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetShape")]
+        public virtual System.Nullable<int> TargetShape { get; set; }
+
+        /// <summary>Cloud zones used by regional MIG to create instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<ZoneConfiguration> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Details of the remote cluster associated with this cluster in a cross cluster replication setup.
     /// </summary>
     public class RemoteCluster : Google.Apis.Requests.IDirectResponseSchema
@@ -4347,6 +4864,69 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Output only. The unique identifier of the remote cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RequirementOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ziOverride")]
+        public virtual string ZiOverride { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsOverride")]
+        public virtual string ZsOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for rescheduling a cluster maintenance.</summary>
+    public class RescheduleClusterMaintenanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rescheduleType")]
+        public virtual string RescheduleType { get; set; }
+
+        private string _scheduleTimeRaw;
+
+        private object _scheduleTime;
+
+        /// <summary>
+        /// Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in RFC
+        /// 3339 format, for example `2012-11-15T16:19:00.094Z`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
+        public virtual string ScheduleTimeRaw
+        {
+            get => _scheduleTimeRaw;
+            set
+            {
+                _scheduleTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduleTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleTimeDateTimeOffset instead.")]
+        public virtual object ScheduleTime
+        {
+            get => _scheduleTime;
+            set
+            {
+                _scheduleTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduleTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4419,6 +4999,23 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class SpannerLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Set of backups used by the resource with name in the same format as what is available at
+        /// http://table/spanner_automon.backup_metadata
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupName")]
+        public virtual System.Collections.Generic.IList<string> BackupName { get; set; }
+
+        /// <summary>Set of databases used by the resource in format /span//</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbName")]
+        public virtual System.Collections.Generic.IList<string> DbName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents additional information about the state of the cluster.</summary>
     public class StateInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4454,6 +5051,29 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message type for storing tags. Tags provide a way to create annotations for resources, and in some cases
+    /// conditionally allow or deny policies based on whether a resource has a specific tag.
+    /// </summary>
+    public class Tags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Tag key/value mappings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TagsValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TenantProjectProxy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumbers")]
+        public virtual System.Collections.Generic.IList<string> ProjectNumbers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4671,6 +5291,15 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Required. Start time of the window in UTC time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
