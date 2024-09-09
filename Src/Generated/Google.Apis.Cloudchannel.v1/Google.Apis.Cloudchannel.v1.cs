@@ -6601,6 +6601,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
+        /// <summary>Optional. Primary admin email to fetch for Cloud Identity account domainless customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryAdminEmail")]
+        public virtual string PrimaryAdminEmail { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6621,6 +6625,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// </summary>
     public class GoogleCloudChannelV1CloudIdentityCustomerAccount : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If existing = true, and is 2-tier customer, the channel partner of the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerCloudIdentityId")]
+        public virtual string ChannelPartnerCloudIdentityId { get; set; }
+
         /// <summary>If existing = true, the Cloud Identity ID of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerCloudIdentityId")]
         public virtual string CustomerCloudIdentityId { get; set; }
@@ -6631,6 +6639,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerName")]
         public virtual string CustomerName { get; set; }
+
+        /// <summary>If existing = true, the type of the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerType")]
+        public virtual string CustomerType { get; set; }
 
         /// <summary>Returns true if a Cloud Identity account exists for a specific domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("existing")]
@@ -7547,6 +7559,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwriteIfExists")]
         public virtual System.Nullable<bool> OverwriteIfExists { get; set; }
+
+        /// <summary>Optional. Customer's primary admin email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryAdminEmail")]
+        public virtual string PrimaryAdminEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
