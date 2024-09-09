@@ -686,6 +686,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>The metric savings of the audit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricSavings")]
+        public virtual MetricSavings MetricSavings { get; set; }
+
         /// <summary>The unit of the numeric_value field. Used to format the numeric value for display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericUnit")]
         public virtual string NumericUnit { get; set; }
@@ -832,6 +836,33 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         /// <summary>The user agent that was used to run this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metric savings of the audit.</summary>
+    public class MetricSavings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional numeric value representing the audit's savings for the CLS metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("CLS")]
+        public virtual System.Nullable<double> CLS { get; set; }
+
+        /// <summary>Optional. Optional numeric value representing the audit's savings for the FCP metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("FCP")]
+        public virtual System.Nullable<double> FCP { get; set; }
+
+        /// <summary>Optional. Optional numeric value representing the audit's savings for the INP metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("INP")]
+        public virtual System.Nullable<double> INP { get; set; }
+
+        /// <summary>Optional. Optional numeric value representing the audit's savings for the LCP metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("LCP")]
+        public virtual System.Nullable<double> LCP { get; set; }
+
+        /// <summary>Optional. Optional numeric value representing the audit's savings for the TBT metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("TBT")]
+        public virtual System.Nullable<double> TBT { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
