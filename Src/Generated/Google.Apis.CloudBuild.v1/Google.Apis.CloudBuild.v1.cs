@@ -6728,9 +6728,9 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>
         /// The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger,
-        /// CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build service account
-        /// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format:
-        /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
+        /// CreateBuild, and CancelBuild. If no service account is set and the legacy Cloud Build service account
+        /// ([PROJECT_NUM]@cloudbuild.gserviceaccount.com) is the default for the project then it will be used instead.
+        /// Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
