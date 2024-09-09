@@ -26778,14 +26778,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Indicates that this claim required grounding check. When the system decided this claim doesn't require
         /// attribution/grounding check, this field will be set to false. In that case, no grounding check was done for
-        /// the claim and therefore citation_indices, and anti_citation_indices should not be returned.
+        /// the claim and therefore citation_indices, anti_citation_indices, and score should not be returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingCheckRequired")]
         public virtual System.Nullable<bool> GroundingCheckRequired { get; set; }
-
-        /// <summary>Confidence score for the claim in the answer candidate, in the range of [0, 1].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<double> Score { get; set; }
 
         /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
@@ -28643,6 +28639,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>
+        /// Output only. The index status of the document. * If document is indexed successfully, the index_time field
+        /// is populated. * Otherwise, if document is not indexed due to errors, the error_samples field is populated. *
+        /// Otherwise, index_status is unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexStatus")]
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentIndexStatus IndexStatus { get; set; }
+
         private string _indexTimeRaw;
 
         private object _indexTime;
@@ -28748,6 +28752,59 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Index status of the document.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentIndexStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A sample of errors encountered while indexing the document. If this field is populated, the document is not
+        /// indexed due to errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        private string _indexTimeRaw;
+
+        private object _indexTime;
+
+        /// <summary>
+        /// The time when the document was indexed. If this field is populated, it means the document has been indexed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual string IndexTimeRaw
+        {
+            get => _indexTimeRaw;
+            set
+            {
+                _indexTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _indexTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="IndexTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IndexTimeDateTimeOffset instead.")]
+        public virtual object IndexTime
+        {
+            get => _indexTime;
+            set
+            {
+                _indexTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _indexTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="IndexTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IndexTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
+            set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
