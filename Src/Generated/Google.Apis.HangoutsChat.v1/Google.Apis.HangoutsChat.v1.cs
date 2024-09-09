@@ -1776,13 +1776,19 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Creates a message in a Google Chat space. The maximum message size, including text and cards, is 32,000
-            /// bytes. For an example, see [Send a
-            /// message](https://developers.google.com/workspace/chat/create-messages). Calling this method requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize) and supports the
-            /// following authentication types: - For text messages, user authentication or app authentication are
-            /// supported. - For card messages, only app authentication is supported. (Only Chat apps can create card
-            /// messages.)
+            /// Creates a message in a Google Chat space. For an example, see [Send a
+            /// message](https://developers.google.com/workspace/chat/create-messages). The `create()` method requires
+            /// either user or app authentication. Chat attributes the message sender differently depending on the type
+            /// of authentication that you use in your request. The following image shows how Chat attributes a message
+            /// when you use app authentication. Chat displays the Chat app as the message sender. The content of the
+            /// message can contain text (`text`), cards (`cardsV2`), and accessory widgets (`accessoryWidgets`).
+            /// ![Message sent with app
+            /// authentication](https://developers.google.com/workspace/chat/images/message-app-auth.svg) The following
+            /// image shows how Chat attributes a message when you use user authentication. Chat displays the user as
+            /// the message sender and attributes the Chat app to the message by displaying its name. The content of
+            /// message can only contain text (`text`). ![Message sent with user
+            /// authentication](https://developers.google.com/workspace/chat/images/message-user-auth.svg) The maximum
+            /// message size, including the message contents, is 32,000 bytes.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1794,13 +1800,19 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Creates a message in a Google Chat space. The maximum message size, including text and cards, is 32,000
-            /// bytes. For an example, see [Send a
-            /// message](https://developers.google.com/workspace/chat/create-messages). Calling this method requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize) and supports the
-            /// following authentication types: - For text messages, user authentication or app authentication are
-            /// supported. - For card messages, only app authentication is supported. (Only Chat apps can create card
-            /// messages.)
+            /// Creates a message in a Google Chat space. For an example, see [Send a
+            /// message](https://developers.google.com/workspace/chat/create-messages). The `create()` method requires
+            /// either user or app authentication. Chat attributes the message sender differently depending on the type
+            /// of authentication that you use in your request. The following image shows how Chat attributes a message
+            /// when you use app authentication. Chat displays the Chat app as the message sender. The content of the
+            /// message can contain text (`text`), cards (`cardsV2`), and accessory widgets (`accessoryWidgets`).
+            /// ![Message sent with app
+            /// authentication](https://developers.google.com/workspace/chat/images/message-app-auth.svg) The following
+            /// image shows how Chat attributes a message when you use user authentication. Chat displays the user as
+            /// the message sender and attributes the Chat app to the message by displaying its name. The content of
+            /// message can only contain text (`text`). ![Message sent with user
+            /// authentication](https://developers.google.com/workspace/chat/images/message-user-auth.svg) The maximum
+            /// message size, including the message contents, is 32,000 bytes.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -3208,7 +3220,13 @@ namespace Google.Apis.HangoutsChat.v1
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Resource name of the space. Format: `spaces/{space}`</param>
+        /// <param name="name">
+        /// Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the system-assigned ID for
+        /// the space. You can obtain the space ID by calling the
+        /// [`spaces.list()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list) method or
+        /// from the space URL. For example, if the space URL is
+        /// `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is `AAAAAAAAA`.
+        /// </param>
         public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Space body, string name)
         {
             return new PatchRequest(this.service, body, name);
@@ -3231,7 +3249,13 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-            /// <summary>Resource name of the space. Format: `spaces/{space}`</summary>
+            /// <summary>
+            /// Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the system-assigned ID
+            /// for the space. You can obtain the space ID by calling the
+            /// [`spaces.list()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list) method
+            /// or from the space URL. For example, if the space URL is
+            /// `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is `AAAAAAAAA`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -4243,6 +4267,29 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
+    /// Data for Chat space links. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class ChatSpaceLinkData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The message of the linked Chat space resource. Format: `spaces/{space}/messages/{message}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The space of the linked Chat space resource. Format: `spaces/{space}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual string Space { get; set; }
+
+        /// <summary>The thread of the linked Chat space resource. Format: `spaces/{space}/threads/{thread}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thread")]
+        public virtual string Thread { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and
     /// from color representations in various languages over compactness. For example, the fields of this representation
     /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
@@ -4783,7 +4830,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cornerRadius")]
         public virtual System.Nullable<int> CornerRadius { get; set; }
 
-        /// <summary>The colors to use when the type is `BORDER_TYPE_STROKE`.</summary>
+        /// <summary>
+        /// The colors to use when the type is `BORDER_TYPE_STROKE`. To set the stroke color, specify a value for the
+        /// `red`, `green`, and `blue` fields. The value must be a float number between 0 and 1 based on the RGB color
+        /// value, where `0` (0/255) represents the absence of color and `1` (255/255) represents the maximum intensity
+        /// of the color. For example, the following sets the color to red at its maximum intensity:
+        /// ```
+        /// "color": {
+        /// "red": 1, "green": 0, "blue": 0, }
+        /// ```
+        /// The `alpha` field is unavailable for stroke color. If specified, this
+        /// field is ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strokeColor")]
         public virtual Color StrokeColor { get; set; }
 
@@ -4812,22 +4870,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string AltText { get; set; }
 
         /// <summary>
-        /// If set, the button is filled with a solid background color and the font color changes to maintain contrast
-        /// with the background color. For example, setting a blue background likely results in white text. If unset,
-        /// the image background is white and the font color is blue. For red, green, and blue, the value of each field
-        /// is a `float` number that you can express in either of two ways: as a number between 0 and 255 divided by 255
-        /// (153/255), or as a value between 0 and 1 (0.6). 0 represents the absence of a color and 1 or 255/255
-        /// represent the full presence of that color on the RGB scale. Optionally set `alpha`, which sets a level of
-        /// transparency using this equation:
+        /// Optional. The color of the button. If set, the button `type` is set to `FILLED` and the color of `text` and
+        /// `icon` fields are set to a contrasting color for readability. For example, if the button color is set to
+        /// blue, any text or icons in the button are set to white. To set the button color, specify a value for the
+        /// `red`, `green`, and `blue` fields. The value must be a float number between 0 and 1 based on the RGB color
+        /// value, where `0` (0/255) represents the absence of color and `1` (255/255) represents the maximum intensity
+        /// of the color. For example, the following sets the color to red at its maximum intensity:
         /// ```
-        /// pixel color = alpha * (this color) + (1.0 - alpha) * (background
-        /// color)
+        /// "color": {
+        /// "red": 1, "green": 0, "blue": 0, }
         /// ```
-        /// For `alpha`, a value of `1` corresponds with a solid color, and a value of `0` corresponds with a
-        /// completely transparent color. For example, the following color represents a half transparent red:
-        /// ```
-        /// "color": { "red": 1, "green": 0, "blue": 0, "alpha": 0.5 }
-        /// ```
+        /// The `alpha` field is unavailable for button color. If specified, this
+        /// field is ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
@@ -4838,7 +4892,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>The icon image. If both `icon` and `text` are set, then the icon appears before the text.</summary>
+        /// <summary>
+        /// An icon displayed inside the button. If both `icon` and `text` are set, then the icon appears before the
+        /// text.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual GoogleAppsCardV1Icon Icon { get; set; }
 
@@ -5956,8 +6013,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// the second is an image button that opens a link:
         /// ```
         /// "buttonList": { "buttons": [ { "text": "Edit", "color":
-        /// { "red": 0, "green": 0, "blue": 1, "alpha": 1 }, "disabled": true, }, { "icon": { "knownIcon": "INVITE",
-        /// "altText": "check calendar" }, "onClick": { "openLink": { "url": "https://example.com/calendar" } } } ] }
+        /// { "red": 0, "green": 0, "blue": 1, }, "disabled": true, }, { "icon": { "knownIcon": "INVITE", "altText":
+        /// "check calendar" }, "onClick": { "openLink": { "url": "https://example.com/calendar" } } } ] }
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
@@ -6688,8 +6745,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// An array of [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards). Only Chat
         /// apps can create cards. If your Chat app [authenticates as a
         /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the messages can't
-        /// contain cards. To learn about cards and how to create them, see [Send card
-        /// messages](https://developers.google.com/workspace/chat/create-messages#create). [Card
+        /// contain cards. To learn how to create a message that contains cards, see [Send a
+        /// message](https://developers.google.com/workspace/chat/create-messages). [Card
         /// builder](https://addons.gsuite.google.com/uikit/builder)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardsV2")]
@@ -6884,8 +6941,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// set, the message is private and only visible to the specified user and the Chat app. Link previews and
         /// attachments aren't supported for private messages. Only Chat apps can send private messages. If your Chat
         /// app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-        /// to send a message, the message can't be private and must omit this field. For details, see [Send private
-        /// messages to Google Chat users](https://developers.google.com/workspace/chat/private-messages).
+        /// to send a message, the message can't be private and must omit this field. For details, see [Send a message
+        /// privately](https://developers.google.com/workspace/chat/create-messages#private).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateMessageViewer")]
         public virtual User PrivateMessageViewer { get; set; }
@@ -6921,8 +6978,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Plain-text body of the message. The first link to an image, video, or web page generates a [preview
         /// chip](https://developers.google.com/workspace/chat/preview-links). You can also [@mention a Google Chat
         /// user](https://developers.google.com/workspace/chat/format-messages#messages-@mention), or everyone in the
-        /// space. To learn about creating text messages, see [Send a text
-        /// message](https://developers.google.com/workspace/chat/create-messages#create-text-messages).
+        /// space. To learn about creating text messages, see [Send a
+        /// message](https://developers.google.com/workspace/chat/create-messages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -7173,6 +7230,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A rich link to a resource.</summary>
     public class RichLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Data for a chat space link. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatSpaceLinkData")]
+        public virtual ChatSpaceLinkData ChatSpaceLinkData { get; set; }
+
         /// <summary>Data for a drive link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveLinkData")]
         public virtual DriveLinkData DriveLinkData { get; set; }
@@ -7476,7 +7539,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("membershipCount")]
         public virtual MembershipCount MembershipCount { get; set; }
 
-        /// <summary>Resource name of the space. Format: `spaces/{space}`</summary>
+        /// <summary>
+        /// Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the system-assigned ID for
+        /// the space. You can obtain the space ID by calling the
+        /// [`spaces.list()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list) method or
+        /// from the space URL. For example, if the space URL is
+        /// `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is `AAAAAAAAA`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
