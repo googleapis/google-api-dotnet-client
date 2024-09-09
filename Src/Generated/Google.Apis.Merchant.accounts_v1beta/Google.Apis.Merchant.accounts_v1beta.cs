@@ -4746,7 +4746,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     }
 
     /// <summary>
-    /// The merchant account's [shipping setting]((https://support.google.com/merchants/answer/6069284).
+    /// The merchant account's [shipping setting](https://support.google.com/merchants/answer/6069284).
     /// </summary>
     public class ShippingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
