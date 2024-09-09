@@ -524,7 +524,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         }
 
         /// <summary>
-        /// Returns all accounts accessible by the caller. Note that these accounts might not currently have GA4
+        /// Returns all accounts accessible by the caller. Note that these accounts might not currently have GA
         /// properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no
         /// relevant accounts are found.
         /// </summary>
@@ -534,7 +534,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         }
 
         /// <summary>
-        /// Returns all accounts accessible by the caller. Note that these accounts might not currently have GA4
+        /// Returns all accounts accessible by the caller. Note that these accounts might not currently have GA
         /// properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no
         /// relevant accounts are found.
         /// </summary>
@@ -726,7 +726,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be
         /// requested for a property. Reports may be requested for any property, but dimensions that aren't related to
         /// quota can only be requested on Google Analytics 360 properties. This method is only available to
-        /// Administrators. These data access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and
+        /// Administrators. These data access records include GA UI Reporting, GA UI Explorations, GA Data API, and
         /// other products like Firebase &amp;amp; Admob that can retrieve data from Google Analytics through a linkage.
         /// These records don't include property configuration changes like adding a stream or changing a property's
         /// time zone. For configuration change history, see
@@ -736,8 +736,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// <param name="entity">
         /// The Data Access Report supports requesting at the property level or account level. If requested at the
         /// account level, Data Access Reports include all access for all properties under that account. To request at
-        /// the property level, entity should be for example 'properties/123' if "123" is your GA4 property ID. To
-        /// request at the account level, entity should be for example 'accounts/1234' if "1234" is your GA4 Account ID.
+        /// the property level, entity should be for example 'properties/123' if "123" is your Google Analytics property
+        /// ID. To request at the account level, entity should be for example 'accounts/1234' if "1234" is your Google
+        /// Analytics Account ID.
         /// </param>
         public virtual RunAccessReportRequest RunAccessReport(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaRunAccessReportRequest body, string entity)
         {
@@ -749,7 +750,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be
         /// requested for a property. Reports may be requested for any property, but dimensions that aren't related to
         /// quota can only be requested on Google Analytics 360 properties. This method is only available to
-        /// Administrators. These data access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and
+        /// Administrators. These data access records include GA UI Reporting, GA UI Explorations, GA Data API, and
         /// other products like Firebase &amp;amp; Admob that can retrieve data from Google Analytics through a linkage.
         /// These records don't include property configuration changes like adding a stream or changing a property's
         /// time zone. For configuration change history, see
@@ -768,9 +769,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             /// <summary>
             /// The Data Access Report supports requesting at the property level or account level. If requested at the
             /// account level, Data Access Reports include all access for all properties under that account. To request
-            /// at the property level, entity should be for example 'properties/123' if "123" is your GA4 property ID.
-            /// To request at the account level, entity should be for example 'accounts/1234' if "1234" is your GA4
-            /// Account ID.
+            /// at the property level, entity should be for example 'properties/123' if "123" is your Google Analytics
+            /// property ID. To request at the account level, entity should be for example 'accounts/1234' if "1234" is
+            /// your Google Analytics Account ID.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
@@ -2041,7 +2042,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                     }
                 }
 
-                /// <summary>Lookup for a single "GA4" MeasurementProtocolSecret.</summary>
+                /// <summary>Lookup for a single MeasurementProtocolSecret.</summary>
                 /// <param name="name">
                 /// Required. The name of the measurement protocol secret to lookup. Format:
                 /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
@@ -2051,7 +2052,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Lookup for a single "GA4" MeasurementProtocolSecret.</summary>
+                /// <summary>Lookup for a single MeasurementProtocolSecret.</summary>
                 public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3414,14 +3415,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             }
         }
 
-        /// <summary>Creates an "GA4" property with the specified location and attributes.</summary>
+        /// <summary>Creates a Google Analytics property with the specified location and attributes.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaProperty body)
         {
             return new CreateRequest(this.service, body);
         }
 
-        /// <summary>Creates an "GA4" property with the specified location and attributes.</summary>
+        /// <summary>Creates a Google Analytics property with the specified location and attributes.</summary>
         public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaProperty>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -3458,7 +3459,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
         /// AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an
-        /// error if the target is not found, or is not a GA4 Property.
+        /// error if the target is not found.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
@@ -3474,7 +3475,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
         /// AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an
-        /// error if the target is not found, or is not a GA4 Property.
+        /// error if the target is not found.
         /// </summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaProperty>
         {
@@ -3516,7 +3517,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             }
         }
 
-        /// <summary>Lookup for a single "GA4" Property.</summary>
+        /// <summary>Lookup for a single GA Property.</summary>
         /// <param name="name">
         /// Required. The name of the property to lookup. Format: properties/{property_id} Example: "properties/1000"
         /// </param>
@@ -3525,7 +3526,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             return new GetRequest(this.service, name);
         }
 
-        /// <summary>Lookup for a single "GA4" Property.</summary>
+        /// <summary>Lookup for a single GA Property.</summary>
         public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaProperty>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3618,9 +3619,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         }
 
         /// <summary>
-        /// Returns child Properties under the specified parent Account. Only "GA4" properties will be returned.
-        /// Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed") properties are
-        /// excluded by default. Returns an empty list if no relevant properties are found.
+        /// Returns child Properties under the specified parent Account. Properties will be excluded if the caller does
+        /// not have access. Soft-deleted (ie: "trashed") properties are excluded by default. Returns an empty list if
+        /// no relevant properties are found.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -3628,9 +3629,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         }
 
         /// <summary>
-        /// Returns child Properties under the specified parent Account. Only "GA4" properties will be returned.
-        /// Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed") properties are
-        /// excluded by default. Returns an empty list if no relevant properties are found.
+        /// Returns child Properties under the specified parent Account. Properties will be excluded if the caller does
+        /// not have access. Soft-deleted (ie: "trashed") properties are excluded by default. Returns an empty list if
+        /// no relevant properties are found.
         /// </summary>
         public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaListPropertiesResponse>
         {
@@ -3805,7 +3806,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be
         /// requested for a property. Reports may be requested for any property, but dimensions that aren't related to
         /// quota can only be requested on Google Analytics 360 properties. This method is only available to
-        /// Administrators. These data access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and
+        /// Administrators. These data access records include GA UI Reporting, GA UI Explorations, GA Data API, and
         /// other products like Firebase &amp;amp; Admob that can retrieve data from Google Analytics through a linkage.
         /// These records don't include property configuration changes like adding a stream or changing a property's
         /// time zone. For configuration change history, see
@@ -3815,8 +3816,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// <param name="entity">
         /// The Data Access Report supports requesting at the property level or account level. If requested at the
         /// account level, Data Access Reports include all access for all properties under that account. To request at
-        /// the property level, entity should be for example 'properties/123' if "123" is your GA4 property ID. To
-        /// request at the account level, entity should be for example 'accounts/1234' if "1234" is your GA4 Account ID.
+        /// the property level, entity should be for example 'properties/123' if "123" is your Google Analytics property
+        /// ID. To request at the account level, entity should be for example 'accounts/1234' if "1234" is your Google
+        /// Analytics Account ID.
         /// </param>
         public virtual RunAccessReportRequest RunAccessReport(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaRunAccessReportRequest body, string entity)
         {
@@ -3828,7 +3830,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be
         /// requested for a property. Reports may be requested for any property, but dimensions that aren't related to
         /// quota can only be requested on Google Analytics 360 properties. This method is only available to
-        /// Administrators. These data access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data API, and
+        /// Administrators. These data access records include GA UI Reporting, GA UI Explorations, GA Data API, and
         /// other products like Firebase &amp;amp; Admob that can retrieve data from Google Analytics through a linkage.
         /// These records don't include property configuration changes like adding a stream or changing a property's
         /// time zone. For configuration change history, see
@@ -3847,9 +3849,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             /// <summary>
             /// The Data Access Report supports requesting at the property level or account level. If requested at the
             /// account level, Data Access Reports include all access for all properties under that account. To request
-            /// at the property level, entity should be for example 'properties/123' if "123" is your GA4 property ID.
-            /// To request at the account level, entity should be for example 'accounts/1234' if "1234" is your GA4
-            /// Account ID.
+            /// at the property level, entity should be for example 'properties/123' if "123" is your Google Analytics
+            /// property ID. To request at the account level, entity should be for example 'accounts/1234' if "1234" is
+            /// your Google Analytics Account ID.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
@@ -4428,7 +4430,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A virtual resource representing an overview of an account and all its child GA4 properties.</summary>
+    /// <summary>
+    /// A virtual resource representing an overview of an account and all its child Google Analytics properties.
+    /// </summary>
     public class GoogleAnalyticsAdminV1betaAccountSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5080,7 +5084,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A link between a GA4 property and a Firebase project.</summary>
+    /// <summary>A link between a Google Analytics property and a Firebase project.</summary>
     public class GoogleAnalyticsAdminV1betaFirebaseLink : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -5137,7 +5141,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A link between a GA4 property and a Google Ads account.</summary>
+    /// <summary>A link between a Google Analytics property and a Google Ads account.</summary>
     public class GoogleAnalyticsAdminV1betaGoogleAdsLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5586,7 +5590,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource message representing a Google Analytics GA4 property.</summary>
+    /// <summary>A resource message representing a Google Analytics property.</summary>
     public class GoogleAnalyticsAdminV1betaProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5805,7 +5809,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A virtual resource representing metadata for a GA4 property.</summary>
+    /// <summary>A virtual resource representing metadata for a Google Analytics property.</summary>
     public class GoogleAnalyticsAdminV1betaPropertySummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Display name for the property referred to in this property summary.</summary>
