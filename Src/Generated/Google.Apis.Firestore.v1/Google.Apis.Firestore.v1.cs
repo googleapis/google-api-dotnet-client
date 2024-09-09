@@ -3182,7 +3182,7 @@ namespace Google.Apis.Firestore.v1
                 /// Required. The ID to use for the database, which will become the final component of the database's
                 /// resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first
                 /// character a letter and the last a letter or a number. Must not be UUID-like
-                /// /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+                /// /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("databaseId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DatabaseId { get; set; }
@@ -5022,6 +5022,22 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string DistanceMeasure { get; set; }
 
         /// <summary>
+        /// Optional. Optional name of the field to output the result of the vector distance calculation. Must conform
+        /// to document field name limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceResultField")]
+        public virtual string DistanceResultField { get; set; }
+
+        /// <summary>
+        /// Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior
+        /// of the specified `distance_measure` will affect the meaning of the distance threshold. Since DOT_PRODUCT
+        /// distances increase when the vectors are more similar, the comparison is inverted. For EUCLIDEAN, COSINE:
+        /// WHERE distance &amp;lt;= distance_threshold For DOT_PRODUCT: WHERE distance &amp;gt;= distance_threshold
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceThreshold")]
+        public virtual System.Nullable<double> DistanceThreshold { get; set; }
+
+        /// <summary>
         /// Required. The number of nearest neighbors to return. Must be a positive integer of no more than 1000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
@@ -5277,7 +5293,7 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.BulkDeleteDocuments.</summary>
     public class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ids of the collection groups that are being deleted.</summary>
+        /// <summary>The IDs of the collection groups that are being deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
@@ -5318,7 +5334,7 @@ namespace Google.Apis.Firestore.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Which namespace ids are being deleted.</summary>
+        /// <summary>Which namespace IDs are being deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
@@ -5655,8 +5671,8 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. The key_prefix for this database. This key_prefix is used, in combination with the project id
-        /// ("~") to construct the application id that is returned from the Cloud Datastore APIs in Google App Engine
+        /// Output only. The key_prefix for this database. This key_prefix is used, in combination with the project ID
+        /// ("~") to construct the application ID that is returned from the Cloud Datastore APIs in Google App Engine
         /// first generation runtimes. This value may be empty in which case the appid to use for URL-encoded keys is
         /// the project_id (eg: foo instead of v~foo).
         /// </summary>
@@ -5752,8 +5768,7 @@ namespace Google.Apis.Firestore.v1.Data
     }
 
     /// <summary>
-    /// Encryption configuration for a new database being created from another source. The source could be a Backup or a
-    /// DatabaseSnapshot.
+    /// Encryption configuration for a new database being created from another source. The source could be a Backup .
     /// </summary>
     public class GoogleFirestoreAdminV1EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5776,7 +5791,7 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.ExportDocuments.</summary>
     public class GoogleFirestoreAdminV1ExportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Which collection ids are being exported.</summary>
+        /// <summary>Which collection IDs are being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
@@ -5817,7 +5832,7 @@ namespace Google.Apis.Firestore.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Which namespace ids are being exported.</summary>
+        /// <summary>Which namespace IDs are being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
@@ -5922,7 +5937,7 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1ExportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Which collection ids to export. Unspecified means all collections. Each collection id in this list must be
+        /// Which collection IDs to export. Unspecified means all collections. Each collection ID in this list must be
         /// unique.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
@@ -6009,7 +6024,7 @@ namespace Google.Apis.Firestore.v1.Data
 
     /// <summary>
     /// Represents a single field in the database. Fields are grouped by their "Collection Group", which represent all
-    /// collections in the database with the same id.
+    /// collections in the database with the same ID.
     /// </summary>
     public class GoogleFirestoreAdminV1Field : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6174,7 +6189,7 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.ImportDocuments.</summary>
     public class GoogleFirestoreAdminV1ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Which collection ids are being imported.</summary>
+        /// <summary>Which collection IDs are being imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
@@ -6219,7 +6234,7 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputUriPrefix")]
         public virtual string InputUriPrefix { get; set; }
 
-        /// <summary>Which namespace ids are being imported.</summary>
+        /// <summary>Which namespace IDs are being imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
@@ -6280,7 +6295,7 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1ImportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Which collection ids to import. Unspecified means all collections included in the import. Each collection id
+        /// Which collection IDs to import. Unspecified means all collections included in the import. Each collection ID
         /// in this list must be unique.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
@@ -6335,9 +6350,9 @@ namespace Google.Apis.Firestore.v1.Data
 
         /// <summary>
         /// Indexes with a collection query scope specified allow queries against a collection that is the child of a
-        /// specific document, specified at query time, and that has the same collection id. Indexes with a collection
+        /// specific document, specified at query time, and that has the same collection ID. Indexes with a collection
         /// group query scope specified allow queries against all collections descended from a specific document,
-        /// specified at query time, and that have the same collection id as this index.
+        /// specified at query time, and that have the same collection ID as this index.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryScope")]
         public virtual string QueryScope { get; set; }
@@ -6742,8 +6757,8 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1RestoreDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Backup to restore from. Must be from the same project as the parent. The restored database will be created
-        /// in the same location as the source backup. Format is:
+        /// Required. Backup to restore from. Must be from the same project as the parent. The restored database will be
+        /// created in the same location as the source backup. Format is:
         /// `projects/{project_id}/locations/{location}/backups/{backup}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
@@ -6751,9 +6766,9 @@ namespace Google.Apis.Firestore.v1.Data
 
         /// <summary>
         /// Required. The ID to use for the database, which will become the final component of the database's resource
-        /// name. This database id must not be associated with an existing database. This value should be 4-63
+        /// name. This database ID must not be associated with an existing database. This value should be 4-63
         /// characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number.
-        /// Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+        /// Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
