@@ -1046,7 +1046,7 @@ namespace Google.Apis.Firestore.v1beta2.Data
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.BulkDeleteDocuments.</summary>
     public class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ids of the collection groups that are being deleted.</summary>
+        /// <summary>The IDs of the collection groups that are being deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
@@ -1087,7 +1087,7 @@ namespace Google.Apis.Firestore.v1beta2.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Which namespace ids are being deleted.</summary>
+        /// <summary>Which namespace IDs are being deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
