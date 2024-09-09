@@ -22727,6 +22727,10 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("samplePeriod")]
         public virtual object SamplePeriod { get; set; }
 
+        /// <summary>The scope of the timeseries data of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesResourceHierarchyLevel")]
+        public virtual System.Collections.Generic.IList<string> TimeSeriesResourceHierarchyLevel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
