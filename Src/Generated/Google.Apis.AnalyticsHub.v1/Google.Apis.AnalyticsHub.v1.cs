@@ -3751,7 +3751,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response when you revoke a subscription.</summary>
+    /// <summary>Message for response when you revoke a subscription. Empty for now.</summary>
     public class RevokeSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
