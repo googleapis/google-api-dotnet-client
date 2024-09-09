@@ -5935,7 +5935,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Performance data for the asset.</summary>
+        /// <summary>Performance data for the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceData")]
         public virtual AssetPerformanceData PerformanceData { get; set; }
 
@@ -6142,6 +6142,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Export asset inventory details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
+        public virtual AssetsExportJobInventory Inventory { get; set; }
+
         /// <summary>
         /// Optional. Labels as key value pairs. Labels must meet the following constraints: * Keys and values can
         /// contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8
@@ -6160,9 +6164,20 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkDependencies")]
         public virtual AssetsExportJobNetworkDependencies NetworkDependencies { get; set; }
 
+        /// <summary>Export asset with performance data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceData")]
+        public virtual AssetsExportJobPerformanceData PerformanceData { get; set; }
+
         /// <summary>Output only. Recent non expired executions of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentExecutions")]
         public virtual System.Collections.Generic.IList<AssetsExportJobExecution> RecentExecutions { get; set; }
+
+        /// <summary>
+        /// Optional. When this value is set to 'true' the response will include all assets, including those that are
+        /// hidden.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showHidden")]
+        public virtual System.Nullable<bool> ShowHidden { get; set; }
 
         /// <summary>Export to Cloud Storage files downloadable using signed URIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedUriDestination")]
@@ -6290,6 +6305,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Number of assets requested for export after resolving the requested filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedAssetCount")]
+        public virtual System.Nullable<int> RequestedAssetCount { get; set; }
+
         /// <summary>Output only. Result of the export execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual AssetsExportJobExecutionResult Result { get; set; }
@@ -6342,6 +6361,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
+        /// <summary>Output only. List of output files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
+        public virtual OutputFileList OutputFiles { get; set; }
+
         /// <summary>Output only. Signed URLs for downloading export artifacts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedUris")]
         public virtual SignedUris SignedUris { get; set; }
@@ -6361,6 +6384,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for asset inventory details exports.</summary>
+    public class AssetsExportJobInventory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for network dependencies exports.</summary>
     public class AssetsExportJobNetworkDependencies : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6368,6 +6398,22 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// Optional. When this value is set to a positive integer, network connections data will be returned for the
         /// most recent days for which data is available. When this value is unset (or set to zero), all available data
         /// is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDays")]
+        public virtual System.Nullable<int> MaxDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for performance data exports.</summary>
+    public class AssetsExportJobPerformanceData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When this value is set to a positive integer, performance data will be returned for the most
+        /// recent days for which data is available. When this value is unset (or set to zero), all available data is
+        /// returned. The maximum value is 420; values above 420 will be coerced to 420. If unset (0 value) a default
+        /// value of 40 will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDays")]
         public virtual System.Nullable<int> MaxDays { get; set; }
@@ -6519,7 +6565,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlForMysqlShape")]
         public virtual CloudSqlForMySqlShape CloudSqlForMysqlShape { get; set; }
 
-        /// <summary>Cloud SQL for Postgres database shape.</summary>
+        /// <summary>Cloud SQL for PostgreSQL database shape.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlForPostgresqlShape")]
         public virtual CloudSqlForPostgreSqlShape CloudSqlForPostgresqlShape { get; set; }
 
@@ -6753,7 +6799,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; }
 
-        /// <summary>Disk type backing the storage.</summary>
+        /// <summary>Output only. Disk type backing the storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -6770,6 +6816,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizedPercentage")]
         public virtual System.Nullable<float> UtilizedPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a single output file of type CSV.</summary>
+    public class CsvOutputFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of columns in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnsCount")]
+        public virtual System.Nullable<int> ColumnsCount { get; set; }
+
+        /// <summary>Output only. Number of rows in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
+        public virtual System.Nullable<int> RowCount { get; set; }
+
+        /// <summary>Output only. Signed URI destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUri")]
+        public virtual SignedUri SignedUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7137,7 +7202,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Preferences for database backups.</summary>
     public class DatabasePreferencesCloudSqlCommonBackup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Mode of automated backups.</summary>
+        /// <summary>Optional. Automated backup mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupMode")]
         public virtual string BackupMode { get; set; }
 
@@ -7785,7 +7850,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Describes the fit level of an asset for migration to a specific target.</summary>
     public class FitDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fit level.</summary>
+        /// <summary>Output only. Fit level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fitLevel")]
         public virtual string FitLevel { get; set; }
 
@@ -8035,7 +8100,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fstab")]
         public virtual FstabEntryList Fstab { get; set; }
 
-        /// <summary>Hosts file (/etc/hosts).</summary>
+        /// <summary>Output only. Hosts file (/etc/hosts).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
         public virtual HostsEntryList Hosts { get; set; }
 
@@ -8169,7 +8234,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Hosts content.</summary>
     public class HostsEntryList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Hosts entries.</summary>
+        /// <summary>Output only. Hosts entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<HostsEntry> Entries { get; set; }
 
@@ -9501,6 +9566,32 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a single output file.</summary>
+    public class OutputFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. CSV output file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvOutputFile")]
+        public virtual CsvOutputFile CsvOutputFile { get; set; }
+
+        /// <summary>Output only. File size in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileSizeBytes")]
+        public virtual System.Nullable<int> FileSizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a list of output files.</summary>
+    public class OutputFileList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of output files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<OutputFile> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
