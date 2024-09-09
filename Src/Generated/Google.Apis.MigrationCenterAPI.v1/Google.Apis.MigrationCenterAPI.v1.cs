@@ -6975,6 +6975,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>A resource that reports the import job errors at row level.</summary>
     public class ImportRowError : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Error details for a CSV file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvError")]
+        public virtual ImportRowErrorCsvErrorDetails CsvError { get; set; }
+
         /// <summary>The list of errors detected in the row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ImportError> Errors { get; set; }
@@ -6990,6 +6994,36 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         /// <summary>The VM UUID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmUuid")]
         public virtual string VmUuid { get; set; }
+
+        /// <summary>Error details for an XLSX file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xlsxError")]
+        public virtual ImportRowErrorXlsxErrorDetails XlsxError { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details for a CSV file.</summary>
+    public class ImportRowErrorCsvErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The row number where the error was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
+        public virtual System.Nullable<int> RowNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details for an XLSX file.</summary>
+    public class ImportRowErrorXlsxErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The row number where the error was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
+        public virtual System.Nullable<int> RowNumber { get; set; }
+
+        /// <summary>The name of the sheet where the error was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheet")]
+        public virtual string Sheet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
