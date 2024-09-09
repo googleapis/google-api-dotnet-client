@@ -62,6 +62,9 @@ namespace Google.Apis.DataPortability.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Data Portability API.</summary>
         public class Scope
         {
+            /// <summary>Move a copy of the Google Alerts subscriptions you created.</summary>
+            public static string DataportabilityAlertsSubscriptions = "https://www.googleapis.com/auth/dataportability.alerts.subscriptions";
+
             /// <summary>
             /// Move a copy of messages between you and the businesses you have conversations with across Google
             /// services.
@@ -224,6 +227,9 @@ namespace Google.Apis.DataPortability.v1
             /// <summary>Move a copy of information about your YouTube channel.</summary>
             public static string DataportabilityYoutubeChannel = "https://www.googleapis.com/auth/dataportability.youtube.channel";
 
+            /// <summary>Move a copy of your YouTube clips metadata.</summary>
+            public static string DataportabilityYoutubeClips = "https://www.googleapis.com/auth/dataportability.youtube.clips";
+
             /// <summary>Move a copy of your YouTube comments.</summary>
             public static string DataportabilityYoutubeComments = "https://www.googleapis.com/auth/dataportability.youtube.comments";
 
@@ -267,6 +273,9 @@ namespace Google.Apis.DataPortability.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Data Portability API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>Move a copy of the Google Alerts subscriptions you created.</summary>
+            public const string DataportabilityAlertsSubscriptions = "https://www.googleapis.com/auth/dataportability.alerts.subscriptions";
+
             /// <summary>
             /// Move a copy of messages between you and the businesses you have conversations with across Google
             /// services.
@@ -428,6 +437,9 @@ namespace Google.Apis.DataPortability.v1
 
             /// <summary>Move a copy of information about your YouTube channel.</summary>
             public const string DataportabilityYoutubeChannel = "https://www.googleapis.com/auth/dataportability.youtube.channel";
+
+            /// <summary>Move a copy of your YouTube clips metadata.</summary>
+            public const string DataportabilityYoutubeClips = "https://www.googleapis.com/auth/dataportability.youtube.clips";
 
             /// <summary>Move a copy of your YouTube comments.</summary>
             public const string DataportabilityYoutubeComments = "https://www.googleapis.com/auth/dataportability.youtube.comments";
