@@ -4755,6 +4755,24 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For use only by GCE. GceTag is a wrapper around the GCE administrative tag with parent info.</summary>
+    public class GceTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The parents(s) of the tag. Eg. projects/123, folders/456 It usually contains only one parent. But, in some
+        /// corner cases, it can contain multiple parents. Currently, organizations are not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual System.Collections.Generic.IList<string> Parent { get; set; }
+
+        /// <summary>The administrative_tag name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the given google.cloud.location.Location.</summary>
     public class GoogleAppengineV1betaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5809,6 +5827,13 @@ namespace Google.Apis.Appengine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerProjectState")]
         public virtual string ConsumerProjectState { get; set; }
+
+        /// <summary>
+        /// The GCE tags associated with the consumer project and those inherited due to their ancestry, if any. Not
+        /// supported by CCFE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gceTag")]
+        public virtual System.Collections.Generic.IList<GceTag> GceTag { get; set; }
 
         /// <summary>
         /// The service account authorized to operate on the consumer project. Note: CCFE only propagates P4SA with
