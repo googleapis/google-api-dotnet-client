@@ -34,6 +34,8 @@ namespace Google.Apis.Aiplatform.v1
         /// <param name="initializer">The service initializer.</param>
         public AiplatformService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Datasets = new DatasetsResource(this);
+            Endpoints = new EndpointsResource(this);
             Projects = new ProjectsResource(this);
             Publishers = new PublishersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://aiplatform.googleapis.com/");
@@ -87,6 +89,12 @@ namespace Google.Apis.Aiplatform.v1
             /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
+
+        /// <summary>Gets the Datasets resource.</summary>
+        public virtual DatasetsResource Datasets { get; }
+
+        /// <summary>Gets the Endpoints resource.</summary>
+        public virtual EndpointsResource Endpoints { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -273,6 +281,1041 @@ namespace Google.Apis.Aiplatform.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "datasets" collection of methods.</summary>
+    public class DatasetsResource
+    {
+        private const string Resource = "datasets";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public DatasetsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            DatasetVersions = new DatasetVersionsResource(service);
+        }
+
+        /// <summary>Gets the DatasetVersions resource.</summary>
+        public virtual DatasetVersionsResource DatasetVersions { get; }
+
+        /// <summary>The "datasetVersions" collection of methods.</summary>
+        public class DatasetVersionsResource
+        {
+            private const string Resource = "datasetVersions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DatasetVersionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Create a version from a Dataset.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the Dataset resource. Format:
+            /// `projects/{project}/locations/{location}/datasets/{dataset}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Create a version from a Dataset.</summary>
+            public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Dataset resource. Format:
+                /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/datasetVersions";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasets/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a Dataset version.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the Dataset version to delete. Format:
+            /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes a Dataset version.</summary>
+            public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Dataset version to delete. Format:
+                /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasets/[^/]+/datasetVersions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a Dataset version.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the Dataset version to delete. Format:
+            /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets a Dataset version.</summary>
+            public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Dataset version to delete. Format:
+                /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Mask specifying which fields to read.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadMask { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasets/[^/]+/datasetVersions/[^/]+$",
+                    });
+                    RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists DatasetVersions in a Dataset.</summary>
+            /// <param name="parent">
+            /// Required. The resource name of the Dataset to list DatasetVersions from. Format:
+            /// `projects/{project}/locations/{location}/datasets/{dataset}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists DatasetVersions in a Dataset.</summary>
+            public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListDatasetVersionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Dataset to list DatasetVersions from. Format:
+                /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after
+                /// a field name for descending.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Optional. The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. Mask specifying which fields to read.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadMask { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/datasetVersions";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasets/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a DatasetVersion.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Output only. Identifier. The resource name of the DatasetVersion.</param>
+            public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a DatasetVersion.</summary>
+            public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Output only. Identifier. The resource name of the DatasetVersion.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
+                /// google.protobuf.FieldMask. Updatable fields: * `display_name`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasets/[^/]+/datasetVersions/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Restores a dataset version.</summary>
+            /// <param name="name">
+            /// Required. The name of the DatasetVersion resource. Format:
+            /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+            /// </param>
+            public virtual RestoreRequest Restore(string name)
+            {
+                return new RestoreRequest(this.service, name);
+            }
+
+            /// <summary>Restores a dataset version.</summary>
+            public class RestoreRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Restore request.</summary>
+                public RestoreRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DatasetVersion resource. Format:
+                /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "restore";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:restore";
+
+                /// <summary>Initializes Restore parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasets/[^/]+/datasetVersions/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Creates a Dataset.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body)
+        {
+            return new CreateRequest(this.service, body);
+        }
+
+        /// <summary>Creates a Dataset.</summary>
+        public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Location to create the Dataset in. Format:
+            /// `projects/{project}/locations/{location}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/datasets";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Deletes a Dataset.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the Dataset to delete. Format:
+        /// `projects/{project}/locations/{location}/datasets/{dataset}`
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>Deletes a Dataset.</summary>
+        public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Dataset to delete. Format:
+            /// `projects/{project}/locations/{location}/datasets/{dataset}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^datasets/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Gets a Dataset.</summary>
+        /// <param name="name">Required. The name of the Dataset resource.</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>Gets a Dataset.</summary>
+        public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the Dataset resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Mask specifying which fields to read.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^datasets/[^/]+$",
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists Datasets in a Location.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>Lists Datasets in a Location.</summary>
+        public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListDatasetsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// An expression for filtering the results of the request. For field names both snake_case and camelCase
+            /// are supported. * `display_name`: supports = and != * `metadata_schema_uri`: supports = and != * `labels`
+            /// supports general map functions that is: * `labels.key=value` - key:value equality * `labels.key:* or
+            /// labels:key - key existence * A key including a space must be quoted. `labels."a key"`. Some examples: *
+            /// `displayName="myDisplayName"` * `labels.myKey="myValue"`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name
+            /// for descending. Supported fields: * `display_name` * `create_time` * `update_time`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Required. The name of the Dataset's parent resource. Format: `projects/{project}/locations/{location}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>Mask specifying which fields to read.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/datasets";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates a Dataset.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Output only. Identifier. The resource name of the Dataset.</param>
+        public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body, string name)
+        {
+            return new PatchRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates a Dataset.</summary>
+        public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Output only. Identifier. The resource name of the Dataset.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
+            /// google.protobuf.FieldMask. Updatable fields: * `display_name` * `description` * `labels`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^datasets/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "endpoints" collection of methods.</summary>
+    public class EndpointsResource
+    {
+        private const string Resource = "endpoints";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public EndpointsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Return a list of tokens based on the input text.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="endpoint">
+        /// Required. The name of the Endpoint requested to get lists of tokens and token ids.
+        /// </param>
+        public virtual ComputeTokensRequest ComputeTokens(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensRequest body, string endpoint)
+        {
+            return new ComputeTokensRequest(this.service, body, endpoint);
+        }
+
+        /// <summary>Return a list of tokens based on the input text.</summary>
+        public class ComputeTokensRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensResponse>
+        {
+            /// <summary>Constructs a new ComputeTokens request.</summary>
+            public ComputeTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensRequest body, string endpoint) : base(service)
+            {
+                Endpoint = endpoint;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the Endpoint requested to get lists of tokens and token ids.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Endpoint { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "computeTokens";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+endpoint}:computeTokens";
+
+            /// <summary>Initializes ComputeTokens parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endpoint",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^endpoints/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Perform a token counting.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="endpoint">
+        /// Required. The name of the Endpoint requested to perform token counting. Format:
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+        /// </param>
+        public virtual CountTokensRequest CountTokens(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensRequest body, string endpoint)
+        {
+            return new CountTokensRequest(this.service, body, endpoint);
+        }
+
+        /// <summary>Perform a token counting.</summary>
+        public class CountTokensRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensResponse>
+        {
+            /// <summary>Constructs a new CountTokens request.</summary>
+            public CountTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensRequest body, string endpoint) : base(service)
+            {
+                Endpoint = endpoint;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the Endpoint requested to perform token counting. Format:
+            /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Endpoint { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "countTokens";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+endpoint}:countTokens";
+
+            /// <summary>Initializes CountTokens parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endpoint",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^endpoints/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Generate content with multimodal inputs.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="model">
+        /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model
+        /// format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format:
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+        /// </param>
+        public virtual GenerateContentRequest GenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
+        {
+            return new GenerateContentRequest(this.service, body, model);
+        }
+
+        /// <summary>Generate content with multimodal inputs.</summary>
+        public class GenerateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentResponse>
+        {
+            /// <summary>Constructs a new GenerateContent request.</summary>
+            public GenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model) : base(service)
+            {
+                Model = model;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher
+            /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint
+            /// format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Model { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateContent";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+model}:generateContent";
+
+            /// <summary>Initializes GenerateContent parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "model",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^endpoints/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Generate content with multimodal inputs with streaming support.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="model">
+        /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model
+        /// format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format:
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+        /// </param>
+        public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
+        {
+            return new StreamGenerateContentRequest(this.service, body, model);
+        }
+
+        /// <summary>Generate content with multimodal inputs with streaming support.</summary>
+        public class StreamGenerateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentResponse>
+        {
+            /// <summary>Constructs a new StreamGenerateContent request.</summary>
+            public StreamGenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model) : base(service)
+            {
+                Model = model;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher
+            /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint
+            /// format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Model { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "streamGenerateContent";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+model}:streamGenerateContent";
+
+            /// <summary>Initializes StreamGenerateContent parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "model",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^endpoints/[^/]+$",
+                });
+            }
         }
     }
 
@@ -2966,7 +4009,10 @@ namespace Google.Apis.Aiplatform.v1
                             }
                         }
 
-                        /// <summary>Lists Annotations belongs to a dataitem</summary>
+                        /// <summary>
+                        /// Lists Annotations belongs to a dataitem This RPC is only available in
+                        /// InternalDatasetService. It is only used for exporting conversation data to CCAI Insights.
+                        /// </summary>
                         /// <param name="parent">
                         /// Required. The resource name of the DataItem to list Annotations from. Format:
                         /// `projects/{project}/locations/{location}/datasets/{dataset}/dataItems/{data_item}`
@@ -2976,7 +4022,10 @@ namespace Google.Apis.Aiplatform.v1
                             return new ListRequest(this.service, parent);
                         }
 
-                        /// <summary>Lists Annotations belongs to a dataitem</summary>
+                        /// <summary>
+                        /// Lists Annotations belongs to a dataitem This RPC is only available in
+                        /// InternalDatasetService. It is only used for exporting conversation data to CCAI Insights.
+                        /// </summary>
                         public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListAnnotationsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -7197,8 +8246,9 @@ namespace Google.Apis.Aiplatform.v1
                 /// <summary>Generate content with multimodal inputs.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="model">
-                /// Required. The name of the publisher model requested to serve the prediction. Format:
-                /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher
+                /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint
+                /// format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                 /// </param>
                 public virtual GenerateContentRequest GenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
                 {
@@ -7217,8 +8267,9 @@ namespace Google.Apis.Aiplatform.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the publisher model requested to serve the prediction. Format:
-                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                    /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned
+                    /// model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Model { get; private set; }
@@ -7757,8 +8808,9 @@ namespace Google.Apis.Aiplatform.v1
                 /// <summary>Generate content with multimodal inputs with streaming support.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="model">
-                /// Required. The name of the publisher model requested to serve the prediction. Format:
-                /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher
+                /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint
+                /// format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                 /// </param>
                 public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
                 {
@@ -7777,8 +8829,9 @@ namespace Google.Apis.Aiplatform.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the publisher model requested to serve the prediction. Format:
-                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                    /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned
+                    /// model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Model { get; private set; }
@@ -10130,6 +11183,87 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    public class GetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Lists FeatureViews in a given FeatureOnlineStore.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the FeatureOnlineStore to list FeatureViews. Format:
@@ -10398,6 +11532,73 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    public class SetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Triggers on-demand sync for the FeatureView.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="featureView">
@@ -10453,6 +11654,85 @@ namespace Google.Apis.Aiplatform.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
+                    {
+                        return new TestIamPermissionsRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*`
+                        /// or `storage.*`) are not allowed. For more information see [IAM
+                        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> Permissions { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                            RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "permissions",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -10935,6 +12215,86 @@ namespace Google.Apis.Aiplatform.v1
                     }
                 }
 
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Lists FeatureOnlineStores in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the Location to list FeatureOnlineStores. Format:
@@ -11125,6 +12485,152 @@ namespace Google.Apis.Aiplatform.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or
+                    /// `storage.*`) are not allowed. For more information see [IAM
+                    /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Permissions { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                        RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "permissions",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -29794,8 +31300,9 @@ namespace Google.Apis.Aiplatform.v1
                     /// <summary>Generate content with multimodal inputs.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="model">
-                    /// Required. The name of the publisher model requested to serve the prediction. Format:
-                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                    /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned
+                    /// model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                     /// </param>
                     public virtual GenerateContentRequest GenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
                     {
@@ -29814,8 +31321,9 @@ namespace Google.Apis.Aiplatform.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the publisher model requested to serve the prediction. Format:
-                        /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                        /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Model { get; private set; }
@@ -30042,8 +31550,9 @@ namespace Google.Apis.Aiplatform.v1
                     /// <summary>Generate content with multimodal inputs with streaming support.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="model">
-                    /// Required. The name of the publisher model requested to serve the prediction. Format:
-                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                    /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned
+                    /// model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                     /// </param>
                     public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
                     {
@@ -30062,8 +31571,9 @@ namespace Google.Apis.Aiplatform.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the publisher model requested to serve the prediction. Format:
-                        /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// Required. The fully qualified name of the publisher model or tuned model endpoint to use.
+                        /// Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Model { get; private set; }
@@ -38449,6 +39959,183 @@ namespace Google.Apis.Aiplatform.v1
                 this.service = service;
             }
 
+            /// <summary>Return a list of tokens based on the input text.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="endpoint">
+            /// Required. The name of the Endpoint requested to get lists of tokens and token ids.
+            /// </param>
+            public virtual ComputeTokensRequest ComputeTokens(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensRequest body, string endpoint)
+            {
+                return new ComputeTokensRequest(this.service, body, endpoint);
+            }
+
+            /// <summary>Return a list of tokens based on the input text.</summary>
+            public class ComputeTokensRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensResponse>
+            {
+                /// <summary>Constructs a new ComputeTokens request.</summary>
+                public ComputeTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensRequest body, string endpoint) : base(service)
+                {
+                    Endpoint = endpoint;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Endpoint requested to get lists of tokens and token ids.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Endpoint { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ComputeTokensRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "computeTokens";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+endpoint}:computeTokens";
+
+                /// <summary>Initializes ComputeTokens parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endpoint",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/models/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Perform a token counting.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="endpoint">
+            /// Required. The name of the Endpoint requested to perform token counting. Format:
+            /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+            /// </param>
+            public virtual CountTokensRequest CountTokens(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensRequest body, string endpoint)
+            {
+                return new CountTokensRequest(this.service, body, endpoint);
+            }
+
+            /// <summary>Perform a token counting.</summary>
+            public class CountTokensRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensResponse>
+            {
+                /// <summary>Constructs a new CountTokens request.</summary>
+                public CountTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensRequest body, string endpoint) : base(service)
+                {
+                    Endpoint = endpoint;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Endpoint requested to perform token counting. Format:
+                /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Endpoint { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CountTokensRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countTokens";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+endpoint}:countTokens";
+
+                /// <summary>Initializes CountTokens parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endpoint",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/models/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Generate content with multimodal inputs.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="model">
+            /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher
+            /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint
+            /// format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
+            /// </param>
+            public virtual GenerateContentRequest GenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
+            {
+                return new GenerateContentRequest(this.service, body, model);
+            }
+
+            /// <summary>Generate content with multimodal inputs.</summary>
+            public class GenerateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentResponse>
+            {
+                /// <summary>Constructs a new GenerateContent request.</summary>
+                public GenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model) : base(service)
+                {
+                    Model = model;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher
+                /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint
+                /// format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Model { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateContent";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+model}:generateContent";
+
+                /// <summary>Initializes GenerateContent parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "model",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/models/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets a Model Garden publisher model.</summary>
             /// <param name="name">
             /// Required. The name of the PublisherModel resource. Format:
@@ -38567,6 +40254,67 @@ namespace Google.Apis.Aiplatform.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Generate content with multimodal inputs with streaming support.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="model">
+            /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher
+            /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint
+            /// format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
+            /// </param>
+            public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
+            {
+                return new StreamGenerateContentRequest(this.service, body, model);
+            }
+
+            /// <summary>Generate content with multimodal inputs with streaming support.</summary>
+            public class StreamGenerateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentResponse>
+            {
+                /// <summary>Constructs a new StreamGenerateContent request.</summary>
+                public StreamGenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model) : base(service)
+                {
+                    Model = model;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher
+                /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint
+                /// format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Model { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "streamGenerateContent";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+model}:streamGenerateContent";
+
+                /// <summary>Initializes StreamGenerateContent parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "model",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/models/[^/]+$",
                     });
                 }
             }
@@ -45786,15 +47534,30 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual GoogleCloudAiplatformV1BigQuerySource BigQuerySource { get; set; }
 
         /// <summary>
+        /// Optional. If set, all feature values will be fetched from a single row per unique entityId including nulls.
+        /// If not set, will collapse all rows for each unique entityId into a singe row with any non-null values if
+        /// present, if no non-null values are present will sync null. ex: If source has schema (entity_id,
+        /// feature_timestamp, f0, f1) and values (e1, 2020-01-01T10:00:00.123Z, 10, 15) (e1, 2020-02-01T10:00:00.123Z,
+        /// 20, null) If dense is set, (e1, 20, null) is synced to online stores. If dense is not set, (e1, 20, 15) is
+        /// synced to online stores.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dense")]
+        public virtual System.Nullable<bool> Dense { get; set; }
+
+        /// <summary>
         /// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityIdColumns")]
         public virtual System.Collections.Generic.IList<string> EntityIdColumns { get; set; }
 
+        /// <summary>Optional. Set if the data source is not a time-series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticDataSource")]
+        public virtual System.Nullable<bool> StaticDataSource { get; set; }
+
         /// <summary>
         /// Optional. If the source is a time-series source, this can be set to control how downstream sources (ex:
-        /// FeatureOnlineStore.FeatureView) will treat time series sources. If not set, will treat the source as a
-        /// time-series source with feature_timestamp as timestamp column and no scan boundary.
+        /// FeatureView ) will treat time-series sources. If not set, will treat the source as a time-series source with
+        /// `feature_timestamp` as timestamp column and no scan boundary.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
         public virtual GoogleCloudAiplatformV1FeatureGroupBigQueryTimeSeries TimeSeries { get; set; }
@@ -45807,8 +47570,8 @@ namespace Google.Apis.Aiplatform.v1.Data
     {
         /// <summary>
         /// Optional. Column hosting timestamp values for a time-series source. Will be used to determine the latest
-        /// featureValues for each entity. Optional. If not provided, a feature_timestamp column of type TIMESTAMP will
-        /// be used.
+        /// `feature_values` for each entity. Optional. If not provided, column named `feature_timestamp` of type
+        /// `TIMESTAMP` will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampColumn")]
         public virtual string TimestampColumn { get; set; }
@@ -46521,6 +48284,10 @@ namespace Google.Apis.Aiplatform.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The Vertex RAG Source that the FeatureView is linked to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexRagSource")]
+        public virtual GoogleCloudAiplatformV1FeatureViewVertexRagSource VertexRagSource { get; set; }
     }
 
     public class GoogleCloudAiplatformV1FeatureViewBigQuerySource : Google.Apis.Requests.IDirectResponseSchema
@@ -46773,9 +48540,71 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowSynced")]
         public virtual System.Nullable<long> RowSynced { get; set; }
 
+        private string _systemWatermarkTimeRaw;
+
+        private object _systemWatermarkTime;
+
+        /// <summary>
+        /// Lower bound of the system time watermark for the sync job. This is only set for continuously syncing feature
+        /// views.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemWatermarkTime")]
+        public virtual string SystemWatermarkTimeRaw
+        {
+            get => _systemWatermarkTimeRaw;
+            set
+            {
+                _systemWatermarkTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _systemWatermarkTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SystemWatermarkTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SystemWatermarkTimeDateTimeOffset instead.")]
+        public virtual object SystemWatermarkTime
+        {
+            get => _systemWatermarkTime;
+            set
+            {
+                _systemWatermarkTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _systemWatermarkTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SystemWatermarkTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SystemWatermarkTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SystemWatermarkTimeRaw);
+            set => SystemWatermarkTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. BigQuery slot milliseconds consumed for the sync job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlot")]
         public virtual System.Nullable<long> TotalSlot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Vertex Rag source for features that need to be synced to Online Store.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewVertexRagSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The RAG corpus id corresponding to this FeatureView.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpusId")]
+        public virtual System.Nullable<long> RagCorpusId { get; set; }
+
+        /// <summary>
+        /// Required. The BigQuery view/table URI that will be materialized on each manual sync trigger. The table/view
+        /// is expected to have the following columns at least: Field name Type Mode corpus_id STRING REQUIRED/NULLABLE
+        /// file_id STRING REQUIRED/NULLABLE chunk_id STRING REQUIRED/NULLABLE chunk_data_type STRING REQUIRED/NULLABLE
+        /// chunk_data STRING REQUIRED/NULLABLE embeddings FLOAT REPEATED file_original_uri STRING REQUIRED/NULLABLE
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47548,6 +49377,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual GoogleCloudAiplatformV1Schema Parameters { get; set; }
 
+        /// <summary>
+        /// Optional. Describes the output from this function in JSON Schema format. Reflects the Open API 3.03 Response
+        /// Object. The Schema defines the type used for the response value of the function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual GoogleCloudAiplatformV1Schema Response { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -47565,7 +49401,11 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The function response in JSON object format.</summary>
+        /// <summary>
+        /// Required. The function response in JSON object format. Use "output" key to specify function output and
+        /// "error" key to specify error details (if any). If "output" and "error" keys are not specified, then whole
+        /// "response" is treated as function output.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
@@ -47700,6 +49540,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
 
+        /// <summary>Total token count for prompt and response candidates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
         public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
@@ -47771,7 +49612,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Routing config.</summary>
+    /// <summary>The configuration for routing the request to a specific model.</summary>
     public class GoogleCloudAiplatformV1GenerationConfigRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Automated routing.</summary>
@@ -47803,7 +49644,9 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>When manual routing is set, the specified model will be used directly.</summary>
     public class GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The model name to use. Only the public LLM models are accepted. e.g. gemini-1.5-pro-001.</summary>
+        /// <summary>
+        /// The model name to use. Only the public LLM models are accepted. e.g. 'gemini-1.5-pro-001'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; }
 
@@ -53087,9 +54930,9 @@ namespace Google.Apis.Aiplatform.v1.Data
 
     /// <summary>
     /// Numeric filter is used to search a subset of the entities by using boolean rules on numeric columns. For
-    /// example: Database Point 0: {name: “a” value_int: 42} {name: “b” value_float: 1.0} Database Point 1: {name: “a”
-    /// value_int: 10} {name: “b” value_float: 2.0} Database Point 2: {name: “a” value_int: -1} {name: “b” value_float:
-    /// 3.0} Query: {name: “a” value_int: 12 operator: LESS} // Matches Point 1, 2 {name: “b” value_float: 2.0 operator:
+    /// example: Database Point 0: {name: "a" value_int: 42} {name: "b" value_float: 1.0} Database Point 1: {name: "a"
+    /// value_int: 10} {name: "b" value_float: 2.0} Database Point 2: {name: "a" value_int: -1} {name: "b" value_float:
+    /// 3.0} Query: {name: "a" value_int: 12 operator: LESS} // Matches Point 1, 2 {name: "b" value_float: 2.0 operator:
     /// EQUAL} // Matches Point 1
     /// </summary>
     public class GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter : Google.Apis.Requests.IDirectResponseSchema
@@ -53425,7 +55268,7 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Customer-managed encryption key spec for the notebook execution job. This field is auto-populated if the
-        /// NotebookRuntimeTemplate has an encryption spec.
+        /// NotebookService.NotebookRuntimeTemplate has an encryption spec.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
         public virtual GoogleCloudAiplatformV1EncryptionSpec EncryptionSpec { get; set; }
@@ -54393,6 +56236,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRuntimeSpec")]
         public virtual GoogleCloudAiplatformV1ResourceRuntimeSpec ResourceRuntimeSpec { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _startTimeRaw;
 
@@ -55576,6 +57427,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployGke")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke DeployGke { get; set; }
 
+        /// <summary>Optional. Multiple setups to deploy the PublisherModel to Vertex Endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiDeployVertex")]
+        public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex MultiDeployVertex { get; set; }
+
         /// <summary>Optional. Open evaluation pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openEvaluationPipeline")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences OpenEvaluationPipeline { get; set; }
@@ -55709,6 +57564,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. GKE deployment configuration in yaml format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeYamlConfigs")]
         public virtual System.Collections.Generic.IList<string> GkeYamlConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Multiple setups to deploy the PublisherModel.</summary>
+    public class GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. One click deployment configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiDeployVertex")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1PublisherModelCallToActionDeploy> MultiDeployVertex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -56867,6 +58733,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearch")]
         public virtual GoogleCloudAiplatformV1VertexAISearch VertexAiSearch { get; set; }
 
+        /// <summary>
+        /// Set to use data source powered by Vertex RAG store. User data is uploaded via the VertexRagDataService.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexRagStore")]
+        public virtual GoogleCloudAiplatformV1VertexRagStore VertexRagStore { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -57675,6 +59547,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Nullable<bool> DisableRetries { get; set; }
 
         /// <summary>
+        /// Optional. This is the maximum duration that a job will wait for the requested resources to be provisioned if
+        /// the scheduling strategy is set to [Strategy.DWS_FLEX_START]. If set to 0, the job will wait indefinitely.
+        /// The default is 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWaitDuration")]
+        public virtual object MaxWaitDuration { get; set; }
+
+        /// <summary>
         /// Restarts the entire CustomJob if a worker gets restarted. This feature can be used by distributed training
         /// jobs that are not resilient to workers leaving and joining a job.
         /// </summary>
@@ -57695,7 +59575,7 @@ namespace Google.Apis.Aiplatform.v1.Data
 
     /// <summary>
     /// Schema is used to define the format of input/output data. Represents a select subset of an [OpenAPI 3.0 schema
-    /// object](https://spec.openapis.org/oas/v3.0.3#schema). More fields may be added in the future as needed.
+    /// object](https://spec.openapis.org/oas/v3.0.3#schema-object). More fields may be added in the future as needed.
     /// </summary>
     public class GoogleCloudAiplatformV1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -63487,9 +65367,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBillableTokenCount")]
         public virtual System.Nullable<long> TotalBillableTokenCount { get; set; }
 
+        /// <summary>The number of examples in the dataset that have been truncated by any amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTruncatedExampleCount")]
+        public virtual System.Nullable<long> TotalTruncatedExampleCount { get; set; }
+
         /// <summary>Output only. Number of tuning characters in the tuning dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTuningCharacterCount")]
         public virtual System.Nullable<long> TotalTuningCharacterCount { get; set; }
+
+        /// <summary>A partial sample of the indices (starting from 1) of the truncated examples.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truncatedExampleIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> TruncatedExampleIndices { get; set; }
 
         /// <summary>Output only. Number of examples in the tuning dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tuningDatasetExampleCount")]
@@ -63613,7 +65501,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Respose message for FeatureOnlineStoreAdminService.SyncFeatureView.</summary>
+    /// <summary>Response message for FeatureOnlineStoreAdminService.SyncFeatureView.</summary>
     public class GoogleCloudAiplatformV1SyncFeatureViewResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -65894,17 +67782,63 @@ namespace Google.Apis.Aiplatform.v1.Data
     }
 
     /// <summary>
-    /// Retrieve from Vertex AI Search datastore for grounding. See
-    /// https://cloud.google.com/vertex-ai-search-and-conversation
+    /// Retrieve from Vertex AI Search datastore for grounding. See https://cloud.google.com/products/agent-builder
     /// </summary>
     public class GoogleCloudAiplatformV1VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Fully-qualified Vertex AI Search's datastore resource ID. Format:
+        /// Required. Fully-qualified Vertex AI Search data store resource ID. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Retrieve from Vertex RAG Store for grounding.</summary>
+    public class GoogleCloudAiplatformV1VertexRagStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Deprecated. Please use rag_resources instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpora")]
+        public virtual System.Collections.Generic.IList<string> RagCorpora { get; set; }
+
+        /// <summary>
+        /// Optional. The representation of the rag source. It can be used to specify corpus only or ragfiles. Currently
+        /// only support one corpus or multiple files from one corpus. In the future we may open up multiple corpora
+        /// support.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragResources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1VertexRagStoreRagResource> RagResources { get; set; }
+
+        /// <summary>Optional. Number of top k results to return from the selected corpora.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityTopK")]
+        public virtual System.Nullable<int> SimilarityTopK { get; set; }
+
+        /// <summary>Optional. Only return results with vector distance smaller than the threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorDistanceThreshold")]
+        public virtual System.Nullable<double> VectorDistanceThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definition of the Rag resource.</summary>
+    public class GoogleCloudAiplatformV1VertexRagStoreRagResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. RagCorpora resource name. Format:
+        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpus")]
+        public virtual string RagCorpus { get; set; }
+
+        /// <summary>
+        /// Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFileIds")]
+        public virtual System.Collections.Generic.IList<string> RagFileIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
