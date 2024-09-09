@@ -5064,7 +5064,11 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Settings for revision-level scaling settings.</summary>
     public class GoogleCloudRunV2RevisionScaling : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Maximum number of serving instances that this resource should have.</summary>
+        /// <summary>
+        /// Optional. Maximum number of serving instances that this resource should have. When unspecified, the field is
+        /// set to the server default value of 100. For more information see
+        /// https://cloud.google.com/run/docs/configuring/max-instances
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
         public virtual System.Nullable<int> MaxInstanceCount { get; set; }
 
@@ -5625,11 +5629,14 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IList<string> Urls { get; set; }
     }
 
-    /// <summary>Service mesh configuration.</summary>
+    /// <summary>
+    /// Settings for Cloud Service Mesh. For more information see https://cloud.google.com/service-mesh/docs/overview.
+    /// </summary>
     public class GoogleCloudRunV2ServiceMesh : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The service mesh resource name. Format: projects/{project_number}/locations/global/meshes/{mesh}.
+        /// The Mesh resource name. Format: projects/{project}/locations/global/meshes/{mesh}, where {project} can be
+        /// project id or number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual string Mesh { get; set; }
@@ -5732,6 +5739,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseImageUri")]
         public virtual string BaseImageUri { get; set; }
+
+        /// <summary>Warning message for the base image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseImageWarning")]
+        public virtual string BaseImageWarning { get; set; }
 
         /// <summary>Cloud Build operation to be polled via CloudBuild API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildOperation")]
