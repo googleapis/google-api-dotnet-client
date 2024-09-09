@@ -1389,8 +1389,8 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
     }
 
     /// <summary>
-    /// Instances in this Channel will receive updates after all instances in `Critical` were updated + 2 days. They
-    /// also will only be updated outside of their peak hours.
+    /// Instances in this Channel will receive updates after all instances in `Normal` were updated. They also will only
+    /// be updated outside of their peak hours.
     /// </summary>
     public class Critical : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1812,6 +1812,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjectIds")]
         public virtual System.Collections.Generic.IList<string> AllowedConsumerProjectIds { get; set; }
+
+        /// <summary>Output only. The CCAIP tenant project ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerProjectIds")]
+        public virtual System.Collections.Generic.IList<string> ProducerProjectIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
