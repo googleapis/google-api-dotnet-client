@@ -6014,7 +6014,9 @@ namespace Google.Apis.VMMigrationService.v1.Data
     }
 
     /// <summary>
-    /// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
+    /// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes. Options
+    /// for instance behavior when the host machine undergoes maintenance that may temporarily impact instance
+    /// performance.
     /// </summary>
     public class ComputeScheduling : Google.Apis.Requests.IDirectResponseSchema
     {
