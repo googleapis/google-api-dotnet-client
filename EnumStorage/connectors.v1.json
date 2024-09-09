@@ -46,6 +46,11 @@
     "CONNECTOR_VERSION_VIEW_BASIC",
     "CONNECTOR_VERSION_VIEW_FULL"
   ],
+  "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ProvidersResource+ConnectorsResource+VersionsResource+FetchAuthSchemaRequest.ViewEnum": [
+    "AUTH_SCHEMA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "JSON_SCHEMA"
+  ],
   "Google.Apis.Connectors.v1.ProjectsResource+LocationsResource+ProvidersResource+ConnectorsResource+VersionsResource+GetRequest.ViewEnum": [
     "CONNECTOR_VERSION_VIEW_UNSPECIFIED",
     "CONNECTOR_VERSION_VIEW_BASIC",
