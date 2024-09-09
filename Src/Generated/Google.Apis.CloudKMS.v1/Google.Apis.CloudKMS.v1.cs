@@ -1470,6 +1470,22 @@ namespace Google.Apis.CloudKMS.v1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
+                    /// <summary>
+                    /// Optional. Optional limit on the number of KeyHandles to include in the response. The service may
+                    /// return fewer than this value. Further KeyHandles can subsequently be obtained by including the
+                    /// ListKeyHandlesResponse.next_page_token in a subsequent request. If unspecified, at most
+                    /// KeyHandles 100 will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Optional pagination token, returned earlier via
+                    /// ListKeyHandlesResponse.next_page_token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -1494,6 +1510,22 @@ namespace Google.Apis.CloudKMS.v1
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4853,6 +4885,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. The state for the AutokeyConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5738,8 +5774,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM
-        /// replica. Currently, only a single ServiceResolver is supported.
+        /// Optional. A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per
+        /// EKM replica. Currently, only a single ServiceResolver is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceResolvers")]
         public virtual System.Collections.Generic.IList<ServiceResolver> ServiceResolvers { get; set; }
@@ -6444,6 +6480,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Resulting KeyHandles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyHandles")]
         public virtual System.Collections.Generic.IList<KeyHandle> KeyHandles { get; set; }
+
+        /// <summary>
+        /// A token to retrieve next page of results. Pass this value in ListKeyHandlesRequest.page_token to retrieve
+        /// the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
