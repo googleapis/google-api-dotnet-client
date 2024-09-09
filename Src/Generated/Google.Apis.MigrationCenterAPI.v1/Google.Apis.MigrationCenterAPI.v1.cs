@@ -5682,11 +5682,11 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>Compute Engine target shape descriptor.</summary>
     public class ComputeEngineShapeDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of logical cores.</summary>
+        /// <summary>Output only. Number of logical cores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicalCoreCount")]
         public virtual System.Nullable<int> LogicalCoreCount { get; set; }
 
-        /// <summary>Compute Engine machine type.</summary>
+        /// <summary>Output only. Compute Engine machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
@@ -5698,11 +5698,11 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("physicalCoreCount")]
         public virtual System.Nullable<int> PhysicalCoreCount { get; set; }
 
-        /// <summary>Compute Engine machine series.</summary>
+        /// <summary>Output only. Compute Engine machine series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual string Series { get; set; }
 
-        /// <summary>Compute Engine storage. Never empty.</summary>
+        /// <summary>Output only. Compute Engine storage. Never empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storage")]
         public virtual System.Collections.Generic.IList<ComputeStorageDescriptor> Storage { get; set; }
 
@@ -5713,11 +5713,11 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>Compute Engine storage option descriptor.</summary>
     public class ComputeStorageDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Disk size in GiB.</summary>
+        /// <summary>Output only. Disk size in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; }
 
-        /// <summary>Disk type backing the storage.</summary>
+        /// <summary>Output only. Disk type backing the storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -6299,7 +6299,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>Describes the fit level of an asset for migration to a specific target.</summary>
     public class FitDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fit level.</summary>
+        /// <summary>Output only. Fit level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fitLevel")]
         public virtual string FitLevel { get; set; }
 
