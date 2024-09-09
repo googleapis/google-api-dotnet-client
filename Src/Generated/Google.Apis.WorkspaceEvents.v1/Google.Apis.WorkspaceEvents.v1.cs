@@ -772,8 +772,9 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// <summary>
             /// Optional. The field to update. If omitted, updates any fields included in the request. You can update
             /// one of the following fields in a subscription: * `expire_time`: The timestamp when the subscription
-            /// expires. * `ttl`: The time-to-live (TTL) or duration of the subscription. To fully replace the
-            /// subscription (the equivalent of `PUT`), use `*`. Any omitted fields are updated with empty values.
+            /// expires. * `ttl`: The time-to-live (TTL) or duration of the subscription. * `event_types`: The list of
+            /// event types to receive about the target resource. To fully replace the subscription (the equivalent of
+            /// `PUT`), use `*`. Any omitted fields are updated with empty values.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -1102,11 +1103,11 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Unordered list. Input for creating a subscription. Otherwise, output only. One or more
-        /// types of events to receive about the target resource. Formatted according to the CloudEvents specification.
-        /// The supported event types depend on the target resource of your subscription. For details, see [Supported
-        /// Google Workspace events](https://developers.google.com/workspace/events/guides#supported-events). By
-        /// default, you also receive events about the [lifecycle of your
+        /// Required. Unordered list. Input for creating a subscription. Otherwise, output only. One or more types of
+        /// events to receive about the target resource. Formatted according to the CloudEvents specification. The
+        /// supported event types depend on the target resource of your subscription. For details, see [Supported Google
+        /// Workspace events](https://developers.google.com/workspace/events/guides#supported-events). By default, you
+        /// also receive events about the [lifecycle of your
         /// subscription](https://developers.google.com/workspace/events/guides/events-lifecycle). You don't need to
         /// specify lifecycle events for this field. If you specify an event type that doesn't exist for the target
         /// resource, the request returns an HTTP `400 Bad Request` status code.
