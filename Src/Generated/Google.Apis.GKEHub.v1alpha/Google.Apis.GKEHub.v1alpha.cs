@@ -7625,6 +7625,59 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration options for the AIS diagnostic interface.</summary>
+    public class IdentityServiceDiagnosticInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Determines whether to enable the diagnostic interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        private string _expirationTimeRaw;
+
+        private object _expirationTime;
+
+        /// <summary>
+        /// Determines the expiration time of the diagnostic interface enablement. When reached, requests to the
+        /// interface would be automatically rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual string ExpirationTimeRaw
+        {
+            get => _expirationTimeRaw;
+            set
+            {
+                _expirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
+        public virtual object ExpirationTime
+        {
+            get => _expirationTime;
+            set
+            {
+                _expirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the Google Plugin Auth flow.</summary>
     public class IdentityServiceGoogleConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7666,7 +7719,11 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>Holds non-protocol-related configuration options.</summary>
     public class IdentityServiceIdentityServiceOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Determines the lifespan of STS tokens issued by Anthos Identity Service.</summary>
+        /// <summary>Configuration options for the AIS diagnostic interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInterface")]
+        public virtual IdentityServiceDiagnosticInterface DiagnosticInterface { get; set; }
+
+        /// <summary>Determines the lifespan of STS tokens issued by Anthos Identity Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionDuration")]
         public virtual object SessionDuration { get; set; }
 
@@ -9968,13 +10025,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     public class ResourceManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be
-        /// namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+        /// Output only. Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is
+        /// assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterScoped")]
         public virtual System.Nullable<bool> ClusterScoped { get; set; }
 
-        /// <summary>YAML manifest of the resource.</summary>
+        /// <summary>Output only. YAML manifest of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; }
 
