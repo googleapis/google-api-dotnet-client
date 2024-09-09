@@ -4837,6 +4837,51 @@ namespace Google.Apis.Dataform.v1beta1
                 }
             }
 
+            /// <summary>Get default config for a given project and location.</summary>
+            /// <param name="name">Required. The config name.</param>
+            public virtual GetConfigRequest GetConfig(string name)
+            {
+                return new GetConfigRequest(this.service, name);
+            }
+
+            /// <summary>Get default config for a given project and location.</summary>
+            public class GetConfigRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Config>
+            {
+                /// <summary>Constructs a new GetConfig request.</summary>
+                public GetConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The config name.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes GetConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/config$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -4918,6 +4963,71 @@ namespace Google.Apis.Dataform.v1beta1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Update default config for a given project and location.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Identifier. The config name.</param>
+            public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Dataform.v1beta1.Data.Config body, string name)
+            {
+                return new UpdateConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>Update default config for a given project and location.</summary>
+            public class UpdateConfigRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Config>
+            {
+                /// <summary>Constructs a new UpdateConfig request.</summary>
+                public UpdateConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.Config body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Identifier. The config name.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. Specifies the fields to be updated in the config.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dataform.v1beta1.Data.Config Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes UpdateConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/config$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5407,6 +5517,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalTarget")]
         public virtual Target CanonicalTarget { get; set; }
 
+        /// <summary>The data preparation executed by this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPreparation")]
+        public virtual DataPreparation DataPreparation { get; set; }
+
         /// <summary>The declaration declared by this action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaration")]
         public virtual Declaration Declaration { get; set; }
@@ -5448,12 +5562,52 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config for all repositories in a given project and location.</summary>
+    public class Config : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The default KMS key that is used if no encryption key is provided when a repository is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
+        public virtual string DefaultKmsKeyName { get; set; }
+
+        /// <summary>Identifier. The config name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes encryption state of a resource.</summary>
     public class DataEncryptionState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The KMS key version name with which data of a resource is encrypted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
         public virtual string KmsKeyVersionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a compiled Data Preparation entity</summary>
+    public class DataPreparation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data preparation definition, stored as a binary encoded proto.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual string Contents { get; set; }
+
+        /// <summary>A list of actions that this action depends on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencyTargets")]
+        public virtual System.Collections.Generic.IList<Target> DependencyTargets { get; set; }
+
+        /// <summary>Whether this action is disabled (i.e. should not be run).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Arbitrary, user-defined tags on this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
