@@ -11371,6 +11371,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sessionTemplate")]
         public virtual string SessionTemplate { get; set; }
 
+        /// <summary>Optional. Spark connect session config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkConnectSession")]
+        public virtual SparkConnectConfig SparkConnectSession { get; set; }
+
         /// <summary>Output only. A state of the session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -11669,6 +11673,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeConfig")]
         public virtual RuntimeConfig RuntimeConfig { get; set; }
 
+        /// <summary>Optional. Spark connect session config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkConnectSession")]
+        public virtual SparkConnectConfig SparkConnectSession { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -11759,7 +11767,7 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions
-        /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions),
+        /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported-dataproc-image-versions),
         /// such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version
         /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If
         /// unspecified, it defaults to the latest Debian version.
@@ -11822,6 +11830,13 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
         public virtual string MainJarFileUri { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spark connect configuration for an interactive session.</summary>
+    public class SparkConnectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
