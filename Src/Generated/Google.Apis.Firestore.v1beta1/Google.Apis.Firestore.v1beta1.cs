@@ -3347,6 +3347,22 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string DistanceMeasure { get; set; }
 
         /// <summary>
+        /// Optional. Optional name of the field to output the result of the vector distance calculation. Must conform
+        /// to document field name limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceResultField")]
+        public virtual string DistanceResultField { get; set; }
+
+        /// <summary>
+        /// Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior
+        /// of the specified `distance_measure` will affect the meaning of the distance threshold. Since DOT_PRODUCT
+        /// distances increase when the vectors are more similar, the comparison is inverted. For EUCLIDEAN, COSINE:
+        /// WHERE distance &amp;lt;= distance_threshold For DOT_PRODUCT: WHERE distance &amp;gt;= distance_threshold
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceThreshold")]
+        public virtual System.Nullable<double> DistanceThreshold { get; set; }
+
+        /// <summary>
         /// Required. The number of nearest neighbors to return. Must be a positive integer of no more than 1000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
@@ -3372,7 +3388,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.BulkDeleteDocuments.</summary>
     public class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ids of the collection groups that are being deleted.</summary>
+        /// <summary>The IDs of the collection groups that are being deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
@@ -3413,7 +3429,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Which namespace ids are being deleted.</summary>
+        /// <summary>Which namespace IDs are being deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
         public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
