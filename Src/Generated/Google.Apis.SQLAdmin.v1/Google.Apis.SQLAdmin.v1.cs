@@ -1357,6 +1357,146 @@ namespace Google.Apis.SQLAdmin.v1
             this.service = service;
         }
 
+        /// <summary>
+        /// Lists all versions of server certificates and certificate authorities (CAs) for the specified instance.
+        /// There can be up to three sets of certs listed: the certificate that is currently in use, a future that has
+        /// been added but not yet used to sign a certificate, and a certificate that has been rotated out.
+        /// </summary>
+        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual ListServerCertificatesRequest ListServerCertificates(string project, string instance)
+        {
+            return new ListServerCertificatesRequest(this.service, project, instance);
+        }
+
+        /// <summary>
+        /// Lists all versions of server certificates and certificate authorities (CAs) for the specified instance.
+        /// There can be up to three sets of certs listed: the certificate that is currently in use, a future that has
+        /// been added but not yet used to sign a certificate, and a certificate that has been rotated out.
+        /// </summary>
+        public class ListServerCertificatesRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.InstancesListServerCertificatesResponse>
+        {
+            /// <summary>Constructs a new ListServerCertificates request.</summary>
+            public ListServerCertificatesRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "ListServerCertificates";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/listServerCertificates";
+
+            /// <summary>Initializes ListServerCertificates parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Rotates the server certificate version to one previously added with the addServerCertificate method. For
+        /// instances not using Certificate Authority Service (CAS) server CA, please use RotateServerCa instead.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual RotateServerCertificateRequest RotateServerCertificate(Google.Apis.SQLAdmin.v1.Data.InstancesRotateServerCertificateRequest body, string project, string instance)
+        {
+            return new RotateServerCertificateRequest(this.service, body, project, instance);
+        }
+
+        /// <summary>
+        /// Rotates the server certificate version to one previously added with the addServerCertificate method. For
+        /// instances not using Certificate Authority Service (CAS) server CA, please use RotateServerCa instead.
+        /// </summary>
+        public class RotateServerCertificateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new RotateServerCertificate request.</summary>
+            public RotateServerCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.InstancesRotateServerCertificateRequest body, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1.Data.InstancesRotateServerCertificateRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "RotateServerCertificate";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/rotateServerCertificate";
+
+            /// <summary>Initializes RotateServerCertificate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Acquire a lease for the setup of SQL Server Reporting Services (SSRS).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">
@@ -1483,6 +1623,77 @@ namespace Google.Apis.SQLAdmin.v1
             public override string RestPath => "v1/projects/{project}/instances/{instance}/addServerCa";
 
             /// <summary>Initializes AddServerCa parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Add a new trusted server certificate version for the specified instance using Certificate Authority Service
+        /// (CAS) server CA. Required to prepare for a certificate rotation. If a server certificate version was
+        /// previously added but never used in a certificate rotation, this operation replaces that version. There
+        /// cannot be more than one certificate version waiting to be rotated in. For instances not using CAS server CA,
+        /// please use AddServerCa instead.
+        /// </summary>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual AddServerCertificateRequest AddServerCertificate(string project, string instance)
+        {
+            return new AddServerCertificateRequest(this.service, project, instance);
+        }
+
+        /// <summary>
+        /// Add a new trusted server certificate version for the specified instance using Certificate Authority Service
+        /// (CAS) server CA. Required to prepare for a certificate rotation. If a server certificate version was
+        /// previously added but never used in a certificate rotation, this operation replaces that version. There
+        /// cannot be more than one certificate version waiting to be rotated in. For instances not using CAS server CA,
+        /// please use AddServerCa instead.
+        /// </summary>
+        public class AddServerCertificateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new AddServerCertificate request.</summary>
+            public AddServerCertificateRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                InitParameters();
+            }
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "addServerCertificate";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/addServerCertificate";
+
+            /// <summary>Initializes AddServerCertificate parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -6026,6 +6237,94 @@ namespace Google.Apis.SQLAdmin.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("differentialBase")]
             public virtual System.Nullable<bool> DifferentialBase { get; set; }
 
+            private string _exportLogEndTimeRaw;
+
+            private object _exportLogEndTime;
+
+            /// <summary>
+            /// Optional. The end timestamp when transaction log will be included in the export operation. [RFC
+            /// 3339](https://tools.ietf.org/html/rfc3339) format (for example, `2023-10-01T16:19:00.094`) in UTC. When
+            /// omitted, all available logs until current time will be included. Only applied to Cloud SQL for SQL
+            /// Server.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("exportLogEndTime")]
+            public virtual string ExportLogEndTimeRaw
+            {
+                get => _exportLogEndTimeRaw;
+                set
+                {
+                    _exportLogEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                    _exportLogEndTimeRaw = value;
+                }
+            }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="ExportLogEndTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExportLogEndTimeDateTimeOffset instead.")]
+            public virtual object ExportLogEndTime
+            {
+                get => _exportLogEndTime;
+                set
+                {
+                    _exportLogEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                    _exportLogEndTime = value;
+                }
+            }
+
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExportLogEndTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? ExportLogEndTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExportLogEndTimeRaw);
+                set => ExportLogEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+            }
+
+            private string _exportLogStartTimeRaw;
+
+            private object _exportLogStartTime;
+
+            /// <summary>
+            /// Optional. The begin timestamp when transaction log will be included in the export operation. [RFC
+            /// 3339](https://tools.ietf.org/html/rfc3339) format (for example, `2023-10-01T16:19:00.094`) in UTC. When
+            /// omitted, all available logs from the beginning of retention period will be included. Only applied to
+            /// Cloud SQL for SQL Server.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("exportLogStartTime")]
+            public virtual string ExportLogStartTimeRaw
+            {
+                get => _exportLogStartTimeRaw;
+                set
+                {
+                    _exportLogStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                    _exportLogStartTimeRaw = value;
+                }
+            }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="ExportLogStartTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExportLogStartTimeDateTimeOffset instead.")]
+            public virtual object ExportLogStartTime
+            {
+                get => _exportLogStartTime;
+                set
+                {
+                    _exportLogStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                    _exportLogStartTime = value;
+                }
+            }
+
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExportLogStartTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? ExportLogStartTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExportLogStartTimeRaw);
+                set => ExportLogStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+            }
+
             /// <summary>
             /// Option for specifying how many stripes to use for the export. If blank, and the value of the striped
             /// field is true, the number of stripes is automatically chosen.
@@ -6730,6 +7029,31 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instances ListServerCertificates response.</summary>
+    public class InstancesListServerCertificatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `sha1_fingerprint` of the active certificate from `server_certs`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeVersion")]
+        public virtual string ActiveVersion { get; set; }
+
+        /// <summary>List of server CA certificates for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCerts")]
+        public virtual System.Collections.Generic.IList<SslCert> CaCerts { get; set; }
+
+        /// <summary>This is always `sql#instancesListServerCertificates`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// List of server certificates for the instance, signed by the corresponding CA from the `ca_certs` list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCerts")]
+        public virtual System.Collections.Generic.IList<SslCert> ServerCerts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database Instance reencrypt request.</summary>
     public class InstancesReencryptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6758,6 +7082,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Contains details about the rotate server CA operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotateServerCaContext")]
         public virtual RotateServerCaContext RotateServerCaContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rotate server certificate request.</summary>
+    public class InstancesRotateServerCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Contains details about the rotate server certificate operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotateServerCertificateContext")]
+        public virtual RotateServerCertificateContext RotateServerCertificateContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7722,6 +8057,24 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>
         /// The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most
         /// recently added server CA version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextVersion")]
+        public virtual string NextVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Instance rotate server certificate context.</summary>
+    public class RotateServerCertificateContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. This is always `sql#rotateServerCertificateContext`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most
+        /// recently added server certificate version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextVersion")]
         public virtual string NextVersion { get; set; }
