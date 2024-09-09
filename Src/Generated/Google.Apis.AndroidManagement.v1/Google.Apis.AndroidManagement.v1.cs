@@ -2662,6 +2662,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string CommonCriteriaMode { get; set; }
 
         /// <summary>
+        /// Optional. Controls whether content protection, which scans for deceptive apps, is enabled. This is supported
+        /// on Android 15 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentProtectionPolicy")]
+        public virtual string ContentProtectionPolicy { get; set; }
+
+        /// <summary>
         /// Controls access to developer settings: developer options and safe boot. Replaces safeBootDisabled
         /// (deprecated) and debuggingFeaturesAllowed (deprecated).
         /// </summary>
@@ -6236,6 +6243,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<ApplicationPolicy> Applications { get; set; }
 
         /// <summary>
+        /// Optional. Controls whether AssistContent
+        /// (https://developer.android.com/reference/android/app/assist/AssistContent) is allowed to be sent to a
+        /// privileged app such as an assistant app. AssistContent includes screenshots and information about an app,
+        /// such as package name. This is supported on Android 15 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistContentPolicy")]
+        public virtual string AssistContentPolicy { get; set; }
+
+        /// <summary>
         /// Whether auto date, time, and time zone are enabled on a company-owned device. If this is set, then
         /// autoTimeRequired is ignored.
         /// </summary>
@@ -6722,7 +6738,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigDisabled")]
         public virtual System.Nullable<bool> WifiConfigDisabled { get; set; }
 
-        /// <summary>DEPRECATED - Use wifi_config_disabled.</summary>
+        /// <summary>This is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigsLockdownEnabled")]
         public virtual System.Nullable<bool> WifiConfigsLockdownEnabled { get; set; }
 
