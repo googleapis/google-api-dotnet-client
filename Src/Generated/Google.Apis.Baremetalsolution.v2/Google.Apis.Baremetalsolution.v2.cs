@@ -4710,7 +4710,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
 
         /// <summary>
         /// List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future
-        /// (multi vlan).
+        /// (multi vlan). Use only one of vlan_attachments or vrf
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vlanAttachments")]
         public virtual System.Collections.Generic.IList<IntakeVlanAttachment> VlanAttachments { get; set; }
@@ -4718,6 +4718,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Whether the VLAN attachment pair is located in the same project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vlanSameProject")]
         public virtual System.Nullable<bool> VlanSameProject { get; set; }
+
+        /// <summary>
+        /// Optional. The name of a pre-existing Vrf that the network should be attached to. Format is `vrfs/{vrf}`. If
+        /// vrf is specified, vlan_attachments must be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vrf")]
+        public virtual string Vrf { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
