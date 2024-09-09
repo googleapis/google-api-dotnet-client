@@ -3925,6 +3925,24 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Experimental features to be included during client library generation. These fields will be deprecated once the
+    /// feature graduates and is enabled by default.
+    /// </summary>
+    public class ExperimentalFeatures : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enables generation of asynchronous REST clients if `rest` transport is enabled. By default, asynchronous
+        /// REST clients will not be generated. This feature will be enabled by default 1 month after launching the
+        /// feature in preview packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restAsyncIoEnabled")]
+        public virtual System.Nullable<bool> RestAsyncIoEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single field of a message type.</summary>
     public class Field : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4797,6 +4815,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("samplePeriod")]
         public virtual object SamplePeriod { get; set; }
 
+        /// <summary>The scope of the timeseries data of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesResourceHierarchyLevel")]
+        public virtual System.Collections.Generic.IList<string> TimeSeriesResourceHierarchyLevel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5184,7 +5206,8 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// 'roles/compute.securityAdmin' applied on the shared VPC host project - 'roles/compute.networkAdmin' applied
         /// on the shared VPC host project - 'roles/tpu.xpnAgent' applied on the shared VPC host project -
         /// 'roles/dns.admin' applied on the shared VPC host project - 'roles/logging.admin' applied on the shared VPC
-        /// host project - 'roles/monitoring.viewer' applied on the shared VPC host project
+        /// host project - 'roles/monitoring.viewer' applied on the shared VPC host project -
+        /// 'roles/servicemanagement.quotaViewer' applied on the shared VPC host project
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -5275,6 +5298,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>Some settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>Experimental features to be included during client library generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentalFeatures")]
+        public virtual ExperimentalFeatures ExperimentalFeatures { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
