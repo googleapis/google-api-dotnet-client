@@ -8429,10 +8429,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ImportError> Errors { get; set; }
 
-        /// <summary>Error details for a JSON file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jsonError")]
-        public virtual ImportRowErrorJsonErrorDetails JsonError { get; set; }
-
         /// <summary>The row number where the error was detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
         public virtual System.Nullable<int> RowNumber { get; set; }
@@ -8475,13 +8471,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
         public virtual System.Nullable<int> RowNumber { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Error details for a JSON file.</summary>
-    public class ImportRowErrorJsonErrorDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
