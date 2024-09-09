@@ -3096,6 +3096,37 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a Cloud Redis Instance.</summary>
+    public class RedisInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a Cloud Redis Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>URI of a Cloud Redis Instance network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>Primary endpoint IP address of a Cloud Redis Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryEndpointIp")]
+        public virtual string PrimaryEndpointIp { get; set; }
+
+        /// <summary>Read endpoint IP address of a Cloud Redis Instance (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readEndpointIp")]
+        public virtual string ReadEndpointIp { get; set; }
+
+        /// <summary>Region in which the Cloud Redis Instance is defined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>URI of a Cloud Redis Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the `RerunConnectivityTest` method.</summary>
     public class RerunConnectivityTestRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3339,6 +3370,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a ProxyConnection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyConnection")]
         public virtual ProxyConnectionInfo ProxyConnection { get; set; }
+
+        /// <summary>Display information of a Redis Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redisInstance")]
+        public virtual RedisInstanceInfo RedisInstance { get; set; }
 
         /// <summary>Display information of a Compute Engine route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("route")]
