@@ -2004,9 +2004,24 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>The persistent settings for a table's columns.</summary>
     public class ColumnSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Whether the column should be left / middle / right aligned</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alignment")]
+        public virtual string Alignment { get; set; }
+
         /// <summary>Required. The id of the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
+
+        /// <summary>Optional. Display name of the column</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. The thresholds used to determine how the table cell should be rendered given the time series'
+        /// current value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
+        public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; }
 
         /// <summary>Required. Whether the column should be visible on page load.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visible")]
