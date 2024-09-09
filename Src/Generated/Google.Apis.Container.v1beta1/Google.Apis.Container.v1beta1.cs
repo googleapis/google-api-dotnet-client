@@ -7544,6 +7544,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterTelemetry")]
         public virtual ClusterTelemetry DesiredClusterTelemetry { get; set; }
 
+        /// <summary>Enable/Disable Compliance Posture features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredCompliancePostureConfig")]
+        public virtual CompliancePostureConfig DesiredCompliancePostureConfig { get; set; }
+
         /// <summary>The desired containerd config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredContainerdConfig")]
         public virtual ContainerdConfig DesiredContainerdConfig { get; set; }
