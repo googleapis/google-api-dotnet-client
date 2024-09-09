@@ -923,9 +923,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                         /// <summary>
                         /// An expression for filtering the results of the request. Filter rules are case insensitive.
                         /// The fields eligible for filtering are: * `name` * `owner` * `annotations` Examples of using
-                        /// a filter: To filter the results of your request to files with the name "my_file.txt" in
-                        /// project my-project in the us-central region, in repository my-repo, append the following
-                        /// filter expression to your request: *
+                        /// a filter: To filter the results of your request to files with the name `my_file.txt` in
+                        /// project `my-project` in the `us-central` region, in repository `my-repo`, append the
+                        /// following filter expression to your request: *
                         /// `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-file.txt"`
                         /// You can also use wildcards to match any number of characters before or after the value: *
                         /// `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-*"` *
@@ -935,16 +935,16 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                         /// append the following filter expression to your request: *
                         /// `owner="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"`
                         /// To filter the results of your request to files with the annotation key-value pair
-                        /// [`external_link`:`external_link_value`], append the following filter expression to your
-                        /// request: * "annotations.external_link:external_link_value" To filter just for a specific
+                        /// [`external_link`: `external_link_value`], append the following filter expression to your
+                        /// request: * `"annotations.external_link:external_link_value"` To filter just for a specific
                         /// annotation key `external_link`, append the following filter expression to your request: *
-                        /// "annotations.external_link" If the annotation key or value contains special characters, you
-                        /// can escape them by surrounding the value with backticks. For example, to filter the results
-                        /// of your request to files with the annotation key-value pair
+                        /// `"annotations.external_link"` If the annotation key or value contains special characters,
+                        /// you can escape them by surrounding the value with backticks. For example, to filter the
+                        /// results of your request to files with the annotation key-value pair
                         /// [`external.link`:`https://example.com/my-file`], append the following filter expression to
-                        /// your request: * "annotations.`external.link`:`https://example.com/my-file`" You can also
-                        /// filter with annotations with a wildcard to match any number of characters before or after
-                        /// the value: * "annotations.*_link:`*example.com*`"
+                        /// your request: * `` "annotations.`external.link`:`https://example.com/my-file`" `` You can
+                        /// also filter with annotations with a wildcard to match any number of characters before or
+                        /// after the value: * `` "annotations.*_link:`*example.com*`" ``
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -1227,8 +1227,8 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                             /// <summary>
                             /// An expression for filtering the results of the request. Filter rules are case
                             /// insensitive. The fields eligible for filtering are: * `name` * `version` Examples of
-                            /// using a filter: To filter the results of your request to tags with the name "my-tag" in
-                            /// package "my-package" in repository "my-repo" in project "my-project" in the us-central
+                            /// using a filter: To filter the results of your request to tags with the name `my-tag` in
+                            /// package `my-package` in repository `my-repo` in project "`y-project` in the us-central
                             /// region, append the following filter expression to your request: *
                             /// `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag"`
                             /// You can also use wildcards to match any number of characters before or after the value:
@@ -1777,6 +1777,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Optional. The field to order the results by.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
                         /// <summary>The maximum number of packages to return. Maximum page size is 1,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -1805,6 +1809,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -2468,6 +2480,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The field to order the results by.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
                     /// <summary>The maximum number of repositories to return. Maximum page size is 1,000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2496,6 +2512,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
