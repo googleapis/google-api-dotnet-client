@@ -13990,6 +13990,18 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubSubNotification")]
         public virtual GooglePrivacyDlpV2PubSubNotification PubSubNotification { get; set; }
 
+        /// <summary>
+        /// Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive
+        /// Data Protection data in context-aware
+        /// analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishToChronicle")]
+        public virtual GooglePrivacyDlpV2PublishToChronicle PublishToChronicle { get; set; }
+
+        /// <summary>Publishes findings to SCC for each data profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishToScc")]
+        public virtual GooglePrivacyDlpV2PublishToSecurityCommandCenter PublishToScc { get; set; }
+
         /// <summary>Tags the profiled resources with the specified tag values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagResources")]
         public virtual GooglePrivacyDlpV2TagResources TagResources { get; set; }
@@ -14193,8 +14205,8 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2DataSourceType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. An identifying string to the type of resource being profiled. Current values:
-        /// google/bigquery/table, google/project
+        /// Output only. An identifying string to the type of resource being profiled. Current values: *
+        /// google/bigquery/table * google/project * google/sql/table * google/gcs/bucket
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
@@ -18362,7 +18374,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profileStatus")]
         public virtual GooglePrivacyDlpV2ProfileStatus ProfileStatus { get; set; }
 
-        /// <summary>Project ID that was profiled.</summary>
+        /// <summary>Project ID or account that was profiled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -18492,6 +18504,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message expressing intention to publish to Google Security Operations.</summary>
+    public class GooglePrivacyDlpV2PublishToChronicle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field,
     /// `DlpJobName`, which is equal to the finished job's
@@ -18508,6 +18527,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>If set, a summary finding will be created/updated in SCC for each profile.</summary>
+    public class GooglePrivacyDlpV2PublishToSecurityCommandCenter : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
