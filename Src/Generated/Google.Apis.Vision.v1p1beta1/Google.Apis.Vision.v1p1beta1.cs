@@ -2441,7 +2441,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A face-specific landmark (for example, a face feature).</summary>
+    /// <summary>
+    /// A face-specific landmark (for example, a face feature). Landmark positions may fall outside the bounds of the
+    /// image if the face is near one or more edges of the image. Therefore it is NOT guaranteed that `0 &amp;lt;= x
+    /// &amp;lt; width` or `0 &amp;lt;= y &amp;lt; height`.
+    /// </summary>
     public class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Face landmark position.</summary>
@@ -3907,7 +3911,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A face-specific landmark (for example, a face feature).</summary>
+    /// <summary>
+    /// A face-specific landmark (for example, a face feature). Landmark positions may fall outside the bounds of the
+    /// image if the face is near one or more edges of the image. Therefore it is NOT guaranteed that `0 &amp;lt;= x
+    /// &amp;lt; width` or `0 &amp;lt;= y &amp;lt; height`.
+    /// </summary>
     public class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Face landmark position.</summary>
@@ -5254,7 +5262,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A face-specific landmark (for example, a face feature).</summary>
+    /// <summary>
+    /// A face-specific landmark (for example, a face feature). Landmark positions may fall outside the bounds of the
+    /// image if the face is near one or more edges of the image. Therefore it is NOT guaranteed that `0 &amp;lt;= x
+    /// &amp;lt; width` or `0 &amp;lt;= y &amp;lt; height`.
+    /// </summary>
     public class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Face landmark position.</summary>
@@ -6707,7 +6719,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A face-specific landmark (for example, a face feature).</summary>
+    /// <summary>
+    /// A face-specific landmark (for example, a face feature). Landmark positions may fall outside the bounds of the
+    /// image if the face is near one or more edges of the image. Therefore it is NOT guaranteed that `0 &amp;lt;= x
+    /// &amp;lt; width` or `0 &amp;lt;= y &amp;lt; height`.
+    /// </summary>
     public class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Face landmark position.</summary>
@@ -7761,7 +7777,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A face-specific landmark (for example, a face feature).</summary>
+    /// <summary>
+    /// A face-specific landmark (for example, a face feature). Landmark positions may fall outside the bounds of the
+    /// image if the face is near one or more edges of the image. Therefore it is NOT guaranteed that `0 &amp;lt;= x
+    /// &amp;lt; width` or `0 &amp;lt;= y &amp;lt; height`.
+    /// </summary>
     public class Landmark : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Face landmark position.</summary>
