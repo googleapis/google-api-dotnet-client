@@ -1654,6 +1654,17 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AgentTaskLoggingOption contains the options for the logging of the task.</summary>
+    public class AgentTaskLoggingOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Labels to be added to the log entry. Now only cloud logging is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AgentTaskRunnable is the Runnable representation between Agent and CLH communication.</summary>
     public class AgentTaskRunnable : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1709,6 +1720,10 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>Environment variables to set before running the Task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual AgentEnvironment Environment { get; set; }
+
+        /// <summary>Logging option for the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingOption")]
+        public virtual AgentTaskLoggingOption LoggingOption { get; set; }
 
         /// <summary>
         /// Maximum duration the task should run before being automatically retried (if enabled) or automatically
