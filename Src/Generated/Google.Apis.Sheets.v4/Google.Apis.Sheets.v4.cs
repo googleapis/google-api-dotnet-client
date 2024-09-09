@@ -7724,7 +7724,8 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// Whether to allow external URL access for image and import functions. Read only when true. When false, you
-        /// can set to true.
+        /// can set to true. This value will be bypassed and always return true if the admin has enabled the
+        /// allowlisting feature.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importFunctionsExternalUrlAccessAllowed")]
         public virtual System.Nullable<bool> ImportFunctionsExternalUrlAccessAllowed { get; set; }
