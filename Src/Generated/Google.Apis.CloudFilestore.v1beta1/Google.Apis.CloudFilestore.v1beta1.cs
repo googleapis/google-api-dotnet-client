@@ -1786,7 +1786,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>
                     /// Required. Mask of fields to update. At least one path must be supplied in this field. The
                     /// elements of the repeated paths field may only include these fields: * "description" *
-                    /// "directory_services" * "file_shares" * "labels"
+                    /// "directory_services" * "file_shares" * "labels" * "performance_config" *
+                    /// "deletion_protection_enabled" * "deletion_protection_reason"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1829,7 +1830,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     }
                 }
 
-                /// <summary>Promote an standby instance (replica).</summary>
+                /// <summary>Promote the standby instance (replica).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of the instance, in the format
@@ -1840,7 +1841,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     return new PromoteReplicaRequest(this.service, body, name);
                 }
 
-                /// <summary>Promote an standby instance (replica).</summary>
+                /// <summary>Promote the standby instance (replica).</summary>
                 public class PromoteReplicaRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new PromoteReplica request.</summary>
@@ -2554,7 +2555,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual System.Nullable<long> StorageBytes { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example:
         /// "123/environment": "production", "123/costCenter": "marketing"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
@@ -3254,6 +3255,14 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Indicates whether the instance is protected against deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtectionEnabled")]
+        public virtual System.Nullable<bool> DeletionProtectionEnabled { get; set; }
+
+        /// <summary>Optional. The reason for enabling deletion protection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtectionReason")]
+        public virtual string DeletionProtectionReason { get; set; }
+
         /// <summary>The description of the instance (2048 characters or less).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -3320,7 +3329,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
 
-        /// <summary>Optional. Replicaition configuration.</summary>
+        /// <summary>Optional. Replication configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replication")]
         public virtual Replication Replication { get; set; }
 
@@ -3345,7 +3354,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example:
         /// "123/environment": "production", "123/costCenter": "marketing"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
@@ -3641,13 +3650,15 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     }
 
     /// <summary>
-    /// ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+    /// ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Service for Microsoft Active
+    /// Directory (Managed Microsoft AD).
     /// </summary>
     public class ManagedActiveDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The computer name is used as a prefix to the mount remote target. Example: if the computer is
-        /// `my-computer`, the mount command will look like: `$mount -o vers=4.1,sec=krb5 my-computer.filestore.: `.
+        /// Required. The computer name is used as a prefix in the command to mount the remote target. For example: if
+        /// the computer is `my-computer`, the mount command will look like: `$mount -o vers=4.1,sec=krb5
+        /// my-computer.filestore.: `.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computer")]
         public virtual string Computer { get; set; }
@@ -3983,7 +3994,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     public class Replication : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Replicas configuration on the instance. For now, only a single replica config is supported.
+        /// Replication configuration for the replica instance associated with this instance. Only a single replica is
+        /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Collections.Generic.IList<ReplicaConfig> Replicas { get; set; }
@@ -4214,7 +4226,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example:
         /// "123/environment": "production", "123/costCenter": "marketing"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
