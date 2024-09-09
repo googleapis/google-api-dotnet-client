@@ -2771,6 +2771,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual AzureSubscription Subscription { get; set; }
 
+        /// <summary>The Azure Entra tenant associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual AzureTenant Tenant { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2794,6 +2798,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Microsoft Entra tenant.</summary>
+    public class AzureTenant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-1aaa11a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -3420,6 +3435,45 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exploitationActivity")]
         public virtual string ExploitationActivity { get; set; }
 
+        private string _firstExploitationDateRaw;
+
+        private object _firstExploitationDate;
+
+        /// <summary>Date of the earliest known exploitation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstExploitationDate")]
+        public virtual string FirstExploitationDateRaw
+        {
+            get => _firstExploitationDateRaw;
+            set
+            {
+                _firstExploitationDate = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstExploitationDateRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstExploitationDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstExploitationDateDateTimeOffset instead.")]
+        public virtual object FirstExploitationDate
+        {
+            get => _firstExploitationDate;
+            set
+            {
+                _firstExploitationDateRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstExploitationDate = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstExploitationDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstExploitationDateDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstExploitationDateRaw);
+            set => FirstExploitationDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The unique identifier for the vulnerability. e.g. CVE-2021-34527</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -3509,6 +3563,133 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
         public virtual string UserInteraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about a data access attempt made by a principal not authorized under applicable data security policy.
+    /// </summary>
+    public class DataAccessEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for data access event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Timestamp of data access event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation performed by the principal to access the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>
+        /// The email address of the principal that accessed the data. The principal could be a user account, service
+        /// account, Google group, or other.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
+        public virtual string PrincipalEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about a data flow event, in which either the data is moved to or is accessed from a non-compliant
+    /// geo-location, as defined in the applicable data security policy.
+    /// </summary>
+    public class DataFlowEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for data flow event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Timestamp of data flow event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation performed by the principal for the data flow event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>
+        /// The email address of the principal that initiated the data flow event. The principal could be a user
+        /// account, service account, Google group, or other.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
+        public virtual string PrincipalEmail { get; set; }
+
+        /// <summary>Non-compliant location of the principal or the data destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violatedLocation")]
+        public virtual string ViolatedLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3932,6 +4113,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Data access events associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataAccessEvents")]
+        public virtual System.Collections.Generic.IList<DataAccessEvent> DataAccessEvents { get; set; }
+
+        /// <summary>Data flow events associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFlowEvents")]
+        public virtual System.Collections.Generic.IList<DataFlowEvent> DataFlowEvents { get; set; }
 
         /// <summary>Database associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
@@ -6215,6 +6404,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual GoogleCloudSecuritycenterV2AzureSubscription Subscription { get; set; }
 
+        /// <summary>The Azure Entra tenant associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual GoogleCloudSecuritycenterV2AzureTenant Tenant { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6238,6 +6431,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Microsoft Entra tenant.</summary>
+    public class GoogleCloudSecuritycenterV2AzureTenant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-1aaa11a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -6880,6 +7084,45 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exploitationActivity")]
         public virtual string ExploitationActivity { get; set; }
 
+        private string _firstExploitationDateRaw;
+
+        private object _firstExploitationDate;
+
+        /// <summary>Date of the earliest known exploitation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstExploitationDate")]
+        public virtual string FirstExploitationDateRaw
+        {
+            get => _firstExploitationDateRaw;
+            set
+            {
+                _firstExploitationDate = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstExploitationDateRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstExploitationDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstExploitationDateDateTimeOffset instead.")]
+        public virtual object FirstExploitationDate
+        {
+            get => _firstExploitationDate;
+            set
+            {
+                _firstExploitationDateRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstExploitationDate = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstExploitationDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstExploitationDateDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstExploitationDateRaw);
+            set => FirstExploitationDateRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The unique identifier for the vulnerability. e.g. CVE-2021-34527</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -6969,6 +7212,133 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
         public virtual string UserInteraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about a data access attempt made by a principal not authorized under applicable data security policy.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2DataAccessEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for data access event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Timestamp of data access event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation performed by the principal to access the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>
+        /// The email address of the principal that accessed the data. The principal could be a user account, service
+        /// account, Google group, or other.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
+        public virtual string PrincipalEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about a data flow event, in which either the data is moved to or is accessed from a non-compliant
+    /// geo-location, as defined in the applicable data security policy.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2DataFlowEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for data flow event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Timestamp of data flow event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation performed by the principal for the data flow event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>
+        /// The email address of the principal that initiated the data flow event. The principal could be a user
+        /// account, service account, Google group, or other.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
+        public virtual string PrincipalEmail { get; set; }
+
+        /// <summary>Non-compliant location of the principal or the data destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violatedLocation")]
+        public virtual string ViolatedLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7541,6 +7911,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Data access events associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataAccessEvents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2DataAccessEvent> DataAccessEvents { get; set; }
+
+        /// <summary>Data flow events associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFlowEvents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2DataFlowEvent> DataFlowEvents { get; set; }
 
         /// <summary>Database associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
