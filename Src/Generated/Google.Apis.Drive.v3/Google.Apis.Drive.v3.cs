@@ -41,6 +41,8 @@ namespace Google.Apis.Drive.v3
             Comments = new CommentsResource(this);
             Drives = new DrivesResource(this);
             Files = new FilesResource(this);
+            Operation = new OperationResource(this);
+            Operations = new OperationsResource(this);
             Permissions = new PermissionsResource(this);
             Replies = new RepliesResource(this);
             Revisions = new RevisionsResource(this);
@@ -159,6 +161,12 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>Gets the Files resource.</summary>
         public virtual FilesResource Files { get; }
+
+        /// <summary>Gets the Operation resource.</summary>
+        public virtual OperationResource Operation { get; }
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations { get; }
 
         /// <summary>Gets the Permissions resource.</summary>
         public virtual PermissionsResource Permissions { get; }
@@ -2631,6 +2639,85 @@ namespace Google.Apis.Drive.v3
             }
         }
 
+        /// <summary>Downloads content of a file. Operations are valid for 24 hours from the time of creation.</summary>
+        /// <param name="fileId">Required. The ID of the file to download.</param>
+        public virtual DownloadRequest Download(string fileId)
+        {
+            return new DownloadRequest(this.service, fileId);
+        }
+
+        /// <summary>Downloads content of a file. Operations are valid for 24 hours from the time of creation.</summary>
+        public class DownloadRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Download request.</summary>
+            public DownloadRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
+            {
+                FileId = fileId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the file to download.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>
+            /// Optional. The MIME type the file should be downloaded as. This field can only be set when downloading
+            /// Google Workspace documents. See [Export MIME types for Google Workspace
+            /// documents](/drive/api/guides/ref-export-formats) for the list of supported MIME types. If not set, a
+            /// Google Workspace document is downloaded with a default MIME type. The default MIME type might change in
+            /// the future.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("mimeType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MimeType { get; set; }
+
+            /// <summary>
+            /// Optional. The revision ID of the file to download. This field can only be set when downloading blob
+            /// files, Google Docs, and Google Sheets. Returns `INVALID_ARGUMENT` if downloading a specific revision on
+            /// the file is unsupported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("revisionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RevisionId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "download";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/download";
+
+            /// <summary>Initializes Download parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("mimeType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "mimeType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revisionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revisionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Permanently deletes all of the user's trashed files.</summary>
         public virtual EmptyTrashRequest EmptyTrash()
         {
@@ -4025,6 +4112,284 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "operation" collection of methods.</summary>
+    public class OperationResource
+    {
+        private const string Resource = "operation";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OperationResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// </summary>
+        /// <param name="name">The name of the operation resource to be cancelled.</param>
+        public virtual CancelRequest Cancel(string name)
+        {
+            return new CancelRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// </summary>
+        public class CancelRequest : DriveBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation resource to be cancelled.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "operation/{name}:cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
+        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.
+        /// </summary>
+        /// <param name="name">The name of the operation resource to be deleted.</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
+        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.
+        /// </summary>
+        public class DeleteRequest : DriveBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation resource to be deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "operation/{name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "operations" collection of methods.</summary>
+    public class OperationsResource
+    {
+        private const string Resource = "operations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OperationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result
+        /// at intervals as recommended by the API service.
+        /// </summary>
+        /// <param name="name">The name of the operation resource.</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result
+        /// at intervals as recommended by the API service.
+        /// </summary>
+        public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "operations/{name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
+        /// it returns `UNIMPLEMENTED`.
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>
+        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
+        /// it returns `UNIMPLEMENTED`.
+        /// </summary>
+        public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ListOperationsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The name of the operation's parent resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "operations";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             }
@@ -7988,6 +8353,21 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A request to modify the set of labels on a file. This request may contain many modifications that will either
     /// all succeed or all fail atomically.
@@ -8018,6 +8398,49 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The list of labels which were added or updated by the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedLabels")]
         public virtual System.Collections.Generic.IList<Label> ModifiedLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8495,6 +8918,35 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The starting page token for listing future changes. The page token doesn't expire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPageToken")]
         public virtual string StartPageTokenValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
