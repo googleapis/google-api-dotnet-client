@@ -3280,6 +3280,80 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public SeriesResource(Google.Apis.Services.IClientService service)
                                 {
                                     this.service = service;
+                                    Instances = new InstancesResource(service);
+                                }
+
+                                /// <summary>Gets the Instances resource.</summary>
+                                public virtual InstancesResource Instances { get; }
+
+                                /// <summary>The "instances" collection of methods.</summary>
+                                public class InstancesResource
+                                {
+                                    private const string Resource = "instances";
+
+                                    /// <summary>The service which this resource belongs to.</summary>
+                                    private readonly Google.Apis.Services.IClientService service;
+
+                                    /// <summary>Constructs a new resource.</summary>
+                                    public InstancesResource(Google.Apis.Services.IClientService service)
+                                    {
+                                        this.service = service;
+                                    }
+
+                                    /// <summary>
+                                    /// GetStorageInfo returns the storage info of the specified resource.
+                                    /// </summary>
+                                    /// <param name="resource">
+                                    /// Required. The path of the instance to return storage info for, in the form:
+                                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`
+                                    /// </param>
+                                    public virtual GetStorageInfoRequest GetStorageInfo(string resource)
+                                    {
+                                        return new GetStorageInfoRequest(this.service, resource);
+                                    }
+
+                                    /// <summary>
+                                    /// GetStorageInfo returns the storage info of the specified resource.
+                                    /// </summary>
+                                    public class GetStorageInfoRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.StorageInfo>
+                                    {
+                                        /// <summary>Constructs a new GetStorageInfo request.</summary>
+                                        public GetStorageInfoRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                                        {
+                                            Resource = resource;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>
+                                        /// Required. The path of the instance to return storage info for, in the form:
+                                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Resource { get; private set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "getStorageInfo";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "GET";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "v1/{+resource}:getStorageInfo";
+
+                                        /// <summary>Initializes GetStorageInfo parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "resource",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/[^/]+/series/[^/]+/instances/[^/]+$",
+                                            });
+                                        }
+                                    }
                                 }
 
                                 /// <summary>GetSeriesMetrics returns metrics for a series.</summary>
@@ -3381,6 +3455,82 @@ namespace Google.Apis.CloudHealthcare.v1
                                         ParameterType = "path",
                                         DefaultValue = null,
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// SetBlobStorageSettings sets the blob storage settings of the specified resources.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="resource">
+                            /// Required. The path of the resource to update the blob storage settings in the format of
+                            /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                            /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                            /// or
+                            /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                            /// If `filter_config` is specified, set the value of `resource` to the resource name of a
+                            /// DICOM store in the format
+                            /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                            /// </param>
+                            public virtual SetBlobStorageSettingsRequest SetBlobStorageSettings(Google.Apis.CloudHealthcare.v1.Data.SetBlobStorageSettingsRequest body, string resource)
+                            {
+                                return new SetBlobStorageSettingsRequest(this.service, body, resource);
+                            }
+
+                            /// <summary>
+                            /// SetBlobStorageSettings sets the blob storage settings of the specified resources.
+                            /// </summary>
+                            public class SetBlobStorageSettingsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
+                            {
+                                /// <summary>Constructs a new SetBlobStorageSettings request.</summary>
+                                public SetBlobStorageSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetBlobStorageSettingsRequest body, string resource) : base(service)
+                                {
+                                    Resource = resource;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The path of the resource to update the blob storage settings in the format
+                                /// of
+                                /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                                /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                                /// or
+                                /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                                /// If `filter_config` is specified, set the value of `resource` to the resource name of
+                                /// a DICOM store in the format
+                                /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Resource { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.CloudHealthcare.v1.Data.SetBlobStorageSettingsRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "setBlobStorageSettings";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+resource}:setBlobStorageSettings";
+
+                                /// <summary>Initializes SetBlobStorageSettings parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "resource",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/.*$",
                                     });
                                 }
                             }
@@ -5812,6 +5962,81 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>
+                    /// SetBlobStorageSettings sets the blob storage settings of the specified resources.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// Required. The path of the resource to update the blob storage settings in the format of
+                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                    /// or
+                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                    /// If `filter_config` is specified, set the value of `resource` to the resource name of a DICOM
+                    /// store in the format
+                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                    /// </param>
+                    public virtual SetBlobStorageSettingsRequest SetBlobStorageSettings(Google.Apis.CloudHealthcare.v1.Data.SetBlobStorageSettingsRequest body, string resource)
+                    {
+                        return new SetBlobStorageSettingsRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// SetBlobStorageSettings sets the blob storage settings of the specified resources.
+                    /// </summary>
+                    public class SetBlobStorageSettingsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new SetBlobStorageSettings request.</summary>
+                        public SetBlobStorageSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetBlobStorageSettingsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The path of the resource to update the blob storage settings in the format of
+                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                        /// or
+                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                        /// If `filter_config` is specified, set the value of `resource` to the resource name of a DICOM
+                        /// store in the format
+                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.SetBlobStorageSettingsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setBlobStorageSettings";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setBlobStorageSettings";
+
+                        /// <summary>Initializes SetBlobStorageSettings parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
                     /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                     /// </summary>
@@ -6078,6 +6303,350 @@ namespace Google.Apis.CloudHealthcare.v1
                         public FhirResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Creates a FHIR Binary resource. This method can be used to create a Binary resource either
+                        /// by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource
+                        /// is created with this method using the FHIR content type this method's behavior is the same
+                        /// as
+                        /// [`fhir.create`](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/create).
+                        /// If a resource type other than Binary is used in the request it's treated in the same way as
+                        /// non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content
+                        /// type is used in the request, a Binary resource will be generated, and the uploaded data will
+                        /// be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4`). The
+                        /// Binary resource's `contentType` will be filled in using the value of the `Content-Type`
+                        /// header, and the `securityContext` field (not present in `DSTU2`) will be populated from the
+                        /// `X-Security-Context` header if it exists. At this time `securityContext` has no special
+                        /// behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method
+                        /// is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a
+                        /// Binary resource. Some of the Healthcare API features, such as [exporting to
+                        /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
+                        /// [Pub/Sub
+                        /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+                        /// with full resource content, do not support Binary resources that are larger than 10 MB. In
+                        /// these cases the resource's `data` field will be omitted. Instead, the
+                        /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to
+                        /// indicate that including the data is `unsupported`. On success, an empty `201 Created`
+                        /// response is returned. The newly created resource's ID and version are returned in the
+                        /// Location header. Using `Prefer: representation=resource` is not allowed for this method. The
+                        /// definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The name of the FHIR store this resource belongs to.</param>
+                        public virtual BinaryCreateRequest BinaryCreate(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent)
+                        {
+                            return new BinaryCreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a FHIR Binary resource. This method can be used to create a Binary resource either
+                        /// by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource
+                        /// is created with this method using the FHIR content type this method's behavior is the same
+                        /// as
+                        /// [`fhir.create`](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/create).
+                        /// If a resource type other than Binary is used in the request it's treated in the same way as
+                        /// non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content
+                        /// type is used in the request, a Binary resource will be generated, and the uploaded data will
+                        /// be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4`). The
+                        /// Binary resource's `contentType` will be filled in using the value of the `Content-Type`
+                        /// header, and the `securityContext` field (not present in `DSTU2`) will be populated from the
+                        /// `X-Security-Context` header if it exists. At this time `securityContext` has no special
+                        /// behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method
+                        /// is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a
+                        /// Binary resource. Some of the Healthcare API features, such as [exporting to
+                        /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
+                        /// [Pub/Sub
+                        /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+                        /// with full resource content, do not support Binary resources that are larger than 10 MB. In
+                        /// these cases the resource's `data` field will be omitted. Instead, the
+                        /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to
+                        /// indicate that including the data is `unsupported`. On success, an empty `201 Created`
+                        /// response is returned. The newly created resource's ID and version are returned in the
+                        /// Location header. Using `Prefer: representation=resource` is not allowed for this method. The
+                        /// definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        public class BinaryCreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new BinaryCreate request.</summary>
+                            public BinaryCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the FHIR store this resource belongs to.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Binary-create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/fhir/Binary";
+
+                            /// <summary>Initializes BinaryCreate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the contents of a FHIR Binary resource. This method can be used to retrieve a Binary
+                        /// resource either by using the FHIR JSON mimetype as the value for the Accept header, or as a
+                        /// raw data stream. If the FHIR Accept type is used this method will return a Binary resource
+                        /// with the data base64-encoded, regardless of how the resource was created. The resource data
+                        /// can be retrieved in base64-decoded form if the Accept type of the request matches the value
+                        /// of the resource's `contentType` field. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        /// <param name="name">Required. The name of the Binary resource to retrieve.</param>
+                        public virtual BinaryReadRequest BinaryRead(string name)
+                        {
+                            return new BinaryReadRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the contents of a FHIR Binary resource. This method can be used to retrieve a Binary
+                        /// resource either by using the FHIR JSON mimetype as the value for the Accept header, or as a
+                        /// raw data stream. If the FHIR Accept type is used this method will return a Binary resource
+                        /// with the data base64-encoded, regardless of how the resource was created. The resource data
+                        /// can be retrieved in base64-decoded form if the Accept type of the request matches the value
+                        /// of the resource's `contentType` field. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        public class BinaryReadRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new BinaryRead request.</summary>
+                            public BinaryReadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the Binary resource to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Binary-read";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes BinaryRead parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Binary/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates the entire contents of a Binary resource. If the specified resource does not exist
+                        /// and the FHIR store has enable_update_create set, creates the resource with the
+                        /// client-specified ID. It is strongly advised not to include or encode any sensitive data such
+                        /// as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR
+                        /// resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be
+                        /// contained in reference fields within other resources. This method can be used to update a
+                        /// Binary resource either by using one of the accepted FHIR JSON content types, or as a raw
+                        /// data stream. If a resource is updated with this method using the FHIR content type this
+                        /// method's behavior is the same as `update`. If a resource type other than Binary is used in
+                        /// the request it will be treated in the same way as non-FHIR data. When a non-FHIR content
+                        /// type is used in the request, a Binary resource will be generated using the ID from the
+                        /// resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and
+                        /// `STU3`), or the `data` field (`R4`). The Binary resource's `contentType` will be filled in
+                        /// using the value of the `Content-Type` header, and the `securityContext` field (not present
+                        /// in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this
+                        /// time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit
+                        /// on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type
+                        /// instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such
+                        /// as [exporting to
+                        /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
+                        /// [Pub/Sub
+                        /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+                        /// with full resource content, do not support Binary resources that are larger than 10 MB. In
+                        /// these cases the resource's `data` field will be omitted. Instead, the
+                        /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to
+                        /// indicate that including the data is `unsupported`. On success, an empty 200 OK response will
+                        /// be returned, or a 201 Created if the resource did not exit. The resource's ID and version
+                        /// are returned in the Location header. Using `Prefer: representation=resource` is not allowed
+                        /// for this method. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. The name of the resource to update.</param>
+                        public virtual BinaryUpdateRequest BinaryUpdate(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string name)
+                        {
+                            return new BinaryUpdateRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Updates the entire contents of a Binary resource. If the specified resource does not exist
+                        /// and the FHIR store has enable_update_create set, creates the resource with the
+                        /// client-specified ID. It is strongly advised not to include or encode any sensitive data such
+                        /// as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR
+                        /// resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be
+                        /// contained in reference fields within other resources. This method can be used to update a
+                        /// Binary resource either by using one of the accepted FHIR JSON content types, or as a raw
+                        /// data stream. If a resource is updated with this method using the FHIR content type this
+                        /// method's behavior is the same as `update`. If a resource type other than Binary is used in
+                        /// the request it will be treated in the same way as non-FHIR data. When a non-FHIR content
+                        /// type is used in the request, a Binary resource will be generated using the ID from the
+                        /// resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and
+                        /// `STU3`), or the `data` field (`R4`). The Binary resource's `contentType` will be filled in
+                        /// using the value of the `Content-Type` header, and the `securityContext` field (not present
+                        /// in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this
+                        /// time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit
+                        /// on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type
+                        /// instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such
+                        /// as [exporting to
+                        /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
+                        /// [Pub/Sub
+                        /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+                        /// with full resource content, do not support Binary resources that are larger than 10 MB. In
+                        /// these cases the resource's `data` field will be omitted. Instead, the
+                        /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to
+                        /// indicate that including the data is `unsupported`. On success, an empty 200 OK response will
+                        /// be returned, or a 201 Created if the resource did not exit. The resource's ID and version
+                        /// are returned in the Location header. Using `Prefer: representation=resource` is not allowed
+                        /// for this method. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        public class BinaryUpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new BinaryUpdate request.</summary>
+                            public BinaryUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the resource to update.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Binary-update";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PUT";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes BinaryUpdate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Binary/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the contents of a version (current or historical) of a FHIR Binary resource by version
+                        /// ID. This method can be used to retrieve a Binary resource version either by using the FHIR
+                        /// JSON mimetype as the value for the Accept header, or as a raw data stream. If the FHIR
+                        /// Accept type is used this method will return a Binary resource with the data base64-encoded,
+                        /// regardless of how the resource version was created. The resource data can be retrieved in
+                        /// base64-decoded form if the Accept type of the request matches the value of the resource
+                        /// version's `contentType` field. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        /// <param name="name">Required. The name of the Binary resource version to retrieve.</param>
+                        public virtual BinaryVreadRequest BinaryVread(string name)
+                        {
+                            return new BinaryVreadRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the contents of a version (current or historical) of a FHIR Binary resource by version
+                        /// ID. This method can be used to retrieve a Binary resource version either by using the FHIR
+                        /// JSON mimetype as the value for the Accept header, or as a raw data stream. If the FHIR
+                        /// Accept type is used this method will return a Binary resource with the data base64-encoded,
+                        /// regardless of how the resource version was created. The resource data can be retrieved in
+                        /// base64-decoded form if the Accept type of the request matches the value of the resource
+                        /// version's `contentType` field. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        public class BinaryVreadRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new BinaryVread request.</summary>
+                            public BinaryVreadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the Binary resource version to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Binary-vread";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes BinaryVread parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Binary/[^/]+/_history/[^/]+$",
+                                });
+                            }
                         }
 
                         /// <summary>
@@ -10195,7 +10764,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>
-                    /// Rolls back messages from the HL7 store to the specified time. This method returns an Operation
+                    /// Rolls back messages from the HL7v2 store to the specified time. This method returns an Operation
                     /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
                     /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
                     /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
@@ -10214,7 +10783,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>
-                    /// Rolls back messages from the HL7 store to the specified time. This method returns an Operation
+                    /// Rolls back messages from the HL7v2 store to the specified time. This method returns an Operation
                     /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
                     /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
                     /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
@@ -11829,6 +12398,77 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BlobStorageInfo contains details about the data stored in Blob Storage for the referenced resource. Note:
+    /// Storage class is only valid for DICOM and hence will only be populated for DICOM resources.
+    /// </summary>
+    public class BlobStorageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Size in bytes of data stored in Blob Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        /// <summary>The storage class in which the Blob data is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
+        public virtual string StorageClass { get; set; }
+
+        private string _storageClassUpdateTimeRaw;
+
+        private object _storageClassUpdateTime;
+
+        /// <summary>
+        /// The time at which the storage class was updated. This is used to compute early deletion fees of the
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageClassUpdateTime")]
+        public virtual string StorageClassUpdateTimeRaw
+        {
+            get => _storageClassUpdateTimeRaw;
+            set
+            {
+                _storageClassUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _storageClassUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StorageClassUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StorageClassUpdateTimeDateTimeOffset instead.")]
+        public virtual object StorageClassUpdateTime
+        {
+            get => _storageClassUpdateTime;
+            set
+            {
+                _storageClassUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _storageClassUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StorageClassUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StorageClassUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StorageClassUpdateTimeRaw);
+            set => StorageClassUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for data stored in Blob storage.</summary>
+    public class BlobStorageSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Storage class in which the Blob data is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageClass")]
+        public virtual string BlobStorageClass { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13857,6 +14497,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// </summary>
     public class ImportDicomDataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The blob storage settings for the data imported by this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageSettings")]
+        public virtual BlobStorageSettings BlobStorageSettings { get; set; }
+
         /// <summary>
         /// Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent requires the
         /// `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location.
@@ -15024,7 +15668,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     }
 
     /// <summary>
-    /// Filtering fields for an HL7 rollback. Currently only supports a list of operation ids to roll back.
+    /// Filtering fields for an HL7v2 rollback. Currently only supports a list of operation ids to roll back.
     /// </summary>
     public class RollbackHL7MessagesFilteringFields : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15110,7 +15754,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class RollbackHl7V2MessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the HL7 store to rollback, in the format of
+        /// The name of the HL7v2 store to rollback, in the format of
         /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id} /hl7v2Stores/{hl7v2_store_id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hl7v2Store")]
@@ -15322,6 +15966,35 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for `SetBlobStorageSettings` method.</summary>
+    public class SetBlobStorageSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The blob storage settings to update for the specified resources. Only fields listed in `update_mask` are
+        /// applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageSettings")]
+        public virtual BlobStorageSettings BlobStorageSettings { get; set; }
+
+        /// <summary>
+        /// Optional. A filter configuration. If `filter_config` is specified, set the value of `resource` to the
+        /// resource name of a DICOM store in the format
+        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterConfig")]
+        public virtual DicomFilterConfig FilterConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Returns additional info in regards to a completed set blob storage settings API.</summary>
+    public class SetBlobStorageSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15431,6 +16104,28 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>StorageInfo encapsulates all the storage info of a resource.</summary>
+    public class StorageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Info about the data stored in blob storage for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobStorageInfo")]
+        public virtual BlobStorageInfo BlobStorageInfo { get; set; }
+
+        /// <summary>
+        /// The resource whose storage info is returned. For example:
+        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedResource")]
+        public virtual string ReferencedResource { get; set; }
+
+        /// <summary>Info about the data stored in structured storage for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredStorageInfo")]
+        public virtual StructuredStorageInfo StructuredStorageInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains configuration for streaming FHIR export.</summary>
     public class StreamConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15483,6 +16178,19 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// StructuredStorageInfo contains details about the data stored in Structured Storage for the referenced resource.
+    /// </summary>
+    public class StructuredStorageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Size in bytes of data stored in structured storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
