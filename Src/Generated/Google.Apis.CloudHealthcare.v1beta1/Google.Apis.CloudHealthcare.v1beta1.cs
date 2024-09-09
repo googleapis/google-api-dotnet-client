@@ -7623,6 +7623,350 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
+                        /// Creates a FHIR Binary resource. This method can be used to create a Binary resource either
+                        /// by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource
+                        /// is created with this method using the FHIR content type this method's behavior is the same
+                        /// as
+                        /// [`fhir.create`](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/create).
+                        /// If a resource type other than Binary is used in the request it's treated in the same way as
+                        /// non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content
+                        /// type is used in the request, a Binary resource will be generated, and the uploaded data will
+                        /// be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4`). The
+                        /// Binary resource's `contentType` will be filled in using the value of the `Content-Type`
+                        /// header, and the `securityContext` field (not present in `DSTU2`) will be populated from the
+                        /// `X-Security-Context` header if it exists. At this time `securityContext` has no special
+                        /// behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method
+                        /// is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a
+                        /// Binary resource. Some of the Healthcare API features, such as [exporting to
+                        /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
+                        /// [Pub/Sub
+                        /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+                        /// with full resource content, do not support Binary resources that are larger than 10 MB. In
+                        /// these cases the resource's `data` field will be omitted. Instead, the
+                        /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to
+                        /// indicate that including the data is `unsupported`. On success, an empty `201 Created`
+                        /// response is returned. The newly created resource's ID and version are returned in the
+                        /// Location header. Using `Prefer: representation=resource` is not allowed for this method. The
+                        /// definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The name of the FHIR store this resource belongs to.</param>
+                        public virtual BinaryCreateRequest BinaryCreate(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent)
+                        {
+                            return new BinaryCreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a FHIR Binary resource. This method can be used to create a Binary resource either
+                        /// by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource
+                        /// is created with this method using the FHIR content type this method's behavior is the same
+                        /// as
+                        /// [`fhir.create`](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/create).
+                        /// If a resource type other than Binary is used in the request it's treated in the same way as
+                        /// non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content
+                        /// type is used in the request, a Binary resource will be generated, and the uploaded data will
+                        /// be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4`). The
+                        /// Binary resource's `contentType` will be filled in using the value of the `Content-Type`
+                        /// header, and the `securityContext` field (not present in `DSTU2`) will be populated from the
+                        /// `X-Security-Context` header if it exists. At this time `securityContext` has no special
+                        /// behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method
+                        /// is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a
+                        /// Binary resource. Some of the Healthcare API features, such as [exporting to
+                        /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
+                        /// [Pub/Sub
+                        /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+                        /// with full resource content, do not support Binary resources that are larger than 10 MB. In
+                        /// these cases the resource's `data` field will be omitted. Instead, the
+                        /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to
+                        /// indicate that including the data is `unsupported`. On success, an empty `201 Created`
+                        /// response is returned. The newly created resource's ID and version are returned in the
+                        /// Location header. Using `Prefer: representation=resource` is not allowed for this method. The
+                        /// definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        public class BinaryCreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new BinaryCreate request.</summary>
+                            public BinaryCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the FHIR store this resource belongs to.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Binary-create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/fhir/Binary";
+
+                            /// <summary>Initializes BinaryCreate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the contents of a FHIR Binary resource. This method can be used to retrieve a Binary
+                        /// resource either by using the FHIR JSON mimetype as the value for the Accept header, or as a
+                        /// raw data stream. If the FHIR Accept type is used this method will return a Binary resource
+                        /// with the data base64-encoded, regardless of how the resource was created. The resource data
+                        /// can be retrieved in base64-decoded form if the Accept type of the request matches the value
+                        /// of the resource's `contentType` field. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        /// <param name="name">Required. The name of the Binary resource to retrieve.</param>
+                        public virtual BinaryReadRequest BinaryRead(string name)
+                        {
+                            return new BinaryReadRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the contents of a FHIR Binary resource. This method can be used to retrieve a Binary
+                        /// resource either by using the FHIR JSON mimetype as the value for the Accept header, or as a
+                        /// raw data stream. If the FHIR Accept type is used this method will return a Binary resource
+                        /// with the data base64-encoded, regardless of how the resource was created. The resource data
+                        /// can be retrieved in base64-decoded form if the Accept type of the request matches the value
+                        /// of the resource's `contentType` field. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        public class BinaryReadRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new BinaryRead request.</summary>
+                            public BinaryReadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the Binary resource to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Binary-read";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes BinaryRead parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Binary/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates the entire contents of a Binary resource. If the specified resource does not exist
+                        /// and the FHIR store has enable_update_create set, creates the resource with the
+                        /// client-specified ID. It is strongly advised not to include or encode any sensitive data such
+                        /// as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR
+                        /// resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be
+                        /// contained in reference fields within other resources. This method can be used to update a
+                        /// Binary resource either by using one of the accepted FHIR JSON content types, or as a raw
+                        /// data stream. If a resource is updated with this method using the FHIR content type this
+                        /// method's behavior is the same as `update`. If a resource type other than Binary is used in
+                        /// the request it will be treated in the same way as non-FHIR data. When a non-FHIR content
+                        /// type is used in the request, a Binary resource will be generated using the ID from the
+                        /// resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and
+                        /// `STU3`), or the `data` field (`R4`). The Binary resource's `contentType` will be filled in
+                        /// using the value of the `Content-Type` header, and the `securityContext` field (not present
+                        /// in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this
+                        /// time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit
+                        /// on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type
+                        /// instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such
+                        /// as [exporting to
+                        /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
+                        /// [Pub/Sub
+                        /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+                        /// with full resource content, do not support Binary resources that are larger than 10 MB. In
+                        /// these cases the resource's `data` field will be omitted. Instead, the
+                        /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to
+                        /// indicate that including the data is `unsupported`. On success, an empty 200 OK response will
+                        /// be returned, or a 201 Created if the resource did not exit. The resource's ID and version
+                        /// are returned in the Location header. Using `Prefer: representation=resource` is not allowed
+                        /// for this method. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. The name of the resource to update.</param>
+                        public virtual BinaryUpdateRequest BinaryUpdate(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string name)
+                        {
+                            return new BinaryUpdateRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Updates the entire contents of a Binary resource. If the specified resource does not exist
+                        /// and the FHIR store has enable_update_create set, creates the resource with the
+                        /// client-specified ID. It is strongly advised not to include or encode any sensitive data such
+                        /// as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR
+                        /// resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be
+                        /// contained in reference fields within other resources. This method can be used to update a
+                        /// Binary resource either by using one of the accepted FHIR JSON content types, or as a raw
+                        /// data stream. If a resource is updated with this method using the FHIR content type this
+                        /// method's behavior is the same as `update`. If a resource type other than Binary is used in
+                        /// the request it will be treated in the same way as non-FHIR data. When a non-FHIR content
+                        /// type is used in the request, a Binary resource will be generated using the ID from the
+                        /// resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and
+                        /// `STU3`), or the `data` field (`R4`). The Binary resource's `contentType` will be filled in
+                        /// using the value of the `Content-Type` header, and the `securityContext` field (not present
+                        /// in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this
+                        /// time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit
+                        /// on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type
+                        /// instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such
+                        /// as [exporting to
+                        /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
+                        /// [Pub/Sub
+                        /// notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high)
+                        /// with full resource content, do not support Binary resources that are larger than 10 MB. In
+                        /// these cases the resource's `data` field will be omitted. Instead, the
+                        /// "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to
+                        /// indicate that including the data is `unsupported`. On success, an empty 200 OK response will
+                        /// be returned, or a 201 Created if the resource did not exit. The resource's ID and version
+                        /// are returned in the Location header. Using `Prefer: representation=resource` is not allowed
+                        /// for this method. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        public class BinaryUpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new BinaryUpdate request.</summary>
+                            public BinaryUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the resource to update.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Binary-update";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PUT";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes BinaryUpdate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Binary/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the contents of a version (current or historical) of a FHIR Binary resource by version
+                        /// ID. This method can be used to retrieve a Binary resource version either by using the FHIR
+                        /// JSON mimetype as the value for the Accept header, or as a raw data stream. If the FHIR
+                        /// Accept type is used this method will return a Binary resource with the data base64-encoded,
+                        /// regardless of how the resource version was created. The resource data can be retrieved in
+                        /// base64-decoded form if the Accept type of the request matches the value of the resource
+                        /// version's `contentType` field. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        /// <param name="name">Required. The name of the Binary resource version to retrieve.</param>
+                        public virtual BinaryVreadRequest BinaryVread(string name)
+                        {
+                            return new BinaryVreadRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the contents of a version (current or historical) of a FHIR Binary resource by version
+                        /// ID. This method can be used to retrieve a Binary resource version either by using the FHIR
+                        /// JSON mimetype as the value for the Accept header, or as a raw data stream. If the FHIR
+                        /// Accept type is used this method will return a Binary resource with the data base64-encoded,
+                        /// regardless of how the resource version was created. The resource data can be retrieved in
+                        /// base64-decoded form if the Accept type of the request matches the value of the resource
+                        /// version's `contentType` field. The definition of the Binary REST API can be found at
+                        /// https://hl7.org/fhir/binary.html#rest.
+                        /// </summary>
+                        public class BinaryVreadRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new BinaryVread request.</summary>
+                            public BinaryVreadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the Binary resource version to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Binary-vread";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes BinaryVread parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Binary/[^/]+/_history/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Translates a code from one value set to another by searching for appropriate concept maps.
                         /// Implements the FHIR standard $translate operation
                         /// ([DSTU2](https://www.hl7.org/fhir/DSTU2/operation-conceptmap-translate.html),
@@ -13161,7 +13505,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Rolls back messages from the HL7 store to the specified time. This method returns an Operation
+                    /// Rolls back messages from the HL7v2 store to the specified time. This method returns an Operation
                     /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
                     /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
                     /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
@@ -13180,7 +13524,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Rolls back messages from the HL7 store to the specified time. This method returns an Operation
+                    /// Rolls back messages from the HL7v2 store to the specified time. This method returns an Operation
                     /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
                     /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
                     /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
@@ -19561,7 +19905,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// Filtering fields for an HL7 rollback. Currently only supports a list of operation ids to roll back.
+    /// Filtering fields for an HL7v2 rollback. Currently only supports a list of operation ids to roll back.
     /// </summary>
     public class RollbackHL7MessagesFilteringFields : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19647,7 +19991,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class RollbackHl7V2MessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the HL7 store to rollback, in the format of
+        /// The name of the HL7v2 store to rollback, in the format of
         /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id} /hl7v2Stores/{fhir_store_id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hl7v2Store")]
