@@ -62,15 +62,15 @@ fi
 # (We don't actually need to pack here, but it's simplest to always do so.)
 ./BuildGenerated.sh @tmp/ApisToGenerate.txt
 
-# For each new/updated Discovery file, add the Discovery file
-# and the generated code in a commit. Note that we need to add
-# everything *starting* with the given file name, so that we also add
-# ".json.original" files if they're patched.
+# For each new/updated Discovery file, add the Discovery file,
+# the generated code, and any enum storage changes in a commit.
+# Note that we need to add everything *starting* with the given file name,
+# so that we also add ".json.original" files if they're patched.
 for file in $(cat tmp/ApisToGenerate.txt | sed 's/\r//g')
 do
   generated=$(dotnet run --project Src/Tools/BuildGeneratedArgumentTranslator -- Src/Generated $file)
   pkg=$(basename $generated)
-  git add ${file}* $generated
+  git add ${file}* $generated $(echo $file | sed s/DiscoveryJson/EnumStorage/g)
   version=$(grep '<Version>' $generated/$pkg.csproj | cut -d '>' -f 2 | cut -d '<' -f 1)
   git commit -m "feat: Generate $pkg version $version"
 done
