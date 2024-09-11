@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Container.v1 Client Library</Title>
-    <Version>1.68.0.3505</Version>
+    <Version>1.68.0.3513</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -18,7 +18,7 @@
       This Google APIs Client Library for working with Container v1 uses older code generation, and is harder to use.
 
       Product documentation is available at:
-      https://cloud.google.com/container-engine/
+      https://cloud.google.com/kubernetes-engine/docs/
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.Container.v1/latest/api/Google.Apis.Container.v1.html
