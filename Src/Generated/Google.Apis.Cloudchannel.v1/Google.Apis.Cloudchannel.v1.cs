@@ -6596,12 +6596,13 @@ namespace Google.Apis.Cloudchannel.v1.Data
     public class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Domain to fetch for Cloud Identity account customers, including domained and domainless.
+        /// Required. Domain to fetch for Cloud Identity account customers, including domain and team customers. For
+        /// team customers, please use the domain for their emails.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
-        /// <summary>Optional. Primary admin email to fetch for Cloud Identity account domainless customer.</summary>
+        /// <summary>Optional. Primary admin email to fetch for Cloud Identity account team customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryAdminEmail")]
         public virtual string PrimaryAdminEmail { get; set; }
 
@@ -7560,7 +7561,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("overwriteIfExists")]
         public virtual System.Nullable<bool> OverwriteIfExists { get; set; }
 
-        /// <summary>Optional. Customer's primary admin email.</summary>
+        /// <summary>Required. Customer's primary admin email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryAdminEmail")]
         public virtual string PrimaryAdminEmail { get; set; }
 
