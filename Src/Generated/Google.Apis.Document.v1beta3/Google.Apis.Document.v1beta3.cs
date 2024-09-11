@@ -9582,6 +9582,13 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseTypes")]
         public virtual System.Collections.Generic.IList<string> BaseTypes { get; set; }
 
+        /// <summary>
+        /// The description of the entity type. Could be used to provide more information about the entity type for
+        /// model calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>User defined name for the type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -9631,6 +9638,13 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Defines properties that can be part of the entity type.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The description of the property. Could be used to provide more information about the property for model
+        /// calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>User defined name for the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
