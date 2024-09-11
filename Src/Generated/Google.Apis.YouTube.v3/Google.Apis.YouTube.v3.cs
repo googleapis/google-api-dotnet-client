@@ -17265,7 +17265,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Basic details about a video category, such as its localized title. Next Id: 18</summary>
+    /// <summary>Basic details about a video category, such as its localized title. Next Id: 19</summary>
     public class VideoStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
