@@ -264,6 +264,48 @@ namespace Google.Apis.CivicInfo.v2
             this.service = service;
         }
 
+        /// <summary>Lookup OCDIDs and names for divisions related to an address.</summary>
+        public virtual QueryDivisionByAddressRequest QueryDivisionByAddress()
+        {
+            return new QueryDivisionByAddressRequest(this.service);
+        }
+
+        /// <summary>Lookup OCDIDs and names for divisions related to an address.</summary>
+        public class QueryDivisionByAddressRequest : CivicInfoBaseServiceRequest<Google.Apis.CivicInfo.v2.Data.DivisionByAddressResponse>
+        {
+            /// <summary>Constructs a new QueryDivisionByAddress request.</summary>
+            public QueryDivisionByAddressRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Address { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "queryDivisionByAddress";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "civicinfo/v2/divisions";
+
+            /// <summary>Initializes QueryDivisionByAddress parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("address", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "address",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Searches for political divisions by their natural name or OCD ID.</summary>
         public virtual SearchRequest Search()
         {
@@ -1225,6 +1267,19 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class DivisionByAddressResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("divisions")]
+        public virtual System.Collections.Generic.IDictionary<string, GeographicDivision> Divisions { get; set; }
+
+        /// <summary>The normalized version of the requested address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedInput")]
+        public virtual SimpleAddressType NormalizedInput { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
