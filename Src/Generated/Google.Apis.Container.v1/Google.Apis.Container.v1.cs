@@ -6872,6 +6872,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
         public virtual string ClusterIpv4Cidr { get; set; }
 
+        /// <summary>Enable/Disable Compliance Posture features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliancePostureConfig")]
+        public virtual CompliancePostureConfig CompliancePostureConfig { get; set; }
+
         /// <summary>Which conditions caused the current cluster state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<StatusCondition> Conditions { get; set; }
@@ -7351,6 +7355,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterAutoscaling")]
         public virtual ClusterAutoscaling DesiredClusterAutoscaling { get; set; }
 
+        /// <summary>Enable/Disable Compliance Posture features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredCompliancePostureConfig")]
+        public virtual CompliancePostureConfig DesiredCompliancePostureConfig { get; set; }
+
         /// <summary>The desired containerd config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredContainerdConfig")]
         public virtual ContainerdConfig DesiredContainerdConfig { get; set; }
@@ -7667,6 +7675,34 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>CompleteNodePoolUpgradeRequest sets the name of target node pool to complete upgrade.</summary>
     public class CompleteNodePoolUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture.
+    /// </summary>
+    public class CompliancePostureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of enabled compliance standards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceStandards")]
+        public virtual System.Collections.Generic.IList<ComplianceStandard> ComplianceStandards { get; set; }
+
+        /// <summary>Defines the enablement mode for Compliance Posture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the details of a compliance standard.</summary>
+    public class ComplianceStandard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the compliance standard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standard")]
+        public virtual string Standard { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
