@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Cloudchannel.v1 Client Library</Title>
-    <Version>1.68.0.3527</Version>
+    <Version>1.68.0.3538</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
