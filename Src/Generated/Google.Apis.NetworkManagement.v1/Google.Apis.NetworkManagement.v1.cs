@@ -3096,6 +3096,41 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a Redis Cluster.</summary>
+    public class RedisClusterInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Discovery endpoint IP address of a Redis Cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryEndpointIpAddress")]
+        public virtual string DiscoveryEndpointIpAddress { get; set; }
+
+        /// <summary>Name of a Redis Cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Name of the region in which the Redis Cluster is defined. For example, "us-central1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// URI of a Redis Cluster network in format "projects/{project_id}/global/networks/{network_id}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>Secondary endpoint IP address of a Redis Cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryEndpointIpAddress")]
+        public virtual string SecondaryEndpointIpAddress { get; set; }
+
+        /// <summary>
+        /// URI of a Redis Cluster in format "projects/{project_id}/locations/{location}/clusters/{cluster_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with a Cloud Redis Instance.</summary>
     public class RedisInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3370,6 +3405,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a ProxyConnection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyConnection")]
         public virtual ProxyConnectionInfo ProxyConnection { get; set; }
+
+        /// <summary>Display information of a Redis Cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redisCluster")]
+        public virtual RedisClusterInfo RedisCluster { get; set; }
 
         /// <summary>Display information of a Redis Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisInstance")]
