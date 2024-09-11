@@ -682,6 +682,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> Contents { get; set; }
 
+        /// <summary>Optional. Generation config that the model will use to generate the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
+        public virtual GoogleCloudAiplatformV1beta1GenerationConfig GenerationConfig { get; set; }
+
         /// <summary>
         /// Optional. The instances that are the input to token counting call. Schema is identical to the prediction
         /// schema of the underlying model.
@@ -876,6 +880,15 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Generation config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
         public virtual GoogleCloudAiplatformV1beta1GenerationConfig GenerationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. It is used for billing and reporting only.
+        /// Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain
+        /// lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label
+        /// values are optional. Label keys must start with a letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates.
@@ -1385,6 +1398,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. SCHEMA FIELDS FOR TYPE OBJECT Properties of Type.OBJECT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1Schema> Properties { get; set; }
+
+        /// <summary>
+        /// Optional. The order of the properties. Not a standard field in open api spec. Only used to support the order
+        /// of the properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyOrdering")]
+        public virtual System.Collections.Generic.IList<string> PropertyOrdering { get; set; }
 
         /// <summary>Optional. Required properties of Type.OBJECT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
