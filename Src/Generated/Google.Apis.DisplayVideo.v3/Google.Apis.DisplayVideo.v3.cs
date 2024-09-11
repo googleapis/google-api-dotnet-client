@@ -27340,7 +27340,12 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
         public virtual string OptimizationObjective { get; set; }
 
-        /// <summary>Required. The budget spending speed setting of the insertion order.</summary>
+        /// <summary>
+        /// Required. The budget spending speed setting of the insertion order. *Warning*: Starting on **November 5,
+        /// 2024**, pacing_type `PACING_TYPE_ASAP` will no longer be compatible with pacing_period
+        /// `PACING_PERIOD_FLIGHT`. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.io_asap).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacing")]
         public virtual Pacing Pacing { get; set; }
 
@@ -29535,6 +29540,9 @@ namespace Google.Apis.DisplayVideo.v3.Data
 
         /// <summary>
         /// Required. The type of pacing that defines how the budget amount will be spent across the pacing_period.
+        /// *Warning*: Starting on **November 5, 2024**, `PACING_TYPE_ASAP` will no longer be compatible with
+        /// pacing_period `PACING_PERIOD_FLIGHT` for insertion orders. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.io_asap).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacingType")]
         public virtual string PacingType { get; set; }
@@ -30614,7 +30622,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audienceExpansionSeedListExcluded")]
         public virtual System.Nullable<bool> AudienceExpansionSeedListExcluded { get; set; }
 
-        /// <summary>Required. Whether to enable Optimized Targeting for the line item.</summary>
+        /// <summary>
+        /// Required. Whether to enable Optimized Targeting for the line item. *Warning*: Starting on **September 30,
+        /// 2024**, optimized targeting will no longer be compatible with a subset of bid strategies. [Read more about
+        /// this announced change](/display-video/api/deprecations#features.ot_bid_strategies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableOptimizedTargeting")]
         public virtual System.Nullable<bool> EnableOptimizedTargeting { get; set; }
 
