@@ -12317,8 +12317,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string AccountHoldDuration { get; set; }
 
         /// <summary>
-        /// Required. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer
-        /// to the help center.
+        /// Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing
+        /// periods, refer to the help center. The duration is immutable after the base plan is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingPeriodDuration")]
         public virtual string BillingPeriodDuration { get; set; }
@@ -14101,13 +14101,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string AccountHoldDuration { get; set; }
 
         /// <summary>
-        /// Required. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer
-        /// to the help center.
+        /// Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing
+        /// periods, refer to the help center. The duration is immutable after the base plan is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingPeriodDuration")]
         public virtual string BillingPeriodDuration { get; set; }
 
-        /// <summary>Required. The number of payments the user is committed to.</summary>
+        /// <summary>
+        /// Required. Immutable. The number of payments the user is committed to. It is immutable after the base plan is
+        /// created.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("committedPaymentsCount")]
         public virtual System.Nullable<int> CommittedPaymentsCount { get; set; }
 
@@ -14127,7 +14130,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ProrationMode { get; set; }
 
         /// <summary>
-        /// Required. Installments base plan renewal type. Determines the behavior at the end of the initial commitment.
+        /// Required. Immutable. Installments base plan renewal type. Determines the behavior at the end of the initial
+        /// commitment. The renewal type is immutable after the base plan is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalType")]
         public virtual string RenewalType { get; set; }
@@ -14813,8 +14817,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class PrepaidBasePlanType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer
-        /// to the help center.
+        /// Required. Immutable. Subscription period, specified in ISO 8601 format. For a list of acceptable billing
+        /// periods, refer to the help center. The duration is immutable after the base plan is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingPeriodDuration")]
         public virtual string BillingPeriodDuration { get; set; }
