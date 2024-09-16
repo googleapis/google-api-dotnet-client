@@ -6713,9 +6713,16 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Immutable. An immutable identifier for the producer instance.</summary>
+        /// <summary>
+        /// Immutable. Deprecated. Use producer_instance_metadata instead. An immutable identifier for the producer
+        /// instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceId")]
         public virtual string ProducerInstanceId { get; set; }
+
+        /// <summary>Immutable. An immutable map for the producer instance metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ProducerInstanceMetadata { get; set; }
 
         /// <summary>The consumer project where PSC connections are allowed to be created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
@@ -6778,9 +6785,16 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Immutable. An immutable identifier for the producer instance.</summary>
+        /// <summary>
+        /// Immutable. Deprecated. Use producer_instance_metadata instead. An immutable identifier for the producer
+        /// instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceId")]
         public virtual string ProducerInstanceId { get; set; }
+
+        /// <summary>Immutable. An immutable map for the producer instance metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ProducerInstanceMetadata { get; set; }
 
         /// <summary>
         /// The consumer project whose PSC forwarding rule is connected to the service attachments in this service
@@ -7386,13 +7400,21 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The IP range that this internal range defines.</summary>
+        /// <summary>
+        /// The IP range that this internal range defines. NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and
+        /// peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified
+        /// explicitly.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; }
 
         /// <summary>User-defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Should be present if usage is set to FOR_MIGRATION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migration")]
+        public virtual Migration Migration { get; set; }
 
         /// <summary>
         /// Immutable. The name of an internal range. Format:
@@ -7420,9 +7442,11 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Peering { get; set; }
 
         /// <summary>
-        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a
-        /// free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the
-        /// range sizes do not match. Can also be used during updates to change the range size.
+        /// An alternate to ip_cidr_range. Can be set when trying to create an IPv4 reservation that automatically finds
+        /// a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the
+        /// range sizes do not match. Can also be used during updates to change the range size. NOTE: For IPv6 this
+        /// field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this
+        /// field only works as a redundant parameter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
         public virtual System.Nullable<int> PrefixLength { get; set; }
@@ -7964,6 +7988,29 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specification for migration with source and target resource names.</summary>
+    public class Migration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Resource path as an URI of the source resource, for example a subnet. The project for the source
+        /// resource should match the project for the InternalRange. An example:
+        /// /projects/{project}/regions/{region}/subnetworks/{subnet}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource path of the target resource. The target project can be different, as in the cases when
+        /// migrating to peer networks. The resource For example:
+        /// /projects/{project}/regions/{region}/subnetworks/{subnet}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A route next hop that leads to an interconnect attachment resource.</summary>
     public class NextHopInterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8452,7 +8499,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerTargetProject")]
         public virtual string ConsumerTargetProject { get; set; }
 
-        /// <summary>The most recent error during operating this connection.</summary>
+        /// <summary>
+        /// The most recent error during operating this connection. Deprecated, please use error_info instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
@@ -8470,9 +8519,16 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gceOperation")]
         public virtual string GceOperation { get; set; }
 
-        /// <summary>Immutable. An immutable identifier for the producer instance.</summary>
+        /// <summary>
+        /// Immutable. Deprecated. Use producer_instance_metadata instead. An immutable identifier for the producer
+        /// instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceId")]
         public virtual string ProducerInstanceId { get; set; }
+
+        /// <summary>Immutable. An immutable map for the producer instance metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ProducerInstanceMetadata { get; set; }
 
         /// <summary>The PSC connection id of the PSC forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionId")]
@@ -8483,6 +8539,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedSubnetwork")]
         public virtual string SelectedSubnetwork { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] The service class associated with this PSC Connection. The value is derived from
+        /// the SCPolicy and matches the service class name provided by the customer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClass")]
+        public virtual string ServiceClass { get; set; }
 
         /// <summary>State of the PSC Connection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -9239,7 +9302,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. Time when the ServiceConnectionMap was created.</summary>
+        /// <summary>Output only. Time when the ServiceConnectionPolicy was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -9329,7 +9392,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Time when the ServiceConnectionMap was updated.</summary>
+        /// <summary>Output only. Time when the ServiceConnectionPolicy was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
