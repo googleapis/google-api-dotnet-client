@@ -598,6 +598,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
 
+        /// <summary>Output only. Log-likelihood scores for the response tokens and top tokens</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logprobsResult")]
+        public virtual GoogleCloudAiplatformV1beta1LogprobsResult LogprobsResult { get; set; }
+
         /// <summary>
         /// Output only. List of ratings for the safety of a response candidate. There is at most one rating per
         /// category.
@@ -926,6 +930,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Candidate> Candidates { get; set; }
 
+        /// <summary>Output only. The model version used to generate the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
+
         /// <summary>
         /// Output only. Content filter results for a prompt sent in the request. Note: Sent only in the first stream
         /// chunk. Only happens when no candidates were generated due to content violations.
@@ -997,6 +1005,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyPenalty")]
         public virtual System.Nullable<float> FrequencyPenalty { get; set; }
 
+        /// <summary>Optional. Logit probabilities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logprobs")]
+        public virtual System.Nullable<int> Logprobs { get; set; }
+
         /// <summary>Optional. The maximum number of output tokens to generate per message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
         public virtual System.Nullable<int> MaxOutputTokens { get; set; }
@@ -1004,6 +1016,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Positive penalties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
         public virtual System.Nullable<float> PresencePenalty { get; set; }
+
+        /// <summary>Optional. If true, export the logprobs results in response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseLogprobs")]
+        public virtual System.Nullable<bool> ResponseLogprobs { get; set; }
 
         /// <summary>
         /// Optional. Output response mimetype of the generated candidate text. Supported mimetype: - `text/plain`:
@@ -1192,6 +1208,53 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Segment of the content this support belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segment")]
         public virtual GoogleCloudAiplatformV1beta1Segment Segment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Logprobs Result</summary>
+    public class GoogleCloudAiplatformV1beta1LogprobsResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Length = total number of decoding steps. The chosen candidates may or may not be in top_candidates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chosenCandidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1LogprobsResultCandidate> ChosenCandidates { get; set; }
+
+        /// <summary>Length = total number of decoding steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topCandidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates> TopCandidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Candidate for the logprobs token and score.</summary>
+    public class GoogleCloudAiplatformV1beta1LogprobsResultCandidate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The candidate's log probability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logProbability")]
+        public virtual System.Nullable<float> LogProbability { get; set; }
+
+        /// <summary>The candidate’s token string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>The candidate’s token id value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenId")]
+        public virtual System.Nullable<int> TokenId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Candidates with top log probabilities at each decoding step.</summary>
+    public class GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sorted by log probability in descending order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1LogprobsResultCandidate> Candidates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1478,7 +1541,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// Optional. Function tool type. One or more function declarations to be passed to the model along with the
         /// current user query. Model may decide to call a subset of these functions by populating FunctionCall in the
         /// response. User should provide a FunctionResponse for each function call in the next turn. Based on the
-        /// function responses, Model will generate the final response back to the user. Maximum 64 function
+        /// function responses, Model will generate the final response back to the user. Maximum 128 function
         /// declarations can be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]

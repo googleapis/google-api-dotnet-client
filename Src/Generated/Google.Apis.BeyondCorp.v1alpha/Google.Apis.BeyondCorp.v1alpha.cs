@@ -8611,7 +8611,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     {
                         this.service = service;
                         Applications = new ApplicationsResource(service);
-                        Hubs = new HubsResource(service);
                     }
 
                     /// <summary>Gets the Applications resource.</summary>
@@ -8661,8 +8660,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Optional. User-settable Hub resource ID. * Must start with a letter. * Must contain
-                            /// between 4-63 characters from `/a-z-/`. * Must end with a number or letter.
+                            /// Optional. User-settable Application resource ID. * Must start with a letter. * Must
+                            /// contain between 4-63 characters from `/a-z-/`. * Must end with a number or letter.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string ApplicationId { get; set; }
@@ -8876,273 +8875,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/global/securityGateways/[^/]+/applications/[^/]+$",
-                                });
-                            }
-                        }
-                    }
-
-                    /// <summary>Gets the Hubs resource.</summary>
-                    public virtual HubsResource Hubs { get; }
-
-                    /// <summary>The "hubs" collection of methods.</summary>
-                    public class HubsResource
-                    {
-                        private const string Resource = "hubs";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public HubsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                        }
-
-                        /// <summary>Creates a new Hub in a given project and location.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">
-                        /// Required. The resource name of the parent SecurityGateway using the form:
-                        /// `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}`
-                        /// </param>
-                        public virtual CreateRequest Create(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub body, string parent)
-                        {
-                            return new CreateRequest(this.service, body, parent);
-                        }
-
-                        /// <summary>Creates a new Hub in a given project and location.</summary>
-                        public class CreateRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                        {
-                            /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub body, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. The resource name of the parent SecurityGateway using the form:
-                            /// `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}`
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>
-                            /// Optional. User-settable Hub resource ID. * Must start with a letter. * Must contain
-                            /// between 4-63 characters from `/a-z-/`. * Must end with a number or letter.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("hubId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string HubId { get; set; }
-
-                            /// <summary>
-                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
-                            /// that if you must retry your request, the server will know to ignore request if it has
-                            /// already been completed. The server will guarantee that for at least 60 minutes since the
-                            /// first request.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string RequestId { get; set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "create";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+parent}/hubs";
-
-                            /// <summary>Initializes Create parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/global/securityGateways/[^/]+$",
-                                });
-                                RequestParameters.Add("hubId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "hubId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "requestId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
-
-                        /// <summary>Updates the parameters of a single Hub.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Identifier. Name of the resource.</param>
-                        public virtual PatchRequest Patch(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub body, string name)
-                        {
-                            return new PatchRequest(this.service, body, name);
-                        }
-
-                        /// <summary>Updates the parameters of a single Hub.</summary>
-                        public class PatchRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                        {
-                            /// <summary>Constructs a new Patch request.</summary>
-                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub body, string name) : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>Identifier. Name of the resource.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>
-                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
-                            /// that if you must retry your request, the server will know to ignore the request if it
-                            /// has already been completed. The server will guarantee that for at least 60 minutes after
-                            /// the first request. For example, consider a situation where you make an initial request
-                            /// and the request timed out. If you make the request again with the same request ID, the
-                            /// server can check if original operation with the same request ID was received, and if so,
-                            /// will ignore the second request. This prevents clients from accidentally creating
-                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
-                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string RequestId { get; set; }
-
-                            /// <summary>Required. Mutable fields include: display_name.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual object UpdateMask { get; set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "patch";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "PATCH";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+name}";
-
-                            /// <summary>Initializes Patch parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/global/securityGateways/[^/]+/hubs/[^/]+$",
-                                });
-                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "requestId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
-
-                        /// <summary>
-                        /// Returns permissions that a caller has on the specified resource. If the resource does not
-                        /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
-                        /// operation is designed to be used for building permission-aware UIs and command-line tools,
-                        /// not for authorization checking. This operation may "fail open" without warning.
-                        /// </summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="resource">
-                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </param>
-                        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
-                        {
-                            return new TestIamPermissionsRequest(this.service, body, resource);
-                        }
-
-                        /// <summary>
-                        /// Returns permissions that a caller has on the specified resource. If the resource does not
-                        /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
-                        /// operation is designed to be used for building permission-aware UIs and command-line tools,
-                        /// not for authorization checking. This operation may "fail open" without warning.
-                        /// </summary>
-                        public class TestIamPermissionsRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1TestIamPermissionsResponse>
-                        {
-                            /// <summary>Constructs a new TestIamPermissions request.</summary>
-                            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
-                            {
-                                Resource = resource;
-                                Body = body;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value
-                            /// for this field.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Resource { get; private set; }
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
-
-                            /// <summary>Returns the body of the request.</summary>
-                            protected override object GetBody() => Body;
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "testIamPermissions";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "POST";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1alpha/{+resource}:testIamPermissions";
-
-                            /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/global/securityGateways/[^/]+/hubs/[^/]+$",
                                 });
                             }
                         }
@@ -10352,7 +10084,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 {
                     this.service = service;
                     Applications = new ApplicationsResource(service);
-                    Hubs = new HubsResource(service);
                 }
 
                 /// <summary>Gets the Applications resource.</summary>
@@ -10505,6 +10236,87 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         }
                     }
 
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    public class GetIamPolicyRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+/applications/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Lists Applications in a given project and location.</summary>
                     /// <param name="parent">
                     /// Required. The parent location to which the resources belong.
@@ -10533,9 +10345,10 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. A filter specifying constraints of a list operation. All fields in the Hub message
-                        /// are supported. For example, the following query will return the Hub with displayName
-                        /// "test-application" For more information, please refer to https://google.aip.dev/160.
+                        /// Optional. A filter specifying constraints of a list operation. All fields in the Application
+                        /// message are supported. For example, the following query will return the Application with
+                        /// displayName "test-application" For more information, please refer to
+                        /// https://google.aip.dev/160.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -10558,7 +10371,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. The next_page_token value returned from a previous ListHubsRequest, if any.
+                        /// Optional. The next_page_token value returned from a previous ListApplicationsRequest, if
+                        /// any.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -10618,268 +10432,70 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             });
                         }
                     }
-                }
 
-                /// <summary>Gets the Hubs resource.</summary>
-                public virtual HubsResource Hubs { get; }
-
-                /// <summary>The "hubs" collection of methods.</summary>
-                public class HubsResource
-                {
-                    private const string Resource = "hubs";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public HubsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Deletes a single Hub.</summary>
-                    /// <param name="name">Required. Name of the resource.</param>
-                    public virtual DeleteRequest Delete(string name)
-                    {
-                        return new DeleteRequest(this.service, name);
-                    }
-
-                    /// <summary>Deletes a single Hub.</summary>
-                    public class DeleteRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                    {
-                        /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. Name of the resource.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>
-                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes after the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
-                        /// (00000000-0000-0000-0000-000000000000).
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string RequestId { get; set; }
-
-                        /// <summary>
-                        /// Optional. If set, validates request by executing a dry-run which would not alter the
-                        /// resource in any way.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "delete";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "DELETE";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+name}";
-
-                        /// <summary>Initializes Delete parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+/hubs/[^/]+$",
-                            });
-                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "validateOnly",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>Gets details of a single Hub.</summary>
-                    /// <param name="name">
-                    /// Required. The resource name of the Hub using the form:
-                    /// `projects/{project_id}/locations/global/securityGateway/{security_gateway_id}/hubs/{hub_id}`
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
                     /// </param>
-                    public virtual GetRequest Get(string name)
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
                     {
-                        return new GetRequest(this.service, name);
+                        return new SetIamPolicyRequest(this.service, body, resource);
                     }
 
-                    /// <summary>Gets details of a single Hub.</summary>
-                    public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub>
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    public class SetIamPolicyRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1Policy>
                     {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
                         {
-                            Name = name;
+                            Resource = resource;
+                            Body = body;
                             InitParameters();
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the Hub using the form:
-                        /// `projects/{project_id}/locations/global/securityGateway/{security_gateway_id}/hubs/{hub_id}`
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BeyondCorp.v1alpha.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
 
                         /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "get";
+                        public override string MethodName => "setIamPolicy";
 
                         /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
+                        public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+name}";
+                        public override string RestPath => "v1alpha/{+resource}:setIamPolicy";
 
-                        /// <summary>Initializes Get parameter list.</summary>
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "name",
+                                Name = "resource",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+/hubs/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Lists Hubs in a given project and location.</summary>
-                    /// <param name="parent">
-                    /// Required. The parent location to which the resources belong.
-                    /// `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}`
-                    /// </param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(this.service, parent);
-                    }
-
-                    /// <summary>Lists Hubs in a given project and location.</summary>
-                    public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaListHubsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The parent location to which the resources belong.
-                        /// `projects/{project_id}/locations/global/securityGateways/{security_gateway_id}`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// Optional. A filter specifying constraints of a list operation. All fields in the Hub message
-                        /// are supported. For example, the following query will return the Hub with displayName
-                        /// "test-hub" For more information, please refer to https://google.aip.dev/160.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
-                        /// <summary>
-                        /// Optional. Specifies the ordering of results. See [Sorting
-                        /// order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more
-                        /// information.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string OrderBy { get; set; }
-
-                        /// <summary>
-                        /// Optional. The maximum number of items to return. If not specified, a default value of 50
-                        /// will be used by the service. Regardless of the page_size value, the response may include a
-                        /// partial list and a caller should only rely on response's next_page_token to determine if
-                        /// there are more instances left to be queried.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// Optional. The next_page_token value returned from a previous ListHubsRequest, if any.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+parent}/hubs";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+$",
-                            });
-                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+/applications/[^/]+$",
                             });
                         }
                     }
@@ -11343,7 +10959,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
-                    /// <summary>Required. Mutable fields include: display_name, gateway_regions.</summary>
+                    /// <summary>Required. Mutable fields include: display_name, hubs.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -11452,6 +11068,71 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// This is a custom method to allow customers to create a peering connections between Google network
+                /// and customer networks. This is enabled only for the allowlisted customers.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="securityGateway">
+                /// Required. BeyondCorp SecurityGateway name using the form:
+                /// `projects/{project}/locations/{location}/securityGateways/{security_gateway}`
+                /// </param>
+                public virtual SetPeeringRequest SetPeering(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaSetPeeringRequest body, string securityGateway)
+                {
+                    return new SetPeeringRequest(this.service, body, securityGateway);
+                }
+
+                /// <summary>
+                /// This is a custom method to allow customers to create a peering connections between Google network
+                /// and customer networks. This is enabled only for the allowlisted customers.
+                /// </summary>
+                public class SetPeeringRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new SetPeering request.</summary>
+                    public SetPeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaSetPeeringRequest body, string securityGateway) : base(service)
+                    {
+                        SecurityGateway = securityGateway;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. BeyondCorp SecurityGateway name using the form:
+                    /// `projects/{project}/locations/{location}/securityGateways/{security_gateway}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("securityGateway", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string SecurityGateway { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSecuritygatewaysV1alphaSetPeeringRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setPeering";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+securityGateway}:setPeering";
+
+                    /// <summary>Initializes SetPeering parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("securityGateway", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "securityGateway",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -14919,10 +14600,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>A Beyondcorp Application resource information.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Application filter conditions associated with an application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicationMatchFilter")]
-        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationMatchFilter ApplicationMatchFilter { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
@@ -14966,6 +14643,16 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>
+        /// Required. Endpoint matchers associated with an application. A combination of hostname and ports as endpoint
+        /// matcher is used to match the application. Match conditions for OR logic. An array of match conditions to
+        /// allow for multiple matching criteria. The rule is considered a match if one the conditions are met. The
+        /// conditions can be one of the following combination (Hostname), (Hostname &amp;amp; Ports) EXAMPLES: Hostname
+        /// - ("*.abc.com"), ("xyz.abc.com") Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointMatchers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher> EndpointMatchers { get; set; }
+
         /// <summary>Identifier. Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -15011,34 +14698,12 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Match Criteria for Application Filtering.</summary>
-    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationMatchFilter : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>EndpointMatcher contains the information of the endpoint that will match the application.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. Match conditions for AND logic. An array of match conditions to allow for multiple matching
-        /// criteria. The rule is considered a match if all the conditions are met. The conditions can be one of the
-        /// following combination (FQDN), (FQDN &amp;amp; PORTS), (IP_ADDRESS), (IP_ADDRESS &amp;amp; PORTS) EXAMPLES:
-        /// FQDN - ("*.abc.com"), ("xyz.abc.com") FQDN and PORTS - ("abc.com" and "22"), ("abc.com" and "22,33)" etc
-        /// IP_ADDRESS - ("10.20.30.40"), ("100.20.30.40") IP_ADDRESS and PORTS - ("10.20.30.40" and "4"),
-        /// ("10.20.30.40" and "4,5")
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchConditions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationMatchFilterMatchCondition> MatchConditions { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Match condition for idenfying the application.</summary>
-    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationMatchFilterMatchCondition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. FQDN of the application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
-        public virtual string Fqdn { get; set; }
-
-        /// <summary>Optional. IP Address of the application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; }
+        /// <summary>Required. Hostname of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
 
         /// <summary>Optional. Ports of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
@@ -15048,122 +14713,16 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Beyondcorp Hub resource information.</summary>
+    /// <summary>The Hub message contains information pertaining to the regional data path deployments.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. Timestamp when the resource was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Optional. An arbitrary user-provided name for the Hub. Cannot exceed 64 characters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Identifier. Name of the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
         /// <summary>
-        /// Required. NAT gateway setup to ensure enough NAT IP addresses are available to handle the traffic needed to
+        /// Optional. NAT gateway setup to ensure enough NAT IP addresses are available to handle the traffic needed to
         /// access the applications. Allows to explicitly enable or disable the NAT in the Hub along with the total IPs
         /// allocated to handle the capacity limits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("natGatewayConfig")]
-        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaHubNatGatewayConfig NatGatewayConfig { get; set; }
-
-        /// <summary>Output only. The operational state of the Hub.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. Timestamp when the resource was last modified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the NAT Gateway configuration.</summary>
-    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaHubNatGatewayConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Explicitly enable or disable the NAT Gateway. This is defaulted to false until NAT Gateway
-        /// configuration is fully supported and any request with a disable option will be rejected.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableNatGateway")]
-        public virtual System.Nullable<bool> EnableNatGateway { get; set; }
-
-        /// <summary>
-        /// Output only. List of NAT IPs that will be used for establishing connection to the endpoints.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("natIps")]
-        public virtual System.Collections.Generic.IList<string> NatIps { get; set; }
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaNatGatewayConfig NatGatewayConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15175,27 +14734,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>A list of BeyondCorp Application in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication> Applications { get; set; }
-
-        /// <summary>
-        /// A token to retrieve the next page of results, or empty if there are no more results in the list.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>A list of locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message for response to listing Hubs.</summary>
-    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaListHubsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of BeyondCorp Hub in the project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hubs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub> Hubs { get; set; }
 
         /// <summary>
         /// A token to retrieve the next page of results, or empty if there are no more results in the list.
@@ -15227,6 +14765,37 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>A list of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the NAT Gateway configuration.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaNatGatewayConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. List of NAT IPs that will be used for establishing connection to the endpoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIps")]
+        public virtual System.Collections.Generic.IList<string> NatIps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VPC Peering details.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaPeering : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of DNS zones for DNS peering with the customer VPC network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsZones")]
+        public virtual System.Collections.Generic.IList<string> DnsZones { get; set; }
+
+        /// <summary>
+        /// Required. The name of the Target VPC network name in the format:
+        /// `projects/{project}/global/networks/{network}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVpcNetwork")]
+        public virtual string TargetVpcNetwork { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15281,6 +14850,12 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>Output only. IP addresses that will be used for establishing connection to the endpoints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIps")]
         public virtual System.Collections.Generic.IList<string> ExternalIps { get; set; }
+
+        /// <summary>
+        /// Optional. Map of Hubs that represents regional data path deployment with GCP region as a key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hubs")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub> Hubs { get; set; }
 
         /// <summary>Identifier. Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -15431,6 +15006,35 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Set Peering request for creating a VPC peering between Google network and customer networks.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSetPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>Required. List of Peering connection information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcPeerings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1alphaPeering> VpcPeerings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

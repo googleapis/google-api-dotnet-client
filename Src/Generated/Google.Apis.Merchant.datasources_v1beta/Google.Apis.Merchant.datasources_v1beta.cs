@@ -286,6 +286,80 @@ namespace Google.Apis.Merchant.datasources_v1beta
             public DataSourcesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                FileUploads = new FileUploadsResource(service);
+            }
+
+            /// <summary>Gets the FileUploads resource.</summary>
+            public virtual FileUploadsResource FileUploads { get; }
+
+            /// <summary>The "fileUploads" collection of methods.</summary>
+            public class FileUploadsResource
+            {
+                private const string Resource = "fileUploads";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FileUploadsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the latest data source file upload. Only the `latest` alias is accepted for a file upload.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the data source file upload to retrieve. Format:
+                /// `accounts/{account}/dataSources/{datasource}/fileUploads/latest`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest data source file upload. Only the `latest` alias is accepted for a file upload.
+                /// </summary>
+                public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.datasources_v1beta.Data.FileUpload>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the data source file upload to retrieve. Format:
+                    /// `accounts/{account}/dataSources/{datasource}/fileUploads/latest`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "datasources/v1beta/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/dataSources/[^/]+/fileUploads/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Creates the new data source configuration for the given account.</summary>
@@ -746,6 +820,52 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
     }
 
     /// <summary>
+    /// Data source reference can be used to manage related data sources within the data source service.
+    /// </summary>
+    public class DataSourceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the primary data source. Format: `accounts/{account}/dataSources/{datasource}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryDataSourceName")]
+        public virtual string PrimaryDataSourceName { get; set; }
+
+        /// <summary>Self should be used to reference the primary data source itself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("self")]
+        public virtual System.Nullable<bool> Self { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the supplemental data source. Format: `accounts/{account}/dataSources/{datasource}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supplementalDataSourceName")]
+        public virtual string SupplementalDataSourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Default rule management of the data source.</summary>
+    public class DefaultRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The list of data sources linked in the [default
+        /// rule](https://support.google.com/merchants/answer/7450276). This list is ordered by the default rule
+        /// priority of joining the data. It might include none or multiple references to `self` and supplemental data
+        /// sources. The list must not be empty. To link the data source to the default rule, you need to add a new
+        /// reference to this list (in sequential order). To unlink the data source from the default rule, you need to
+        /// remove the given reference from this list. Changing the order of this list will result in changing the
+        /// priority of data sources in the default rule. For example, providing the following list: [`1001`, `self`]
+        /// will take attribute values from supplemental data source `1001`, and fallback to `self` if the attribute is
+        /// not set in `1001`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("takeFromDataSources")]
+        public virtual System.Collections.Generic.IList<DataSourceReference> TakeFromDataSources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -850,6 +970,124 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The file upload of a specific data source, that is, the result of the retrieval of the data source at a certain
+    /// timestamp computed asynchronously when the data source processing is finished. Only applicable to file data
+    /// sources.
+    /// </summary>
+    public class FileUpload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The data source id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual System.Nullable<long> DataSourceId { get; set; }
+
+        /// <summary>Output only. The list of issues occurring in the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<Issue> Issues { get; set; }
+
+        /// <summary>Output only. The number of items in the data source that were created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsCreated")]
+        public virtual System.Nullable<long> ItemsCreated { get; set; }
+
+        /// <summary>Output only. The number of items in the data source that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsTotal")]
+        public virtual System.Nullable<long> ItemsTotal { get; set; }
+
+        /// <summary>Output only. The number of items in the data source that were updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsUpdated")]
+        public virtual System.Nullable<long> ItemsUpdated { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the data source file upload. Format:
+        /// `{datasource.name=accounts/{account}/dataSources/{datasource}/fileUploads/{fileupload}}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The processing state of the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingState")]
+        public virtual string ProcessingState { get; set; }
+
+        private string _uploadTimeRaw;
+
+        private object _uploadTime;
+
+        /// <summary>Output only. The date at which the file of the data source was uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
+        public virtual string UploadTimeRaw
+        {
+            get => _uploadTimeRaw;
+            set
+            {
+                _uploadTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _uploadTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UploadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UploadTimeDateTimeOffset instead.")]
+        public virtual object UploadTime
+        {
+            get => _uploadTime;
+            set
+            {
+                _uploadTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _uploadTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UploadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UploadTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UploadTimeRaw);
+            set => UploadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error occurring in the data source, like "invalid price".</summary>
+    public class Issue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The code of the error, for example, "validation/invalid_value". Returns "?" if the code is
+        /// unknown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Output only. The number of occurrences of the error in the file upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>
+        /// Output only. The error description, for example, "Your data source contains items which have too many
+        /// attributes, or are too big. These items will be dropped".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Link to the documentation explaining the issue in more details, if available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUri")]
+        public virtual string DocumentationUri { get; set; }
+
+        /// <summary>Output only. The severity of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Output only. The title of the issue, for example, "Item too big".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the ListDataSources method.</summary>
     public class ListDataSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -912,6 +1150,12 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
         public virtual System.Collections.Generic.IList<string> Countries { get; set; }
+
+        /// <summary>
+        /// Optional. Default rule management of the data source. If set, the linked data sources will be replaced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRule")]
+        public virtual DefaultRule DefaultRule { get; set; }
 
         /// <summary>
         /// Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal
@@ -1055,6 +1299,13 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
+
+        /// <summary>
+        /// Output only. The (unordered and deduplicated) list of all primary data sources linked to this data source in
+        /// either default or custom rules. Supplemental data source cannot be deleted before all links are removed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencingPrimaryDataSources")]
+        public virtual System.Collections.Generic.IList<DataSourceReference> ReferencingPrimaryDataSources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2633,6 +2633,101 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
                 }
 
+                /// <summary>
+                /// GenerateExclusivityManifest generates the manifests to update the exclusivity artifacts in the
+                /// cluster if needed. Exclusivity artifacts include the Membership custom resource definition (CRD) and
+                /// the singleton Membership custom resource (CR). Combined with ValidateExclusivity, exclusivity
+                /// artifacts guarantee that a Kubernetes cluster is only registered to a single GKE Hub. The Membership
+                /// CRD is versioned, and may require conversion when the GKE Hub API server begins serving a newer
+                /// version of the CRD and corresponding CR. The response will be the converted CRD and CR if there are
+                /// any differences between the versions.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
+                /// </param>
+                public virtual GenerateExclusivityManifestRequest GenerateExclusivityManifest(string name)
+                {
+                    return new GenerateExclusivityManifestRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// GenerateExclusivityManifest generates the manifests to update the exclusivity artifacts in the
+                /// cluster if needed. Exclusivity artifacts include the Membership custom resource definition (CRD) and
+                /// the singleton Membership custom resource (CR). Combined with ValidateExclusivity, exclusivity
+                /// artifacts guarantee that a Kubernetes cluster is only registered to a single GKE Hub. The Membership
+                /// CRD is versioned, and may require conversion when the GKE Hub API server begins serving a newer
+                /// version of the CRD and corresponding CR. The response will be the converted CRD and CR if there are
+                /// any differences between the versions.
+                /// </summary>
+                public class GenerateExclusivityManifestRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.GenerateExclusivityManifestResponse>
+                {
+                    /// <summary>Constructs a new GenerateExclusivityManifest request.</summary>
+                    public GenerateExclusivityManifestRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The YAML manifest of the membership CR retrieved by `kubectl get memberships
+                    /// membership`. Leave empty if the resource does not exist.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("crManifest", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CrManifest { get; set; }
+
+                    /// <summary>
+                    /// Optional. The YAML manifest of the membership CRD retrieved by `kubectl get
+                    /// customresourcedefinitions membership`. Leave empty if the resource does not exist.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("crdManifest", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CrdManifest { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateExclusivityManifest";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:generateExclusivityManifest";
+
+                    /// <summary>Initializes GenerateExclusivityManifest parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                        });
+                        RequestParameters.Add("crManifest", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "crManifest",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("crdManifest", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "crdManifest",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Gets the details of a Membership.</summary>
                 /// <param name="name">
                 /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
@@ -3284,6 +3379,93 @@ namespace Google.Apis.GKEHub.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// ValidateExclusivity validates the state of exclusivity in the cluster. The validation does not
+                /// depend on an existing Hub membership resource.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent (project and location) where the Memberships will be created. Specified in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual ValidateExclusivityRequest ValidateExclusivity(string parent)
+                {
+                    return new ValidateExclusivityRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// ValidateExclusivity validates the state of exclusivity in the cluster. The validation does not
+                /// depend on an existing Hub membership resource.
+                /// </summary>
+                public class ValidateExclusivityRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ValidateExclusivityResponse>
+                {
+                    /// <summary>Constructs a new ValidateExclusivity request.</summary>
+                    public ValidateExclusivityRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) where the Memberships will be created. Specified in
+                    /// the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The YAML of the membership CR in the cluster. Empty if the membership CR does not
+                    /// exist.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("crManifest", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CrManifest { get; set; }
+
+                    /// <summary>
+                    /// Required. The intended membership name under the `parent`. This method only does validation in
+                    /// anticipation of a CreateMembership call with the same name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("intendedMembership", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntendedMembership { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "validateExclusivity";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/memberships:validateExclusivity";
+
+                    /// <summary>Initializes ValidateExclusivity parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("crManifest", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "crManifest",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("intendedMembership", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "intendedMembership",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -7484,6 +7666,27 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response of the exclusivity artifacts manifests for the client to apply.</summary>
+    public class GenerateExclusivityManifestResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The YAML manifest of the membership CR to apply if a new version of the CR is available. Empty if no update
+        /// needs to be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crManifest")]
+        public virtual string CrManifest { get; set; }
+
+        /// <summary>
+        /// The YAML manifest of the membership CRD to apply if a newer version of the CRD is available. Empty if no
+        /// update needs to be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crdManifest")]
+        public virtual string CrdManifest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for GenerateRBACRoleBindingYAML.</summary>
     public class GenerateMembershipRBACRoleBindingYAMLResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10599,6 +10802,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Wraps all the validator results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationResults")]
         public virtual System.Collections.Generic.IList<ValidationResult> ValidationResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of exclusivity artifacts validation result status.</summary>
+    public class ValidateExclusivityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The validation result. * `OK` means that exclusivity is validated, assuming the manifest produced by
+        /// GenerateExclusivityManifest is successfully applied. * `ALREADY_EXISTS` means that the Membership CRD is
+        /// already owned by another Hub. See `status.message` for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

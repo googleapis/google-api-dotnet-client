@@ -1671,7 +1671,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual OAuthSettings OauthSettings { get; set; }
 
         /// <summary>
-        /// Optional. Settings to configure Policy delegation for apps hosted in tenant projects. INTERNAL_ONLY.
+        /// Optional. Settings to allow google-internal teams to use IAP for apps hosted in a tenant project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDelegationSettings")]
         public virtual PolicyDelegationSettings PolicyDelegationSettings { get; set; }
@@ -2303,7 +2303,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
         public virtual object MaxAge { get; set; }
 
-        /// <summary>Reauth method requested.</summary>
+        /// <summary>Optional. Reauth method requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 

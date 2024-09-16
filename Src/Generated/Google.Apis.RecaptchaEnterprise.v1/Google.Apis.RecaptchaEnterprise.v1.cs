@@ -366,7 +366,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>Creates an Assessment of the likelihood an event is legitimate.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The name of the project in which the assessment will be created, in the format
+            /// Required. The name of the project in which the assessment is created, in the format
             /// `projects/{project}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Assessment body, string parent)
@@ -386,7 +386,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the project in which the assessment will be created, in the format
+                /// Required. The name of the project in which the assessment is created, in the format
                 /// `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -446,7 +446,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The name of the project this policy will apply to, in the format `projects/{project}`.
+            /// Required. The name of the project this policy applies to, in the format `projects/{project}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1FirewallPolicy body, string parent)
             {
@@ -468,7 +468,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the project this policy will apply to, in the format `projects/{project}`.
+                /// Required. The name of the project this policy applies to, in the format `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -713,7 +713,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Optional. The mask to control which fields of the policy get updated. If the mask is not present,
-                /// all fields will be updated.
+                /// all fields are updated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -834,7 +834,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>
             /// Adds an IP override to a key. The following restrictions hold: * The maximum number of IP overrides per
             /// key is 100. * For any conflict (such as IP already exists or IP part of an existing IP range), an error
-            /// will be returned.
+            /// is returned.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -849,7 +849,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>
             /// Adds an IP override to a key. The following restrictions hold: * The maximum number of IP overrides per
             /// key is 100. * For any conflict (such as IP already exists or IP part of an existing IP range), an error
-            /// will be returned.
+            /// is returned.
             /// </summary>
             public class AddIpOverrideRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse>
             {
@@ -901,7 +901,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
             /// <summary>Creates a new reCAPTCHA Enterprise key.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The name of the project in which the key will be created, in the format `projects/{project}`.
+            /// Required. The name of the project in which the key is created, in the format `projects/{project}`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Key body, string parent)
             {
@@ -920,8 +920,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the project in which the key will be created, in the format
-                /// `projects/{project}`.
+                /// Required. The name of the project in which the key is created, in the format `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1105,7 +1104,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>Returns the list of all keys that belong to a project.</summary>
             /// <param name="parent">
-            /// Required. The name of the project that contains the keys that will be listed, in the format
+            /// Required. The name of the project that contains the keys that is listed, in the format
             /// `projects/{project}`.
             /// </param>
             public virtual ListRequest List(string parent)
@@ -1124,7 +1123,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the project that contains the keys that will be listed, in the format
+                /// Required. The name of the project that contains the keys that is listed, in the format
                 /// `projects/{project}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1357,7 +1356,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
                 /// <summary>
                 /// Optional. The mask to control which fields of the key get updated. If the mask is not present, all
-                /// fields will be updated.
+                /// fields are updated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -1402,8 +1401,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>
             /// Removes an IP override from a key. The following restrictions hold: * If the IP isn't found in an
-            /// existing IP override, a `NOT_FOUND` error will be returned. * If the IP is found in an existing IP
-            /// override, but the override type does not match, a `NOT_FOUND` error will be returned.
+            /// existing IP override, a `NOT_FOUND` error is returned. * If the IP is found in an existing IP override,
+            /// but the override type does not match, a `NOT_FOUND` error is returned.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1417,8 +1416,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 
             /// <summary>
             /// Removes an IP override from a key. The following restrictions hold: * If the IP isn't found in an
-            /// existing IP override, a `NOT_FOUND` error will be returned. * If the IP is found in an existing IP
-            /// override, but the override type does not match, a `NOT_FOUND` error will be returned.
+            /// existing IP override, a `NOT_FOUND` error is returned. * If the IP is found in an existing IP override,
+            /// but the override type does not match, a `NOT_FOUND` error is returned.
             /// </summary>
             public class RemoveIpOverrideRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse>
             {
@@ -1901,8 +1900,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string AccountId { get; set; }
 
         /// <summary>
-        /// Optional. The annotation that will be assigned to the Event. This field can be left empty to provide reasons
-        /// that apply to an event without concluding whether the event is legitimate or fraudulent.
+        /// Optional. The annotation that is assigned to the Event. This field can be left empty to provide reasons that
+        /// apply to an event without concluding whether the event is legitimate or fraudulent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
         public virtual string Annotation { get; set; }
@@ -2175,7 +2174,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Optional. Flag for enabling firewall policy config assessment. If this flag is enabled, the firewall policy
-        /// will be evaluated and a suggested firewall action will be returned in the response.
+        /// is evaluated and a suggested firewall action is returned in the response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyEvaluation")]
         public virtual System.Nullable<bool> FirewallPolicyEvaluation { get; set; }
@@ -2267,27 +2266,27 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allow")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction Allow { get; set; }
 
-        /// <summary>This action will deny access to a given page. The user will get an HTTP error code.</summary>
+        /// <summary>This action denies access to a given page. The user gets an HTTP error code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("block")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction Block { get; set; }
 
         /// <summary>
-        /// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+        /// This action injects reCAPTCHA JavaScript code into the HTML page returned by the site backend.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRecaptchaScript")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction IncludeRecaptchaScript { get; set; }
 
-        /// <summary>This action will redirect the request to a ReCaptcha interstitial to attach a token.</summary>
+        /// <summary>This action redirects the request to a reCAPTCHA interstitial to attach a token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirect")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction Redirect { get; set; }
 
         /// <summary>
-        /// This action will set a custom header but allow the request to continue to the customer backend.
+        /// This action sets a custom header but allow the request to continue to the customer backend.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setHeader")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction SetHeader { get; set; }
 
-        /// <summary>This action will transparently serve a different page to an offending user.</summary>
+        /// <summary>This action transparently serves a different page to an offending user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitute")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction Substitute { get; set; }
 
@@ -2321,7 +2320,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     }
 
     /// <summary>
-    /// A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial
+    /// A redirect action returns a 307 (temporary redirect) response, pointing the user to a reCAPTCHA interstitial
     /// page to attach a token.
     /// </summary>
     public class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction : Google.Apis.Requests.IDirectResponseSchema
@@ -2415,15 +2414,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. If the processing of a policy config fails, an error will be populated and the firewall_policy
-        /// will be left empty.
+        /// Output only. If the processing of a policy config fails, an error is populated and the firewall_policy is
+        /// left empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
         /// <summary>
         /// Output only. The policy that matched the request. If more than one policy may match, this is the first
-        /// match. If no policy matches the incoming request, the policy field will be left empty.
+        /// match. If no policy matches the incoming request, the policy field is left empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicy")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallPolicy FirewallPolicy { get; set; }
@@ -2570,9 +2569,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Optional. Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA
-        /// Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your
-        /// app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the
-        /// integrity of your app.
+        /// leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from
+        /// abuse. Providing these fields allows reCAPTCHA to get a better assessment of the integrity of your app.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appleDeveloperId")]
         public virtual GoogleCloudRecaptchaenterpriseV1AppleDeveloperId AppleDeveloperId { get; set; }
@@ -2776,8 +2774,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1Metrics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Metrics will be continuous and in order by dates, and in the granularity of day. Only challenge-based keys
-        /// (CHECKBOX, INVISIBLE), will have challenge-based data.
+        /// Metrics are continuous and in order by dates, and in the granularity of day. Only challenge-based keys
+        /// (CHECKBOX, INVISIBLE) have challenge-based data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challengeMetrics")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics> ChallengeMetrics { get; set; }
@@ -2789,7 +2787,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Metrics will be continuous and in order by dates, and in the granularity of day. All Key types should have
+        /// Metrics are continuous and in order by dates, and in the granularity of day. All Key types should have
         /// score-based data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreMetrics")]
@@ -3135,15 +3133,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1TestingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will
-        /// return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+        /// Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site return
+        /// nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingChallenge")]
         public virtual string TestingChallenge { get; set; }
 
         /// <summary>
-        /// Optional. All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and
-        /// 1 (likely legitimate) inclusive.
+        /// Optional. All assessments for this Key return this score. Must be between 0 (likely not legitimate) and 1
+        /// (likely legitimate) inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingScore")]
         public virtual System.Nullable<float> TestingScore { get; set; }
@@ -3589,7 +3587,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Settings specific to keys that can be used by websites.</summary>
     public class GoogleCloudRecaptchaenterpriseV1WebKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If set to true, it means allowed_domains will not be enforced.</summary>
+        /// <summary>Optional. If set to true, it means allowed_domains are not enforced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowAllDomains")]
         public virtual System.Nullable<bool> AllowAllDomains { get; set; }
 
@@ -3610,7 +3608,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This
-        /// should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+        /// should only be specified for IntegrationTypes CHECKBOX and INVISIBLE and SCORE_AND_CHALLENGE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challengeSecurityPreference")]
         public virtual string ChallengeSecurityPreference { get; set; }

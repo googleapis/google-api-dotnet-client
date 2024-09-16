@@ -5009,6 +5009,7 @@ namespace Google.Apis.Logging.v2
             {
                 this.service = service;
                 Buckets = new BucketsResource(service);
+                LogScopes = new LogScopesResource(service);
                 Operations = new OperationsResource(service);
                 RecentQueries = new RecentQueriesResource(service);
                 SavedQueries = new SavedQueriesResource(service);
@@ -6680,6 +6681,366 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the LogScopes resource.</summary>
+            public virtual LogScopesResource LogScopes { get; }
+
+            /// <summary>The "logScopes" collection of methods.</summary>
+            public class LogScopesResource
+            {
+                private const string Resource = "logScopes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LogScopesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a log scope.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent project in which to create the log scope
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogScope body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a log scope.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogScope body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project in which to create the log scope
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A client-assigned identifier such as "log-scope". Identifiers are limited to 100
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. First
+                    /// character has to be alphanumeric.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("logScopeId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LogScopeId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogScope Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/logScopes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("logScopeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "logScopeId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a log scope.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the log scope to delete:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a log scope.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the log scope to delete:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/logScopes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a log scope.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the log scope:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a log scope.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the log scope:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/logScopes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists log scopes.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource whose log scopes are to be listed:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists log scopes.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogScopesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource whose log scopes are to be listed:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request.Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/logScopes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a log scope.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of the log scope.For
+                /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogScope body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a log scope.</summary>
+                public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogScope body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of the log scope.For
+                    /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask that specifies the fields in log_scope that need an update. A field will be
+                    /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
+                    /// updated.For a detailed FieldMask definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=description
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogScope Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/logScopes/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -11196,6 +11557,7 @@ namespace Google.Apis.Logging.v2
             {
                 this.service = service;
                 Buckets = new BucketsResource(service);
+                LogScopes = new LogScopesResource(service);
                 Operations = new OperationsResource(service);
                 RecentQueries = new RecentQueriesResource(service);
                 SavedQueries = new SavedQueriesResource(service);
@@ -12867,6 +13229,366 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the LogScopes resource.</summary>
+            public virtual LogScopesResource LogScopes { get; }
+
+            /// <summary>The "logScopes" collection of methods.</summary>
+            public class LogScopesResource
+            {
+                private const string Resource = "logScopes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LogScopesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a log scope.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent project in which to create the log scope
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogScope body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a log scope.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogScope body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project in which to create the log scope
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A client-assigned identifier such as "log-scope". Identifiers are limited to 100
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. First
+                    /// character has to be alphanumeric.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("logScopeId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LogScopeId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogScope Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/logScopes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("logScopeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "logScopeId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a log scope.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the log scope to delete:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a log scope.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the log scope to delete:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/logScopes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a log scope.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the log scope:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a log scope.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the log scope:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/logScopes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists log scopes.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource whose log scopes are to be listed:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists log scopes.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogScopesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource whose log scopes are to be listed:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request.Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/logScopes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a log scope.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of the log scope.For
+                /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogScope body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a log scope.</summary>
+                public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogScope body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of the log scope.For
+                    /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask that specifies the fields in log_scope that need an update. A field will be
+                    /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
+                    /// updated.For a detailed FieldMask definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=description
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogScope Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/logScopes/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -15306,6 +16028,7 @@ namespace Google.Apis.Logging.v2
             {
                 this.service = service;
                 Buckets = new BucketsResource(service);
+                LogScopes = new LogScopesResource(service);
                 Operations = new OperationsResource(service);
                 RecentQueries = new RecentQueriesResource(service);
                 SavedQueries = new SavedQueriesResource(service);
@@ -16977,6 +17700,366 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the LogScopes resource.</summary>
+            public virtual LogScopesResource LogScopes { get; }
+
+            /// <summary>The "logScopes" collection of methods.</summary>
+            public class LogScopesResource
+            {
+                private const string Resource = "logScopes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LogScopesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a log scope.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent project in which to create the log scope
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogScope body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a log scope.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogScope body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project in which to create the log scope
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For
+                    /// example:"projects/my-project/locations/global"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A client-assigned identifier such as "log-scope". Identifiers are limited to 100
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. First
+                    /// character has to be alphanumeric.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("logScopeId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LogScopeId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogScope Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/logScopes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("logScopeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "logScopeId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a log scope.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the log scope to delete:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a log scope.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the log scope to delete:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/logScopes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a log scope.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the log scope:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a log scope.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the log scope:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For
+                    /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/logScopes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists log scopes.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource whose log scopes are to be listed:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists log scopes.</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogScopesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource whose log scopes are to be listed:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request.Non-positive values are
+                    /// ignored. The presence of nextPageToken in the response indicates that more results might be
+                    /// available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, then retrieve the next batch of results from the preceding call to this
+                    /// method. pageToken must be the value of nextPageToken from the previous response. The values of
+                    /// other method parameters should be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/logScopes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a log scope.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of the log scope.For
+                /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogScope body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a log scope.</summary>
+                public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogScope>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogScope body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of the log scope.For
+                    /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask that specifies the fields in log_scope that need an update. A field will be
+                    /// overwritten if, and only if, it is in the update mask. name and output only fields cannot be
+                    /// updated.For a detailed FieldMask definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor
+                    /// example: updateMask=description
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogScope Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/logScopes/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -21228,6 +22311,26 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The response from ListLogScopes. Every project has a _Default log scope that cannot be modified or deleted.
+    /// </summary>
+    public class ListLogScopesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of log scopes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logScopes")]
+        public virtual System.Collections.Generic.IList<LogScope> LogScopes { get; set; }
+
+        /// <summary>
+        /// If there might be more results than appear in this response, then nextPageToken is included. To get the next
+        /// set of results, call the same method again using the value of nextPageToken as pageToken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Result returned from ListLogs.</summary>
     public class ListLogsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22237,6 +23340,108 @@ namespace Google.Apis.Logging.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a group of resources to read log entries from.</summary>
+    public class LogScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation timestamp of the log scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Describes this log scope.The maximum length of the description is 8000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the log scope.For
+        /// example:projects/my-project/locations/global/logScopes/my-log-scope
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Names of one or more parent resources: projects/[PROJECT_ID]May alternatively be one or more
+        /// views: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]A log scope can
+        /// include a maximum of 50 projects and a maximum of 100 resources in total.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
+        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last update timestamp of the log scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

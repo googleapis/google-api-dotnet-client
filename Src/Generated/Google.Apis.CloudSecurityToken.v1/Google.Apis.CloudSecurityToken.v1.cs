@@ -470,7 +470,7 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// <summary>
         /// Required. An identifier for the type of requested security token. Can be
         /// `urn:ietf:params:oauth:token-type:access_token` or
-        /// `urn:ietf:params:oauth:token-type:access_boundary_intermediate_token`.
+        /// `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTokenType")]
         public virtual string RequestedTokenType { get; set; }
@@ -574,10 +574,10 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
     public class GoogleIdentityStsV1ExchangeTokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The access boundary session key. This key is used along with the access boundary intermediate token to
+        /// The access boundary session key. This key is used along with the access boundary intermediary token to
         /// generate Credential Access Boundary tokens at client side. This field is absent when the
         /// `requested_token_type` from the request is not
-        /// `urn:ietf:params:oauth:token-type:access_boundary_intermediate_token`.
+        /// `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access_boundary_session_key")]
         public virtual string AccessBoundarySessionKey { get; set; }

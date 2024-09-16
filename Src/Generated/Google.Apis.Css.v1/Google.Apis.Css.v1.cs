@@ -1298,6 +1298,10 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferCondition")]
         public virtual string HeadlineOfferCondition { get; set; }
 
+        /// <summary>Number and amount of installments to pay for an item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferInstallment")]
+        public virtual HeadlineOfferInstallment HeadlineOfferInstallment { get; set; }
+
         /// <summary>Link to the headline offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferLink")]
         public virtual string HeadlineOfferLink { get; set; }
@@ -1313,6 +1317,13 @@ namespace Google.Apis.Css.v1.Data
         /// <summary>Headline Price of the aggregate offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferShippingPrice")]
         public virtual Price HeadlineOfferShippingPrice { get; set; }
+
+        /// <summary>
+        /// Number of periods (months or years) and amount of payment per period for an item with an associated
+        /// subscription contract.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferSubscriptionCost")]
+        public virtual HeadlineOfferSubscriptionCost HeadlineOfferSubscriptionCost { get; set; }
 
         /// <summary>High Price of the aggregate offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highPrice")]
@@ -1813,6 +1824,44 @@ namespace Google.Apis.Css.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message that represents installment.</summary>
+    public class HeadlineOfferInstallment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount the buyer has to pay per month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Price Amount { get; set; }
+
+        /// <summary>The up-front down payment amount the buyer has to pay.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downpayment")]
+        public virtual Price Downpayment { get; set; }
+
+        /// <summary>The number of installments the buyer has to pay.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("months")]
+        public virtual System.Nullable<long> Months { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The SubscriptionCost of the product.</summary>
+    public class HeadlineOfferSubscriptionCost : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount the buyer has to pay per subscription period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Price Amount { get; set; }
+
+        /// <summary>The type of subscription period. Supported values are: * "`month`" * "`year`"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("period")]
+        public virtual string Period { get; set; }
+
+        /// <summary>The number of subscription periods the buyer has to pay.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodLength")]
+        public virtual System.Nullable<long> PeriodLength { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

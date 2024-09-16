@@ -1346,7 +1346,7 @@ namespace Google.Apis.CloudControlsPartnerService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerOnboardingState")]
         public virtual CustomerOnboardingState CustomerOnboardingState { get; set; }
 
-        /// <summary>The customer organization's display name. E.g. "Google".</summary>
+        /// <summary>Required. Display name for the customer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
