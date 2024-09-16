@@ -3840,6 +3840,17 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// An expression that filters the list of returned backups. A filter expression consists of a field
+                    /// name, a comparison operator, and a value for filtering. The value must be a string, a number, or
+                    /// a boolean. The comparison operator must be one of: `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`,
+                    /// `&amp;gt;=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not case
+                    /// sensitive. The following fields in the Backup are eligible for filtering: * `database_uid`
+                    /// (supports `=` only)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -3860,6 +3871,14 @@ namespace Google.Apis.Firestore.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -5290,6 +5309,20 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about a backup that was used to restore a database.</summary>
+    public class GoogleFirestoreAdminV1BackupSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the backup that was used to restore this database. Format:
+        /// `projects/{project}/locations/{location}/backups/{backup}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.BulkDeleteDocuments.</summary>
     public class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5699,6 +5732,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousId")]
         public virtual string PreviousId { get; set; }
+
+        /// <summary>Output only. Information about the provenance of this database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInfo")]
+        public virtual GoogleFirestoreAdminV1SourceInfo SourceInfo { get; set; }
 
         /// <summary>
         /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information
@@ -6787,6 +6824,24 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The configuration options for using the same encryption method as the source.</summary>
     public class GoogleFirestoreAdminV1SourceEncryptionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the provenance of this database.</summary>
+    public class GoogleFirestoreAdminV1SourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, this database was restored from the specified backup (or a snapshot thereof).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual GoogleFirestoreAdminV1BackupSource Backup { get; set; }
+
+        /// <summary>
+        /// The associated long-running operation. This field may not be set after the operation has completed. Format:
+        /// `projects/{project}/databases/{database}/operations/{operation}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
