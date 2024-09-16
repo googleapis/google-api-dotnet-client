@@ -272,9 +272,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
         public AccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            AutofeedSettings = new AutofeedSettingsResource(service);
             BusinessIdentity = new BusinessIdentityResource(service);
             BusinessInfo = new BusinessInfoResource(service);
-            Emailpreferences = new EmailpreferencesResource(service);
+            EmailPreferences = new EmailPreferencesResource(service);
             Homepage = new HomepageResource(service);
             Issues = new IssuesResource(service);
             OnlineReturnPolicies = new OnlineReturnPoliciesResource(service);
@@ -283,6 +284,143 @@ namespace Google.Apis.Merchant.accounts_v1beta
             ShippingSettings = new ShippingSettingsResource(service);
             TermsOfServiceAgreementStates = new TermsOfServiceAgreementStatesResource(service);
             Users = new UsersResource(service);
+        }
+
+        /// <summary>Gets the AutofeedSettings resource.</summary>
+        public virtual AutofeedSettingsResource AutofeedSettings { get; }
+
+        /// <summary>The "autofeedSettings" collection of methods.</summary>
+        public class AutofeedSettingsResource
+        {
+            private const string Resource = "autofeedSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AutofeedSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Retrieves the autofeed settings of an account.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the autofeed settings. Format: `accounts/{account}/autofeedSettings`
+            /// </param>
+            public virtual GetAutofeedSettingsRequest GetAutofeedSettings(string name)
+            {
+                return new GetAutofeedSettingsRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the autofeed settings of an account.</summary>
+            public class GetAutofeedSettingsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AutofeedSettings>
+            {
+                /// <summary>Constructs a new GetAutofeedSettings request.</summary>
+                public GetAutofeedSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the autofeed settings. Format: `accounts/{account}/autofeedSettings`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAutofeedSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetAutofeedSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/autofeedSettings$",
+                    });
+                }
+            }
+
+            /// <summary>Updates the autofeed settings of an account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the autofeed settings. Format: `accounts/{account}/autofeedSettings`.
+            /// </param>
+            public virtual UpdateAutofeedSettingsRequest UpdateAutofeedSettings(Google.Apis.Merchant.accounts_v1beta.Data.AutofeedSettings body, string name)
+            {
+                return new UpdateAutofeedSettingsRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the autofeed settings of an account.</summary>
+            public class UpdateAutofeedSettingsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AutofeedSettings>
+            {
+                /// <summary>Constructs a new UpdateAutofeedSettings request.</summary>
+                public UpdateAutofeedSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.AutofeedSettings body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the autofeed settings. Format:
+                /// `accounts/{account}/autofeedSettings`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. List of fields being updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.AutofeedSettings Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateAutofeedSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes UpdateAutofeedSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/autofeedSettings$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the BusinessIdentity resource.</summary>
@@ -562,19 +700,19 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
         }
 
-        /// <summary>Gets the Emailpreferences resource.</summary>
-        public virtual EmailpreferencesResource Emailpreferences { get; }
+        /// <summary>Gets the EmailPreferences resource.</summary>
+        public virtual EmailPreferencesResource EmailPreferences { get; }
 
-        /// <summary>The "emailpreferences" collection of methods.</summary>
-        public class EmailpreferencesResource
+        /// <summary>The "emailPreferences" collection of methods.</summary>
+        public class EmailPreferencesResource
         {
-            private const string Resource = "emailpreferences";
+            private const string Resource = "emailPreferences";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public EmailpreferencesResource(Google.Apis.Services.IClientService service)
+            public EmailPreferencesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
             }
@@ -3280,6 +3418,37 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// <summary>Street-level part of the address. For example: `111w 31st Street`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual string StreetAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Collection of information related to the [autofeed](https://support.google.com/merchants/answer/7538732)
+    /// settings.
+    /// </summary>
+    public class AutofeedSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Determines whether merchant is eligible for being enrolled into an autofeed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligible")]
+        public virtual System.Nullable<bool> Eligible { get; set; }
+
+        /// <summary>
+        /// Required. Enables or disables product crawling through the autofeed for the given account. Autofeed accounts
+        /// must meet [certain
+        /// conditions](https://support.google.com/merchants/answer/7538732#Configure_automated_feeds_Standard_Experience),
+        /// which can be checked through the `eligible` field. The account must **not** be a marketplace. When the
+        /// autofeed is enabled for the first time, the products usually appear instantly. When re-enabling, it might
+        /// take up to 24 hours for products to appear.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableProducts")]
+        public virtual System.Nullable<bool> EnableProducts { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the autofeed settings. Format: `accounts/{account}/autofeedSettings`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
