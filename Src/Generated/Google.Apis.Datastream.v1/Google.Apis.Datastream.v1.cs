@@ -4626,6 +4626,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cdcStrategy")]
         public virtual CdcStrategy CdcStrategy { get; set; }
 
+        /// <summary>Optional. Update the stream without validating it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
