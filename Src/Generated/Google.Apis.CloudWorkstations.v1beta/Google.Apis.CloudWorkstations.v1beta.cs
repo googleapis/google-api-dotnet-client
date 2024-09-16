@@ -2700,7 +2700,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
         public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
 
-        /// <summary>Optional. Required. The id to be used for the boost config.</summary>
+        /// <summary>Optional. Required. The id to be used for the boost configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -3816,7 +3816,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// Output only. List of available boost configuration ids that this workstation can be boosted up to
+        /// Output only. List of available boost configuration IDs that this workstation can be boosted up to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostConfigs")]
         public virtual System.Collections.Generic.IList<WorkstationBoostConfig> BoostConfigs { get; set; }
@@ -4045,11 +4045,11 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     }
 
     /// <summary>
-    /// Boost config for this workstation. This object is populated from the parent workstation config.
+    /// Boost configuration for this workstation. This object is populated from the parent workstation configuration.
     /// </summary>
     public class WorkstationBoostConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Boost config id.</summary>
+        /// <summary>Output only. Boost configuration ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4391,8 +4391,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// also be specified that has `roles/logging.logWriter` and `roles/monitoring.metricWriter` on the project.
         /// Operating system audit logging is distinct from [Cloud Audit
         /// Logs](https://cloud.google.com/workstations/docs/audit-logging) and [Container output
-        /// logging](http://cloud/workstations/docs/container-output-logging#overview). Operating system audit logs are
-        /// available in the [Cloud Logging](https://cloud.google.com/logging/docs) console by querying:
+        /// logging](https://cloud.google.com/workstations/docs/container-output-logging#overview). Operating system
+        /// audit logs are available in the [Cloud Logging](https://cloud.google.com/logging/docs) console by querying:
         /// resource.type="gce_instance" log_name:"/logs/linux-auditd"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAuditAgent")]
@@ -4459,12 +4459,12 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Maximum number of workstations under this config a user can have `workstations.workstation.use`
-        /// permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request. Can be
-        /// overridden by: - granting a user workstations.workstationConfigs.exemptMaxUsableWorkstationLimit permission,
-        /// or - having a user with that permission create a workstation and granting another user
-        /// `workstations.workstation.use` permission on that workstation. If not specified defaults to 0 which
-        /// indicates unlimited.
+        /// Optional. Maximum number of workstations under this configuration a user can have
+        /// `workstations.workstation.use` permission on. Only enforced on CreateWorkstation API calls on the user
+        /// issuing the API request. Can be overridden by: - granting a user
+        /// workstations.workstationConfigs.exemptMaxUsableWorkstationLimit permission, or - having a user with that
+        /// permission create a workstation and granting another user `workstations.workstation.use` permission on that
+        /// workstation. If not specified, defaults to `0`, which indicates unlimited.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUsableWorkstations")]
         public virtual System.Nullable<int> MaxUsableWorkstations { get; set; }
