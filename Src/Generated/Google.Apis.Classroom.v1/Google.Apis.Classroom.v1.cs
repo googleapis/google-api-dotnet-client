@@ -730,7 +730,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which to create the
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the
                 /// attachment. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.AddOnAttachment body, string courseId, string itemId)
@@ -760,8 +760,8 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which to create the
-                    /// attachment. This field is required, but is not marked as such while we are migrating from
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create
+                    /// the attachment. This field is required, but is not marked as such while we are migrating from
                     /// post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
@@ -777,7 +777,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("addOnToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AddOnToken { get; set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -843,8 +843,8 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                 public virtual DeleteRequest Delete(string courseId, string itemId, string attachmentId)
@@ -874,8 +874,9 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ItemId { get; private set; }
@@ -884,7 +885,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AttachmentId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -944,8 +945,8 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                 public virtual GetRequest Get(string courseId, string itemId, string attachmentId)
@@ -975,8 +976,9 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ItemId { get; private set; }
@@ -985,7 +987,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AttachmentId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -1045,7 +1047,7 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial whose attachments should be
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be
                 /// enumerated. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 public virtual ListRequest List(string courseId, string itemId)
@@ -1074,8 +1076,8 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial whose attachments should be
-                    /// enumerated. This field is required, but is not marked as such while we are migrating from
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should
+                    /// be enumerated. This field is required, but is not marked as such while we are migrating from
                     /// post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1099,7 +1101,7 @@ namespace Google.Apis.Classroom.v1
 
                     /// <summary>
                     /// Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated,
-                    /// use item_id instead.
+                    /// use `item_id` instead.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
@@ -1520,7 +1522,7 @@ namespace Google.Apis.Classroom.v1
             /// </summary>
             /// <param name="courseId">Required. Identifier of the course.</param>
             /// <param name="itemId">
-            /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
+            /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is
             /// attached. This field is required, but is not marked as such while we are migrating from post_id.
             /// </param>
             public virtual GetAddOnContextRequest GetAddOnContext(string courseId, string itemId)
@@ -1551,8 +1553,8 @@ namespace Google.Apis.Classroom.v1
                 public virtual string CourseId { get; private set; }
 
                 /// <summary>
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ItemId { get; private set; }
@@ -1574,7 +1576,7 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
 
-                /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PostId { get; set; }
 
@@ -2052,8 +2054,9 @@ namespace Google.Apis.Classroom.v1
                     /// </summary>
                     /// <param name="courseId">Required. Identifier of the course.</param>
                     /// <param name="itemId">
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </param>
                     /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                     /// <param name="submissionId">Required. Identifier of the student’s submission.</param>
@@ -2084,9 +2087,9 @@ namespace Google.Apis.Classroom.v1
                         public virtual string CourseId { get; private set; }
 
                         /// <summary>
-                        /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment
-                        /// is attached. This field is required, but is not marked as such while we are migrating from
-                        /// post_id.
+                        /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                        /// attachment is attached. This field is required, but is not marked as such while we are
+                        /// migrating from post_id.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ItemId { get; private set; }
@@ -2099,7 +2102,7 @@ namespace Google.Apis.Classroom.v1
                         [Google.Apis.Util.RequestParameterAttribute("submissionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string SubmissionId { get; private set; }
 
-                        /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                        /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PostId { get; set; }
 
@@ -2169,8 +2172,9 @@ namespace Google.Apis.Classroom.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="courseId">Required. Identifier of the course.</param>
                     /// <param name="itemId">
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </param>
                     /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                     /// <param name="submissionId">Required. Identifier of the student's submission.</param>
@@ -2204,9 +2208,9 @@ namespace Google.Apis.Classroom.v1
                         public virtual string CourseId { get; private set; }
 
                         /// <summary>
-                        /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment
-                        /// is attached. This field is required, but is not marked as such while we are migrating from
-                        /// post_id.
+                        /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                        /// attachment is attached. This field is required, but is not marked as such while we are
+                        /// migrating from post_id.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ItemId { get; private set; }
@@ -2219,7 +2223,7 @@ namespace Google.Apis.Classroom.v1
                         [Google.Apis.Util.RequestParameterAttribute("submissionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string SubmissionId { get; private set; }
 
-                        /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                        /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PostId { get; set; }
 
@@ -2312,7 +2316,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which to create the
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the
                 /// attachment. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.AddOnAttachment body, string courseId, string itemId)
@@ -2342,8 +2346,8 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which to create the
-                    /// attachment. This field is required, but is not marked as such while we are migrating from
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create
+                    /// the attachment. This field is required, but is not marked as such while we are migrating from
                     /// post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
@@ -2359,7 +2363,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("addOnToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AddOnToken { get; set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -2425,8 +2429,8 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                 public virtual DeleteRequest Delete(string courseId, string itemId, string attachmentId)
@@ -2456,8 +2460,9 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ItemId { get; private set; }
@@ -2466,7 +2471,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AttachmentId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -2526,8 +2531,8 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                 public virtual GetRequest Get(string courseId, string itemId, string attachmentId)
@@ -2557,8 +2562,9 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ItemId { get; private set; }
@@ -2567,7 +2573,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AttachmentId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -2627,7 +2633,7 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial whose attachments should be
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be
                 /// enumerated. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 public virtual ListRequest List(string courseId, string itemId)
@@ -2656,8 +2662,8 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial whose attachments should be
-                    /// enumerated. This field is required, but is not marked as such while we are migrating from
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should
+                    /// be enumerated. This field is required, but is not marked as such while we are migrating from
                     /// post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
@@ -2681,7 +2687,7 @@ namespace Google.Apis.Classroom.v1
 
                     /// <summary>
                     /// Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated,
-                    /// use item_id instead.
+                    /// use `item_id` instead.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
@@ -4001,7 +4007,7 @@ namespace Google.Apis.Classroom.v1
             /// </summary>
             /// <param name="courseId">Required. Identifier of the course.</param>
             /// <param name="itemId">
-            /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
+            /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is
             /// attached. This field is required, but is not marked as such while we are migrating from post_id.
             /// </param>
             public virtual GetAddOnContextRequest GetAddOnContext(string courseId, string itemId)
@@ -4032,8 +4038,8 @@ namespace Google.Apis.Classroom.v1
                 public virtual string CourseId { get; private set; }
 
                 /// <summary>
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ItemId { get; private set; }
@@ -4055,7 +4061,7 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
 
-                /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PostId { get; set; }
 
@@ -4524,7 +4530,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which to create the
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the
                 /// attachment. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.AddOnAttachment body, string courseId, string itemId)
@@ -4554,8 +4560,8 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which to create the
-                    /// attachment. This field is required, but is not marked as such while we are migrating from
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create
+                    /// the attachment. This field is required, but is not marked as such while we are migrating from
                     /// post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
@@ -4571,7 +4577,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("addOnToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AddOnToken { get; set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -4637,8 +4643,8 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                 public virtual DeleteRequest Delete(string courseId, string itemId, string attachmentId)
@@ -4668,8 +4674,9 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ItemId { get; private set; }
@@ -4678,7 +4685,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AttachmentId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -4738,8 +4745,8 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                 public virtual GetRequest Get(string courseId, string itemId, string attachmentId)
@@ -4769,8 +4776,9 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ItemId { get; private set; }
@@ -4779,7 +4787,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AttachmentId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
 
@@ -4839,7 +4847,7 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="itemId">
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial whose attachments should be
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be
                 /// enumerated. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </param>
                 public virtual ListRequest List(string courseId, string itemId)
@@ -4868,8 +4876,8 @@ namespace Google.Apis.Classroom.v1
                     public virtual string CourseId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial whose attachments should be
-                    /// enumerated. This field is required, but is not marked as such while we are migrating from
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should
+                    /// be enumerated. This field is required, but is not marked as such while we are migrating from
                     /// post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
@@ -4893,7 +4901,7 @@ namespace Google.Apis.Classroom.v1
 
                     /// <summary>
                     /// Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated,
-                    /// use item_id instead.
+                    /// use `item_id` instead.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PostId { get; set; }
@@ -5315,7 +5323,7 @@ namespace Google.Apis.Classroom.v1
             /// </summary>
             /// <param name="courseId">Required. Identifier of the course.</param>
             /// <param name="itemId">
-            /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
+            /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is
             /// attached. This field is required, but is not marked as such while we are migrating from post_id.
             /// </param>
             public virtual GetAddOnContextRequest GetAddOnContext(string courseId, string itemId)
@@ -5346,8 +5354,8 @@ namespace Google.Apis.Classroom.v1
                 public virtual string CourseId { get; private set; }
 
                 /// <summary>
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ItemId { get; private set; }
@@ -5369,7 +5377,7 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
 
-                /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PostId { get; set; }
 
@@ -5792,7 +5800,7 @@ namespace Google.Apis.Classroom.v1
                     /// malformed. * `NOT_FOUND` if one of the identified resources does not exist.
                     /// </summary>
                     /// <param name="courseId">Required. Identifier of the course.</param>
-                    /// <param name="postId">Optional. Deprecated, use item_id instead.</param>
+                    /// <param name="postId">Optional. Deprecated, use `item_id` instead.</param>
                     /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                     /// <param name="submissionId">Required. Identifier of the student’s submission.</param>
                     public virtual GetRequest Get(string courseId, string postId, string attachmentId, string submissionId)
@@ -5821,7 +5829,7 @@ namespace Google.Apis.Classroom.v1
                         [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string CourseId { get; private set; }
 
-                        /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                        /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string PostId { get; private set; }
 
@@ -5834,9 +5842,9 @@ namespace Google.Apis.Classroom.v1
                         public virtual string SubmissionId { get; private set; }
 
                         /// <summary>
-                        /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment
-                        /// is attached. This field is required, but is not marked as such while we are migrating from
-                        /// post_id.
+                        /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                        /// attachment is attached. This field is required, but is not marked as such while we are
+                        /// migrating from post_id.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ItemId { get; set; }
@@ -5906,7 +5914,7 @@ namespace Google.Apis.Classroom.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="courseId">Required. Identifier of the course.</param>
-                    /// <param name="postId">Optional. Deprecated, use item_id instead.</param>
+                    /// <param name="postId">Optional. Deprecated, use `item_id` instead.</param>
                     /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                     /// <param name="submissionId">Required. Identifier of the student's submission.</param>
                     public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.AddOnAttachmentStudentSubmission body, string courseId, string postId, string attachmentId, string submissionId)
@@ -5938,7 +5946,7 @@ namespace Google.Apis.Classroom.v1
                         [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string CourseId { get; private set; }
 
-                        /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                        /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string PostId { get; private set; }
 
@@ -5951,9 +5959,9 @@ namespace Google.Apis.Classroom.v1
                         public virtual string SubmissionId { get; private set; }
 
                         /// <summary>
-                        /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment
-                        /// is attached. This field is required, but is not marked as such while we are migrating from
-                        /// post_id.
+                        /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                        /// attachment is attached. This field is required, but is not marked as such while we are
+                        /// migrating from post_id.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ItemId { get; set; }
@@ -6046,7 +6054,7 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">Required. Identifier of the course.</param>
-                /// <param name="postId">Optional. Deprecated, use item_id instead.</param>
+                /// <param name="postId">Optional. Deprecated, use `item_id` instead.</param>
                 public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.AddOnAttachment body, string courseId, string postId)
                 {
                     return new CreateRequest(this.service, body, courseId, postId);
@@ -6073,7 +6081,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string PostId { get; private set; }
 
@@ -6088,8 +6096,8 @@ namespace Google.Apis.Classroom.v1
                     public virtual string AddOnToken { get; set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which to create the
-                    /// attachment. This field is required, but is not marked as such while we are migrating from
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create
+                    /// the attachment. This field is required, but is not marked as such while we are migrating from
                     /// post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Query)]
@@ -6156,7 +6164,7 @@ namespace Google.Apis.Classroom.v1
                 /// does not exist.
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
-                /// <param name="postId">Optional. Deprecated, use item_id instead.</param>
+                /// <param name="postId">Optional. Deprecated, use `item_id` instead.</param>
                 /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                 public virtual DeleteRequest Delete(string courseId, string postId, string attachmentId)
                 {
@@ -6184,7 +6192,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string PostId { get; private set; }
 
@@ -6193,8 +6201,9 @@ namespace Google.Apis.Classroom.v1
                     public virtual string AttachmentId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ItemId { get; set; }
@@ -6254,7 +6263,7 @@ namespace Google.Apis.Classroom.v1
                 /// identified resources does not exist.
                 /// </summary>
                 /// <param name="courseId">Required. Identifier of the course.</param>
-                /// <param name="postId">Optional. Deprecated, use item_id instead.</param>
+                /// <param name="postId">Optional. Deprecated, use `item_id` instead.</param>
                 /// <param name="attachmentId">Required. Identifier of the attachment.</param>
                 public virtual GetRequest Get(string courseId, string postId, string attachmentId)
                 {
@@ -6282,7 +6291,7 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseId { get; private set; }
 
-                    /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                    /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string PostId { get; private set; }
 
@@ -6291,8 +6300,9 @@ namespace Google.Apis.Classroom.v1
                     public virtual string AttachmentId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                    /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+                    /// attachment is attached. This field is required, but is not marked as such while we are migrating
+                    /// from post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ItemId { get; set; }
@@ -6354,7 +6364,7 @@ namespace Google.Apis.Classroom.v1
                 /// <param name="courseId">Required. Identifier of the course.</param>
                 /// <param name="postId">
                 /// Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use
-                /// item_id instead.
+                /// `item_id` instead.
                 /// </param>
                 public virtual ListRequest List(string courseId, string postId)
                 {
@@ -6383,14 +6393,14 @@ namespace Google.Apis.Classroom.v1
 
                     /// <summary>
                     /// Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated,
-                    /// use item_id instead.
+                    /// use `item_id` instead.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string PostId { get; private set; }
 
                     /// <summary>
-                    /// Identifier of the announcement, courseWork, or courseWorkMaterial whose attachments should be
-                    /// enumerated. This field is required, but is not marked as such while we are migrating from
+                    /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should
+                    /// be enumerated. This field is required, but is not marked as such while we are migrating from
                     /// post_id.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Query)]
@@ -6603,7 +6613,7 @@ namespace Google.Apis.Classroom.v1
             /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
             /// </summary>
             /// <param name="courseId">Required. Identifier of the course.</param>
-            /// <param name="postId">Optional. Deprecated, use item_id instead.</param>
+            /// <param name="postId">Optional. Deprecated, use `item_id` instead.</param>
             public virtual GetAddOnContextRequest GetAddOnContext(string courseId, string postId)
             {
                 return new GetAddOnContextRequest(this.service, courseId, postId);
@@ -6631,7 +6641,7 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Optional. Deprecated, use item_id instead.</summary>
+                /// <summary>Optional. Deprecated, use `item_id` instead.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PostId { get; private set; }
 
@@ -6653,8 +6663,8 @@ namespace Google.Apis.Classroom.v1
                 public virtual string AttachmentId { get; set; }
 
                 /// <summary>
-                /// Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-                /// attached. This field is required, but is not marked as such while we are migrating from post_id.
+                /// Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment
+                /// is attached. This field is required, but is not marked as such while we are migrating from post_id.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ItemId { get; set; }
@@ -9708,8 +9718,8 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-        /// attached. Unique per course.
+        /// Immutable. Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+        /// attachment is attached. Unique per course.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; }
@@ -9722,29 +9732,31 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxPoints")]
         public virtual System.Nullable<double> MaxPoints { get; set; }
 
-        /// <summary>Immutable. Deprecated, use item_id instead.</summary>
+        /// <summary>Immutable. Deprecated, use `item_id` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postId")]
         public virtual string PostId { get; set; }
 
         /// <summary>
         /// Required. URI to show the student view of the attachment. The URI will be opened in an iframe with the
-        /// `courseId`, `postId`, and `attachmentId` query parameters set.
+        /// `courseId`, `itemId`, `itemType`, and `attachmentId` query parameters set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studentViewUri")]
         public virtual EmbedUri StudentViewUri { get; set; }
 
         /// <summary>
         /// URI for the teacher to see student work on the attachment, if applicable. The URI will be opened in an
-        /// iframe with the `courseId`, `postId`, `attachmentId`, and `submissionId` query parameters set. This is the
-        /// same `submissionId` returned by google.classroom.AddOns.GetAddOnContext when a student views the attachment.
-        /// If the URI is omitted or removed, `max_points` will also be discarded.
+        /// iframe with the `courseId`, `itemId`, `itemType`, `attachmentId`, and `submissionId` query parameters set.
+        /// This is the same `submissionId` returned in the
+        /// [`AddOnContext.studentContext`](//devsite.google.com/classroom/reference/rest/v1/AddOnContext#StudentContext)
+        /// field when a student views the attachment. If the URI is omitted or removed, `max_points` will also be
+        /// discarded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studentWorkReviewUri")]
         public virtual EmbedUri StudentWorkReviewUri { get; set; }
 
         /// <summary>
         /// Required. URI to show the teacher view of the attachment. The URI will be opened in an iframe with the
-        /// `courseId`, `postId`, and `attachmentId` query parameters set.
+        /// `courseId`, `itemId`, `itemType`, and `attachmentId` query parameters set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teacherViewUri")]
         public virtual EmbedUri TeacherViewUri { get; set; }
@@ -9780,13 +9792,13 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string CourseId { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-        /// attached.
+        /// Immutable. Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+        /// attachment is attached.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; }
 
-        /// <summary>Immutable. Deprecated, use item_id instead.</summary>
+        /// <summary>Immutable. Deprecated, use `item_id` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postId")]
         public virtual string PostId { get; set; }
 
@@ -10061,13 +10073,13 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string CourseId { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier of the announcement, courseWork, or courseWorkMaterial under which the attachment is
-        /// attached.
+        /// Immutable. Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the
+        /// attachment is attached.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; }
 
-        /// <summary>Immutable. Deprecated, use item_id instead.</summary>
+        /// <summary>Immutable. Deprecated, use `item_id` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postId")]
         public virtual string PostId { get; set; }
 
