@@ -1550,9 +1550,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                         /// or
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaControl body, string parent)
                         {
@@ -1576,9 +1576,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of parent data store. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                             /// or
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1634,7 +1634,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the Control to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -1655,7 +1655,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Control to delete. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1687,7 +1687,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a Control.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the Control to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -1706,7 +1706,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Control to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1738,9 +1738,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Lists all Controls by their parent DataStore.</summary>
                         /// <param name="parent">
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                         /// or
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -1759,9 +1759,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The data store resource name. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                             /// or
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1937,9 +1937,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The resource name of the Conversation to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
                         /// Use
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
                         /// to activate auto session mode, which automatically creates a new conversation inside a
                         /// ConverseConversation session.
                         /// </param>
@@ -1961,9 +1961,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Conversation to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
                             /// Use
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
                             /// to activate auto session mode, which automatically creates a new conversation inside a
                             /// ConverseConversation session.
                             /// </summary>
@@ -2007,7 +2007,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaConversation body, string parent)
                         {
@@ -2030,7 +2030,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of parent data store. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -2071,7 +2071,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the Conversation to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -2093,7 +2093,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Conversation to delete. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2125,7 +2125,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a Conversation.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the Conversation to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -2144,7 +2144,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Conversation to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2176,7 +2176,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Lists all Conversations by their parent DataStore.</summary>
                         /// <param name="parent">
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -2195,7 +2195,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The data store resource name. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3372,7 +3372,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the ServingConfig to get. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -3393,7 +3393,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the ServingConfig to get. Format:
-                            /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3425,7 +3425,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
                         /// <param name="parent">
                         /// Required. Full resource name of the parent resource. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -3444,7 +3444,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of the parent resource. Format:
-                            /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3758,7 +3758,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// <summary>Gets a Answer.</summary>
                             /// <param name="name">
                             /// Required. The resource name of the Answer to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
@@ -3777,7 +3777,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                                 /// <summary>
                                 /// Required. The resource name of the Answer to get. Format:
-                                /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -3814,7 +3814,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession body, string parent)
                         {
@@ -3837,7 +3837,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of parent data store. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3877,7 +3877,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the Session to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -3898,7 +3898,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Session to delete. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3930,7 +3930,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a Session.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the Session to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -3949,7 +3949,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Session to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3981,7 +3981,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Lists all Sessions by their parent DataStore.</summary>
                         /// <param name="parent">
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -4000,7 +4000,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The data store resource name. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -5579,7 +5579,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The resource name of the catalog under which the events are created. The format is
-                        /// `projects/${projectId}/locations/global/collections/{$collectionId}/dataStores/${dataStoreId}`
+                        /// `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`.
                         /// </param>
                         public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest body, string parent)
                         {
@@ -5604,7 +5604,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// <summary>
                             /// Required. The resource name of the catalog under which the events are created. The
                             /// format is
-                            /// `projects/${projectId}/locations/global/collections/{$collectionId}/dataStores/${dataStoreId}`
+                            /// `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -6417,9 +6417,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                         /// or
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaControl body, string parent)
                         {
@@ -6443,9 +6443,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of parent data store. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                             /// or
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -6501,7 +6501,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the Control to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -6522,7 +6522,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Control to delete. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -6554,7 +6554,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a Control.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the Control to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -6573,7 +6573,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Control to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -6605,9 +6605,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Lists all Controls by their parent DataStore.</summary>
                         /// <param name="parent">
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                         /// or
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -6626,9 +6626,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The data store resource name. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                             /// or
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -6804,9 +6804,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. The resource name of the Conversation to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
                         /// Use
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
                         /// to activate auto session mode, which automatically creates a new conversation inside a
                         /// ConverseConversation session.
                         /// </param>
@@ -6828,9 +6828,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Conversation to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
                             /// Use
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
                             /// to activate auto session mode, which automatically creates a new conversation inside a
                             /// ConverseConversation session.
                             /// </summary>
@@ -6874,7 +6874,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaConversation body, string parent)
                         {
@@ -6897,7 +6897,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of parent data store. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -6938,7 +6938,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the Conversation to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -6960,7 +6960,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Conversation to delete. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -6992,7 +6992,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a Conversation.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the Conversation to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -7011,7 +7011,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Conversation to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -7043,7 +7043,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Lists all Conversations by their parent DataStore.</summary>
                         /// <param name="parent">
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -7062,7 +7062,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The data store resource name. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -7481,7 +7481,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the ServingConfig to get. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -7502,7 +7502,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the ServingConfig to get. Format:
-                            /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -7534,7 +7534,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
                         /// <param name="parent">
                         /// Required. Full resource name of the parent resource. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -7553,7 +7553,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of the parent resource. Format:
-                            /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -7867,7 +7867,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// <summary>Gets a Answer.</summary>
                             /// <param name="name">
                             /// Required. The resource name of the Answer to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
@@ -7886,7 +7886,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                                 /// <summary>
                                 /// Required. The resource name of the Answer to get. Format:
-                                /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -7923,7 +7923,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession body, string parent)
                         {
@@ -7946,7 +7946,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of parent data store. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -7986,7 +7986,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the Session to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -8007,7 +8007,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Session to delete. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -8039,7 +8039,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a Session.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the Session to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -8058,7 +8058,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Session to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -8090,7 +8090,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Lists all Sessions by their parent DataStore.</summary>
                         /// <param name="parent">
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -8109,7 +8109,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The data store resource name. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -8558,9 +8558,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="name">
                     /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded
                     /// string with a length limit of 1024 characters. Format:
-                    /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
-                    /// engine should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an
-                    /// INVALID_ARGUMENT error is returned.
+                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine
+                    /// should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT
+                    /// error is returned.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaEngine body, string name)
                     {
@@ -8581,8 +8581,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>
                         /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8
                         /// encoded string with a length limit of 1024 characters. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
-                        /// engine should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine
+                        /// should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an
                         /// INVALID_ARGUMENT error is returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8640,7 +8640,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The name of the engine to pause. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
                     /// </param>
                     public virtual PauseRequest Pause(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPauseEngineRequest body, string name)
                     {
@@ -8663,7 +8663,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The name of the engine to pause. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -8705,7 +8705,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The name of the engine to resume. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
                     /// </param>
                     public virtual ResumeRequest Resume(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaResumeEngineRequest body, string name)
                     {
@@ -8728,7 +8728,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The name of the engine to resume. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -8769,7 +8769,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The resource name of the engine to tune. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
                     /// </param>
                     public virtual TuneRequest Tune(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaTuneEngineRequest body, string name)
                     {
@@ -8791,7 +8791,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the engine to tune. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10031,9 +10031,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. Full resource name of parent data store. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
-                    /// or
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
+                    /// or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaControl body, string parent)
                     {
@@ -10057,9 +10056,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                         /// or
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -10115,7 +10114,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the Control to delete. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -10136,7 +10135,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the Control to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10168,7 +10167,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Gets a Control.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Control to get. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -10187,7 +10186,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the Control to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10219,9 +10218,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Lists all Controls by their parent DataStore.</summary>
                     /// <param name="parent">
                     /// Required. The data store resource name. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
-                    /// or
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
+                    /// or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -10240,9 +10238,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`
                         /// or
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -10417,9 +10415,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The resource name of the Conversation to get. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
                     /// Use
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
                     /// to activate auto session mode, which automatically creates a new conversation inside a
                     /// ConverseConversation session.
                     /// </param>
@@ -10441,9 +10439,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the Conversation to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
                         /// Use
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
                         /// to activate auto session mode, which automatically creates a new conversation inside a
                         /// ConverseConversation session.
                         /// </summary>
@@ -10487,7 +10485,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. Full resource name of parent data store. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaConversation body, string parent)
                     {
@@ -10510,7 +10508,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -10551,7 +10549,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the Conversation to delete. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -10573,7 +10571,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the Conversation to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10605,7 +10603,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Gets a Conversation.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Conversation to get. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -10624,7 +10622,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the Conversation to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10656,7 +10654,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Lists all Conversations by their parent DataStore.</summary>
                     /// <param name="parent">
                     /// Required. The data store resource name. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -10675,7 +10673,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -11622,7 +11620,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the ServingConfig to get. Format:
-                    /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -11643,7 +11641,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the ServingConfig to get. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -11675,7 +11673,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
                     /// <param name="parent">
                     /// Required. Full resource name of the parent resource. Format:
-                    /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -11694,7 +11692,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. Full resource name of the parent resource. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -12008,7 +12006,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Gets a Answer.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the Answer to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -12027,7 +12025,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. The resource name of the Answer to get. Format:
-                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -12063,7 +12061,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. Full resource name of parent data store. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession body, string parent)
                     {
@@ -12085,7 +12083,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. Full resource name of parent data store. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -12125,7 +12123,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the Session to delete. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -12146,7 +12144,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the Session to delete. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -12178,7 +12176,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Gets a Session.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Session to get. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -12197,7 +12195,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the Session to get. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -12229,7 +12227,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Lists all Sessions by their parent DataStore.</summary>
                     /// <param name="parent">
                     /// Required. The data store resource name. Format:
-                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -12248,7 +12246,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The data store resource name. Format:
-                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -13352,7 +13350,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The resource name of the catalog under which the events are created. The format is
-                    /// `projects/${projectId}/locations/global/collections/{$collectionId}/dataStores/${dataStoreId}`
+                    /// `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`.
                     /// </param>
                     public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest body, string parent)
                     {
@@ -13376,7 +13374,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. The resource name of the catalog under which the events are created. The format is
-                        /// `projects/${projectId}/locations/global/collections/{$collectionId}/dataStores/${dataStoreId}`
+                        /// `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -14712,7 +14710,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 /// <param name="body">The body of the request.</param>
                 /// <param name="rankingConfig">
                 /// Required. The resource name of the rank service config, such as
-                /// `projects/{project_num}/locations/{location_id}/rankingConfigs/default_ranking_config`.
+                /// `projects/{project_num}/locations/{location}/rankingConfigs/default_ranking_config`.
                 /// </param>
                 public virtual RankRequest Rank(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRankRequest body, string rankingConfig)
                 {
@@ -14732,7 +14730,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                     /// <summary>
                     /// Required. The resource name of the rank service config, such as
-                    /// `projects/{project_num}/locations/{location_id}/rankingConfigs/default_ranking_config`.
+                    /// `projects/{project_num}/locations/{location}/rankingConfigs/default_ranking_config`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("rankingConfig", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string RankingConfig { get; private set; }
@@ -17011,6 +17009,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Stores serving config at DataStore level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigDataStore")]
+        public virtual GoogleCloudDiscoveryengineV1ServingConfigDataStore ServingConfigDataStore { get; set; }
+
         /// <summary>
         /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
         /// `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
@@ -17495,6 +17497,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
         /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
         /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
+        /// supported. * `xlsm`: Override parsing config for XLSM files, only digital parsing and layout parsing are
         /// supported. * `xlsx`: Override parsing config for XLSX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
@@ -17763,8 +17766,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
         /// length limit of 1024 characters. Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be
-        /// 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
+        /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18435,9 +18438,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         }
 
         /// <summary>
-        /// Output only. Full resource name of the project, for example `projects/{project_number}`. Note that when
-        /// making requests, project number and project id are both acceptable, but the server will always respond in
-        /// project number.
+        /// Output only. Full resource name of the project, for example `projects/{project}`. Note that when making
+        /// requests, project number and project id are both acceptable, but the server will always respond in project
+        /// number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18931,6 +18934,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The structured representation of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structSchema")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1ServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
+        public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19809,7 +19823,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Data representation. The structured JSON data for the document. It's populated from the struct data from the
-        /// Document , or the Chunk in search result .
+        /// Document, or the Chunk in search result. .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
@@ -20641,8 +20655,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. The fully qualified resource name of the model. Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`
-        /// model must be an alpha-numerical string with limit of 40 characters.
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`.
+        /// Model must be an alpha-numerical string with limit of 40 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -20781,6 +20795,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Configuration for Natural Language Query Understanding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig NaturalLanguageQueryUnderstandingConfig { get; set; }
+
+        /// <summary>Optional. Stores serving config at DataStore level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigDataStore")]
+        public virtual GoogleCloudDiscoveryengineV1alphaServingConfigDataStore ServingConfigDataStore { get; set; }
 
         /// <summary>
         /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
@@ -21266,6 +21288,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
         /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
         /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
+        /// supported. * `xlsm`: Override parsing config for XLSM files, only digital parsing and layout parsing are
         /// supported. * `xlsx`: Override parsing config for XLSX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
@@ -21541,8 +21564,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
         /// length limit of 1024 characters. Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be
-        /// 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
+        /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -22871,6 +22894,20 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Natural Language Query Understanding.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Mode of Natural Language Query Understanding. If this field is unset, the behavior defaults to
+        /// NaturalLanguageQueryUnderstandingConfig.Mode.DISABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1alphaProject : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22912,9 +22949,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         }
 
         /// <summary>
-        /// Output only. Full resource name of the project, for example `projects/{project_number}`. Note that when
-        /// making requests, project number and project id are both acceptable, but the server will always respond in
-        /// project number.
+        /// Output only. Full resource name of the project, for example `projects/{project}`. Note that when making
+        /// requests, project number and project id are both acceptable, but the server will always respond in project
+        /// number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -24293,6 +24330,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Nullable<bool> IgnoreAdversarialQuery { get; set; }
 
         /// <summary>
+        /// Optional. Specifies whether to filter out jail-breaking queries. The default value is `false`. Google
+        /// employs search-query classification to detect jail-breaking queries. No summary is returned if the search
+        /// query is classified as a jail-breaking query. A user might add instructions to the query to change the tone,
+        /// style, language, content of the answer, or ask the model to act as a different entity, e.g. "Reply in the
+        /// tone of a competing company's CEO". If this field is set to `true`, we skip generating summaries for
+        /// jail-breaking queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreJailBreakingQuery")]
+        public virtual System.Nullable<bool> IgnoreJailBreakingQuery { get; set; }
+
+        /// <summary>
         /// Specifies whether to filter out queries that have low relevance. The default value is `false`. If this field
         /// is set to `false`, all search results are used regardless of relevance to generate answers. If set to
         /// `true`, only queries with high relevance search results will generate answers.
@@ -24657,6 +24705,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
+        public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25159,7 +25218,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// Required. The resource name of the engine that this tune applies to. Format:
-        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
@@ -25587,9 +25646,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpec AnswerGenerationSpec { get; set; }
 
         /// <summary>
-        /// Asynchronous mode control. If enabled, the response will be returned with answer/session resource name
-        /// without final answer. The API users need to do the polling to get the latest status of answer/session by
-        /// calling ConversationalSearchService.GetAnswer or ConversationalSearchService.GetSession method.
+        /// Deprecated: This field is deprecated. Streaming Answer API will be supported. Asynchronous mode control. If
+        /// enabled, the response will be returned with answer/session resource name without final answer. The API users
+        /// need to do the polling to get the latest status of answer/session by calling
+        /// ConversationalSearchService.GetAnswer or ConversationalSearchService.GetSession method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asynchronousMode")]
         public virtual System.Nullable<bool> AsynchronousMode { get; set; }
@@ -25669,6 +25729,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreAdversarialQuery")]
         public virtual System.Nullable<bool> IgnoreAdversarialQuery { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether to filter out jail-breaking queries. The default value is `false`. Google
+        /// employs search-query classification to detect jail-breaking queries. No summary is returned if the search
+        /// query is classified as a jail-breaking query. A user might add instructions to the query to change the tone,
+        /// style, language, content of the answer, or ask the model to act as a different entity, e.g. "Reply in the
+        /// tone of a competing company's CEO". If this field is set to `true`, we skip generating summaries for
+        /// jail-breaking queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreJailBreakingQuery")]
+        public virtual System.Nullable<bool> IgnoreJailBreakingQuery { get; set; }
 
         /// <summary>
         /// Specifies whether to filter out queries that have low relevance. If this field is set to `false`, all search
@@ -25901,6 +25972,25 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Chunk textual content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>Metadata of the document from the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata DocumentMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document metadata contains the information of the document of the current chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Uri of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26251,7 +26341,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Data representation. The structured JSON data for the document. It's populated from the struct data from the
-        /// Document , or the Chunk in search result .
+        /// Document, or the Chunk in search result. .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
@@ -26490,9 +26580,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matcherValue")]
         public virtual GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue MatcherValue { get; set; }
 
-        /// <summary>The status of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; }
+        /// <summary>The state of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27536,7 +27626,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The resource name of the Serving Config to use. Format:
-        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
         /// If this is not set, the default serving config will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
@@ -28027,8 +28117,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. The fully qualified resource name of the model. Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`
-        /// model must be an alpha-numerical string with limit of 40 characters.
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`.
+        /// Model must be an alpha-numerical string with limit of 40 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -28153,6 +28243,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Configuration for Natural Language Query Understanding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig NaturalLanguageQueryUnderstandingConfig { get; set; }
+
+        /// <summary>Optional. Stores serving config at DataStore level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigDataStore")]
+        public virtual GoogleCloudDiscoveryengineV1betaServingConfigDataStore ServingConfigDataStore { get; set; }
 
         /// <summary>
         /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
@@ -28823,7 +28921,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The Document resource full name, of the form:
-        /// `projects/{project_id}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/branches/{branch_id}/documents/{document_id}`
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/branches/{branch_id}/documents/{document_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -28880,6 +28978,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
         /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
         /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
+        /// supported. * `xlsm`: Override parsing config for XLSM files, only digital parsing and layout parsing are
         /// supported. * `xlsx`: Override parsing config for XLSX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
@@ -29177,8 +29276,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
         /// length limit of 1024 characters. Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be
-        /// 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63
+        /// characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -30805,6 +30904,20 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Natural Language Query Understanding.</summary>
+    public class GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Mode of Natural Language Query Understanding. If this field is unset, the behavior defaults to
+        /// NaturalLanguageQueryUnderstandingConfig.Mode.DISABLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Detailed page information.</summary>
     public class GoogleCloudDiscoveryengineV1betaPageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30925,9 +31038,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         }
 
         /// <summary>
-        /// Output only. Full resource name of the project, for example `projects/{project_number}`. Note that when
-        /// making requests, project number and project id are both acceptable, but the server will always respond in
-        /// project number.
+        /// Output only. Full resource name of the project, for example `projects/{project}`. Note that when making
+        /// requests, project number and project id are both acceptable, but the server will always respond in project
+        /// number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -31750,6 +31863,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Full resource name of the SiteCredential, such as
+        /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine/siteCredentials/*`. Only set to crawl
+        /// private URIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteCredential")]
+        public virtual string SiteCredential { get; set; }
+
+        /// <summary>
         /// Required. List of URIs to crawl. At most 10K URIs are supported, otherwise an INVALID_ARGUMENT error is
         /// thrown. Each URI should match at least one TargetSite in `site_search_engine`.
         /// </summary>
@@ -32537,6 +32658,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreAdversarialQuery")]
         public virtual System.Nullable<bool> IgnoreAdversarialQuery { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether to filter out jail-breaking queries. The default value is `false`. Google
+        /// employs search-query classification to detect jail-breaking queries. No summary is returned if the search
+        /// query is classified as a jail-breaking query. A user might add instructions to the query to change the tone,
+        /// style, language, content of the answer, or ask the model to act as a different entity, e.g. "Reply in the
+        /// tone of a competing company's CEO". If this field is set to `true`, we skip generating summaries for
+        /// jail-breaking queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreJailBreakingQuery")]
+        public virtual System.Nullable<bool> IgnoreJailBreakingQuery { get; set; }
 
         /// <summary>
         /// Specifies whether to filter out queries that have low relevance. The default value is `false`. If this field
@@ -33703,6 +33835,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1betaServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
+        public virtual System.Nullable<bool> DisabledForServing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the configurations needed for Generic Discovery.Currently we support: * `content_search_spec`:
     /// configuration for generic content search.
@@ -34361,7 +34504,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// Required. The resource name of the engine that this tune applies to. Format:
-        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }

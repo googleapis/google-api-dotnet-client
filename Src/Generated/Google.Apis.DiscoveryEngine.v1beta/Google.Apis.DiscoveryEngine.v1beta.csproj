@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DiscoveryEngine.v1beta Client Library</Title>
-    <Version>1.68.0.3528</Version>
+    <Version>1.68.0.3536</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -18,7 +18,7 @@
       This Google APIs Client Library for working with Discoveryengine v1beta uses older code generation, and is harder to use.
 
       Product documentation is available at:
-      https://cloud.google.com/discovery-engine/docs
+      https://cloud.google.com/generative-ai-app-builder/docs/
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.DiscoveryEngine.v1beta/latest/api/Google.Apis.DiscoveryEngine.v1beta.html
