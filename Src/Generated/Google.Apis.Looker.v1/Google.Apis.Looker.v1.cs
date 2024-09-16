@@ -2135,6 +2135,14 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
 
+        /// <summary>Optional. Whether FIPS is enabled on the Looker instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fipsEnabled")]
+        public virtual System.Nullable<bool> FipsEnabled { get; set; }
+
+        /// <summary>Optional. Whether Gemini feature is enabled on the Looker instance or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiEnabled")]
+        public virtual System.Nullable<bool> GeminiEnabled { get; set; }
+
         /// <summary>Output only. Private Ingress IP (IPv4).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressPrivateIp")]
         public virtual string IngressPrivateIp { get; set; }
