@@ -88,6 +88,27 @@ namespace Google.Apis.HangoutsChat.v1
             /// </summary>
             public static string ChatAdminSpacesReadonly = "https://www.googleapis.com/auth/chat.admin.spaces.readonly";
 
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can delete conversations and spaces and remove access to
+            /// associated files
+            /// </summary>
+            public static string ChatAppDelete = "https://www.googleapis.com/auth/chat.app.delete";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and
+            /// spaces
+            /// </summary>
+            public static string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can create conversations and spaces and see or update their
+            /// metadata (including history settings and access settings)
+            /// </summary>
+            public static string ChatAppSpaces = "https://www.googleapis.com/auth/chat.app.spaces";
+
+            /// <summary>On their own behalf, apps in Google Chat can create conversations and spaces</summary>
+            public static string ChatAppSpacesCreate = "https://www.googleapis.com/auth/chat.app.spaces.create";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
@@ -174,6 +195,27 @@ namespace Google.Apis.HangoutsChat.v1
             /// organization
             /// </summary>
             public const string ChatAdminSpacesReadonly = "https://www.googleapis.com/auth/chat.admin.spaces.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can delete conversations and spaces and remove access to
+            /// associated files
+            /// </summary>
+            public const string ChatAppDelete = "https://www.googleapis.com/auth/chat.app.delete";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and
+            /// spaces
+            /// </summary>
+            public const string ChatAppMemberships = "https://www.googleapis.com/auth/chat.app.memberships";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can create conversations and spaces and see or update their
+            /// metadata (including history settings and access settings)
+            /// </summary>
+            public const string ChatAppSpaces = "https://www.googleapis.com/auth/chat.app.spaces";
+
+            /// <summary>On their own behalf, apps in Google Chat can create conversations and spaces</summary>
+            public const string ChatAppSpacesCreate = "https://www.googleapis.com/auth/chat.app.spaces.create";
 
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
@@ -4266,9 +4308,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Data for Chat space links. [Developer Preview](https://developers.google.com/workspace/preview).
-    /// </summary>
+    /// <summary>Data for Chat space links.</summary>
     public class ChatSpaceLinkData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6938,10 +6978,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Immutable. Input for creating a message, otherwise output only. The user that can view the message. When
-        /// set, the message is private and only visible to the specified user and the Chat app. Link previews and
-        /// attachments aren't supported for private messages. Only Chat apps can send private messages. If your Chat
-        /// app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-        /// to send a message, the message can't be private and must omit this field. For details, see [Send a message
+        /// set, the message is private and only visible to the specified user and the Chat app. To include this field
+        /// in your request, you must call the Chat API using [app
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and omit the
+        /// following: *
+        /// [Attachments](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages.attachments)
+        /// * [Accessory
+        /// widgets](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages#Message.AccessoryWidget)
+        /// For details, see [Send a message
         /// privately](https://developers.google.com/workspace/chat/create-messages#private).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateMessageViewer")]
@@ -7230,9 +7274,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A rich link to a resource.</summary>
     public class RichLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Data for a chat space link. [Developer Preview](https://developers.google.com/workspace/preview).
-        /// </summary>
+        /// <summary>Data for a chat space link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatSpaceLinkData")]
         public virtual ChatSpaceLinkData ChatSpaceLinkData { get; set; }
 
