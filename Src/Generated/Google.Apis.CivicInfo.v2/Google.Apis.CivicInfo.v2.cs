@@ -289,7 +289,7 @@ namespace Google.Apis.CivicInfo.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "civicinfo/v2/divisions";
+            public override string RestPath => "civicinfo/v2/divisionsByAddress";
 
             /// <summary>Initializes QueryDivisionByAddress parameter list.</summary>
             protected override void InitParameters()
