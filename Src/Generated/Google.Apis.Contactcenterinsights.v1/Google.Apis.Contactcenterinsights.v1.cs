@@ -4185,6 +4185,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string Medium { get; set; }
 
         /// <summary>
+        /// Input only. JSON Metadata encoded as a string. This field is primarily used by Insights integrations with
+        /// various telphony systems and must be in one of Insights' supported formats.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataJson")]
+        public virtual string MetadataJson { get; set; }
+
+        /// <summary>
         /// Immutable. The resource name of the conversation. Format:
         /// projects/{project}/locations/{location}/conversations/{conversation}
         /// </summary>
@@ -8220,6 +8227,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
+
+        /// <summary>
+        /// Input only. JSON Metadata encoded as a string. This field is primarily used by Insights integrations with
+        /// various telphony systems and must be in one of Insights' supported formats.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataJson")]
+        public virtual string MetadataJson { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the conversation. Format:
