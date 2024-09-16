@@ -43175,6 +43175,28 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for [NotebookService.CreateNotebookExecutionJob]</summary>
+    public class GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The NotebookExecutionJob to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookExecutionJob")]
+        public virtual GoogleCloudAiplatformV1NotebookExecutionJob NotebookExecutionJob { get; set; }
+
+        /// <summary>Optional. User specified ID for the NotebookExecutionJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookExecutionJobId")]
+        public virtual string NotebookExecutionJobId { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the Location to create the NotebookExecutionJob. Format:
+        /// `projects/{project}/locations/{location}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata information for NotebookService.CreateNotebookRuntimeTemplate.</summary>
     public class GoogleCloudAiplatformV1CreateNotebookRuntimeTemplateOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -59147,6 +59169,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catchUp")]
         public virtual System.Nullable<bool> CatchUp { get; set; }
+
+        /// <summary>Request for NotebookService.CreateNotebookExecutionJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createNotebookExecutionJobRequest")]
+        public virtual GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest CreateNotebookExecutionJobRequest { get; set; }
 
         /// <summary>
         /// Request for PipelineService.CreatePipelineJob. CreatePipelineJobRequest.parent field is required (format:
