@@ -3129,6 +3129,39 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string Title { get; set; }
     }
 
+    /// <summary>Access scope represents the client scope, etc. to which the settings will be applied to.</summary>
+    public class AccessScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Client scope for this access scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientScope")]
+        public virtual ClientScope ClientScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Access settings represent the set of conditions that must be met for access to be granted. At least one of the
+    /// fields must be set.
+    /// </summary>
+    public class AccessSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not
+        /// multiple. This repeated field must have exactly one element. Example:
+        /// "accessPolicies/9522/accessLevels/device_trusted"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
+        public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
+
+        /// <summary>Optional. Reauth settings applied to user access on a given AccessScope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
+        public virtual ReauthSettings ReauthSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Identification for an API Operation.</summary>
     public class ApiOperation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3364,6 +3397,17 @@ namespace Google.Apis.AccessContextManager.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Client scope represents the application, etc. subject to this binding's restrictions.</summary>
+    public class ClientScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The application that is subject to this binding's scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedClientApplication")]
+        public virtual Application RestrictedClientApplication { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3737,12 +3781,23 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. GCSL policy for the group key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
+        public virtual ReauthSettings ReauthSettings { get; set; }
+
         /// <summary>
         /// Optional. A list of applications that are subject to this binding's restrictions. If the list is empty, the
         /// binding restrictions will universally apply to all applications.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedClientApplications")]
         public virtual System.Collections.Generic.IList<Application> RestrictedClientApplications { get; set; }
+
+        /// <summary>
+        /// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        /// This field cannot be set if restricted_client_applications is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopedAccessSettings")]
+        public virtual System.Collections.Generic.IList<ScopedAccessSettings> ScopedAccessSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4177,6 +4232,50 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
+    /// Stores settings related to Google Cloud Session Length including session duration, the type of challenge (i.e.
+    /// method) they should face when their session expires, and other related settings.
+    /// </summary>
+    public class ReauthSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. How long a user is allowed to take between actions before a new access token must be issued.
+        /// Presently only set for Cloud Apps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInactivity")]
+        public virtual object MaxInactivity { get; set; }
+
+        /// <summary>Optional. Reauth method when users GCP session is up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reauthMethod")]
+        public virtual string ReauthMethod { get; set; }
+
+        /// <summary>
+        /// Optional. The session length. Setting this field to zero is equal to disabling. Reauth. Also can set
+        /// infinite session by flipping the enabled bit to false below. If use_oidc_max_age is true, for OIDC apps, the
+        /// session length will be the minimum of this field and OIDC max_age param.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionLength")]
+        public virtual object SessionLength { get; set; }
+
+        /// <summary>
+        /// Optional. Big red button to turn off GCSL. When false, all fields set above will be disregarded and the
+        /// session length is basically infinite.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionLengthEnabled")]
+        public virtual System.Nullable<bool> SessionLengthEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication
+        /// request will be ignored. When true, the re-auth period will be the minimum of the session_length field and
+        /// the max_age OIDC param.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useOidcMaxAge")]
+        public virtual System.Nullable<bool> UseOidcMaxAge { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A request to replace all existing Access Levels in an Access Policy with the Access Levels provided. This is
     /// done atomically.
     /// </summary>
@@ -4242,6 +4341,34 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>List of the Service Perimeter instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
         public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A relationship between access settings and its scope.</summary>
+    public class ScopedAccessSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Access settings for this scoped access settings. This field may be empty if dry_run_settings is
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeSettings")]
+        public virtual AccessSettings ActiveSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Dry-run access settings for this scoped access settings. This field may be empty if
+        /// active_settings is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRunSettings")]
+        public virtual AccessSettings DryRunSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped
+        /// access settings key; as such, it must be unique and non-empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual AccessScope Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
