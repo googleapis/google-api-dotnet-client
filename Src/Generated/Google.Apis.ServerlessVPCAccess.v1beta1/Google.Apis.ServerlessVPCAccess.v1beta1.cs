@@ -914,7 +914,9 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.</summary>
+        /// <summary>
+        /// Optional. The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; }
 
@@ -991,7 +993,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Name of a VPC network.</summary>
+        /// <summary>Optional. Name of a VPC network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
@@ -999,7 +1001,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>The subnet in which to house the VPC Access Connector.</summary>
+        /// <summary>Optional. The subnet in which to house the VPC Access Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
         public virtual Subnet Subnet { get; set; }
 
@@ -1444,7 +1446,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
     public class Subnet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
+        /// Optional. Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
         /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the
         /// correct input for this field would be {subnetName}
         /// </summary>
@@ -1452,8 +1454,8 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Project in which the subnet exists. If not set, this project is assumed to be the project for which the
-        /// connector create request was issued.
+        /// Optional. Project in which the subnet exists. If not set, this project is assumed to be the project for
+        /// which the connector create request was issued.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
