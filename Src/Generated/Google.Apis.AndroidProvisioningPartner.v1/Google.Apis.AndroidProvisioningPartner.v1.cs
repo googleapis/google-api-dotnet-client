@@ -2607,6 +2607,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; }
 
+        /// <summary>The device’s second IMEI number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imei2")]
+        public virtual string Imei2 { get; set; }
+
         /// <summary>
         /// The device manufacturer’s name. Matches the device's built-in value returned from
         /// `android.os.Build.MANUFACTURER`. Allowed values are listed in [Android
@@ -2618,6 +2622,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>The device’s MEID number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; }
+
+        /// <summary>The device’s second MEID number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meid2")]
+        public virtual string Meid2 { get; set; }
 
         /// <summary>
         /// The device model's name. Allowed values are listed in [Android
