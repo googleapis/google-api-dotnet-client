@@ -15891,9 +15891,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string PackageName { get; set; }
 
         /// <summary>
-        /// Required. The phases of this subscription offer. Must contain at least one entry, and may contain at most
-        /// five. Users will always receive all these phases in the specified order. Phases may not be added, removed,
-        /// or reordered after initial creation.
+        /// Required. The phases of this subscription offer. Must contain at least one and at most two entries. Users
+        /// will always receive all these phases in the specified order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phases")]
         public virtual System.Collections.Generic.IList<SubscriptionOfferPhase> Phases { get; set; }
