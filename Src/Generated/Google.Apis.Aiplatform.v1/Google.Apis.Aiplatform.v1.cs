@@ -10067,7 +10067,7 @@ namespace Google.Apis.Aiplatform.v1
 
                     /// <summary>
                     /// Required. The ID to use for this FeatureGroup, which will become the final component of the
-                    /// FeatureGroup's resource name. This value may be up to 60 characters, and valid characters are
+                    /// FeatureGroup's resource name. This value may be up to 128 characters, and valid characters are
                     /// `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project
                     /// and location.
                     /// </summary>
@@ -40438,8 +40438,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Next ID: 6</summary>
     public class CloudAiLargeModelsVisionRaiInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of blocked entities from the blocklist if it is detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockedEntities")]
+        public virtual System.Collections.Generic.IList<string> BlockedEntities { get; set; }
+
         /// <summary>The list of detected labels for different rai categories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedLabels")]
         public virtual System.Collections.Generic.IList<CloudAiLargeModelsVisionRaiInfoDetectedLabels> DetectedLabels { get; set; }
@@ -42917,6 +42922,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> Contents { get; set; }
 
+        /// <summary>Optional. Generation config that the model will use to generate the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
+        public virtual GoogleCloudAiplatformV1GenerationConfig GenerationConfig { get; set; }
+
         /// <summary>
         /// Optional. The instances that are the input to token counting call. Schema is identical to the prediction
         /// schema of the underlying model.
@@ -44775,6 +44784,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoints")]
         public virtual GoogleCloudAiplatformV1IndexPrivateEndpoints PrivateEndpoints { get; set; }
+
+        /// <summary>
+        /// Optional. If set for PSC deployed index, PSC connection will be automatically created after deployment is
+        /// done and the endpoint information is populated in private_endpoints.psc_automated_endpoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutomationConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1PSCAutomationConfig> PscAutomationConfigs { get; set; }
 
         /// <summary>
         /// Optional. A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex. If
@@ -47558,10 +47574,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// Optional. If set, all feature values will be fetched from a single row per unique entityId including nulls.
         /// If not set, will collapse all rows for each unique entityId into a singe row with any non-null values if
-        /// present, if no non-null values are present will sync null. ex: If source has schema (entity_id,
-        /// feature_timestamp, f0, f1) and values (e1, 2020-01-01T10:00:00.123Z, 10, 15) (e1, 2020-02-01T10:00:00.123Z,
-        /// 20, null) If dense is set, (e1, 20, null) is synced to online stores. If dense is not set, (e1, 20, 15) is
-        /// synced to online stores.
+        /// present, if no non-null values are present will sync null. ex: If source has schema `(entity_id,
+        /// feature_timestamp, f0, f1)` and the following rows: `(e1, 2020-01-01T10:00:00.123Z, 10, 15)` `(e1,
+        /// 2020-02-01T10:00:00.123Z, 20, null)` If dense is set, `(e1, 20, null)` is synced to online stores. If dense
+        /// is not set, `(e1, 20, 15)` is synced to online stores.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dense")]
         public virtual System.Nullable<bool> Dense { get; set; }
@@ -48621,9 +48637,10 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Required. The BigQuery view/table URI that will be materialized on each manual sync trigger. The table/view
-        /// is expected to have the following columns at least: Field name Type Mode corpus_id STRING REQUIRED/NULLABLE
-        /// file_id STRING REQUIRED/NULLABLE chunk_id STRING REQUIRED/NULLABLE chunk_data_type STRING REQUIRED/NULLABLE
-        /// chunk_data STRING REQUIRED/NULLABLE embeddings FLOAT REPEATED file_original_uri STRING REQUIRED/NULLABLE
+        /// is expected to have the following columns and types at least: - `corpus_id` (STRING, NULLABLE/REQUIRED) -
+        /// `file_id` (STRING, NULLABLE/REQUIRED) - `chunk_id` (STRING, NULLABLE/REQUIRED) - `chunk_data_type` (STRING,
+        /// NULLABLE/REQUIRED) - `chunk_data` (STRING, NULLABLE/REQUIRED) - `embeddings` (FLOAT, REPEATED) -
+        /// `file_original_uri` (STRING, NULLABLE/REQUIRED)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -49477,6 +49494,15 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Generation config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
         public virtual GoogleCloudAiplatformV1GenerationConfig GenerationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. It is used for billing and reporting only.
+        /// Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain
+        /// lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label
+        /// values are optional. Label keys must start with a letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates.
@@ -55862,6 +55888,27 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PSC config that is used to automatically create forwarding rule via ServiceConnectionMap.</summary>
+    public class GoogleCloudAiplatformV1PSCAutomationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The full name of the Google Compute Engine
+        /// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert):
+        /// `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in '12345', and
+        /// {network} is network name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Required. Project id used to create forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Input for pairwise metric.</summary>
     public class GoogleCloudAiplatformV1PairwiseMetricInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -59680,6 +59727,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. SCHEMA FIELDS FOR TYPE OBJECT Properties of Type.OBJECT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1Schema> Properties { get; set; }
+
+        /// <summary>
+        /// Optional. The order of the properties. Not a standard field in open api spec. Only used to support the order
+        /// of the properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyOrdering")]
+        public virtual System.Collections.Generic.IList<string> PropertyOrdering { get; set; }
 
         /// <summary>Optional. Required properties of Type.OBJECT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
@@ -65495,7 +65549,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Tuning Spec for Supervised Tuning.</summary>
+    /// <summary>Tuning Spec for Supervised Tuning for first party models.</summary>
     public class GoogleCloudAiplatformV1SupervisedTuningSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Hyperparameters for SFT.</summary>
