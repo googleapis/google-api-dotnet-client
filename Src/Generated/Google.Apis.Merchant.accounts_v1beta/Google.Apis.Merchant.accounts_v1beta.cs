@@ -3246,7 +3246,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// <summary>Reference to a Terms of Service resource.</summary>
     public class AcceptTermsOfService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The resource name of the terms of service version.</summary>
+        /// <summary>
+        /// Required. The resource name of the terms of service version in the format `termsOfService/{version}`. To
+        /// retrieve the latest version, use the
+        /// [termsOfService.retrieveLatest](/merchant/api/reference/rest/accounts_v1beta/termsOfService/retrieveLatest)
+        /// method.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3777,7 +3782,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
         /// <summary>
         /// Maximum number of business days spent before an order is shipped. 0 means same day shipped, 1 means next day
-        /// shipped. Must be greater than or equal to `min_handling_days`.
+        /// shipped. Must be greater than or equal to `min_handling_days`. 'min_handling_days' and 'max_handling_days'
+        /// should be either set or not set at the same time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingDays")]
         public virtual System.Nullable<int> MaxHandlingDays { get; set; }
@@ -3791,7 +3797,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
         /// <summary>
         /// Minimum number of business days spent before an order is shipped. 0 means same day shipped, 1 means next day
-        /// shipped.
+        /// shipped. 'min_handling_days' and 'max_handling_days' should be either set or not set at the same time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minHandlingDays")]
         public virtual System.Nullable<int> MinHandlingDays { get; set; }
