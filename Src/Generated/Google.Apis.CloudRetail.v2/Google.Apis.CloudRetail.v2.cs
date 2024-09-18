@@ -8306,6 +8306,40 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Product attribute name and numeric interval.</summary>
+    public class GoogleCloudRetailV2ProductAttributeInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric interval (e.g. [10, 20))</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual GoogleCloudRetailV2Interval Interval { get; set; }
+
+        /// <summary>The attribute name (e.g. "length")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Product attribute which structured by an attribute name and value. This structure is used in conversational
+    /// search filters and answers. For example, if we have `name=color` and `value=red`, this means that the color is
+    /// `red`.
+    /// </summary>
+    public class GoogleCloudRetailV2ProductAttributeValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The attribute name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The attribute value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Detailed product information associated with a user event.</summary>
     public class GoogleCloudRetailV2ProductDetail : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9258,6 +9292,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string CanonicalFilter { get; set; }
 
         /// <summary>
+        /// Optional. This field specifies all conversational related parameters addition to traditional retail search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalSearchSpec")]
+        public virtual GoogleCloudRetailV2SearchRequestConversationalSearchSpec ConversationalSearchSpec { get; set; }
+
+        /// <summary>
         /// Deprecated. Refer to https://cloud.google.com/retail/docs/configs#dynamic to enable dynamic facets. Do not
         /// set this field. The specification for dynamically generated facets. Notice that only textual facets can be
         /// dynamically generated.
@@ -9382,6 +9422,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spellCorrectionSpec")]
         public virtual GoogleCloudRetailV2SearchRequestSpellCorrectionSpec SpellCorrectionSpec { get; set; }
 
+        /// <summary>Optional. This field specifies tile navigation related parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tileNavigationSpec")]
+        public virtual GoogleCloudRetailV2SearchRequestTileNavigationSpec TileNavigationSpec { get; set; }
+
         /// <summary>User information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudRetailV2UserInfo UserInfo { get; set; }
@@ -9470,6 +9514,76 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field specifies all conversational related parameters addition to traditional retail search.
+    /// </summary>
+    public class GoogleCloudRetailV2SearchRequestConversationalSearchSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This field specifies the conversation id, which maintains the state of the conversation between client side
+        /// and server side. Use the value from the previous ConversationalSearchResult.conversation_id. For the initial
+        /// request, this should be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>
+        /// This field specifies whether the customer would like to do conversational search. If this field is set to
+        /// true, conversational related extra information will be returned from server side, including follow-up
+        /// question, answer options, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("followupConversationRequested")]
+        public virtual System.Nullable<bool> FollowupConversationRequested { get; set; }
+
+        /// <summary>
+        /// This field specifies the current user answer during the conversational search. This can be either user
+        /// selected from suggested answers or user input plain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAnswer")]
+        public virtual GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer UserAnswer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field specifies the current user answer during the conversational search. This can be either user selected
+    /// from suggested answers or user input plain text.
+    /// </summary>
+    public class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This field specifies the selected attributes during the conversational search. This should be a subset of
+        /// ConversationalSearchResult.suggested_answers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedAnswer")]
+        public virtual GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer SelectedAnswer { get; set; }
+
+        /// <summary>
+        /// This field specifies the incremental input text from the user during the conversational search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAnswer")]
+        public virtual string TextAnswer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This field specifies the selected answers during the conversational search.</summary>
+    public class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This field specifies the selected answer which is a attribute key-value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeValue")]
+        public virtual GoogleCloudRetailV2ProductAttributeValue ProductAttributeValue { get; set; }
+
+        /// <summary>This field is deprecated and should not be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeValues")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2ProductAttributeValue> ProductAttributeValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9680,6 +9794,24 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This field specifies tile navigation related parameters.</summary>
+    public class GoogleCloudRetailV2SearchRequestTileNavigationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This field specifies the tiles which are already clicked in client side. NOTE: This field is not being used
+        /// for filtering search products. Client side should also put all the applied tiles in SearchRequest.filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedTiles")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2Tile> AppliedTiles { get; set; }
+
+        /// <summary>This field specifies whether the customer would like to request tile navigation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tileNavigationRequested")]
+        public virtual System.Nullable<bool> TileNavigationRequested { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for SearchService.Search method.</summary>
     public class GoogleCloudRetailV2SearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9696,6 +9828,13 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionToken")]
         public virtual string AttributionToken { get; set; }
+
+        /// <summary>
+        /// This field specifies all related information that is needed on client side for UI rendering of
+        /// conversational retail search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationalSearchResult")]
+        public virtual GoogleCloudRetailV2SearchResponseConversationalSearchResult ConversationalSearchResult { get; set; }
 
         /// <summary>
         /// Contains the spell corrected query, if found. If the spell correction type is AUTOMATIC, then the search
@@ -9744,11 +9883,95 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2SearchResponseSearchResult> Results { get; set; }
 
         /// <summary>
+        /// This field specifies all related information for tile navigation that will be used in client side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tileNavigationResult")]
+        public virtual GoogleCloudRetailV2SearchResponseTileNavigationResult TileNavigationResult { get; set; }
+
+        /// <summary>
         /// The estimated total count of matched items irrespective of pagination. The count of results returned by
         /// pagination may be less than the total_size that matches.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field specifies all related information that is needed on client side for UI rendering of conversational
+    /// retail search.
+    /// </summary>
+    public class GoogleCloudRetailV2SearchResponseConversationalSearchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This is the incremental additional filters implied from the current user answer. User should add the
+        /// suggested addition filters to the previous SearchRequest.filter, and use the merged filter in the follow up
+        /// search request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalFilter")]
+        public virtual GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter AdditionalFilter { get; set; }
+
+        /// <summary>
+        /// This field is deprecated but will be kept for backward compatibility. There is expected to have only one
+        /// additional filter and the value will be the same to the same as field `additional_filter`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalFilters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter> AdditionalFilters { get; set; }
+
+        /// <summary>
+        /// Conversation UUID. This field will be stored in client side storage to maintain the conversation session
+        /// with server and will be used for next search request's
+        /// SearchRequest.ConversationalSearchSpec.conversation_id to restore conversation state in server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
+        public virtual string ConversationId { get; set; }
+
+        /// <summary>The follow-up question. e.g., `What is the color?`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("followupQuestion")]
+        public virtual string FollowupQuestion { get; set; }
+
+        /// <summary>
+        /// The current refined query for the conversational search. This field will be used in customer UI that the
+        /// query in the search bar should be replaced with the refined query. For example, if SearchRequest.query is
+        /// `dress` and next SearchRequest.ConversationalSearchSpec.UserAnswer.text_answer is `red color`, which does
+        /// not match any product attribute value filters, the refined query will be `dress, red color`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refinedQuery")]
+        public virtual string RefinedQuery { get; set; }
+
+        /// <summary>The answer options provided to client for the follow-up question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer> SuggestedAnswers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional filter that client side need to apply.</summary>
+    public class GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Product attribute value, including an attribute key and an attribute value. Other types can be added here in
+        /// the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeValue")]
+        public virtual GoogleCloudRetailV2ProductAttributeValue ProductAttributeValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggested answers to the follow-up question.</summary>
+    public class GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Product attribute value, including an attribute key and an attribute value. Other types can be added here in
+        /// the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeValue")]
+        public virtual GoogleCloudRetailV2ProductAttributeValue ProductAttributeValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9877,6 +10100,19 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantRollupValues")]
         public virtual System.Collections.Generic.IDictionary<string, object> VariantRollupValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field specifies all related information for tile navigation that will be used in client side.
+    /// </summary>
+    public class GoogleCloudRetailV2SearchResponseTileNavigationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current tiles that are used for tile navigation, sorted by engagement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tiles")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2Tile> Tiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10187,6 +10423,28 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// </summary>
     public class GoogleCloudRetailV2SetInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field specifies the tile information including an attribute key, attribute value. More fields will be added
+    /// in the future, eg: product id or product counts, etc.
+    /// </summary>
+    public class GoogleCloudRetailV2Tile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The product attribute key-numeric interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeInterval")]
+        public virtual GoogleCloudRetailV2ProductAttributeInterval ProductAttributeInterval { get; set; }
+
+        /// <summary>The product attribute key-value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAttributeValue")]
+        public virtual GoogleCloudRetailV2ProductAttributeValue ProductAttributeValue { get; set; }
+
+        /// <summary>The representative product id for this tile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("representativeProductId")]
+        public virtual string RepresentativeProductId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
