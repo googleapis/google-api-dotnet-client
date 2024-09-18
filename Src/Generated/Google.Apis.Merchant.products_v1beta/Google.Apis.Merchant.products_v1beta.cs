@@ -890,10 +890,11 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string GoogleProductCategory { get; set; }
 
         /// <summary>
-        /// Global Trade Item Number ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item.
+        /// Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You
+        /// can provide up to 10 GTINs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; }
+        public virtual System.Collections.Generic.IList<string> Gtin { get; set; }
 
         /// <summary>
         /// Set this value to false when the item does not have unique product identifiers appropriate to its category,
