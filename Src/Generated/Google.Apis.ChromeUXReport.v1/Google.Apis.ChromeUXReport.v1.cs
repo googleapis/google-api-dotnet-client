@@ -362,7 +362,7 @@ namespace Google.Apis.ChromeUXReport.v1.Data
     {
         /// <summary>The proportion of users that experienced this bin's value for the given metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("density")]
-        public virtual System.Nullable<double> Density { get; set; }
+        public virtual object Density { get; set; }
 
         /// <summary>
         /// End is the end of the data bin. If end is not populated, then the bin has no end and is valid from start to
