@@ -2040,6 +2040,27 @@ namespace Google.Apis.MapsPlaces.v1.Data
     }
 
     /// <summary>
+    /// A route polyline. Only supports an [encoded
+    /// polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm), which can be passed as
+    /// a string and includes compression with minimal lossiness. This is the Routes API default output.
+    /// </summary>
+    public class GoogleMapsPlacesV1Polyline : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm), as
+        /// returned by the [Routes API by
+        /// default](https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes#polylineencoding).
+        /// See the [encoder](https://developers.google.com/maps/documentation/utilities/polylineutility) and
+        /// [decoder](https://developers.google.com/maps/documentation/routes/polylinedecoder) tools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encodedPolyline")]
+        public virtual string EncodedPolyline { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Experimental: See
     /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
     /// details. Reference that the generative content is related to.
@@ -2130,6 +2151,110 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>The localized text of the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleTypeLocalizedText Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates a set of optional conditions to satisfy when calculating the routes.</summary>
+    public class GoogleMapsPlacesV1RouteModifiers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When set to true, avoids ferries where reasonable, giving preference to routes not containing
+        /// ferries. Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avoidFerries")]
+        public virtual System.Nullable<bool> AvoidFerries { get; set; }
+
+        /// <summary>
+        /// Optional. When set to true, avoids highways where reasonable, giving preference to routes not containing
+        /// highways. Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avoidHighways")]
+        public virtual System.Nullable<bool> AvoidHighways { get; set; }
+
+        /// <summary>
+        /// Optional. When set to true, avoids navigating indoors where reasonable, giving preference to routes not
+        /// containing indoor navigation. Applies only to the `WALK` `TravelMode`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avoidIndoor")]
+        public virtual System.Nullable<bool> AvoidIndoor { get; set; }
+
+        /// <summary>
+        /// Optional. When set to true, avoids toll roads where reasonable, giving preference to routes not containing
+        /// toll roads. Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avoidTolls")]
+        public virtual System.Nullable<bool> AvoidTolls { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to configure the routing calculations to the places in the response, both along a route (where result
+    /// ranking will be influenced) and for calculating travel times on results.
+    /// </summary>
+    public class GoogleMapsPlacesV1RoutingParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An explicit routing origin that overrides the origin defined in the polyline. By default, the
+        /// polyline origin is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual GoogleTypeLatLng Origin { get; set; }
+
+        /// <summary>Optional. The route modifiers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeModifiers")]
+        public virtual GoogleMapsPlacesV1RouteModifiers RouteModifiers { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies how to compute the routing summaries. The server attempts to use the selected routing
+        /// preference to compute the route. The traffic aware routing preference is only available for the `DRIVE` or
+        /// `TWO_WHEELER` `travelMode`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingPreference")]
+        public virtual string RoutingPreference { get; set; }
+
+        /// <summary>Optional. The travel mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("travelMode")]
+        public virtual string TravelMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The duration and distance from the routing origin to a place in the response, and a second leg from that place
+    /// to the destination, if requested. **Note:** Adding `routingSummaries` in the field mask without also including
+    /// either the `routingParameters.origin` parameter or the `searchAlongRouteParameters.polyline.encodedPolyline`
+    /// parameter in the request causes an error.
+    /// </summary>
+    public class GoogleMapsPlacesV1RoutingSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The legs of the trip. When you calculate travel duration and distance from a set origin, `legs` contains a
+        /// single leg containing the duration and distance from the origin to the destination. When you do a search
+        /// along route, `legs` contains two legs: one from the origin to place, and one from the place to the
+        /// destination.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legs")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1RoutingSummaryLeg> Legs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A leg is a single portion of a journey from one location to another.</summary>
+    public class GoogleMapsPlacesV1RoutingSummaryLeg : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The distance of this leg of the trip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceMeters")]
+        public virtual System.Nullable<int> DistanceMeters { get; set; }
+
+        /// <summary>The time it takes to complete this leg of the trip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2229,6 +2354,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        /// <summary>Optional. Parameters that affect the routing to the search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingParameters")]
+        public virtual GoogleMapsPlacesV1RoutingParameters RoutingParameters { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2253,6 +2382,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("places")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Place> Places { get; set; }
+
+        /// <summary>
+        /// A list of routing summaries where each entry associates to the corresponding place in the same index in the
+        /// `places` field. If the routing summary is not available for one of the places, it will contain an empty
+        /// entry. This list should have as many entries as the list of places if requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingSummaries")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1RoutingSummary> RoutingSummaries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2360,6 +2497,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        /// <summary>Optional. Additional parameters for routing to results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingParameters")]
+        public virtual GoogleMapsPlacesV1RoutingParameters RoutingParameters { get; set; }
+
+        /// <summary>Optional. Additional parameters proto for searching along a route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAlongRouteParameters")]
+        public virtual GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters SearchAlongRouteParameters { get; set; }
+
         /// <summary>
         /// Used to set strict type filtering for included_type. If set to true, only results of the same type will be
         /// returned. Default to false.
@@ -2438,6 +2583,27 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Specifies a precalculated polyline from the [Routes
+    /// API](https://developers.google.com/maps/documentation/routes) defining the route to search. Searching along a
+    /// route is similar to using the `locationBias` or `locationRestriction` request option to bias the search results.
+    /// However, while the `locationBias` and `locationRestriction` options let you specify a region to bias the search
+    /// results, this option lets you bias the results along a trip route. Results are not guaranteed to be along the
+    /// route provided, but rather are ranked within the search area defined by the polyline and, optionally, by the
+    /// `locationBias` or `locationRestriction` based on minimal detour times from origin to destination. The results
+    /// might be along an alternate route, especially if the provided polyline does not define an optimal route from
+    /// origin to destination.
+    /// </summary>
+    public class GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The route polyline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("polyline")]
+        public virtual GoogleMapsPlacesV1Polyline Polyline { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response proto for SearchText. </summary>
     public class GoogleMapsPlacesV1SearchTextResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2463,6 +2629,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>A list of places that meet the user's text search criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("places")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Place> Places { get; set; }
+
+        /// <summary>
+        /// A list of routing summaries where each entry associates to the corresponding place in the same index in the
+        /// `places` field. If the routing summary is not available for one of the places, it will contain an empty
+        /// entry. This list will have as many entries as the list of places if requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingSummaries")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1RoutingSummary> RoutingSummaries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
