@@ -1075,9 +1075,10 @@ namespace Google.Apis.WorkflowExecutions.v1
                         /// <summary>
                         /// Optional. Filters applied to the `[Executions.ListExecutions]` results. The following fields
                         /// are supported for filtering: `executionId`, `state`, `createTime`, `startTime`, `endTime`,
-                        /// `duration`, `workflowRevisionId`, `stepName`, and `label`. For details, see AIP-160. For
-                        /// more information, see Filter executions. For example, if you are using the Google APIs
-                        /// Explorer: `state="SUCCEEDED"` or `startTime&amp;gt;"2023-08-01" AND state="FAILED"`
+                        /// `duration`, `workflowRevisionId`, `stepName`, `label`, and
+                        /// `disableConcurrencyQuotaOverflowBuffering`. For details, see AIP-160. For more information,
+                        /// see Filter executions. For example, if you are using the Google APIs Explorer:
+                        /// `state="SUCCEEDED"` or `startTime&amp;gt;"2023-08-01" AND state="FAILED"`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -1502,7 +1503,10 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
 
         private object _startTime;
 
-        /// <summary>Output only. Marks the beginning of execution.</summary>
+        /// <summary>
+        /// Output only. Marks the beginning of execution. Note that this will be the same as `createTime` for
+        /// executions that start immediately.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
