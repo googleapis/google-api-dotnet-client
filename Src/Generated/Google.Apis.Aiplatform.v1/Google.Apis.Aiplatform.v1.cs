@@ -39320,6 +39320,59 @@ namespace Google.Apis.Aiplatform.v1
                     }
 
                     /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Gets the latest state of a long-running operation. Clients can use this method to poll the
                     /// operation result at intervals as recommended by the API service.
                     /// </summary>
@@ -39727,6 +39780,65 @@ namespace Google.Apis.Aiplatform.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Rebase a TunedModel.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location into which to rebase the Model. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual RebaseTunedModelRequest RebaseTunedModel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RebaseTunedModelRequest body, string parent)
+                {
+                    return new RebaseTunedModelRequest(this.service, body, parent);
+                }
+
+                /// <summary>Rebase a TunedModel.</summary>
+                public class RebaseTunedModelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new RebaseTunedModel request.</summary>
+                    public RebaseTunedModelRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RebaseTunedModelRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location into which to rebase the Model. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RebaseTunedModelRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rebaseTunedModel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tuningJobs:rebaseTunedModel";
+
+                    /// <summary>Initializes RebaseTunedModel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -42396,6 +42508,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. Index of the candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>Output only. Log-likelihood scores for the response tokens and top tokens</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logprobsResult")]
+        public virtual GoogleCloudAiplatformV1LogprobsResult LogprobsResult { get; set; }
 
         /// <summary>
         /// Output only. List of ratings for the safety of a response candidate. There is at most one rating per
@@ -49540,6 +49656,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Candidate> Candidates { get; set; }
 
+        /// <summary>Output only. The model version used to generate the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
+
         /// <summary>
         /// Output only. Content filter results for a prompt sent in the request. Note: Sent only in the first stream
         /// chunk. Only happens when no candidates were generated due to content violations.
@@ -49607,6 +49727,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyPenalty")]
         public virtual System.Nullable<float> FrequencyPenalty { get; set; }
 
+        /// <summary>Optional. Logit probabilities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logprobs")]
+        public virtual System.Nullable<int> Logprobs { get; set; }
+
         /// <summary>Optional. The maximum number of output tokens to generate per message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
         public virtual System.Nullable<int> MaxOutputTokens { get; set; }
@@ -49614,6 +49738,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Positive penalties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
         public virtual System.Nullable<float> PresencePenalty { get; set; }
+
+        /// <summary>Optional. If true, export the logprobs results in response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseLogprobs")]
+        public virtual System.Nullable<bool> ResponseLogprobs { get; set; }
 
         /// <summary>
         /// Optional. Output response mimetype of the generated candidate text. Supported mimetype: - `text/plain`:
@@ -52023,6 +52151,53 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>List of TuningJobs in the requested page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tuningJobs")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1TuningJob> TuningJobs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Logprobs Result</summary>
+    public class GoogleCloudAiplatformV1LogprobsResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Length = total number of decoding steps. The chosen candidates may or may not be in top_candidates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chosenCandidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1LogprobsResultCandidate> ChosenCandidates { get; set; }
+
+        /// <summary>Length = total number of decoding steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topCandidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1LogprobsResultTopCandidates> TopCandidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Candidate for the logprobs token and score.</summary>
+    public class GoogleCloudAiplatformV1LogprobsResultCandidate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The candidate's log probability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logProbability")]
+        public virtual System.Nullable<float> LogProbability { get; set; }
+
+        /// <summary>The candidate’s token string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>The candidate’s token id value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenId")]
+        public virtual System.Nullable<int> TokenId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Candidates with top log probabilities at each decoding step.</summary>
+    public class GoogleCloudAiplatformV1LogprobsResultTopCandidates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sorted by log probability in descending order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1LogprobsResultCandidate> Candidates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58557,6 +58732,34 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for GenAiTuningService.RebaseTunedModel.</summary>
+    public class GoogleCloudAiplatformV1RebaseTunedModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Google Cloud Storage location to write the artifacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactDestination")]
+        public virtual GoogleCloudAiplatformV1GcsDestination ArtifactDestination { get; set; }
+
+        /// <summary>
+        /// Optional. By default, bison to gemini migration will always create new model/endpoint, but for gemini-1.0 to
+        /// gemini-1.5 migration, we default deploy to the same endpoint. See details in this Section.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployToSameEndpoint")]
+        public virtual System.Nullable<bool> DeployToSameEndpoint { get; set; }
+
+        /// <summary>Required. TunedModel reference to retrieve the legacy model information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tunedModelRef")]
+        public virtual GoogleCloudAiplatformV1TunedModelRef TunedModelRef { get; set; }
+
+        /// <summary>
+        /// Optional. The TuningJob to be updated. Users can use this TuningJob field to overwrite tuning configs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningJob")]
+        public virtual GoogleCloudAiplatformV1TuningJob TuningJob { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of operations that perform reboot PersistentResource.</summary>
     public class GoogleCloudAiplatformV1RebootPersistentResourceOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -59652,6 +59855,12 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The value should be validated against any (one or more) of the subschemas in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anyOf")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Schema> AnyOf { get; set; }
+
         /// <summary>Optional. Default value of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
         public virtual object Default__ { get; set; }
@@ -66443,7 +66652,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// Optional. Function tool type. One or more function declarations to be passed to the model along with the
         /// current user query. Model may decide to call a subset of these functions by populating FunctionCall in the
         /// response. User should provide a FunctionResponse for each function call in the next turn. Based on the
-        /// function responses, Model will generate the final response back to the user. Maximum 64 function
+        /// function responses, Model will generate the final response back to the user. Maximum 128 function
         /// declarations can be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
@@ -67204,6 +67413,25 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TunedModel Reference for legacy model migration.</summary>
+    public class GoogleCloudAiplatformV1TunedModelRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Support migration from tuning job list page, from bison model to gemini model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineJob")]
+        public virtual string PipelineJob { get; set; }
+
+        /// <summary>Support migration from model registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tunedModel")]
+        public virtual string TunedModel { get; set; }
+
+        /// <summary>Support migration from tuning job list page, from gemini-1.0-pro-002 to 1.5 and above.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningJob")]
+        public virtual string TuningJob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
