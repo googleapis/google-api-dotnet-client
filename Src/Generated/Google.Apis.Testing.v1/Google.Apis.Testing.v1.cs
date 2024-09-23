@@ -1286,6 +1286,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>Output only. Lab info of this device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labInfo")]
+        public virtual LabInfo LabInfo { get; set; }
+
         /// <summary>
         /// True if and only if tests with this model are recorded by stitching together screenshots. See
         /// use_low_spec_video_recording in device config.
@@ -2403,6 +2407,19 @@ namespace Google.Apis.Testing.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xctestrun")]
         public virtual FileReference Xctestrun { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Lab specific information for a device.</summary>
+    public class LabInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Lab name where the device is hosted. If empty, the device is hosted in a Google owned lab.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
