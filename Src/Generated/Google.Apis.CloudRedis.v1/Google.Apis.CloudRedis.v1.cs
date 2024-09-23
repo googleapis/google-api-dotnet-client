@@ -2385,7 +2385,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Collections.Generic.IList<PscConfig> PscConfigs { get; set; }
 
         /// <summary>
-        /// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
+        /// Output only. The list of PSC connections that are auto-created through service connectivity automation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnections")]
         public virtual System.Collections.Generic.IList<PscConnection> PscConnections { get; set; }
@@ -2572,47 +2572,6 @@ namespace Google.Apis.CloudRedis.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        private string _scheduleDeadlineTimeRaw;
-
-        private object _scheduleDeadlineTime;
-
-        /// <summary>
-        /// Output only. The deadline that the maintenance schedule start time can not go beyond, including reschedule.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
-        public virtual string ScheduleDeadlineTimeRaw
-        {
-            get => _scheduleDeadlineTimeRaw;
-            set
-            {
-                _scheduleDeadlineTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _scheduleDeadlineTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleDeadlineTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleDeadlineTimeDateTimeOffset instead.")]
-        public virtual object ScheduleDeadlineTime
-        {
-            get => _scheduleDeadlineTime;
-            set
-            {
-                _scheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _scheduleDeadlineTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleDeadlineTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleDeadlineTimeRaw);
-            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
         private string _startTimeRaw;
 
         private object _startTime;
@@ -2679,10 +2638,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Allows to define schedule that runs specified day of the week.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual string Day { get; set; }
-
-        /// <summary>Duration of the time window.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; }
 
         /// <summary>Start time of the window in UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -4060,6 +4015,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
         public virtual System.Nullable<long> MemorySizeInBytes { get; set; }
 
+        /// <summary>Optional. Number of shards (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
+        public virtual System.Nullable<int> ShardCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4726,33 +4685,40 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>Details of consumer resources in a PSC connection.</summary>
     public class PscConnection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The IP allocated on the consumer network for the PSC forwarding rule.</summary>
+        /// <summary>Required. The IP allocated on the consumer network for the PSC forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
 
         /// <summary>
-        /// Output only. The URI of the consumer side forwarding rule. Example:
+        /// Required. The URI of the consumer side forwarding rule. Example:
         /// projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
 
         /// <summary>
-        /// The consumer network where the IP address resides, in the form of
+        /// Required. The consumer network where the IP address resides, in the form of
         /// projects/{project_id}/global/networks/{network_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Output only. The consumer project_id where the forwarding rule is created from.</summary>
+        /// <summary>Optional. Project ID of the consumer project where the forwarding rule is created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
         /// <summary>
-        /// Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+        /// Optional. The PSC connection id of the forwarding rule connected to the service attachment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionId")]
         public virtual string PscConnectionId { get; set; }
+
+        /// <summary>
+        /// Required. The service attachment which is the target of the PSC connection, in the form of
+        /// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
+        public virtual string ServiceAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
