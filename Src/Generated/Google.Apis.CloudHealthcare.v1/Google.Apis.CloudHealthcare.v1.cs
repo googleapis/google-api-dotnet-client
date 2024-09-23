@@ -13123,7 +13123,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Notification destination for new DICOM instances. Supplied by the client.</summary>
+        /// <summary>Optional. Notification destination for new DICOM instances. Supplied by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
 
@@ -13703,8 +13703,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class FhirNotificationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on.
-        /// Supplied by the client. The notification is a `PubsubMessage` with the following fields: *
+        /// Optional. The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are
+        /// published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: *
         /// `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification.
         /// It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message
         /// was published. Note that notifications are only sent if the topic is non-empty. [Topic
@@ -13719,16 +13719,18 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
 
-        /// <summary>Whether to send full FHIR resource to this Pub/Sub topic. The default value is false.</summary>
+        /// <summary>
+        /// Optional. Whether to send full FHIR resource to this Pub/Sub topic. The default value is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendFullResource")]
         public virtual System.Nullable<bool> SendFullResource { get; set; }
 
         /// <summary>
-        /// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. The default value is
-        /// false. Note that setting this to true does not guarantee that all previous resources will be sent in the
-        /// format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource
-        /// name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine
-        /// whether it needs to fetch the full previous resource as a separate operation.
+        /// Optional. Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. The default
+        /// value is false. Note that setting this to true does not guarantee that all previous resources will be sent
+        /// in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the
+        /// resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to
+        /// determine whether it needs to fetch the full previous resource as a separate operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendPreviousResourceOnDelete")]
         public virtual System.Nullable<bool> SendPreviousResourceOnDelete { get; set; }
@@ -13752,11 +13754,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ComplexDataTypeReferenceParsing { get; set; }
 
         /// <summary>
-        /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an
-        /// error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient`
-        /// which ignores unrecognized search parameters. The handling can always be changed from the default on an
-        /// individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
-        /// Defaults to false.
+        /// Optional. If true, overrides the default search behavior for this FHIR store to `handling=strict` which
+        /// returns an error for unrecognized search parameters. If false, uses the FHIR specification default
+        /// `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the
+        /// default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer:
+        /// handling=lenient`. Defaults to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSearchHandlingStrict")]
         public virtual System.Nullable<bool> DefaultSearchHandlingStrict { get; set; }
@@ -13782,7 +13784,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Nullable<bool> DisableResourceVersioning { get; set; }
 
         /// <summary>
-        /// Whether this FHIR store has the [updateCreate
+        /// Optional. Whether this FHIR store has the [updateCreate
         /// capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate).
         /// This determines if the client can use an Update operation to create a new resource with a client-specified
         /// ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent
@@ -13819,16 +13821,16 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
 
-        /// <summary>Specifies where and whether to send notifications upon changes to a FHIR store.</summary>
+        /// <summary>Optional. Specifies where and whether to send notifications upon changes to a FHIR store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigs")]
         public virtual System.Collections.Generic.IList<FhirNotificationConfig> NotificationConfigs { get; set; }
 
         /// <summary>
-        /// A list of streaming configs that configure the destinations of streaming export for every resource mutation
-        /// in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added,
-        /// the next resource mutation is streamed to the new location in addition to the existing ones. When a location
-        /// is removed from the list, the server stops streaming to that location. Before adding a new config, you must
-        /// add the required
+        /// Optional. A list of streaming configs that configure the destinations of streaming export for every resource
+        /// mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is
+        /// added, the next resource mutation is streamed to the new location in addition to the existing ones. When a
+        /// location is removed from the list, the server stops streaming to that location. Before adding a new config,
+        /// you must add the required
         /// [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to
         /// your project's **Cloud Healthcare Service Agent** [service
         /// account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of
@@ -14162,28 +14164,29 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class GoogleCloudHealthcareV1FhirBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
+        /// Optional. BigQuery URI to an existing dataset, up to 2000 characters long, in the format
+        /// `bq://projectId.bqDatasetId`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetUri")]
         public virtual string DatasetUri { get; set; }
 
         /// <summary>
-        /// The default value is false. If this flag is `TRUE`, all tables are deleted from the dataset before the new
-        /// exported tables are written. If the flag is not set and the destination dataset contains tables, the export
-        /// call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is
+        /// Optional. The default value is false. If this flag is `TRUE`, all tables are deleted from the dataset before
+        /// the new exported tables are written. If the flag is not set and the destination dataset contains tables, the
+        /// export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is
         /// equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to
         /// write_disposition=WRITE_TRUNCATE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
 
-        /// <summary>The configuration for the exported BigQuery schema.</summary>
+        /// <summary>Optional. The configuration for the exported BigQuery schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaConfig")]
         public virtual SchemaConfig SchemaConfig { get; set; }
 
         /// <summary>
-        /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the
-        /// tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
+        /// Optional. Determines if existing data in the destination dataset is overwritten, appended to, or not written
+        /// if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
@@ -14285,34 +14288,35 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class Hl7V2NotificationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The
-        /// following syntax is available: * A string field value can be written as text inside quotation marks, for
-        /// example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is
-        /// searched within the field, rather than having the field be equal to the text. For example, `"Comment =
-        /// great"` returns messages with `great` in the comment field. * A number field value can be written as an
-        /// integer, a decimal, or an exponential. The valid relational operators for number fields are the equality
-        /// operator (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`,
-        /// `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an
-        /// expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and
-        /// time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid
-        /// relational operators for date fields are the equality operator (`=`) , along with the less than/greater than
-        /// operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`)
-        /// operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query
-        /// expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a
-        /// boolean operator appears within a quoted string, it is not treated as special, it's just another part of the
-        /// character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The
-        /// following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For
-        /// example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent
-        /// in the dataset's time_zone, from the MSH-7 segment. For example, `send_date &amp;lt; "2017-01-02"`. *
-        /// `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from
-        /// the MSH-7 segment. For example, `send_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `create_time`, the
-        /// timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For
-        /// example, `create_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the
-        /// message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`,
-        /// which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3,
-        /// or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with
-        /// key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can
-        /// be used to assert the existence of a label. For example, `labels."priority":*`.
+        /// Optional. Restricts notifications sent for messages matching a filter. If this is empty, all messages are
+        /// matched. The following syntax is available: * A string field value can be written as text inside quotation
+        /// marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`),
+        /// where text is searched within the field, rather than having the field be equal to the text. For example,
+        /// `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be
+        /// written as an integer, a decimal, or an exponential. The valid relational operators for number fields are
+        /// the equality operator (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
+        /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT`
+        /// operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields
+        /// with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days.
+        /// The valid relational operators for date fields are the equality operator (`=`) , along with the less
+        /// than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no
+        /// inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple
+        /// field query expressions can be combined in one query by adding `AND` or `OR` operators between the
+        /// expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just
+        /// another part of the character string to be matched. You can prepend the `NOT` operator to an expression to
+        /// negate it. The following fields and functions are available for filtering: * `message_type`, from the
+        /// MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the
+        /// message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date &amp;lt;
+        /// "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for
+        /// comparisons, from the MSH-7 segment. For example, `send_time &amp;lt; "2017-01-02T00:00:00-05:00"`. *
+        /// `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format
+        /// for comparisons. For example, `create_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `send_facility`, the
+        /// care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. *
+        /// `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and
+        /// type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a
+        /// string value of the label with key `x` as set using the Message.labels map. For example,
+        /// `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example,
+        /// `labels."priority":*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -14358,21 +14362,23 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// A list of notification configs. Each configuration uses a filter to determine whether to publish a message
-        /// (both Ingest &amp;amp; Create) on the corresponding notification destination. Only the message name is sent
-        /// as part of the notification. Supplied by the client.
+        /// Optional. A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        /// message (both Ingest &amp;amp; Create) on the corresponding notification destination. Only the message name
+        /// is sent as part of the notification. Supplied by the client.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigs")]
         public virtual System.Collections.Generic.IList<Hl7V2NotificationConfig> NotificationConfigs { get; set; }
 
-        /// <summary>The configuration for the parser. It determines how the server parses the messages.</summary>
+        /// <summary>
+        /// Optional. The configuration for the parser. It determines how the server parses the messages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parserConfig")]
         public virtual ParserConfig ParserConfig { get; set; }
 
         /// <summary>
-        /// Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as
-        /// a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning
-        /// that the store accepts the duplicate messages and it also returns the same ACK message in the
+        /// Optional. Determines whether to reject duplicate messages. A duplicate message is a message with the same
+        /// raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is
+        /// false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the
         /// IngestMessageResponse as has been returned previously. Note that only one resource is created in the store.
         /// When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be
         /// rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
@@ -15263,11 +15269,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>The configuration for the parser. It determines how the server parses the messages.</summary>
     public class ParserConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Determines whether messages with no header are allowed.</summary>
+        /// <summary>Optional. Determines whether messages with no header are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowNullHeader")]
         public virtual System.Nullable<bool> AllowNullHeader { get; set; }
 
-        /// <summary>Schemas used to parse messages in this store, if schematized parsing is desired.</summary>
+        /// <summary>
+        /// Optional. Schemas used to parse messages in this store, if schematized parsing is desired.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual SchemaPackage Schema { get; set; }
 
@@ -15825,33 +15833,35 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class SchemaPackage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any
-        /// group, segment, field, component, or subcomponent.
+        /// Optional. Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can
+        /// omit any group, segment, field, component, or subcomponent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreMinOccurs")]
         public virtual System.Nullable<bool> IgnoreMinOccurs { get; set; }
 
         /// <summary>
-        /// Schema configs that are layered based on their VersionSources that match the incoming message. Schema
-        /// configs present in higher indices override those in lower indices with the same message type and trigger
-        /// event if their VersionSources all match an incoming message.
+        /// Optional. Schema configs that are layered based on their VersionSources that match the incoming message.
+        /// Schema configs present in higher indices override those in lower indices with the same message type and
+        /// trigger event if their VersionSources all match an incoming message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
         public virtual System.Collections.Generic.IList<Hl7SchemaConfig> Schemas { get; set; }
 
-        /// <summary>Determines how messages that fail to parse are handled.</summary>
+        /// <summary>Optional. Determines how messages that fail to parse are handled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schematizedParsingType")]
         public virtual string SchematizedParsingType { get; set; }
 
         /// <summary>
-        /// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type
-        /// definitions present in higher indices override those in lower indices with the same type name if their
-        /// VersionSources all match an incoming message.
+        /// Optional. Schema type definitions that are layered based on their VersionSources that match the incoming
+        /// message. Type definitions present in higher indices override those in lower indices with the same type name
+        /// if their VersionSources all match an incoming message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<Hl7TypesConfig> Types { get; set; }
 
-        /// <summary>Determines how unexpected segments (segments not matched to the schema) are handled.</summary>
+        /// <summary>
+        /// Optional. Determines how unexpected segments (segments not matched to the schema) are handled.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedSegmentHandling")]
         public virtual string UnexpectedSegmentHandling { get; set; }
 
@@ -16130,17 +16140,17 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class StreamConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The destination BigQuery structure that contains both the dataset location and corresponding schema config.
-        /// The output is organized in one table per resource type. The server reuses the existing tables (if any) that
-        /// are named after the resource types. For example, "Patient", "Observation". When there is no existing table
-        /// for a given resource type, the server attempts to create one. When a table schema doesn't align with the
-        /// schema config, either because of existing incompatible schema or out of band incompatible modification, the
-        /// server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore
-        /// any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this
-        /// case is to delete the incompatible table and let the server recreate one, though the newly created table
-        /// only contains data after the table recreation. Results are written to BigQuery tables according to the
-        /// parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are
-        /// distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE)
+        /// Optional. The destination BigQuery structure that contains both the dataset location and corresponding
+        /// schema config. The output is organized in one table per resource type. The server reuses the existing tables
+        /// (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no
+        /// existing table for a given resource type, the server attempts to create one. When a table schema doesn't
+        /// align with the schema config, either because of existing incompatible schema or out of band incompatible
+        /// modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row
+        /// size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One
+        /// resolution in this case is to delete the incompatible table and let the server recreate one, though the
+        /// newly created table only contains data after the table recreation. Results are written to BigQuery tables
+        /// according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource
+        /// are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE)
         /// that results in the new version is recorded in the meta.tag. The tables contain all historical resource
         /// versions since streaming was enabled. For query convenience, the server also creates one view per table of
         /// the same name containing only the current resource version. The streamed data in the BigQuery dataset is not
@@ -16172,7 +16182,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual DeidentifiedStoreDestination DeidentifiedStoreDestination { get; set; }
 
         /// <summary>
-        /// Supply a FHIR resource type (such as "Patient" or "Observation"). See
+        /// Optional. Supply a FHIR resource type (such as "Patient" or "Observation"). See
         /// https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server
         /// treats an empty list as an intent to stream all the supported resource types in this FHIR store.
         /// </summary>
