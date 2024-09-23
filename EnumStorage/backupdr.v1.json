@@ -7,5 +7,25 @@
   "Google.Apis.Backupdr.v1.BackupdrBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.Backupdr.v1.ProjectsResource+LocationsResource+BackupVaultsResource+DataSourcesResource+BackupsResource+GetRequest.ViewEnum": [
+    "BACKUP_VIEW_UNSPECIFIED",
+    "BACKUP_VIEW_BASIC",
+    "BACKUP_VIEW_FULL"
+  ],
+  "Google.Apis.Backupdr.v1.ProjectsResource+LocationsResource+BackupVaultsResource+DataSourcesResource+BackupsResource+ListRequest.ViewEnum": [
+    "BACKUP_VIEW_UNSPECIFIED",
+    "BACKUP_VIEW_BASIC",
+    "BACKUP_VIEW_FULL"
+  ],
+  "Google.Apis.Backupdr.v1.ProjectsResource+LocationsResource+BackupVaultsResource+GetRequest.ViewEnum": [
+    "BACKUP_VAULT_VIEW_UNSPECIFIED",
+    "BACKUP_VAULT_VIEW_BASIC",
+    "BACKUP_VAULT_VIEW_FULL"
+  ],
+  "Google.Apis.Backupdr.v1.ProjectsResource+LocationsResource+BackupVaultsResource+ListRequest.ViewEnum": [
+    "BACKUP_VAULT_VIEW_UNSPECIFIED",
+    "BACKUP_VAULT_VIEW_BASIC",
+    "BACKUP_VAULT_VIEW_FULL"
   ]
 }
