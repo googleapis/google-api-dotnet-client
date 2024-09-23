@@ -1187,6 +1187,35 @@ namespace Google.Apis.Backupdr.v1
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
+                            /// <summary>
+                            /// Optional. Reserved for future use to provide a BASIC &amp;amp; FULL view of Backup
+                            /// resource.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>
+                            /// Optional. Reserved for future use to provide a BASIC &amp;amp; FULL view of Backup
+                            /// resource.
+                            /// </summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>If the value is not set, the default 'FULL' view is used.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_UNSPECIFIED")]
+                                BACKUPVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Includes basic data about the Backup, but not the full contents.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_BASIC")]
+                                BACKUPVIEWBASIC = 1,
+
+                                /// <summary>
+                                /// Includes all data about the Backup. This is the default value (for both ListBackups
+                                /// and GetBackup).
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_FULL")]
+                                BACKUPVIEWFULL = 2,
+                            }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
@@ -1207,6 +1236,14 @@ namespace Google.Apis.Backupdr.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+/backups/[^/]+$",
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -1263,6 +1300,35 @@ namespace Google.Apis.Backupdr.v1
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
+                            /// <summary>
+                            /// Optional. Reserved for future use to provide a BASIC &amp;amp; FULL view of Backup
+                            /// resource.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>
+                            /// Optional. Reserved for future use to provide a BASIC &amp;amp; FULL view of Backup
+                            /// resource.
+                            /// </summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>If the value is not set, the default 'FULL' view is used.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_UNSPECIFIED")]
+                                BACKUPVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Includes basic data about the Backup, but not the full contents.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_BASIC")]
+                                BACKUPVIEWBASIC = 1,
+
+                                /// <summary>
+                                /// Includes all data about the Backup. This is the default value (for both ListBackups
+                                /// and GetBackup).
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("BACKUP_VIEW_FULL")]
+                                BACKUPVIEWFULL = 2,
+                            }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
@@ -1311,6 +1377,14 @@ namespace Google.Apis.Backupdr.v1
                                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2457,6 +2531,33 @@ namespace Google.Apis.Backupdr.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. Reserved for future use to provide a BASIC &amp;amp; FULL view of Backup Vault
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Reserved for future use to provide a BASIC &amp;amp; FULL view of Backup Vault
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>If the value is not set, the default 'FULL' view is used.</summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VAULT_VIEW_UNSPECIFIED")]
+                        BACKUPVAULTVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Includes basic data about the Backup Vault, but not the full contents.</summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VAULT_VIEW_BASIC")]
+                        BACKUPVAULTVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Includes all data about the Backup Vault. This is the default value (for both
+                        /// ListBackupVaults and GetBackupVault).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VAULT_VIEW_FULL")]
+                        BACKUPVAULTVIEWFULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -2477,6 +2578,14 @@ namespace Google.Apis.Backupdr.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2531,6 +2640,33 @@ namespace Google.Apis.Backupdr.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. Reserved for future use to provide a BASIC &amp;amp; FULL view of Backup Vault.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Reserved for future use to provide a BASIC &amp;amp; FULL view of Backup Vault.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>If the value is not set, the default 'FULL' view is used.</summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VAULT_VIEW_UNSPECIFIED")]
+                        BACKUPVAULTVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Includes basic data about the Backup Vault, but not the full contents.</summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VAULT_VIEW_BASIC")]
+                        BACKUPVAULTVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Includes all data about the Backup Vault. This is the default value (for both
+                        /// ListBackupVaults and GetBackupVault).
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BACKUP_VAULT_VIEW_FULL")]
+                        BACKUPVAULTVIEWFULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -2579,6 +2715,14 @@ namespace Google.Apis.Backupdr.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
