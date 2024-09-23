@@ -4433,7 +4433,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>A default identity in the Identity and Access Management API.</summary>
     public class V1DefaultIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The email address of the default identity.</summary>
+        /// <summary>
+        /// The email address of the default identity. Calling GenerateDefaultIdentity with a deleted or purged default
+        /// identity should expect does_not_exist@invalid-project.iam.gserviceaccount.com placeholder email.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
