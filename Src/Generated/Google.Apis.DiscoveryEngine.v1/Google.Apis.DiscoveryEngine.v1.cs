@@ -14948,11 +14948,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual string Document { get; set; }
 
-        /// <summary>List of document contexts.</summary>
+        /// <summary>
+        /// List of document contexts. The content will be used for Answer Generation. This is supposed to be the main
+        /// content of the document that can be long and comprehensive.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext> DocumentContexts { get; set; }
 
-        /// <summary>List of extractive answers.</summary>
+        /// <summary>
+        /// Deprecated: This field is deprecated and will have no effect on the Answer generation. Please use
+        /// document_contexts and extractive_segments fields. List of extractive answers.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractiveAnswers")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer> ExtractiveAnswers { get; set; }
 
@@ -14975,7 +14981,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Document context.</summary>
     public class GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Document content.</summary>
+        /// <summary>Document content to be used for answer generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
@@ -15006,7 +15012,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
     /// <summary>
     /// Extractive segment.
-    /// [Guide](https://cloud.google.com/generative-ai-app-builder/docs/snippets#extractive-segments)
+    /// [Guide](https://cloud.google.com/generative-ai-app-builder/docs/snippets#extractive-segments) Answer generation
+    /// will only use it if document_contexts is empty. This is supposed to be shorter snippets.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment : Google.Apis.Requests.IDirectResponseSchema
     {
