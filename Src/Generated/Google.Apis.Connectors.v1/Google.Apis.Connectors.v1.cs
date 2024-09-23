@@ -5768,6 +5768,12 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
+        /// <summary>
+        /// Optional. The client secret assigned to the Google Cloud Connectors OAuth app for the connector data source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual Secret ClientSecret { get; set; }
+
         /// <summary>Whether to enable PKCE for the auth code flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePkce")]
         public virtual System.Nullable<bool> EnablePkce { get; set; }
