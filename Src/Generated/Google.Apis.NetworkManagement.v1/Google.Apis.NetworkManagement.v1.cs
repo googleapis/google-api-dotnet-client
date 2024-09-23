@@ -2659,16 +2659,24 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>For display only. Metadata associated with a Compute Engine network.</summary>
+    /// <summary>For display only. Metadata associated with a Compute Engine network. Next ID: 7</summary>
     public class NetworkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of a Compute Engine network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The IP range that matches the test.</summary>
+        /// <summary>The IP range of the subnet matching the source IP address of the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedIpRange")]
         public virtual string MatchedIpRange { get; set; }
+
+        /// <summary>URI of the subnet matching the source IP address of the test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedSubnetUri")]
+        public virtual string MatchedSubnetUri { get; set; }
+
+        /// <summary>The region of the subnet matching the source IP address of the test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
 
         /// <summary>URI of a Compute Engine network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -3172,6 +3180,20 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// <summary>For display only. Metadata associated with a Compute Engine route.</summary>
     public class RouteInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// For advertised routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel,
+        /// Interconnect attachment, NCC router appliance) the advertised prefix is advertised through, or URI of the
+        /// source peered network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedRouteNextHopUri")]
+        public virtual string AdvertisedRouteNextHopUri { get; set; }
+
+        /// <summary>
+        /// For advertised dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedRouteSourceRouterUri")]
+        public virtual string AdvertisedRouteSourceRouterUri { get; set; }
+
         /// <summary>Destination IP range of the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destIpRange")]
         public virtual string DestIpRange { get; set; }
@@ -3216,6 +3238,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
         public virtual System.Collections.Generic.IList<string> Protocols { get; set; }
 
+        /// <summary>Region of the route (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
         /// <summary>Indicates where route is applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeScope")]
         public virtual string RouteScope { get; set; }
@@ -3232,10 +3258,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("srcPortRanges")]
         public virtual System.Collections.Generic.IList<string> SrcPortRanges { get; set; }
 
-        /// <summary>
-        /// URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from
-        /// Google Cloud VPC to on-premises network also does not have an URI.
-        /// </summary>
+        /// <summary>URI of a route (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
