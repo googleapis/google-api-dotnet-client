@@ -4610,7 +4610,11 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Gets an Entry.</summary>
+                    /// <summary>
+                    /// Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex Catalog is changing. For
+                    /// more information, see Changes to BigQuery metadata stored in Dataplex Catalog
+                    /// (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the Entry:
                     /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
@@ -4620,7 +4624,11 @@ namespace Google.Apis.CloudDataplex.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets an Entry.</summary>
+                    /// <summary>
+                    /// Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex Catalog is changing. For
+                    /// more information, see Changes to BigQuery metadata stored in Dataplex Catalog
+                    /// (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+                    /// </summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -13946,7 +13954,11 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
-            /// <summary>Looks up a single Entry by name using the permission on the source system.</summary>
+            /// <summary>
+            /// Looks up a single Entry by name using the permission on the source system.Caution: The BigQuery metadata
+            /// that is stored in Dataplex Catalog is changing. For more information, see Changes to BigQuery metadata
+            /// stored in Dataplex Catalog (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+            /// </summary>
             /// <param name="name">
             /// Required. The project to which the request should be attributed in the following form:
             /// projects/{project}/locations/{location}.
@@ -13956,7 +13968,11 @@ namespace Google.Apis.CloudDataplex.v1
                 return new LookupEntryRequest(this.service, name);
             }
 
-            /// <summary>Looks up a single Entry by name using the permission on the source system.</summary>
+            /// <summary>
+            /// Looks up a single Entry by name using the permission on the source system.Caution: The BigQuery metadata
+            /// that is stored in Dataplex Catalog is changing. For more information, see Changes to BigQuery metadata
+            /// stored in Dataplex Catalog (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
+            /// </summary>
             public class LookupEntryRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
             {
                 /// <summary>Constructs a new LookupEntry request.</summary>
@@ -14207,257 +14223,6 @@ namespace Google.Apis.CloudDataplex.v1
 }
 namespace Google.Apis.CloudDataplex.v1.Data
 {
-    /// <summary>
-    /// Provides the mapping of a cloud asset to a direct physical location or to a proxy that defines the location on
-    /// its behalf.
-    /// </summary>
-    public class CloudReliabilityZicyWs3DataplaneProtosAssetLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants that use CCFE RMS for storing
-        /// resource metadata.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ccfeRmsPath")]
-        public virtual string CcfeRmsPath { get; set; }
-
-        /// <summary>
-        /// Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state of the region at the time of
-        /// asset creation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expected")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectations Expected { get; set; }
-
-        /// <summary>Defines extra parameters required for specific asset types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extraParameters")]
-        public virtual System.Collections.Generic.IList<CloudReliabilityZicyWs3DataplaneProtosExtraParameter> ExtraParameters { get; set; }
-
-        /// <summary>Contains all kinds of physical location definitions for this asset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationData")]
-        public virtual System.Collections.Generic.IList<CloudReliabilityZicyWs3DataplaneProtosLocationData> LocationData { get; set; }
-
-        /// <summary>
-        /// Defines parents assets if any in order to allow later generation of child_asset_location data via child
-        /// assets.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parentAsset")]
-        public virtual System.Collections.Generic.IList<CloudReliabilityZicyWs3DataplaneProtosCloudAsset> ParentAsset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectations : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Explicit overrides for ZI and ZS requirements to be used for resources that should be excluded from ZI/ZS
-        /// verification logic.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requirementOverride")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectationsRequirementOverride RequirementOverride { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("ziOrgPolicy")]
-        public virtual string ZiOrgPolicy { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionPolicy")]
-        public virtual string ZiRegionPolicy { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionState")]
-        public virtual string ZiRegionState { get; set; }
-
-        /// <summary>
-        /// Deprecated: use zi_org_policy, zi_region_policy and zi_region_state instead for setting ZI expectations as
-        /// per go/zicy-publish-physical-location.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zoneIsolation")]
-        public virtual string ZoneIsolation { get; set; }
-
-        /// <summary>
-        /// Deprecated: use zs_org_policy, and zs_region_stateinstead for setting Zs expectations as per
-        /// go/zicy-publish-physical-location.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zoneSeparation")]
-        public virtual string ZoneSeparation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("zsOrgPolicy")]
-        public virtual string ZsOrgPolicy { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("zsRegionState")]
-        public virtual string ZsRegionState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosAssetLocationIsolationExpectationsRequirementOverride : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("ziOverride")]
-        public virtual string ZiOverride { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("zsOverride")]
-        public virtual string ZsOverride { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Policy ID that identified data placement in Blobstore as per
-    /// go/blobstore-user-guide#data-metadata-placement-and-failure-domains
-    /// </summary>
-    public class CloudReliabilityZicyWs3DataplaneProtosBlobstoreLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
-        public virtual System.Collections.Generic.IList<string> PolicyId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosCloudAsset : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("assetName")]
-        public virtual string AssetName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
-        public virtual string AssetType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosCloudAssetComposition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("childAsset")]
-        public virtual System.Collections.Generic.IList<CloudReliabilityZicyWs3DataplaneProtosCloudAsset> ChildAsset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosDirectLocationAssignment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual System.Collections.Generic.IList<CloudReliabilityZicyWs3DataplaneProtosLocationAssignment> Location { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines parameters that should only be used for specific asset types.</summary>
-    public class CloudReliabilityZicyWs3DataplaneProtosExtraParameter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Details about zones used by regional compute.googleapis.com/InstanceGroupManager to create instances.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionalMigDistributionPolicy")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosRegionalMigDistributionPolicy RegionalMigDistributionPolicy { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosLocationAssignment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
-        public virtual string LocationType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosLocationData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("blobstoreLocation")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosBlobstoreLocation BlobstoreLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("childAssetLocation")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosCloudAssetComposition ChildAssetLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("directLocation")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosDirectLocationAssignment DirectLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectProxy")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosTenantProjectProxy GcpProjectProxy { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("placerLocation")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosPlacerLocation PlacerLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("spannerLocation")]
-        public virtual CloudReliabilityZicyWs3DataplaneProtosSpannerLocation SpannerLocation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message describing that the location of the customer resource is tied to placer allocations</summary>
-    public class CloudReliabilityZicyWs3DataplaneProtosPlacerLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Directory with a config related to it in placer (e.g. "/placer/prod/home/my-root/my-dir")</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("placerConfig")]
-        public virtual string PlacerConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// To be used for specifying the intended distribution of regional compute.googleapis.com/InstanceGroupManager
-    /// instances
-    /// </summary>
-    public class CloudReliabilityZicyWs3DataplaneProtosRegionalMigDistributionPolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The shape in which the group converges around distribution of resources. Instance of proto2 enum
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetShape")]
-        public virtual System.Nullable<int> TargetShape { get; set; }
-
-        /// <summary>Cloud zones used by regional MIG to create instances.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
-        public virtual System.Collections.Generic.IList<CloudReliabilityZicyWs3DataplaneProtosZoneConfiguration> Zones { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosSpannerLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Set of backups used by the resource with name in the same format as what is available at
-        /// http://table/spanner_automon.backup_metadata
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupName")]
-        public virtual System.Collections.Generic.IList<string> BackupName { get; set; }
-
-        /// <summary>Set of databases used by the resource in format /span//</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dbName")]
-        public virtual System.Collections.Generic.IList<string> DbName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosTenantProjectProxy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("projectNumbers")]
-        public virtual System.Collections.Generic.IList<string> ProjectNumbers { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudReliabilityZicyWs3DataplaneProtosZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -14960,6 +14725,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Denotes the transfer status of the Aspect Type. It is unspecified for Aspect Types created from
+        /// Dataplex API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferStatus")]
+        public virtual string TransferStatus { get; set; }
 
         /// <summary>
         /// Output only. System generated globally unique ID for the AspectType. If you delete and recreate the
@@ -18045,6 +17817,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataLocation")]
         public virtual string DataLocation { get; set; }
 
+        /// <summary>The id of the associated datascan for standalone discovery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datascanId")]
+        public virtual string DatascanId { get; set; }
+
         /// <summary>Details about the entity associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
         public virtual GoogleCloudDataplexV1DiscoveryEventEntityDetails Entity { get; set; }
@@ -18060,6 +17836,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Details about the partition associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partition")]
         public virtual GoogleCloudDataplexV1DiscoveryEventPartitionDetails Partition { get; set; }
+
+        /// <summary>Details about the BigQuery table publishing associated with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GoogleCloudDataplexV1DiscoveryEventTableDetails Table { get; set; }
 
         /// <summary>The type of the event being logged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -18133,6 +17913,21 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IList<string> SampledDataLocations { get; set; }
 
         /// <summary>The type of the containing entity resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the published table.</summary>
+    public class GoogleCloudDataplexV1DiscoveryEventTableDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully-qualified resource name of the table resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The type of the table resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -18534,6 +18329,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Denotes the transfer status of the Entry Group. It is unspecified for Entry Group created from
+        /// Dataplex API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferStatus")]
+        public virtual string TransferStatus { get; set; }
 
         /// <summary>
         /// Output only. System generated globally unique ID for the EntryGroup. If you delete and recreate the
@@ -21470,8 +21272,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string SqlScript { get; set; }
 
         /// <summary>
-        /// A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a
-        /// SqlScript Content. The execution args are used to declare a set of script variables (set key="value";).
+        /// A reference to a query file. This should be the Cloud Storage URI of the query file. The execution args are
+        /// used to declare a set of script variables (set key="value";).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlScriptFile")]
         public virtual string SqlScriptFile { get; set; }
