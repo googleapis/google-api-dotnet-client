@@ -2745,6 +2745,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
 
+        /// <summary>Optional. Repeated network configurations for the TPU node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfigs")]
+        public virtual System.Collections.Generic.IList<NetworkConfig> NetworkConfigs { get; set; }
+
         /// <summary>
         /// Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that
         /// runtime clients of the node reach out to the 0th entry in this map first.
