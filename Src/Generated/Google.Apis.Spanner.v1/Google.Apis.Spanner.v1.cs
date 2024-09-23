@@ -11780,6 +11780,28 @@ namespace Google.Apis.Spanner.v1.Data
     }
 
     /// <summary>
+    /// When a read-write transaction is executed on a multiplexed session, this precommit token is sent back to the
+    /// client as a part of the [Transaction] message in the BeginTransaction response and also as a part of the
+    /// [ResultSet] and [PartialResultSet] responses.
+    /// </summary>
+    public class MultiplexedSessionPrecommitToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Opaque precommit token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precommitToken")]
+        public virtual string PrecommitToken { get; set; }
+
+        /// <summary>
+        /// An incrementing seq number is generated on every precommit token that is returned. Clients should remember
+        /// the precommit token with the highest sequence number from the current transaction attempt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seqNum")]
+        public virtual System.Nullable<int> SeqNum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A modification to one or more Cloud Spanner rows. Mutations can be applied to a Cloud Spanner database by
     /// sending them in a Commit call.
     /// </summary>
@@ -13541,6 +13563,15 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>
+        /// A precommit token will be included in the response of a BeginTransaction request if the read-write
+        /// transaction is on a multiplexed session and a mutation_key was specified in the BeginTransaction. The
+        /// precommit token with the highest sequence number from this transaction attempt should be passed to the
+        /// Commit request for this transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precommitToken")]
+        public virtual MultiplexedSessionPrecommitToken PrecommitToken { get; set; }
 
         private string _readTimestampRaw;
 
