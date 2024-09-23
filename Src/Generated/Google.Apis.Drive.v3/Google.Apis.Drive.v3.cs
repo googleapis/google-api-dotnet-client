@@ -3287,10 +3287,16 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
             /// <summary>
-            /// A comma-separated list of sort keys. Valid keys are 'createdTime', 'folder', 'modifiedByMeTime',
-            /// 'modifiedTime', 'name', 'name_natural', 'quotaBytesUsed', 'recency', 'sharedWithMeTime', 'starred', and
-            /// 'viewedByMeTime'. Each key sorts ascending by default, but can be reversed with the 'desc' modifier.
-            /// Example usage: ?orderBy=folder,modifiedTime desc,name.
+            /// A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the file was created. *
+            /// `folder`: The folder ID. This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The
+            /// last time the file was modified by the user. * `modifiedTime`: The last time the file was modified by
+            /// anyone. * `name`: The name of the file. This field is sorted using alphabetical ordering, so 1, 12, 2,
+            /// 22. * `name_natural`: The name of the file. This field is sorted using natural sort ordering, so 1, 2,
+            /// 12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the file. * `recency`: The most
+            /// recent timestamp from the file's date-time fields. * `sharedWithMeTime`: When the file was shared with
+            /// the user, if applicable. * `starred`: Whether the user has starred the file. * `viewedByMeTime`: The
+            /// last time the file was viewed by the user. Each key sorts ascending by default, but can be reversed with
+            /// the 'desc' modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
