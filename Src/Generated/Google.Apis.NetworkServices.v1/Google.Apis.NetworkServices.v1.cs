@@ -7463,7 +7463,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata is
         /// available under the namespace `com.google.lb_route_extension.`. The following variables are supported in the
         /// metadata Struct: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource
-        /// name.
+        /// name. Only one of the resource level metadata and extension level metadata can be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -7601,7 +7601,8 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// Optional. The metadata provided here is included in the `ProcessingRequest.metadata_context.filter_metadata`
         /// map field. The metadata is available under the key `com.google.lb_traffic_extension.`. The following
         /// variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's
-        /// fully qualified resource name.
+        /// fully qualified resource name. Only one of the resource level metadata and extension level metadata can be
+        /// set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -7915,6 +7916,20 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for Platform Telemetry logging for Eventarc Avdvanced resources.</summary>
+    public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform Telemetry. Logs at
+        /// severitiy ≥ this value will be sent, unless it is NONE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logSeverity")]
+        public virtual string LogSeverity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8261,6 +8276,16 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    public class RetryFilterPerRouteConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the crypto key to use for encrypting event data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
