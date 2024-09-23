@@ -5297,6 +5297,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AuthorizedNetwork contains metadata for an authorized network.</summary>
+    public class AuthorizedNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. CIDR range for one authorzied network of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrRange")]
+        public virtual string CidrRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Execution log of a background job.</summary>
     public class BackgroundJobLogEntry : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5595,9 +5606,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseFlags")]
         public virtual System.Collections.Generic.IDictionary<string, string> DatabaseFlags { get; set; }
 
-        /// <summary>The database engine type and version.</summary>
+        /// <summary>The database engine type and version. Deprecated. Use database_version_name instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>Optional. The database engine type and version name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersionName")]
+        public virtual string DatabaseVersionName { get; set; }
 
         /// <summary>Optional. The edition of the given Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
@@ -6952,6 +6967,28 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata related to instance level network configuration.</summary>
+    public class InstanceNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of external network authorized to access this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedExternalNetworks")]
+        public virtual System.Collections.Generic.IList<AuthorizedNetwork> AuthorizedExternalNetworks { get; set; }
+
+        /// <summary>
+        /// Optional. Enabling an outbound public IP address to support a database server sending requests out into the
+        /// internet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableOutboundPublicIp")]
+        public virtual System.Nullable<bool> EnableOutboundPublicIp { get; set; }
+
+        /// <summary>Optional. Enabling public ip for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePublicIp")]
+        public virtual System.Nullable<bool> EnablePublicIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
     /// </summary>
@@ -8090,6 +8127,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>Optional. Metadata related to instance level network configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceNetworkConfig")]
+        public virtual InstanceNetworkConfig InstanceNetworkConfig { get; set; }
+
         /// <summary>
         /// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
         /// </summary>
@@ -8099,6 +8140,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Configuration for the machines that host the underlying database engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineConfig")]
         public virtual MachineConfig MachineConfig { get; set; }
+
+        /// <summary>Output only. All outbound public IP addresses configured for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outboundPublicIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> OutboundPublicIpAddresses { get; set; }
 
         /// <summary>
         /// Output only. The private IP address for the Instance. This is the connection endpoint for an end-user
