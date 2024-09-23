@@ -1311,6 +1311,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// These records don't include property configuration changes like adding a stream or changing a property's
         /// time zone. For configuration change history, see
         /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+        /// To give your feedback on this API, complete the [Google Analytics Access Reports
+        /// feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform)
+        /// form.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="entity">
@@ -1335,6 +1338,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// These records don't include property configuration changes like adding a stream or changing a property's
         /// time zone. For configuration change history, see
         /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+        /// To give your feedback on this API, complete the [Google Analytics Access Reports
+        /// feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform)
+        /// form.
         /// </summary>
         public class RunAccessReportRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportResponse>
         {
@@ -10340,6 +10346,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// These records don't include property configuration changes like adding a stream or changing a property's
         /// time zone. For configuration change history, see
         /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+        /// To give your feedback on this API, complete the [Google Analytics Access Reports
+        /// feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform)
+        /// form.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="entity">
@@ -10364,6 +10373,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// These records don't include property configuration changes like adding a stream or changing a property's
         /// time zone. For configuration change history, see
         /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+        /// To give your feedback on this API, complete the [Google Analytics Access Reports
+        /// feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform)
+        /// form.
         /// </summary>
         public class RunAccessReportRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRunAccessReportResponse>
         {
