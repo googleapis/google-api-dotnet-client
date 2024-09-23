@@ -3442,6 +3442,20 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options customizing EventDriven transfers schedule.</summary>
+    public class EventDrivenSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Pub/Sub subscription name used to receive events. Only Google Cloud Storage data source support this option.
+        /// Format: projects/{project}/subscriptions/{subscription}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubSubscription")]
+        public virtual string PubsubSubscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Returns list of supported data sources and their metadata.</summary>
     public class ListDataSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3561,6 +3575,13 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options customizing manual transfers schedule.</summary>
+    public class ManualSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Options customizing the data transfer schedule.</summary>
     public class ScheduleOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3653,6 +3674,34 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// V2 options customizing different types of data transfer schedule. This field supports existing time-based and
+    /// manual transfer schedule. Also supports Event-Driven transfer schedule. ScheduleOptionsV2 cannot be used
+    /// together with ScheduleOptions/Schedule.
+    /// </summary>
+    public class ScheduleOptionsV2 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Event driven transfer schedule options. If set, the transfer will be scheduled upon events arrial.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventDrivenSchedule")]
+        public virtual EventDrivenSchedule EventDrivenSchedule { get; set; }
+
+        /// <summary>
+        /// Manual transfer schedule. If set, the transfer run will not be auto-scheduled by the system, unless the
+        /// client invokes StartManualTransferRuns. This is equivalent to disable_auto_scheduling = true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualSchedule")]
+        public virtual ManualSchedule ManualSchedule { get; set; }
+
+        /// <summary>Time based transfer schedule options. This is the default schedule option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeBasedSchedule")]
+        public virtual TimeBasedSchedule TimeBasedSchedule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3852,6 +3901,109 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     }
 
     /// <summary>
+    /// Options customizing the time based transfer schedule. Options are migrated from the original ScheduleOptions
+    /// message.
+    /// </summary>
+    public class TimeBasedSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time.
+        /// The end time can be changed at any moment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it
+        /// is empty, the default value for the data source will be used. The specified times are in UTC. Examples of
+        /// valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of
+        /// quarter 00:00`. See more explanation about the format here:
+        /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+        /// NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the
+        /// documentation for your data source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual string Schedule { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time
+        /// according to a recurrence pattern defined in the schedule string. The start time can be changed at any
+        /// moment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A specification for a time range, this will request transfer runs with run_time between start_time (inclusive)
     /// and end_time (exclusive).
     /// </summary>
@@ -4002,6 +4154,12 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual EncryptionConfiguration EncryptionConfiguration { get; set; }
 
         /// <summary>
+        /// Output only. Error code with detailed information about reason of the latest config failure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
         /// Identifier. The resource name of the transfer config. Transfer config names have the form either
         /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
         /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is
@@ -4085,6 +4243,13 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Options customizing the data transfer schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleOptions")]
         public virtual ScheduleOptions ScheduleOptions { get; set; }
+
+        /// <summary>
+        /// Options customizing different types of data transfer schedule. This field replaces "schedule" and
+        /// "schedule_options" fields. ScheduleOptionsV2 cannot be used together with ScheduleOptions/Schedule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleOptionsV2")]
+        public virtual ScheduleOptionsV2 ScheduleOptionsV2 { get; set; }
 
         /// <summary>Output only. State of the most recently updated transfer run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
