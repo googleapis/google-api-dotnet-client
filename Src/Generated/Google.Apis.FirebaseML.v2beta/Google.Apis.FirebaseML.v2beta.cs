@@ -1386,6 +1386,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The value should be validated against any (one or more) of the subschemas in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anyOf")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Schema> AnyOf { get; set; }
+
         /// <summary>Optional. Default value of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
         public virtual object Default__ { get; set; }
