@@ -16171,6 +16171,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Represents a Microsoft Entra tenant.</summary>
     public class AzureTenant : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The display name of the Azure tenant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-1aaa11a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -19877,6 +19881,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Represents a Microsoft Entra tenant.</summary>
     public class GoogleCloudSecuritycenterV2AzureTenant : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The display name of the Azure tenant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>The ID of the Microsoft Entra tenant, for example, "a11aaa11-aa11-1aa1-11aa-1aaa11a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
