@@ -16235,6 +16235,9 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monetizationDetails")]
         public virtual VideoMonetizationDetails MonetizationDetails { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("paidProductPlacementDetails")]
+        public virtual VideoPaidProductPlacementDetails PaidProductPlacementDetails { get; set; }
+
         /// <summary>
         /// The player object contains information that you would use to play the video in an embedded player.
         /// </summary>
@@ -16970,6 +16973,23 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The value of access indicates whether the video can be monetized or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual AccessPolicy Access { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about paid content, such as paid product placement, sponsorships or endorsement, contained in a YouTube
+    /// video and a method to inform viewers of paid promotion. This data can only be retrieved by the video owner.
+    /// </summary>
+    public class VideoPaidProductPlacementDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This boolean represents whether the video contains Paid Product Placement, Studio equivalent:
+        /// https://screenshot.googleplex.com/4Me79DE6AfT2ktp.png
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasPaidProductPlacement")]
+        public virtual System.Nullable<bool> HasPaidProductPlacement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
