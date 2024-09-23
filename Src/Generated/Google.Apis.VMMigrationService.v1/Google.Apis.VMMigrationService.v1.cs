@@ -966,13 +966,13 @@ namespace Google.Apis.VMMigrationService.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The filter request (according to https://google.aip.dev/160).</summary>
+                        /// <summary>Optional. The filter request (according to AIP-160).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. The order by fields for the result (according to
-                        /// https://google.aip.dev/132#ordering). Currently ordering is only possible by "name" field.
+                        /// Optional. The order by fields for the result (according to AIP-132). Currently ordering is
+                        /// only possible by "name" field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
@@ -1271,13 +1271,13 @@ namespace Google.Apis.VMMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filter request (according to https://google.aip.dev/160).</summary>
+                    /// <summary>Optional. The filter request (according to AIP-160).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. The order by fields for the result (according to https://google.aip.dev/132#ordering).
-                    /// Currently ordering is only possible by "name" field.
+                    /// Optional. The order by fields for the result (according to AIP-132). Currently ordering is only
+                    /// possible by "name" field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
