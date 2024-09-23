@@ -5999,6 +5999,15 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
+            /// Restore token used to differentiate soft-deleted objects with the same name and generation. Only
+            /// applicable for hierarchical namespace buckets and if softDeleted is set to true. This parameter is
+            /// optional, and is only required in the rare case when there are multiple soft-deleted objects with the
+            /// same name and generation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("restoreToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RestoreToken { get; set; }
+
+            /// <summary>
             /// If true, only soft-deleted object versions will be listed. The default is false. For more information,
             /// see [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
             /// </summary>
@@ -6081,6 +6090,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("restoreToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "restoreToken",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -7328,6 +7345,14 @@ namespace Google.Apis.Storage.v1
                 NoAcl = 1,
             }
 
+            /// <summary>
+            /// Restore token used to differentiate sof-deleted objects with the same name and generation. Only
+            /// applicable for hierarchical namespace buckets. This parameter is optional, and is only required in the
+            /// rare case when there are multiple soft-deleted objects with the same name and generation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("restoreToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RestoreToken { get; set; }
+
             /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
@@ -7412,6 +7437,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("restoreToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "restoreToken",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -11232,6 +11265,13 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The owner of the object. This will always be the uploader of the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
         public virtual OwnerData Owner { get; set; }
+
+        /// <summary>
+        /// Restore token used to differentiate deleted objects with the same name and generation. This field is only
+        /// returned for deleted objects in hierarchical namespace buckets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreToken")]
+        public virtual string RestoreToken { get; set; }
 
         /// <summary>A collection of object level retention parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retention")]
