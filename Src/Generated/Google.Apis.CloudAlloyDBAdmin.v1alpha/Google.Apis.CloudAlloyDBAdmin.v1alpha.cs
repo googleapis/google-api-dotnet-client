@@ -6331,7 +6331,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata.</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 21</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -6447,6 +6447,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Optional. Tags associated with this resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsSet")]
+        public virtual StorageDatabasecenterPartnerapiV1mainTags TagsSet { get; set; }
 
         private string _updationTimeRaw;
 
@@ -6643,6 +6647,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
         public virtual System.Nullable<long> MemorySizeInBytes { get; set; }
 
+        /// <summary>Optional. Number of shards (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
+        public virtual System.Nullable<int> ShardCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6740,6 +6748,20 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
         public virtual object TimeBasedRetention { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message type for storing tags. Tags provide a way to create annotations for resources, and in some cases
+    /// conditionally allow or deny policies based on whether a resource has a specific tag.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainTags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Tag key/value mappings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
