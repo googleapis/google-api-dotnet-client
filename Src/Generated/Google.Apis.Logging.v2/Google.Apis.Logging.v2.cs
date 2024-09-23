@@ -22528,7 +22528,8 @@ namespace Google.Apis.Logging.v2.Data
     public class LogBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        /// Optional. Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be
+        /// disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsEnabled")]
         public virtual System.Nullable<bool> AnalyticsEnabled { get; set; }
