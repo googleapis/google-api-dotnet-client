@@ -3112,11 +3112,11 @@ namespace Google.Apis.DLP.v2
                     /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
                     /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
                     /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud project ID. -
-                    /// `file_store_path` - The path like "gs://bucket". - `data_source_type` - The profile's data
-                    /// source type, like "google/storage/bucket". - `data_storage_location` - The location where the
-                    /// file store's data is stored, like "us-central1". - `sensitivity_level` - HIGH|MODERATE|LOW -
-                    /// `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED - `status_code`
-                    /// - an RPC status code as defined in
+                    /// `account_id` - The AWS account ID. - `file_store_path` - The path like "gs://bucket". -
+                    /// `data_source_type` - The profile's data source type, like "google/storage/bucket". -
+                    /// `data_storage_location` - The location where the file store's data is stored, like
+                    /// "us-central1". - `sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW
+                    /// - `resource_visibility`: PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
                     /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
                     /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` *
@@ -9888,11 +9888,11 @@ namespace Google.Apis.DLP.v2
                     /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
                     /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
                     /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud project ID. -
-                    /// `file_store_path` - The path like "gs://bucket". - `data_source_type` - The profile's data
-                    /// source type, like "google/storage/bucket". - `data_storage_location` - The location where the
-                    /// file store's data is stored, like "us-central1". - `sensitivity_level` - HIGH|MODERATE|LOW -
-                    /// `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED - `status_code`
-                    /// - an RPC status code as defined in
+                    /// `account_id` - The AWS account ID. - `file_store_path` - The path like "gs://bucket". -
+                    /// `data_source_type` - The profile's data source type, like "google/storage/bucket". -
+                    /// `data_storage_location` - The location where the file store's data is stored, like
+                    /// "us-central1". - `sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW
+                    /// - `resource_visibility`: PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
                     /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
                     /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` *
@@ -12434,6 +12434,56 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Amazon S3 bucket.</summary>
+    public class GooglePrivacyDlpV2AmazonS3Bucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AWS account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsAccount")]
+        public virtual GooglePrivacyDlpV2AwsAccount AwsAccount { get; set; }
+
+        /// <summary>Required. The bucket name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Amazon S3 bucket conditions.</summary>
+    public class GooglePrivacyDlpV2AmazonS3BucketConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Bucket types that should be profiled. Optional. Defaults to TYPE_ALL_SUPPORTED if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketTypes")]
+        public virtual System.Collections.Generic.IList<string> BucketTypes { get; set; }
+
+        /// <summary>
+        /// Optional. Object classes that should be profiled. Optional. Defaults to ALL_SUPPORTED_CLASSES if
+        /// unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectStorageClasses")]
+        public virtual System.Collections.Generic.IList<string> ObjectStorageClasses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Amazon S3 bucket regex.</summary>
+    public class GooglePrivacyDlpV2AmazonS3BucketRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AWS account regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsAccountRegex")]
+        public virtual GooglePrivacyDlpV2AwsAccountRegex AwsAccountRegex { get; set; }
+
+        /// <summary>Optional. Regex to test the bucket name against. If empty, all buckets match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketNameRegex")]
+        public virtual string BucketNameRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Result of a risk analysis operation request.</summary>
     public class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12499,6 +12549,47 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Required. Auxiliary table location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AWS account.</summary>
+    public class GooglePrivacyDlpV2AwsAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. AWS account ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AWS account regex.</summary>
+    public class GooglePrivacyDlpV2AwsAccountRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Regex to test the AWS account ID against. If empty, all accounts match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountIdRegex")]
+        public virtual string AccountIdRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The AWS starting location for discovery.</summary>
+    public class GooglePrivacyDlpV2AwsDiscoveryStartingLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The AWS account ID that this discovery config applies to. Within an AWS organization, you can find the AWS
+        /// account ID inside an AWS account ARN. Example:
+        /// arn:{partition}:organizations::{management_account_id}:account/{org_id}/{account_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        /// <summary>All AWS assets stored in Asset Inventory that didn't match other AWS discovery configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allAssetInventoryAssets")]
+        public virtual System.Nullable<bool> AllAssetInventoryAssets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14125,6 +14216,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual GooglePrivacyDlpV2DataProfileLocation Location { get; set; }
 
+        /// <summary>Must be set only when scanning other clouds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherCloudStartingLocation")]
+        public virtual GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation OtherCloudStartingLocation { get; set; }
+
         /// <summary>
         /// The project that will run the scan. The DLP service account that exists within this project must have access
         /// to all resources that are profiled, and the Cloud DLP API must be enabled.
@@ -15196,6 +15291,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orgConfig")]
         public virtual GooglePrivacyDlpV2OrgConfig OrgConfig { get; set; }
 
+        /// <summary>Must be set only when scanning other clouds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherCloudStartingLocation")]
+        public virtual GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation OtherCloudStartingLocation { get; set; }
+
         /// <summary>Required. A status for this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
@@ -15349,6 +15448,76 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Requirements that must be true before a resource is profiled for the first time.</summary>
+    public class GooglePrivacyDlpV2DiscoveryOtherCloudConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amazon S3 bucket conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amazonS3BucketConditions")]
+        public virtual GooglePrivacyDlpV2AmazonS3BucketConditions AmazonS3BucketConditions { get; set; }
+
+        /// <summary>
+        /// Minimum age a resource must be before Cloud DLP can profile it. Value must be 1 hour or greater.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAge")]
+        public virtual object MinAge { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Determines which resources from the other cloud will have profiles generated. Includes the ability to filter by
+    /// resource names.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryOtherCloudFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of resources for this filter to apply to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
+        public virtual GooglePrivacyDlpV2OtherCloudResourceCollection Collection { get; set; }
+
+        /// <summary>
+        /// Optional. Catch-all. This should always be the last target in the list because anything above it will apply
+        /// first. Should only appear once in a configuration. If none is specified, a default one will be added
+        /// automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("others")]
+        public virtual GooglePrivacyDlpV2AllOtherResources Others { get; set; }
+
+        /// <summary>
+        /// The resource to scan. Configs using this filter can only have one target (the target with this single
+        /// resource reference).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleResource")]
+        public virtual GooglePrivacyDlpV2OtherCloudSingleResourceReference SingleResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// How often existing resources should have their profiles refreshed. New resources are scanned as quickly as
+    /// possible depending on system capacity.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Governs when to update data profiles when the inspection rules defined by the `InspectTemplate`
+        /// change. If not set, changing the template will not cause a data profile to update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateModifiedCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence InspectTemplateModifiedCadence { get; set; }
+
+        /// <summary>
+        /// Optional. Frequency to update profiles regardless of whether the underlying resource has changes. Defaults
+        /// to never.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshFrequency")]
+        public virtual string RefreshFrequency { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The cadence at which to update data profiles when a schema is modified.</summary>
     public class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15420,6 +15589,12 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageTarget")]
         public virtual GooglePrivacyDlpV2CloudStorageDiscoveryTarget CloudStorageTarget { get; set; }
+
+        /// <summary>
+        /// Other clouds target for discovery. The first target to match a resource will be the one applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherCloudTarget")]
+        public virtual GooglePrivacyDlpV2OtherCloudDiscoveryTarget OtherCloudTarget { get; set; }
 
         /// <summary>
         /// Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them
@@ -15933,7 +16108,9 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The profile for a file store. * Cloud Storage: maps 1:1 with a bucket.</summary>
+    /// <summary>
+    /// The profile for a file store. * Cloud Storage: maps 1:1 with a bucket. * Amazon S3: maps 1:1 with a bucket.
+    /// </summary>
     public class GooglePrivacyDlpV2FileStoreDataProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The snapshot of the configurations used to generate the profile.</summary>
@@ -16008,18 +16185,21 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// The location of the file store. * Cloud Storage:
-        /// https://cloud.google.com/storage/docs/locations#available-locations
+        /// https://cloud.google.com/storage/docs/locations#available-locations * Amazon S3:
+        /// https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileStoreLocation")]
         public virtual string FileStoreLocation { get; set; }
 
-        /// <summary>The file store path. * Cloud Storage: `gs://{bucket}`</summary>
+        /// <summary>The file store path. * Cloud Storage: `gs://{bucket}` * Amazon S3: `s3://{bucket}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileStorePath")]
         public virtual string FileStorePath { get; set; }
 
         /// <summary>
         /// The resource name of the resource profiled.
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name Example format of an S3 bucket full
+        /// resource name:
+        /// `//cloudasset.googleapis.com/organizations/{org_id}/otherCloudConnections/aws/arn:aws:s3:::{bucket_name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResource")]
         public virtual string FullResource { get; set; }
@@ -16124,7 +16304,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectDataProfile")]
         public virtual string ProjectDataProfile { get; set; }
 
-        /// <summary>The Google Cloud project ID that owns the resource.</summary>
+        /// <summary>
+        /// The Google Cloud project ID that owns the resource. For Amazon S3 buckets, this is the AWS Account Id.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -18073,6 +18255,110 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The other cloud starting location for discovery.</summary>
+    public class GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AWS starting location for discovery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsLocation")]
+        public virtual GooglePrivacyDlpV2AwsDiscoveryStartingLocation AwsLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Target used to match against for discovery of resources from other clouds. An [AWS connector in Security Command
+    /// Center (Enterprise](https://cloud.google.com/security-command-center/docs/connect-scc-to-aws) is required to use
+    /// this feature.
+    /// </summary>
+    public class GooglePrivacyDlpV2OtherCloudDiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. In addition to matching the filter, these conditions must be true before a profile is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual GooglePrivacyDlpV2DiscoveryOtherCloudConditions Conditions { get; set; }
+
+        /// <summary>
+        /// Required. The type of data profiles generated by this discovery target. Supported values are: *
+        /// aws/s3/bucket
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
+        public virtual GooglePrivacyDlpV2DataSourceType DataSourceType { get; set; }
+
+        /// <summary>Disable profiling for resources that match this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual GooglePrivacyDlpV2Disabled Disabled { get; set; }
+
+        /// <summary>
+        /// Required. The resources that the discovery cadence applies to. The first target with a matching filter will
+        /// be the one to apply to a resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GooglePrivacyDlpV2DiscoveryOtherCloudFilter Filter { get; set; }
+
+        /// <summary>
+        /// How often and when to update data profiles. New resources that match both the filter and conditions are
+        /// scanned as quickly as possible depending on system capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence GenerationCadence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Match resources using regex filters.</summary>
+    public class GooglePrivacyDlpV2OtherCloudResourceCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of regular expressions to match a resource against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeRegexes")]
+        public virtual GooglePrivacyDlpV2OtherCloudResourceRegexes IncludeRegexes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A pattern to match against one or more resources. At least one pattern must be specified. Regular expressions
+    /// use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2
+    /// repository on GitHub.
+    /// </summary>
+    public class GooglePrivacyDlpV2OtherCloudResourceRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Regex for Amazon S3 buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amazonS3BucketRegex")]
+        public virtual GooglePrivacyDlpV2AmazonS3BucketRegex AmazonS3BucketRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of regular expressions to determine what resources to match against.</summary>
+    public class GooglePrivacyDlpV2OtherCloudResourceRegexes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The
+        /// sum of all regular expression's length can't exceed 10 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patterns")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2OtherCloudResourceRegex> Patterns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a single resource, like a single Amazon S3 bucket.</summary>
+    public class GooglePrivacyDlpV2OtherCloudSingleResourceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amazon S3 bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amazonS3Bucket")]
+        public virtual GooglePrivacyDlpV2AmazonS3Bucket AmazonS3Bucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
