@@ -2348,7 +2348,8 @@ namespace Google.Apis.Batch.v1.Data
 
         /// <summary>
         /// Name of an instance template used to create VMs. Named the field as 'instance_template' instead of
-        /// 'template' to avoid c++ keyword conflict.
+        /// 'template' to avoid C++ keyword conflict. Batch only supports global instance templates. You can specify the
+        /// global instance template as a full or partial URL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
         public virtual string InstanceTemplate { get; set; }
