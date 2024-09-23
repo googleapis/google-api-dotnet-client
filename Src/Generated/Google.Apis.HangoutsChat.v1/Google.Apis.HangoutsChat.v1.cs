@@ -921,9 +921,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview). When `true`, the method runs
-                /// using the user's Google Workspace administrator privileges. The calling user must be a Google
-                /// Workspace administrator with the [manage chat and spaces conversations
+                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
+                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
                 /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships`
                 /// [OAuth 2.0
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -1017,9 +1016,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview). When `true`, the method runs
-                /// using the user's Google Workspace administrator privileges. The calling user must be a Google
-                /// Workspace administrator with the [manage chat and spaces conversations
+                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
+                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
                 /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships`
                 /// [OAuth 2.0
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -1110,9 +1108,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview). When `true`, the method runs
-                /// using the user's Google Workspace administrator privileges. The calling user must be a Google
-                /// Workspace administrator with the [manage chat and spaces conversations
+                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
+                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
                 /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` or
                 /// `chat.admin.memberships.readonly` [OAuth 2.0
                 /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -1207,20 +1204,21 @@ namespace Google.Apis.HangoutsChat.v1
                 /// and type
                 /// ([`member.type`](https://developers.google.com/workspace/chat/api/reference/rest/v1/User#type)). To
                 /// filter by role, set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.type`
-                /// to `HUMAN` or `BOT`. Developer Preview: You can also filter for `member.type` using the `!=`
-                /// operator. To filter by both role and type, use the `AND` operator. To filter by either role or type,
-                /// use the `OR` operator. Either `member.type = "HUMAN"` or `member.type != "BOT"` is required when
-                /// `use_admin_access` is set to true. Other member type filters will be rejected. For example, the
-                /// following queries are valid:
+                /// to `HUMAN` or `BOT`. You can also filter for `member.type` using the `!=` operator. To filter by
+                /// both role and type, use the `AND` operator. To filter by either role or type, use the `OR` operator.
+                /// Either `member.type = "HUMAN"` or `member.type != "BOT"` is required when `use_admin_access` is set
+                /// to true. Other member type filters will be rejected. For example, the following queries are valid:
                 /// ```
-                /// role = "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN"
-                /// AND role = "ROLE_MANAGER" member.type != "BOT"
+                /// role = "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER"
+                /// member.type != "BOT"
                 /// ```
                 /// The following queries are invalid:
                 /// ```
-                /// member.type = "HUMAN" AND member.type = "BOT" role = "ROLE_MANAGER" AND role = "ROLE_MEMBER"
+                /// member.type = "HUMAN" AND
+                /// member.type = "BOT" role = "ROLE_MANAGER" AND role = "ROLE_MEMBER"
                 /// ```
-                /// Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error.
+                /// Invalid queries are rejected
+                /// by the server with an `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1261,9 +1259,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual System.Nullable<bool> ShowInvited { get; set; }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview). When `true`, the method runs
-                /// using the user's Google Workspace administrator privileges. The calling user must be a Google
-                /// Workspace administrator with the [manage chat and spaces conversations
+                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
+                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
                 /// privilege](https://support.google.com/a/answer/13369245). Requires either the
                 /// `chat.admin.memberships.readonly` or `chat.admin.memberships` [OAuth 2.0
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Listing
@@ -1387,9 +1384,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>
-                /// [Developer Preview](https://developers.google.com/workspace/preview). When `true`, the method runs
-                /// using the user's Google Workspace administrator privileges. The calling user must be a Google
-                /// Workspace administrator with the [manage chat and spaces conversations
+                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
+                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
                 /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships`
                 /// [OAuth 2.0
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -2853,10 +2849,12 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a named space. Spaces grouped by topics aren't supported. For an example, see [Create a
-        /// space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message
-        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
-        /// Workspace organization might already use this display name. Requires [user
+        /// Creates a space with no members. Can be used to create a named space. Spaces grouped by topics aren't
+        /// supported. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces).
+        /// If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An
+        /// existing space within the Google Workspace organization might already use this display name. If you're a
+        /// member of the [Developer Preview program](https://developers.google.com/workspace/preview), you can create a
+        /// group chat in import mode using `spaceType.GROUP_CHAT`. Requires [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -2866,10 +2864,12 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a named space. Spaces grouped by topics aren't supported. For an example, see [Create a
-        /// space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message
-        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
-        /// Workspace organization might already use this display name. Requires [user
+        /// Creates a space with no members. Can be used to create a named space. Spaces grouped by topics aren't
+        /// supported. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces).
+        /// If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An
+        /// existing space within the Google Workspace organization might already use this display name. If you're a
+        /// member of the [Developer Preview program](https://developers.google.com/workspace/preview), you can create a
+        /// group chat in import mode using `spaceType.GROUP_CHAT`. Requires [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
@@ -2953,9 +2953,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview). When `true`, the method runs using
-            /// the user's Google Workspace administrator privileges. The calling user must be a Google Workspace
-            /// administrator with the [manage chat and spaces conversations
+            /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
+            /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
             /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.delete` [OAuth 2.0
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
             /// </summary>
@@ -3105,9 +3104,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview). When `true`, the method runs using
-            /// the user's Google Workspace administrator privileges. The calling user must be a Google Workspace
-            /// administrator with the [manage chat and spaces conversations
+            /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
+            /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
             /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` or
             /// `chat.admin.spaces.readonly` [OAuth 2.0
             /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -3336,9 +3334,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>
-            /// [Developer Preview](https://developers.google.com/workspace/preview). When `true`, the method runs using
-            /// the user's Google Workspace administrator privileges. The calling user must be a Google Workspace
-            /// administrator with the [manage chat and spaces conversations
+            /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
+            /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
             /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` [OAuth 2.0
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Some
             /// `FieldMask` values are not supported using admin access. For details, see the description of
@@ -3394,11 +3391,10 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview). Returns a list of spaces based on a
-        /// user's search. Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). The user
-        /// must be an administrator for the Google Workspace organization. In the request, set `use_admin_access` to
-        /// `true`.
+        /// Returns a list of spaces in a Google Workspace organization based on an administrator's search. Requires
+        /// [user authentication with administrator
+        /// privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges).
+        /// In the request, set `use_admin_access` to `true`.
         /// </summary>
         public virtual SearchRequest Search()
         {
@@ -3406,11 +3402,10 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// [Developer Preview](https://developers.google.com/workspace/preview). Returns a list of spaces based on a
-        /// user's search. Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). The user
-        /// must be an administrator for the Google Workspace organization. In the request, set `use_admin_access` to
-        /// `true`.
+        /// Returns a list of spaces in a Google Workspace organization based on an administrator's search. Requires
+        /// [user authentication with administrator
+        /// privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges).
+        /// In the request, set `use_admin_access` to `true`.
         /// </summary>
         public class SearchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SearchSpacesResponse>
         {
@@ -5048,7 +5043,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peekCardHeader")]
         public virtual GoogleAppsCardV1CardHeader PeekCardHeader { get; set; }
 
-        /// <summary>The divider style between sections.</summary>
+        /// <summary>The divider style between the header, sections and footer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionDividerStyle")]
         public virtual string SectionDividerStyle { get; set; }
 
@@ -5187,8 +5182,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// screen width is too narrow, the second column wraps below the first: * On web, the second column wraps if the
     /// screen width is less than or equal to 480 pixels. * On iOS devices, the second column wraps if the screen width
     /// is less than or equal to 300 pt. * On Android devices, the second column wraps if the screen width is less than
-    /// or equal to 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// or equal to 320 dp. To include more than two columns, or to use rows, use the `Grid` widget. [Google Workspace
+    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend): The add-on UIs that support columns
+    /// include: * The dialog displayed when users open the add-on from an email draft. * The dialog displayed when
+    /// users open the add-on from the **Add attachment** menu in a Google Calendar event.
     /// </summary>
     public class GoogleAppsCardV1Columns : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6679,10 +6676,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// [Developer Preview](https://developers.google.com/workspace/preview). Represents the count of memberships of a
-    /// space, grouped into categories.
-    /// </summary>
+    /// <summary>Represents the count of memberships of a space, grouped into categories.</summary>
     public class MembershipCount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7507,10 +7501,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The space's display name. Required when [creating a
-        /// space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create). If you receive the
-        /// error message `ALREADY_EXISTS` when creating a space or updating the `displayName`, try a different
-        /// `displayName`. An existing space within the Google Workspace organization might already use this display
-        /// name. For direct messages, this field might be empty. Supports up to 128 characters.
+        /// space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create) with a `spaceType`
+        /// of `SPACE`. If you receive the error message `ALREADY_EXISTS` when creating a space or updating the
+        /// `displayName`, try a different `displayName`. An existing space within the Google Workspace organization
+        /// might already use this display name. For direct messages, this field might be empty. Supports up to 128
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -7535,10 +7530,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         private object _lastActiveTime;
 
-        /// <summary>
-        /// Output only. Timestamp of the last message in the space. [Developer
-        /// Preview](https://developers.google.com/workspace/preview).
-        /// </summary>
+        /// <summary>Output only. Timestamp of the last message in the space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastActiveTime")]
         public virtual string LastActiveTimeRaw
         {
@@ -7575,8 +7567,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Output only. The count of joined memberships grouped by member type. Populated when the `space_type` is
-        /// `SPACE`, `DIRECT_MESSAGE` or `GROUP_CHAT`. [Developer
-        /// Preview](https://developers.google.com/workspace/preview).
+        /// `SPACE`, `DIRECT_MESSAGE` or `GROUP_CHAT`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipCount")]
         public virtual MembershipCount MembershipCount { get; set; }
