@@ -316,6 +316,8 @@ namespace Google.Apis.CloudRetail.v2
                     Branches = new BranchesResource(service);
                     CompletionData = new CompletionDataResource(service);
                     Controls = new ControlsResource(service);
+                    GenerativeQuestion = new GenerativeQuestionResource(service);
+                    GenerativeQuestions = new GenerativeQuestionsResource(service);
                     Models = new ModelsResource(service);
                     Operations = new OperationsResource(service);
                     Placements = new PlacementsResource(service);
@@ -2119,6 +2121,152 @@ namespace Google.Apis.CloudRetail.v2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the GenerativeQuestion resource.</summary>
+                public virtual GenerativeQuestionResource GenerativeQuestion { get; }
+
+                /// <summary>The "generativeQuestion" collection of methods.</summary>
+                public class GenerativeQuestionResource
+                {
+                    private const string Resource = "generativeQuestion";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public GenerativeQuestionResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Allows management of multiple questions.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Optional. Resource name of the parent catalog. Format:
+                    /// projects/{project}/locations/{location}/catalogs/{catalog}
+                    /// </param>
+                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest body, string parent)
+                    {
+                        return new BatchUpdateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Allows management of multiple questions.</summary>
+                    public class BatchUpdateRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse>
+                    {
+                        /// <summary>Constructs a new BatchUpdate request.</summary>
+                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Optional. Resource name of the parent catalog. Format:
+                        /// projects/{project}/locations/{location}/catalogs/{catalog}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchUpdate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/generativeQuestion:batchUpdate";
+
+                        /// <summary>Initializes BatchUpdate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the GenerativeQuestions resource.</summary>
+                public virtual GenerativeQuestionsResource GenerativeQuestions { get; }
+
+                /// <summary>The "generativeQuestions" collection of methods.</summary>
+                public class GenerativeQuestionsResource
+                {
+                    private const string Resource = "generativeQuestions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public GenerativeQuestionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Returns all questions for a given catalog.</summary>
+                    /// <param name="parent">
+                    /// Required. Resource name of the parent catalog. Format:
+                    /// projects/{project}/locations/{location}/catalogs/{catalog}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Returns all questions for a given catalog.</summary>
+                    public class ListRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the parent catalog. Format:
+                        /// projects/{project}/locations/{location}/catalogs/{catalog}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/generativeQuestions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
                             });
                         }
                     }
@@ -4470,6 +4618,61 @@ namespace Google.Apis.CloudRetail.v2
                     }
                 }
 
+                /// <summary>
+                /// Manages overal generative question feature state -- enables toggling feature on and off.
+                /// </summary>
+                /// <param name="catalog">
+                /// Required. Resource name of the parent catalog. Format:
+                /// projects/{project}/locations/{location}/catalogs/{catalog}
+                /// </param>
+                public virtual GetGenerativeQuestionFeatureRequest GetGenerativeQuestionFeature(string catalog)
+                {
+                    return new GetGenerativeQuestionFeatureRequest(this.service, catalog);
+                }
+
+                /// <summary>
+                /// Manages overal generative question feature state -- enables toggling feature on and off.
+                /// </summary>
+                public class GetGenerativeQuestionFeatureRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionsFeatureConfig>
+                {
+                    /// <summary>Constructs a new GetGenerativeQuestionFeature request.</summary>
+                    public GetGenerativeQuestionFeatureRequest(Google.Apis.Services.IClientService service, string catalog) : base(service)
+                    {
+                        Catalog = catalog;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the parent catalog. Format:
+                    /// projects/{project}/locations/{location}/catalogs/{catalog}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("catalog", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Catalog { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getGenerativeQuestionFeature";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+catalog}/generativeQuestionFeature";
+
+                    /// <summary>Initializes GetGenerativeQuestionFeature parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("catalog", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "catalog",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists all the Catalogs associated with the project.</summary>
                 /// <param name="parent">
                 /// Required. The account resource name with an associated location. If the caller does not have
@@ -4861,6 +5064,159 @@ namespace Google.Apis.CloudRetail.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/completionConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Allows management of individual questions.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="catalog">
+                /// Required. Resource name of the catalog. Format:
+                /// projects/{project}/locations/{location}/catalogs/{catalog}
+                /// </param>
+                public virtual UpdateGenerativeQuestionRequest UpdateGenerativeQuestion(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionConfig body, string catalog)
+                {
+                    return new UpdateGenerativeQuestionRequest(this.service, body, catalog);
+                }
+
+                /// <summary>Allows management of individual questions.</summary>
+                public class UpdateGenerativeQuestionRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionConfig>
+                {
+                    /// <summary>Constructs a new UpdateGenerativeQuestion request.</summary>
+                    public UpdateGenerativeQuestionRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionConfig body, string catalog) : base(service)
+                    {
+                        Catalog = catalog;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the catalog. Format:
+                    /// projects/{project}/locations/{location}/catalogs/{catalog}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("catalog", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Catalog { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Indicates which fields in the provided GenerativeQuestionConfig to update. The
+                    /// following are NOT supported: * GenerativeQuestionConfig.frequency If not set or empty, all
+                    /// supported fields are updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateGenerativeQuestion";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+catalog}/generativeQuestion";
+
+                    /// <summary>Initializes UpdateGenerativeQuestion parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("catalog", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "catalog",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Manages overal generative question feature state -- enables toggling feature on and off.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="catalog">
+                /// Required. Resource name of the affected catalog. Format:
+                /// projects/{project}/locations/{location}/catalogs/{catalog}
+                /// </param>
+                public virtual UpdateGenerativeQuestionFeatureRequest UpdateGenerativeQuestionFeature(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionsFeatureConfig body, string catalog)
+                {
+                    return new UpdateGenerativeQuestionFeatureRequest(this.service, body, catalog);
+                }
+
+                /// <summary>
+                /// Manages overal generative question feature state -- enables toggling feature on and off.
+                /// </summary>
+                public class UpdateGenerativeQuestionFeatureRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionsFeatureConfig>
+                {
+                    /// <summary>Constructs a new UpdateGenerativeQuestionFeature request.</summary>
+                    public UpdateGenerativeQuestionFeatureRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionsFeatureConfig body, string catalog) : base(service)
+                    {
+                        Catalog = catalog;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the affected catalog. Format:
+                    /// projects/{project}/locations/{location}/catalogs/{catalog}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("catalog", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Catalog { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Indicates which fields in the provided GenerativeQuestionsFeatureConfig to update. If
+                    /// not set or empty, all supported fields are updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2GenerativeQuestionsFeatureConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateGenerativeQuestionFeature";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+catalog}/generativeQuestionFeature";
+
+                    /// <summary>Initializes UpdateGenerativeQuestionFeature parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("catalog", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "catalog",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -5627,6 +5983,28 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genders")]
         public virtual System.Collections.Generic.IList<string> Genders { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for BatchUpdateGenerativeQuestionConfig method.</summary>
+    public class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The updates question configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregated response for UpdateGenerativeQuestionConfig method.</summary>
+    public class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The updates question configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeQuestionConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2GenerativeQuestionConfig> GenerativeQuestionConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6748,6 +7126,74 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a single generated question.</summary>
+    public class GoogleCloudRetailV2GenerativeQuestionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether the question is asked at serving time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedInConversation")]
+        public virtual System.Nullable<bool> AllowedInConversation { get; set; }
+
+        /// <summary>
+        /// Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>Output only. Values that can be used to answer the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exampleValues")]
+        public virtual System.Collections.Generic.IList<string> ExampleValues { get; set; }
+
+        /// <summary>Required. The facet to which the question is associated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facet")]
+        public virtual string Facet { get; set; }
+
+        /// <summary>
+        /// Optional. The question that will be used at serving time. Question can have a max length of 300 bytes. When
+        /// not populated, generated_question should be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalQuestion")]
+        public virtual string FinalQuestion { get; set; }
+
+        /// <summary>Output only. The ratio of how often a question was asked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual System.Nullable<float> Frequency { get; set; }
+
+        /// <summary>Output only. The LLM generated question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedQuestion")]
+        public virtual string GeneratedQuestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for overall generative question feature state.</summary>
+    public class GoogleCloudRetailV2GenerativeQuestionsFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Resource name of the affected catalog. Format:
+        /// projects/{project}/locations/{location}/catalogs/{catalog}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>
+        /// Optional. Determines whether questions will be used at serving time. Note: This feature cannot be enabled
+        /// until initial data requirements are satisfied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureEnabled")]
+        public virtual System.Nullable<bool> FeatureEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum number of products in the response to trigger follow-up questions. Value must be 0 or
+        /// positive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumProducts")]
+        public virtual System.Nullable<int> MinimumProducts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message of CatalogService.GetDefaultBranch.</summary>
     public class GoogleCloudRetailV2GetDefaultBranchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7141,6 +7587,17 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>Pagination token, if not returned indicates the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListQuestions method.</summary>
+    public class GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the questions for a given catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeQuestionConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2GenerativeQuestionConfig> GenerativeQuestionConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10476,6 +10933,24 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// <summary>Response associated with a tune operation.</summary>
     public class GoogleCloudRetailV2TuneModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for UpdateGenerativeQuestionConfig method.</summary>
+    public class GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The question to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeQuestionConfig")]
+        public virtual GoogleCloudRetailV2GenerativeQuestionConfig GenerativeQuestionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates which fields in the provided GenerativeQuestionConfig to update. The following are NOT
+        /// supported: * GenerativeQuestionConfig.frequency If not set or empty, all supported fields are updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
