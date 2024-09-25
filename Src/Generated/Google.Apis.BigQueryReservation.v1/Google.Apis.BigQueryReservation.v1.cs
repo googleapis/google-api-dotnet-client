@@ -2146,7 +2146,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
 
         /// <summary>
         /// Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity
-        /// commitments.
+        /// commitments. Note after renewal, commitment_end_time is the time the renewed commitment expires. So itwould
+        /// be at a time after commitment_start_time + committed period, because we don't change commitment_start_time ,
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentEndTime")]
         public virtual string CommitmentEndTimeRaw
@@ -2188,7 +2189,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
 
         /// <summary>
         /// Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity
-        /// commitments.
+        /// commitments. Note after the commitment is renewed, commitment_start_time won't be changed. It refers to the
+        /// start time of the original commitment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentStartTime")]
         public virtual string CommitmentStartTimeRaw
