@@ -1189,13 +1189,13 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
-                [Google.Apis.Util.RequestParameterAttribute("timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string TimeZoneId { get; set; }
-
-                /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
-                [Google.Apis.Util.RequestParameterAttribute("timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string TimeZoneVersion { get; set; }
+                /// <summary>
+                /// Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in
+                /// human-readable fields. For example 'America/Los_Angeles'. If not set, 'America/Los_Angeles' will be
+                /// used.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeZone", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TimeZone { get; set; }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1242,17 +1242,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("timeZone.id", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("timeZone", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "timeZone.id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("timeZone.version", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeZone.version",
+                        Name = "timeZone",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3340,6 +3332,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`AccountAggregation` payload.</summary>
+    public class AccountAggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An [`AccountIssue`](https://support.google.com/merchants/answer/12153802?sjid=17798438912526418908-EU#account).
     /// </summary>
@@ -3380,9 +3379,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// <summary>Additional instructions to add account services during creation of the account.</summary>
     public class AddAccountService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The provider is an aggregator for the account.</summary>
+        /// <summary>
+        /// The provider is an [aggregator](https://support.google.com/merchants/answer/188487) for the account. Payload
+        /// for service type Account Aggregation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountAggregation")]
-        public virtual Empty AccountAggregation { get; set; }
+        public virtual AccountAggregation AccountAggregation { get; set; }
 
         /// <summary>Optional. The provider of the service. Format: `accounts/{account}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
@@ -3625,9 +3627,9 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
         /// <summary>
         /// Required. An account service between the account to be created and the provider account is initialized as
-        /// part of the creation. At least one such service needs to be provided. Currently only `account_aggregation`
-        /// is supported which means the newly created account will be a subaccount of the provider defined in the
-        /// `account_aggregation` service.
+        /// part of the creation. At least one such service needs to be provided. Currently exactly one of these needs
+        /// to be `account_aggregation`, which means you can only create sub accounts, not standalone account through
+        /// this method. Additional `account_management` or `product_management` services may be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual System.Collections.Generic.IList<AddAccountService> Service { get; set; }
