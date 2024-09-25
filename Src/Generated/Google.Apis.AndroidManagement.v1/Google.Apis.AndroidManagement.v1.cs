@@ -2652,11 +2652,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// Controls Common Criteria Mode—security standards defined in the Common Criteria for Information Technology
         /// Security Evaluation (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases
-        /// certain security components on a device, including AES-GCM encryption of Bluetooth Long Term Keys, and Wi-Fi
-        /// configuration stores.Common Criteria Mode is only supported on company-owned devices running Android 11 or
-        /// above.Warning: Common Criteria Mode enforces a strict security model typically only required for IT products
-        /// used in national security systems and other highly sensitive organizations. Standard device use may be
-        /// affected. Only enabled if required.
+        /// certain security components on a device, see CommonCriteriaMode for details.Warning: Common Criteria Mode
+        /// enforces a strict security model typically only required for IT products used in national security systems
+        /// and other highly sensitive organizations. Standard device use may be affected. Only enabled if required. If
+        /// Common Criteria Mode is turned off after being enabled previously, all user-configured Wi-Fi networks may be
+        /// lost and any enterprise-configured Wi-Fi networks that require user input may need to be reconfigured.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaMode")]
         public virtual string CommonCriteriaMode { get; set; }
@@ -3671,6 +3671,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether Common Criteria Mode is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaModeStatus")]
         public virtual string CommonCriteriaModeStatus { get; set; }
+
+        /// <summary>Output only. The status of policy signature verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySignatureVerificationStatus")]
+        public virtual string PolicySignatureVerificationStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6957,6 +6961,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// value of 0 (default) means no screen brightness set. Any other value is rejected. screenBrightnessMode must
         /// be either BRIGHTNESS_AUTOMATIC or BRIGHTNESS_FIXED to set this. Supported on Android 9 and above on fully
         /// managed devices. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 9.
+        /// Supported on work profiles on company-owned devices on Android 15 and above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenBrightness")]
         public virtual System.Nullable<int> ScreenBrightness { get; set; }
@@ -6979,7 +6984,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// SCREEN_TIMEOUT_GREATER_THAN_MAXIMUM_TIME_TO_LOCK specific reason is reported. If the screen timeout is less
         /// than a certain lower bound, it is set to the lower bound. The lower bound may vary across devices. If this
         /// is set, screenTimeoutMode must be SCREEN_TIMEOUT_ENFORCED. Supported on Android 9 and above on fully managed
-        /// devices. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 9.
+        /// devices. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 9. Supported
+        /// on work profiles on company-owned devices on Android 15 and above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenTimeout")]
         public virtual object ScreenTimeout { get; set; }
