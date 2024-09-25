@@ -6334,6 +6334,13 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual MaxPodsConstraint MaxPodsPerNode { get; set; }
 
         /// <summary>
+        /// The name of the network attachment for pods to communicate to; cannot be specified along with subnetwork or
+        /// secondary_pod_range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
         /// The name of the secondary range on the subnet which provides IP address for this pod range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryPodRange")]
@@ -8428,7 +8435,7 @@ namespace Google.Apis.Container.v1beta1.Data
     public class GetJSONWebKeysResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// OnePlatform automatically extracts this field and uses it to set the HTTP Cache-Control header.
+        /// For HTTP requests, this field is automatically extracted into the Cache-Control HTTP header.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHeader")]
         public virtual HttpCacheControlResponseHeader CacheHeader { get; set; }
@@ -8448,7 +8455,7 @@ namespace Google.Apis.Container.v1beta1.Data
     public class GetOpenIDConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// OnePlatform automatically extracts this field and uses it to set the HTTP Cache-Control header.
+        /// For HTTP requests, this field is automatically extracted into the Cache-Control HTTP header.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHeader")]
         public virtual HttpCacheControlResponseHeader CacheHeader { get; set; }
