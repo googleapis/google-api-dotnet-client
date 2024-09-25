@@ -1426,10 +1426,10 @@ namespace Google.Apis.DeveloperConnect.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the Connection resource
-                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
-                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
-                    /// mask then all fields will be overwritten.
+                    /// Optional. Required. Field mask is used to specify the fields to be overwritten in the Connection
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1966,6 +1966,13 @@ namespace Google.Apis.DeveloperConnect.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK)
+        /// feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyConfig")]
+        public virtual CryptoKeyConfig CryptoKeyConfig { get; set; }
+
         private string _deleteTimeRaw;
 
         private object _deleteTime;
@@ -2020,6 +2027,18 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Configuration for connections to github.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubConfig")]
         public virtual GitHubConfig GithubConfig { get; set; }
+
+        /// <summary>Configuration for connections to an instance of GitHub Enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual GitHubEnterpriseConfig GithubEnterpriseConfig { get; set; }
+
+        /// <summary>Configuration for connections to gitlab.com.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
+        public virtual GitLabConfig GitlabConfig { get; set; }
+
+        /// <summary>Configuration for connections to an instance of GitLab Enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitlabEnterpriseConfig")]
+        public virtual GitLabEnterpriseConfig GitlabEnterpriseConfig { get; set; }
 
         /// <summary>Output only. Installation state of the Connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installationState")]
@@ -2082,6 +2101,22 @@ namespace Google.Apis.DeveloperConnect.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>
+    /// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+    /// </summary>
+    public class CryptoKeyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key
+        /// should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyReference")]
+        public virtual string KeyReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -2297,6 +2332,150 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for connections to an instance of GitHub Enterprise.</summary>
+    public class GitHubEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. ID of the GitHub App created from the manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual System.Nullable<long> AppId { get; set; }
+
+        /// <summary>Optional. ID of the installation of the GitHub App.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstallationId")]
+        public virtual System.Nullable<long> AppInstallationId { get; set; }
+
+        /// <summary>Output only. The URL-friendly name of the GitHub App.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appSlug")]
+        public virtual string AppSlug { get; set; }
+
+        /// <summary>Required. The URI of the GitHub Enterprise host this connection is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
+        public virtual string HostUri { get; set; }
+
+        /// <summary>
+        /// Output only. The URI to navigate to in order to manage the installation associated with this
+        /// GitHubEnterpriseConfig.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installationUri")]
+        public virtual string InstallationUri { get; set; }
+
+        /// <summary>
+        /// Optional. SecretManager resource containing the private key of the GitHub App, formatted as
+        /// `projects/*/secrets/*/versions/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeySecretVersion")]
+        public virtual string PrivateKeySecretVersion { get; set; }
+
+        /// <summary>Output only. GitHub Enterprise version installed at the host_uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverVersion")]
+        public virtual string ServerVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This
+        /// should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public
+        /// internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public
+        /// internet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
+        /// <summary>Optional. SSL certificate to use for requests to GitHub Enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCaCertificate")]
+        public virtual string SslCaCertificate { get; set; }
+
+        /// <summary>
+        /// Optional. SecretManager resource containing the webhook secret of the GitHub App, formatted as
+        /// `projects/*/secrets/*/versions/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
+        public virtual string WebhookSecretSecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for connections to gitlab.com.</summary>
+    public class GitLabConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A GitLab personal access token with the minimum `api` scope access and a minimum role of
+        /// `maintainer`. The GitLab Projects visible to this Personal Access Token will control which Projects
+        /// Developer Connect has access to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizerCredential")]
+        public virtual UserCredential AuthorizerCredential { get; set; }
+
+        /// <summary>
+        /// Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of
+        /// `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer
+        /// Connect has access to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAuthorizerCredential")]
+        public virtual UserCredential ReadAuthorizerCredential { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as
+        /// `projects/*/secrets/*/versions/*`. This is used to validate webhooks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
+        public virtual string WebhookSecretSecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for connections to an instance of GitLab Enterprise.</summary>
+    public class GitLabEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A GitLab personal access token with the minimum `api` scope access and a minimum role of
+        /// `maintainer`. The GitLab Projects visible to this Personal Access Token will control which Projects
+        /// Developer Connect has access to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizerCredential")]
+        public virtual UserCredential AuthorizerCredential { get; set; }
+
+        /// <summary>Required. The URI of the GitLab Enterprise host this connection is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
+        public virtual string HostUri { get; set; }
+
+        /// <summary>
+        /// Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of
+        /// `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer
+        /// Connect has access to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAuthorizerCredential")]
+        public virtual UserCredential ReadAuthorizerCredential { get; set; }
+
+        /// <summary>Output only. Version of the GitLab Enterprise server running on the `host_uri`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverVersion")]
+        public virtual string ServerVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for using Service Directory to privately connect to a GitLab Enterprise instance.
+        /// This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public
+        /// internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public
+        /// internet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
+        /// <summary>
+        /// Optional. SSL Certificate Authority certificate to use for requests to GitLab Enterprise instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCaCertificate")]
+        public virtual string SslCaCertificate { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as
+        /// `projects/*/secrets/*/versions/*`. This is used to validate webhooks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
+        public virtual string WebhookSecretSecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing the GitRepositoryLink object</summary>
     public class GitRepositoryLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2446,6 +2625,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. External ID of the webhook created for the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookId")]
+        public virtual string WebhookId { get; set; }
     }
 
     /// <summary>Represents an installation of the GitHub App.</summary>
@@ -2773,6 +2956,20 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ServiceDirectoryConfig represents Service Directory configuration for a connection.</summary>
+    public class ServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Service Directory service name. Format:
+        /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -2797,6 +2994,24 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a personal access token that authorized the Connection, and associated metadata.</summary>
+    public class UserCredential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A SecretManager resource containing the user token that authorizes the Developer Connect
+        /// connection. Format: `projects/*/secrets/*/versions/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userTokenSecretVersion")]
+        public virtual string UserTokenSecretVersion { get; set; }
+
+        /// <summary>Output only. The username associated with this token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
