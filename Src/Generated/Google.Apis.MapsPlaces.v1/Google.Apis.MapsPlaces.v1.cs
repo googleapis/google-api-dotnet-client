@@ -75,6 +75,9 @@ namespace Google.Apis.MapsPlaces.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.details</summary>
             public static string MapsPlatformPlacesDetails = "https://www.googleapis.com/auth/maps-platform.places.details";
 
+            /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.getphotomedia</summary>
+            public static string MapsPlatformPlacesGetphotomedia = "https://www.googleapis.com/auth/maps-platform.places.getphotomedia";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.nearbysearch</summary>
             public static string MapsPlatformPlacesNearbysearch = "https://www.googleapis.com/auth/maps-platform.places.nearbysearch";
 
@@ -99,6 +102,9 @@ namespace Google.Apis.MapsPlaces.v1
 
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.details</summary>
             public const string MapsPlatformPlacesDetails = "https://www.googleapis.com/auth/maps-platform.places.details";
+
+            /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.getphotomedia</summary>
+            public const string MapsPlatformPlacesGetphotomedia = "https://www.googleapis.com/auth/maps-platform.places.getphotomedia";
 
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.nearbysearch</summary>
             public const string MapsPlatformPlacesNearbysearch = "https://www.googleapis.com/auth/maps-platform.places.nearbysearch";
