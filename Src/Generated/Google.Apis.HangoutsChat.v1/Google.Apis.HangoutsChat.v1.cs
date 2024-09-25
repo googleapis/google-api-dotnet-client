@@ -3938,7 +3938,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// space discoverable to a target
         /// audience](https://developers.google.com/workspace/chat/space-target-audience). Format:
         /// `audiences/{audience}` To use the default target audience for the Google Workspace organization, set to
-        /// `audiences/default`.
+        /// `audiences/default`. This field is not populated when using the `chat.bot` scope with [app
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
