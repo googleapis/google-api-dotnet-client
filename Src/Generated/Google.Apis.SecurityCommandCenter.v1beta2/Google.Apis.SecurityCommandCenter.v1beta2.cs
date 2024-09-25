@@ -351,6 +351,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -371,6 +378,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/containerThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -434,6 +449,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -454,6 +476,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/eventThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -603,6 +633,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -623,6 +660,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -688,6 +733,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -708,6 +760,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/virtualMachineThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -771,6 +831,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -791,6 +858,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/webSecurityScannerSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1771,6 +1846,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -1791,6 +1873,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/containerThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1854,6 +1944,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -1874,6 +1971,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2023,6 +2128,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -2043,6 +2155,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2108,6 +2228,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -2128,6 +2255,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/virtualMachineThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2191,6 +2326,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -2211,6 +2353,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/webSecurityScannerSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3241,6 +3391,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -3261,6 +3418,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/containerThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3324,6 +3489,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -3344,6 +3516,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/eventThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3449,6 +3629,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. When set, will only retrieve the modules that are in scope. By default, all
+                        /// modules will be shown.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "calculate";
 
@@ -3469,6 +3656,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/containerThreatDetectionSettings$",
+                            });
+                            RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showEligibleModulesOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -3766,6 +3961,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -3786,6 +3988,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3851,6 +4061,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -3871,6 +4088,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/virtualMachineThreatDetectionSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -3934,6 +4159,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. When set, will only retrieve the modules that are in scope. By default, all modules will
+                /// be shown.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showEligibleModulesOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowEligibleModulesOnly { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
 
@@ -3954,6 +4186,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/webSecurityScannerSettings$",
+                    });
+                    RequestParameters.Add("showEligibleModulesOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showEligibleModulesOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
