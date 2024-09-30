@@ -2151,6 +2151,59 @@ namespace Google.Apis.Storage.v1
             }
         }
 
+        /// <summary>Initiates a long-running Relocate Bucket operation on the specified bucket.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the bucket to be moved.</param>
+        public virtual RelocateRequest Relocate(Google.Apis.Storage.v1.Data.RelocateBucketRequest body, string bucket)
+        {
+            return new RelocateRequest(this.service, body, bucket);
+        }
+
+        /// <summary>Initiates a long-running Relocate Bucket operation on the specified bucket.</summary>
+        public class RelocateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Relocate request.</summary>
+            public RelocateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.RelocateBucketRequest body, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket to be moved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.RelocateBucketRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "relocate";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/relocate";
+
+            /// <summary>Initializes Relocate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Restores a soft-deleted bucket.</summary>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="generation">Generation of a bucket.</param>
@@ -11711,6 +11764,33 @@ namespace Google.Apis.Storage.v1.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; }
+        }
+    }
+
+    /// <summary>A Relocate Bucket request.</summary>
+    public class RelocateBucketRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bucket's new custom placement configuration if relocating to a Custom Dual Region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationCustomPlacementConfig")]
+        public virtual DestinationCustomPlacementConfigData DestinationCustomPlacementConfig { get; set; }
+
+        /// <summary>The new location the bucket will be relocated to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationLocation")]
+        public virtual string DestinationLocation { get; set; }
+
+        /// <summary>If true, validate the operation, but do not actually relocate the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+
+        /// <summary>The bucket's new custom placement configuration if relocating to a Custom Dual Region.</summary>
+        public class DestinationCustomPlacementConfigData
+        {
+            /// <summary>The list of regional locations in which data is placed.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dataLocations")]
+            public virtual System.Collections.Generic.IList<string> DataLocations { get; set; }
         }
     }
 
