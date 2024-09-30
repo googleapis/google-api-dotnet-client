@@ -93,10 +93,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>View customer related information</summary>
             public static string AdminDirectoryCustomerReadonly = "https://www.googleapis.com/auth/admin.directory.customer.readonly";
 
-            /// <summary>View and manage your Chrome OS devices' metadata</summary>
+            /// <summary>View and manage your ChromeOS devices' metadata</summary>
             public static string AdminDirectoryDeviceChromeos = "https://www.googleapis.com/auth/admin.directory.device.chromeos";
 
-            /// <summary>View your Chrome OS devices' metadata</summary>
+            /// <summary>View your ChromeOS devices' metadata</summary>
             public static string AdminDirectoryDeviceChromeosReadonly = "https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly";
 
             /// <summary>View and manage your mobile devices' metadata</summary>
@@ -189,10 +189,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>View customer related information</summary>
             public const string AdminDirectoryCustomerReadonly = "https://www.googleapis.com/auth/admin.directory.customer.readonly";
 
-            /// <summary>View and manage your Chrome OS devices' metadata</summary>
+            /// <summary>View and manage your ChromeOS devices' metadata</summary>
             public const string AdminDirectoryDeviceChromeos = "https://www.googleapis.com/auth/admin.directory.device.chromeos";
 
-            /// <summary>View your Chrome OS devices' metadata</summary>
+            /// <summary>View your ChromeOS devices' metadata</summary>
             public const string AdminDirectoryDeviceChromeosReadonly = "https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly";
 
             /// <summary>View and manage your mobile devices' metadata</summary>
