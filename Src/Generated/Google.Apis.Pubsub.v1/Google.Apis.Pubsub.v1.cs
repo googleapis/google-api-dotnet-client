@@ -3671,6 +3671,16 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for reading Cloud Storage data in Avro binary format. The bytes of each object will be set to the
+    /// `data` field of a Pub/Sub message.
+    /// </summary>
+    public class AvroFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Ingestion settings for Amazon Kinesis Data Streams.</summary>
     public class AwsKinesis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3837,6 +3847,88 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ingestion settings for Cloud Storage.</summary>
+    public class CloudStorage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Data from Cloud Storage will be interpreted in Avro format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avroFormat")]
+        public virtual AvroFormat AvroFormat { get; set; }
+
+        /// <summary>
+        /// Optional. Cloud Storage bucket. The bucket name must be without any prefix like "gs://". See the [bucket
+        /// naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Optional. Glob pattern used to match objects that will be ingested. If unset, all objects will be ingested.
+        /// See the [supported
+        /// patterns](https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchGlob")]
+        public virtual string MatchGlob { get; set; }
+
+        private string _minimumObjectCreateTimeRaw;
+
+        private object _minimumObjectCreateTime;
+
+        /// <summary>Optional. Only objects with a larger or equal creation timestamp will be ingested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumObjectCreateTime")]
+        public virtual string MinimumObjectCreateTimeRaw
+        {
+            get => _minimumObjectCreateTimeRaw;
+            set
+            {
+                _minimumObjectCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _minimumObjectCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MinimumObjectCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MinimumObjectCreateTimeDateTimeOffset instead.")]
+        public virtual object MinimumObjectCreateTime
+        {
+            get => _minimumObjectCreateTime;
+            set
+            {
+                _minimumObjectCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _minimumObjectCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="MinimumObjectCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MinimumObjectCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MinimumObjectCreateTimeRaw);
+            set => MinimumObjectCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. It will be assumed data from Cloud Storage was written via [Cloud Storage
+        /// subscriptions](https://cloud.google.com/pubsub/docs/cloudstorage).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubAvroFormat")]
+        public virtual PubSubAvroFormat PubsubAvroFormat { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field that indicates the state of the Cloud Storage ingestion source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. Data from Cloud Storage will be interpreted as text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
+        public virtual TextFormat TextFormat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4076,6 +4168,14 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsKinesis")]
         public virtual AwsKinesis AwsKinesis { get; set; }
 
+        /// <summary>Optional. Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorage")]
+        public virtual CloudStorage CloudStorage { get; set; }
+
+        /// <summary>Optional. Platform Logs settings. If unset, no Platform Logs will be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformLogsSettings")]
+        public virtual PlatformLogsSettings PlatformLogsSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4309,6 +4409,17 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for Platform Logs produced by Pub/Sub.</summary>
+    public class PlatformLogsSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The minimum severity level of Platform Logs that will be written.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
@@ -4380,6 +4491,17 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for reading Cloud Storage data written via [Cloud Storage
+    /// subscriptions](https://cloud.google.com/pubsub/docs/cloudstorage). The data and attributes fields of the
+    /// originally exported Pub/Sub message will be restored when publishing.
+    /// </summary>
+    public class PubSubAvroFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request for the Publish method.</summary>
@@ -5112,6 +5234,20 @@ namespace Google.Apis.Pubsub.v1.Data
     /// </summary>
     public class TextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for reading Cloud Storage data in text format. Each line of text as specified by the delimiter
+    /// will be set to the `data` field of a Pub/Sub message.
+    /// </summary>
+    public class TextFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. When unset, '\n' is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delimiter")]
+        public virtual string Delimiter { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
