@@ -14773,8 +14773,7 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         /// <summary>
         /// Optional. Data store connection feature output signals. Filled only when data stores are involved in serving
-        /// the query and DetectIntentRequest.populate data_store_connection_quality_signals is set to true in the
-        /// request.
+        /// the query and DetectIntentRequest.populate_data_store_connection_signals is set to true in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreConnectionSignals")]
         public virtual GoogleCloudDialogflowCxV3DataStoreConnectionSignals DataStoreConnectionSignals { get; set; }
@@ -19951,6 +19950,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>ConversationModel resource name. Format: `projects//conversationModels/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. A read only boolean field reflecting Zone Isolation status of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. A read only boolean field reflecting Zone Separation status of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Metadata for smart reply models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartReplyModelMetadata")]
