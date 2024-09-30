@@ -3244,7 +3244,7 @@ namespace Google.Apis.SecretManager.v1.Data
         }
 
         /// <summary>
-        /// Optional. The customer-managed encryption configuration of the Regionalised Secrets. If no configuration is
+        /// Optional. The customer-managed encryption configuration of the regionalized secrets. If no configuration is
         /// provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only
         /// apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
         /// </summary>
@@ -3427,7 +3427,7 @@ namespace Google.Apis.SecretManager.v1.Data
 
         /// <summary>
         /// Output only. The customer-managed encryption status of the SecretVersion. Only populated if customer-managed
-        /// encryption is used and Secret is a Regionalised Secret.
+        /// encryption is used and Secret is a regionalized secret.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
         public virtual CustomerManagedEncryptionStatus CustomerManagedEncryption { get; set; }
