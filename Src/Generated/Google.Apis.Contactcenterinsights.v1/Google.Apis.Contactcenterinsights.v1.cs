@@ -748,7 +748,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
 
                 /// <summary>
-                /// Creates a conversation. Does not support audio transcription or DLP redaction. Use
+                /// Creates a conversation. Note that this method does not support audio transcription or redaction. Use
                 /// `conversations.upload` instead.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -759,7 +759,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
 
                 /// <summary>
-                /// Creates a conversation. Does not support audio transcription or DLP redaction. Use
+                /// Creates a conversation. Note that this method does not support audio transcription or redaction. Use
                 /// `conversations.upload` instead.
                 /// </summary>
                 public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation>
@@ -1053,8 +1053,8 @@ namespace Google.Apis.Contactcenterinsights.v1
 
                     /// <summary>
                     /// The maximum number of conversations to return in the response. A valid page size ranges from 0
-                    /// to 1,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be
-                    /// chosen. Note that a call might return fewer results than the requested page size.
+                    /// to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will
+                    /// be chosen. Note that a call might return fewer results than the requested page size.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
