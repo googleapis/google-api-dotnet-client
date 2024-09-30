@@ -1395,7 +1395,12 @@ namespace Google.Apis.Backupdr.v1
 
                         /// <summary>Updates the settings of a Backup.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Output only. Identifier. Name of the resource.</param>
+                        /// <param name="name">
+                        /// Output only. Identifier. Name of the backup to create. It must have the
+                        /// format`"projects//locations//backupVaults//dataSources/{datasource}/backups/{backup}"`.
+                        /// `{backup}` cannot be changed after creation. It must be between 3-63 characters long and
+                        /// must be unique within the datasource.
+                        /// </param>
                         public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.Backup body, string name)
                         {
                             return new PatchRequest(this.service, body, name);
@@ -1412,7 +1417,12 @@ namespace Google.Apis.Backupdr.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Output only. Identifier. Name of the resource.</summary>
+                            /// <summary>
+                            /// Output only. Identifier. Name of the backup to create. It must have the
+                            /// format`"projects//locations//backupVaults//dataSources/{datasource}/backups/{backup}"`.
+                            /// `{backup}` cannot be changed after creation. It must be between 3-63 characters long and
+                            /// must be unique within the datasource.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -1944,7 +1954,12 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>Updates the settings of a DataSource.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. Identifier. The resource name.</param>
+                    /// <param name="name">
+                    /// Output only. Identifier. Name of the datasource to create. It must have the
+                    /// format`"projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}"`.
+                    /// `{datasource}` cannot be changed after creation. It must be between 3-63 characters long and
+                    /// must be unique within the backup vault.
+                    /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.DataSource body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -1961,7 +1976,12 @@ namespace Google.Apis.Backupdr.v1
                             InitParameters();
                         }
 
-                        /// <summary>Output only. Identifier. The resource name.</summary>
+                        /// <summary>
+                        /// Output only. Identifier. Name of the datasource to create. It must have the
+                        /// format`"projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}"`.
+                        /// `{datasource}` cannot be changed after creation. It must be between 3-63 characters long and
+                        /// must be unique within the backup vault.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2165,7 +2185,7 @@ namespace Google.Apis.Backupdr.v1
                     }
                 }
 
-                /// <summary></summary>
+                /// <summary>Creates a new BackupVault in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.Backupdr.v1.Data.BackupVault body, string parent)
@@ -2173,7 +2193,7 @@ namespace Google.Apis.Backupdr.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary></summary>
+                /// <summary>Creates a new BackupVault in a given project and location.</summary>
                 public class CreateRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2733,7 +2753,12 @@ namespace Google.Apis.Backupdr.v1
 
                 /// <summary>Updates the settings of a BackupVault.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. Identifier. The resource name.</param>
+                /// <param name="name">
+                /// Output only. Identifier. Name of the backup vault to create. It must have the
+                /// format`"projects/{project}/locations/{location}/backupVaults/{backupvault}"`. `{backupvault}` cannot
+                /// be changed after creation. It must be between 3-63 characters long and must be unique within the
+                /// project and location.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.BackupVault body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -2750,7 +2775,12 @@ namespace Google.Apis.Backupdr.v1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. Identifier. The resource name.</summary>
+                    /// <summary>
+                    /// Output only. Identifier. Name of the backup vault to create. It must have the
+                    /// format`"projects/{project}/locations/{location}/backupVaults/{backupvault}"`. `{backupvault}`
+                    /// cannot be changed after creation. It must be between 3-63 characters long and must be unique
+                    /// within the project and location.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4409,7 +4439,11 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. Identifier. Name of the resource.</summary>
+        /// <summary>
+        /// Output only. Identifier. Name of the backup to create. It must have the
+        /// format`"projects//locations//backupVaults//dataSources/{datasource}/backups/{backup}"`. `{backup}` cannot be
+        /// changed after creation. It must be between 3-63 characters long and must be unique within the datasource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5087,6 +5121,14 @@ namespace Google.Apis.Backupdr.v1.Data
     public class BackupVault : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Note: This field is added for future use case and will not be supported in the current release.
+        /// Optional. Access restriction for the backup vault. Default value is WITHIN_ORGANIZATION if not provided
+        /// during creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessRestriction")]
+        public virtual string AccessRestriction { get; set; }
+
+        /// <summary>
         /// Optional. User annotations. See https://google.aip.dev/128#annotations Stores small amounts of arbitrary
         /// data.
         /// </summary>
@@ -5199,7 +5241,12 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. Identifier. The resource name.</summary>
+        /// <summary>
+        /// Output only. Identifier. Name of the backup vault to create. It must have the
+        /// format`"projects/{project}/locations/{location}/backupVaults/{backupvault}"`. `{backupvault}` cannot be
+        /// changed after creation. It must be between 3-63 characters long and must be unique within the project and
+        /// location.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5797,7 +5844,12 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. Identifier. The resource name.</summary>
+        /// <summary>
+        /// Output only. Identifier. Name of the datasource to create. It must have the
+        /// format`"projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}"`.
+        /// `{datasource}` cannot be changed after creation. It must be between 3-63 characters long and must be unique
+        /// within the backup vault.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
