@@ -2061,6 +2061,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
+        /// <summary>A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redisCluster")]
+        public virtual string RedisCluster { get; set; }
+
+        /// <summary>A [Redis Instance](https://cloud.google.com/memorystore/docs/redis) URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redisInstance")]
+        public virtual string RedisInstance { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
