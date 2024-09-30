@@ -7912,6 +7912,19 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CustomMirroringProfile defines an action for mirroring traffic to a collector's EndpointGroup</summary>
+    public class CustomMirroringProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The MirroringEndpointGroup to which traffic associated with the SP should be mirrored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroup")]
+        public virtual string MirroringEndpointGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification of traffic destination attributes.</summary>
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9395,6 +9408,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The custom Packet Mirroring v2 configuration for the SecurityProfile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
+        public virtual CustomMirroringProfile CustomMirroringProfile { get; set; }
+
         /// <summary>Optional. An optional description of the profile. Max length 512 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -9504,6 +9521,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Reference to a SecurityProfile with the CustomMirroring configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
+        public virtual string CustomMirroringProfile { get; set; }
 
         /// <summary>Optional. An optional description of the profile group. Max length 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
