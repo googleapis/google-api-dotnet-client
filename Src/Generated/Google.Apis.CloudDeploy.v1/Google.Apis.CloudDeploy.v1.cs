@@ -294,6 +294,7 @@ namespace Google.Apis.CloudDeploy.v1
                 this.service = service;
                 CustomTargetTypes = new CustomTargetTypesResource(service);
                 DeliveryPipelines = new DeliveryPipelinesResource(service);
+                DeployPolicies = new DeployPoliciesResource(service);
                 Operations = new OperationsResource(service);
                 Targets = new TargetsResource(service);
             }
@@ -2258,6 +2259,13 @@ namespace Google.Apis.CloudDeploy.v1
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
+                            /// Optional. Deploy policies to override. Format is
+                            /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("overrideDeployPolicy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> OverrideDeployPolicy { get; set; }
+
+                            /// <summary>
                             /// Optional. A request ID to identify requests. Specify a unique request ID so that if you
                             /// must retry your request, the server knows to ignore the request if it has already been
                             /// completed. The server guarantees that for at least 60 minutes after the first request.
@@ -2315,6 +2323,14 @@ namespace Google.Apis.CloudDeploy.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+$",
+                                });
+                                RequestParameters.Add("overrideDeployPolicy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "overrideDeployPolicy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                                 {
@@ -2719,6 +2735,13 @@ namespace Google.Apis.CloudDeploy.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>
+                        /// Optional. Deploy policies to override. Format is
+                        /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("overrideDeployPolicy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> OverrideDeployPolicy { get; set; }
+
                         /// <summary>Required. ID of the `Release`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("releaseId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ReleaseId { get; set; }
@@ -2770,6 +2793,14 @@ namespace Google.Apis.CloudDeploy.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+$",
+                            });
+                            RequestParameters.Add("overrideDeployPolicy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "overrideDeployPolicy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("releaseId", new Google.Apis.Discovery.Parameter
                             {
@@ -3760,6 +3791,538 @@ namespace Google.Apis.CloudDeploy.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DeployPolicies resource.</summary>
+            public virtual DeployPoliciesResource DeployPolicies { get; }
+
+            /// <summary>The "deployPolicies" collection of methods.</summary>
+            public class DeployPoliciesResource
+            {
+                private const string Resource = "deployPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DeployPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new DeployPolicy in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent collection in which the `DeployPolicy` must be created. The format is
+                /// `projects/{project_id}/locations/{location_name}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.DeployPolicy body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new DeployPolicy in a given project and location.</summary>
+                public class CreateRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.DeployPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent collection in which the `DeployPolicy` must be created. The format is
+                    /// `projects/{project_id}/locations/{location_name}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. ID of the `DeployPolicy`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("deployPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DeployPolicyId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, the request is validated and the user is provided with an expected
+                    /// result, but no actual change is made.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDeploy.v1.Data.DeployPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/deployPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("deployPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deployPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single DeployPolicy.</summary>
+                /// <param name="name">
+                /// Required. The name of the `DeployPolicy` to delete. The format is
+                /// `projects/{project_id}/locations/{location_name}/deployPolicies/{deploy_policy_name}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single DeployPolicy.</summary>
+                public class DeleteRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `DeployPolicy` to delete. The format is
+                    /// `projects/{project_id}/locations/{location_name}/deployPolicies/{deploy_policy_name}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, then deleting an already deleted or non-existing `DeployPolicy` will
+                    /// succeed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. This checksum is computed by the server based on the value of other fields, and may be
+                    /// sent on update and delete requests to ensure the client has an up-to-date value before
+                    /// proceeding.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not actually post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deployPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single DeployPolicy.</summary>
+                /// <param name="name">
+                /// Required. Name of the `DeployPolicy`. Format must be
+                /// `projects/{project_id}/locations/{location_name}/deployPolicies/{deploy_policy_name}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single DeployPolicy.</summary>
+                public class GetRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.DeployPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the `DeployPolicy`. Format must be
+                    /// `projects/{project_id}/locations/{location_name}/deployPolicies/{deploy_policy_name}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deployPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists DeployPolicies in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of deploy policies. Format must be
+                /// `projects/{project_id}/locations/{location_name}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists DeployPolicies in a given project and location.</summary>
+                public class ListRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.ListDeployPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of deploy policies. Format must be
+                    /// `projects/{project_id}/locations/{location_name}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Filter deploy policies to be returned. See https://google.aip.dev/160 for more details. All
+                    /// fields can be used in the filter.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field to sort by. See https://google.aip.dev/132#ordering for more details.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of deploy policies to return. The service may return fewer than this value.
+                    /// If unspecified, at most 50 deploy policies will be returned. The maximum value is 1000; values
+                    /// above 1000 will be set to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListDeployPolicies` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other provided parameters match the call that provided the
+                    /// page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/deployPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single DeployPolicy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Name of the `DeployPolicy`. Format is
+                /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. The `deployPolicy`
+                /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.DeployPolicy body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single DeployPolicy.</summary>
+                public class PatchRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.DeployPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Name of the `DeployPolicy`. Format is
+                    /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. The `deployPolicy`
+                    /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, updating a `DeployPolicy` that does not exist will result in the
+                    /// creation of a new `DeployPolicy`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten by the update in the
+                    /// `DeployPolicy` resource. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it's in the mask. If the user doesn't
+                    /// provide a mask then all fields are overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, the request is validated and the user is provided with an expected
+                    /// result, but no actual change is made.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDeploy.v1.Data.DeployPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deployPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -5040,6 +5603,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>The request object used by `AdvanceRollout`.</summary>
     public class AdvanceRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Deploy policies to override. Format is
+        /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideDeployPolicy")]
+        public virtual System.Collections.Generic.IList<string> OverrideDeployPolicy { get; set; }
+
         /// <summary>Required. The phase ID to advance the `Rollout` to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
         public virtual string PhaseId { get; set; }
@@ -5107,6 +5677,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Required. True = approve; false = reject</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approved")]
         public virtual System.Nullable<bool> Approved { get; set; }
+
+        /// <summary>
+        /// Optional. Deploy policies to override. Format is
+        /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideDeployPolicy")]
+        public virtual System.Collections.Generic.IList<string> OverrideDeployPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5531,6 +6108,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. Contains information about what policies prevented the `AutomationRun` to proceed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolation")]
+        public virtual PolicyViolation PolicyViolation { get; set; }
+
         /// <summary>Output only. Promotes a release to a specified 'Target'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promoteReleaseOperation")]
         public virtual PromoteReleaseOperation PromoteReleaseOperation { get; set; }
@@ -5859,6 +6442,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>The request object used by `CancelRollout`.</summary>
     public class CancelRolloutRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Deploy policies to override. Format is
+        /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideDeployPolicy")]
+        public virtual System.Collections.Generic.IList<string> OverrideDeployPolicy { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6435,6 +7025,24 @@ namespace Google.Apis.CloudDeploy.v1.Data
         }
     }
 
+    /// <summary>Contains criteria for selecting DeliveryPipelines.</summary>
+    public class DeliveryPipelineAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ID of the `DeliveryPipeline`. The value of this field could be one of the following: * The last segment of a
+        /// pipeline name * "*", all delivery pipelines in a location
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>DeliveryPipeline labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Payload proto for "clouddeploy.googleapis.com/deliverypipeline_notification" Platform Log event that describes
     /// the failure to send delivery pipeline status change Pub/Sub notification.
@@ -6558,6 +7166,227 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
+    /// A `DeployPolicy` resource in the Cloud Deploy API. A `DeployPolicy` inhibits manual or automation driven actions
+    /// within a Delivery Pipeline or Target.
+    /// </summary>
+    public class DeployPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys
+        /// have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required
+        /// and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with
+        /// dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If
+        /// specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer
+        /// than 253 characters in total, followed by a slash (`/`). See
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for
+        /// more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time at which the deploy policy was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Description of the `DeployPolicy`. Max length is 255 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of
+        /// other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value
+        /// before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
+        /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
+        /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the `DeployPolicy`. Format is
+        /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. The `deployPolicy` component must
+        /// match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Rules to apply. At least one rule must be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<PolicyRule> Rules { get; set; }
+
+        /// <summary>
+        /// Required. Selected resources to which the policy will be applied. At least one selector is required. If one
+        /// selector matches the resource the policy applies. For example, if there are two selectors and the action
+        /// being attempted matches one of them, the policy will apply to that action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectors")]
+        public virtual System.Collections.Generic.IList<DeployPolicyResourceSelector> Selectors { get; set; }
+
+        /// <summary>
+        /// When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
+        public virtual System.Nullable<bool> Suspended { get; set; }
+
+        /// <summary>Output only. Unique identifier of the `DeployPolicy`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Most recent time at which the deploy policy was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/deploypolicy_evaluation" Platform Log event that describes the
+    /// deploy policy evaluation event.
+    /// </summary>
+    public class DeployPolicyEvaluationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the request is allowed. Allowed is set as true if: (1) the request complies with the policy; or (2)
+        /// the request doesn't comply with the policy but the policy was overridden; or (3) the request doesn't comply
+        /// with the policy but the policy was suspended
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        /// <summary>The name of the `Delivery Pipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryPipeline")]
+        public virtual string DeliveryPipeline { get; set; }
+
+        /// <summary>The name of the `DeployPolicy`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployPolicy")]
+        public virtual string DeployPolicy { get; set; }
+
+        /// <summary>Unique identifier of the `DeployPolicy`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployPolicyUid")]
+        public virtual string DeployPolicyUid { get; set; }
+
+        /// <summary>What invoked the action (e.g. a user or automation).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoker")]
+        public virtual string Invoker { get; set; }
+
+        /// <summary>Debug message for when a deploy policy event occurs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// Things that could have overridden the policy verdict. Overrides together with verdict decide whether the
+        /// request is allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
+        public virtual System.Collections.Generic.IList<string> Overrides { get; set; }
+
+        /// <summary>Unique identifier of the `Delivery Pipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
+        /// <summary>Rule id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rule")]
+        public virtual string Rule { get; set; }
+
+        /// <summary>Rule type (e.g. Restrict Rollouts).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleType")]
+        public virtual string RuleType { get; set; }
+
+        /// <summary>
+        /// The name of the `Target`. This is an optional field, as a `Target` may not always be applicable to a policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the `Target`. This is an optional field, as a `Target` may not always be applicable to
+        /// a policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetUid")]
+        public virtual string TargetUid { get; set; }
+
+        /// <summary>The policy verdict of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Payload proto for "clouddeploy.googleapis.com/deploypolicy_notification". Platform Log event that describes the
     /// failure to send a pub/sub notification when there is a DeployPolicy status change.
     /// </summary>
@@ -6578,6 +7407,26 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains information on the resources to select for a deploy policy. Attributes provided must all match the
+    /// resource in order for policy restrictions to apply. For example, if delivery pipelines attributes given are an
+    /// id "prod" and labels "foo: bar", a delivery pipeline resource must match both that id and have that label in
+    /// order to be subject to the policy.
+    /// </summary>
+    public class DeployPolicyResourceSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Contains attributes about a delivery pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryPipeline")]
+        public virtual DeliveryPipelineAttribute DeliveryPipeline { get; set; }
+
+        /// <summary>Optional. Contains attributes about a target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual TargetAttribute Target { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6797,6 +7646,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Required. The job ID for the Job to ignore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
+
+        /// <summary>
+        /// Optional. Deploy policies to override. Format is
+        /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideDeployPolicy")]
+        public virtual System.Collections.Generic.IList<string> OverrideDeployPolicy { get; set; }
 
         /// <summary>Required. The phase ID the Job to ignore belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
@@ -7183,6 +8039,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response object from `ListDeployPolicies`.</summary>
+    public class ListDeployPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `DeployPolicy` objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployPolicies")]
+        public virtual System.Collections.Generic.IList<DeployPolicy> DeployPolicies { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ListJobRunsResponse is the response object returned by `ListJobRuns`.</summary>
     public class ListJobRunsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7361,6 +8239,32 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Required. The target_ids of this multiTarget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetIds")]
         public virtual System.Collections.Generic.IList<string> TargetIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// One-time window within which actions are restricted. For example, blocking actions over New Year's Eve from
+    /// December 31st at 5pm to January 1st at 9am.
+    /// </summary>
+    public class OneTimeWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. End date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual Date EndDate { get; set; }
+
+        /// <summary>Required. End time (exclusive). You may use 24:00 for the end of the day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual TimeOfDay EndTime { get; set; }
+
+        /// <summary>Required. Start date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual Date StartDate { get; set; }
+
+        /// <summary>Required. Start time (inclusive). Use 00:00 for the beginning of the day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7753,6 +8657,55 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Deploy Policy rule.</summary>
+    public class PolicyRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Rollout restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutRestriction")]
+        public virtual RolloutRestriction RolloutRestriction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Returned from an action if one or more policies were violated, and therefore the action was prevented. Contains
+    /// information about what policies were violated and why.
+    /// </summary>
+    public class PolicyViolation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy violation details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyViolationDetails")]
+        public virtual System.Collections.Generic.IList<PolicyViolationDetails> PolicyViolationDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policy violation details.</summary>
+    public class PolicyViolationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User readable message about why the request violated a policy. This is not intended for machine parsing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
+
+        /// <summary>
+        /// Name of the policy that was violated. Policy resource will be in the format of
+        /// `projects/{project}/locations/{location}/policies/{policy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>Id of the rule that triggered the policy violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Postdeploy contains the postdeploy job configuration information.</summary>
@@ -8382,6 +9335,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
 
+        /// <summary>
+        /// Optional. Deploy policies to override. Format is
+        /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideDeployPolicy")]
+        public virtual System.Collections.Generic.IList<string> OverrideDeployPolicy { get; set; }
+
         /// <summary>Required. The phase ID the Job to retry belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
         public virtual string PhaseId { get; set; }
@@ -8460,6 +9420,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>The request object for `RollbackTarget`.</summary>
     public class RollbackTargetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Deploy policies to override. Format is
+        /// `projects/{project}/locations/{location}/deployPolicies/{deploy_policy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideDeployPolicy")]
+        public virtual System.Collections.Generic.IList<string> OverrideDeployPolicy { get; set; }
+
         /// <summary>
         /// Optional. ID of the `Release` to roll back to. If this isn't specified, the previous successful `Rollout` to
         /// the specified target will be used to determine the `Release`.
@@ -8831,6 +9798,35 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rollout restrictions.</summary>
+    public class RolloutRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be
+        /// restricted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>
+        /// Required. Restriction rule ID. Required and must be unique within a DeployPolicy. The format is
+        /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. What invoked the action. If left empty, all invoker types will be restricted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invokers")]
+        public virtual System.Collections.Generic.IList<string> Invokers { get; set; }
+
+        /// <summary>Required. Time window within which actions are restricted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeWindows")]
+        public virtual TimeWindows TimeWindows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9673,6 +10669,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>The request object used by `TerminateJobRun`.</summary>
     public class TerminateJobRunRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Deploy policies to override. Format is
+        /// `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideDeployPolicy")]
+        public virtual System.Collections.Generic.IList<string> OverrideDeployPolicy { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9705,6 +10708,60 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
+        /// scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
+        /// leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Time windows within which actions are restricted.</summary>
+    public class TimeWindows : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. One-time windows within which actions are restricted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeWindows")]
+        public virtual System.Collections.Generic.IList<OneTimeWindow> OneTimeWindows { get; set; }
+
+        /// <summary>
+        /// Required. The time zone in IANA format [IANA Time Zone Database](https://www.iana.org/time-zones) (e.g.
+        /// America/New_York).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>Optional. Recurring weekly windows within which actions are restricted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyWindows")]
+        public virtual System.Collections.Generic.IList<WeeklyWindow> WeeklyWindows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9747,6 +10804,36 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Additional information about the verify failure, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Weekly windows. For example, blocking actions every Saturday and Sunday. Another example would be blocking
+    /// actions every weekday from 5pm to midnight.
+    /// </summary>
+    public class WeeklyWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Days of week. If left empty, all days of the week will be included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
+        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; }
+
+        /// <summary>
+        /// Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify end_time you must also
+        /// specify start_time. If left empty, this will block for the entire day for the days specified in
+        /// days_of_week.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual TimeOfDay EndTime { get; set; }
+
+        /// <summary>
+        /// Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify start_time you must
+        /// also specify end_time. If left empty, this will block for the entire day for the days specified in
+        /// days_of_week.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
