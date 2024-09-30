@@ -467,7 +467,158 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 public WorkloadsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Updates = new UpdatesResource(service);
                     Violations = new ViolationsResource(service);
+                }
+
+                /// <summary>Gets the Updates resource.</summary>
+                public virtual UpdatesResource Updates { get; }
+
+                /// <summary>The "updates" collection of methods.</summary>
+                public class UpdatesResource
+                {
+                    private const string Resource = "updates";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public UpdatesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>This endpoint creates a new operation to apply the given update.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the update. Format:
+                    /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}/updates/{update_id}
+                    /// </param>
+                    public virtual ApplyRequest Apply(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateRequest body, string name)
+                    {
+                        return new ApplyRequest(this.service, body, name);
+                    }
+
+                    /// <summary>This endpoint creates a new operation to apply the given update.</summary>
+                    public class ApplyRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Apply request.</summary>
+                        public ApplyRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the update. Format:
+                        /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}/updates/{update_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "apply";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:apply";
+
+                        /// <summary>Initializes Apply parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+/updates/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>This endpoint lists all updates for the given workload.</summary>
+                    /// <param name="parent">
+                    /// Required. organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>This endpoint lists all updates for the given workload.</summary>
+                    public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListWorkloadUpdatesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Page size. The default value is 20 and the max allowed value is 100.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Page token returned from previous request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/updates";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Violations resource.</summary>
@@ -1520,6 +1671,80 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation metadata to give request details of ApplyWorkloadUpdate.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Optional. Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The resource name of the update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateName")]
+        public virtual string UpdateName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to apply update to a workload.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action to be performed on the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ApplyWorkloadUpdate endpoint.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The update that was applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedUpdate")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate AppliedUpdate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents move analysis results for an asset.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1638,6 +1863,21 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response of listing the compliance updates per workload with pagination.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1ListWorkloadUpdatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next page token. Return empty if reached the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of workload updates for a given workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadUpdates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate> WorkloadUpdates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of ListWorkloads endpoint.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListWorkloadsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1703,6 +1943,99 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This assured workload service object is used to represent the org policy attached to a resource. It servces the
+    /// same purpose as the orgpolicy.v2.Policy object but with functionality that is limited to what is supported by
+    /// Assured Workloads(e.g. only one rule under one OrgPolicy object, no conditions, etc).
+    /// </summary>
+    public class GoogleCloudAssuredworkloadsV1beta1OrgPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The constraint name of the OrgPolicy. e.g. "constraints/gcp.resourceLocations".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
+        public virtual string Constraint { get; set; }
+
+        /// <summary>
+        /// If `inherit` is true, policy rules of the lowest ancestor in the resource hierarchy chain are inherited. If
+        /// it is false, policy rules are not inherited.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inherit")]
+        public virtual System.Nullable<bool> Inherit { get; set; }
+
+        /// <summary>
+        /// Ignores policies set above this resource and restores to the `constraint_default` value. `reset` can only be
+        /// true when `rules` is empty and `inherit` is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reset")]
+        public virtual System.Nullable<bool> Reset { get; set; }
+
+        /// <summary>Resource that the OrgPolicy attaches to. Format: folders/123" projects/123".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The rule of the OrgPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rule")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1OrgPolicyPolicyRule Rule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A rule used to express this policy.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1OrgPolicyPolicyRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ListPolicy only when all values are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAll")]
+        public virtual System.Nullable<bool> AllowAll { get; set; }
+
+        /// <summary>ListPolicy only when all values are denied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyAll")]
+        public virtual System.Nullable<bool> DenyAll { get; set; }
+
+        /// <summary>BooleanPolicy only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforce")]
+        public virtual System.Nullable<bool> Enforce { get; set; }
+
+        /// <summary>ListPolicy only when custom values are specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1OrgPolicyPolicyRuleStringValues Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The values allowed for a ListPolicy.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1OrgPolicyPolicyRuleStringValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of values allowed at this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; }
+
+        /// <summary>List of values denied at this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedValues")]
+        public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an update for an org policy control applied on an Assured Workload resource. The inherited org policy
+    /// is not considered.
+    /// </summary>
+    public class GoogleCloudAssuredworkloadsV1beta1OrgPolicyUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The org policy currently applied on the assured workload resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedPolicy")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1OrgPolicy AppliedPolicy { get; set; }
+
+        /// <summary>The suggested org policy that replaces the applied policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedPolicy")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1OrgPolicy SuggestedPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for restricting list of available resources in Workload environment.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1RestrictAllowedResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1717,6 +2050,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>Response for restricting the list of allowed resources.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1RestrictAllowedResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of the update.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1UpdateDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Update to one org policy, e.g. gcp.resourceLocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyUpdate")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1OrgPolicyUpdate OrgPolicyUpdate { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2113,6 +2457,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>A Workload object for managing highly regulated workloads of cloud customers.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The number of updates available for the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableUpdates")]
+        public virtual System.Nullable<int> AvailableUpdates { get; set; }
+
         /// <summary>
         /// Optional. The billing account used for the resources which are direct children of workload. This billing
         /// account is initially associated with the resources created as part of Workload creation. After the initial
@@ -2529,6 +2877,102 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>Indicates SAA enrollment status of a given workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setupStatus")]
         public virtual string SetupStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A workload update is a change to the workload's compliance configuration.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the update was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The details of the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1UpdateDetails Details { get; set; }
+
+        /// <summary>
+        /// Output only. Immutable. Identifier. Resource name of the WorkloadUpdate. Format:
+        /// organizations/{organization}/locations/{location}/workloads/{workload}/updates/{update}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The time the update was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
