@@ -4338,7 +4338,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                     /// <summary>
                     /// Required. Used to specify the fields to be overwritten in the `AuthzPolicy` resource by the
-                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// update. The fields specified in the `update_mask` are relative to the resource, not the full
                     /// request. A field is overwritten if it is in the mask. If the user does not specify a mask, then
                     /// all fields are overwritten.
                     /// </summary>
@@ -9791,15 +9791,15 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     public class AuthzPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Can be one of ALLOW, DENY, CUSTOM. When the action is CUSTOM, customProvider must be specified.
-        /// When the action is ALLOW, only requests matching the policy will be allowed. When the action is DENY, only
-        /// requests matching the policy will be denied. When a request arrives, the policies are evaluated in the
-        /// following order: 1. If there is a CUSTOM policy that matches the request, the CUSTOM policy is evaluated
-        /// using the custom authorization providers and the request is denied if the provider rejects the request. 2.
-        /// If there are any DENY policies that match the request, the request is denied. 3. If there are no ALLOW
-        /// policies for the resource or if any of the ALLOW policies match the request, the request is allowed. 4. Else
-        /// the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the
-        /// request.
+        /// Required. Can be one of `ALLOW`, `DENY`, `CUSTOM`. When the action is `CUSTOM`, `customProvider` must be
+        /// specified. When the action is `ALLOW`, only requests matching the policy will be allowed. When the action is
+        /// `DENY`, only requests matching the policy will be denied. When a request arrives, the policies are evaluated
+        /// in the following order: 1. If there is a `CUSTOM` policy that matches the request, the `CUSTOM` policy is
+        /// evaluated using the custom authorization providers and the request is denied if the provider rejects the
+        /// request. 2. If there are any `DENY` policies that match the request, the request is denied. 3. If there are
+        /// no `ALLOW` policies for the resource or if any of the `ALLOW` policies match the request, the request is
+        /// allowed. 4. Else the request is denied by default if none of the configured AuthzPolicies with `ALLOW`
+        /// action match the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
@@ -9842,8 +9842,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         }
 
         /// <summary>
-        /// Optional. Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to
-        /// Service Extensions. One of cloudIap or authzExtension must be specified.
+        /// Optional. Required if the action is `CUSTOM`. Allows delegating authorization decisions to Cloud IAP or to
+        /// Service Extensions. One of `cloudIap` or `authzExtension` must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customProvider")]
         public virtual AuthzPolicyCustomProvider CustomProvider { get; set; }
@@ -9855,7 +9855,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// Optional. A list of authorization HTTP rules to match against the incoming request. A policy match occurs
         /// when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least
-        /// one HTTP Rule is required for Allow or Deny Action.
+        /// one HTTP Rule is required for Allow or Deny Action. Limited to 5 rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpRules")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRule> HttpRules { get; set; }
@@ -9954,7 +9954,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         /// <summary>
         /// Optional. Describes the properties of a request's sources. At least one of sources or notSources must be
-        /// specified. Limited to 10 sources. A match occurs when ANY source (in sources or notSources) matches the
+        /// specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the
         /// request. Within a single source, the match follows AND semantics across fields and OR semantics within a
         /// single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
         /// </summary>
@@ -9973,13 +9973,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is
         /// matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be
         /// exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
-        /// Limited to 10 principals.
+        /// Limited to 5 principals.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principals")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Principals { get; set; }
 
         /// <summary>
-        /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 10
+        /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 5
         /// resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
@@ -10035,7 +10035,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// Required. A list of resource tag value permanent IDs to match against the resource manager tags value
         /// associated with the source VM of a request. The match follows AND semantics which means all the ids must
-        /// match. Limited to 10 matches.
+        /// match. Limited to 5 matches.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> Ids { get; set; }
@@ -10099,7 +10099,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         /// <summary>
         /// Optional. Describes properties of one or more targets of a request. At least one of operations or
-        /// notOperations must be specified. Limited to 10 operations. A match occurs when ANY operation (in operations
+        /// notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations
         /// or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR
         /// semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method
         /// matches.
@@ -10120,7 +10120,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         /// <summary>
         /// Optional. A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains
-        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
+        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Hosts { get; set; }
@@ -10134,7 +10134,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         /// <summary>
         /// Optional. A list of paths to match against. The match can be one of exact, prefix, suffix, or contains
-        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
+        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
         /// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified
         /// name of the form /package.service/method.
         /// </summary>
@@ -10151,7 +10151,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// Required. A list of headers to match against in http header. The match can be one of exact, prefix, suffix,
         /// or contains (substring match). The match follows AND semantics which means all the headers must match.
-        /// Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
+        /// Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleHeaderMatch> Headers { get; set; }
@@ -10218,7 +10218,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// Required. All gateways and forwarding rules referenced by this policy and extensions must share the same
         /// load balancing scheme. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information,
-        /// refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; }
@@ -10396,6 +10396,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Required. Source address group to clone items from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceAddressGroup")]
         public virtual string SourceAddressGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CustomMirroringProfile defines an action for mirroring traffic to a collector's EndpointGroup</summary>
+    public class CustomMirroringProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The MirroringEndpointGroup to which traffic associated with the SP should be mirrored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroup")]
+        public virtual string MirroringEndpointGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11965,7 +11978,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringEndpointGroup object</summary>
+    /// <summary>Message describing MirroringEndpointGroup object. Next ID: 10</summary>
     public class MirroringEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -12438,6 +12451,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The custom Packet Mirroring v2 configuration for the SecurityProfile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
+        public virtual CustomMirroringProfile CustomMirroringProfile { get; set; }
+
         /// <summary>Optional. An optional description of the profile. Max length 512 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -12547,6 +12564,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Reference to a SecurityProfile with the CustomMirroring configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
+        public virtual string CustomMirroringProfile { get; set; }
 
         /// <summary>Optional. An optional description of the profile group. Max length 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
