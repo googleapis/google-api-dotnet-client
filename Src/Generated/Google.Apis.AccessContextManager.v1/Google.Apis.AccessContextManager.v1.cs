@@ -2868,9 +2868,19 @@ namespace Google.Apis.AccessContextManager.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. This field will be used to control whether or not scoped access settings are appended to
+                /// the existing list of scoped access settings. If true, the scoped access settings in the request will
+                /// be appended to the existing list of scoped access settings. If false, the scoped access settings in
+                /// the request replace the existing list of scoped access settings.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("appendScopedAccessSettings", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> AppendScopedAccessSettings { get; set; }
+
+                /// <summary>
                 /// Required. Only the fields specified in this mask are updated. Because name and group_key cannot be
                 /// changed, update_mask is required and may only contain the following fields: `access_levels`,
-                /// `dry_run_access_levels`. update_mask { paths: "access_levels" }
+                /// `dry_run_access_levels`, `reauth_settings`, `scoped_access_settings`. update_mask { paths:
+                /// "access_levels" }
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2901,6 +2911,14 @@ namespace Google.Apis.AccessContextManager.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/gcpUserAccessBindings/[^/]+$",
+                    });
+                    RequestParameters.Add("appendScopedAccessSettings", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appendScopedAccessSettings",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
