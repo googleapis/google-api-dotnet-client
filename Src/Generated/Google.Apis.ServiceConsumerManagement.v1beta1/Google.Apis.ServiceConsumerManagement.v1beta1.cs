@@ -2224,6 +2224,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referenceDocsUri")]
         public virtual string ReferenceDocsUri { get; set; }
 
+        /// <summary>Configuration for which RPCs should be generated in the GAPIC client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectiveGapicGeneration")]
+        public virtual SelectiveGapicGeneration SelectiveGapicGeneration { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3913,6 +3917,21 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// <summary>Some settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This message is used to configure the generation of a subset of the RPCs in a service for client libraries.
+    /// </summary>
+    public class SelectiveGapicGeneration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An allowlist of the fully qualified names of RPCs that should be included on public client surfaces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methods")]
+        public virtual System.Collections.Generic.IList<string> Methods { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
