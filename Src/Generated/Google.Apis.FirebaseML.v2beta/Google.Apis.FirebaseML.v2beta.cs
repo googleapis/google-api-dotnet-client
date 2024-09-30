@@ -738,6 +738,23 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the options to customize dynamic retrieval.</summary>
+    public class GoogleCloudAiplatformV1beta1DynamicRetrievalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The threshold to be used in dynamic retrieval. If not set, a system default value is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicThreshold")]
+        public virtual System.Nullable<float> DynamicThreshold { get; set; }
+
+        /// <summary>The mode of the predictor to be used in dynamic retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>URI based data.</summary>
     public class GoogleCloudAiplatformV1beta1FileData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1111,6 +1128,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
     public class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies the dynamic retrieval configuration for the given source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicRetrievalConfig")]
+        public virtual GoogleCloudAiplatformV1beta1DynamicRetrievalConfig DynamicRetrievalConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1170,6 +1191,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. List of grounding support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingSupports")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1GroundingSupport> GroundingSupports { get; set; }
+
+        /// <summary>Optional. Output only. Retrieval metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1RetrievalMetadata RetrievalMetadata { get; set; }
 
         /// <summary>Optional. Queries executed by the retrieval tools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalQueries")]
@@ -1237,11 +1262,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logProbability")]
         public virtual System.Nullable<float> LogProbability { get; set; }
 
-        /// <summary>The candidate’s token string value.</summary>
+        /// <summary>The candidate's token string value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
-        /// <summary>The candidate’s token id value.</summary>
+        /// <summary>The candidate's token id value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenId")]
         public virtual System.Nullable<int> TokenId { get; set; }
 
@@ -1322,6 +1347,22 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexRagStore")]
         public virtual GoogleCloudAiplatformV1beta1VertexRagStore VertexRagStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata related to retrieval in the grounding flow.</summary>
+    public class GoogleCloudAiplatformV1beta1RetrievalMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Score indicating how likely information from google search could help answer the prompt. The score
+        /// is in the range [0, 1], where 0 is the least likely and 1 is the most likely. This score is only populated
+        /// when google search grounding and dynamic retrieval is enabled. It will be compared to the threshold to
+        /// determine whether to trigger google search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchDynamicRetrievalScore")]
+        public virtual System.Nullable<float> GoogleSearchDynamicRetrievalScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
