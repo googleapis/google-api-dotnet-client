@@ -2969,7 +2969,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 21</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 23</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -3031,6 +3031,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual CustomMetadataData CustomMetadata { get; set; }
 
+        /// <summary>
+        /// Optional. Edition represents whether the instance is ENTERPRISE or ENTERPRISE_PLUS. This information is core
+        /// to Cloud SQL only and is used to identify the edition of the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>Entitlements associated with the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlements")]
         public virtual System.Collections.Generic.IList<Entitlement> Entitlements { get; set; }
@@ -3065,6 +3072,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryResourceId")]
         public virtual DatabaseResourceId PrimaryResourceId { get; set; }
+
+        /// <summary>
+        /// Primary resource location. REQUIRED if the immediate parent exists when first time resource is getting
+        /// ingested, otherwise optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryResourceLocation")]
+        public virtual string PrimaryResourceLocation { get; set; }
 
         /// <summary>The product this resource represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
@@ -4708,7 +4722,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ProjectId { get; set; }
 
         /// <summary>
-        /// Optional. The PSC connection id of the forwarding rule connected to the service attachment.
+        /// Required. The PSC connection id of the forwarding rule connected to the service attachment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionId")]
         public virtual string PscConnectionId { get; set; }
@@ -4947,6 +4961,10 @@ namespace Google.Apis.CloudRedis.v1.Data
 
     public class RetentionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Duration based retention period i.e. 172800 seconds (2 days)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationBasedRetention")]
+        public virtual object DurationBasedRetention { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("quantityBasedRetention")]
         public virtual System.Nullable<int> QuantityBasedRetention { get; set; }
 
