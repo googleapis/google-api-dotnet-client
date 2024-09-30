@@ -6572,8 +6572,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Optional. The language to list examples for. If not specified, the agent's default
-                            /// language is used. Note: languages must be enabled in the agent before they can be used.
+                            /// Optional. The language to list examples for. If not specified, list all examples under
+                            /// the playbook. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -14602,6 +14602,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("avatarUri")]
         public virtual string AvatarUri { get; set; }
 
+        /// <summary>
+        /// Optional. The BigQuery export settings for this agent. The conversation data will be exported to BigQuery
+        /// tables if it is enabled. By default, BigQuery export settings will not be exported with agent. You need to
+        /// set include_bigquery_export_settings to include it in the exported agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryExportSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1BigQueryExportSettings BigqueryExportSettings { get; set; }
+
         /// <summary>Optional. Settings for custom client certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificateSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AgentClientCertificateSettings ClientCertificateSettings { get; set; }
@@ -14993,6 +15001,21 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The test case results. The detailed conversation turns are empty in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestCaseResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The settings of BigQuery export.</summary>
+    public class GoogleCloudDialogflowCxV3beta1BigQueryExportSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery table to export. Format: `projects//datasets//tables/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryTable")]
+        public virtual string BigqueryTable { get; set; }
+
+        /// <summary>The field to indicate whether the BigQuery export is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16602,7 +16625,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Optional. The language code of the example. If not specified, the agent's default language is used. Note:
-        /// languages must be enabled in the agent before they can be used.
+        /// languages must be enabled in the agent before they can be used. Note: example's language code is not
+        /// currently used in dialogflow agents.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -20048,8 +20072,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Optional. Data store connection feature output signals. Filled only when data stores are involved in serving
-        /// the query and DetectIntentRequest.populate data_store_connection_quality_signals is set to true in the
-        /// request.
+        /// the query and DetectIntentRequest.populate_data_store_connection_signals is set to true in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreConnectionSignals")]
         public virtual GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignals DataStoreConnectionSignals { get; set; }
@@ -20679,6 +20702,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Banned phrases for generated text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannedPhrases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase> BannedPhrases { get; set; }
+
+        /// <summary>Optional. Default phrase match strategy for banned phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultBannedPhraseMatchStrategy")]
+        public virtual string DefaultBannedPhraseMatchStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21431,6 +21458,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. OAuth grant types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthGrantType")]
         public virtual string OauthGrantType { get; set; }
+
+        /// <summary>Optional. The OAuth scopes to grant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>Required. The token endpoint in the OAuth provider to exchange for an access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
@@ -22882,6 +22913,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>ConversationModel resource name. Format: `projects//conversationModels/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. A read only boolean field reflecting Zone Isolation status of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. A read only boolean field reflecting Zone Separation status of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Metadata for smart reply models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartReplyModelMetadata")]
