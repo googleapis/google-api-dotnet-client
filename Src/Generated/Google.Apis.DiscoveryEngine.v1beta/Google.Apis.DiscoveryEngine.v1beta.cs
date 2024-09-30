@@ -16938,6 +16938,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1DataStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Data size estimation for billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
+        public virtual GoogleCloudDiscoveryengineV1DataStoreBillingEstimation BillingEstimation { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -17038,6 +17042,142 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workspaceConfig")]
         public virtual GoogleCloudDiscoveryengineV1WorkspaceConfig WorkspaceConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Estimation of data size per data store.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStoreBillingEstimation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data size for structured data in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDataSize")]
+        public virtual System.Nullable<long> StructuredDataSize { get; set; }
+
+        private string _structuredDataUpdateTimeRaw;
+
+        private object _structuredDataUpdateTime;
+
+        /// <summary>Last updated timestamp for structured data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDataUpdateTime")]
+        public virtual string StructuredDataUpdateTimeRaw
+        {
+            get => _structuredDataUpdateTimeRaw;
+            set
+            {
+                _structuredDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _structuredDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StructuredDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StructuredDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object StructuredDataUpdateTime
+        {
+            get => _structuredDataUpdateTime;
+            set
+            {
+                _structuredDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _structuredDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StructuredDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StructuredDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StructuredDataUpdateTimeRaw);
+            set => StructuredDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Data size for unstructured data in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataSize")]
+        public virtual System.Nullable<long> UnstructuredDataSize { get; set; }
+
+        private string _unstructuredDataUpdateTimeRaw;
+
+        private object _unstructuredDataUpdateTime;
+
+        /// <summary>Last updated timestamp for unstructured data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataUpdateTime")]
+        public virtual string UnstructuredDataUpdateTimeRaw
+        {
+            get => _unstructuredDataUpdateTimeRaw;
+            set
+            {
+                _unstructuredDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _unstructuredDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UnstructuredDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UnstructuredDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object UnstructuredDataUpdateTime
+        {
+            get => _unstructuredDataUpdateTime;
+            set
+            {
+                _unstructuredDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _unstructuredDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UnstructuredDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UnstructuredDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UnstructuredDataUpdateTimeRaw);
+            set => UnstructuredDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Data size for websites in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteDataSize")]
+        public virtual System.Nullable<long> WebsiteDataSize { get; set; }
+
+        private string _websiteDataUpdateTimeRaw;
+
+        private object _websiteDataUpdateTime;
+
+        /// <summary>Last updated timestamp for websites.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteDataUpdateTime")]
+        public virtual string WebsiteDataUpdateTimeRaw
+        {
+            get => _websiteDataUpdateTimeRaw;
+            set
+            {
+                _websiteDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _websiteDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="WebsiteDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WebsiteDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object WebsiteDataUpdateTime
+        {
+            get => _websiteDataUpdateTime;
+            set
+            {
+                _websiteDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _websiteDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="WebsiteDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? WebsiteDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
+            set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20717,6 +20857,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aclEnabled")]
         public virtual System.Nullable<bool> AclEnabled { get; set; }
 
+        /// <summary>Output only. Data size estimation for billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation BillingEstimation { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -20829,6 +20973,142 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workspaceConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaWorkspaceConfig WorkspaceConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Estimation of data size per data store.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data size for structured data in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDataSize")]
+        public virtual System.Nullable<long> StructuredDataSize { get; set; }
+
+        private string _structuredDataUpdateTimeRaw;
+
+        private object _structuredDataUpdateTime;
+
+        /// <summary>Last updated timestamp for structured data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDataUpdateTime")]
+        public virtual string StructuredDataUpdateTimeRaw
+        {
+            get => _structuredDataUpdateTimeRaw;
+            set
+            {
+                _structuredDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _structuredDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StructuredDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StructuredDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object StructuredDataUpdateTime
+        {
+            get => _structuredDataUpdateTime;
+            set
+            {
+                _structuredDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _structuredDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StructuredDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StructuredDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StructuredDataUpdateTimeRaw);
+            set => StructuredDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Data size for unstructured data in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataSize")]
+        public virtual System.Nullable<long> UnstructuredDataSize { get; set; }
+
+        private string _unstructuredDataUpdateTimeRaw;
+
+        private object _unstructuredDataUpdateTime;
+
+        /// <summary>Last updated timestamp for unstructured data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataUpdateTime")]
+        public virtual string UnstructuredDataUpdateTimeRaw
+        {
+            get => _unstructuredDataUpdateTimeRaw;
+            set
+            {
+                _unstructuredDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _unstructuredDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UnstructuredDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UnstructuredDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object UnstructuredDataUpdateTime
+        {
+            get => _unstructuredDataUpdateTime;
+            set
+            {
+                _unstructuredDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _unstructuredDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UnstructuredDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UnstructuredDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UnstructuredDataUpdateTimeRaw);
+            set => UnstructuredDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Data size for websites in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteDataSize")]
+        public virtual System.Nullable<long> WebsiteDataSize { get; set; }
+
+        private string _websiteDataUpdateTimeRaw;
+
+        private object _websiteDataUpdateTime;
+
+        /// <summary>Last updated timestamp for websites.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteDataUpdateTime")]
+        public virtual string WebsiteDataUpdateTimeRaw
+        {
+            get => _websiteDataUpdateTimeRaw;
+            set
+            {
+                _websiteDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _websiteDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="WebsiteDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WebsiteDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object WebsiteDataUpdateTime
+        {
+            get => _websiteDataUpdateTime;
+            set
+            {
+                _websiteDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _websiteDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="WebsiteDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? WebsiteDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
+            set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22161,6 +22441,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyPropertyType")]
         public virtual string KeyPropertyType { get; set; }
+
+        /// <summary>
+        /// Optional. The metatag name found in the HTML page. If user defines this field, the value of this metatag
+        /// name will be used to extract metatag. If the user does not define this field, the FieldConfig.field_path
+        /// will be used to extract metatag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metatagName")]
+        public virtual string MetatagName { get; set; }
 
         /// <summary>
         /// If recs_filterable_option is FILTERABLE_ENABLED, field values are filterable by filter expression in
@@ -23955,6 +24243,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
+        /// <summary>
+        /// The specification for personalization. Notice that if both ServingConfig.personalization_spec and
+        /// SearchRequest.personalization_spec are set, SearchRequest.personalization_spec overrides
+        /// ServingConfig.personalization_spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
+
         /// <summary>Raw search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -24454,6 +24750,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
         public virtual string DataStore { get; set; }
 
+        /// <summary>
+        /// Optional. Filter specification to filter documents in the data store specified by data_store field. For more
+        /// information on filtering, see
+        /// [Filtering](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24631,6 +24935,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoSearchQueryDetectionFieldNames")]
         public virtual System.Collections.Generic.IList<string> GeoSearchQueryDetectionFieldNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for personalization.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The personalization mode of the search request. Defaults to Mode.AUTO.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28176,6 +28491,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1betaDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Data size estimation for billing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation BillingEstimation { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -28284,6 +28603,142 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workspaceConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaWorkspaceConfig WorkspaceConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Estimation of data size per data store.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data size for structured data in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDataSize")]
+        public virtual System.Nullable<long> StructuredDataSize { get; set; }
+
+        private string _structuredDataUpdateTimeRaw;
+
+        private object _structuredDataUpdateTime;
+
+        /// <summary>Last updated timestamp for structured data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDataUpdateTime")]
+        public virtual string StructuredDataUpdateTimeRaw
+        {
+            get => _structuredDataUpdateTimeRaw;
+            set
+            {
+                _structuredDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _structuredDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StructuredDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StructuredDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object StructuredDataUpdateTime
+        {
+            get => _structuredDataUpdateTime;
+            set
+            {
+                _structuredDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _structuredDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StructuredDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StructuredDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StructuredDataUpdateTimeRaw);
+            set => StructuredDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Data size for unstructured data in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataSize")]
+        public virtual System.Nullable<long> UnstructuredDataSize { get; set; }
+
+        private string _unstructuredDataUpdateTimeRaw;
+
+        private object _unstructuredDataUpdateTime;
+
+        /// <summary>Last updated timestamp for unstructured data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDataUpdateTime")]
+        public virtual string UnstructuredDataUpdateTimeRaw
+        {
+            get => _unstructuredDataUpdateTimeRaw;
+            set
+            {
+                _unstructuredDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _unstructuredDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UnstructuredDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UnstructuredDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object UnstructuredDataUpdateTime
+        {
+            get => _unstructuredDataUpdateTime;
+            set
+            {
+                _unstructuredDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _unstructuredDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UnstructuredDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UnstructuredDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UnstructuredDataUpdateTimeRaw);
+            set => UnstructuredDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Data size for websites in terms of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteDataSize")]
+        public virtual System.Nullable<long> WebsiteDataSize { get; set; }
+
+        private string _websiteDataUpdateTimeRaw;
+
+        private object _websiteDataUpdateTime;
+
+        /// <summary>Last updated timestamp for websites.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteDataUpdateTime")]
+        public virtual string WebsiteDataUpdateTimeRaw
+        {
+            get => _websiteDataUpdateTimeRaw;
+            set
+            {
+                _websiteDataUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _websiteDataUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="WebsiteDataUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WebsiteDataUpdateTimeDateTimeOffset instead.")]
+        public virtual object WebsiteDataUpdateTime
+        {
+            get => _websiteDataUpdateTime;
+            set
+            {
+                _websiteDataUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _websiteDataUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="WebsiteDataUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? WebsiteDataUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
+            set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -32292,6 +32747,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
+        /// <summary>
+        /// The specification for personalization. Notice that if both ServingConfig.personalization_spec and
+        /// SearchRequest.personalization_spec are set, SearchRequest.personalization_spec overrides
+        /// ServingConfig.personalization_spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
+
         /// <summary>Raw search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -32791,6 +33254,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
         public virtual string DataStore { get; set; }
 
+        /// <summary>
+        /// Optional. Filter specification to filter documents in the data store specified by data_store field. For more
+        /// information on filtering, see
+        /// [Filtering](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -32968,6 +33439,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoSearchQueryDetectionFieldNames")]
         public virtual System.Collections.Generic.IList<string> GeoSearchQueryDetectionFieldNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for personalization.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The personalization mode of the search request. Defaults to Mode.AUTO.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33755,6 +34237,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onewaySynonymsControlIds")]
         public virtual System.Collections.Generic.IList<string> OnewaySynonymsControlIds { get; set; }
+
+        /// <summary>
+        /// The specification for personalization spec. Notice that if both ServingConfig.personalization_spec and
+        /// SearchRequest.personalization_spec are set, SearchRequest.personalization_spec overrides
+        /// ServingConfig.personalization_spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
 
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. To leverage this, document
