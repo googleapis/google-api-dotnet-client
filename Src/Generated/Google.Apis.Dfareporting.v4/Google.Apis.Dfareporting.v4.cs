@@ -92,6 +92,8 @@ namespace Google.Apis.Dfareporting.v4
             Subaccounts = new SubaccountsResource(this);
             TargetableRemarketingLists = new TargetableRemarketingListsResource(this);
             TargetingTemplates = new TargetingTemplatesResource(this);
+            TvCampaignDetails = new TvCampaignDetailsResource(this);
+            TvCampaignSummaries = new TvCampaignSummariesResource(this);
             UserProfiles = new UserProfilesResource(this);
             UserRolePermissionGroups = new UserRolePermissionGroupsResource(this);
             UserRolePermissions = new UserRolePermissionsResource(this);
@@ -318,6 +320,12 @@ namespace Google.Apis.Dfareporting.v4
 
         /// <summary>Gets the TargetingTemplates resource.</summary>
         public virtual TargetingTemplatesResource TargetingTemplates { get; }
+
+        /// <summary>Gets the TvCampaignDetails resource.</summary>
+        public virtual TvCampaignDetailsResource TvCampaignDetails { get; }
+
+        /// <summary>Gets the TvCampaignSummaries resource.</summary>
+        public virtual TvCampaignSummariesResource TvCampaignSummaries { get; }
 
         /// <summary>Gets the UserProfiles resource.</summary>
         public virtual UserProfilesResource UserProfiles { get; }
@@ -18909,6 +18917,179 @@ namespace Google.Apis.Dfareporting.v4
         }
     }
 
+    /// <summary>The "tvCampaignDetails" collection of methods.</summary>
+    public class TvCampaignDetailsResource
+    {
+        private const string Resource = "tvCampaignDetails";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public TvCampaignDetailsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets one TvCampaignDetail by ID.</summary>
+        /// <param name="profileId">Required. User profile ID associated with this request.</param>
+        /// <param name="id">Required. TV Campaign ID.</param>
+        public virtual GetRequest Get(long profileId, string id)
+        {
+            return new GetRequest(this.service, profileId, id);
+        }
+
+        /// <summary>Gets one TvCampaignDetail by ID.</summary>
+        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TvCampaignDetail>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, string id) : base(service)
+            {
+                ProfileId = profileId;
+                Id = id;
+                InitParameters();
+            }
+
+            /// <summary>Required. User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Required. TV Campaign ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Id { get; private set; }
+
+            /// <summary>Required. Account ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AccountId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "userprofiles/{+profileId}/tvCampaignDetails/{+id}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "tvCampaignSummaries" collection of methods.</summary>
+    public class TvCampaignSummariesResource
+    {
+        private const string Resource = "tvCampaignSummaries";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public TvCampaignSummariesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves a list of TV campaign summaries.</summary>
+        /// <param name="profileId">Required. User profile ID associated with this request.</param>
+        public virtual ListRequest List(long profileId)
+        {
+            return new ListRequest(this.service, profileId);
+        }
+
+        /// <summary>Retrieves a list of TV campaign summaries.</summary>
+        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.TvCampaignSummariesListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
+            {
+                ProfileId = profileId;
+                InitParameters();
+            }
+
+            /// <summary>Required. User profile ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Required. Account ID associated with this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> AccountId { get; set; }
+
+            /// <summary>
+            /// Required. Search string to filter the list of TV campaign summaries. Matches any substring. Required
+            /// field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "userprofiles/{+profileId}/tvCampaignSummaries";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "userProfiles" collection of methods.</summary>
     public class UserProfilesResource
     {
@@ -21347,7 +21528,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains additional information about cart data.</summary>
+    /// <summary>
+    /// Contains additional information about cart data. This field may only be used when calling batchinsert; it is not
+    /// supported by batchupdate.
+    /// </summary>
     public class CartData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Data of the items purchased.</summary>
@@ -21368,7 +21552,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLanguage")]
         public virtual string MerchantFeedLanguage { get; set; }
 
-        /// <summary>The Merchant Center ID where the items are uploaded.</summary>
+        /// <summary>The Merchant Center ID where the items are uploaded. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<long> MerchantId { get; set; }
 
@@ -21690,7 +21874,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a response to the queryCompatibleFields method.</summary>
+    /// <summary>Represents a response to the queryCompatibleFields method. Next ID: 10</summary>
     public class CompatibleFields : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -21698,6 +21882,12 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossDimensionReachReportCompatibleFields")]
         public virtual CrossDimensionReachReportCompatibleFields CrossDimensionReachReportCompatibleFields { get; set; }
+
+        /// <summary>
+        /// Contains items that are compatible to be selected for a report of type "CROSS_MEDIA_REACH".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossMediaReachReportCompatibleFields")]
+        public virtual CrossMediaReachReportCompatibleFields CrossMediaReachReportCompatibleFields { get; set; }
 
         /// <summary>Contains items that are compatible to be selected for a report of type "FLOODLIGHT".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightReportCompatibleFields")]
@@ -21835,10 +22025,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("childDirectedTreatment")]
         public virtual System.Nullable<bool> ChildDirectedTreatment { get; set; }
 
-        /// <summary>
-        /// Custom floodlight variables. This field may only be used when calling batchinsert; it is not supported by
-        /// batchupdate.
-        /// </summary>
+        /// <summary>Custom floodlight variables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
         public virtual System.Collections.Generic.IList<CustomFloodlightVariable> CustomVariables { get; set; }
 
@@ -23643,6 +23830,35 @@ namespace Google.Apis.Dfareporting.v4.Data
     }
 
     /// <summary>
+    /// Represents fields that are compatible to be selected for a report of type "CROSS_MEDIA_REACH".
+    /// </summary>
+    public class CrossMediaReachReportCompatibleFields : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Dimensions which are compatible to be selected in the "dimensionFilters" section of the report.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
+        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; }
+
+        /// <summary>Dimensions which are compatible to be selected in the "dimensions" section of the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// The kind of resource this is, in this case dfareporting#crossMediaReachReportCompatibleFields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Metrics which are compatible to be selected in the "metricNames" section of the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A custom floodlight variable. This field may only be used when calling batchinsert; it is not supported by
     /// batchupdate.
     /// </summary>
@@ -23655,7 +23871,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The type of custom floodlight variable to supply a value for. These map to the "u[1-20]=" in the tags.
+        /// The type of custom floodlight variable to supply a value for. These map to the "u[1-100]=" in the tags.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -27394,6 +27610,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crossDimensionReachCriteria")]
         public virtual CrossDimensionReachCriteriaData CrossDimensionReachCriteria { get; set; }
 
+        /// <summary>Optional. The report criteria for a report of type "CROSS_MEDIA_REACH".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossMediaReachCriteria")]
+        public virtual CrossMediaReachCriteriaData CrossMediaReachCriteria { get; set; }
+
         /// <summary>The report's email delivery settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delivery")]
         public virtual DeliveryData Delivery { get; set; }
@@ -27522,6 +27742,29 @@ namespace Google.Apis.Dfareporting.v4.Data
             /// <summary>Whether the report is pivoted or not. Defaults to true.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("pivoted")]
             public virtual System.Nullable<bool> Pivoted { get; set; }
+        }
+
+        /// <summary>Optional. The report criteria for a report of type "CROSS_MEDIA_REACH".</summary>
+        public class CrossMediaReachCriteriaData
+        {
+            /// <summary>Required. The date range this report should be run for.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
+            public virtual DateRange DateRange { get; set; }
+
+            /// <summary>
+            /// Required. The list of filters on which dimensions are filtered. Filters for different dimensions are
+            /// ANDed, filters for the same dimension are grouped together and ORed.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
+            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; }
+
+            /// <summary>Required. The list of dimensions the report should include.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; }
+
+            /// <summary>Required. The list of names of metrics the report should include.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
+            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
         }
 
         /// <summary>The report's email delivery settings.</summary>
@@ -28810,6 +29053,112 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TvCampaignDetail contains data from a TV campaign for specific start dates and date windows.</summary>
+    public class TvCampaignDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of this TV campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "dfareporting#tvCampaignSummary".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The timepoints of the TV campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timepoints")]
+        public virtual System.Collections.Generic.IList<TvCampaignTimepoint> Timepoints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for TvCampaignSummariesService.List.</summary>
+    public class TvCampaignSummariesListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "dfareporting#tvCampaignSummariesListResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>List of TV campaign summaries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tvCampaignSummaries")]
+        public virtual System.Collections.Generic.IList<TvCampaignSummary> TvCampaignSummaries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TvCampaignSummary contains aggregate data from a TV campaign.</summary>
+    public class TvCampaignSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end date of the TV campaign, inclusive. A string of the format: "yyyy-MM-dd".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>GRP of this TV campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grp")]
+        public virtual System.Nullable<long> Grp { get; set; }
+
+        /// <summary>ID of this TV campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Impressions across the entire TV campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
+        public virtual System.Nullable<long> Impressions { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "dfareporting#tvCampaignSummary".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Identifier. Name of this TV campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Spend across the entire TV campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spend")]
+        public virtual System.Nullable<double> Spend { get; set; }
+
+        /// <summary>The start date of the TV campaign, inclusive. A string of the format: "yyyy-MM-dd".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
+        /// <summary>"CampaignComponentType" of this TV campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single data point for TvCampaignDetail, which holds information about the TV campaign for a specific start
+    /// date and date window.
+    /// </summary>
+    public class TvCampaignTimepoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The date window of the timepoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateWindow")]
+        public virtual string DateWindow { get; set; }
+
+        /// <summary>The spend within the time range of the timepoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spend")]
+        public virtual System.Nullable<double> Spend { get; set; }
+
+        /// <summary>The start date of the timepoint. A string in the format of "yyyy-MM-dd".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
