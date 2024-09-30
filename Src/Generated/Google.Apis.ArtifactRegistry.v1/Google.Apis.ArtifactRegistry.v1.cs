@@ -391,6 +391,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                 {
                     this.service = service;
                     AptArtifacts = new AptArtifactsResource(service);
+                    Attachments = new AttachmentsResource(service);
                     DockerImages = new DockerImagesResource(service);
                     Files = new FilesResource(service);
                     GenericArtifacts = new GenericArtifactsResource(service);
@@ -401,6 +402,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     NpmPackages = new NpmPackagesResource(service);
                     Packages = new PackagesResource(service);
                     PythonPackages = new PythonPackagesResource(service);
+                    Rules = new RulesResource(service);
                     YumArtifacts = new YumArtifactsResource(service);
                 }
 
@@ -696,6 +698,284 @@ namespace Google.Apis.ArtifactRegistry.v1
                         {
                             Parent = parent;
                             Body = body;
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Attachments resource.</summary>
+                public virtual AttachmentsResource Attachments { get; }
+
+                /// <summary>The "attachments" collection of methods.</summary>
+                public class AttachmentsResource
+                {
+                    private const string Resource = "attachments";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AttachmentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates an attachment. The returned Operation will finish once the attachment has been created.
+                    /// Its response will be the created Attachment.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the parent resource where the attachment will be created.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.ArtifactRegistry.v1.Data.Attachment body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates an attachment. The returned Operation will finish once the attachment has been created.
+                    /// Its response will be the created Attachment.
+                    /// </summary>
+                    public class CreateRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.Attachment body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the parent resource where the attachment will be created.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The attachment id to use for this attachment.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AttachmentId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1.Data.Attachment Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/attachments";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                            RequestParameters.Add("attachmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "attachmentId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes an attachment. The returned Operation will finish once the attachments has been deleted.
+                    /// It will not have any Operation metadata and will return a google.protobuf.Empty response.
+                    /// </summary>
+                    /// <param name="name">Required. The name of the attachment to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes an attachment. The returned Operation will finish once the attachments has been deleted.
+                    /// It will not have any Operation metadata and will return a google.protobuf.Empty response.
+                    /// </summary>
+                    public class DeleteRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the attachment to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/attachments/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets an attachment.</summary>
+                    /// <param name="name">Required. The name of the attachment to retrieve.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets an attachment.</summary>
+                    public class GetRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Attachment>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the attachment to retrieve.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/attachments/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists repositories.</summary>
+                    /// <param name="parent">
+                    /// Required. The name of the parent resource whose attachments will be listed.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists repositories.</summary>
+                    public class ListRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.ListAttachmentsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the parent resource whose attachments will be listed.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An expression for filtering the results of the request. Filter rules are case
+                        /// insensitive. The fields eligible for filtering are: * `target` * `type` *
+                        /// `attachment_namespace`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The maximum number of attachments to return. Maximum page size is 1,000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/attachments";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
                     }
                 }
@@ -1221,6 +1501,298 @@ namespace Google.Apis.ArtifactRegistry.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        }
+                    }
+
+                    /// <summary>Updates a file.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The name of the file, for example:
+                    /// `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part
+                    /// contains slashes, they are escaped.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1File body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates a file.</summary>
+                    public class PatchRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1File>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1File body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name of the file, for example:
+                        /// `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID
+                        /// part contains slashes, they are escaped.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1File Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/files/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Directly uploads a File to a repository. The returned Operation will complete once the resources
+                    /// are uploaded.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the repository where the file will be uploaded.
+                    /// </param>
+                    public virtual UploadRequest Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadFileRequest body, string parent)
+                    {
+                        return new UploadRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Directly uploads a File to a repository. The returned Operation will complete once the resources
+                    /// are uploaded.
+                    /// </summary>
+                    public class UploadRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.UploadFileMediaResponse>
+                    {
+                        /// <summary>Constructs a new Upload request.</summary>
+                        public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.UploadFileRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the repository where the file will be uploaded.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1.Data.UploadFileRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "upload";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/files:upload";
+
+                        /// <summary>Initializes Upload parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Directly uploads a File to a repository. The returned Operation will complete once the resources
+                    /// are uploaded.
+                    /// </summary>
+                    /// <remarks>
+                    /// Considerations regarding <paramref name="stream"/>:
+                    /// <list type="bullet">
+                    /// <item>
+                    /// <description>
+                    /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c>
+                    /// before reading commences. If <paramref name="stream"/> is not seekable, then it will be read
+                    /// from its current position
+                    /// </description>
+                    /// </item>
+                    /// <item>
+                    /// <description>
+                    /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                    /// completed
+                    /// </description>
+                    /// </item>
+                    /// <item>
+                    /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                    /// </item>
+                    /// </list>
+                    /// </remarks>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the repository where the file will be uploaded.
+                    /// </param>
+                    /// <param name="stream">The stream to upload. See remarks for further information.</param>
+                    /// <param name="contentType">The content type of the stream to upload.</param>
+                    public virtual UploadMediaUpload Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadFileRequest body, string parent, System.IO.Stream stream, string contentType)
+                    {
+                        return new UploadMediaUpload(service, body, parent, stream, contentType);
+                    }
+
+                    /// <summary>Upload media upload which supports resumable upload.</summary>
+                    public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.ArtifactRegistry.v1.Data.UploadFileRequest, Google.Apis.ArtifactRegistry.v1.Data.UploadFileMediaResponse>
+                    {
+                        /// <summary>V1 error format.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                        /// <summary>V1 error format.</summary>
+                        public enum XgafvEnum
+                        {
+                            /// <summary>v1 error format</summary>
+                            [Google.Apis.Util.StringValueAttribute("1")]
+                            Value1 = 0,
+
+                            /// <summary>v2 error format</summary>
+                            [Google.Apis.Util.StringValueAttribute("2")]
+                            Value2 = 1,
+                        }
+
+                        /// <summary>OAuth access token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AccessToken { get; set; }
+
+                        /// <summary>Data format for response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+                        /// <summary>Data format for response.</summary>
+                        public enum AltEnum
+                        {
+                            /// <summary>Responses with Content-Type of application/json</summary>
+                            [Google.Apis.Util.StringValueAttribute("json")]
+                            Json = 0,
+
+                            /// <summary>Media download with context-dependent Content-Type</summary>
+                            [Google.Apis.Util.StringValueAttribute("media")]
+                            Media = 1,
+
+                            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                            [Google.Apis.Util.StringValueAttribute("proto")]
+                            Proto = 2,
+                        }
+
+                        /// <summary>JSONP</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Callback { get; set; }
+
+                        /// <summary>Selector specifying which fields to include in a partial response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Fields { get; set; }
+
+                        /// <summary>
+                        /// API key. Your API key identifies your project and provides you with API access, quota, and
+                        /// reports. Required unless you provide an OAuth 2.0 token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Key { get; set; }
+
+                        /// <summary>OAuth 2.0 token for the current user.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OauthToken { get; set; }
+
+                        /// <summary>Returns response with indentations and line breaks.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+                        /// <summary>
+                        /// Available to use for quota purposes for server-side applications. Can be any arbitrary
+                        /// string assigned to a user, but should not exceed 40 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string QuotaUser { get; set; }
+
+                        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string UploadType { get; set; }
+
+                        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string UploadProtocol { get; set; }
+
+                        /// <summary>
+                        /// Required. The resource name of the repository where the file will be uploaded.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Constructs a new Upload media upload instance.</summary>
+                        /// <remarks>
+                        /// Considerations regarding <paramref name="stream"/>:
+                        /// <list type="bullet">
+                        /// <item>
+                        /// <description>
+                        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c>
+                        /// before reading commences. If <paramref name="stream"/> is not seekable, then it will be read
+                        /// from its current position
+                        /// </description>
+                        /// </item>
+                        /// <item>
+                        /// <description>
+                        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                        /// completed
+                        /// </description>
+                        /// </item>
+                        /// <item>
+                        /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                        /// </item>
+                        /// </list>
+                        /// </remarks>
+                        public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.UploadFileRequest body, string parent, System.IO.Stream stream, string contentType)
+                            : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/{+parent}/files:upload"), "POST", stream, contentType)
+                        {
+                            Parent = parent;
+                            Body = body;
                         }
                     }
                 }
@@ -3244,6 +3816,82 @@ namespace Google.Apis.ArtifactRegistry.v1
                                 });
                             }
                         }
+
+                        /// <summary>Updates a version.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// The name of the version, for example:
+                        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1". If the
+                        /// package or version ID parts contain slashes, the slashes are escaped.
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.Version body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates a version.</summary>
+                        public class PatchRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Version>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.Version body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// The name of the version, for example:
+                            /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1". If
+                            /// the package or version ID parts contain slashes, the slashes are escaped.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The update mask applies to the resource. For the `FieldMask` definition, see
+                            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ArtifactRegistry.v1.Data.Version Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+/versions/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>
@@ -3663,6 +4311,330 @@ namespace Google.Apis.ArtifactRegistry.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Rules resource.</summary>
+                public virtual RulesResource Rules { get; }
+
+                /// <summary>The "rules" collection of methods.</summary>
+                public class RulesResource
+                {
+                    private const string Resource = "rules";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RulesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a rule.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the parent resource where the rule will be created.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a rule.</summary>
+                    public class CreateRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the parent resource where the rule will be created.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The rule id to use for this repository.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ruleId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RuleId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/rules";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                            RequestParameters.Add("ruleId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ruleId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a rule.</summary>
+                    /// <param name="name">Required. The name of the rule to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a rule.</summary>
+                    public class DeleteRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the rule to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/rules/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a rule.</summary>
+                    /// <param name="name">Required. The name of the rule to retrieve.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a rule.</summary>
+                    public class GetRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the rule to retrieve.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/rules/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists rules.</summary>
+                    /// <param name="parent">
+                    /// Required. The name of the parent repository whose rules will be listed. For example:
+                    /// `projects/p1/locations/us-central1/repositories/repo1`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists rules.</summary>
+                    public class ListRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.ListRulesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the parent repository whose rules will be listed. For example:
+                        /// `projects/p1/locations/us-central1/repositories/repo1`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The maximum number of rules to return. Maximum page size is 1,000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/rules";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a rule.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The name of the rule, for example:
+                    /// "projects/p1/locations/us-central1/repositories/repo1/rules/rule1".
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates a rule.</summary>
+                    public class PatchRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name of the rule, for example:
+                        /// "projects/p1/locations/us-central1/repositories/repo1/rules/rule1".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The update mask applies to the resource. For the `FieldMask` definition, see
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/rules/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4938,6 +5910,136 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An Attachment refers to additional metadata that can be attached to artifacts in ArtifactRegistry. An attachment
+    /// consists of one or more files.
+    /// </summary>
+    public class Attachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Artifact
+        /// Registry. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Client specified annotations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>
+        /// The namespace this attachment belongs to. E.g. If an Attachment is created by artifact analysis, namespace
+        /// is set to artifactanalysis.googleapis.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentNamespace")]
+        public virtual string AttachmentNamespace { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the attachment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The files that blong to this Attachment. If the file ID part contains slashes, they are escaped.
+        /// E.g. "projects/p1/locations/us-central1/repositories/repo1/files/sha:".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<string> Files { get; set; }
+
+        /// <summary>
+        /// The name of the attachment. E.g. "projects/p1/locations/us/repositories/repo/attachments/sbom".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the OCI version that this attachment created. Only populated for Docker
+        /// attachments. E.g. "projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ociVersionName")]
+        public virtual string OciVersionName { get; set; }
+
+        /// <summary>
+        /// Required. The target the attachment is for, can be a Version, Package or Repository. E.g.
+        /// "projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Type of Attachment. E.g. application/vnd.spdx+jsonn</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the attachment was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata of an LRO from deleting multiple versions.</summary>
     public class BatchDeleteVersionsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5589,6 +6691,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Files store content that is potentially associated with Packages or Versions.</summary>
     public class GoogleDevtoolsArtifactregistryV1File : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Client specified annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -5839,6 +6945,41 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A Rule applies to repository or package level. It defines the deny or allow action of the operation when the
+    /// conditions in the rule are met.
+    /// </summary>
+    public class GoogleDevtoolsArtifactregistryV1Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action this rule makes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>
+        /// Optional. The condition of the rule in CEL expression. If not provided, the rule matches all the objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; }
+
+        /// <summary>
+        /// The name of the rule, for example: "projects/p1/locations/us-central1/repositories/repo1/rules/rule1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>
+        /// The package ID the rule applies to. If empty, this rule applies to all the packages inside the repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageId")]
+        public virtual string PackageId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A hash of file content.</summary>
     public class Hash : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6064,6 +7205,23 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response from listing attachments.</summary>
+    public class ListAttachmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Attachments returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
+        public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; }
+
+        /// <summary>
+        /// The token to retrieve the next page of attachments, or empty if there are no more attachments to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response from listing docker images.</summary>
     public class ListDockerImagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6193,6 +7351,23 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>The repositories returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repositories")]
         public virtual System.Collections.Generic.IList<Repository> Repositories { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from listing rules.</summary>
+    public class ListRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token to retrieve the next page of rules, or empty if there are no more rules to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The rules returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1Rule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7255,6 +8430,30 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     }
 
     /// <summary>The response to upload a generic artifact.</summary>
+    public class UploadFileMediaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation that will be returned to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual Operation Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to upload a file.</summary>
+    public class UploadFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The ID of the file. If left empty will default to sha256 digest of the content uploaded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to upload a generic artifact.</summary>
     public class UploadGenericArtifactMediaResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Operation that will be returned to the user.</summary>
@@ -7520,6 +8719,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// </summary>
     public class Version : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Client specified annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
