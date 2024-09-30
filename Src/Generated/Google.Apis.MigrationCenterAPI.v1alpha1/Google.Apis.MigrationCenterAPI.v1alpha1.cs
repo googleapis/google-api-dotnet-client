@@ -6616,7 +6616,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cloud SQL for Postgres database shape.</summary>
+    /// <summary>Cloud SQL for PostgreSQL database shape.</summary>
     public class CloudSqlForPostgreSqlShape : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Predicted backup storage size in GiB.</summary>
@@ -10483,7 +10483,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual Money MonthlyCostNetworkEgress { get; set; }
 
         /// <summary>
-        /// Output only. Operating system licensing monthly cost for this preference set. Only present for virtual
+        /// Output only. All operating systems licensing monthly cost for this preference set. Only present for virtual
         /// machines.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostOsLicense")]
