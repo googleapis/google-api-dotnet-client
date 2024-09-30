@@ -7521,7 +7521,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedInterconnectAttachments : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. IP ranges allowed to be included during import from hub.(does not control transit connectivity)
+        /// Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity).
         /// The only allowed value for now is "ALL_IPV4_RANGES".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
@@ -7547,6 +7547,36 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Next ID: 7</summary>
+    public class LinkedProducerVpcNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. IP ranges encompassing the subnets to be excluded from peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeExportRanges { get; set; }
+
+        /// <summary>Immutable. The URI of the Service Consumer VPC that the Producer VPC is peered with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Immutable. The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the
+        /// Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peering")]
+        public virtual string Peering { get; set; }
+
+        /// <summary>Output only. The URI of the Producer VPC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerNetwork")]
+        public virtual string ProducerNetwork { get; set; }
+
+        /// <summary>Output only. The Service Consumer Network spoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConsumerVpcSpoke")]
+        public virtual string ServiceConsumerVpcSpoke { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A collection of router appliance instances. If you configure multiple router appliance instances to receive data
     /// from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the
@@ -7555,7 +7585,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedRouterApplianceInstances : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. IP ranges allowed to be included during import from hub.(does not control transit connectivity)
+        /// Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity).
         /// The only allowed value for now is "ALL_IPV4_RANGES".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
@@ -7615,7 +7645,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedVpnTunnels : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. IP ranges allowed to be included during import from hub.(does not control transit connectivity)
+        /// Optional. IP ranges allowed to be included during import from hub (does not control transit connectivity).
         /// The only allowed value for now is "ALL_IPV4_RANGES".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
@@ -9663,6 +9693,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>VLAN attachments that are associated with the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedInterconnectAttachments")]
         public virtual LinkedInterconnectAttachments LinkedInterconnectAttachments { get; set; }
+
+        /// <summary>Optional. The linked producer VPC that is associated with the spoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedProducerVpcNetwork")]
+        public virtual LinkedProducerVpcNetwork LinkedProducerVpcNetwork { get; set; }
 
         /// <summary>Router appliance instances that are associated with the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedRouterApplianceInstances")]
