@@ -4287,6 +4287,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("wifiDirectSettings")]
         public virtual string WifiDirectSettings { get; set; }
 
+        /// <summary>Optional. Wi-Fi roaming policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiRoamingPolicy")]
+        public virtual WifiRoamingPolicy WifiRoamingPolicy { get; set; }
+
         /// <summary>
         /// Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks
         /// can be configured on the device. Supported on company-owned devices running Android 13 and above.
@@ -7911,6 +7915,35 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wi-Fi roaming policy.</summary>
+    public class WifiRoamingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Wi-Fi roaming settings. SSIDs provided in this list must be unique, the policy will be rejected
+        /// otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiRoamingSettings")]
+        public virtual System.Collections.Generic.IList<WifiRoamingSetting> WifiRoamingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wi-Fi roaming setting.</summary>
+    public class WifiRoamingSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Wi-Fi roaming mode for the specified SSID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiRoamingMode")]
+        public virtual string WifiRoamingMode { get; set; }
+
+        /// <summary>Required. SSID of the Wi-Fi network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiSsid")]
+        public virtual string WifiSsid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
