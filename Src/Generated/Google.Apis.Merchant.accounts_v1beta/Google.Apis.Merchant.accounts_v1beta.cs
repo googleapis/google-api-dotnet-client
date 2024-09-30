@@ -3177,11 +3177,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 InitParameters();
             }
 
-            /// <summary>The Kind this terms of service version applies to.</summary>
+            /// <summary>Required. The Kind this terms of service version applies to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<KindEnum> Kind { get; set; }
 
-            /// <summary>The Kind this terms of service version applies to.</summary>
+            /// <summary>Required. The Kind this terms of service version applies to.</summary>
             public enum KindEnum
             {
                 /// <summary>Default value. This value is unused.</summary>
@@ -3194,8 +3194,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
 
             /// <summary>
-            /// Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country when the ToS
-            /// applies specifically to that country or 001 when it applies globally.
+            /// Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country when the
+            /// ToS applies specifically to that country or 001 when it applies globally.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RegionCode { get; set; }
