@@ -61928,6 +61928,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasPromptVariable")]
         public virtual System.Nullable<bool> HasPromptVariable { get; set; }
 
+        /// <summary>Whether or not the user has enabled logit probabilities in the model parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logprobs")]
+        public virtual System.Nullable<bool> Logprobs { get; set; }
+
         /// <summary>Value of the maximum number of tokens generated set when the dataset was saved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
         public virtual System.Nullable<long> MaxOutputTokens { get; set; }
@@ -61939,6 +61943,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Type of the prompt dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptType")]
         public virtual string PromptType { get; set; }
+
+        /// <summary>
+        /// Seeding enables model to return a deterministic response on a best effort basis. Determinism isn't
+        /// guaranteed. This field determines whether or not seeding is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seedEnabled")]
+        public virtual System.Nullable<bool> SeedEnabled { get; set; }
+
+        /// <summary>The actual value of the seed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seedValue")]
+        public virtual System.Nullable<long> SeedValue { get; set; }
 
         /// <summary>Customized stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
