@@ -15775,10 +15775,6 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
         public virtual string ChannelId { get; set; }
 
-        /// <summary>Channel title for the channel that the subscription belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelTitle")]
-        public virtual string ChannelTitle { get; set; }
-
         /// <summary>The subscription's details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
