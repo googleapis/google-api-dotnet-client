@@ -5351,8 +5351,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string Subnet { get; set; }
 
         /// <summary>
-        /// Optional. The Compute Engine tags to add to runtime (see [Tagging
-        /// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// Optional. The Compute Engine network tags to add to runtime (see [Add network
+        /// tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
@@ -7254,8 +7254,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string Subnet { get; set; }
 
         /// <summary>
-        /// Optional. The Compute Engine tags to add to runtime (see [Tagging
-        /// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// Optional. The Compute Engine network tags to add to runtime (see [Add network
+        /// tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
