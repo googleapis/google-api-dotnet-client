@@ -14638,7 +14638,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         }
 
         /// <summary>
-        /// Optional. An arbitrary user-provided name for the Route resource. Cannot exceed 64 characters.
+        /// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
