@@ -1818,6 +1818,49 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Flag to opt-in for final backup. By default, it is turned off.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enableFinalBackup", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnableFinalBackup { get; set; }
+
+            /// <summary>Optional. The description of the final backup.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("finalBackupDescription", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FinalBackupDescription { get; set; }
+
+            private object _finalBackupExpiryTime;
+
+            /// <summary>
+            /// String representation of <see cref="FinalBackupExpiryTimeDateTimeOffset"/>, formatted for inclusion in
+            /// the HTTP request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("finalBackupExpiryTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FinalBackupExpiryTimeRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="FinalBackupExpiryTimeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinalBackupExpiryTimeDateTimeOffset instead.")]
+            public virtual object FinalBackupExpiryTime
+            {
+                get => _finalBackupExpiryTime;
+                set
+                {
+                    FinalBackupExpiryTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _finalBackupExpiryTime = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? FinalBackupExpiryTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinalBackupExpiryTimeRaw);
+                set
+                {
+                    FinalBackupExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _finalBackupExpiryTime = value;
+                }
+            }
+
+            /// <summary>Optional. Retention period of the final backup.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("finalBackupTtlDays", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> FinalBackupTtlDays { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -1844,6 +1887,38 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enableFinalBackup", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enableFinalBackup",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("finalBackupDescription", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "finalBackupDescription",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("finalBackupExpiryTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "finalBackupExpiryTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("finalBackupTtlDays", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "finalBackupTtlDays",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3533,6 +3608,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>
+            /// Optional. A filter string that follows the rules of EBNF grammar
+            /// (https://google.aip.dev/assets/misc/ebnf-filtering.txt). Cloud SQL provides filters for status,
+            /// operationType, and startTime.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Instance { get; set; }
@@ -3565,6 +3648,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "project",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -5135,6 +5226,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always `sql#backupContext`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The name of the backup. Format: projects/{project}/backups/{backup}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7072,9 +7167,24 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance restore backup request.</summary>
     public class InstancesRestoreBackupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The name of the backup to restore from in following format: projects/{project-id}/backups/{backup-uid} Only
+        /// one of restore_backup_context or backup can be passed to the input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
         /// <summary>Parameters required to perform the restore backup operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreBackupContext")]
         public virtual RestoreBackupContext RestoreBackupContext { get; set; }
+
+        /// <summary>
+        /// Optional. Restore instance settings overrides the instance settings stored as part of the backup. Instance's
+        /// major database version cannot be changed and the disk size can only be increased. This feature is only
+        /// available for restores to new instances using the backup name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreInstanceSettings")]
+        public virtual DatabaseInstance RestoreInstanceSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7781,6 +7891,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of warnings that occurred while handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<ApiWarning> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
