@@ -6493,6 +6493,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class ConnectorInfraConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Indicates that the Cloud Run CPU should always be allocated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alwaysAllocateCpu")]
+        public virtual System.Nullable<bool> AlwaysAllocateCpu { get; set; }
+
         /// <summary>The window used for ratelimiting runtime requests to connections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionRatelimitWindowSeconds")]
         public virtual System.Nullable<long> ConnectionRatelimitWindowSeconds { get; set; }
@@ -6520,6 +6524,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Indicate whether connector is being migrated to TLS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrateTls")]
         public virtual System.Nullable<bool> MigrateTls { get; set; }
+
+        /// <summary>Indicate whether cloud spanner is required for connector job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionCloudSpanner")]
+        public virtual System.Nullable<bool> ProvisionCloudSpanner { get; set; }
 
         /// <summary>Max QPS supported by the connector version before throttling of requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratelimitThreshold")]
