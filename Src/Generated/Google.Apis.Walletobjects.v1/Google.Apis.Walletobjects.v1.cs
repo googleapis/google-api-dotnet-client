@@ -7747,6 +7747,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
+        /// <summary>
+        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
+        /// prioritizing those from the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
+
         /// <summary>Event venue details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("venue")]
         public virtual EventVenue Venue { get; set; }
@@ -8007,6 +8014,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
+
+        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -8440,6 +8451,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
+        /// <summary>
+        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
+        /// prioritizing those from the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
+
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
@@ -8709,6 +8727,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
+        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
+
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
@@ -8848,6 +8870,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
+
+        /// <summary>
+        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
+        /// prioritizing those from the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
         /// <summary>View Unlock Requirement options for the generic pass.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewUnlockRequirement")]
@@ -9057,6 +9086,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
+
+        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
         /// <summary>
         /// The wide logo of the pass. When provided, this will be used in place of the logo in the top left of the card
@@ -9315,6 +9348,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
+        /// <summary>
+        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
+        /// prioritizing those from the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
+
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
@@ -9543,6 +9583,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
+
+        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -10188,6 +10232,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textModulesData")]
         public virtual System.Collections.Generic.IList<TextModuleData> TextModulesData { get; set; }
 
+        /// <summary>
+        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
+        /// prioritizing those from the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
+
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
@@ -10425,6 +10476,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
+
+        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -10801,6 +10856,21 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Constraints that all must be met for the module to be shown.</summary>
+    public class ModuleViewConstraints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The period of time that the module will be displayed to users. Can define both a `startTime` and `endTime`.
+        /// The module is displayed immediately after insertion unless a `startTime` is set. The module is displayed
+        /// indefinitely if `endTime` is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayInterval")]
+        public virtual TimeInterval DisplayInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Money : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The currency code, such as "USD" or "EUR."</summary>
@@ -11103,6 +11173,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("titleImage")]
         public virtual Image TitleImage { get; set; }
 
+        /// <summary>
+        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
+        /// prioritizing those from the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
+
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
@@ -11308,6 +11385,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
+
+        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
 
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -12335,6 +12416,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transitType")]
         public virtual string TransitType { get; set; }
 
+        /// <summary>
+        /// Optional value added module data. Maximum of ten on the class. For a pass only ten will be displayed,
+        /// prioritizing those from the object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
+
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
@@ -12635,6 +12723,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validTimeInterval")]
         public virtual TimeInterval ValidTimeInterval { get; set; }
 
+        /// <summary>Optional value added module data. Maximum of ten on the object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueAddedModuleData")]
+        public virtual System.Collections.Generic.IList<ValueAddedModuleData> ValueAddedModuleData { get; set; }
+
         /// <summary>Deprecated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
@@ -12757,6 +12849,51 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string UriValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data for Value Added module. Required fields are header and uri.</summary>
+    public class ValueAddedModuleData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Body to be displayed on the module. Character limit is 50 and longer strings will be truncated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual LocalizedString Body { get; set; }
+
+        /// <summary>
+        /// Header to be displayed on the module. Character limit is 60 and longer strings will be truncated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual LocalizedString Header { get; set; }
+
+        /// <summary>
+        /// Image to be displayed on the module. Recommended image ratio is 1:1. Images will be resized to fit this
+        /// ratio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual Image Image { get; set; }
+
+        /// <summary>
+        /// The index for sorting the modules. Modules with a lower sort index are shown before modules with a higher
+        /// sort index. If unspecified, the sort index is assumed to be INT_MAX. For two modules with the same index,
+        /// the sorting behavior is undefined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortIndex")]
+        public virtual System.Nullable<int> SortIndex { get; set; }
+
+        /// <summary>
+        /// URI that the module leads to on click. This can be a web link or a deep link as mentioned in
+        /// https://developer.android.com/training/app-links/deep-linking.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>Constraints that all must be met for the module to be shown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewConstraints")]
+        public virtual ModuleViewConstraints ViewConstraints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
