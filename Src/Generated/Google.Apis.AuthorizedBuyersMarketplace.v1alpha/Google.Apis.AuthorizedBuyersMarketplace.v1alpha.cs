@@ -4097,7 +4097,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data
     {
         /// <summary>
         /// Optional. This will be charged when other accounts use this data segment. For example, when other accounts
-        /// add this data segment to a deal or auction package.
+        /// add this data segment to a deal or auction package. Once set, the currency code cannot be changed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpmFee")]
         public virtual Money CpmFee { get; set; }
