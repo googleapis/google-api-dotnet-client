@@ -5004,13 +5004,17 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains information about browser profiles reported by the Endpoint Verification extension.</summary>
+    /// <summary>
+    /// Contains information about browser profiles reported by the [Endpoint Verification
+    /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+    /// </summary>
     public class BrowserAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Represents the current state of the [Chrome browser
-        /// attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the Endpoint
-        /// Verification extension.
+        /// attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the [Endpoint
+        /// Verification
+        /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chromeBrowserInfo")]
         public virtual BrowserInfo ChromeBrowserInfo { get; set; }
@@ -5023,7 +5027,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         private object _lastProfileSyncTime;
 
-        /// <summary>Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.</summary>
+        /// <summary>Timestamp in milliseconds since the Unix epoch when the profile/gcm id was last synced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastProfileSyncTime")]
         public virtual string LastProfileSyncTimeRaw
         {
@@ -5062,14 +5066,17 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Browser-specific fields reported by the Endpoint Verification extension. LINT.IfChange</summary>
+    /// <summary>
+    /// Browser-specific fields reported by the [Endpoint Verification
+    /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+    /// </summary>
     public class BrowserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Browser's management state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserManagementState")]
         public virtual string BrowserManagementState { get; set; }
 
-        /// <summary>Version of the request initiating browser.</summary>
+        /// <summary>Version of the request initiating browser. E.g. `91.0.4442.4`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserVersion")]
         public virtual string BrowserVersion { get; set; }
 
@@ -6116,10 +6123,11 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     public class EndpointVerificationSpecificAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Additional signals reported by Endpoint Verification. It includes the following attributes: 1.
-        /// Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name,
-        /// is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. Configurable attributes: file_config,
-        /// registry_config, and plist_config.
+        /// [Additional signals](https://cloud.google.com/endpoint-verification/docs/device-information) reported by
+        /// Endpoint Verification. It includes the following attributes: * Non-configurable attributes: hotfixes,
+        /// av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. *
+        /// [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes):
+        /// file, folder, and binary attributes; registry entries; and properties in a plist.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalSignals")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalSignals { get; set; }
@@ -6330,7 +6338,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         private object _lastProfileSyncTime;
 
-        /// <summary>Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.</summary>
+        /// <summary>Timestamp in milliseconds since the Unix epoch when the profile/gcm id was last synced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastProfileSyncTime")]
         public virtual string LastProfileSyncTimeRaw
         {
@@ -6372,7 +6380,6 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>
     /// Browser-specific fields reported by the [Endpoint Verification
     /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
-    /// LINT.IfChange
     /// </summary>
     public class GoogleAppsCloudidentityDevicesV1BrowserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6380,7 +6387,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("browserManagementState")]
         public virtual string BrowserManagementState { get; set; }
 
-        /// <summary>Version of the request initiating browser.</summary>
+        /// <summary>Version of the request initiating browser. E.g. `91.0.4442.4`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserVersion")]
         public virtual string BrowserVersion { get; set; }
 
@@ -7245,11 +7252,11 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     public class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Additional signals reported by Endpoint Verification. It includes the following attributes: 1.
-        /// Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name,
-        /// is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. [Configurable
-        /// attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder,
-        /// and binary attributes; registry entries; and properties in a plist.
+        /// [Additional signals](https://cloud.google.com/endpoint-verification/docs/device-information) reported by
+        /// Endpoint Verification. It includes the following attributes: * Non-configurable attributes: hotfixes,
+        /// av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. *
+        /// [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes):
+        /// file, folder, and binary attributes; registry entries; and properties in a plist.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalSignals")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalSignals { get; set; }
