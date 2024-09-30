@@ -2535,7 +2535,8 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <summary>Update a CaPool.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
+                /// Output only. Identifier. The resource name for this CaPool in the format
+                /// `projects/*/locations/*/caPools/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CaPool body, string name)
                 {
@@ -2554,7 +2555,8 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     }
 
                     /// <summary>
-                    /// Output only. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
+                    /// Output only. Identifier. The resource name for this CaPool in the format
+                    /// `projects/*/locations/*/caPools/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4060,7 +4062,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
+        /// Output only. Identifier. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
