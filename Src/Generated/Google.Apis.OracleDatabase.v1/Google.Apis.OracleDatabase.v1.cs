@@ -321,7 +321,7 @@ namespace Google.Apis.OracleDatabase.v1
                     this.service = service;
                 }
 
-                /// <summary>Lists the long term and automatic backups of an Autonomous Database.</summary>
+                /// <summary>Lists the long-term and automatic backups of an Autonomous Database.</summary>
                 /// <param name="parent">
                 /// Required. The parent value for ListAutonomousDatabaseBackups in the following format:
                 /// projects/{project}/locations/{location}.
@@ -331,7 +331,7 @@ namespace Google.Apis.OracleDatabase.v1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the long term and automatic backups of an Autonomous Database.</summary>
+                /// <summary>Lists the long-term and automatic backups of an Autonomous Database.</summary>
                 public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListAutonomousDatabaseBackupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -710,7 +710,7 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
-                /// <summary>Generates a wallet for a single Autonomous Database.</summary>
+                /// <summary>Generates a wallet for an Autonomous Database.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The name of the Autonomous Database in the following format:
@@ -721,7 +721,7 @@ namespace Google.Apis.OracleDatabase.v1
                     return new GenerateWalletRequest(this.service, body, name);
                 }
 
-                /// <summary>Generates a wallet for a single Autonomous Database.</summary>
+                /// <summary>Generates a wallet for an Autonomous Database.</summary>
                 public class GenerateWalletRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.GenerateAutonomousDatabaseWalletResponse>
                 {
                     /// <summary>Constructs a new GenerateWallet request.</summary>
@@ -2046,7 +2046,7 @@ namespace Google.Apis.OracleDatabase.v1
 
                 /// <summary>Lists the entitlements in a given project.</summary>
                 /// <param name="parent">
-                /// Required. The parent value for Entitlement in the following format:
+                /// Required. The parent value for the entitlement in the following format:
                 /// projects/{project}/locations/{location}.
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -2065,7 +2065,7 @@ namespace Google.Apis.OracleDatabase.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent value for Entitlement in the following format:
+                    /// Required. The parent value for the entitlement in the following format:
                     /// projects/{project}/locations/{location}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2746,7 +2746,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The name of the VPC network used by the Autonomous Database. Format:
+        /// Required. The name of the VPC network used by the Autonomous Database in the following format:
         /// projects/{project}/global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -3744,7 +3744,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementId")]
         public virtual string EntitlementId { get; set; }
 
-        /// <summary>Optional. GCP location where Oracle Exadata is hosted.</summary>
+        /// <summary>Optional. Google Cloud Platform location where Oracle Exadata is hosted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
 
@@ -4043,8 +4043,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ExadataInfrastructure { get; set; }
 
         /// <summary>
-        /// Output only. GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone of Exadata
-        /// infrastructure.
+        /// Output only. Google Cloud Platform location where Oracle Exadata is hosted. It is same as Google Cloud
+        /// Platform Oracle zone of Exadata infrastructure.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
@@ -4818,7 +4818,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// <summary>Metadata for a given Location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. GCP Oracle zones in a location.</summary>
+        /// <summary>Output only. Google Cloud Platform Oracle zones in a location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZones")]
         public virtual System.Collections.Generic.IList<string> GcpOracleZones { get; set; }
 
