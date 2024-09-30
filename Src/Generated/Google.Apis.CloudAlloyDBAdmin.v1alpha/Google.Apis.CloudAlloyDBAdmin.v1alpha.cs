@@ -344,13 +344,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -450,13 +450,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -702,13 +702,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -862,21 +862,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// if you must retry your request, the server ignores the request if it has already been
+                        /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                        /// example, consider a situation where you make an initial request and the request times out.
+                        /// If you make the request again with the same request ID, the server can check if the original
+                        /// operation with the same request ID was received, and if so, ignores the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Optional. If set, performs request validation (e.g. permission checks and any other type of
-                        /// validation), but do not actually execute the create request.
+                        /// Optional. If set, performs request validation, for example, permission checks and any other
+                        /// type of validation, but does not actually execute the create request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -970,21 +970,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// if you must retry your request, the server ignores the request if it has already been
+                        /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                        /// example, consider a situation where you make an initial request and the request times out.
+                        /// If you make the request again with the same request ID, the server can check if the original
+                        /// operation with the same request ID was received, and if so, ignores the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Optional. If set, performs request validation (e.g. permission checks and any other type of
-                        /// validation), but do not actually execute the create request.
+                        /// Optional. If set, performs request validation, for example, permission checks and any other
+                        /// type of validation, but does not actually execute the create request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1080,21 +1080,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes after the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// if you must retry your request, the server ignores the request if it has already been
+                        /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                        /// example, consider a situation where you make an initial request and the request times out.
+                        /// If you make the request again with the same request ID, the server can check if the original
+                        /// operation with the same request ID was received, and if so, ignores the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Optional. If set, performs request validation (e.g. permission checks and any other type of
-                        /// validation), but do not actually execute the delete.
+                        /// Optional. If set, performs request validation, for example, permission checks and any other
+                        /// type of validation, but does not actually execute the create request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1326,13 +1326,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes after the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// if you must retry your request, the server ignores the request if it has already been
+                        /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                        /// example, consider a situation where you make an initial request and the request times out.
+                        /// If you make the request again with the same request ID, the server can check if the original
+                        /// operation with the same request ID was received, and if so, ignores the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1583,13 +1583,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// if you must retry your request, the server ignores the request if it has already been
+                        /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                        /// example, consider a situation where you make an initial request and the request times out.
+                        /// If you make the request again with the same request ID, the server can check if the original
+                        /// operation with the same request ID was received, and if so, ignores the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1605,8 +1605,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                         public virtual object UpdateMask { get; set; }
 
                         /// <summary>
-                        /// Optional. If set, performs request validation (e.g. permission checks and any other type of
-                        /// validation), but do not actually execute the update request.
+                        /// Optional. If set, performs request validation, for example, permission checks and any other
+                        /// type of validation, but does not actually execute the create request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1775,13 +1775,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// if you must retry your request, the server ignores the request if it has already been
+                        /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                        /// example, consider a situation where you make an initial request and the request times out.
+                        /// If you make the request again with the same request ID, the server can check if the original
+                        /// operation with the same request ID was received, and if so, ignores the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1880,13 +1880,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes after the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// if you must retry your request, the server ignores the request if it has already been
+                        /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                        /// example, consider a situation where you make an initial request and the request times out.
+                        /// If you make the request again with the same request ID, the server can check if the original
+                        /// operation with the same request ID was received, and if so, ignores the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2120,13 +2120,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// if you must retry your request, the server ignores the request if it has already been
+                        /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                        /// example, consider a situation where you make an initial request and the request times out.
+                        /// If you make the request again with the same request ID, the server can check if the original
+                        /// operation with the same request ID was received, and if so, ignores the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2245,20 +2245,20 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. If set, performs request validation (e.g. permission checks and any other type of
-                    /// validation), but do not actually execute the create request.
+                    /// Optional. If set, performs request validation, for example, permission checks and any other type
+                    /// of validation, but does not actually execute the create request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2356,20 +2356,20 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. If set, performs request validation (e.g. permission checks and any other type of
-                    /// validation), but do not actually execute the create request.
+                    /// Optional. If set, performs request validation, for example, permission checks and any other type
+                    /// of validation, but does not actually execute the create request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2468,20 +2468,20 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. If set, performs request validation (e.g. permission checks and any other type of
-                    /// validation), but do not actually execute the delete.
+                    /// Optional. If set, performs request validation, for example, permission checks and any other type
+                    /// of validation, but does not actually execute the create request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2780,13 +2780,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you must retry your request, the server ignores the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if the original operation with
+                    /// the same request ID was received, and if so, ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -2801,8 +2801,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Optional. If set, performs request validation (e.g. permission checks and any other type of
-                    /// validation), but do not actually execute the update request.
+                    /// Optional. If set, performs request validation, for example, permission checks and any other type
+                    /// of validation, but does not actually execute the create request.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -3000,8 +3000,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Switches the role of PRIMARY and SECONDARY cluster without any data loss. This promotes the
-                /// SECONDARY cluster to PRIMARY and sets up original PRIMARY cluster to replicate from this newly
+                /// Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the
+                /// SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly
                 /// promoted cluster.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -3015,8 +3015,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                 }
 
                 /// <summary>
-                /// Switches the role of PRIMARY and SECONDARY cluster without any data loss. This promotes the
-                /// SECONDARY cluster to PRIMARY and sets up original PRIMARY cluster to replicate from this newly
+                /// Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the
+                /// SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly
                 /// promoted cluster.
                 /// </summary>
                 public class SwitchoverRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Operation>
@@ -3998,7 +3998,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requireConnectors")]
         public virtual System.Nullable<bool> RequireConnectors { get; set; }
 
-        /// <summary>Optional. SSL config option for this instance.</summary>
+        /// <summary>Optional. SSL configuration option for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
         public virtual SslConfig SslConfig { get; set; }
 
@@ -4636,19 +4636,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     {
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// your request, the server ignores the request if it has already been completed. The server guarantees that
+        /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
+        /// request and the request times out. If you make the request again with the same request ID, the server can
+        /// check if the original operation with the same request ID was received, and if so, ignores the second
+        /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
+        /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
-        /// do not actually execute the failover.
+        /// Optional. If set, performs request validation, for example, permission checks and any other type of
+        /// validation, but does not actually execute the create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4775,19 +4775,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// your request, the server ignores the request if it has already been completed. The server guarantees that
+        /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
+        /// request and the request times out. If you make the request again with the same request ID, the server can
+        /// check if the original operation with the same request ID was received, and if so, ignores the second
+        /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
+        /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
-        /// do not actually execute the fault injection.
+        /// Optional. If set, performs request validation, for example, permission checks and any other type of
+        /// validation, but does not actually execute the create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4957,7 +4957,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Instance level network configuration.</summary>
+        /// <summary>Optional. Instance-level network configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual InstanceNetworkConfig NetworkConfig { get; set; }
 
@@ -5074,7 +5074,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual Node WritableNode { get; set; }
     }
 
-    /// <summary>Metadata related to instance level network configuration.</summary>
+    /// <summary>Metadata related to instance-level network configuration.</summary>
     public class InstanceNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A list of external network authorized to access this instance.</summary>
@@ -5632,19 +5632,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// your request, the server ignores the request if it has already been completed. The server guarantees that
+        /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
+        /// request and the request times out. If you make the request again with the same request ID, the server can
+        /// check if original operation with the same request ID was received, and if so, will ignore the second
+        /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
+        /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
-        /// do not actually execute the delete.
+        /// Optional. If set, performs request validation, for example, permission checks and any other type of
+        /// validation, but does not actually execute the create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -5775,7 +5775,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     public class RestartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Full name of the nodes as obtained from INSTANCE_VIEW_FULL to restart upon. Only applicable for
+        /// Optional. Full name of the nodes as obtained from INSTANCE_VIEW_FULL to restart upon. Applicable only to
         /// read instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIds")]
@@ -5783,19 +5783,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// your request, the server ignores the request if it has already been completed. The server guarantees that
+        /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
+        /// request and the request times out. If you make the request again with the same request ID, the server can
+        /// check if the original operation with the same request ID was received, and if so, ignores the second
+        /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
+        /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
-        /// do not actually execute the restart.
+        /// Optional. If set, performs request validation, for example, permission checks and any other type of
+        /// validation, but does not actually execute the create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -5828,19 +5828,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// your request, the server ignores the request if it has already been completed. The server guarantees that
+        /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
+        /// request and the request times out. If you make the request again with the same request ID, the server can
+        /// check if the original operation with the same request ID was received, and if so, ignores the second
+        /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
+        /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
-        /// do not actually execute the import request.
+        /// Optional. If set, performs request validation, for example, permission checks and any other type of
+        /// validation, but does not actually execute the create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -6331,7 +6331,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 21</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 22</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -6427,6 +6427,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryResourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId PrimaryResourceId { get; set; }
+
+        /// <summary>
+        /// Primary resource location. REQUIRED if the immediate parent exists when first time resource is getting
+        /// ingested, otherwise optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryResourceLocation")]
+        public virtual string PrimaryResourceLocation { get; set; }
 
         /// <summary>The product this resource represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
@@ -6739,6 +6746,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
     public class StorageDatabasecenterPartnerapiV1mainRetentionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Duration based retention period i.e. 172800 seconds (2 days)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationBasedRetention")]
+        public virtual object DurationBasedRetention { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("quantityBasedRetention")]
         public virtual System.Nullable<int> QuantityBasedRetention { get; set; }
 
@@ -6901,19 +6912,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     {
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// your request, the server ignores the request if it has already been completed. The server guarantees that
+        /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
+        /// request and the request times out. If you make the request again with the same request ID, the server can
+        /// check if the original operation with the same request ID was received, and if so, ignores the second
+        /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
+        /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
-        /// do not actually execute the delete.
+        /// Optional. If set, performs request validation, for example, permission checks and any other type of
+        /// validation, but does not actually execute the create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -7113,19 +7124,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// your request, the server ignores the request if it has already been completed. The server guarantees that
+        /// for at least 60 minutes since the first request. For example, consider a situation where you make an initial
+        /// request and the request times out. If you make the request again with the same request ID, the server can
+        /// check if the original operation with the same request ID was received, and if so, ignores the second
+        /// request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a
+        /// valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
-        /// does not actually execute the upgrade.
+        /// Optional. If set, performs request validation, for example, permission checks and any other type of
+        /// validation, but does not actually execute the create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
