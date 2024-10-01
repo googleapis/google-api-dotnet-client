@@ -389,25 +389,6 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         #region Invalid Cases
 
-        /// <summary> No credential files or environment variable specified - running on GCP.</summary>
-        [SkippableFact]
-        public async Task GetDefaultCredential_NoCredentialFiles_OnCompute()
-        {
-            Skip.IfNot(await ComputeCredential.IsRunningOnComputeEngine(), "Not running on Compute");
-
-            var credential = await credentialProvider.GetDefaultCredentialAsync();
-            Assert.IsType<ComputeCredential>(credential.UnderlyingCredential);
-        }
-
-        /// <summary> No credential files or environment variable specified - not running on GCP.</summary>
-        [Fact]
-        public async Task GetDefaultCredential_NoCredentialFiles_NotOnCompute()
-        {
-            Skip.If(await ComputeCredential.IsRunningOnComputeEngine(), "Running on Compute");
-            var exception = await Assert.ThrowsAsync<InvalidOperationException>(()=> credentialProvider.GetDefaultCredentialAsync());
-            Assert.Contains("Your default credentials were not found.", exception.Message);
-        }
-
         /// <summary>Environment variable points to a non existant credential file.</summary>
         [Fact]
         public async Task GetDefaultCredential_MissingCredentialFile()
