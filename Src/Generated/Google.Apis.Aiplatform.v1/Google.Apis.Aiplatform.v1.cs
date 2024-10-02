@@ -13048,8 +13048,10 @@ namespace Google.Apis.Aiplatform.v1
                         /// <summary>Creates a batch of Features in a given EntityType.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The resource name of the EntityType to create the batch of Features under. Format:
+                        /// Required. The resource name of the EntityType/FeatureGroup to create the batch of Features
+                        /// under. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                         /// </param>
                         public virtual BatchCreateRequest BatchCreate(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateFeaturesRequest body, string parent)
                         {
@@ -13068,9 +13070,10 @@ namespace Google.Apis.Aiplatform.v1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the EntityType to create the batch of Features under.
-                            /// Format:
+                            /// Required. The resource name of the EntityType/FeatureGroup to create the batch of
+                            /// Features under. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -41404,13 +41407,16 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for FeaturestoreService.BatchCreateFeatures.</summary>
+    /// <summary>
+    /// Request message for FeaturestoreService.BatchCreateFeatures. Request message for
+    /// FeatureRegistryService.BatchCreateFeatures.
+    /// </summary>
     public class GoogleCloudAiplatformV1BatchCreateFeaturesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. The request message specifying the Features to create. All Features must be created under the same
-        /// parent EntityType. The `parent` field in each child request message can be omitted. If `parent` is set in a
-        /// child request, then the value must match the `parent` value in this request message.
+        /// parent EntityType / FeatureGroup. The `parent` field in each child request message can be omitted. If
+        /// `parent` is set in a child request, then the value must match the `parent` value in this request message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1CreateFeatureRequest> Requests { get; set; }
