@@ -1663,7 +1663,11 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
 
-        /// <summary>The name of the product. Format: `"{product.name=accounts/{account}/products/{product}}"`</summary>
+        /// <summary>
+        /// The name of the product. Format: `"{product.name=accounts/{account}/products/{product}}"` where the last
+        /// section `product` consists of 4 parts: channel~content_language~feed_label~offer_id example for product name
+        /// is "accounts/123/products/online~en~US~sku123"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1809,7 +1813,9 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         /// <summary>
         /// Identifier. The name of the product input. Format:
-        /// `"{productinput.name=accounts/{account}/productInputs/{productinput}}"`
+        /// `"{productinput.name=accounts/{account}/productInputs/{productinput}}"` where the last section
+        /// `productinput` consists of 4 parts: channel~content_language~feed_label~offer_id example for product input
+        /// name is "accounts/123/productInputs/online~en~US~sku123"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
