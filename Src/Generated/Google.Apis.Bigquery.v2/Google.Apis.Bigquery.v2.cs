@@ -11947,6 +11947,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("colsampleBytree")]
         public virtual System.Nullable<double> ColsampleBytree { get; set; }
 
+        /// <summary>
+        /// The contribution metric. Applies to contribution analysis models. Allowed formats supported are for summable
+        /// and summable ratio contribution metrics. These include expressions such as "SUM(x)" or "SUM(x)/SUM(y)",
+        /// where x and y are column names from the base table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contributionMetric")]
+        public virtual string ContributionMetric { get; set; }
+
         /// <summary>Type of normalization algorithm for boosted tree models using dart booster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dartNormalizeType")]
         public virtual string DartNormalizeType { get; set; }
@@ -11980,6 +11988,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>If true, perform decompose time series and save the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decomposeTimeSeries")]
         public virtual System.Nullable<bool> DecomposeTimeSeries { get; set; }
+
+        /// <summary>Optional. Names of the columns to slice on. Applies to contribution analysis models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionIdColumns")]
+        public virtual System.Collections.Generic.IList<string> DimensionIdColumns { get; set; }
 
         /// <summary>Distance type for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceType")]
@@ -12053,6 +12065,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("integratedGradientsNumSteps")]
         public virtual System.Nullable<long> IntegratedGradientsNumSteps { get; set; }
 
+        /// <summary>
+        /// Name of the column used to determine the rows corresponding to control and test. Applies to contribution
+        /// analysis models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTestColumn")]
+        public virtual string IsTestColumn { get; set; }
+
         /// <summary>Item column specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemColumn")]
         public virtual string ItemColumn { get; set; }
@@ -12119,6 +12138,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Maximum depth of a tree for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTreeDepth")]
         public virtual System.Nullable<long> MaxTreeDepth { get; set; }
+
+        /// <summary>The apriori support minimum. Applies to contribution analysis models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAprioriSupport")]
+        public virtual System.Nullable<double> MinAprioriSupport { get; set; }
 
         /// <summary>
         /// When early_stop is true, stops training when accuracy improvement is less than 'min_relative_progress'. Used
