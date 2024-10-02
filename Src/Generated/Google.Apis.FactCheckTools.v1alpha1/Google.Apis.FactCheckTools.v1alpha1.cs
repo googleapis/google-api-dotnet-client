@@ -63,9 +63,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         {
             /// <summary>Read, create, update, and delete your ClaimReview data.</summary>
             public static string Factchecktools = "https://www.googleapis.com/auth/factchecktools";
-
-            /// <summary>See your primary Google Account email address</summary>
-            public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Fact Check Tools API.</summary>
@@ -73,9 +70,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         {
             /// <summary>Read, create, update, and delete your ClaimReview data.</summary>
             public const string Factchecktools = "https://www.googleapis.com/auth/factchecktools";
-
-            /// <summary>See your primary Google Account email address</summary>
-            public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 
         /// <summary>Gets the Claims resource.</summary>
