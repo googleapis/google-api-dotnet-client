@@ -2676,7 +2676,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
         /// <summary>
         /// Deletes the specified account regardless of its type: standalone, MCA or sub-account. Deleting an MCA leads
-        /// to the deletion of all of its sub-accounts. Executing this method requires admin access.
+        /// to the deletion of all of its sub-accounts. Executing this method requires admin access. The deletion
+        /// succeeds only if the account does not provide services to any other account and has no processed offers. You
+        /// can use the `force` parameter to override this.
         /// </summary>
         /// <param name="name">Required. The name of the account to delete. Format: `accounts/{account}`</param>
         public virtual DeleteRequest Delete(string name)
@@ -2686,7 +2688,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
         /// <summary>
         /// Deletes the specified account regardless of its type: standalone, MCA or sub-account. Deleting an MCA leads
-        /// to the deletion of all of its sub-accounts. Executing this method requires admin access.
+        /// to the deletion of all of its sub-accounts. Executing this method requires admin access. The deletion
+        /// succeeds only if the account does not provide services to any other account and has no processed offers. You
+        /// can use the `force` parameter to override this.
         /// </summary>
         public class DeleteRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
         {
@@ -2700,6 +2704,13 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// <summary>Required. The name of the account to delete. Format: `accounts/{account}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Optional. If set to `true`, the account is deleted even if it provides services to other accounts or has
+            /// processed offers.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Force { get; set; }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -2721,6 +2732,14 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^accounts/[^/]+$",
+                });
+                RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "force",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -2779,7 +2798,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
         /// <summary>
         /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
         /// or filters. This is not just listing the sub-accounts of an MCA, but all accounts the calling user has
-        /// access to including other MCAs, linked accounts, standalone accounts and so on.
+        /// access to including other MCAs, linked accounts, standalone accounts and so on. If no filter is provided,
+        /// then it returns accounts the user is directly added to.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2789,7 +2809,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
         /// <summary>
         /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
         /// or filters. This is not just listing the sub-accounts of an MCA, but all accounts the calling user has
-        /// access to including other MCAs, linked accounts, standalone accounts and so on.
+        /// access to including other MCAs, linked accounts, standalone accounts and so on. If no filter is provided,
+        /// then it returns accounts the user is directly added to.
         /// </summary>
         public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountsResponse>
         {
