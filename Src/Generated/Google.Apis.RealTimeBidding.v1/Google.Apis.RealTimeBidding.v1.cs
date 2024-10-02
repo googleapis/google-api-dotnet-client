@@ -4827,12 +4827,15 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("videoMetadata")]
         public virtual VideoMetadata VideoMetadata { get; set; }
 
-        /// <summary>The URL to fetch a video ad.</summary>
+        /// <summary>
+        /// The URL to fetch a video ad. The URL should return an XML response that conforms to the VAST 2.0, 3.0 or 4.x
+        /// standard.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
         public virtual string VideoUrl { get; set; }
 
         /// <summary>
-        /// The contents of a VAST document for a video ad. This document should conform to the VAST 2.0 or 3.0
+        /// The contents of a VAST document for a video ad. This document should conform to the VAST 2.0, 3.0, or 4.x
         /// standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoVastXml")]
