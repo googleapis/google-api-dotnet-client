@@ -7,7 +7,7 @@
 
 set -ex
 
-cd ../..
+cd ..
 
 # To avoid printing the dotnet CLI welcome message
 export DOTNET_NOLOGO=true
