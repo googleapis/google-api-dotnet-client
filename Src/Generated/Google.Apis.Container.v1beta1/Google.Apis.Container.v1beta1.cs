@@ -7432,6 +7432,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
         public virtual string TpuIpv4CidrBlock { get; set; }
 
+        /// <summary>The Custom keys configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userManagedKeysConfig")]
+        public virtual UserManagedKeysConfig UserManagedKeysConfig { get; set; }
+
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; }
@@ -7871,6 +7875,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removedAdditionalPodRangesConfig")]
         public virtual AdditionalPodRangesConfig RemovedAdditionalPodRangesConfig { get; set; }
+
+        /// <summary>The Custom keys configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userManagedKeysConfig")]
+        public virtual UserManagedKeysConfig UserManagedKeysConfig { get; set; }
     }
 
     /// <summary>CompleteIPRotationRequest moves the cluster master back into single-IP mode.</summary>
@@ -9536,6 +9544,14 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Output only. effective_cgroup_mode is the cgroup mode actually used by the node pool. It is determined by
+        /// the cgroup mode specified in the LinuxNodeConfig or the default cgroup mode based on the cluster creation
+        /// version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveCgroupMode")]
+        public virtual string EffectiveCgroupMode { get; set; }
 
         /// <summary>Optional. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialStorage")]
@@ -12456,6 +12472,58 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>This field is to determine the status of the secondary range programmably.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// UserManagedKeysConfig holds the resource address to Keys which are used for signing certs and token that are
+    /// used for communication within cluster.
+    /// </summary>
+    public class UserManagedKeysConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Certificate Authority Service caPool to use for the aggregation CA in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationCa")]
+        public virtual string AggregationCa { get; set; }
+
+        /// <summary>The Certificate Authority Service caPool to use for the cluster CA in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterCa")]
+        public virtual string ClusterCa { get; set; }
+
+        /// <summary>The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneDiskEncryptionKey")]
+        public virtual string ControlPlaneDiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Resource path of the Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etcdApiCa")]
+        public virtual string EtcdApiCa { get; set; }
+
+        /// <summary>
+        /// Resource path of the Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etcdPeerCa")]
+        public virtual string EtcdPeerCa { get; set; }
+
+        /// <summary>Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeopsEtcdBackupEncryptionKey")]
+        public virtual string GkeopsEtcdBackupEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountSigningKeys")]
+        public virtual System.Collections.Generic.IList<string> ServiceAccountSigningKeys { get; set; }
+
+        /// <summary>
+        /// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountVerificationKeys")]
+        public virtual System.Collections.Generic.IList<string> ServiceAccountVerificationKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
