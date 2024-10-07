@@ -898,23 +898,26 @@ namespace Google.Apis.BusinessProfilePerformance.v1
             }
 
             /// <summary>
-            /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-            /// for scenarios like business closing time.
+            /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+            /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dailySubEntityType.timeOfDay.hours", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> DailySubEntityTypeTimeOfDayHours { get; set; }
 
-            /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+            /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
             [Google.Apis.Util.RequestParameterAttribute("dailySubEntityType.timeOfDay.minutes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> DailySubEntityTypeTimeOfDayMinutes { get; set; }
 
-            /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+            /// <summary>
+            /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+            /// 999,999,999.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dailySubEntityType.timeOfDay.nanos", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> DailySubEntityTypeTimeOfDayNanos { get; set; }
 
             /// <summary>
-            /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
-            /// allows leap-seconds.
+            /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59.
+            /// An API may allow the value 60 if it allows leap-seconds.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dailySubEntityType.timeOfDay.seconds", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> DailySubEntityTypeTimeOfDaySeconds { get; set; }
@@ -1219,23 +1222,26 @@ namespace Google.Apis.BusinessProfilePerformance.v1.Data
     public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
-        /// scenarios like business closing time.
+        /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+        /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
-        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
         public virtual System.Nullable<int> Minutes { get; set; }
 
-        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        /// <summary>
+        /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+        /// 999,999,999.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
-        /// leap-seconds.
+        /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An
+        /// API may allow the value 60 if it allows leap-seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
