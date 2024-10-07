@@ -2302,7 +2302,8 @@ namespace Google.Apis.Batch.v1.Data
 
         /// <summary>
         /// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs
-        /// will consume any applicable reservation.
+        /// will consume any applicable reservation. Additionally, VMs will not consume any reservation if
+        /// "NO_RESERVATION" is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservation")]
         public virtual string Reservation { get; set; }
