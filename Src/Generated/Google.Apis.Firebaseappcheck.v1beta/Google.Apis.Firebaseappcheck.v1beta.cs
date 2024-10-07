@@ -4617,7 +4617,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// supported service ID. Currently, the following service IDs are supported: *
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
             /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
-            /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)
+            /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) *
+            /// `oauth2.googleapis.com` (Google Identity for iOS)
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaService body, string name)
             {
@@ -4644,7 +4645,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// supported service ID. Currently, the following service IDs are supported: *
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
                 /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
-                /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)
+                /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) *
+                /// `oauth2.googleapis.com` (Google Identity for iOS)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4829,22 +4831,26 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     }
 
     /// <summary>
-    /// Encapsulates an *App Check token*, which are used to access Firebase services protected by App Check.
+    /// Encapsulates an *App Check token*, which are used to access backend services protected by App Check.
     /// </summary>
     public class GoogleFirebaseAppcheckV1betaAppCheckToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing
-        /// claims that identify the attested app and Firebase project. This token is used to access Firebase services
-        /// protected by App Check.
+        /// The App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing
+        /// claims that identify the attested app and GCP project. This token is used to access Google services
+        /// protected by App Check. These tokens can also be [verified by your own custom
+        /// backends](https://firebase.google.com/docs/app-check/custom-resource-backend) using the Firebase Admin SDK
+        /// or third-party libraries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestationToken")]
         public virtual string AttestationToken { get; set; }
 
         /// <summary>
-        /// An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing
-        /// claims that identify the attested app and Firebase project. This token is used to access Firebase services
-        /// protected by App Check.
+        /// The App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing
+        /// claims that identify the attested app and GCP project. This token is used to access Google services
+        /// protected by App Check. These tokens can also be [verified by your own custom
+        /// backends](https://firebase.google.com/docs/app-check/custom-resource-backend) using the Firebase Admin SDK
+        /// or third-party libraries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
@@ -5707,8 +5713,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     }
 
     /// <summary>
-    /// App Check enforcement policy for a specific resource of a Firebase service supported by App Check. Note that
-    /// this policy will override the service-level configuration.
+    /// App Check enforcement policy for a specific resource of a Google service supported by App Check. Note that this
+    /// policy will override the service-level configuration.
     /// </summary>
     public class GoogleFirebaseAppcheckV1betaResourcePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5740,12 +5746,13 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Service specific name of the resource object to which this policy applies, in the format: *
-        /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauth_client_id}` (Google Identity for iOS)
-        /// Note that the resource must belong to the service specified in the `name` and be from the same project as
-        /// this policy, but the resource is allowed to be missing at the time of creation of this policy; in that case,
-        /// we make a best-effort attempt at respecting this policy, but it may not have any effect until the resource
-        /// is fully created.
+        /// Required. Service specific name of the resource object to which this policy applies, in the format: * **iOS
+        /// OAuth clients** (Google Identity for iOS):
+        /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauth_client_id}` Note that the resource
+        /// must belong to the service specified in the `name` and be from the same project as this policy, but the
+        /// resource is allowed to be missing at the time of creation of this policy; in that case, we make a
+        /// best-effort attempt at respecting this policy, but it may not have any effect until the resource is fully
+        /// created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
         public virtual string TargetResource { get; set; }
@@ -5843,7 +5850,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
         /// Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
         /// `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.com` (Firebase Authentication
-        /// with Identity Platform)
+        /// with Identity Platform) * `oauth2.googleapis.com` (Google Identity for iOS)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
