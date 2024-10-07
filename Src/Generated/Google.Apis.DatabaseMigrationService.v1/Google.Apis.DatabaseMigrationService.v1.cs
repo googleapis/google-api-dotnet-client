@@ -5431,6 +5431,21 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration to use Binary Log Parser CDC technique.</summary>
+    public class BinaryLogParser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use Oracle directories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logFileDirectories")]
+        public virtual LogFileDirectories LogFileDirectories { get; set; }
+
+        /// <summary>Use Oracle ASM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleAsmLogFileAccess")]
+        public virtual OracleAsmLogFileAccess OracleAsmLogFileAccess { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7174,6 +7189,28 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration to specify the Oracle directories to access the log files.</summary>
+    public class LogFileDirectories : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Oracle directory for archived logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archivedLogDirectory")]
+        public virtual string ArchivedLogDirectory { get; set; }
+
+        /// <summary>Required. Oracle directory for online logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlineLogDirectory")]
+        public virtual string OnlineLogDirectory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to use LogMiner CDC method.</summary>
+    public class LogMiner : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>MachineConfig describes the configuration of a machine.</summary>
     public class MachineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7541,6 +7578,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and **Oracle to AlloyDB for
+        /// PostgreSQL** migrations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleToPostgresConfig")]
+        public virtual OracleToPostgresConfig OracleToPostgresConfig { get; set; }
+
         /// <summary>Optional. Data dump parallelism settings used by the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceConfig")]
         public virtual PerformanceConfig PerformanceConfig { get; set; }
@@ -7852,6 +7896,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration to use Oracle ASM to access the log files.</summary>
+    public class OracleAsmLogFileAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies connection parameters required specifically for Oracle databases.</summary>
     public class OracleConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7908,6 +7959,60 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Oracle as a source in a migration.</summary>
+    public class OracleSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use Binary Log Parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryLogParser")]
+        public virtual BinaryLogParser BinaryLogParser { get; set; }
+
+        /// <summary>Optional. The schema change number (SCN) to start CDC data migration from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cdcStartPosition")]
+        public virtual System.Nullable<long> CdcStartPosition { get; set; }
+
+        /// <summary>Use LogMiner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logMiner")]
+        public virtual LogMiner LogMiner { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum number of connections Database Migration Service will open to the source for CDC phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcConnections")]
+        public virtual System.Nullable<int> MaxConcurrentCdcConnections { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum number of connections Database Migration Service will open to the source for full dump
+        /// phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentFullDumpConnections")]
+        public virtual System.Nullable<int> MaxConcurrentFullDumpConnections { get; set; }
+
+        /// <summary>Optional. Whether to skip full dump or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipFullDump")]
+        public virtual System.Nullable<bool> SkipFullDump { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and **Oracle to AlloyDB for PostgreSQL**
+    /// migrations.
+    /// </summary>
+    public class OracleToPostgresConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for Oracle source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleSourceConfig")]
+        public virtual OracleSourceConfig OracleSourceConfig { get; set; }
+
+        /// <summary>Optional. Configuration for Postgres destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresDestinationConfig")]
+        public virtual PostgresDestinationConfig PostgresDestinationConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8106,6 +8211,24 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Postgres as a destination in a migration.</summary>
+    public class PostgresDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Maximum number of connections Database Migration Service will open to the destination for data
+        /// migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentConnections")]
+        public virtual System.Nullable<int> MaxConcurrentConnections { get; set; }
+
+        /// <summary>Optional. Timeout for data migration transactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionTimeout")]
+        public virtual object TransactionTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
