@@ -407,7 +407,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
             /// <summary>Fetches a conversion source.</summary>
             /// <param name="name">
             /// Required. The name of the conversion source to be fetched. Format:
-            /// accounts/{account}/conversionsources/{conversion_source}
+            /// accounts/{account}/conversionSources/{conversion_source}
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -426,7 +426,7 @@ namespace Google.Apis.Merchant.conversions_v1beta
 
                 /// <summary>
                 /// Required. The name of the conversion source to be fetched. Format:
-                /// accounts/{account}/conversionsources/{conversion_source}
+                /// accounts/{account}/conversionSources/{conversion_source}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
