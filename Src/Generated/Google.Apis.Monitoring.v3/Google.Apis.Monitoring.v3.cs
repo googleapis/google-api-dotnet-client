@@ -7923,6 +7923,20 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A test that uses an alerting result in a boolean column produced by the SQL query.</summary>
+    public class BooleanTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the column containing the boolean value. If the value in a row is NULL, that row is
+        /// ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can
     /// be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does
@@ -8247,6 +8261,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditionPrometheusQueryLanguage")]
         public virtual PrometheusQueryLanguageCondition ConditionPrometheusQueryLanguage { get; set; }
 
+        /// <summary>A condition that uses SQL to define alerts in Logs Analytics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionSql")]
+        public virtual SqlCondition ConditionSql { get; set; }
+
         /// <summary>A condition that compares a time series against a threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionThreshold")]
         public virtual MetricThreshold ConditionThreshold { get; set; }
@@ -8411,6 +8429,27 @@ namespace Google.Apis.Monitoring.v3.Data
     /// </summary>
     public class Custom : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used to schedule the query to run every so many days.</summary>
+    public class Daily : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The time of day (in UTC) at which the query should run. If left unspecified, the server picks an
+        /// arbitrary time of day and runs the query at the same time each day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionTime")]
+        public virtual TimeOfDay ExecutionTime { get; set; }
+
+        /// <summary>
+        /// Required. LINT.IfChange The number of days between runs. Must be greater than or equal to 1 day and less
+        /// than or equal to 31 days. LINT.ThenChange(//depot/google3/cloud/monitoring/api/alerts/policy_validation.cc)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodicity")]
+        public virtual System.Nullable<int> Periodicity { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9036,6 +9075,28 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
         public virtual string ParentName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used to schedule the query to run every so many hours.</summary>
+    public class Hourly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. LINT.IfChange The number of minutes after the hour (in UTC) to run the query. Must be between 0
+        /// and 59 inclusive. If left unspecified, then an arbitrary offset is used.
+        /// LINT.ThenChange(//depot/google3/cloud/monitoring/api/alerts/policy_validation.cc)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minuteOffset")]
+        public virtual System.Nullable<int> MinuteOffset { get; set; }
+
+        /// <summary>
+        /// Required. LINT.IfChange The number of hours between runs. Must be greater than or equal to 1 hour and less
+        /// than or equal to 48 hours. LINT.ThenChange(//depot/google3/cloud/monitoring/api/alerts/policy_validation.cc)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodicity")]
+        public virtual System.Nullable<int> Periodicity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10037,6 +10098,20 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Used to schedule the query to run every so many minutes.</summary>
+    public class Minutes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. LINT.IfChange Number of minutes between runs. The interval must be between 5 minutes and 1440
+        /// minutes. LINT.ThenChange(//depot/google3/cloud/monitoring/api/alerts/policy_validation.cc)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("periodicity")]
+        public virtual System.Nullable<int> Periodicity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples
     /// include virtual machine instances, databases, and storage devices such as disks. The type field identifies a
@@ -10817,6 +10892,23 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A test that checks if the number of rows in the result set violates some threshold.</summary>
+    public class RowCountTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The comparison to apply between the number of rows returned by the query and the threshold.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparison")]
+        public virtual string Comparison { get; set; }
+
+        /// <summary>Required. The value against which to compare the row count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<long> Threshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The SendNotificationChannelVerificationCode request.</summary>
     public class SendNotificationChannelVerificationCodeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11090,6 +11182,46 @@ namespace Google.Apis.Monitoring.v3.Data
     }
 
     /// <summary>
+    /// A condition that allows alert policies to be defined using GoogleSQL. SQL conditions examine a sliding window of
+    /// logs using GoogleSQL. Alert policies with SQL conditions may incur additional billing.
+    /// </summary>
+    public class SqlCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Test the boolean value in the indicated column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanTest")]
+        public virtual BooleanTest BooleanTest { get; set; }
+
+        /// <summary>Schedule the query to execute every so many days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daily")]
+        public virtual Daily Daily { get; set; }
+
+        /// <summary>Schedule the query to execute every so many hours.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hourly")]
+        public virtual Hourly Hourly { get; set; }
+
+        /// <summary>Schedule the query to execute every so many minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual Minutes Minutes { get; set; }
+
+        /// <summary>
+        /// Required. The Log Analytics SQL query to run, as a string. The query must conform to the required shape.
+        /// Specifically, the query must not try to filter the input by time. A filter will automatically be applied to
+        /// filter the input so that the query receives all rows received since the last time the query was run.E.g.
+        /// Extract all log entries containing an HTTP request:SELECT timestamp, log_name, severity, http_request,
+        /// resource, labels FROM my-project.global._Default._AllLogs WHERE http_request IS NOT NULL
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>Test the row count against a threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCountTest")]
+        public virtual RowCountTest RowCountTest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The Status type defines a logical error model that is suitable for different programming environments, including
     /// REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces
     /// of data: error code, error message, and error details.You can find out more about this error model and how to
@@ -11261,6 +11393,38 @@ namespace Google.Apis.Monitoring.v3.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and google.protobuf.Timestamp.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
+        /// scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
+        /// leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
