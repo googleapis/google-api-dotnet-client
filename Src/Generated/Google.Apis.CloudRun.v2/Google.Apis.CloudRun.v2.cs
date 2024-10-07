@@ -5469,6 +5469,13 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Ingress { get; set; }
 
         /// <summary>
+        /// Optional. Disables IAM permission check for run.routes.invoke for callers of this service. This setting
+        /// should not be used with external ingress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invokerIamDisabled")]
+        public virtual System.Nullable<bool> InvokerIamDisabled { get; set; }
+
+        /// <summary>
         /// Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided
         /// labels are shared with Google's billing system, so they can be used to filter, or break down billing charges
         /// by team, component, environment, state, etc. For more information, visit
@@ -5650,7 +5657,7 @@ namespace Google.Apis.CloudRun.v2.Data
     {
         /// <summary>
         /// Optional. total min instances for the service. This number of instances is divided among all revisions with
-        /// specified traffic based on the percent of traffic they are receiving. (BETA)
+        /// specified traffic based on the percent of traffic they are receiving.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
         public virtual System.Nullable<int> MinInstanceCount { get; set; }
