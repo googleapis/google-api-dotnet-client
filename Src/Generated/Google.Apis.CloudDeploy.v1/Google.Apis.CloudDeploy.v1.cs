@@ -6109,7 +6109,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Contains information about what policies prevented the `AutomationRun` to proceed.
+        /// Output only. Contains information about what policies prevented the `AutomationRun` from proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyViolation")]
         public virtual PolicyViolation PolicyViolation { get; set; }
@@ -7166,7 +7166,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `DeployPolicy` resource in the Cloud Deploy API. A `DeployPolicy` inhibits manual or automation driven actions
+    /// A `DeployPolicy` resource in the Cloud Deploy API. A `DeployPolicy` inhibits manual or automation-driven actions
     /// within a Delivery Pipeline or Target.
     /// </summary>
     public class DeployPolicy : Google.Apis.Requests.IDirectResponseSchema
@@ -9251,9 +9251,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration of the repair phase.</summary>
+    public class RepairPhaseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Retries a failed job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retry")]
+        public virtual Retry Retry { get; set; }
+
+        /// <summary>Optional. Rolls back a `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollback")]
+        public virtual Rollback Rollback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the information for an automated `repair rollout` operation.</summary>
     public class RepairRolloutOperation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The index of the current repair action in the repair sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentRepairPhaseIndex")]
+        public virtual System.Nullable<long> CurrentRepairPhaseIndex { get; set; }
+
         /// <summary>Output only. The job ID for the Job to repair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
@@ -9300,6 +9319,47 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
         public virtual System.Collections.Generic.IList<string> Jobs { get; set; }
+
+        /// <summary>
+        /// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after
+        /// phase name matched any one in the list, or for all phases if unspecified. This value must consist of
+        /// lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a
+        /// max length of 63 characters. In other words, it must match the following regex:
+        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phases")]
+        public virtual System.Collections.Generic.IList<string> Phases { get; set; }
+
+        /// <summary>Required. Defines the types of automatic repair phases for failed jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairPhases")]
+        public virtual System.Collections.Generic.IList<RepairPhaseConfig> RepairPhases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Retries the failed job.</summary>
+    public class Retry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum
+        /// value is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attempts")]
+        public virtual System.Nullable<long> Attempts { get; set; }
+
+        /// <summary>
+        /// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if
+        /// `wait` is 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backoffMode")]
+        public virtual string BackoffMode { get; set; }
+
+        /// <summary>
+        /// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
+        public virtual object Wait { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9376,12 +9436,36 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Rolls back a `Rollout`.</summary>
+    public class Rollback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable
+        /// phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
+        public virtual string DestinationPhase { get; set; }
+
+        /// <summary>
+        /// Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableRollbackIfRolloutPending")]
+        public virtual System.Nullable<bool> DisableRollbackIfRolloutPending { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RollbackAttempt represents an action of rolling back a Cloud Deploy 'Target'.</summary>
     public class RollbackAttempt : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The phase to which the rollout will be rolled back to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
         public virtual string DestinationPhase { get; set; }
+
+        /// <summary>Output only. If active rollout exists on the target, abort this rollback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableRollbackIfRolloutPending")]
+        public virtual System.Nullable<bool> DisableRollbackIfRolloutPending { get; set; }
 
         /// <summary>Output only. ID of the rollback `Rollout` to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutId")]
@@ -9477,6 +9561,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// </summary>
     public class Rollout : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The AutomationRun actively repairing the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeRepairAutomationRun")]
+        public virtual string ActiveRepairAutomationRun { get; set; }
+
         /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See
         /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -10515,7 +10603,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains criteria for selecting Targets.</summary>
+    /// <summary>
+    /// Contains criteria for selecting Targets. This could be used to select targets for a Deploy Policy or for an
+    /// Automation.
+    /// </summary>
     public class TargetAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10745,7 +10836,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Time windows within which actions are restricted.</summary>
+    /// <summary>
+    /// Time windows within which actions are restricted. See the
+    /// [documentation](https://cloud.google.com/deploy/docs/deploy-policy#dates_times) for more information on how to
+    /// configure dates/times.
+    /// </summary>
     public class TimeWindows : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. One-time windows within which actions are restricted.</summary>
