@@ -6374,6 +6374,25 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Minimum details to identify a Google Cloud resource</summary>
+    public class GcpResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the Google Cloud resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpResourcename")]
+        public virtual string GcpResourcename { get; set; }
+
+        /// <summary>Location of the resource: //"global"/"unspecified".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Type of the resource. Use the Unified Resource Type, eg. compute.googleapis.com/Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Feature type of the Guest OS.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7393,6 +7412,17 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for restoring from a Backup.</summary>
+    public class RestoreBackupResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of the target resource created/modified as part of restore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual TargetResource TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for rules config info.</summary>
     public class RuleConfigInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7605,6 +7635,13 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message from SetStatusInternal method.</summary>
+    public class SetInternalStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class SpannerLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7734,6 +7771,17 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<string> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the target resource created/modified as part of restore.</summary>
+    public class TargetResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of the native Google Cloud resource created as part of restore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpResource")]
+        public virtual GcpResource GcpResource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
