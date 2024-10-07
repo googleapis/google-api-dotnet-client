@@ -1445,7 +1445,7 @@ namespace Google.Apis.Workflows.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Workflow program to be executed by Workflows.</summary>
+    /// <summary>Workflow program to be executed by Workflows.</summary>
     public class Workflow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
