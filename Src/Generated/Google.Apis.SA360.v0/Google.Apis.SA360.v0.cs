@@ -1451,9 +1451,23 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crossDeviceConversions")]
         public virtual System.Nullable<double> CrossDeviceConversions { get; set; }
 
+        /// <summary>
+        /// The number of cross-device conversions by conversion date. Details for the by_conversion_date columns are
+        /// available at https://support.google.com/sa360/answer/9250611.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossDeviceConversionsByConversionDate")]
+        public virtual System.Nullable<double> CrossDeviceConversionsByConversionDate { get; set; }
+
         /// <summary>The sum of the value of cross-device conversions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossDeviceConversionsValue")]
         public virtual System.Nullable<double> CrossDeviceConversionsValue { get; set; }
+
+        /// <summary>
+        /// The sum of cross-device conversions value by conversion date. Details for the by_conversion_date columns are
+        /// available at https://support.google.com/sa360/answer/9250611.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossDeviceConversionsValueByConversionDate")]
+        public virtual System.Nullable<double> CrossDeviceConversionsValueByConversionDate { get; set; }
 
         /// <summary>
         /// Cross-sell cost of goods sold (COGS) is the total cost of products sold as a result of advertising a
@@ -1521,6 +1535,25 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ctr")]
         public virtual System.Nullable<double> Ctr { get; set; }
+
+        /// <summary>
+        /// The percentage of clicks that have been filtered out of your total number of clicks (filtered + non-filtered
+        /// clicks) due to being general invalid clicks. These are clicks Google considers illegitimate that are
+        /// detected through routine means of filtration (that is, known invalid data-center traffic, bots and spiders
+        /// or other crawlers, irregular patterns, etc). You're not charged for them, and they don't affect your account
+        /// statistics. See the help page at https://support.google.com/campaignmanager/answer/6076504 for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generalInvalidClickRate")]
+        public virtual System.Nullable<double> GeneralInvalidClickRate { get; set; }
+
+        /// <summary>
+        /// Number of general invalid clicks. These are a subset of your invalid clicks that are detected through
+        /// routine means of filtration (such as known invalid data-center traffic, bots and spiders or other crawlers,
+        /// irregular patterns, etc.). You're not charged for them, and they don't affect your account statistics. See
+        /// the help page at https://support.google.com/campaignmanager/answer/6076504 for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generalInvalidClicks")]
+        public virtual System.Nullable<long> GeneralInvalidClicks { get; set; }
 
         /// <summary>The creative historical quality score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historicalCreativeQualityScore")]
@@ -3185,6 +3218,13 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string CreationTime { get; set; }
 
         /// <summary>
+        /// Output only. The resource names of effective labels attached to this ad group. An effective label is a label
+        /// inherited or directly assigned to this ad group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveLabels")]
+        public virtual System.Collections.Generic.IList<string> EffectiveLabels { get; set; }
+
+        /// <summary>
         /// Output only. Date when the ad group ends serving ads. By default, the ad group ends on the ad group's end
         /// date. If this field is set, then the ad group ends at the end of the specified date in the customer's time
         /// zone. This field is only available for Microsoft Advertising and Facebook gateway accounts. Format:
@@ -3633,6 +3673,35 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<int> QualityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A relationship between an ad group and an effective label. An effective label is a label inherited or directly
+    /// assigned to this ad group.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupEffectiveLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The ad group to which the effective label is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroup")]
+        public virtual string AdGroup { get; set; }
+
+        /// <summary>Immutable. The effective label assigned to the ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Output only. The ID of the Customer which owns the effective label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad group effective label. Ad group effective label resource names have
+        /// the form: `customers/{customer_id}/adGroupEffectiveLabels/{ad_group_id}~{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4226,7 +4295,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertisingChannelType")]
         public virtual string AdvertisingChannelType { get; set; }
 
-        /// <summary>Portfolio bidding strategy used by campaign.</summary>
+        /// <summary>The resource name of the portfolio bidding strategy used by the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biddingStrategy")]
         public virtual string BiddingStrategy { get; set; }
 
@@ -4242,7 +4311,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("biddingStrategyType")]
         public virtual string BiddingStrategyType { get; set; }
 
-        /// <summary>The budget of the campaign.</summary>
+        /// <summary>The resource name of the campaign budget of the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignBudget")]
         public virtual string CampaignBudget { get; set; }
 
@@ -4263,6 +4332,13 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The setting for controlling Dynamic Search Ads (DSA).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicSearchAdsSetting")]
         public virtual GoogleAdsSearchads360V0ResourcesCampaignDynamicSearchAdsSetting DynamicSearchAdsSetting { get; set; }
+
+        /// <summary>
+        /// Output only. The resource names of effective labels attached to this campaign. An effective label is a label
+        /// inherited or directly assigned to this campaign.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveLabels")]
+        public virtual System.Collections.Generic.IList<string> EffectiveLabels { get; set; }
 
         /// <summary>
         /// The last day of the campaign in serving customer's timezone in YYYY-MM-DD format. On create, defaults to
@@ -4682,6 +4758,35 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a relationship between a campaign and an effective label. An effective label is a label inherited or
+    /// directly assigned to this campaign.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesCampaignEffectiveLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The campaign to which the effective label is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
+        public virtual string Campaign { get; set; }
+
+        /// <summary>Immutable. The effective label assigned to the campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Output only. The ID of the Customer which owns the effective label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
+
+        /// <summary>
+        /// Immutable. Name of the resource. CampaignEffectivelabel resource names have the form:
+        /// `customers/{customer_id}/campaignEffectiveLabels/{campaign_id}~{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a collection of settings related to ads geotargeting.</summary>
     public class GoogleAdsSearchads360V0ResourcesCampaignGeoTargetTypeSetting : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4773,7 +4878,7 @@ namespace Google.Apis.SA360.v0.Data
     /// </summary>
     public class GoogleAdsSearchads360V0ResourcesCampaignSelectiveOptimization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The selected set of conversion actions for optimizing this campaign.</summary>
+        /// <summary>The selected set of resource names for conversion actions for optimizing this campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionActions")]
         public virtual System.Collections.Generic.IList<string> ConversionActions { get; set; }
 
@@ -6370,6 +6475,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterionLabel")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupCriterionLabel AdGroupCriterionLabel { get; set; }
 
+        /// <summary>The ad group effective label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupEffectiveLabel")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupEffectiveLabel AdGroupEffectiveLabel { get; set; }
+
         /// <summary>The ad group label referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupLabel")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupLabel AdGroupLabel { get; set; }
@@ -6441,6 +6550,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The campaign criterion referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignCriterion")]
         public virtual GoogleAdsSearchads360V0ResourcesCampaignCriterion CampaignCriterion { get; set; }
+
+        /// <summary>The campaign effective label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignEffectiveLabel")]
+        public virtual GoogleAdsSearchads360V0ResourcesCampaignEffectiveLabel CampaignEffectiveLabel { get; set; }
 
         /// <summary>The campaign label referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignLabel")]
