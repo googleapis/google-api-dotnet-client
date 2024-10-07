@@ -62,14 +62,12 @@ namespace Google.Apis.ChromePolicy.v1
         public class Scope
         {
             /// <summary>
-            /// See, edit, create or delete policies applied to Chrome OS and Chrome Browsers managed within your
+            /// See, edit, create or delete policies applied to ChromeOS and Chrome Browsers managed within your
             /// organization
             /// </summary>
             public static string ChromeManagementPolicy = "https://www.googleapis.com/auth/chrome.management.policy";
 
-            /// <summary>
-            /// See policies applied to Chrome OS and Chrome Browsers managed within your organization
-            /// </summary>
+            /// <summary>See policies applied to ChromeOS and Chrome Browsers managed within your organization</summary>
             public static string ChromeManagementPolicyReadonly = "https://www.googleapis.com/auth/chrome.management.policy.readonly";
         }
 
@@ -77,14 +75,12 @@ namespace Google.Apis.ChromePolicy.v1
         public static class ScopeConstants
         {
             /// <summary>
-            /// See, edit, create or delete policies applied to Chrome OS and Chrome Browsers managed within your
+            /// See, edit, create or delete policies applied to ChromeOS and Chrome Browsers managed within your
             /// organization
             /// </summary>
             public const string ChromeManagementPolicy = "https://www.googleapis.com/auth/chrome.management.policy";
 
-            /// <summary>
-            /// See policies applied to Chrome OS and Chrome Browsers managed within your organization
-            /// </summary>
+            /// <summary>See policies applied to ChromeOS and Chrome Browsers managed within your organization</summary>
             public const string ChromeManagementPolicyReadonly = "https://www.googleapis.com/auth/chrome.management.policy.readonly";
         }
 
