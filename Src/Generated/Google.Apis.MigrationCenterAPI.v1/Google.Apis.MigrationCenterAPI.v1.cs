@@ -7369,7 +7369,9 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuSocketCount")]
         public virtual System.Nullable<int> CpuSocketCount { get; set; }
 
-        /// <summary>Number of CPU threads allocated to the machine.</summary>
+        /// <summary>
+        /// Deprecated: use MachineDetails.core_count instead. Number of CPU threads allocated to the machine.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuThreadCount")]
         public virtual System.Nullable<int> CpuThreadCount { get; set; }
 
@@ -8432,7 +8434,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>Aggregate statistics for a collection of assets.</summary>
     public class ReportSummaryAssetAggregateStats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Histogram showing a distribution of CPU core counts.</summary>
+        /// <summary>Histogram showing a distribution of logical CPU core counts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coreCountHistogram")]
         public virtual ReportSummaryHistogramChartData CoreCountHistogram { get; set; }
 
