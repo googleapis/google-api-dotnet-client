@@ -721,7 +721,7 @@ namespace Google.Apis.ArtifactRegistry.v1
 
                     /// <summary>
                     /// Creates an attachment. The returned Operation will finish once the attachment has been created.
-                    /// Its response will be the created Attachment.
+                    /// Its response will be the created attachment.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -734,7 +734,7 @@ namespace Google.Apis.ArtifactRegistry.v1
 
                     /// <summary>
                     /// Creates an attachment. The returned Operation will finish once the attachment has been created.
-                    /// Its response will be the created Attachment.
+                    /// Its response will be the created attachment.
                     /// </summary>
                     public class CreateRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
                     {
@@ -796,7 +796,7 @@ namespace Google.Apis.ArtifactRegistry.v1
 
                     /// <summary>
                     /// Deletes an attachment. The returned Operation will finish once the attachments has been deleted.
-                    /// It will not have any Operation metadata and will return a google.protobuf.Empty response.
+                    /// It will not have any Operation metadata and will return a `google.protobuf.Empty` response.
                     /// </summary>
                     /// <param name="name">Required. The name of the attachment to delete.</param>
                     public virtual DeleteRequest Delete(string name)
@@ -806,7 +806,7 @@ namespace Google.Apis.ArtifactRegistry.v1
 
                     /// <summary>
                     /// Deletes an attachment. The returned Operation will finish once the attachments has been deleted.
-                    /// It will not have any Operation metadata and will return a google.protobuf.Empty response.
+                    /// It will not have any Operation metadata and will return a `google.protobuf.Empty` response.
                     /// </summary>
                     public class DeleteRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
                     {
@@ -890,7 +890,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         }
                     }
 
-                    /// <summary>Lists repositories.</summary>
+                    /// <summary>Lists attachments.</summary>
                     /// <param name="parent">
                     /// Required. The name of the parent resource whose attachments will be listed.
                     /// </param>
@@ -899,7 +899,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists repositories.</summary>
+                    /// <summary>Lists attachments.</summary>
                     public class ListRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.ListAttachmentsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1581,7 +1581,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
 
                     /// <summary>
-                    /// Directly uploads a File to a repository. The returned Operation will complete once the resources
+                    /// Directly uploads a file to a repository. The returned Operation will complete once the resources
                     /// are uploaded.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -1594,7 +1594,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
 
                     /// <summary>
-                    /// Directly uploads a File to a repository. The returned Operation will complete once the resources
+                    /// Directly uploads a file to a repository. The returned Operation will complete once the resources
                     /// are uploaded.
                     /// </summary>
                     public class UploadRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.UploadFileMediaResponse>
@@ -1644,7 +1644,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
 
                     /// <summary>
-                    /// Directly uploads a File to a repository. The returned Operation will complete once the resources
+                    /// Directly uploads a file to a repository. The returned Operation will complete once the resources
                     /// are uploaded.
                     /// </summary>
                     /// <remarks>
@@ -3821,7 +3821,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// The name of the version, for example:
-                        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1". If the
+                        /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the
                         /// package or version ID parts contain slashes, the slashes are escaped.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.Version body, string name)
@@ -3842,7 +3842,7 @@ namespace Google.Apis.ArtifactRegistry.v1
 
                             /// <summary>
                             /// The name of the version, for example:
-                            /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1". If
+                            /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If
                             /// the package or version ID parts contain slashes, the slashes are escaped.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5911,22 +5911,21 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     }
 
     /// <summary>
-    /// An Attachment refers to additional metadata that can be attached to artifacts in ArtifactRegistry. An attachment
-    /// consists of one or more files.
+    /// An Attachment refers to additional metadata that can be attached to artifacts in Artifact Registry. An
+    /// attachment consists of one or more files.
     /// </summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. User annotations. These attributes can only be set and used by the user, and not by Artifact
         /// Registry. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-        /// Client specified annotations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
         /// The namespace this attachment belongs to. E.g. If an Attachment is created by artifact analysis, namespace
-        /// is set to artifactanalysis.googleapis.com.
+        /// is set to `artifactanalysis.googleapis.com`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentNamespace")]
         public virtual string AttachmentNamespace { get; set; }
@@ -5969,8 +5968,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         }
 
         /// <summary>
-        /// Required. The files that blong to this Attachment. If the file ID part contains slashes, they are escaped.
-        /// E.g. "projects/p1/locations/us-central1/repositories/repo1/files/sha:".
+        /// Required. The files that belong to this attachment. If the file ID part contains slashes, they are escaped.
+        /// E.g. `projects/p1/locations/us-central1/repositories/repo1/files/sha:`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<string> Files { get; set; }
@@ -5983,7 +5982,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
         /// <summary>
         /// Output only. The name of the OCI version that this attachment created. Only populated for Docker
-        /// attachments. E.g. "projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1".
+        /// attachments. E.g. `projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ociVersionName")]
         public virtual string OciVersionName { get; set; }
@@ -5995,7 +5994,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
-        /// <summary>Type of Attachment. E.g. application/vnd.spdx+jsonn</summary>
+        /// <summary>Type of Attachment. E.g. `application/vnd.spdx+json`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -6221,7 +6220,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Common remote repository settings type.</summary>
     public class CommonRemoteRepository : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A common public repository base for Remote Repository.</summary>
+        /// <summary>Required. A common public repository base for remote repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -7941,13 +7940,6 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The metadata for promote artifact long running operation.</summary>
-    public class PromoteArtifactMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>PythonPackage represents a python artifact.</summary>
     public class PythonPackage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8077,8 +8069,9 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual AptRepository AptRepository { get; set; }
 
         /// <summary>
-        /// Common remote repository settings. Used as the RR upstream URL instead of Predefined and Custom remote
-        /// repositories. UI and Gcloud will map all the new remote repositories to this field.
+        /// Common remote repository settings. Used as the RemoteRepository upstream URL instead of Predefined and
+        /// Custom remote repositories. Google Cloud Console and Google Cloud CLI will map all the new remote
+        /// repositories to this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonRepository")]
         public virtual CommonRemoteRepository CommonRepository { get; set; }
@@ -8773,7 +8766,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
         /// <summary>
         /// The name of the version, for example:
-        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1". If the package or
+        /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or
         /// version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
