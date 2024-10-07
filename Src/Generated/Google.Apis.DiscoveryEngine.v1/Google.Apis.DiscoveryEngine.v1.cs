@@ -13320,7 +13320,7 @@ namespace Google.Apis.DiscoveryEngine.v1
             /// <summary>Gets the IdentityMappingStores resource.</summary>
             public virtual IdentityMappingStoresResource IdentityMappingStores { get; }
 
-            /// <summary>The "identity_mapping_stores" collection of methods.</summary>
+            /// <summary>The "identityMappingStores" collection of methods.</summary>
             public class IdentityMappingStoresResource
             {
                 private const string Resource = "identityMappingStores";
@@ -13398,7 +13398,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/identity_mapping_stores/[^/]+/operations/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/identityMappingStores/[^/]+/operations/[^/]+$",
                             });
                         }
                     }
@@ -13461,7 +13461,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/identity_mapping_stores/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/identityMappingStores/[^/]+$",
                             });
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
@@ -17044,6 +17044,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Currently this is only populated if the model state is `INPUT_VALIDATION_FAILED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
         /// <summary>The metrics of the trained model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
@@ -18308,6 +18312,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
+
+        /// <summary>Optional. Whether to disable analytics for searches performed on this engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAnalytics")]
+        public virtual System.Nullable<bool> DisableAnalytics { get; set; }
 
         /// <summary>
         /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024
@@ -22710,6 +22718,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
         public virtual string DasherCustomerId { get; set; }
 
+        /// <summary>
+        /// Optional. The super admin email address for the workspace that will be used for access token generation. For
+        /// now we only use it for Native Google Drive connector data ingestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superAdminEmailAddress")]
+        public virtual string SuperAdminEmailAddress { get; set; }
+
+        /// <summary>
+        /// Optional. The super admin service account for the workspace that will be used for access token generation.
+        /// For now we only use it for Native Google Drive connector data ingestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superAdminServiceAccount")]
+        public virtual string SuperAdminServiceAccount { get; set; }
+
         /// <summary>The Google Workspace data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -23946,6 +23968,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Currently this is only populated if the model state is `INPUT_VALIDATION_FAILED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
         /// <summary>The metrics of the trained model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
@@ -24983,6 +25009,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
+
+        /// <summary>Optional. Whether to disable analytics for searches performed on this engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAnalytics")]
+        public virtual System.Nullable<bool> DisableAnalytics { get; set; }
 
         /// <summary>
         /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024
@@ -28912,6 +28942,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
         public virtual string DasherCustomerId { get; set; }
 
+        /// <summary>
+        /// Optional. The super admin email address for the workspace that will be used for access token generation. For
+        /// now we only use it for Native Google Drive connector data ingestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superAdminEmailAddress")]
+        public virtual string SuperAdminEmailAddress { get; set; }
+
+        /// <summary>
+        /// Optional. The super admin service account for the workspace that will be used for access token generation.
+        /// For now we only use it for Native Google Drive connector data ingestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superAdminServiceAccount")]
+        public virtual string SuperAdminServiceAccount { get; set; }
+
         /// <summary>The Google Workspace data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -29660,6 +29704,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>The display name of the model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Currently this is only populated if the model state is `INPUT_VALIDATION_FAILED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>The metrics of the trained model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
@@ -30684,6 +30732,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
+
+        /// <summary>Optional. Whether to disable analytics for searches performed on this engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAnalytics")]
+        public virtual System.Nullable<bool> DisableAnalytics { get; set; }
 
         /// <summary>
         /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024
@@ -33635,6 +33687,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Obfuscated Dasher customer ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dasherCustomerId")]
         public virtual string DasherCustomerId { get; set; }
+
+        /// <summary>
+        /// Optional. The super admin email address for the workspace that will be used for access token generation. For
+        /// now we only use it for Native Google Drive connector data ingestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superAdminEmailAddress")]
+        public virtual string SuperAdminEmailAddress { get; set; }
+
+        /// <summary>
+        /// Optional. The super admin service account for the workspace that will be used for access token generation.
+        /// For now we only use it for Native Google Drive connector data ingestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superAdminServiceAccount")]
+        public virtual string SuperAdminServiceAccount { get; set; }
 
         /// <summary>The Google Workspace data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
