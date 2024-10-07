@@ -550,7 +550,7 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// The maximum number of products to return. The service may return fewer than this value. The maximum
-                /// value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of
+                /// value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of
                 /// products will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
