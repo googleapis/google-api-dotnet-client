@@ -1014,6 +1014,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Generation config.</summary>
     public class GoogleCloudAiplatformV1beta1GenerationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If enabled, audio timestamp will be included in the request to the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioTimestamp")]
+        public virtual System.Nullable<bool> AudioTimestamp { get; set; }
+
         /// <summary>Optional. Number of candidates to generate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidateCount")]
         public virtual System.Nullable<int> CandidateCount { get; set; }
@@ -1356,10 +1360,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1RetrievalMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Score indicating how likely information from google search could help answer the prompt. The score
-        /// is in the range [0, 1], where 0 is the least likely and 1 is the most likely. This score is only populated
-        /// when google search grounding and dynamic retrieval is enabled. It will be compared to the threshold to
-        /// determine whether to trigger google search.
+        /// Optional. Score indicating how likely information from Google Search could help answer the prompt. The score
+        /// is in the range `[0, 1]`, where 0 is the least likely and 1 is the most likely. This score is only populated
+        /// when Google Search grounding and dynamic retrieval is enabled. It will be compared to the threshold to
+        /// determine whether to trigger Google Search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchDynamicRetrievalScore")]
         public virtual System.Nullable<float> GoogleSearchDynamicRetrievalScore { get; set; }
@@ -1442,8 +1446,9 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum
-        /// Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+        /// Optional. Possible values of the element of primitive type with enum format. Examples: 1. We can define
+        /// direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]} 2. We can define apartment
+        /// number as : {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
         public virtual System.Collections.Generic.IList<string> Enum__ { get; set; }
