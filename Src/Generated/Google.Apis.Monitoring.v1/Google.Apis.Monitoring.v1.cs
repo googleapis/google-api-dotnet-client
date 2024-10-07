@@ -3179,7 +3179,7 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string End { get; set; }
 
         /// <summary>
-        /// A PromQL query string. Query lanauge documentation:
+        /// A PromQL query string. Query language documentation:
         /// https://prometheus.io/docs/prometheus/latest/querying/basics/.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -3202,7 +3202,7 @@ namespace Google.Apis.Monitoring.v1.Data
     public class QueryInstantRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A PromQL query string. Query lanauge documentation:
+        /// A PromQL query string. Query language documentation:
         /// https://prometheus.io/docs/prometheus/latest/querying/basics/.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -3268,7 +3268,7 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string End { get; set; }
 
         /// <summary>
-        /// A PromQL query string. Query lanauge documentation:
+        /// A PromQL query string. Query language documentation:
         /// https://prometheus.io/docs/prometheus/latest/querying/basics/.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
