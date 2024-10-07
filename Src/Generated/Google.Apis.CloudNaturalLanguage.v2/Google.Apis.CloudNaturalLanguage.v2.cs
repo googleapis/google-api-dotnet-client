@@ -680,6 +680,14 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. The classifier's severity of the category. This is only present when the
+        /// ModerateTextRequest.ModelVersion is set to MODEL_VERSION_2, and the corresponding category has a severity
+        /// score.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual System.Nullable<float> Severity { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -995,6 +1003,10 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
         /// <summary>Required. Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; }
+
+        /// <summary>Optional. The model version to use for ModerateText.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
