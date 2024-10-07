@@ -4158,7 +4158,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
 
         /// <summary>
         /// The name of the version, for example:
-        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1". If the package or
+        /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or
         /// version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
