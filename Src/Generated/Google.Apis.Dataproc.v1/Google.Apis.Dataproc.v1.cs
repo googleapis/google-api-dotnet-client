@@ -884,6 +884,2132 @@ namespace Google.Apis.Dataproc.v1
                 public BatchesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    SparkApplications = new SparkApplicationsResource(service);
+                }
+
+                /// <summary>Gets the SparkApplications resource.</summary>
+                public virtual SparkApplicationsResource SparkApplications { get; }
+
+                /// <summary>The "sparkApplications" collection of methods.</summary>
+                public class SparkApplicationsResource
+                {
+                    private const string Resource = "sparkApplications";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SparkApplicationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Obtain high level information corresponding to a single Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessRequest Access(string name)
+                    {
+                        return new AccessRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain high level information corresponding to a single Spark Application.</summary>
+                    public class AccessRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationResponse>
+                    {
+                        /// <summary>Constructs a new Access request.</summary>
+                        public AccessRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "access";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:access";
+
+                        /// <summary>Initializes Access parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain environment details for a Spark Application</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessEnvironmentInfoRequest AccessEnvironmentInfo(string name)
+                    {
+                        return new AccessEnvironmentInfoRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain environment details for a Spark Application</summary>
+                    public class AccessEnvironmentInfoRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationEnvironmentInfoResponse>
+                    {
+                        /// <summary>Constructs a new AccessEnvironmentInfo request.</summary>
+                        public AccessEnvironmentInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessEnvironmentInfo";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessEnvironmentInfo";
+
+                        /// <summary>Initializes AccessEnvironmentInfo parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark job for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessJobRequest AccessJob(string name)
+                    {
+                        return new AccessJobRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark job for a Spark Application.</summary>
+                    public class AccessJobRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationJobResponse>
+                    {
+                        /// <summary>Constructs a new AccessJob request.</summary>
+                        public AccessJobRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Job ID to fetch data for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> JobId { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessJob";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessJob";
+
+                        /// <summary>Initializes AccessJob parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters
+                    /// returned as part of the graph to 10000.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessSqlPlanRequest AccessSqlPlan(string name)
+                    {
+                        return new AccessSqlPlanRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters
+                    /// returned as part of the graph to 10000.
+                    /// </summary>
+                    public class AccessSqlPlanRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationSqlSparkPlanGraphResponse>
+                    {
+                        /// <summary>Constructs a new AccessSqlPlan request.</summary>
+                        public AccessSqlPlanRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Execution ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> ExecutionId { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessSqlPlan";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessSqlPlan";
+
+                        /// <summary>Initializes AccessSqlPlan parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to a particular SQL Query for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessSqlQueryRequest AccessSqlQuery(string name)
+                    {
+                        return new AccessSqlQueryRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to a particular SQL Query for a Spark Application.</summary>
+                    public class AccessSqlQueryRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationSqlQueryResponse>
+                    {
+                        /// <summary>Constructs a new AccessSqlQuery request.</summary>
+                        public AccessSqlQueryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Lists/ hides details of Spark plan nodes. True is set to list and false to hide.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("details", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Details { get; set; }
+
+                        /// <summary>Required. Execution ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> ExecutionId { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Optional. Enables/ disables physical plan description on demand</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planDescription", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> PlanDescription { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessSqlQuery";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessSqlQuery";
+
+                        /// <summary>Initializes AccessSqlQuery parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("details", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "details",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("planDescription", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "planDescription",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark stage attempt for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessStageAttemptRequest AccessStageAttempt(string name)
+                    {
+                        return new AccessStageAttemptRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark stage attempt for a Spark Application.</summary>
+                    public class AccessStageAttemptRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationStageAttemptResponse>
+                    {
+                        /// <summary>Constructs a new AccessStageAttempt request.</summary>
+                        public AccessStageAttemptRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage Attempt ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageAttemptId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+                        /// <summary>Required. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>
+                        /// Optional. The list of summary metrics fields to include. Empty list will default to skip all
+                        /// summary metrics fields. Example, if the response should include TaskQuantileMetrics, the
+                        /// request should have task_quantile_metrics in summary_metrics_mask field
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("summaryMetricsMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object SummaryMetricsMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessStageAttempt";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessStageAttempt";
+
+                        /// <summary>Initializes AccessStageAttempt parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageAttemptId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageAttemptId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("summaryMetricsMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "summaryMetricsMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned
+                    /// as part of the graph to 10000.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessStageRddGraphRequest AccessStageRddGraph(string name)
+                    {
+                        return new AccessStageRddGraphRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned
+                    /// as part of the graph to 10000.
+                    /// </summary>
+                    public class AccessStageRddGraphRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSparkApplicationStageRddOperationGraphResponse>
+                    {
+                        /// <summary>Constructs a new AccessStageRddGraph request.</summary>
+                        public AccessStageRddGraphRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessStageRddGraph";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessStageRddGraph";
+
+                        /// <summary>Initializes AccessStageRddGraph parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Obtain high level information and list of Spark Applications corresponding to a batch
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+                    /// </param>
+                    public virtual SearchRequest Search(string parent)
+                    {
+                        return new SearchRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Obtain high level information and list of Spark Applications corresponding to a batch
+                    /// </summary>
+                    public class SearchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationsResponse>
+                    {
+                        /// <summary>Constructs a new Search request.</summary>
+                        public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Search only applications in the chosen state.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ApplicationStatusEnum> ApplicationStatus { get; set; }
+
+                        /// <summary>Optional. Search only applications in the chosen state.</summary>
+                        public enum ApplicationStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("APPLICATION_STATUS_UNSPECIFIED")]
+                            APPLICATIONSTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("APPLICATION_STATUS_RUNNING")]
+                            APPLICATIONSTATUSRUNNING = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("APPLICATION_STATUS_COMPLETED")]
+                            APPLICATIONSTATUSCOMPLETED = 2,
+                        }
+
+                        private object _maxEndTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="MaxEndTimeDateTimeOffset"/>, formatted for inclusion in
+                        /// the HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("maxEndTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MaxEndTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="MaxEndTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MaxEndTimeDateTimeOffset instead.")]
+                        public virtual object MaxEndTime
+                        {
+                            get => _maxEndTime;
+                            set
+                            {
+                                MaxEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _maxEndTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? MaxEndTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaxEndTimeRaw);
+                            set
+                            {
+                                MaxEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _maxEndTime = value;
+                            }
+                        }
+
+                        private object _maxTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="MaxTimeDateTimeOffset"/>, formatted for inclusion in the
+                        /// HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("maxTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MaxTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="MaxTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MaxTimeDateTimeOffset instead.")]
+                        public virtual object MaxTime
+                        {
+                            get => _maxTime;
+                            set
+                            {
+                                MaxTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _maxTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? MaxTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaxTimeRaw);
+                            set
+                            {
+                                MaxTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _maxTime = value;
+                            }
+                        }
+
+                        private object _minEndTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="MinEndTimeDateTimeOffset"/>, formatted for inclusion in
+                        /// the HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("minEndTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MinEndTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="MinEndTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MinEndTimeDateTimeOffset instead.")]
+                        public virtual object MinEndTime
+                        {
+                            get => _minEndTime;
+                            set
+                            {
+                                MinEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _minEndTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? MinEndTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MinEndTimeRaw);
+                            set
+                            {
+                                MinEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _minEndTime = value;
+                            }
+                        }
+
+                        private object _minTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="MinTimeDateTimeOffset"/>, formatted for inclusion in the
+                        /// HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("minTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MinTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="MinTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MinTimeDateTimeOffset instead.")]
+                        public virtual object MinTime
+                        {
+                            get => _minTime;
+                            set
+                            {
+                                MinTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _minTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? MinTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MinTimeRaw);
+                            set
+                            {
+                                MinTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _minTime = value;
+                            }
+                        }
+
+                        /// <summary>
+                        /// Optional. Maximum number of applications to return in each response. The service may return
+                        /// fewer than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSparkApplications call. Provide this
+                        /// token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "search";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/sparkApplications:search";
+
+                        /// <summary>Initializes Search parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+$",
+                            });
+                            RequestParameters.Add("applicationStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("maxEndTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "maxEndTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("maxTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "maxTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("minEndTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "minEndTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("minTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "minTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain executor summary with respect to a spark stage attempt.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchExecutorStageSummaryRequest SearchExecutorStageSummary(string name)
+                    {
+                        return new SearchExecutorStageSummaryRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain executor summary with respect to a spark stage attempt.</summary>
+                    public class SearchExecutorStageSummaryRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationExecutorStageSummaryResponse>
+                    {
+                        /// <summary>Constructs a new SearchExecutorStageSummary request.</summary>
+                        public SearchExecutorStageSummaryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of executors to return in each response. The service may return
+                        /// fewer than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous AccessSparkApplicationExecutorsList call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage Attempt ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageAttemptId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+                        /// <summary>Required. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchExecutorStageSummary";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchExecutorStageSummary";
+
+                        /// <summary>Initializes SearchExecutorStageSummary parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageAttemptId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageAttemptId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to executors for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchExecutorsRequest SearchExecutors(string name)
+                    {
+                        return new SearchExecutorsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to executors for a Spark Application.</summary>
+                    public class SearchExecutorsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationExecutorsResponse>
+                    {
+                        /// <summary>Constructs a new SearchExecutors request.</summary>
+                        public SearchExecutorsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter to select whether active/ dead or all executors should be selected.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executorStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ExecutorStatusEnum> ExecutorStatus { get; set; }
+
+                        /// <summary>
+                        /// Optional. Filter to select whether active/ dead or all executors should be selected.
+                        /// </summary>
+                        public enum ExecutorStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("EXECUTOR_STATUS_UNSPECIFIED")]
+                            EXECUTORSTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("EXECUTOR_STATUS_ACTIVE")]
+                            EXECUTORSTATUSACTIVE = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("EXECUTOR_STATUS_DEAD")]
+                            EXECUTORSTATUSDEAD = 2,
+                        }
+
+                        /// <summary>
+                        /// Optional. Maximum number of executors to return in each response. The service may return
+                        /// fewer than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous AccessSparkApplicationExecutorsList call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchExecutors";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchExecutors";
+
+                        /// <summary>Initializes SearchExecutors parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("executorStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executorStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain list of spark jobs corresponding to a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchJobsRequest SearchJobs(string name)
+                    {
+                        return new SearchJobsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain list of spark jobs corresponding to a Spark Application.</summary>
+                    public class SearchJobsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationJobsResponse>
+                    {
+                        /// <summary>Constructs a new SearchJobs request.</summary>
+                        public SearchJobsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. List only jobs in the specific state.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("jobStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<JobStatusEnum> JobStatus { get; set; }
+
+                        /// <summary>Optional. List only jobs in the specific state.</summary>
+                        public enum JobStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_UNSPECIFIED")]
+                            JOBEXECUTIONSTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_RUNNING")]
+                            JOBEXECUTIONSTATUSRUNNING = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_SUCCEEDED")]
+                            JOBEXECUTIONSTATUSSUCCEEDED = 2,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_FAILED")]
+                            JOBEXECUTIONSTATUSFAILED = 3,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_UNKNOWN")]
+                            JOBEXECUTIONSTATUSUNKNOWN = 4,
+                        }
+
+                        /// <summary>
+                        /// Optional. Maximum number of jobs to return in each response. The service may return fewer
+                        /// than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSparkApplicationJobs call. Provide
+                        /// this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchJobs";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchJobs";
+
+                        /// <summary>Initializes SearchJobs parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("jobStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to SQL Queries for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchSqlQueriesRequest SearchSqlQueries(string name)
+                    {
+                        return new SearchSqlQueriesRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to SQL Queries for a Spark Application.</summary>
+                    public class SearchSqlQueriesRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationSqlQueriesResponse>
+                    {
+                        /// <summary>Constructs a new SearchSqlQueries request.</summary>
+                        public SearchSqlQueriesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Lists/ hides details of Spark plan nodes. True is set to list and false to hide.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("details", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Details { get; set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of queries to return in each response. The service may return fewer
+                        /// than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSparkApplicationSqlQueries call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Optional. Enables/ disables physical plan description on demand</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planDescription", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> PlanDescription { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchSqlQueries";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchSqlQueries";
+
+                        /// <summary>Initializes SearchSqlQueries parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("details", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "details",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("planDescription", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "planDescription",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Obtain data corresponding to tasks for a spark stage attempt for a Spark Application.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchStageAttemptTasksRequest SearchStageAttemptTasks(string name)
+                    {
+                        return new SearchStageAttemptTasksRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Obtain data corresponding to tasks for a spark stage attempt for a Spark Application.
+                    /// </summary>
+                    public class SearchStageAttemptTasksRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationStageAttemptTasksResponse>
+                    {
+                        /// <summary>Constructs a new SearchStageAttemptTasks request.</summary>
+                        public SearchStageAttemptTasksRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of tasks to return in each response. The service may return fewer
+                        /// than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous ListSparkApplicationStageAttemptTasks call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Optional. Sort the tasks by runtime.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sortRuntime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> SortRuntime { get; set; }
+
+                        /// <summary>Optional. Stage Attempt ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageAttemptId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+                        /// <summary>Optional. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>Optional. List only tasks in the state.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("taskStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<TaskStatusEnum> TaskStatus { get; set; }
+
+                        /// <summary>Optional. List only tasks in the state.</summary>
+                        public enum TaskStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_UNSPECIFIED")]
+                            TASKSTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_RUNNING")]
+                            TASKSTATUSRUNNING = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_SUCCESS")]
+                            TASKSTATUSSUCCESS = 2,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_FAILED")]
+                            TASKSTATUSFAILED = 3,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_KILLED")]
+                            TASKSTATUSKILLED = 4,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_PENDING")]
+                            TASKSTATUSPENDING = 5,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchStageAttemptTasks";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchStageAttemptTasks";
+
+                        /// <summary>Initializes SearchStageAttemptTasks parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("sortRuntime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sortRuntime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageAttemptId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageAttemptId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("taskStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "taskStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark stage attempts for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchStageAttemptsRequest SearchStageAttempts(string name)
+                    {
+                        return new SearchStageAttemptsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark stage attempts for a Spark Application.</summary>
+                    public class SearchStageAttemptsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationStageAttemptsResponse>
+                    {
+                        /// <summary>Constructs a new SearchStageAttempts request.</summary>
+                        public SearchStageAttemptsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of stage attempts (paging based on stage_attempt_id) to return in
+                        /// each response. The service may return fewer than this. The default page size is 10; the
+                        /// maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSparkApplicationStageAttempts call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage ID for which attempts are to be fetched</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>
+                        /// Optional. The list of summary metrics fields to include. Empty list will default to skip all
+                        /// summary metrics fields. Example, if the response should include TaskQuantileMetrics, the
+                        /// request should have task_quantile_metrics in summary_metrics_mask field
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("summaryMetricsMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object SummaryMetricsMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchStageAttempts";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchStageAttempts";
+
+                        /// <summary>Initializes SearchStageAttempts parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("summaryMetricsMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "summaryMetricsMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to stages for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchStagesRequest SearchStages(string name)
+                    {
+                        return new SearchStagesRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to stages for a Spark Application.</summary>
+                    public class SearchStagesRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSparkApplicationStagesResponse>
+                    {
+                        /// <summary>Constructs a new SearchStages request.</summary>
+                        public SearchStagesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of stages (paging based on stage_id) to return in each response.
+                        /// The service may return fewer than this. The default page size is 10; the maximum page size
+                        /// is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous FetchSparkApplicationStagesList call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Optional. List only stages in the given state.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<StageStatusEnum> StageStatus { get; set; }
+
+                        /// <summary>Optional. List only stages in the given state.</summary>
+                        public enum StageStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_UNSPECIFIED")]
+                            STAGESTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_ACTIVE")]
+                            STAGESTATUSACTIVE = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_COMPLETE")]
+                            STAGESTATUSCOMPLETE = 2,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_FAILED")]
+                            STAGESTATUSFAILED = 3,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_PENDING")]
+                            STAGESTATUSPENDING = 4,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_SKIPPED")]
+                            STAGESTATUSSKIPPED = 5,
+                        }
+
+                        /// <summary>
+                        /// Optional. The list of summary metrics fields to include. Empty list will default to skip all
+                        /// summary metrics fields. Example, if the response should include TaskQuantileMetrics, the
+                        /// request should have task_quantile_metrics in summary_metrics_mask field
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("summaryMetricsMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object SummaryMetricsMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchStages";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchStages";
+
+                        /// <summary>Initializes SearchStages parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("summaryMetricsMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "summaryMetricsMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain summary of Executor Summary for a Spark Application</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SummarizeExecutorsRequest SummarizeExecutors(string name)
+                    {
+                        return new SummarizeExecutorsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain summary of Executor Summary for a Spark Application</summary>
+                    public class SummarizeExecutorsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SummarizeSparkApplicationExecutorsResponse>
+                    {
+                        /// <summary>Constructs a new SummarizeExecutors request.</summary>
+                        public SummarizeExecutorsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "summarizeExecutors";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:summarizeExecutors";
+
+                        /// <summary>Initializes SummarizeExecutors parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain summary of Jobs for a Spark Application</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SummarizeJobsRequest SummarizeJobs(string name)
+                    {
+                        return new SummarizeJobsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain summary of Jobs for a Spark Application</summary>
+                    public class SummarizeJobsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SummarizeSparkApplicationJobsResponse>
+                    {
+                        /// <summary>Constructs a new SummarizeJobs request.</summary>
+                        public SummarizeJobsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "summarizeJobs";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:summarizeJobs";
+
+                        /// <summary>Initializes SummarizeJobs parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain summary of Tasks for a Spark Application Stage Attempt</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SummarizeStageAttemptTasksRequest SummarizeStageAttemptTasks(string name)
+                    {
+                        return new SummarizeStageAttemptTasksRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain summary of Tasks for a Spark Application Stage Attempt</summary>
+                    public class SummarizeStageAttemptTasksRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SummarizeSparkApplicationStageAttemptTasksResponse>
+                    {
+                        /// <summary>Constructs a new SummarizeStageAttemptTasks request.</summary>
+                        public SummarizeStageAttemptTasksRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage Attempt ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageAttemptId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+                        /// <summary>Required. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "summarizeStageAttemptTasks";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:summarizeStageAttemptTasks";
+
+                        /// <summary>Initializes SummarizeStageAttemptTasks parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageAttemptId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageAttemptId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain summary of Stages for a Spark Application</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the batch to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SummarizeStagesRequest SummarizeStages(string name)
+                    {
+                        return new SummarizeStagesRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain summary of Stages for a Spark Application</summary>
+                    public class SummarizeStagesRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SummarizeSparkApplicationStagesResponse>
+                    {
+                        /// <summary>Constructs a new SummarizeStages request.</summary>
+                        public SummarizeStagesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the batch to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Batch) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "summarizeStages";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:summarizeStages";
+
+                        /// <summary>Initializes SummarizeStages parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Write wrapper objects from dataplane to spanner</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the spark application to write data about in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual WriteRequest Write(Google.Apis.Dataproc.v1.Data.WriteSparkApplicationContextRequest body, string name)
+                    {
+                        return new WriteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Write wrapper objects from dataplane to spanner</summary>
+                    public class WriteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.WriteSparkApplicationContextResponse>
+                    {
+                        /// <summary>Constructs a new Write request.</summary>
+                        public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WriteSparkApplicationContextRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the spark application to write data about in the
+                        /// format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataproc.v1.Data.WriteSparkApplicationContextRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "write";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:write";
+
+                        /// <summary>Initializes Write parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+/sparkApplications/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Analyze a Batch for possible recommendations and insights.</summary>
@@ -1845,6 +3971,2134 @@ namespace Google.Apis.Dataproc.v1
                 public SessionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    SparkApplications = new SparkApplicationsResource(service);
+                }
+
+                /// <summary>Gets the SparkApplications resource.</summary>
+                public virtual SparkApplicationsResource SparkApplications { get; }
+
+                /// <summary>The "sparkApplications" collection of methods.</summary>
+                public class SparkApplicationsResource
+                {
+                    private const string Resource = "sparkApplications";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SparkApplicationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Obtain high level information corresponding to a single Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessRequest Access(string name)
+                    {
+                        return new AccessRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain high level information corresponding to a single Spark Application.</summary>
+                    public class AccessRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationResponse>
+                    {
+                        /// <summary>Constructs a new Access request.</summary>
+                        public AccessRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "access";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:access";
+
+                        /// <summary>Initializes Access parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain environment details for a Spark Application</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessEnvironmentInfoRequest AccessEnvironmentInfo(string name)
+                    {
+                        return new AccessEnvironmentInfoRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain environment details for a Spark Application</summary>
+                    public class AccessEnvironmentInfoRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationEnvironmentInfoResponse>
+                    {
+                        /// <summary>Constructs a new AccessEnvironmentInfo request.</summary>
+                        public AccessEnvironmentInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessEnvironmentInfo";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessEnvironmentInfo";
+
+                        /// <summary>Initializes AccessEnvironmentInfo parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark job for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessJobRequest AccessJob(string name)
+                    {
+                        return new AccessJobRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark job for a Spark Application.</summary>
+                    public class AccessJobRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationJobResponse>
+                    {
+                        /// <summary>Constructs a new AccessJob request.</summary>
+                        public AccessJobRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Job ID to fetch data for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> JobId { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessJob";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessJob";
+
+                        /// <summary>Initializes AccessJob parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters
+                    /// returned as part of the graph to 10000.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessSqlPlanRequest AccessSqlPlan(string name)
+                    {
+                        return new AccessSqlPlanRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters
+                    /// returned as part of the graph to 10000.
+                    /// </summary>
+                    public class AccessSqlPlanRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationSqlSparkPlanGraphResponse>
+                    {
+                        /// <summary>Constructs a new AccessSqlPlan request.</summary>
+                        public AccessSqlPlanRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Execution ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> ExecutionId { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessSqlPlan";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessSqlPlan";
+
+                        /// <summary>Initializes AccessSqlPlan parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to a particular SQL Query for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessSqlQueryRequest AccessSqlQuery(string name)
+                    {
+                        return new AccessSqlQueryRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to a particular SQL Query for a Spark Application.</summary>
+                    public class AccessSqlQueryRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationSqlQueryResponse>
+                    {
+                        /// <summary>Constructs a new AccessSqlQuery request.</summary>
+                        public AccessSqlQueryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Lists/ hides details of Spark plan nodes. True is set to list and false to hide.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("details", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Details { get; set; }
+
+                        /// <summary>Required. Execution ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> ExecutionId { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Optional. Enables/ disables physical plan description on demand</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planDescription", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> PlanDescription { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessSqlQuery";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessSqlQuery";
+
+                        /// <summary>Initializes AccessSqlQuery parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("details", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "details",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("planDescription", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "planDescription",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark stage attempt for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessStageAttemptRequest AccessStageAttempt(string name)
+                    {
+                        return new AccessStageAttemptRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark stage attempt for a Spark Application.</summary>
+                    public class AccessStageAttemptRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationStageAttemptResponse>
+                    {
+                        /// <summary>Constructs a new AccessStageAttempt request.</summary>
+                        public AccessStageAttemptRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage Attempt ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageAttemptId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+                        /// <summary>Required. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>
+                        /// Optional. The list of summary metrics fields to include. Empty list will default to skip all
+                        /// summary metrics fields. Example, if the response should include TaskQuantileMetrics, the
+                        /// request should have task_quantile_metrics in summary_metrics_mask field
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("summaryMetricsMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object SummaryMetricsMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessStageAttempt";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessStageAttempt";
+
+                        /// <summary>Initializes AccessStageAttempt parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageAttemptId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageAttemptId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("summaryMetricsMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "summaryMetricsMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned
+                    /// as part of the graph to 10000.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual AccessStageRddGraphRequest AccessStageRddGraph(string name)
+                    {
+                        return new AccessStageRddGraphRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned
+                    /// as part of the graph to 10000.
+                    /// </summary>
+                    public class AccessStageRddGraphRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AccessSessionSparkApplicationStageRddOperationGraphResponse>
+                    {
+                        /// <summary>Constructs a new AccessStageRddGraph request.</summary>
+                        public AccessStageRddGraphRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "accessStageRddGraph";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:accessStageRddGraph";
+
+                        /// <summary>Initializes AccessStageRddGraph parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Obtain high level information and list of Spark Applications corresponding to a batch
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID"
+                    /// </param>
+                    public virtual SearchRequest Search(string parent)
+                    {
+                        return new SearchRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Obtain high level information and list of Spark Applications corresponding to a batch
+                    /// </summary>
+                    public class SearchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationsResponse>
+                    {
+                        /// <summary>Constructs a new Search request.</summary>
+                        public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Search only applications in the chosen state.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ApplicationStatusEnum> ApplicationStatus { get; set; }
+
+                        /// <summary>Optional. Search only applications in the chosen state.</summary>
+                        public enum ApplicationStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("APPLICATION_STATUS_UNSPECIFIED")]
+                            APPLICATIONSTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("APPLICATION_STATUS_RUNNING")]
+                            APPLICATIONSTATUSRUNNING = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("APPLICATION_STATUS_COMPLETED")]
+                            APPLICATIONSTATUSCOMPLETED = 2,
+                        }
+
+                        private object _maxEndTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="MaxEndTimeDateTimeOffset"/>, formatted for inclusion in
+                        /// the HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("maxEndTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MaxEndTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="MaxEndTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MaxEndTimeDateTimeOffset instead.")]
+                        public virtual object MaxEndTime
+                        {
+                            get => _maxEndTime;
+                            set
+                            {
+                                MaxEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _maxEndTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? MaxEndTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaxEndTimeRaw);
+                            set
+                            {
+                                MaxEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _maxEndTime = value;
+                            }
+                        }
+
+                        private object _maxTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="MaxTimeDateTimeOffset"/>, formatted for inclusion in the
+                        /// HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("maxTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MaxTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="MaxTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MaxTimeDateTimeOffset instead.")]
+                        public virtual object MaxTime
+                        {
+                            get => _maxTime;
+                            set
+                            {
+                                MaxTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _maxTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? MaxTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MaxTimeRaw);
+                            set
+                            {
+                                MaxTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _maxTime = value;
+                            }
+                        }
+
+                        private object _minEndTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="MinEndTimeDateTimeOffset"/>, formatted for inclusion in
+                        /// the HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("minEndTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MinEndTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="MinEndTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MinEndTimeDateTimeOffset instead.")]
+                        public virtual object MinEndTime
+                        {
+                            get => _minEndTime;
+                            set
+                            {
+                                MinEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _minEndTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? MinEndTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MinEndTimeRaw);
+                            set
+                            {
+                                MinEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _minEndTime = value;
+                            }
+                        }
+
+                        private object _minTime;
+
+                        /// <summary>
+                        /// String representation of <see cref="MinTimeDateTimeOffset"/>, formatted for inclusion in the
+                        /// HTTP request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("minTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MinTimeRaw { get; private set; }
+
+                        /// <summary><seealso cref="object"/> representation of <see cref="MinTimeRaw"/>.</summary>
+                        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MinTimeDateTimeOffset instead.")]
+                        public virtual object MinTime
+                        {
+                            get => _minTime;
+                            set
+                            {
+                                MinTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                                _minTime = value;
+                            }
+                        }
+
+                        public virtual System.DateTimeOffset? MinTimeDateTimeOffset
+                        {
+                            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MinTimeRaw);
+                            set
+                            {
+                                MinTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                                _minTime = value;
+                            }
+                        }
+
+                        /// <summary>
+                        /// Optional. Maximum number of applications to return in each response. The service may return
+                        /// fewer than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSessionSparkApplications call. Provide
+                        /// this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "search";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/sparkApplications:search";
+
+                        /// <summary>Initializes Search parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+$",
+                            });
+                            RequestParameters.Add("applicationStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("maxEndTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "maxEndTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("maxTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "maxTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("minEndTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "minEndTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("minTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "minTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain executor summary with respect to a spark stage attempt.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchExecutorStageSummaryRequest SearchExecutorStageSummary(string name)
+                    {
+                        return new SearchExecutorStageSummaryRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain executor summary with respect to a spark stage attempt.</summary>
+                    public class SearchExecutorStageSummaryRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationExecutorStageSummaryResponse>
+                    {
+                        /// <summary>Constructs a new SearchExecutorStageSummary request.</summary>
+                        public SearchExecutorStageSummaryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of executors to return in each response. The service may return
+                        /// fewer than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous
+                        /// SearchSessionSparkApplicationExecutorStageSummary call. Provide this token to retrieve the
+                        /// subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage Attempt ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageAttemptId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+                        /// <summary>Required. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchExecutorStageSummary";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchExecutorStageSummary";
+
+                        /// <summary>Initializes SearchExecutorStageSummary parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageAttemptId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageAttemptId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to executors for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchExecutorsRequest SearchExecutors(string name)
+                    {
+                        return new SearchExecutorsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to executors for a Spark Application.</summary>
+                    public class SearchExecutorsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationExecutorsResponse>
+                    {
+                        /// <summary>Constructs a new SearchExecutors request.</summary>
+                        public SearchExecutorsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter to select whether active/ dead or all executors should be selected.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executorStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ExecutorStatusEnum> ExecutorStatus { get; set; }
+
+                        /// <summary>
+                        /// Optional. Filter to select whether active/ dead or all executors should be selected.
+                        /// </summary>
+                        public enum ExecutorStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("EXECUTOR_STATUS_UNSPECIFIED")]
+                            EXECUTORSTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("EXECUTOR_STATUS_ACTIVE")]
+                            EXECUTORSTATUSACTIVE = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("EXECUTOR_STATUS_DEAD")]
+                            EXECUTORSTATUSDEAD = 2,
+                        }
+
+                        /// <summary>
+                        /// Optional. Maximum number of executors to return in each response. The service may return
+                        /// fewer than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSessionSparkApplicationExecutors call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchExecutors";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchExecutors";
+
+                        /// <summary>Initializes SearchExecutors parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("executorStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executorStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain list of spark jobs corresponding to a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchJobsRequest SearchJobs(string name)
+                    {
+                        return new SearchJobsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain list of spark jobs corresponding to a Spark Application.</summary>
+                    public class SearchJobsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationJobsResponse>
+                    {
+                        /// <summary>Constructs a new SearchJobs request.</summary>
+                        public SearchJobsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. List only jobs in the specific state.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("jobStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<JobStatusEnum> JobStatus { get; set; }
+
+                        /// <summary>Optional. List only jobs in the specific state.</summary>
+                        public enum JobStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_UNSPECIFIED")]
+                            JOBEXECUTIONSTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_RUNNING")]
+                            JOBEXECUTIONSTATUSRUNNING = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_SUCCEEDED")]
+                            JOBEXECUTIONSTATUSSUCCEEDED = 2,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_FAILED")]
+                            JOBEXECUTIONSTATUSFAILED = 3,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("JOB_EXECUTION_STATUS_UNKNOWN")]
+                            JOBEXECUTIONSTATUSUNKNOWN = 4,
+                        }
+
+                        /// <summary>
+                        /// Optional. Maximum number of jobs to return in each response. The service may return fewer
+                        /// than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSessionSparkApplicationJobs call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchJobs";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchJobs";
+
+                        /// <summary>Initializes SearchJobs parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("jobStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to SQL Queries for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchSqlQueriesRequest SearchSqlQueries(string name)
+                    {
+                        return new SearchSqlQueriesRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to SQL Queries for a Spark Application.</summary>
+                    public class SearchSqlQueriesRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationSqlQueriesResponse>
+                    {
+                        /// <summary>Constructs a new SearchSqlQueries request.</summary>
+                        public SearchSqlQueriesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Lists/ hides details of Spark plan nodes. True is set to list and false to hide.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("details", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Details { get; set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of queries to return in each response. The service may return fewer
+                        /// than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSessionSparkApplicationSqlQueries
+                        /// call. Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Optional. Enables/ disables physical plan description on demand</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planDescription", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> PlanDescription { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchSqlQueries";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchSqlQueries";
+
+                        /// <summary>Initializes SearchSqlQueries parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("details", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "details",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("planDescription", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "planDescription",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Obtain data corresponding to tasks for a spark stage attempt for a Spark Application.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchStageAttemptTasksRequest SearchStageAttemptTasks(string name)
+                    {
+                        return new SearchStageAttemptTasksRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Obtain data corresponding to tasks for a spark stage attempt for a Spark Application.
+                    /// </summary>
+                    public class SearchStageAttemptTasksRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationStageAttemptTasksResponse>
+                    {
+                        /// <summary>Constructs a new SearchStageAttemptTasks request.</summary>
+                        public SearchStageAttemptTasksRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of tasks to return in each response. The service may return fewer
+                        /// than this. The default page size is 10; the maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous
+                        /// SearchSessionSparkApplicationStageAttemptTasks call. Provide this token to retrieve the
+                        /// subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Optional. Sort the tasks by runtime.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sortRuntime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> SortRuntime { get; set; }
+
+                        /// <summary>Optional. Stage Attempt ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageAttemptId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+                        /// <summary>Optional. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>Optional. List only tasks in the state.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("taskStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<TaskStatusEnum> TaskStatus { get; set; }
+
+                        /// <summary>Optional. List only tasks in the state.</summary>
+                        public enum TaskStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_UNSPECIFIED")]
+                            TASKSTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_RUNNING")]
+                            TASKSTATUSRUNNING = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_SUCCESS")]
+                            TASKSTATUSSUCCESS = 2,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_FAILED")]
+                            TASKSTATUSFAILED = 3,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_KILLED")]
+                            TASKSTATUSKILLED = 4,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("TASK_STATUS_PENDING")]
+                            TASKSTATUSPENDING = 5,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchStageAttemptTasks";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchStageAttemptTasks";
+
+                        /// <summary>Initializes SearchStageAttemptTasks parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("sortRuntime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sortRuntime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageAttemptId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageAttemptId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("taskStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "taskStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark stage attempts for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchStageAttemptsRequest SearchStageAttempts(string name)
+                    {
+                        return new SearchStageAttemptsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to a spark stage attempts for a Spark Application.</summary>
+                    public class SearchStageAttemptsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationStageAttemptsResponse>
+                    {
+                        /// <summary>Constructs a new SearchStageAttempts request.</summary>
+                        public SearchStageAttemptsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of stage attempts (paging based on stage_attempt_id) to return in
+                        /// each response. The service may return fewer than this. The default page size is 10; the
+                        /// maximum page size is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSessionSparkApplicationStageAttempts
+                        /// call. Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage ID for which attempts are to be fetched</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>
+                        /// Optional. The list of summary metrics fields to include. Empty list will default to skip all
+                        /// summary metrics fields. Example, if the response should include TaskQuantileMetrics, the
+                        /// request should have task_quantile_metrics in summary_metrics_mask field
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("summaryMetricsMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object SummaryMetricsMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchStageAttempts";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchStageAttempts";
+
+                        /// <summary>Initializes SearchStageAttempts parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("summaryMetricsMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "summaryMetricsMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain data corresponding to stages for a Spark Application.</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SearchStagesRequest SearchStages(string name)
+                    {
+                        return new SearchStagesRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain data corresponding to stages for a Spark Application.</summary>
+                    public class SearchStagesRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SearchSessionSparkApplicationStagesResponse>
+                    {
+                        /// <summary>Constructs a new SearchStages request.</summary>
+                        public SearchStagesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of stages (paging based on stage_id) to return in each response.
+                        /// The service may return fewer than this. The default page size is 10; the maximum page size
+                        /// is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token received from a previous SearchSessionSparkApplicationStages call.
+                        /// Provide this token to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Optional. List only stages in the given state.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageStatus", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<StageStatusEnum> StageStatus { get; set; }
+
+                        /// <summary>Optional. List only stages in the given state.</summary>
+                        public enum StageStatusEnum
+                        {
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_UNSPECIFIED")]
+                            STAGESTATUSUNSPECIFIED = 0,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_ACTIVE")]
+                            STAGESTATUSACTIVE = 1,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_COMPLETE")]
+                            STAGESTATUSCOMPLETE = 2,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_FAILED")]
+                            STAGESTATUSFAILED = 3,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_PENDING")]
+                            STAGESTATUSPENDING = 4,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("STAGE_STATUS_SKIPPED")]
+                            STAGESTATUSSKIPPED = 5,
+                        }
+
+                        /// <summary>
+                        /// Optional. The list of summary metrics fields to include. Empty list will default to skip all
+                        /// summary metrics fields. Example, if the response should include TaskQuantileMetrics, the
+                        /// request should have task_quantile_metrics in summary_metrics_mask field
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("summaryMetricsMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object SummaryMetricsMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchStages";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:searchStages";
+
+                        /// <summary>Initializes SearchStages parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageStatus", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageStatus",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("summaryMetricsMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "summaryMetricsMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain summary of Executor Summary for a Spark Application</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SummarizeExecutorsRequest SummarizeExecutors(string name)
+                    {
+                        return new SummarizeExecutorsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain summary of Executor Summary for a Spark Application</summary>
+                    public class SummarizeExecutorsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SummarizeSessionSparkApplicationExecutorsResponse>
+                    {
+                        /// <summary>Constructs a new SummarizeExecutors request.</summary>
+                        public SummarizeExecutorsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "summarizeExecutors";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:summarizeExecutors";
+
+                        /// <summary>Initializes SummarizeExecutors parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain summary of Jobs for a Spark Application</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SummarizeJobsRequest SummarizeJobs(string name)
+                    {
+                        return new SummarizeJobsRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain summary of Jobs for a Spark Application</summary>
+                    public class SummarizeJobsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SummarizeSessionSparkApplicationJobsResponse>
+                    {
+                        /// <summary>Constructs a new SummarizeJobs request.</summary>
+                        public SummarizeJobsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "summarizeJobs";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:summarizeJobs";
+
+                        /// <summary>Initializes SummarizeJobs parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain summary of Tasks for a Spark Application Stage Attempt</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SummarizeStageAttemptTasksRequest SummarizeStageAttemptTasks(string name)
+                    {
+                        return new SummarizeStageAttemptTasksRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain summary of Tasks for a Spark Application Stage Attempt</summary>
+                    public class SummarizeStageAttemptTasksRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SummarizeSessionSparkApplicationStageAttemptTasksResponse>
+                    {
+                        /// <summary>Constructs a new SummarizeStageAttemptTasks request.</summary>
+                        public SummarizeStageAttemptTasksRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Required. Stage Attempt ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageAttemptId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+                        /// <summary>Required. Stage ID</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("stageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> StageId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "summarizeStageAttemptTasks";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:summarizeStageAttemptTasks";
+
+                        /// <summary>Initializes SummarizeStageAttemptTasks parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageAttemptId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageAttemptId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stageId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stageId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Obtain summary of Stages for a Spark Application</summary>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the session to retrieve in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual SummarizeStagesRequest SummarizeStages(string name)
+                    {
+                        return new SummarizeStagesRequest(this.service, name);
+                    }
+
+                    /// <summary>Obtain summary of Stages for a Spark Application</summary>
+                    public class SummarizeStagesRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SummarizeSessionSparkApplicationStagesResponse>
+                    {
+                        /// <summary>Constructs a new SummarizeStages request.</summary>
+                        public SummarizeStagesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the session to retrieve in the format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. Parent (Session) resource reference.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Parent { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "summarizeStages";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:summarizeStages";
+
+                        /// <summary>Initializes SummarizeStages parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Write wrapper objects from dataplane to spanner</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The fully qualified name of the spark application to write data about in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                    /// </param>
+                    public virtual WriteRequest Write(Google.Apis.Dataproc.v1.Data.WriteSessionSparkApplicationContextRequest body, string name)
+                    {
+                        return new WriteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Write wrapper objects from dataplane to spanner</summary>
+                    public class WriteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.WriteSessionSparkApplicationContextResponse>
+                    {
+                        /// <summary>Constructs a new Write request.</summary>
+                        public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.WriteSessionSparkApplicationContextRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The fully qualified name of the spark application to write data about in the
+                        /// format
+                        /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataproc.v1.Data.WriteSessionSparkApplicationContextRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "write";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:write";
+
+                        /// <summary>Initializes Write parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+/sparkApplications/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Create an interactive session asynchronously.</summary>
@@ -7321,6 +11575,178 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Environment details of a Saprk Application.</summary>
+    public class AccessSessionSparkApplicationEnvironmentInfoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details about the Environment that the application is running in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationEnvironmentInfo")]
+        public virtual ApplicationEnvironmentInfo ApplicationEnvironmentInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a particular job associated with Spark Application</summary>
+    public class AccessSessionSparkApplicationJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Data corresponding to a spark job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobData")]
+        public virtual JobData JobData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A summary of Spark Application</summary>
+    public class AccessSessionSparkApplicationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. High level information corresponding to an application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual ApplicationInfo Application { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a query for a Spark Application</summary>
+    public class AccessSessionSparkApplicationSqlQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SQL Execution Data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionData")]
+        public virtual SqlExecutionUiData ExecutionData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SparkPlanGraph for a Spark Application execution limited to maximum 10000 clusters.</summary>
+    public class AccessSessionSparkApplicationSqlSparkPlanGraphResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SparkPlanGraph for a Spark Application execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkPlanGraph")]
+        public virtual SparkPlanGraph SparkPlanGraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stage Attempt for a Stage of a Spark Application</summary>
+    public class AccessSessionSparkApplicationStageAttemptResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Data corresponding to a stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageData")]
+        public virtual StageData StageData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RDD operation graph for a Spark Application Stage limited to maximum 10000 clusters.</summary>
+    public class AccessSessionSparkApplicationStageRddOperationGraphResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>RDD operation graph for a Spark Application Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rddOperationGraph")]
+        public virtual RddOperationGraph RddOperationGraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment details of a Saprk Application.</summary>
+    public class AccessSparkApplicationEnvironmentInfoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details about the Environment that the application is running in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationEnvironmentInfo")]
+        public virtual ApplicationEnvironmentInfo ApplicationEnvironmentInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a particular job associated with Spark Application</summary>
+    public class AccessSparkApplicationJobResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Data corresponding to a spark job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobData")]
+        public virtual JobData JobData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A summary of Spark Application</summary>
+    public class AccessSparkApplicationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. High level information corresponding to an application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual ApplicationInfo Application { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a query for a Spark Application</summary>
+    public class AccessSparkApplicationSqlQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SQL Execution Data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionData")]
+        public virtual SqlExecutionUiData ExecutionData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SparkPlanGraph for a Spark Application execution limited to maximum 10000 clusters.</summary>
+    public class AccessSparkApplicationSqlSparkPlanGraphResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SparkPlanGraph for a Spark Application execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkPlanGraph")]
+        public virtual SparkPlanGraph SparkPlanGraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stage Attempt for a Stage of a Spark Application</summary>
+    public class AccessSparkApplicationStageAttemptResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Data corresponding to a stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageData")]
+        public virtual StageData StageData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RDD operation graph for a Spark Application Stage limited to maximum 10000 clusters.</summary>
+    public class AccessSparkApplicationStageRddOperationGraphResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>RDD operation graph for a Spark Application Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rddOperationGraph")]
+        public virtual RddOperationGraph RddOperationGraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AccumulableInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("accumullableInfoId")]
+        public virtual System.Nullable<long> AccumullableInfoId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("update")]
+        public virtual string Update { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to analyze a batch workload.</summary>
     public class AnalyzeBatchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7441,6 +11867,210 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. Warnings encountered during operation execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompletedJobs")]
+        public virtual System.Nullable<int> NumCompletedJobs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompletedStages")]
+        public virtual System.Nullable<int> NumCompletedStages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific attempt of an application.</summary>
+    public class ApplicationAttemptInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("appSparkVersion")]
+        public virtual string AppSparkVersion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("attemptId")]
+        public virtual string AttemptId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("completed")]
+        public virtual System.Nullable<bool> Completed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("durationMillis")]
+        public virtual System.Nullable<long> DurationMillis { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastUpdatedRaw;
+
+        private object _lastUpdated;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdated")]
+        public virtual string LastUpdatedRaw
+        {
+            get => _lastUpdatedRaw;
+            set
+            {
+                _lastUpdated = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdatedRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdatedDateTimeOffset instead.")]
+        public virtual object LastUpdated
+        {
+            get => _lastUpdated;
+            set
+            {
+                _lastUpdatedRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdated = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkUser")]
+        public virtual string SparkUser { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the Environment that the application is running in.</summary>
+    public class ApplicationEnvironmentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("classpathEntries")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ClasspathEntries { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hadoopProperties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> HadoopProperties { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metricsProperties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MetricsProperties { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceProfiles")]
+        public virtual System.Collections.Generic.IList<ResourceProfileInfo> ResourceProfiles { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
+        public virtual SparkRuntimeInfo Runtime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkProperties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SparkProperties { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("systemProperties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SystemProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>High level information corresponding to an application.</summary>
+    public class ApplicationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationContextIngestionStatus")]
+        public virtual string ApplicationContextIngestionStatus { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("attempts")]
+        public virtual System.Collections.Generic.IList<ApplicationAttemptInfo> Attempts { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("coresGranted")]
+        public virtual System.Nullable<int> CoresGranted { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("coresPerExecutor")]
+        public virtual System.Nullable<int> CoresPerExecutor { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCores")]
+        public virtual System.Nullable<int> MaxCores { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryPerExecutorMb")]
+        public virtual System.Nullable<int> MemoryPerExecutorMb { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("quantileDataStatus")]
+        public virtual string QuantileDataStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8352,6 +12982,17 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cluster to be repaired</summary>
+    public class ClusterToRepair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Repair action to take on the cluster resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterRepairAction")]
+        public virtual string ClusterRepairAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Confidential Instance Config for clusters using Confidential VMs
     /// (https://cloud.google.com/compute/confidential-vm/docs)
@@ -8361,6 +13002,64 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. Defines whether the instance should have confidential compute enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Consolidated summary about executors used by the application.</summary>
+    public class ConsolidatedExecutorSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("activeTasks")]
+        public virtual System.Nullable<int> ActiveTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("completedTasks")]
+        public virtual System.Nullable<int> CompletedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("diskUsed")]
+        public virtual System.Nullable<long> DiskUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("failedTasks")]
+        public virtual System.Nullable<int> FailedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isExcluded")]
+        public virtual System.Nullable<int> IsExcluded { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("maxMemory")]
+        public virtual System.Nullable<long> MaxMemory { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMetrics")]
+        public virtual MemoryMetrics MemoryMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsed")]
+        public virtual System.Nullable<long> MemoryUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rddBlocks")]
+        public virtual System.Nullable<int> RddBlocks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCores")]
+        public virtual System.Nullable<int> TotalCores { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDurationMillis")]
+        public virtual System.Nullable<long> TotalDurationMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalGcTimeMillis")]
+        public virtual System.Nullable<long> TotalGcTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalInputBytes")]
+        public virtual System.Nullable<long> TotalInputBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalShuffleRead")]
+        public virtual System.Nullable<long> TotalShuffleRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalShuffleWrite")]
+        public virtual System.Nullable<long> TotalShuffleWrite { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTasks")]
+        public virtual System.Nullable<int> TotalTasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8653,6 +13352,324 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ExecutorMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> Metrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ExecutorMetricsDistributions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("diskBytesSpilled")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> DiskBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("failedTasks")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> FailedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inputBytes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> InputBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inputRecords")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> InputRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("killedTasks")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> KilledTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryBytesSpilled")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> MemoryBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("outputBytes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> OutputBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("outputRecords")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> OutputRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peakMemoryMetrics")]
+        public virtual ExecutorPeakMetricsDistributions PeakMemoryMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("quantiles")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Quantiles { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleRead")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> ShuffleRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleReadRecords")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> ShuffleReadRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleWrite")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> ShuffleWrite { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleWriteRecords")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> ShuffleWriteRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("succeededTasks")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> SucceededTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("taskTimeMillis")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> TaskTimeMillis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ExecutorPeakMetricsDistributions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("executorMetrics")]
+        public virtual System.Collections.Generic.IList<ExecutorMetrics> ExecutorMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("quantiles")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Quantiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resources used per executor used by the application.</summary>
+    public class ExecutorResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual System.Nullable<long> Amount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryScript")]
+        public virtual string DiscoveryScript { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("vendor")]
+        public virtual string Vendor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Executor resources consumed by a stage.</summary>
+    public class ExecutorStageSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("diskBytesSpilled")]
+        public virtual System.Nullable<long> DiskBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorId")]
+        public virtual string ExecutorId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("failedTasks")]
+        public virtual System.Nullable<int> FailedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inputBytes")]
+        public virtual System.Nullable<long> InputBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inputRecords")]
+        public virtual System.Nullable<long> InputRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isExcludedForStage")]
+        public virtual System.Nullable<bool> IsExcludedForStage { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("killedTasks")]
+        public virtual System.Nullable<int> KilledTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryBytesSpilled")]
+        public virtual System.Nullable<long> MemoryBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("outputBytes")]
+        public virtual System.Nullable<long> OutputBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("outputRecords")]
+        public virtual System.Nullable<long> OutputRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peakMemoryMetrics")]
+        public virtual ExecutorMetrics PeakMemoryMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleRead")]
+        public virtual System.Nullable<long> ShuffleRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleReadRecords")]
+        public virtual System.Nullable<long> ShuffleReadRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleWrite")]
+        public virtual System.Nullable<long> ShuffleWrite { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleWriteRecords")]
+        public virtual System.Nullable<long> ShuffleWriteRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageAttemptId")]
+        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageId")]
+        public virtual System.Nullable<long> StageId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("succeededTasks")]
+        public virtual System.Nullable<int> SucceededTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("taskTimeMillis")]
+        public virtual System.Nullable<long> TaskTimeMillis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about executors used by the application.</summary>
+    public class ExecutorSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("activeTasks")]
+        public virtual System.Nullable<int> ActiveTasks { get; set; }
+
+        private string _addTimeRaw;
+
+        private object _addTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("addTime")]
+        public virtual string AddTimeRaw
+        {
+            get => _addTimeRaw;
+            set
+            {
+                _addTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _addTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AddTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AddTimeDateTimeOffset instead.")]
+        public virtual object AddTime
+        {
+            get => _addTime;
+            set
+            {
+                _addTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _addTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AddTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AddTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AddTimeRaw);
+            set => AddTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("completedTasks")]
+        public virtual System.Nullable<int> CompletedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("diskUsed")]
+        public virtual System.Nullable<long> DiskUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedInStages")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedInStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorId")]
+        public virtual string ExecutorId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorLogs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ExecutorLogs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("failedTasks")]
+        public virtual System.Nullable<int> FailedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hostPort")]
+        public virtual string HostPort { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
+        public virtual System.Nullable<bool> IsActive { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isExcluded")]
+        public virtual System.Nullable<bool> IsExcluded { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("maxMemory")]
+        public virtual System.Nullable<long> MaxMemory { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTasks")]
+        public virtual System.Nullable<int> MaxTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMetrics")]
+        public virtual MemoryMetrics MemoryMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsed")]
+        public virtual System.Nullable<long> MemoryUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peakMemoryMetrics")]
+        public virtual ExecutorMetrics PeakMemoryMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rddBlocks")]
+        public virtual System.Nullable<int> RddBlocks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("removeReason")]
+        public virtual string RemoveReason { get; set; }
+
+        private string _removeTimeRaw;
+
+        private object _removeTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("removeTime")]
+        public virtual string RemoveTimeRaw
+        {
+            get => _removeTimeRaw;
+            set
+            {
+                _removeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _removeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RemoveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RemoveTimeDateTimeOffset instead.")]
+        public virtual object RemoveTime
+        {
+            get => _removeTime;
+            set
+            {
+                _removeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _removeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RemoveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RemoveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RemoveTimeRaw);
+            set => RemoveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceProfileId")]
+        public virtual System.Nullable<int> ResourceProfileId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IDictionary<string, ResourceInformation> Resources { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCores")]
+        public virtual System.Nullable<int> TotalCores { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDurationMillis")]
+        public virtual System.Nullable<long> TotalDurationMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalGcTimeMillis")]
+        public virtual System.Nullable<long> TotalGcTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalInputBytes")]
+        public virtual System.Nullable<long> TotalInputBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalShuffleRead")]
+        public virtual System.Nullable<long> TotalShuffleRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalShuffleWrite")]
+        public virtual System.Nullable<long> TotalShuffleWrite { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTasks")]
+        public virtual System.Nullable<int> TotalTasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example
@@ -8728,8 +13745,8 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with
-        /// values set by the Dataproc API might beoverwritten. Can include properties set
-        /// in/etc/flink/conf/flink-defaults.conf and classes in user code.
+        /// values set by the Dataproc API might be overwritten. Can include properties set in
+        /// /etc/flink/conf/flink-defaults.conf and classes in user code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
@@ -9251,6 +14268,31 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metrics about the input data read by the task.</summary>
+    public class InputMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesRead")]
+        public virtual System.Nullable<long> BytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsRead")]
+        public virtual System.Nullable<long> RecordsRead { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class InputQuantileMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesRead")]
+        public virtual Quantiles BytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsRead")]
+        public virtual Quantiles RecordsRead { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.</summary>
     public class InstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9263,6 +14305,12 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. A list of instance selection results in the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceSelectionResults")]
         public virtual System.Collections.Generic.IList<InstanceSelectionResult> InstanceSelectionResults { get; set; }
+
+        /// <summary>
+        /// Optional. Defines how the Group selects the provisioning model to ensure required reliability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningModelMix")]
+        public virtual ProvisioningModelMix ProvisioningModelMix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9715,6 +14763,149 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Data corresponding to a spark job.</summary>
+    public class JobData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _completionTimeRaw;
+
+        private object _completionTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
+        public virtual string CompletionTimeRaw
+        {
+            get => _completionTimeRaw;
+            set
+            {
+                _completionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletionTimeDateTimeOffset instead.")]
+        public virtual object CompletionTime
+        {
+            get => _completionTime;
+            set
+            {
+                _completionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("jobGroup")]
+        public virtual string JobGroup { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual System.Nullable<long> JobId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("killTasksSummary")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> KillTasksSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numActiveStages")]
+        public virtual System.Nullable<int> NumActiveStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numActiveTasks")]
+        public virtual System.Nullable<int> NumActiveTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompletedIndices")]
+        public virtual System.Nullable<int> NumCompletedIndices { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompletedStages")]
+        public virtual System.Nullable<int> NumCompletedStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompletedTasks")]
+        public virtual System.Nullable<int> NumCompletedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numFailedStages")]
+        public virtual System.Nullable<int> NumFailedStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numFailedTasks")]
+        public virtual System.Nullable<int> NumFailedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numKilledTasks")]
+        public virtual System.Nullable<int> NumKilledTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numSkippedStages")]
+        public virtual System.Nullable<int> NumSkippedStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numSkippedTasks")]
+        public virtual System.Nullable<int> NumSkippedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numTasks")]
+        public virtual System.Nullable<int> NumTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedStages")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> SkippedStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlExecutionId")]
+        public virtual System.Nullable<long> SqlExecutionId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> StageIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        private string _submissionTimeRaw;
+
+        private object _submissionTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("submissionTime")]
+        public virtual string SubmissionTimeRaw
+        {
+            get => _submissionTimeRaw;
+            set
+            {
+                _submissionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _submissionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SubmissionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SubmissionTimeDateTimeOffset instead.")]
+        public virtual object SubmissionTime
+        {
+            get => _submissionTime;
+            set
+            {
+                _submissionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _submissionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SubmissionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SubmissionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubmissionTimeRaw);
+            set => SubmissionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Job Operation metadata.</summary>
     public class JobMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9893,6 +15084,37 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. Additional state information, which includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
         public virtual string Substate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data related to Jobs page summary</summary>
+    public class JobsSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of active jobs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeJobs")]
+        public virtual System.Nullable<int> ActiveJobs { get; set; }
+
+        /// <summary>Spark Application Id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        /// <summary>Attempts info</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attempts")]
+        public virtual System.Collections.Generic.IList<ApplicationAttemptInfo> Attempts { get; set; }
+
+        /// <summary>Number of completed jobs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedJobs")]
+        public virtual System.Nullable<int> CompletedJobs { get; set; }
+
+        /// <summary>Number of failed jobs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedJobs")]
+        public virtual System.Nullable<int> FailedJobs { get; set; }
+
+        /// <summary>Spark Scheduling mode</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulingMode")]
+        public virtual string SchedulingMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10394,6 +15616,24 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class MemoryMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("totalOffHeapStorageMemory")]
+        public virtual System.Nullable<long> TotalOffHeapStorageMemory { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalOnHeapStorageMemory")]
+        public virtual System.Nullable<long> TotalOnHeapStorageMemory { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("usedOffHeapStorageMemory")]
+        public virtual System.Nullable<long> UsedOffHeapStorageMemory { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("usedOnHeapStorageMemory")]
+        public virtual System.Nullable<long> UsedOnHeapStorageMemory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies a Metastore configuration.</summary>
     public class MetastoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10470,7 +15710,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035
         /// (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1
         /// to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no
-        /// more than 32 labelsn.
+        /// more than 32 labels.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -10714,6 +15954,31 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metrics about the data written by the task.</summary>
+    public class OutputMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesWritten")]
+        public virtual System.Nullable<long> BytesWritten { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsWritten")]
+        public virtual System.Nullable<long> RecordsWritten { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class OutputQuantileMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesWritten")]
+        public virtual Quantiles BytesWritten { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsWritten")]
+        public virtual Quantiles RecordsWritten { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for parameter validation.</summary>
     public class ParameterValidation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10858,6 +16123,19 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>Pool Data</summary>
+    public class PoolData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> StageIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional
     /// Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster
@@ -10902,6 +16180,127 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>A list of queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
         public virtual QueryList QueryList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Process Summary</summary>
+    public class ProcessSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _addTimeRaw;
+
+        private object _addTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("addTime")]
+        public virtual string AddTimeRaw
+        {
+            get => _addTimeRaw;
+            set
+            {
+                _addTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _addTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AddTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AddTimeDateTimeOffset instead.")]
+        public virtual object AddTime
+        {
+            get => _addTime;
+            set
+            {
+                _addTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _addTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AddTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AddTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AddTimeRaw);
+            set => AddTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hostPort")]
+        public virtual string HostPort { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
+        public virtual System.Nullable<bool> IsActive { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("processId")]
+        public virtual string ProcessId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("processLogs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ProcessLogs { get; set; }
+
+        private string _removeTimeRaw;
+
+        private object _removeTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("removeTime")]
+        public virtual string RemoveTimeRaw
+        {
+            get => _removeTimeRaw;
+            set
+            {
+                _removeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _removeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RemoveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RemoveTimeDateTimeOffset instead.")]
+        public virtual object RemoveTime
+        {
+            get => _removeTime;
+            set
+            {
+                _removeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _removeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RemoveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RemoveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RemoveTimeRaw);
+            set => RemoveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCores")]
+        public virtual System.Nullable<int> TotalCores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines how Dataproc should create VMs with a mixture of provisioning models.</summary>
+    public class ProvisioningModelMix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The base capacity that will always use Standard VMs to avoid risk of more preemption than the
+        /// minimum capacity you need. Dataproc will create only standard VMs until it reaches standard_capacity_base,
+        /// then it will start using standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If 15
+        /// instances are requested and standard_capacity_base is 5, Dataproc will create 5 standard VMs and then start
+        /// mixing spot and standard VMs for remaining 10 instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardCapacityBase")]
+        public virtual System.Nullable<int> StandardCapacityBase { get; set; }
+
+        /// <summary>
+        /// Optional. The percentage of target capacity that should use Standard VM. The remaining percentage will use
+        /// Spot VMs. The percentage applies only to the capacity above standard_capacity_base. eg. If 15 instances are
+        /// requested and standard_capacity_base is 5 and standard_capacity_percent_above_base is 30, Dataproc will
+        /// create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will
+        /// be 30% standard and 70% spot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardCapacityPercentAboveBase")]
+        public virtual System.Nullable<int> StandardCapacityPercentAboveBase { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11021,6 +16420,37 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Quantile metrics data related to Tasks. Units can be seconds, bytes, milliseconds, etc depending on the message
+    /// type.
+    /// </summary>
+    public class Quantiles : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual System.Nullable<long> Maximum { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual System.Nullable<long> Minimum { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile25")]
+        public virtual System.Nullable<long> Percentile25 { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile50")]
+        public virtual System.Nullable<long> Percentile50 { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile75")]
+        public virtual System.Nullable<long> Percentile75 { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sum")]
+        public virtual System.Nullable<long> Sum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A list of queries to run on a cluster.</summary>
     public class QueryList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11032,6 +16462,172 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
         public virtual System.Collections.Generic.IList<string> Queries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about RDD usage.</summary>
+    public class RddDataDistribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("diskUsed")]
+        public virtual System.Nullable<long> DiskUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryRemaining")]
+        public virtual System.Nullable<long> MemoryRemaining { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsed")]
+        public virtual System.Nullable<long> MemoryUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("offHeapMemoryRemaining")]
+        public virtual System.Nullable<long> OffHeapMemoryRemaining { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("offHeapMemoryUsed")]
+        public virtual System.Nullable<long> OffHeapMemoryUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("onHeapMemoryRemaining")]
+        public virtual System.Nullable<long> OnHeapMemoryRemaining { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("onHeapMemoryUsed")]
+        public virtual System.Nullable<long> OnHeapMemoryUsed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A grouping of nodes representing higher level constructs (stage, job etc.).</summary>
+    public class RddOperationCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("childClusters")]
+        public virtual System.Collections.Generic.IList<RddOperationCluster> ChildClusters { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("childNodes")]
+        public virtual System.Collections.Generic.IList<RddOperationNode> ChildNodes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rddClusterId")]
+        public virtual string RddClusterId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A directed edge representing dependency between two RDDs.</summary>
+    public class RddOperationEdge : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("fromId")]
+        public virtual System.Nullable<int> FromId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toId")]
+        public virtual System.Nullable<int> ToId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Graph representing RDD dependencies. Consists of edges and a root cluster.</summary>
+    public class RddOperationGraph : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("edges")]
+        public virtual System.Collections.Generic.IList<RddOperationEdge> Edges { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("incomingEdges")]
+        public virtual System.Collections.Generic.IList<RddOperationEdge> IncomingEdges { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("outgoingEdges")]
+        public virtual System.Collections.Generic.IList<RddOperationEdge> OutgoingEdges { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rootCluster")]
+        public virtual RddOperationCluster RootCluster { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageId")]
+        public virtual System.Nullable<long> StageId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A node in the RDD operation graph. Corresponds to a single RDD.</summary>
+    public class RddOperationNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("barrier")]
+        public virtual System.Nullable<bool> Barrier { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cached")]
+        public virtual System.Nullable<bool> Cached { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("callsite")]
+        public virtual string Callsite { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
+        public virtual System.Nullable<int> NodeId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("outputDeterministicLevel")]
+        public virtual string OutputDeterministicLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about RDD partitions.</summary>
+    public class RddPartitionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("blockName")]
+        public virtual string BlockName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("diskUsed")]
+        public virtual System.Nullable<long> DiskUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executors")]
+        public virtual System.Collections.Generic.IList<string> Executors { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsed")]
+        public virtual System.Nullable<long> MemoryUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("storageLevel")]
+        public virtual string StorageLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Overall data about RDD storage.</summary>
+    public class RddStorageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDistribution")]
+        public virtual System.Collections.Generic.IList<RddDataDistribution> DataDistribution { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("diskUsed")]
+        public virtual System.Nullable<long> DiskUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsed")]
+        public virtual System.Nullable<long> MemoryUsed { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCachedPartitions")]
+        public virtual System.Nullable<int> NumCachedPartitions { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numPartitions")]
+        public virtual System.Nullable<int> NumPartitions { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
+        public virtual System.Collections.Generic.IList<RddPartitionInfo> Partitions { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rddStorageId")]
+        public virtual System.Nullable<int> RddStorageId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("storageLevel")]
+        public virtual string StorageLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11054,6 +16650,10 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A request to repair a cluster.</summary>
     public class RepairClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Cluster to be repaired</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual ClusterToRepair Cluster { get; set; }
+
         /// <summary>
         /// Optional. Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND) if a cluster with the
         /// specified UUID does not exist.
@@ -11195,6 +16795,36 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ResourceInformation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
+        public virtual System.Collections.Generic.IList<string> Addresses { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Resource profile that contains information about all the resources required by executors and tasks.
+    /// </summary>
+    public class ResourceProfileInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("executorResources")]
+        public virtual System.Collections.Generic.IDictionary<string, ExecutorResourceRequest> ExecutorResources { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceProfileId")]
+        public virtual System.Nullable<int> ResourceProfileId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("taskResources")]
+        public virtual System.Collections.Generic.IDictionary<string, TaskResourceRequest> TaskResources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime configuration for a workload.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11265,6 +16895,295 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. A URI pointing to the location of the stdout and stderr of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of Executors associated with a Spark Application Stage.</summary>
+    public class SearchSessionSparkApplicationExecutorStageSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent
+        /// SearchSessionSparkApplicationExecutorStageSummaryRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Details about executors used by the application stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationStageExecutors")]
+        public virtual System.Collections.Generic.IList<ExecutorStageSummary> SparkApplicationStageExecutors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of Executors associated with a Spark Application.</summary>
+    public class SearchSessionSparkApplicationExecutorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSessionSparkApplicationExecutorsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Details about executors used by the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationExecutors")]
+        public virtual System.Collections.Generic.IList<ExecutorSummary> SparkApplicationExecutors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Jobs associated with a Spark Application.</summary>
+    public class SearchSessionSparkApplicationJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSessionSparkApplicationJobsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Data corresponding to a spark job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationJobs")]
+        public virtual System.Collections.Generic.IList<JobData> SparkApplicationJobs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of all queries for a Spark Application.</summary>
+    public class SearchSessionSparkApplicationSqlQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSessionSparkApplicationSqlQueriesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. SQL Execution Data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationSqlQueries")]
+        public virtual System.Collections.Generic.IList<SqlExecutionUiData> SparkApplicationSqlQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of tasks for a stage of a Spark Application</summary>
+    public class SearchSessionSparkApplicationStageAttemptTasksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSessionSparkApplicationStageAttemptTasksRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Data corresponding to tasks created by spark.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationStageAttemptTasks")]
+        public virtual System.Collections.Generic.IList<TaskData> SparkApplicationStageAttemptTasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Stage Attempts for a Stage of a Spark Application.</summary>
+    public class SearchSessionSparkApplicationStageAttemptsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSessionSparkApplicationStageAttemptsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Data corresponding to a stage attempts</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationStageAttempts")]
+        public virtual System.Collections.Generic.IList<StageData> SparkApplicationStageAttempts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of stages associated with a Spark Application.</summary>
+    public class SearchSessionSparkApplicationStagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSessionSparkApplicationStages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Data corresponding to a stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationStages")]
+        public virtual System.Collections.Generic.IList<StageData> SparkApplicationStages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of summary of Spark Applications</summary>
+    public class SearchSessionSparkApplicationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSessionSparkApplicationsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. High level information corresponding to an application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplications")]
+        public virtual System.Collections.Generic.IList<SparkApplication> SparkApplications { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of Executors associated with a Spark Application Stage.</summary>
+    public class SearchSparkApplicationExecutorStageSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSparkApplicationExecutorsListRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Details about executors used by the application stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationStageExecutors")]
+        public virtual System.Collections.Generic.IList<ExecutorStageSummary> SparkApplicationStageExecutors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of Executors associated with a Spark Application.</summary>
+    public class SearchSparkApplicationExecutorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSparkApplicationExecutorsListRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Details about executors used by the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationExecutors")]
+        public virtual System.Collections.Generic.IList<ExecutorSummary> SparkApplicationExecutors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Jobs associated with a Spark Application.</summary>
+    public class SearchSparkApplicationJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSparkApplicationJobsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Data corresponding to a spark job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationJobs")]
+        public virtual System.Collections.Generic.IList<JobData> SparkApplicationJobs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of all queries for a Spark Application.</summary>
+    public class SearchSparkApplicationSqlQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSparkApplicationSqlQueriesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. SQL Execution Data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationSqlQueries")]
+        public virtual System.Collections.Generic.IList<SqlExecutionUiData> SparkApplicationSqlQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of tasks for a stage of a Spark Application</summary>
+    public class SearchSparkApplicationStageAttemptTasksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent ListSparkApplicationStageAttemptTasksRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Data corresponding to tasks created by spark.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationStageAttemptTasks")]
+        public virtual System.Collections.Generic.IList<TaskData> SparkApplicationStageAttemptTasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Stage Attempts for a Stage of a Spark Application.</summary>
+    public class SearchSparkApplicationStageAttemptsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent ListSparkApplicationStageAttemptsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Data corresponding to a stage attempts</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationStageAttempts")]
+        public virtual System.Collections.Generic.IList<StageData> SparkApplicationStageAttempts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of stages associated with a Spark Application.</summary>
+    public class SearchSparkApplicationStagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSparkApplicationStages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Data corresponding to a stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplicationStages")]
+        public virtual System.Collections.Generic.IList<StageData> SparkApplicationStages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of summary of Spark Applications</summary>
+    public class SearchSparkApplicationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This token is included in the response if there are more results to fetch. To fetch additional results,
+        /// provide this value as the page_token in a subsequent SearchSparkApplicationsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. High level information corresponding to an application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkApplications")]
+        public virtual System.Collections.Generic.IList<SparkApplication> SparkApplications { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11762,6 +17681,188 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ShufflePushReadMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("corruptMergedBlockChunks")]
+        public virtual System.Nullable<long> CorruptMergedBlockChunks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedBlocksFetched")]
+        public virtual System.Nullable<long> LocalMergedBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedBytesRead")]
+        public virtual System.Nullable<long> LocalMergedBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedChunksFetched")]
+        public virtual System.Nullable<long> LocalMergedChunksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFetchFallbackCount")]
+        public virtual System.Nullable<long> MergedFetchFallbackCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedBlocksFetched")]
+        public virtual System.Nullable<long> RemoteMergedBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedBytesRead")]
+        public virtual System.Nullable<long> RemoteMergedBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedChunksFetched")]
+        public virtual System.Nullable<long> RemoteMergedChunksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedReqsDuration")]
+        public virtual System.Nullable<long> RemoteMergedReqsDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ShufflePushReadQuantileMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("corruptMergedBlockChunks")]
+        public virtual Quantiles CorruptMergedBlockChunks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedBlocksFetched")]
+        public virtual Quantiles LocalMergedBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedBytesRead")]
+        public virtual Quantiles LocalMergedBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedChunksFetched")]
+        public virtual Quantiles LocalMergedChunksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFetchFallbackCount")]
+        public virtual Quantiles MergedFetchFallbackCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedBlocksFetched")]
+        public virtual Quantiles RemoteMergedBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedBytesRead")]
+        public virtual Quantiles RemoteMergedBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedChunksFetched")]
+        public virtual Quantiles RemoteMergedChunksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedReqsDuration")]
+        public virtual Quantiles RemoteMergedReqsDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Shuffle data read by the task.</summary>
+    public class ShuffleReadMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("fetchWaitTimeMillis")]
+        public virtual System.Nullable<long> FetchWaitTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localBlocksFetched")]
+        public virtual System.Nullable<long> LocalBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localBytesRead")]
+        public virtual System.Nullable<long> LocalBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsRead")]
+        public virtual System.Nullable<long> RecordsRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBlocksFetched")]
+        public virtual System.Nullable<long> RemoteBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBytesRead")]
+        public virtual System.Nullable<long> RemoteBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBytesReadToDisk")]
+        public virtual System.Nullable<long> RemoteBytesReadToDisk { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteReqsDuration")]
+        public virtual System.Nullable<long> RemoteReqsDuration { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shufflePushReadMetrics")]
+        public virtual ShufflePushReadMetrics ShufflePushReadMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ShuffleReadQuantileMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("fetchWaitTimeMillis")]
+        public virtual Quantiles FetchWaitTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localBlocksFetched")]
+        public virtual Quantiles LocalBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("readBytes")]
+        public virtual Quantiles ReadBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("readRecords")]
+        public virtual Quantiles ReadRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBlocksFetched")]
+        public virtual Quantiles RemoteBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBytesRead")]
+        public virtual Quantiles RemoteBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBytesReadToDisk")]
+        public virtual Quantiles RemoteBytesReadToDisk { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteReqsDuration")]
+        public virtual Quantiles RemoteReqsDuration { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shufflePushReadMetrics")]
+        public virtual ShufflePushReadQuantileMetrics ShufflePushReadMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBlocksFetched")]
+        public virtual Quantiles TotalBlocksFetched { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Shuffle data written by task.</summary>
+    public class ShuffleWriteMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesWritten")]
+        public virtual System.Nullable<long> BytesWritten { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsWritten")]
+        public virtual System.Nullable<long> RecordsWritten { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("writeTimeNanos")]
+        public virtual System.Nullable<long> WriteTimeNanos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ShuffleWriteQuantileMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("writeBytes")]
+        public virtual Quantiles WriteBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("writeRecords")]
+        public virtual Quantiles WriteRecords { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("writeTimeNanos")]
+        public virtual Quantiles WriteTimeNanos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SinkProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numOutputRows")]
+        public virtual System.Nullable<long> NumOutputRows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies the selection and config of software inside the cluster.</summary>
     public class SoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11789,6 +17890,51 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SourceProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual string EndOffset { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inputRowsPerSecond")]
+        public virtual System.Nullable<double> InputRowsPerSecond { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("latestOffset")]
+        public virtual string LatestOffset { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numInputRows")]
+        public virtual System.Nullable<long> NumInputRows { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("processedRowsPerSecond")]
+        public virtual System.Nullable<double> ProcessedRowsPerSecond { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual string StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A summary of Spark Application</summary>
+    public class SparkApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. High level information corresponding to an application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual ApplicationInfo Application { get; set; }
+
+        /// <summary>Identifier. Name of the spark application</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11910,6 +18056,89 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A graph used for storing information of an executionPlan of DataFrame.</summary>
+    public class SparkPlanGraph : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("edges")]
+        public virtual System.Collections.Generic.IList<SparkPlanGraphEdge> Edges { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual System.Nullable<long> ExecutionId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<SparkPlanGraphNodeWrapper> Nodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a tree of spark plan.</summary>
+    public class SparkPlanGraphCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("desc")]
+        public virtual string Desc { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<SqlPlanMetric> Metrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<SparkPlanGraphNodeWrapper> Nodes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkPlanGraphClusterId")]
+        public virtual System.Nullable<long> SparkPlanGraphClusterId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a directed edge in the spark plan tree from child to parent.</summary>
+    public class SparkPlanGraphEdge : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("fromId")]
+        public virtual System.Nullable<long> FromId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toId")]
+        public virtual System.Nullable<long> ToId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a node in the spark plan tree.</summary>
+    public class SparkPlanGraphNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("desc")]
+        public virtual string Desc { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<SqlPlanMetric> Metrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkPlanGraphNodeId")]
+        public virtual System.Nullable<long> SparkPlanGraphNodeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper user to represent either a node or a cluster.</summary>
+    public class SparkPlanGraphNodeWrapper : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual SparkPlanGraphCluster Cluster { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("node")]
+        public virtual SparkPlanGraphNode Node { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A configuration for running an Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
     /// </summary>
@@ -11983,6 +18212,21 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SparkRuntimeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("javaHome")]
+        public virtual string JavaHome { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("javaVersion")]
+        public virtual string JavaVersion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("scalaVersion")]
+        public virtual string ScalaVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12104,6 +18348,714 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Outer message that contains the data obtained from spark listener, packaged with information that is required to
+    /// process it.
+    /// </summary>
+    public class SparkWrapperObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("appSummary")]
+        public virtual AppSummary AppSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationEnvironmentInfo")]
+        public virtual ApplicationEnvironmentInfo ApplicationEnvironmentInfo { get; set; }
+
+        /// <summary>Application Id created by Spark.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationInfo")]
+        public virtual ApplicationInfo ApplicationInfo { get; set; }
+
+        private string _eventTimestampRaw;
+
+        private object _eventTimestamp;
+
+        /// <summary>VM Timestamp associated with the data object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTimestamp")]
+        public virtual string EventTimestampRaw
+        {
+            get => _eventTimestampRaw;
+            set
+            {
+                _eventTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimestampDateTimeOffset instead.")]
+        public virtual object EventTimestamp
+        {
+            get => _eventTimestamp;
+            set
+            {
+                _eventTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimestampRaw);
+            set => EventTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorStageSummary")]
+        public virtual ExecutorStageSummary ExecutorStageSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorSummary")]
+        public virtual ExecutorSummary ExecutorSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("jobData")]
+        public virtual JobData JobData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("poolData")]
+        public virtual PoolData PoolData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("processSummary")]
+        public virtual ProcessSummary ProcessSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rddOperationGraph")]
+        public virtual RddOperationGraph RddOperationGraph { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rddStorageInfo")]
+        public virtual RddStorageInfo RddStorageInfo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceProfileInfo")]
+        public virtual ResourceProfileInfo ResourceProfileInfo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkPlanGraph")]
+        public virtual SparkPlanGraph SparkPlanGraph { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("speculationStageSummary")]
+        public virtual SpeculationStageSummary SpeculationStageSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlExecutionUiData")]
+        public virtual SqlExecutionUiData SqlExecutionUiData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageData")]
+        public virtual StageData StageData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("streamBlockData")]
+        public virtual StreamBlockData StreamBlockData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingQueryData")]
+        public virtual StreamingQueryData StreamingQueryData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingQueryProgress")]
+        public virtual StreamingQueryProgress StreamingQueryProgress { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("taskData")]
+        public virtual TaskData TaskData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the speculation task when speculative execution is enabled.</summary>
+    public class SpeculationStageSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("numActiveTasks")]
+        public virtual System.Nullable<int> NumActiveTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompletedTasks")]
+        public virtual System.Nullable<int> NumCompletedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numFailedTasks")]
+        public virtual System.Nullable<int> NumFailedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numKilledTasks")]
+        public virtual System.Nullable<int> NumKilledTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numTasks")]
+        public virtual System.Nullable<int> NumTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageAttemptId")]
+        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageId")]
+        public virtual System.Nullable<long> StageId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQL Execution Data</summary>
+    public class SqlExecutionUiData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _completionTimeRaw;
+
+        private object _completionTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
+        public virtual string CompletionTimeRaw
+        {
+            get => _completionTimeRaw;
+            set
+            {
+                _completionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletionTimeDateTimeOffset instead.")]
+        public virtual object CompletionTime
+        {
+            get => _completionTime;
+            set
+            {
+                _completionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual System.Nullable<long> ExecutionId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Jobs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metricValues")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MetricValues { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metricValuesIsNull")]
+        public virtual System.Nullable<bool> MetricValuesIsNull { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<SqlPlanMetric> Metrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modifiedConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ModifiedConfigs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalPlanDescription")]
+        public virtual string PhysicalPlanDescription { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rootExecutionId")]
+        public virtual System.Nullable<long> RootExecutionId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Stages { get; set; }
+
+        private string _submissionTimeRaw;
+
+        private object _submissionTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("submissionTime")]
+        public virtual string SubmissionTimeRaw
+        {
+            get => _submissionTimeRaw;
+            set
+            {
+                _submissionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _submissionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SubmissionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SubmissionTimeDateTimeOffset instead.")]
+        public virtual object SubmissionTime
+        {
+            get => _submissionTime;
+            set
+            {
+                _submissionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _submissionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SubmissionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SubmissionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubmissionTimeRaw);
+            set => SubmissionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metrics related to SQL execution.</summary>
+    public class SqlPlanMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("accumulatorId")]
+        public virtual System.Nullable<long> AccumulatorId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metricType")]
+        public virtual string MetricType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data related to tasks summary for a Spark Stage Attempt</summary>
+    public class StageAttemptTasksSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numFailedTasks")]
+        public virtual System.Nullable<int> NumFailedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numKilledTasks")]
+        public virtual System.Nullable<int> NumKilledTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numPendingTasks")]
+        public virtual System.Nullable<int> NumPendingTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numRunningTasks")]
+        public virtual System.Nullable<int> NumRunningTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numSuccessTasks")]
+        public virtual System.Nullable<int> NumSuccessTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numTasks")]
+        public virtual System.Nullable<int> NumTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageAttemptId")]
+        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageId")]
+        public virtual System.Nullable<long> StageId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data corresponding to a stage.</summary>
+    public class StageData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("accumulatorUpdates")]
+        public virtual System.Collections.Generic.IList<AccumulableInfo> AccumulatorUpdates { get; set; }
+
+        private string _completionTimeRaw;
+
+        private object _completionTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
+        public virtual string CompletionTimeRaw
+        {
+            get => _completionTimeRaw;
+            set
+            {
+                _completionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletionTimeDateTimeOffset instead.")]
+        public virtual object CompletionTime
+        {
+            get => _completionTime;
+            set
+            {
+                _completionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorMetricsDistributions")]
+        public virtual ExecutorMetricsDistributions ExecutorMetricsDistributions { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorSummary")]
+        public virtual System.Collections.Generic.IDictionary<string, ExecutorStageSummary> ExecutorSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual string FailureReason { get; set; }
+
+        private string _firstTaskLaunchedTimeRaw;
+
+        private object _firstTaskLaunchedTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("firstTaskLaunchedTime")]
+        public virtual string FirstTaskLaunchedTimeRaw
+        {
+            get => _firstTaskLaunchedTimeRaw;
+            set
+            {
+                _firstTaskLaunchedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstTaskLaunchedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstTaskLaunchedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstTaskLaunchedTimeDateTimeOffset instead.")]
+        public virtual object FirstTaskLaunchedTime
+        {
+            get => _firstTaskLaunchedTime;
+            set
+            {
+                _firstTaskLaunchedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstTaskLaunchedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstTaskLaunchedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstTaskLaunchedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstTaskLaunchedTimeRaw);
+            set => FirstTaskLaunchedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isShufflePushEnabled")]
+        public virtual System.Nullable<bool> IsShufflePushEnabled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("jobIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> JobIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("killedTasksSummary")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> KilledTasksSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> Locality { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numActiveTasks")]
+        public virtual System.Nullable<int> NumActiveTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompleteTasks")]
+        public virtual System.Nullable<int> NumCompleteTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompletedIndices")]
+        public virtual System.Nullable<int> NumCompletedIndices { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numFailedTasks")]
+        public virtual System.Nullable<int> NumFailedTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numKilledTasks")]
+        public virtual System.Nullable<int> NumKilledTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numTasks")]
+        public virtual System.Nullable<int> NumTasks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("parentStageIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ParentStageIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peakExecutorMetrics")]
+        public virtual ExecutorMetrics PeakExecutorMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rddIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> RddIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceProfileId")]
+        public virtual System.Nullable<int> ResourceProfileId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulingPool")]
+        public virtual string SchedulingPool { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleMergersCount")]
+        public virtual System.Nullable<int> ShuffleMergersCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("speculationSummary")]
+        public virtual SpeculationStageSummary SpeculationSummary { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageAttemptId")]
+        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageId")]
+        public virtual System.Nullable<long> StageId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageMetrics")]
+        public virtual StageMetrics StageMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        private string _submissionTimeRaw;
+
+        private object _submissionTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("submissionTime")]
+        public virtual string SubmissionTimeRaw
+        {
+            get => _submissionTimeRaw;
+            set
+            {
+                _submissionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _submissionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SubmissionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SubmissionTimeDateTimeOffset instead.")]
+        public virtual object SubmissionTime
+        {
+            get => _submissionTime;
+            set
+            {
+                _submissionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _submissionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SubmissionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SubmissionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubmissionTimeRaw);
+            set => SubmissionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Summary metrics fields. These are included in response only if present in summary_metrics_mask field in
+        /// request
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskQuantileMetrics")]
+        public virtual TaskQuantileMetrics TaskQuantileMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IDictionary<string, TaskData> Tasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metrics about the input read by the stage.</summary>
+    public class StageInputMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesRead")]
+        public virtual System.Nullable<long> BytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsRead")]
+        public virtual System.Nullable<long> RecordsRead { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stage Level Aggregated Metrics</summary>
+    public class StageMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("diskBytesSpilled")]
+        public virtual System.Nullable<long> DiskBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorCpuTimeNanos")]
+        public virtual System.Nullable<long> ExecutorCpuTimeNanos { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorDeserializeCpuTimeNanos")]
+        public virtual System.Nullable<long> ExecutorDeserializeCpuTimeNanos { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorDeserializeTimeMillis")]
+        public virtual System.Nullable<long> ExecutorDeserializeTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorRunTimeMillis")]
+        public virtual System.Nullable<long> ExecutorRunTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("jvmGcTimeMillis")]
+        public virtual System.Nullable<long> JvmGcTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryBytesSpilled")]
+        public virtual System.Nullable<long> MemoryBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peakExecutionMemoryBytes")]
+        public virtual System.Nullable<long> PeakExecutionMemoryBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSerializationTimeMillis")]
+        public virtual System.Nullable<long> ResultSerializationTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSize")]
+        public virtual System.Nullable<long> ResultSize { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageInputMetrics")]
+        public virtual StageInputMetrics StageInputMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageOutputMetrics")]
+        public virtual StageOutputMetrics StageOutputMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageShuffleReadMetrics")]
+        public virtual StageShuffleReadMetrics StageShuffleReadMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageShuffleWriteMetrics")]
+        public virtual StageShuffleWriteMetrics StageShuffleWriteMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metrics about the output written by the stage.</summary>
+    public class StageOutputMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesWritten")]
+        public virtual System.Nullable<long> BytesWritten { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsWritten")]
+        public virtual System.Nullable<long> RecordsWritten { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class StageShufflePushReadMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("corruptMergedBlockChunks")]
+        public virtual System.Nullable<long> CorruptMergedBlockChunks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedBlocksFetched")]
+        public virtual System.Nullable<long> LocalMergedBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedBytesRead")]
+        public virtual System.Nullable<long> LocalMergedBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localMergedChunksFetched")]
+        public virtual System.Nullable<long> LocalMergedChunksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFetchFallbackCount")]
+        public virtual System.Nullable<long> MergedFetchFallbackCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedBlocksFetched")]
+        public virtual System.Nullable<long> RemoteMergedBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedBytesRead")]
+        public virtual System.Nullable<long> RemoteMergedBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedChunksFetched")]
+        public virtual System.Nullable<long> RemoteMergedChunksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteMergedReqsDuration")]
+        public virtual System.Nullable<long> RemoteMergedReqsDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Shuffle data read for the stage.</summary>
+    public class StageShuffleReadMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesRead")]
+        public virtual System.Nullable<long> BytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("fetchWaitTimeMillis")]
+        public virtual System.Nullable<long> FetchWaitTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localBlocksFetched")]
+        public virtual System.Nullable<long> LocalBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localBytesRead")]
+        public virtual System.Nullable<long> LocalBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsRead")]
+        public virtual System.Nullable<long> RecordsRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBlocksFetched")]
+        public virtual System.Nullable<long> RemoteBlocksFetched { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBytesRead")]
+        public virtual System.Nullable<long> RemoteBytesRead { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBytesReadToDisk")]
+        public virtual System.Nullable<long> RemoteBytesReadToDisk { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteReqsDuration")]
+        public virtual System.Nullable<long> RemoteReqsDuration { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageShufflePushReadMetrics")]
+        public virtual StageShufflePushReadMetrics StageShufflePushReadMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Shuffle data written for the stage.</summary>
+    public class StageShuffleWriteMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesWritten")]
+        public virtual System.Nullable<long> BytesWritten { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsWritten")]
+        public virtual System.Nullable<long> RecordsWritten { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("writeTimeNanos")]
+        public virtual System.Nullable<long> WriteTimeNanos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data related to Stages page summary</summary>
+    public class StagesSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numActiveStages")]
+        public virtual System.Nullable<int> NumActiveStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numCompletedStages")]
+        public virtual System.Nullable<int> NumCompletedStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numFailedStages")]
+        public virtual System.Nullable<int> NumFailedStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numPendingStages")]
+        public virtual System.Nullable<int> NumPendingStages { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numSkippedStages")]
+        public virtual System.Nullable<int> NumSkippedStages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to start a cluster.</summary>
     public class StartClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12199,6 +19151,48 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class StateOperatorProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("allRemovalsTimeMs")]
+        public virtual System.Nullable<long> AllRemovalsTimeMs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("allUpdatesTimeMs")]
+        public virtual System.Nullable<long> AllUpdatesTimeMs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTimeMs")]
+        public virtual System.Nullable<long> CommitTimeMs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("customMetrics")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> CustomMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsedBytes")]
+        public virtual System.Nullable<long> MemoryUsedBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numRowsDroppedByWatermark")]
+        public virtual System.Nullable<long> NumRowsDroppedByWatermark { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numRowsRemoved")]
+        public virtual System.Nullable<long> NumRowsRemoved { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numRowsTotal")]
+        public virtual System.Nullable<long> NumRowsTotal { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numRowsUpdated")]
+        public virtual System.Nullable<long> NumRowsUpdated { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numShufflePartitions")]
+        public virtual System.Nullable<long> NumShufflePartitions { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("numStateStoreInstances")]
+        public virtual System.Nullable<long> NumStateStoreInstances { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
+        public virtual string OperatorName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The Status type defines a logical error model that is suitable for different programming environments, including
     /// REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces
@@ -12253,6 +19247,110 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stream Block Data.</summary>
+    public class StreamBlockData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("deserialized")]
+        public virtual System.Nullable<bool> Deserialized { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSize")]
+        public virtual System.Nullable<long> DiskSize { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorId")]
+        public virtual string ExecutorId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hostPort")]
+        public virtual string HostPort { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memSize")]
+        public virtual System.Nullable<long> MemSize { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("storageLevel")]
+        public virtual string StorageLevel { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("useDisk")]
+        public virtual System.Nullable<bool> UseDisk { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("useMemory")]
+        public virtual System.Nullable<bool> UseMemory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Streaming</summary>
+    public class StreamingQueryData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimestamp")]
+        public virtual System.Nullable<long> EndTimestamp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("exception")]
+        public virtual string Exception { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
+        public virtual System.Nullable<bool> IsActive { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("runId")]
+        public virtual string RunId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
+        public virtual System.Nullable<long> StartTimestamp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingQueryId")]
+        public virtual string StreamingQueryId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class StreamingQueryProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("batchDuration")]
+        public virtual System.Nullable<long> BatchDuration { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
+        public virtual System.Nullable<long> BatchId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("durationMillis")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> DurationMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EventTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("observedMetrics")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ObservedMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("runId")]
+        public virtual string RunId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sink")]
+        public virtual SinkProgress Sink { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<SourceProgress> Sources { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stateOperators")]
+        public virtual System.Collections.Generic.IList<StateOperatorProgress> StateOperators { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingQueryProgressId")]
+        public virtual string StreamingQueryProgressId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string Timestamp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to submit a job.</summary>
     public class SubmitJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12270,6 +19368,375 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Consolidated summary of executors for a Spark Application.</summary>
+    public class SummarizeSessionSparkApplicationExecutorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Consolidated summary for active executors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeExecutorSummary")]
+        public virtual ConsolidatedExecutorSummary ActiveExecutorSummary { get; set; }
+
+        /// <summary>Spark Application Id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        /// <summary>Consolidated summary for dead executors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadExecutorSummary")]
+        public virtual ConsolidatedExecutorSummary DeadExecutorSummary { get; set; }
+
+        /// <summary>Overall consolidated summary for all executors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalExecutorSummary")]
+        public virtual ConsolidatedExecutorSummary TotalExecutorSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of a Spark Application jobs.</summary>
+    public class SummarizeSessionSparkApplicationJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary of a Spark Application Jobs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobsSummary")]
+        public virtual JobsSummary JobsSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of tasks for a Spark Application stage attempt.</summary>
+    public class SummarizeSessionSparkApplicationStageAttemptTasksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary of tasks for a Spark Application Stage Attempt</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageAttemptTasksSummary")]
+        public virtual StageAttemptTasksSummary StageAttemptTasksSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of a Spark Application stages.</summary>
+    public class SummarizeSessionSparkApplicationStagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary of a Spark Application Stages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stagesSummary")]
+        public virtual StagesSummary StagesSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Consolidated summary of executors for a Spark Application.</summary>
+    public class SummarizeSparkApplicationExecutorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Consolidated summary for active executors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeExecutorSummary")]
+        public virtual ConsolidatedExecutorSummary ActiveExecutorSummary { get; set; }
+
+        /// <summary>Spark Application Id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        /// <summary>Consolidated summary for dead executors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadExecutorSummary")]
+        public virtual ConsolidatedExecutorSummary DeadExecutorSummary { get; set; }
+
+        /// <summary>Overall consolidated summary for all executors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalExecutorSummary")]
+        public virtual ConsolidatedExecutorSummary TotalExecutorSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of a Spark Application jobs.</summary>
+    public class SummarizeSparkApplicationJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary of a Spark Application Jobs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobsSummary")]
+        public virtual JobsSummary JobsSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of tasks for a Spark Application stage attempt.</summary>
+    public class SummarizeSparkApplicationStageAttemptTasksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary of tasks for a Spark Application Stage Attempt</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageAttemptTasksSummary")]
+        public virtual StageAttemptTasksSummary StageAttemptTasksSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of a Spark Application stages.</summary>
+    public class SummarizeSparkApplicationStagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary of a Spark Application Stages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stagesSummary")]
+        public virtual StagesSummary StagesSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data corresponding to tasks created by spark.</summary>
+    public class TaskData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("accumulatorUpdates")]
+        public virtual System.Collections.Generic.IList<AccumulableInfo> AccumulatorUpdates { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("attempt")]
+        public virtual System.Nullable<int> Attempt { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("durationMillis")]
+        public virtual System.Nullable<long> DurationMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorId")]
+        public virtual string ExecutorId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorLogs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ExecutorLogs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gettingResultTimeMillis")]
+        public virtual System.Nullable<long> GettingResultTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hasMetrics")]
+        public virtual System.Nullable<bool> HasMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        private string _launchTimeRaw;
+
+        private object _launchTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("launchTime")]
+        public virtual string LaunchTimeRaw
+        {
+            get => _launchTimeRaw;
+            set
+            {
+                _launchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _launchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LaunchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LaunchTimeDateTimeOffset instead.")]
+        public virtual object LaunchTime
+        {
+            get => _launchTime;
+            set
+            {
+                _launchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _launchTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LaunchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LaunchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LaunchTimeRaw);
+            set => LaunchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
+        public virtual System.Nullable<int> PartitionId { get; set; }
+
+        private string _resultFetchStartRaw;
+
+        private object _resultFetchStart;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resultFetchStart")]
+        public virtual string ResultFetchStartRaw
+        {
+            get => _resultFetchStartRaw;
+            set
+            {
+                _resultFetchStart = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _resultFetchStartRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ResultFetchStartRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ResultFetchStartDateTimeOffset instead.")]
+        public virtual object ResultFetchStart
+        {
+            get => _resultFetchStart;
+            set
+            {
+                _resultFetchStartRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _resultFetchStart = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ResultFetchStartRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ResultFetchStartDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ResultFetchStartRaw);
+            set => ResultFetchStartRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulerDelayMillis")]
+        public virtual System.Nullable<long> SchedulerDelayMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("speculative")]
+        public virtual System.Nullable<bool> Speculative { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageAttemptId")]
+        public virtual System.Nullable<int> StageAttemptId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stageId")]
+        public virtual System.Nullable<long> StageId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
+        public virtual System.Nullable<long> TaskId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("taskLocality")]
+        public virtual string TaskLocality { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("taskMetrics")]
+        public virtual TaskMetrics TaskMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Executor Task Metrics</summary>
+    public class TaskMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("diskBytesSpilled")]
+        public virtual System.Nullable<long> DiskBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorCpuTimeNanos")]
+        public virtual System.Nullable<long> ExecutorCpuTimeNanos { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorDeserializeCpuTimeNanos")]
+        public virtual System.Nullable<long> ExecutorDeserializeCpuTimeNanos { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorDeserializeTimeMillis")]
+        public virtual System.Nullable<long> ExecutorDeserializeTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorRunTimeMillis")]
+        public virtual System.Nullable<long> ExecutorRunTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inputMetrics")]
+        public virtual InputMetrics InputMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("jvmGcTimeMillis")]
+        public virtual System.Nullable<long> JvmGcTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryBytesSpilled")]
+        public virtual System.Nullable<long> MemoryBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("outputMetrics")]
+        public virtual OutputMetrics OutputMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peakExecutionMemoryBytes")]
+        public virtual System.Nullable<long> PeakExecutionMemoryBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSerializationTimeMillis")]
+        public virtual System.Nullable<long> ResultSerializationTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSize")]
+        public virtual System.Nullable<long> ResultSize { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleReadMetrics")]
+        public virtual ShuffleReadMetrics ShuffleReadMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleWriteMetrics")]
+        public virtual ShuffleWriteMetrics ShuffleWriteMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TaskQuantileMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("diskBytesSpilled")]
+        public virtual Quantiles DiskBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("durationMillis")]
+        public virtual Quantiles DurationMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorCpuTimeNanos")]
+        public virtual Quantiles ExecutorCpuTimeNanos { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorDeserializeCpuTimeNanos")]
+        public virtual Quantiles ExecutorDeserializeCpuTimeNanos { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorDeserializeTimeMillis")]
+        public virtual Quantiles ExecutorDeserializeTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("executorRunTimeMillis")]
+        public virtual Quantiles ExecutorRunTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gettingResultTimeMillis")]
+        public virtual Quantiles GettingResultTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inputMetrics")]
+        public virtual InputQuantileMetrics InputMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("jvmGcTimeMillis")]
+        public virtual Quantiles JvmGcTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryBytesSpilled")]
+        public virtual Quantiles MemoryBytesSpilled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("outputMetrics")]
+        public virtual OutputQuantileMetrics OutputMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peakExecutionMemoryBytes")]
+        public virtual Quantiles PeakExecutionMemoryBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSerializationTimeMillis")]
+        public virtual Quantiles ResultSerializationTimeMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSize")]
+        public virtual Quantiles ResultSize { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulerDelayMillis")]
+        public virtual Quantiles SchedulerDelayMillis { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleReadMetrics")]
+        public virtual ShuffleReadQuantileMetrics ShuffleReadMetrics { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleWriteMetrics")]
+        public virtual ShuffleWriteQuantileMetrics ShuffleWriteMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resources used per task created by the application.</summary>
+    public class TaskResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual System.Nullable<double> Amount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12971,6 +20438,49 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedCluster")]
         public virtual ManagedCluster ManagedCluster { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Write Spark Application data to internal storage systems</summary>
+    public class WriteSessionSparkApplicationContextRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Parent (Batch) resource reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Required. The batch of spark application context objects sent for ingestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkWrapperObjects")]
+        public virtual System.Collections.Generic.IList<SparkWrapperObject> SparkWrapperObjects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned as an acknowledgement of receipt of data.</summary>
+    public class WriteSessionSparkApplicationContextResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Write Spark Application data to internal storage systems</summary>
+    public class WriteSparkApplicationContextRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Parent (Batch) resource reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkWrapperObjects")]
+        public virtual System.Collections.Generic.IList<SparkWrapperObject> SparkWrapperObjects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned as an acknowledgement of receipt of data.</summary>
+    public class WriteSparkApplicationContextResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
