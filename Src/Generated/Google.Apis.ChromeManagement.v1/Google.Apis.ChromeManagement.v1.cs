@@ -70,7 +70,7 @@ namespace Google.Apis.ChromeManagement.v1
             public static string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
 
             /// <summary>
-            /// See basic device and telemetry information collected from Chrome OS devices or users managed within your
+            /// See basic device and telemetry information collected from ChromeOS devices or users managed within your
             /// organization
             /// </summary>
             public static string ChromeManagementTelemetryReadonly = "https://www.googleapis.com/auth/chrome.management.telemetry.readonly";
@@ -89,7 +89,7 @@ namespace Google.Apis.ChromeManagement.v1
             public const string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
 
             /// <summary>
-            /// See basic device and telemetry information collected from Chrome OS devices or users managed within your
+            /// See basic device and telemetry information collected from ChromeOS devices or users managed within your
             /// organization
             /// </summary>
             public const string ChromeManagementTelemetryReadonly = "https://www.googleapis.com/auth/chrome.management.telemetry.readonly";
