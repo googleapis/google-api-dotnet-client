@@ -8,6 +8,72 @@
     "1",
     "2"
   ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+BatchesResource+SparkApplicationsResource+SearchExecutorsRequest.ExecutorStatusEnum": [
+    "EXECUTOR_STATUS_UNSPECIFIED",
+    "EXECUTOR_STATUS_ACTIVE",
+    "EXECUTOR_STATUS_DEAD"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+BatchesResource+SparkApplicationsResource+SearchJobsRequest.JobStatusEnum": [
+    "JOB_EXECUTION_STATUS_UNSPECIFIED",
+    "JOB_EXECUTION_STATUS_RUNNING",
+    "JOB_EXECUTION_STATUS_SUCCEEDED",
+    "JOB_EXECUTION_STATUS_FAILED",
+    "JOB_EXECUTION_STATUS_UNKNOWN"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+BatchesResource+SparkApplicationsResource+SearchRequest.ApplicationStatusEnum": [
+    "APPLICATION_STATUS_UNSPECIFIED",
+    "APPLICATION_STATUS_RUNNING",
+    "APPLICATION_STATUS_COMPLETED"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+BatchesResource+SparkApplicationsResource+SearchStageAttemptTasksRequest.TaskStatusEnum": [
+    "TASK_STATUS_UNSPECIFIED",
+    "TASK_STATUS_RUNNING",
+    "TASK_STATUS_SUCCESS",
+    "TASK_STATUS_FAILED",
+    "TASK_STATUS_KILLED",
+    "TASK_STATUS_PENDING"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+BatchesResource+SparkApplicationsResource+SearchStagesRequest.StageStatusEnum": [
+    "STAGE_STATUS_UNSPECIFIED",
+    "STAGE_STATUS_ACTIVE",
+    "STAGE_STATUS_COMPLETE",
+    "STAGE_STATUS_FAILED",
+    "STAGE_STATUS_PENDING",
+    "STAGE_STATUS_SKIPPED"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+SessionsResource+SparkApplicationsResource+SearchExecutorsRequest.ExecutorStatusEnum": [
+    "EXECUTOR_STATUS_UNSPECIFIED",
+    "EXECUTOR_STATUS_ACTIVE",
+    "EXECUTOR_STATUS_DEAD"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+SessionsResource+SparkApplicationsResource+SearchJobsRequest.JobStatusEnum": [
+    "JOB_EXECUTION_STATUS_UNSPECIFIED",
+    "JOB_EXECUTION_STATUS_RUNNING",
+    "JOB_EXECUTION_STATUS_SUCCEEDED",
+    "JOB_EXECUTION_STATUS_FAILED",
+    "JOB_EXECUTION_STATUS_UNKNOWN"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+SessionsResource+SparkApplicationsResource+SearchRequest.ApplicationStatusEnum": [
+    "APPLICATION_STATUS_UNSPECIFIED",
+    "APPLICATION_STATUS_RUNNING",
+    "APPLICATION_STATUS_COMPLETED"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+SessionsResource+SparkApplicationsResource+SearchStageAttemptTasksRequest.TaskStatusEnum": [
+    "TASK_STATUS_UNSPECIFIED",
+    "TASK_STATUS_RUNNING",
+    "TASK_STATUS_SUCCESS",
+    "TASK_STATUS_FAILED",
+    "TASK_STATUS_KILLED",
+    "TASK_STATUS_PENDING"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+LocationsResource+SessionsResource+SparkApplicationsResource+SearchStagesRequest.StageStatusEnum": [
+    "STAGE_STATUS_UNSPECIFIED",
+    "STAGE_STATUS_ACTIVE",
+    "STAGE_STATUS_COMPLETE",
+    "STAGE_STATUS_FAILED",
+    "STAGE_STATUS_PENDING",
+    "STAGE_STATUS_SKIPPED"
+  ],
   "Google.Apis.Dataproc.v1.ProjectsResource+RegionsResource+ClustersResource+CreateRequest.ActionOnFailedPrimaryWorkersEnum": [
     "FAILURE_ACTION_UNSPECIFIED",
     "NO_ACTION",
