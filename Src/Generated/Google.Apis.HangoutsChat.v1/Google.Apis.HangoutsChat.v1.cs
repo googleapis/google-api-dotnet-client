@@ -873,8 +873,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// Creates a membership for the calling Chat app, a user, or a Google Group. Creating memberships for other
             /// Chat apps isn't supported. When creating a membership, if the specified member has their auto-accept
             /// policy turned off, then they're invited, and must accept the space invitation before joining. Otherwise,
-            /// creating a membership adds the member directly to the specified space. Requires [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). For
+            /// creating a membership adds the member directly to the specified space. Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+            /// Preview](https://developers.google.com/workspace/preview) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) For
             /// example usage, see: - [Invite or add a user to a
             /// space](https://developers.google.com/workspace/chat/create-members#create-user-membership). - [Invite or
             /// add a Google Group to a
@@ -895,8 +899,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// Creates a membership for the calling Chat app, a user, or a Google Group. Creating memberships for other
             /// Chat apps isn't supported. When creating a membership, if the specified member has their auto-accept
             /// policy turned off, then they're invited, and must accept the space invitation before joining. Otherwise,
-            /// creating a membership adds the member directly to the specified space. Requires [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). For
+            /// creating a membership adds the member directly to the specified space. Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+            /// Preview](https://developers.google.com/workspace/preview) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) For
             /// example usage, see: - [Invite or add a user to a
             /// space](https://developers.google.com/workspace/chat/create-members#create-user-membership). - [Invite or
             /// add a Google Group to a
@@ -972,8 +980,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Deletes a membership. For an example, see [Remove a user or a Google Chat app from a
-            /// space](https://developers.google.com/workspace/chat/delete-members). Requires [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// space](https://developers.google.com/workspace/chat/delete-members). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+            /// Preview](https://developers.google.com/workspace/preview) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the membership to delete. Chat apps can delete human users' or their own
@@ -991,8 +1003,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Deletes a membership. For an example, see [Remove a user or a Google Chat app from a
-            /// space](https://developers.google.com/workspace/chat/delete-members). Requires [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// space](https://developers.google.com/workspace/chat/delete-members). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+            /// Preview](https://developers.google.com/workspace/preview) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
             /// </summary>
             public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
             {
@@ -1060,19 +1076,18 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Returns details about a membership. For an example, see [Get details about a user's or Google Chat app's
-            /// membership](https://developers.google.com/workspace/chat/get-members). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// membership](https://developers.google.com/workspace/chat/get-members). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the membership to retrieve. To get the app's own membership [by using user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can
             /// optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
-            /// `spaces/{space}/members/app` When [authenticated as a
-            /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can use the
-            /// user's email as an alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where
-            /// `example@gmail.com` is the email of the Google Chat user.
+            /// `spaces/{space}/members/app` You can use the user's email as an alias for `{member}`. For example,
+            /// `spaces/{space}/members/example@gmail.com` where `example@gmail.com` is the email of the Google Chat
+            /// user.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1081,10 +1096,10 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Returns details about a membership. For an example, see [Get details about a user's or Google Chat app's
-            /// membership](https://developers.google.com/workspace/chat/get-members). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// membership](https://developers.google.com/workspace/chat/get-members). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
             /// </summary>
             public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
             {
@@ -1099,10 +1114,9 @@ namespace Google.Apis.HangoutsChat.v1
                 /// Required. Resource name of the membership to retrieve. To get the app's own membership [by using
                 /// user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
                 /// you can optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
-                /// `spaces/{space}/members/app` When [authenticated as a
-                /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can use
-                /// the user's email as an alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com`
-                /// where `example@gmail.com` is the email of the Google Chat user.
+                /// `spaces/{space}/members/app` You can use the user's email as an alias for `{member}`. For example,
+                /// `spaces/{space}/members/example@gmail.com` where `example@gmail.com` is the email of the Google Chat
+                /// user.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1157,10 +1171,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// memberships in spaces that the Chat app has access to, but excludes Chat app memberships, including its
             /// own. Listing memberships with [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) lists
-            /// memberships in spaces that the authenticated user has access to. Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// memberships in spaces that the authenticated user has access to. Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
             /// </summary>
             /// <param name="parent">
             /// Required. The resource name of the space for which to fetch a membership list. Format: spaces/{space}
@@ -1177,10 +1191,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// memberships in spaces that the Chat app has access to, but excludes Chat app memberships, including its
             /// own. Listing memberships with [User
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) lists
-            /// memberships in spaces that the authenticated user has access to. Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// memberships in spaces that the authenticated user has access to. Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
             /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMembershipsResponse>
             {
@@ -1343,8 +1357,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Updates a membership. For an example, see [Update a user's membership in a
-            /// space](https://developers.google.com/workspace/chat/update-members). Requires [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// space](https://developers.google.com/workspace/chat/update-members). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+            /// Preview](https://developers.google.com/workspace/preview) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1357,8 +1375,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Updates a membership. For an example, see [Update a user's membership in a
-            /// space](https://developers.google.com/workspace/chat/update-members). Requires [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// space](https://developers.google.com/workspace/chat/update-members). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+            /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+            /// Preview](https://developers.google.com/workspace/preview) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
             /// </summary>
             public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
             {
@@ -1996,10 +2018,10 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Deletes a message. For an example, see [Delete a
-            /// message](https://developers.google.com/workspace/chat/delete-messages). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When
+            /// message](https://developers.google.com/workspace/chat/delete-messages). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
             /// using app authentication, requests can only delete messages created by the calling Chat app.
             /// </summary>
             /// <param name="name">
@@ -2015,10 +2037,10 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Deletes a message. For an example, see [Delete a
-            /// message](https://developers.google.com/workspace/chat/delete-messages). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When
+            /// message](https://developers.google.com/workspace/chat/delete-messages). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
             /// using app authentication, requests can only delete messages created by the calling Chat app.
             /// </summary>
             public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
@@ -2083,10 +2105,10 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Returns details about a message. For an example, see [Get details about a
-            /// message](https://developers.google.com/workspace/chat/get-messages). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Note:
+            /// message](https://developers.google.com/workspace/chat/get-messages). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) Note:
             /// Might return a message from a blocked member or space.
             /// </summary>
             /// <param name="name">
@@ -2102,10 +2124,10 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Returns details about a message. For an example, see [Get details about a
-            /// message](https://developers.google.com/workspace/chat/get-messages). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Note:
+            /// message](https://developers.google.com/workspace/chat/get-messages). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) Note:
             /// Might return a message from a blocked member or space.
             /// </summary>
             public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
@@ -2310,10 +2332,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method
             /// uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch`
             /// method. For an example, see [Update a
-            /// message](https://developers.google.com/workspace/chat/update-messages). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When
+            /// message](https://developers.google.com/workspace/chat/update-messages). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
             /// using app authentication, requests can only update messages created by the calling Chat app.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -2335,10 +2357,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method
             /// uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch`
             /// method. For an example, see [Update a
-            /// message](https://developers.google.com/workspace/chat/update-messages). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When
+            /// message](https://developers.google.com/workspace/chat/update-messages). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
             /// using app authentication, requests can only update messages created by the calling Chat app.
             /// </summary>
             public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
@@ -2432,10 +2454,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method
             /// uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch`
             /// method. For an example, see [Update a
-            /// message](https://developers.google.com/workspace/chat/update-messages). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When
+            /// message](https://developers.google.com/workspace/chat/update-messages). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
             /// using app authentication, requests can only update messages created by the calling Chat app.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -2457,10 +2479,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method
             /// uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch`
             /// method. For an example, see [Update a
-            /// message](https://developers.google.com/workspace/chat/update-messages). Requires
-            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). When
+            /// message](https://developers.google.com/workspace/chat/update-messages). Supports the following types of
+            /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
             /// using app authentication, requests can only update messages created by the calling Chat app.
             /// </summary>
             public class UpdateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
@@ -2854,8 +2876,13 @@ namespace Google.Apis.HangoutsChat.v1
         /// If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An
         /// existing space within the Google Workspace organization might already use this display name. If you're a
         /// member of the [Developer Preview program](https://developers.google.com/workspace/preview), you can create a
-        /// group chat in import mode using `spaceType.GROUP_CHAT`. Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// group chat in import mode using `spaceType.GROUP_CHAT`. Supports the following types of
+        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+        /// Preview](https://developers.google.com/workspace/preview) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
+        /// authenticating as an app, the `space.customer` field must be set in the request.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Space body)
@@ -2869,8 +2896,13 @@ namespace Google.Apis.HangoutsChat.v1
         /// If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An
         /// existing space within the Google Workspace organization might already use this display name. If you're a
         /// member of the [Developer Preview program](https://developers.google.com/workspace/preview), you can create a
-        /// group chat in import mode using `spaceType.GROUP_CHAT`. Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// group chat in import mode using `spaceType.GROUP_CHAT`. Supports the following types of
+        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+        /// Preview](https://developers.google.com/workspace/preview) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
+        /// authenticating as an app, the `space.customer` field must be set in the request.
         /// </summary>
         public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
         {
@@ -2922,9 +2954,12 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>
         /// Deletes a named space. Always performs a cascading delete, which means that the space's child resources—like
         /// messages posted in the space and memberships in the space—are also deleted. For an example, see [Delete a
-        /// space](https://developers.google.com/workspace/chat/delete-spaces). Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) from a user
-        /// who has permission to delete the space.
+        /// space](https://developers.google.com/workspace/chat/delete-spaces). Supports the following types of
+        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+        /// Preview](https://developers.google.com/workspace/preview) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         /// <param name="name">Required. Resource name of the space to delete. Format: `spaces/{space}`</param>
         public virtual DeleteRequest Delete(string name)
@@ -2935,9 +2970,12 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>
         /// Deletes a named space. Always performs a cascading delete, which means that the space's child resources—like
         /// messages posted in the space and memberships in the space—are also deleted. For an example, see [Delete a
-        /// space](https://developers.google.com/workspace/chat/delete-spaces). Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) from a user
-        /// who has permission to delete the space.
+        /// space](https://developers.google.com/workspace/chat/delete-spaces). Supports the following types of
+        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+        /// Preview](https://developers.google.com/workspace/preview) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
         {
@@ -2996,13 +3034,14 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>
         /// Returns the existing direct message with the specified user. If no direct message space is found, returns a
         /// `404 NOT_FOUND` error. For an example, see [Find a direct
-        /// message](/chat/api/guides/v1/spaces/find-direct-message). With [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), returns the
-        /// direct message space between the specified user and the authenticated user. With [app
+        /// message](/chat/api/guides/v1/spaces/find-direct-message). With [app
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app), returns the
-        /// direct message space between the specified user and the calling Chat app. Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) or [app
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+        /// direct message space between the specified user and the calling Chat app. With [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), returns the
+        /// direct message space between the specified user and the authenticated user. // Supports the following types
+        /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         public virtual FindDirectMessageRequest FindDirectMessage()
         {
@@ -3012,13 +3051,14 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>
         /// Returns the existing direct message with the specified user. If no direct message space is found, returns a
         /// `404 NOT_FOUND` error. For an example, see [Find a direct
-        /// message](/chat/api/guides/v1/spaces/find-direct-message). With [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), returns the
-        /// direct message space between the specified user and the authenticated user. With [app
+        /// message](/chat/api/guides/v1/spaces/find-direct-message). With [app
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app), returns the
-        /// direct message space between the specified user and the calling Chat app. Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) or [app
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+        /// direct message space between the specified user and the calling Chat app. With [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), returns the
+        /// direct message space between the specified user and the authenticated user. // Supports the following types
+        /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         public class FindDirectMessageRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
         {
@@ -3068,10 +3108,10 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>
         /// Returns details about a space. For an example, see [Get details about a
-        /// space](https://developers.google.com/workspace/chat/get-spaces). Requires
-        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// space](https://developers.google.com/workspace/chat/get-spaces). Supports the following types of
+        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         /// <param name="name">
         /// Required. Resource name of the space, in the form `spaces/{space}`. Format: `spaces/{space}`
@@ -3083,10 +3123,10 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>
         /// Returns details about a space. For an example, see [Get details about a
-        /// space](https://developers.google.com/workspace/chat/get-spaces). Requires
-        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// space](https://developers.google.com/workspace/chat/get-spaces). Supports the following types of
+        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
         {
@@ -3147,10 +3187,10 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>
         /// Lists spaces the caller is a member of. Group chats and DMs aren't listed until the first message is sent.
-        /// For an example, see [List spaces](https://developers.google.com/workspace/chat/list-spaces). Requires
-        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Lists spaces
+        /// For an example, see [List spaces](https://developers.google.com/workspace/chat/list-spaces). Supports the
+        /// following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): -
+        /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) Lists spaces
         /// visible to the caller or authenticated user. Group chats and DMs aren't listed until the first message is
         /// sent. To list all named spaces by Google Workspace organization, use the
         /// [`spaces.search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search) method
@@ -3163,10 +3203,10 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>
         /// Lists spaces the caller is a member of. Group chats and DMs aren't listed until the first message is sent.
-        /// For an example, see [List spaces](https://developers.google.com/workspace/chat/list-spaces). Requires
-        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Lists spaces
+        /// For an example, see [List spaces](https://developers.google.com/workspace/chat/list-spaces). Supports the
+        /// following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): -
+        /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) Lists spaces
         /// visible to the caller or authenticated user. Group chats and DMs aren't listed until the first message is
         /// sent. To list all named spaces by Google Workspace organization, use the
         /// [`spaces.search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search) method
@@ -3256,8 +3296,12 @@ namespace Google.Apis.HangoutsChat.v1
         /// Updates a space. For an example, see [Update a
         /// space](https://developers.google.com/workspace/chat/update-spaces). If you're updating the `displayName`
         /// field and receive the error message `ALREADY_EXISTS`, try a different display name.. An existing space
-        /// within the Google Workspace organization might already use this display name. Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// within the Google Workspace organization might already use this display name. Supports the following types
+        /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+        /// Preview](https://developers.google.com/workspace/preview) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -3276,8 +3320,12 @@ namespace Google.Apis.HangoutsChat.v1
         /// Updates a space. For an example, see [Update a
         /// space](https://developers.google.com/workspace/chat/update-spaces). If you're updating the `displayName`
         /// field and receive the error message `ALREADY_EXISTS`, try a different display name.. An existing space
-        /// within the Google Workspace organization might already use this display name. Requires [user
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// within the Google Workspace organization might already use this display name. Supports the following types
+        /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
+        /// Preview](https://developers.google.com/workspace/preview) - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
         {
@@ -3300,35 +3348,13 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Required. The updated field paths, comma separated if there are multiple. You can update the following
-            /// fields for a space: - `space_details` - `display_name`: Only supports updating the display name for
-            /// spaces where `spaceType` field is `SPACE`. If you receive the error message `ALREADY_EXISTS`, try a
-            /// different value. An existing space within the Google Workspace organization might already use this
-            /// display name. - `space_type`: Only supports changing a `GROUP_CHAT` space type to `SPACE`. Include
-            /// `display_name` together with `space_type` in the update mask and ensure that the specified space has a
-            /// non-empty display name and the `SPACE` space type. Including the `space_type` mask and the `SPACE` type
-            /// in the specified space when updating the display name is optional if the existing space already has the
-            /// `SPACE` type. Trying to update the space type in other ways results in an invalid argument error.
-            /// `space_type` is not supported with admin access. - `space_history_state`: Updates [space history
-            /// settings](https://support.google.com/chat/answer/7664687) by turning history on or off for the space.
-            /// Only supported if history settings are enabled for the Google Workspace organization. To update the
-            /// space history state, you must omit all other field masks in your request. `space_history_state` is not
-            /// supported with admin access. - `access_settings.audience`: Updates the [access
-            /// setting](https://support.google.com/chat/answer/11971020) of who can discover the space, join the space,
-            /// and preview the messages in named space where `spaceType` field is `SPACE`. If the existing space has a
-            /// target audience, you can remove the audience and restrict space access by omitting a value for this
-            /// field mask. To update access settings for a space, the authenticating user must be a space manager and
-            /// omit all other field masks in your request. You can't update this field if the space is in [import
-            /// mode](https://developers.google.com/workspace/chat/import-data-overview). To learn more, see [Make a
-            /// space discoverable to specific
-            /// users](https://developers.google.com/workspace/chat/space-target-audience). `access_settings.audience`
-            /// is not supported with admin access. - Developer Preview: Supports changing the [permission
-            /// settings](https://support.google.com/chat/answer/13340792) of a space, supported field paths include:
-            /// `permission_settings.manage_members_and_groups`, `permission_settings.modify_space_details`,
-            /// `permission_settings.toggle_history`, `permission_settings.use_at_mention_all`,
-            /// `permission_settings.manage_apps`, `permission_settings.manage_webhooks`,
-            /// `permission_settings.reply_messages` (Warning: mutually exclusive with all other non-permission settings
-            /// field paths). `permission_settings` is not supported with admin access.
+            /// - Supports changing the [permission settings](https://support.google.com/chat/answer/13340792) of a
+            /// space, supported field paths include: `permission_settings.manage_members_and_groups`,
+            /// `permission_settings.modify_space_details`, `permission_settings.toggle_history`,
+            /// `permission_settings.use_at_mention_all`, `permission_settings.manage_apps`,
+            /// `permission_settings.manage_webhooks`, `permission_settings.reply_messages` (Warning: mutually exclusive
+            /// with all other non-permission settings field paths). `permission_settings` is not supported with admin
+            /// access.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -3938,8 +3964,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// space discoverable to a target
         /// audience](https://developers.google.com/workspace/chat/space-target-audience). Format:
         /// `audiences/{audience}` To use the default target audience for the Google Workspace organization, set to
-        /// `audiences/default`. This field is not populated when using the `chat.bot` scope with [app
-        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+        /// `audiences/default`. Reading the target audience supports: - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) - [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope in
+        /// [Developer Preview](https://developers.google.com/workspace/preview). This field is not populated when using
+        /// the `chat.bot` scope with [app
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). Setting the
+        /// target audience requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
@@ -6605,7 +6638,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
             set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The Google Group the membership corresponds to.</summary>
+        /// <summary>
+        /// The Google Group the membership corresponds to. Reading or mutating memberships for Google Groups requires
+        /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupMember")]
         public virtual Group GroupMember { get; set; }
 
@@ -7143,6 +7179,63 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a space permission setting.</summary>
+    public class PermissionSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether spaces managers have this permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managersAllowed")]
+        public virtual System.Nullable<bool> ManagersAllowed { get; set; }
+
+        /// <summary>Whether non-manager members have this permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membersAllowed")]
+        public virtual System.Nullable<bool> MembersAllowed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// [Permission settings](https://support.google.com/chat/answer/13340792) for a named space. To set permission
+    /// settings when creating a space, specify the `PredefinedPermissionSettings` field in your request.
+    /// </summary>
+    public class PermissionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Setting for managing apps in a space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manageApps")]
+        public virtual PermissionSetting ManageApps { get; set; }
+
+        /// <summary>Setting for managing members and groups in a space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manageMembersAndGroups")]
+        public virtual PermissionSetting ManageMembersAndGroups { get; set; }
+
+        /// <summary>Setting for managing webhooks in a space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manageWebhooks")]
+        public virtual PermissionSetting ManageWebhooks { get; set; }
+
+        /// <summary>Setting for updating space name, avatar, description and guidelines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modifySpaceDetails")]
+        public virtual PermissionSetting ModifySpaceDetails { get; set; }
+
+        /// <summary>Output only. Setting for posting messages in a space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postMessages")]
+        public virtual PermissionSetting PostMessages { get; set; }
+
+        /// <summary>Setting for replying to messages in a space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyMessages")]
+        public virtual PermissionSetting ReplyMessages { get; set; }
+
+        /// <summary>Setting for toggling space history on and off.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toggleHistory")]
+        public virtual PermissionSetting ToggleHistory { get; set; }
+
+        /// <summary>Setting for using @all in a space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useAtMentionAll")]
+        public virtual PermissionSetting UseAtMentionAll { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about a quoted message.</summary>
     public class QuotedMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7522,7 +7615,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Optional. Whether this space is created in `Import Mode` as part of a data migration into Google Workspace.
-        /// While spaces are being imported, they aren't visible to users until the import is complete.
+        /// While spaces are being imported, they aren't visible to users until the import is complete. Creating a space
+        /// in `Import Mode`requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importMode")]
         public virtual System.Nullable<bool> ImportMode { get; set; }
@@ -7582,6 +7677,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Exact permission settings which can be set to update the space. Input for updating a space.
+        /// Otherwise, output only. For space creation, use `predefined_permission_settings` instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionSettings")]
+        public virtual PermissionSettings PermissionSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Space permission settings. Input for creating a space, a collaboration space is
+        /// created if this field is not set. After you create the space, settings are populated in the
+        /// `PermissionSettings` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predefinedPermissionSettings")]
+        public virtual string PredefinedPermissionSettings { get; set; }
 
         /// <summary>Optional. Whether the space is a DM between a Chat app and a single human.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
