@@ -8311,7 +8311,11 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>POSIX Group definition to represent a group in a POSIX compliant system.</summary>
+    /// <summary>
+    /// POSIX Group definition to represent a group in a POSIX compliant system. Caution: POSIX groups are deprecated.
+    /// As of September 26, 2024, you can no longer create new POSIX groups. For more information, see
+    /// https://cloud.google.com/identity/docs/deprecations/posix-groups
+    /// </summary>
     public class PosixGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>GID of the POSIX group.</summary>
