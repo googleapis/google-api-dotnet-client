@@ -978,6 +978,57 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                         this.service = service;
                     }
 
+                    /// <summary>Abort automated test run on release.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the release test resource. Format:
+                    /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}`
+                    /// </param>
+                    public virtual CancelRequest Cancel(string name)
+                    {
+                        return new CancelRequest(this.service, name);
+                    }
+
+                    /// <summary>Abort automated test run on release.</summary>
+                    public class CancelRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the release test resource. Format:
+                        /// `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/apps/[^/]+/releases/[^/]+/tests/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Run automated test(s) on release.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1008,7 +1059,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. The ID to use for the test, which will become the final component of the tests's
+                        /// Optional. The ID to use for the test, which will become the final component of the test's
                         /// resource name. This value should be 4-63 characters, and valid characters are /a-z-/. If it
                         /// is not provided one will be automatically generated.
                         /// </summary>
@@ -1670,6 +1721,13 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The (empty) response message for `CancelReleaseTest`.</summary>
+    public class GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The actual release notes body from the user</summary>
@@ -2233,6 +2291,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the release test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testState")]
+        public virtual string TestState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
