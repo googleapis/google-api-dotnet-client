@@ -3256,29 +3256,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
 }
 namespace Google.Apis.Merchant.accounts_v1beta.Data
 {
-    /// <summary>Reference to a Terms of Service resource.</summary>
-    public class AcceptTermsOfService : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The resource name of the terms of service version in the format `termsOfService/{version}`. To
-        /// retrieve the latest version, use the
-        /// [termsOfService.retrieveLatest](/merchant/api/reference/rest/accounts_v1beta/termsOfService/retrieveLatest)
-        /// method.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country when the ToS
-        /// applies specifically to that country or `001` when it applies globally.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Describes the accepted terms of service.</summary>
     public class Accepted : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3638,10 +3615,6 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// <summary>Request message for the `CreateAndConfigureAccount` method.</summary>
     public class CreateAndConfigureAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Terms of Service (ToS) to be accepted immediately upon account creation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("acceptTermsOfService")]
-        public virtual AcceptTermsOfService AcceptTermsOfService { get; set; }
-
         /// <summary>Required. The account to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual Account Account { get; set; }
