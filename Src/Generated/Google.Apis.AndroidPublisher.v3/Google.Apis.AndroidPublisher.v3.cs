@@ -13255,17 +13255,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about the first time a user/device completed a transaction using external offers.</summary>
-    public class ExternalOfferInitialAcquisitionDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The external transaction id of the first completed purchase made by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("externalTransactionId")]
-        public virtual string ExternalTransactionId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Details of an external subscription.</summary>
     public class ExternalSubscription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13333,13 +13322,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentTaxAmount")]
         public virtual Price CurrentTaxAmount { get; set; }
-
-        /// <summary>
-        /// Optional. Details about the first time a user/device completed a transaction using external offers. Not
-        /// required for transactions made using user choice billing or alternative billing only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("externalOfferInitialAcquisitionDetails")]
-        public virtual ExternalOfferInitialAcquisitionDetails ExternalOfferInitialAcquisitionDetails { get; set; }
 
         /// <summary>
         /// Output only. The id of this transaction. All transaction ids under the same package name must be unique. Set
