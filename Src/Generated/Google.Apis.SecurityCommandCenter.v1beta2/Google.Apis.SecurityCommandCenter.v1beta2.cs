@@ -5486,6 +5486,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Represents an Azure resource group.</summary>
     public class AzureResourceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ID of the Azure resource group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>The name of the Azure resource group. This is not a UUID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5638,6 +5642,33 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
         public virtual string StoragePool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// YAML-based rule that uses CEL, which supports the declaration of variables and a filtering predicate. A
+    /// vulnerable resource is emitted if the evaluation is false. Given: 1) the resource types as: - resource_types:
+    /// "compute.googleapis.com/Instance" - resource_types: "compute.googleapis.com/Firewall" 2) the CEL policy spec as:
+    /// name: bad_instance resource_filters: - name: instance resource_type: compute.googleapis.com/Instance filter:
+    /// &amp;gt; instance.status == 'RUNNING' &amp;amp;&amp;amp; 'public' in instance.tags.items - name: firewall
+    /// resource_type: compute.googleapis.com/Firewall filter: &amp;gt; firewall.direction == 'INGRESS'
+    /// &amp;amp;&amp;amp; !firewall.disabled &amp;amp;&amp;amp; firewall.allowed.exists(rule,
+    /// rule.IPProtocol.upperAscii() in ['TCP', 'ALL'] &amp;amp;&amp;amp; rule.ports.exists(port,
+    /// network.portsInRange(port, '11-256'))) rule: match: - predicate: &amp;gt; instance.networkInterfaces.exists(net,
+    /// firewall.network == net.network) output: &amp;gt; {'message': 'Compute instance with publicly accessible ports',
+    /// 'instance': instance.name} Users are able to join resource types together using the exact format as Kubernetes
+    /// Validating Admission policies.
+    /// </summary>
+    public class CelPolicySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The CEL policy to evaluate to produce findings. A finding is generated when the policy validation evaluates
+        /// to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual string Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7501,6 +7532,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// </summary>
     public class GoogleCloudSecuritycenterV1CustomConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The CEL policy spec attached to the custom module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celPolicy")]
+        public virtual CelPolicySpec CelPolicy { get; set; }
+
         /// <summary>Custom output properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customOutput")]
         public virtual GoogleCloudSecuritycenterV1CustomOutputSpec CustomOutput { get; set; }
@@ -9066,6 +9101,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Represents an Azure resource group.</summary>
     public class GoogleCloudSecuritycenterV2AzureResourceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ID of the Azure resource group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>The name of the Azure resource group. This is not a UUID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
