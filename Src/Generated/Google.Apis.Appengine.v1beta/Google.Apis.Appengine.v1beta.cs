@@ -3823,6 +3823,7 @@ namespace Google.Apis.Appengine.v1beta
                 {
                     this.service = service;
                     AuthorizedDomains = new AuthorizedDomainsResource(service);
+                    Services = new ServicesResource(service);
                 }
 
                 /// <summary>Gets the AuthorizedDomains resource.</summary>
@@ -3940,6 +3941,150 @@ namespace Google.Apis.Appengine.v1beta
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Services resource.</summary>
+                public virtual ServicesResource Services { get; }
+
+                /// <summary>The "services" collection of methods.</summary>
+                public class ServicesResource
+                {
+                    private const string Resource = "services";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ServicesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Versions = new VersionsResource(service);
+                    }
+
+                    /// <summary>Gets the Versions resource.</summary>
+                    public virtual VersionsResource Versions { get; }
+
+                    /// <summary>The "versions" collection of methods.</summary>
+                    public class VersionsResource
+                    {
+                        private const string Resource = "versions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public VersionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Deletes an existing Version resource.</summary>
+                        /// <param name="projectsId">
+                        /// Part of `name`. Name of the resource requested. Example:
+                        /// apps/myapp/services/default/versions/v1.
+                        /// </param>
+                        /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                        /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                        /// <param name="servicesId">Part of `name`. See documentation of `projectsId`.</param>
+                        /// <param name="versionsId">Part of `name`. See documentation of `projectsId`.</param>
+                        public virtual DeleteRequest Delete(string projectsId, string locationsId, string applicationsId, string servicesId, string versionsId)
+                        {
+                            return new DeleteRequest(this.service, projectsId, locationsId, applicationsId, servicesId, versionsId);
+                        }
+
+                        /// <summary>Deletes an existing Version resource.</summary>
+                        public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId, string servicesId, string versionsId) : base(service)
+                            {
+                                ProjectsId = projectsId;
+                                LocationsId = locationsId;
+                                ApplicationsId = applicationsId;
+                                ServicesId = servicesId;
+                                VersionsId = versionsId;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Part of `name`. Name of the resource requested. Example:
+                            /// apps/myapp/services/default/versions/v1.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ProjectsId { get; private set; }
+
+                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string LocationsId { get; private set; }
+
+                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ApplicationsId { get; private set; }
+
+                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServicesId { get; private set; }
+
+                            /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string VersionsId { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "locationsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "applicationsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servicesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("versionsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
                         }
                     }
                 }
