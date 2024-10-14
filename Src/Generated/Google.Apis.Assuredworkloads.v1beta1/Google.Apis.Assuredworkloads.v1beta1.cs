@@ -2656,6 +2656,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violationNotificationsEnabled")]
         public virtual System.Nullable<bool> ViolationNotificationsEnabled { get; set; }
+
+        /// <summary>Optional. Options to be set for the given created workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadOptions")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptions WorkloadOptions { get; set; }
     }
 
     /// <summary>Settings specific to resources needed for CJIS.</summary>
@@ -2973,6 +2977,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options to be set for the given created workload.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies type of KAJ Enrollment if provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kajEnrollmentType")]
+        public virtual string KajEnrollmentType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
