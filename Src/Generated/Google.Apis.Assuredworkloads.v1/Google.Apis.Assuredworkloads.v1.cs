@@ -2293,6 +2293,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violationNotificationsEnabled")]
         public virtual System.Nullable<bool> ViolationNotificationsEnabled { get; set; }
+
+        /// <summary>Optional. Options to be set for the given created workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadOptions")]
+        public virtual GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions WorkloadOptions { get; set; }
     }
 
     /// <summary>Represents the Compliance Status of this workload</summary>
@@ -2470,6 +2474,17 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Indicates SAA enrollment status of a given workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setupStatus")]
         public virtual string SetupStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options to be set for the given created workload.</summary>
+    public class GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies type of KAJ Enrollment if provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kajEnrollmentType")]
+        public virtual string KajEnrollmentType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
