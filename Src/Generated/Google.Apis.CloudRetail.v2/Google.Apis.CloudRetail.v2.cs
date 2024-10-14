@@ -8679,9 +8679,8 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom
         /// attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always
         /// returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in
-        /// by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is
-        /// returned. Note: Returning more fields in SearchResponse can increase response payload size and serving
-        /// latency. This field is deprecated. Use the retrievable site-wide control instead.
+        /// by default: * name * color_info Note: Returning more fields in SearchResponse can increase response payload
+        /// size and serving latency. This field is deprecated. Use the retrievable site-wide control instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievableFields")]
         public virtual object RetrievableFields { get; set; }
@@ -12148,6 +12147,27 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>Additional configs for frequently-bought-together models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequentlyBoughtTogetherConfig")]
         public virtual GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig FrequentlyBoughtTogetherConfig { get; set; }
+
+        /// <summary>Optional. LLM embedding config to use for this model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("llmEmbeddingConfig")]
+        public virtual GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig LlmEmbeddingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Config that turns on usage of llm embeddings as features to the model. Embeddings leverage unstructured text
+    /// fields like description and title.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The LLM embedding version to use. Currently only `v0` is supported. If not specified, feature will
+        /// not be turned on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("llmEmbeddingVersion")]
+        public virtual string LlmEmbeddingVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
