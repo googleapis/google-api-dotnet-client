@@ -740,7 +740,7 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Optional. Immutable. Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`
+        /// Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.WorkspaceEvents.v1.Data.Subscription body, string name)
         {
@@ -762,10 +762,7 @@ namespace Google.Apis.WorkspaceEvents.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// Optional. Immutable. Identifier. Resource name of the subscription. Format:
-            /// `subscriptions/{subscription}`
-            /// </summary>
+            /// <summary>Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1155,9 +1152,7 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Optional. Immutable. Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`
-        /// </summary>
+        /// <summary>Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
