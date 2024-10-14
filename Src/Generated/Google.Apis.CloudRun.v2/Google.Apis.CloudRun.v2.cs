@@ -319,7 +319,7 @@ namespace Google.Apis.CloudRun.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The project and location to build in. Location must be a region, e.g., 'us-central1' or
-                /// 'global' if the global builder is to be used. Format: projects/{project}/locations/{location}
+                /// 'global' if the global builder is to be used. Format: `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual SubmitRequest Submit(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2SubmitBuildRequest body, string parent)
                 {
@@ -339,7 +339,8 @@ namespace Google.Apis.CloudRun.v2
 
                     /// <summary>
                     /// Required. The project and location to build in. Location must be a region, e.g., 'us-central1'
-                    /// or 'global' if the global builder is to be used. Format: projects/{project}/locations/{location}
+                    /// or 'global' if the global builder is to be used. Format:
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3121,7 +3122,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. The path to a binary authorization policy. Format:
-        /// projects/{project}/platforms/cloudRun/{policy-name}
+        /// `projects/{project}/platforms/cloudRun/{policy-name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual string Policy { get; set; }
@@ -5139,7 +5140,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. Sets the maximum number of requests that each serving instance can receive. If not specified or 0,
-        /// defaults to 80 when requested CPU &amp;gt;= 1 and defaults to 1 when requested CPU &amp;lt; 1.
+        /// defaults to 80 when requested `CPU &amp;gt;= 1` and defaults to 1 when requested `CPU &amp;lt; 1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
         public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
@@ -5642,8 +5643,8 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2ServiceMesh : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Mesh resource name. Format: projects/{project}/locations/global/meshes/{mesh}, where {project} can be
-        /// project id or number.
+        /// The Mesh resource name. Format: `projects/{project}/locations/global/meshes/{mesh}`, where `{project}` can
+        /// be project id or number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual string Mesh { get; set; }
@@ -5730,9 +5731,9 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format
-        /// of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and
-        /// {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the
-        /// short name of the worker pool.
+        /// of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and
+        /// `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is
+        /// the short name of the worker pool.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
@@ -6420,8 +6421,8 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2VpcAccess : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where
-        /// {project} can be project id or number. For more information on sending traffic to a VPC network via a
+        /// VPC Access connector name. Format: `projects/{project}/locations/{location}/connectors/{connector}`, where
+        /// `{project}` can be project id or number. For more information on sending traffic to a VPC network via a
         /// connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connector")]
