@@ -1308,8 +1308,8 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
 
                 /// <summary>
-                /// Initializes a location-level encryption key specification. An error will be thrown if the location
-                /// has resources already created before the initialization. Once the encryption specification is
+                /// Initializes a location-level encryption key specification. An error will result if the location has
+                /// resources already created before the initialization. After the encryption specification is
                 /// initialized at a location, it is immutable and all newly created resources under the location will
                 /// be encrypted with the existing specification.
                 /// </summary>
@@ -1324,8 +1324,8 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
 
                 /// <summary>
-                /// Initializes a location-level encryption key specification. An error will be thrown if the location
-                /// has resources already created before the initialization. Once the encryption specification is
+                /// Initializes a location-level encryption key specification. An error will result if the location has
+                /// resources already created before the initialization. After the encryption specification is
                 /// initialized at a location, it is immutable and all newly created resources under the location will
                 /// be encrypted with the existing specification.
                 /// </summary>
@@ -4185,8 +4185,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string Medium { get; set; }
 
         /// <summary>
-        /// Input only. JSON Metadata encoded as a string. This field is primarily used by Insights integrations with
-        /// various telphony systems and must be in one of Insights' supported formats.
+        /// Input only. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
+        /// various telphony systems and must be in one of Insight's supported formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataJson")]
         public virtual string MetadataJson { get; set; }
@@ -5063,14 +5063,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>
     /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
-    /// Conversation).
+    /// `Conversation`).
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. The name of customer-managed encryption key that is used to secure a resource and its
-        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
-        /// same location as this resource is allowed to be used for encryption. Format:
+        /// sub-resources. If empty, the resource is secured by our default encryption key. Only the key in the same
+        /// location as this resource is allowed to be used for encryption. Format:
         /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
@@ -5952,7 +5952,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         }
 
         /// <summary>
-        /// Partial errors during initialising operation that might cause the operation output to be incomplete.
+        /// Partial errors during initializing operation that might cause the operation output to be incomplete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
@@ -5971,7 +5971,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>
         /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
         /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
-        /// If the kms_key_name is left empty, no encryption will be enforced.
+        /// If the `kms_key_name` field is left empty, no encryption will be enforced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
         public virtual GoogleCloudContactcenterinsightsV1EncryptionSpec EncryptionSpec { get; set; }
@@ -8229,8 +8229,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string Medium { get; set; }
 
         /// <summary>
-        /// Input only. JSON Metadata encoded as a string. This field is primarily used by Insights integrations with
-        /// various telphony systems and must be in one of Insights' supported formats.
+        /// Input only. JSON metadata encoded as a string. This field is primarily used by Insights integrations with
+        /// various telphony systems and must be in one of Insight's supported formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataJson")]
         public virtual string MetadataJson { get; set; }
@@ -9107,14 +9107,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>
     /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
-    /// Conversation).
+    /// `Conversation`).
     /// </summary>
     public class GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. The name of customer-managed encryption key that is used to secure a resource and its
-        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
-        /// same location as this resource is allowed to be used for encryption. Format:
+        /// sub-resources. If empty, the resource is secured by our default encryption key. Only the key in the same
+        /// location as this resource is allowed to be used for encryption. Format:
         /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
@@ -9985,7 +9985,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         }
 
         /// <summary>
-        /// Partial errors during initialising operation that might cause the operation output to be incomplete.
+        /// Partial errors during initializing operation that might cause the operation output to be incomplete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
@@ -10004,7 +10004,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>
         /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
         /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
-        /// If the kms_key_name is left empty, no encryption will be enforced.
+        /// If the `kms_key_name` field is left empty, no encryption will be enforced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec EncryptionSpec { get; set; }
