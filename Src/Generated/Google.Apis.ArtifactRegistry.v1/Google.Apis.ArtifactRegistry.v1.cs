@@ -5924,7 +5924,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// The namespace this attachment belongs to. E.g. If an Attachment is created by artifact analysis, namespace
+        /// The namespace this attachment belongs to. E.g. If an attachment is created by artifact analysis, namespace
         /// is set to `artifactanalysis.googleapis.com`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentNamespace")]
@@ -5975,7 +5975,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual System.Collections.Generic.IList<string> Files { get; set; }
 
         /// <summary>
-        /// The name of the attachment. E.g. "projects/p1/locations/us/repositories/repo/attachments/sbom".
+        /// The name of the attachment. E.g. `projects/p1/locations/us/repositories/repo/attachments/sbom`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5989,12 +5989,12 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
         /// <summary>
         /// Required. The target the attachment is for, can be a Version, Package or Repository. E.g.
-        /// "projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1".
+        /// `projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
-        /// <summary>Type of Attachment. E.g. `application/vnd.spdx+json`</summary>
+        /// <summary>Type of attachment. E.g. `application/vnd.spdx+json`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -7207,7 +7207,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>The response from listing attachments.</summary>
     public class ListAttachmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Attachments returned.</summary>
+        /// <summary>The attachments returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
         public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; }
 
@@ -8068,11 +8068,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aptRepository")]
         public virtual AptRepository AptRepository { get; set; }
 
-        /// <summary>
-        /// Common remote repository settings. Used as the RemoteRepository upstream URL instead of Predefined and
-        /// Custom remote repositories. Google Cloud Console and Google Cloud CLI will map all the new remote
-        /// repositories to this field.
-        /// </summary>
+        /// <summary>Common remote repository settings. Used as the remote repository upstream URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonRepository")]
         public virtual CommonRemoteRepository CommonRepository { get; set; }
 
@@ -8347,7 +8343,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
         /// <summary>
         /// The name of the version the tag refers to, for example:
-        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package
+        /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811` If the package
         /// or version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
