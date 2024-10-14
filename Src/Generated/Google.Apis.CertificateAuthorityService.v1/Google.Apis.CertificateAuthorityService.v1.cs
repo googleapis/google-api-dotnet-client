@@ -1437,7 +1437,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// <summary>Update a CertificateAuthority.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. The resource name for this CertificateAuthority in the format
+                    /// Output only. Identifier. The resource name for this CertificateAuthority in the format
                     /// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CertificateAuthority body, string name)
@@ -1457,7 +1457,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         }
 
                         /// <summary>
-                        /// Output only. The resource name for this CertificateAuthority in the format
+                        /// Output only. Identifier. The resource name for this CertificateAuthority in the format
                         /// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4420,7 +4420,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual object Lifetime { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for this CertificateAuthority in the format
+        /// Output only. Identifier. The resource name for this CertificateAuthority in the format
         /// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
