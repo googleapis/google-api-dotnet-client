@@ -18026,8 +18026,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
-    /// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The
-    /// first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+    /// A singleton resource of DataStore. If it's empty when DataStore is created and DataStore is set to
+    /// DataStore.ContentConfig.CONTENT_REQUIRED, the default parser will default to digital parser.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1DocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24730,8 +24730,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
-    /// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The
-    /// first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+    /// A singleton resource of DataStore. If it's empty when DataStore is created and DataStore is set to
+    /// DataStore.ContentConfig.CONTENT_REQUIRED, the default parser will default to digital parser.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30453,8 +30453,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
-    /// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The
-    /// first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+    /// A singleton resource of DataStore. If it's empty when DataStore is created and DataStore is set to
+    /// DataStore.ContentConfig.CONTENT_REQUIRED, the default parser will default to digital parser.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
