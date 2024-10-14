@@ -2215,6 +2215,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
+        /// <summary>Execution result type of the scanned resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The details of violation in an evaluation result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violationDetails")]
         public virtual ViolationDetails ViolationDetails { get; set; }
@@ -3199,6 +3203,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. Bitmask of instance role, a resource may have multiple roles at once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceRole")]
         public virtual string InstanceRole { get; set; }
+
+        /// <summary>Optional. Instance is part of a DR site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDrSite")]
+        public virtual System.Nullable<bool> IsDrSite { get; set; }
 
         /// <summary>Optional. A virtual hostname of the instance if it has one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualHostname")]
