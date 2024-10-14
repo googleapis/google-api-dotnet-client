@@ -2559,6 +2559,13 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     public class GooglePlayDeveloperReportingV1beta1ErrorIssue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// List of annotations for an issue. Annotations provide additional information that may help in diagnosing and
+        /// fixing the issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1IssueAnnotation> Annotations { get; set; }
+
+        /// <summary>
         /// Cause of the issue. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING: the type of ANR
         /// that occurred, e.g., 'Input dispatching timed out'. * CRASH: for Java unhandled exception errors, the type
         /// of the innermost exception that was thrown, e.g., IllegalArgumentException. For signals in native code, the
@@ -2863,6 +2870,28 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestEndTime")]
         public virtual GoogleTypeDateTime LatestEndTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of an annotation message for an issue.</summary>
+    public class GooglePlayDeveloperReportingV1beta1IssueAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains the contents of the annotation message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; }
+
+        /// <summary>
+        /// Category that the annotation belongs to. An annotation will belong to a single category. Example categories:
+        /// "Potential fix", "Insight".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Title for the annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
