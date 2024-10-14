@@ -7664,13 +7664,20 @@ namespace Google.Apis.BeyondCorp.v1.Data
     /// <summary>The Hub message contains information pertaining to the regional data path deployments.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1Hub : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. NAT gateway setup to ensure enough NAT IP addresses are available to handle the traffic needed to
-        /// access the applications. Allows to explicitly enable or disable the NAT in the Hub along with the total IPs
-        /// allocated to handle the capacity limits.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("natGatewayConfig")]
-        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig NatGatewayConfig { get; set; }
+        /// <summary>Optional. Internet Gateway configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internetGateway")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway InternetGateway { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Internet Gateway configuration.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of IP addresses assigned to the Cloud NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedIps")]
+        public virtual System.Collections.Generic.IList<string> AssignedIps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7713,19 +7720,6 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// <summary>A list of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the NAT Gateway configuration.</summary>
-    public class GoogleCloudBeyondcorpSecuritygatewaysV1NatGatewayConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. List of NAT IPs that will be used for establishing connection to the endpoints.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("natIps")]
-        public virtual System.Collections.Generic.IList<string> NatIps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7962,6 +7956,10 @@ namespace Google.Apis.BeyondCorp.v1.Data
     /// <summary>Set Peering request for creating a VPC peering between Google network and customer networks.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. List of Peering connection information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1Peering> Peerings { get; set; }
+
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
@@ -7979,10 +7977,6 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-        /// <summary>Required. List of Peering connection information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vpcPeerings")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1Peering> VpcPeerings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
