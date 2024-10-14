@@ -5528,6 +5528,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>AWS EC2 specific details.</summary>
     public class AwsEc2PlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Whether the machine is hyperthreaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hyperthreading")]
+        public virtual string Hyperthreading { get; set; }
+
         /// <summary>The location of the machine in the AWS format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -5543,6 +5547,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>Azure VM specific details.</summary>
     public class AzureVmPlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the machine is hyperthreaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hyperthreading")]
+        public virtual string Hyperthreading { get; set; }
+
         /// <summary>The location of the machine in the Azure format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -6408,6 +6416,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>Generic platform details.</summary>
     public class GenericPlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the machine is hyperthreaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hyperthreading")]
+        public virtual string Hyperthreading { get; set; }
+
         /// <summary>
         /// Free text representation of the machine location. The format of this field should not be relied on.
         /// Different VMs in the same location may have different string values for this field.
@@ -8006,6 +8018,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>Platform specific details for Physical Machines.</summary>
     public class PhysicalPlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the machine is hyperthreaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hyperthreading")]
+        public virtual string Hyperthreading { get; set; }
+
         /// <summary>
         /// Free text representation of the machine location. The format of this field should not be relied on.
         /// Different machines in the same location may have different string values for this field.
@@ -9377,6 +9393,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     /// <summary>VMware specific details.</summary>
     public class VmwarePlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the ESX is hyperthreaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("esxHyperthreading")]
+        public virtual string EsxHyperthreading { get; set; }
+
         /// <summary>ESX version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("esxVersion")]
         public virtual string EsxVersion { get; set; }
