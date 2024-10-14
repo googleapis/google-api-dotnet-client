@@ -2003,6 +2003,228 @@ namespace Google.Apis.Drive.v3
         public FilesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Accessproposals = new AccessproposalsResource(service);
+        }
+
+        /// <summary>Gets the Accessproposals resource.</summary>
+        public virtual AccessproposalsResource Accessproposals { get; }
+
+        /// <summary>The "accessproposals" collection of methods.</summary>
+        public class AccessproposalsResource
+        {
+            private const string Resource = "accessproposals";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AccessproposalsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// List the AccessProposals on a file. Note: Only approvers are able to list AccessProposals on a file. If
+            /// the user is not an approver, returns a 403.
+            /// </summary>
+            /// <param name="fileId">Required. The id of the item the request is on.</param>
+            public virtual ListRequest List(string fileId)
+            {
+                return new ListRequest(this.service, fileId);
+            }
+
+            /// <summary>
+            /// List the AccessProposals on a file. Note: Only approvers are able to list AccessProposals on a file. If
+            /// the user is not an approver, returns a 403.
+            /// </summary>
+            public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ListAccessProposalsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
+                {
+                    FileId = fileId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The id of the item the request is on.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string FileId { get; private set; }
+
+                /// <summary>Optional. The number of results per page</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The continuation token on the list of access requests.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "files/{fileId}/accessproposals";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Used to approve or deny an Access Proposal.</summary>
+            /// <param name="fileId">Required. The id of the item the request is on.</param>
+            /// <param name="proposalId">Required. The id of the access proposal to resolve.</param>
+            public virtual ResolveRequest Resolve(string fileId, string proposalId)
+            {
+                return new ResolveRequest(this.service, fileId, proposalId);
+            }
+
+            /// <summary>Used to approve or deny an Access Proposal.</summary>
+            public class ResolveRequest : DriveBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Resolve request.</summary>
+                public ResolveRequest(Google.Apis.Services.IClientService service, string fileId, string proposalId) : base(service)
+                {
+                    FileId = fileId;
+                    ProposalId = proposalId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The id of the item the request is on.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string FileId { get; private set; }
+
+                /// <summary>Required. The id of the access proposal to resolve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+                /// <summary>Required. The action to take on the AccessProposal.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("action", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ActionEnum> Action { get; set; }
+
+                /// <summary>Required. The action to take on the AccessProposal.</summary>
+                public enum ActionEnum
+                {
+                    /// <summary>Unspecified action</summary>
+                    [Google.Apis.Util.StringValueAttribute("ACTION_UNSPECIFIED")]
+                    ACTIONUNSPECIFIED = 0,
+
+                    /// <summary>The user accepts the proposal</summary>
+                    [Google.Apis.Util.StringValueAttribute("ACCEPT")]
+                    ACCEPT = 1,
+
+                    /// <summary>The user denies the proposal</summary>
+                    [Google.Apis.Util.StringValueAttribute("DENY")]
+                    DENY = 2,
+                }
+
+                /// <summary>Optional. The roles the approver has allowed, if any.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("role", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Role { get; set; }
+
+                /// <summary>
+                /// Optional. Whether to send an email to the requester when the AccessProposal is denied or accepted.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("sendNotification", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> SendNotification { get; set; }
+
+                /// <summary>
+                /// Optional. Indicates the view for this access proposal. This should only be set when the proposal
+                /// belongs to a view. `published` is the only supported value.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string View { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "resolve";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "files/{fileId}/accessproposals/{proposalId}:resolve";
+
+                /// <summary>Initializes Resolve parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("action", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "action",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("role", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "role",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sendNotification", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendNotification",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Creates a copy of a file and applies any requested updates with patch semantics.</summary>
@@ -6326,6 +6548,95 @@ namespace Google.Apis.Drive.v3.Data
         }
     }
 
+    /// <summary>The Access Proposal resource for outstanding access proposals on a file</summary>
+    public class AccessProposal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The creation time</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The file id that the proposal for access is on</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
+        /// <summary>The id of the access proposal</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposalId")]
+        public virtual string ProposalId { get; set; }
+
+        /// <summary>The email address of the user that will receive permissions if accepted</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipientEmailAddress")]
+        public virtual string RecipientEmailAddress { get; set; }
+
+        /// <summary>The message that the requester added to the proposal</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestMessage")]
+        public virtual string RequestMessage { get; set; }
+
+        /// <summary>The email address of the requesting user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requesterEmailAddress")]
+        public virtual string RequesterEmailAddress { get; set; }
+
+        /// <summary>A wrapper for the role and view of an access proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolesAndViews")]
+        public virtual System.Collections.Generic.IList<AccessProposalRoleAndView> RolesAndViews { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A wrapper for the role and view of an access proposal.</summary>
+    public class AccessProposalRoleAndView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The role that was proposed by the requester New values may be added in the future, but the following are
+        /// currently possible: * `writer` * `commenter` * `reader`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>
+        /// Indicates the view for this access proposal. Only populated for proposals that belong to a view. `published`
+        /// is the only supported value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("view")]
+        public virtual string View { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `apps` resource provides a list of apps that a user has installed, with information about each app's
     /// supported MIME types, file extensions, and other details. Some resource methods (such as `apps.get`) require an
@@ -8354,6 +8665,25 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>If true, the label will be removed from the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabel")]
         public virtual System.Nullable<bool> RemoveLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to an Access Proposal list request.</summary>
+    public class ListAccessProposalsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Access Proposals. This field is only populated in v3 and v3beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessProposals")]
+        public virtual System.Collections.Generic.IList<AccessProposal> AccessProposals { get; set; }
+
+        /// <summary>
+        /// The continuation token for the next page of results. This will be absent if the end of the results list has
+        /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

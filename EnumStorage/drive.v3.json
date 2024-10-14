@@ -8,6 +8,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.Drive.v3.FilesResource+AccessproposalsResource+ResolveRequest.ActionEnum": [
+    "ACTION_UNSPECIFIED",
+    "ACCEPT",
+    "DENY"
+  ],
   "Google.Apis.Drive.v3.FilesResource+CreateMediaUpload.AltEnum": [
     "json",
     "media",
