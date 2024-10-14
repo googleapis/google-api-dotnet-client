@@ -5079,7 +5079,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// Limits the selected developer metadata to that which has a matching DeveloperMetadata.visibility. If left
-        /// unspecified, all developer metadata visibile to the requesting project is considered.
+        /// unspecified, all developer metadata visible to the requesting project is considered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
