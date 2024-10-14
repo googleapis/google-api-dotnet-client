@@ -7392,7 +7392,85 @@ namespace Google.Apis.Aiplatform.v1
                 public EndpointsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Chat = new ChatResource(service);
                     Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Chat resource.</summary>
+                public virtual ChatResource Chat { get; }
+
+                /// <summary>The "chat" collection of methods.</summary>
+                public class ChatResource
+                {
+                    private const string Resource = "chat";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ChatResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Exposes an OpenAI-compatible endpoint for chat completions.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="endpoint">
+                    /// Required. The name of the endpoint requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+                    /// </param>
+                    public virtual CompletionsRequest Completions(Google.Apis.Aiplatform.v1.Data.GoogleApiHttpBody body, string endpoint)
+                    {
+                        return new CompletionsRequest(this.service, body, endpoint);
+                    }
+
+                    /// <summary>Exposes an OpenAI-compatible endpoint for chat completions.</summary>
+                    public class CompletionsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleApiHttpBody>
+                    {
+                        /// <summary>Constructs a new Completions request.</summary>
+                        public CompletionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleApiHttpBody body, string endpoint) : base(service)
+                        {
+                            Endpoint = endpoint;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the endpoint requested to serve the prediction. Format:
+                        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Endpoint { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleApiHttpBody Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "completions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+endpoint}/chat/completions";
+
+                        /// <summary>Initializes Completions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endpoint",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Operations resource.</summary>
@@ -45336,6 +45414,23 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the options to customize dynamic retrieval.</summary>
+    public class GoogleCloudAiplatformV1DynamicRetrievalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The threshold to be used in dynamic retrieval. If not set, a system default value is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicThreshold")]
+        public virtual System.Nullable<float> DynamicThreshold { get; set; }
+
+        /// <summary>The mode of the predictor to be used in dynamic retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a customer-managed encryption key spec that can be applied to a top-level resource.
     /// </summary>
@@ -49941,6 +50036,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
     public class GoogleCloudAiplatformV1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies the dynamic retrieval configuration for the given source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicRetrievalConfig")]
+        public virtual GoogleCloudAiplatformV1DynamicRetrievalConfig DynamicRetrievalConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -50062,6 +50161,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. List of grounding support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingSupports")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingSupport> GroundingSupports { get; set; }
+
+        /// <summary>Optional. Output only. Retrieval metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalMetadata")]
+        public virtual GoogleCloudAiplatformV1RetrievalMetadata RetrievalMetadata { get; set; }
 
         /// <summary>Optional. Google search entry for the following-up web searches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
@@ -52186,11 +52289,11 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logProbability")]
         public virtual System.Nullable<float> LogProbability { get; set; }
 
-        /// <summary>The candidate’s token string value.</summary>
+        /// <summary>The candidate's token string value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
-        /// <summary>The candidate’s token id value.</summary>
+        /// <summary>The candidate's token id value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenId")]
         public virtual System.Nullable<int> TokenId { get; set; }
 
@@ -59016,6 +59119,22 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexRagStore")]
         public virtual GoogleCloudAiplatformV1VertexRagStore VertexRagStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata related to retrieval in the grounding flow.</summary>
+    public class GoogleCloudAiplatformV1RetrievalMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Score indicating how likely information from Google Search could help answer the prompt. The score
+        /// is in the range `[0, 1]`, where 0 is the least likely and 1 is the most likely. This score is only populated
+        /// when Google Search grounding and dynamic retrieval is enabled. It will be compared to the threshold to
+        /// determine whether to trigger Google Search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchDynamicRetrievalScore")]
+        public virtual System.Nullable<float> GoogleSearchDynamicRetrievalScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
