@@ -9118,7 +9118,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ClientKey { get; set; }
 
         /// <summary>
-        /// Output only. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
+        /// Optional. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
