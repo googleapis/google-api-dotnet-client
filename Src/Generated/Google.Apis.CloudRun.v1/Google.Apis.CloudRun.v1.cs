@@ -9114,8 +9114,9 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`:
         /// Revision * `run.googleapis.com/encryption-key`: Revision, Execution. *
         /// `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`:
-        /// Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. *
-        /// `run.googleapis.com/minScale`: Service * `run.googleapis.com/network-interfaces`: Revision, Execution. *
+        /// Service. * `run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/ingress`: Service. *
+        /// `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service *
+        /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
         /// `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision,
         /// Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`:
         /// Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`:
@@ -9667,7 +9668,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `autoscaling.knative.dev/minScale` sets the minimum number of instances. *
         /// `autoscaling.knative.dev/maxScale` sets the maximum number of instances. *
         /// `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma
-        /// separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. *
+        /// separated. * `run.googleapis.com/health-check-disabled`: if true, deploy-time startup probes will not run
+        /// for this revision. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. *
         /// `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all`
         /// (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is
         /// deprecated but will continue to be supported. Prefer `all-traffic`.
