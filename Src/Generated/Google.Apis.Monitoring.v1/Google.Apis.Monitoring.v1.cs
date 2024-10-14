@@ -2878,7 +2878,7 @@ namespace Google.Apis.Monitoring.v1.Data
     public class MosaicLayout : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
+        /// The number of columns in the mosaic grid. The number of columns must be between 1 and 48, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Nullable<int> Columns { get; set; }
