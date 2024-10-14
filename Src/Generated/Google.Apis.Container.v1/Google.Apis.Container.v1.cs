@@ -6893,6 +6893,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
+        /// <summary>Configuration for all cluster's control plane endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneEndpointsConfig")]
+        public virtual ControlPlaneEndpointsConfig ControlPlaneEndpointsConfig { get; set; }
+
         /// <summary>Configuration for the fine-grained cost management feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costManagementConfig")]
         public virtual CostManagementConfig CostManagementConfig { get; set; }
@@ -7079,7 +7083,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuth")]
         public virtual MasterAuth MasterAuth { get; set; }
 
-        /// <summary>The configuration options for master authorized networks feature.</summary>
+        /// <summary>
+        /// The configuration options for master authorized networks feature. Deprecated: Use
+        /// ControlPlaneEndpointsConfig.IPEndpointsConfig.authorized_networks_config instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; }
 
@@ -7374,6 +7381,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredContainerdConfig")]
         public virtual ContainerdConfig DesiredContainerdConfig { get; set; }
 
+        /// <summary>Control plane endpoints configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredControlPlaneEndpointsConfig")]
+        public virtual ControlPlaneEndpointsConfig DesiredControlPlaneEndpointsConfig { get; set; }
+
         /// <summary>The desired configuration for the fine-grained cost management feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredCostManagementConfig")]
         public virtual CostManagementConfig DesiredCostManagementConfig { get; set; }
@@ -7385,6 +7396,13 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired datapath provider for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatapathProvider")]
         public virtual string DesiredDatapathProvider { get; set; }
+
+        /// <summary>
+        /// Override the default setting of whether future created nodes have private IP addresses only, namely
+        /// NetworkConfig.default_enable_private_nodes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultEnablePrivateNodes")]
+        public virtual System.Nullable<bool> DesiredDefaultEnablePrivateNodes { get; set; }
 
         /// <summary>The desired status of whether to disable default sNAT for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultSnatStatus")]
@@ -7406,7 +7424,12 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableMultiNetworking")]
         public virtual System.Nullable<bool> DesiredEnableMultiNetworking { get; set; }
 
-        /// <summary>Enable/Disable private endpoint for the cluster's master.</summary>
+        /// <summary>
+        /// Enable/Disable private endpoint for the cluster's master. Deprecated: Use
+        /// desired_control_plane_endpoints_config.ip_endpoints_config.enable_public_endpoint instead. Note that the
+        /// value of enable_public_endpoint is reversed: if enable_private_endpoint is false, then
+        /// enable_public_endpoint will be true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
         public virtual System.Nullable<bool> DesiredEnablePrivateEndpoint { get; set; }
 
@@ -7471,7 +7494,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLoggingService")]
         public virtual string DesiredLoggingService { get; set; }
 
-        /// <summary>The desired configuration options for master authorized networks feature.</summary>
+        /// <summary>
+        /// The desired configuration options for master authorized networks feature. Deprecated: Use
+        /// desired_control_plane_endpoints_config.ip_endpoints_config.authorized_networks_config instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig DesiredMasterAuthorizedNetworksConfig { get; set; }
 
@@ -7572,7 +7598,8 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>
         /// The desired private cluster configuration. master_global_access_config is the only field that can be changed
         /// via this field. See also ClusterUpdate.desired_enable_private_endpoint for modifying other fields within
-        /// PrivateClusterConfig.
+        /// PrivateClusterConfig. Deprecated: Use
+        /// desired_control_plane_endpoints_config.ip_endpoints_config.global_access instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateClusterConfig")]
         public virtual PrivateClusterConfig DesiredPrivateClusterConfig { get; set; }
@@ -7774,6 +7801,21 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for all of the cluster's control plane endpoints.</summary>
+    public class ControlPlaneEndpointsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DNS endpoint configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsEndpointConfig")]
+        public virtual DNSEndpointConfig DnsEndpointConfig { get; set; }
+
+        /// <summary>IP endpoints configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipEndpointsConfig")]
+        public virtual IPEndpointsConfig IpEndpointsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for fine-grained cost management feature.</summary>
     public class CostManagementConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7880,6 +7922,28 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>cluster_dns_scope indicates the scope of access to cluster DNS records.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterDnsScope")]
         public virtual string ClusterDnsScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the configuration of a DNS endpoint.</summary>
+    public class DNSEndpointConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use
+        /// the endpoint even if this is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowExternalTraffic")]
+        public virtual System.Nullable<bool> AllowExternalTraffic { get; set; }
+
+        /// <summary>
+        /// Output only. The cluster's DNS endpoint configuration. A DNS format address. This is accessible from the
+        /// public internet. Ex: uid.us-central1.gke.goog. Always present, but the behavior may change according to the
+        /// value of DNSEndpointConfig.allow_external_traffic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8460,6 +8524,58 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>IP endpoints configuration.</summary>
+    public class IPEndpointsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configuration of authorized networks. If enabled, restricts access to the control plane based on source IP.
+        /// It is invalid to specify both Cluster.masterAuthorizedNetworksConfig and this field at the same time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetworksConfig")]
+        public virtual MasterAuthorizedNetworksConfig AuthorizedNetworksConfig { get; set; }
+
+        /// <summary>
+        /// Controls whether the control plane allows access through a public IP. It is invalid to specify both
+        /// PrivateClusterConfig.enablePrivateEndpoint and this field at the same time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePublicEndpoint")]
+        public virtual System.Nullable<bool> EnablePublicEndpoint { get; set; }
+
+        /// <summary>Controls whether to allow direct IP access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Controls whether the control plane's private endpoint is accessible from sources in other regions. It is
+        /// invalid to specify both PrivateClusterMasterGlobalAccessConfig.enabled and this field at the same time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalAccess")]
+        public virtual System.Nullable<bool> GlobalAccess { get; set; }
+
+        /// <summary>
+        /// Output only. The internal IP address of this cluster's control plane. Only populated if enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoint")]
+        public virtual string PrivateEndpoint { get; set; }
+
+        /// <summary>
+        /// Subnet to provision the master's private endpoint during cluster creation. Specified in
+        /// projects/*/regions/*/subnetworks/* format. It is invalid to specify both
+        /// PrivateClusterConfig.privateEndpointSubnetwork and this field at the same time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateEndpointSubnetwork")]
+        public virtual string PrivateEndpointSubnetwork { get; set; }
+
+        /// <summary>
+        /// Output only. The external IP address of this cluster's control plane. Only populated if enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
+        public virtual string PublicEndpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity
     /// providers with the K8S API
@@ -8851,6 +8967,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcpPublicCidrsAccessEnabled")]
         public virtual System.Nullable<bool> GcpPublicCidrsAccessEnabled { get; set; }
 
+        /// <summary>Whether master authorized networks is enforced on private endpoint or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateEndpointEnforcementEnabled")]
+        public virtual System.Nullable<bool> PrivateEndpointEnforcementEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8944,6 +9064,14 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datapathProvider")]
         public virtual string DatapathProvider { get; set; }
+
+        /// <summary>
+        /// Controls whether by default nodes have private IP addresses only. It is invalid to specify both
+        /// PrivateClusterConfig.enablePrivateNodes and this field at the same time. To update the default setting, use
+        /// ClusterUpdate.desired_default_enable_private_nodes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultEnablePrivateNodes")]
+        public virtual System.Nullable<bool> DefaultEnablePrivateNodes { get; set; }
 
         /// <summary>
         /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when
@@ -9507,7 +9635,7 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>
         /// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is
-        /// derived from cluster.privateClusterConfig.enablePrivateNodes
+        /// derived from Cluster.NetworkConfig.default_enable_private_nodes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateNodes")]
         public virtual System.Nullable<bool> EnablePrivateNodes { get; set; }
@@ -10072,18 +10200,27 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Configuration options for private clusters.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the master's internal IP address is used as the cluster endpoint.</summary>
+        /// <summary>
+        /// Whether the master's internal IP address is used as the cluster endpoint. Deprecated: Use
+        /// ControlPlaneEndpointsConfig.IPEndpointsConfig.enable_public_endpoint instead. Note that the value of
+        /// enable_public_endpoint is reversed: if enable_private_endpoint is false, then enable_public_endpoint will be
+        /// true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
         public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; }
 
         /// <summary>
         /// Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918 private
-        /// addresses and communicate with the master via private networking.
+        /// addresses and communicate with the master via private networking. Deprecated: Use
+        /// NetworkConfig.default_enable_private_nodes instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateNodes")]
         public virtual System.Nullable<bool> EnablePrivateNodes { get; set; }
 
-        /// <summary>Controls master global access settings.</summary>
+        /// <summary>
+        /// Controls master global access settings. Deprecated: Use
+        /// ControlPlaneEndpointsConfig.IPEndpointsConfig.enable_global_access instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterGlobalAccessConfig")]
         public virtual PrivateClusterMasterGlobalAccessConfig MasterGlobalAccessConfig { get; set; }
 
@@ -10099,18 +10236,25 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peeringName")]
         public virtual string PeeringName { get; set; }
 
-        /// <summary>Output only. The internal IP address of this cluster's master endpoint.</summary>
+        /// <summary>
+        /// Output only. The internal IP address of this cluster's master endpoint. Deprecated: Use
+        /// ControlPlaneEndpointsConfig.IPEndpointsConfig.private_endpoint instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoint")]
         public virtual string PrivateEndpoint { get; set; }
 
         /// <summary>
         /// Subnet to provision the master's private endpoint during cluster creation. Specified in
-        /// projects/*/regions/*/subnetworks/* format.
+        /// projects/*/regions/*/subnetworks/* format. Deprecated: Use
+        /// ControlPlaneEndpointsConfig.IPEndpointsConfig.private_endpoint_subnetwork instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpointSubnetwork")]
         public virtual string PrivateEndpointSubnetwork { get; set; }
 
-        /// <summary>Output only. The external IP address of this cluster's master endpoint.</summary>
+        /// <summary>
+        /// Output only. The external IP address of this cluster's master endpoint. Deprecated:Use
+        /// ControlPlaneEndpointsConfig.IPEndpointsConfig.public_endpoint instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
         public virtual string PublicEndpoint { get; set; }
 
