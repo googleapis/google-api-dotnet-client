@@ -1426,7 +1426,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         /// <summary>
         /// Rotates the server certificate version to one previously added with the addServerCertificate method. For
-        /// instances not using Certificate Authority Service (CAS) server CA, please use RotateServerCa instead.
+        /// instances not using Certificate Authority Service (CAS) server CA, use RotateServerCa instead.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Required. Project ID of the project that contains the instance.</param>
@@ -1438,7 +1438,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         /// <summary>
         /// Rotates the server certificate version to one previously added with the addServerCertificate method. For
-        /// instances not using Certificate Authority Service (CAS) server CA, please use RotateServerCa instead.
+        /// instances not using Certificate Authority Service (CAS) server CA, use RotateServerCa instead.
         /// </summary>
         public class RotateServerCertificateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -1576,8 +1576,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a
         /// certificate rotation. If a CA version was previously added but never used in a certificate rotation, this
         /// operation replaces that version. There cannot be more than one CA version waiting to be rotated in. For
-        /// instances that have enabled Certificate Authority Service (CAS) based server CA, please use
-        /// AddServerCertificate to add a new server certificate.
+        /// instances that have enabled Certificate Authority Service (CAS) based server CA, use AddServerCertificate to
+        /// add a new server certificate.
         /// </summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
@@ -1590,8 +1590,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a
         /// certificate rotation. If a CA version was previously added but never used in a certificate rotation, this
         /// operation replaces that version. There cannot be more than one CA version waiting to be rotated in. For
-        /// instances that have enabled Certificate Authority Service (CAS) based server CA, please use
-        /// AddServerCertificate to add a new server certificate.
+        /// instances that have enabled Certificate Authority Service (CAS) based server CA, use AddServerCertificate to
+        /// add a new server certificate.
         /// </summary>
         public class AddServerCaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -1648,7 +1648,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// (CAS) server CA. Required to prepare for a certificate rotation. If a server certificate version was
         /// previously added but never used in a certificate rotation, this operation replaces that version. There
         /// cannot be more than one certificate version waiting to be rotated in. For instances not using CAS server CA,
-        /// please use AddServerCa instead.
+        /// use AddServerCa instead.
         /// </summary>
         /// <param name="project">Required. Project ID of the project that contains the instance.</param>
         /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
@@ -1662,7 +1662,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// (CAS) server CA. Required to prepare for a certificate rotation. If a server certificate version was
         /// previously added but never used in a certificate rotation, this operation replaces that version. There
         /// cannot be more than one certificate version waiting to be rotated in. For instances not using CAS server CA,
-        /// please use AddServerCa instead.
+        /// use AddServerCa instead.
         /// </summary>
         public class AddServerCertificateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -1818,14 +1818,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Flag to opt-in for final backup. By default, it is turned off.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enableFinalBackup", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> EnableFinalBackup { get; set; }
-
-            /// <summary>Optional. The description of the final backup.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("finalBackupDescription", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string FinalBackupDescription { get; set; }
-
             private object _finalBackupExpiryTime;
 
             /// <summary>
@@ -1887,22 +1879,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("enableFinalBackup", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "enableFinalBackup",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("finalBackupDescription", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "finalBackupDescription",
-                    IsRequired = false,
-                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3046,7 +3022,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>
         /// Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with
         /// the addServerCA method. For instances that have enabled Certificate Authority Service (CAS) based server CA,
-        /// please use RotateServerCertificate to rotate the server certificate.
+        /// use RotateServerCertificate to rotate the server certificate.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
@@ -3059,7 +3035,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>
         /// Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with
         /// the addServerCA method. For instances that have enabled Certificate Authority Service (CAS) based server CA,
-        /// please use RotateServerCertificate to rotate the server certificate.
+        /// use RotateServerCertificate to rotate the server certificate.
         /// </summary>
         public class RotateServerCaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -3608,14 +3584,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>
-            /// Optional. A filter string that follows the rules of EBNF grammar
-            /// (https://google.aip.dev/assets/misc/ebnf-filtering.txt). Cloud SQL provides filters for status,
-            /// operationType, and startTime.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Instance { get; set; }
@@ -3648,14 +3616,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "project",
                     IsRequired = true,
                     ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -5226,10 +5186,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always `sql#backupContext`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
-
-        /// <summary>The name of the backup. Format: projects/{project}/backups/{backup}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7167,24 +7123,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance restore backup request.</summary>
     public class InstancesRestoreBackupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The name of the backup to restore from in following format: projects/{project-id}/backups/{backup-uid} Only
-        /// one of restore_backup_context or backup can be passed to the input.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
-        public virtual string Backup { get; set; }
-
         /// <summary>Parameters required to perform the restore backup operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreBackupContext")]
         public virtual RestoreBackupContext RestoreBackupContext { get; set; }
-
-        /// <summary>
-        /// Optional. Restore instance settings overrides the instance settings stored as part of the backup. Instance's
-        /// major database version cannot be changed and the disk size can only be increased. This feature is only
-        /// available for restores to new instances using the backup name.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restoreInstanceSettings")]
-        public virtual DatabaseInstance RestoreInstanceSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7892,10 +7833,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of warnings that occurred while handling the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<ApiWarning> Warnings { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7998,6 +7935,43 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Settings for an automatically-setup Private Service Connect consumer endpoint that is used to connect to a Cloud
+    /// SQL instance.
+    /// </summary>
+    public class PscAutoConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The consumer network of this consumer endpoint. This must be a resource path that includes both the host
+        /// project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host
+        /// project of this network might be different from the consumer service project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; }
+
+        /// <summary>The connection policy status of the consumer network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetworkStatus")]
+        public virtual string ConsumerNetworkStatus { get; set; }
+
+        /// <summary>
+        /// This is the project ID of consumer service project of this consumer endpoint. Optional. This is only
+        /// applicable if consumer_network is a shared vpc network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProject")]
+        public virtual string ConsumerProject { get; set; }
+
+        /// <summary>The IP address of the consumer endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>The connection status of the consumer endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PSC settings for a Cloud SQL instance.</summary>
     public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8008,6 +7982,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
+
+        /// <summary>
+        /// Optional. The list of settings for requested Private Service Connect consumer endpoints that can be used to
+        /// connect to this Cloud SQL instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnections")]
+        public virtual System.Collections.Generic.IList<PscAutoConnectionConfig> PscAutoConnections { get; set; }
 
         /// <summary>Whether PSC connectivity is enabled for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
