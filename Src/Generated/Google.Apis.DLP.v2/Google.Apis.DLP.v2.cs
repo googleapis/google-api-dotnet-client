@@ -13319,13 +13319,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataRiskLevel")]
         public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
 
-        /// <summary>The BigQuery dataset ID.</summary>
+        /// <summary>The BigQuery dataset ID, if the resource profiled is a BigQuery table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 
         /// <summary>
-        /// The BigQuery location where the dataset's data is stored. See
-        /// https://cloud.google.com/bigquery/docs/locations for supported locations.
+        /// If supported, the location where the dataset's data is stored. See
+        /// https://cloud.google.com/bigquery/docs/locations for supported BigQuery locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetLocation")]
         public virtual string DatasetLocation { get; set; }
@@ -13423,7 +13423,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableFullResource")]
         public virtual string TableFullResource { get; set; }
 
-        /// <summary>The BigQuery table ID.</summary>
+        /// <summary>The table ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
 
@@ -19915,7 +19915,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Nullable<long> FailedColumnCount { get; set; }
 
         /// <summary>
-        /// The resource name of the resource profiled.
+        /// The Cloud Asset Inventory resource that was profiled in order to generate this TableDataProfile.
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResource")]
@@ -20048,7 +20048,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>If the resource is BigQuery, the BigQuery table ID.</summary>
+        /// <summary>The table ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
 
@@ -20954,23 +20954,26 @@ namespace Google.Apis.DLP.v2.Data
     public class GoogleTypeTimeOfDay : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
-        /// scenarios like business closing time.
+        /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+        /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
-        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
         public virtual System.Nullable<int> Minutes { get; set; }
 
-        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        /// <summary>
+        /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+        /// 999,999,999.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
-        /// leap-seconds.
+        /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An
+        /// API may allow the value 60 if it allows leap-seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
