@@ -8572,6 +8572,81 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>
+        /// Starts asynchronous advancement of the relocate bucket operation in the case of required write downtime, to
+        /// allow it to lock the bucket at the source location, and proceed with the bucket location swap. The server
+        /// makes a best effort to advance the relocate bucket operation, but success is not guaranteed.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the bucket to advance the relocate for.</param>
+        /// <param name="operationId">ID of the operation resource.</param>
+        public virtual AdvanceRelocateBucketRequest AdvanceRelocateBucket(Google.Apis.Storage.v1.Data.AdvanceRelocateBucketOperationRequest body, string bucket, string operationId)
+        {
+            return new AdvanceRelocateBucketRequest(this.service, body, bucket, operationId);
+        }
+
+        /// <summary>
+        /// Starts asynchronous advancement of the relocate bucket operation in the case of required write downtime, to
+        /// allow it to lock the bucket at the source location, and proceed with the bucket location swap. The server
+        /// makes a best effort to advance the relocate bucket operation, but success is not guaranteed.
+        /// </summary>
+        public class AdvanceRelocateBucketRequest : StorageBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new AdvanceRelocateBucket request.</summary>
+            public AdvanceRelocateBucketRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.AdvanceRelocateBucketOperationRequest body, string bucket, string operationId) : base(service)
+            {
+                Bucket = bucket;
+                OperationId = operationId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket to advance the relocate for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>ID of the operation resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OperationId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.AdvanceRelocateBucketOperationRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "advanceRelocateBucket";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/operations/{operationId}/advanceRelocateBucket";
+
+            /// <summary>Initializes AdvanceRelocateBucket parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("operationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
         /// operation, but success is not guaranteed.
         /// </summary>
@@ -9309,6 +9384,43 @@ namespace Google.Apis.Storage.v1
 }
 namespace Google.Apis.Storage.v1.Data
 {
+    /// <summary>An AdvanceRelocateBucketOperation request.</summary>
+    public class AdvanceRelocateBucketOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the time when the relocation will revert to the sync stage if the relocation hasn't succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ExpireTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>
+        /// Specifies the duration after which the relocation will revert to the sync stage if the relocation hasn't
+        /// succeeded. Optional, if not supplied, a default value of 12h will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An Anywhere Cache instance.</summary>
     public class AnywhereCache : Google.Apis.Requests.IDirectResponseSchema
     {
