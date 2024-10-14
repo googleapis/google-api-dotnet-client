@@ -5038,7 +5038,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
-        /// <summary>Output only. Output Only. Resource type of workload on which backupplan is applied</summary>
+        /// <summary>Optional. Resource type of workload on which backupplan is applied</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
