@@ -3900,6 +3900,15 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// ```
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         /// <summary>The backup type, which suggests the trigger for the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4258,6 +4267,15 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Optional. Subscription type of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionType")]
         public virtual string SubscriptionType { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// ```
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>Output only. Metadata for free trial clusters</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialMetadata")]
@@ -4718,23 +4736,26 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
     public class GoogleTypeTimeOfDay : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
-        /// scenarios like business closing time.
+        /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+        /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
-        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
         public virtual System.Nullable<int> Minutes { get; set; }
 
-        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        /// <summary>
+        /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+        /// 999,999,999.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
-        /// leap-seconds.
+        /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An
+        /// API may allow the value 60 if it allows leap-seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
@@ -6304,7 +6325,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 22</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 23</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -6365,6 +6386,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Any custom metadata associated with the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual StorageDatabasecenterPartnerapiV1mainCustomMetadataData CustomMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. Edition represents whether the instance is ENTERPRISE or ENTERPRISE_PLUS. This information is core
+        /// to Cloud SQL only and is used to identify the edition of the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
 
         /// <summary>Entitlements associated with the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlements")]
