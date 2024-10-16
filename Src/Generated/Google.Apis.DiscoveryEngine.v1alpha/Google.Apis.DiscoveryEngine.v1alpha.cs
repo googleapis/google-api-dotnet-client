@@ -293,6 +293,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                CmekConfigs = new CmekConfigsResource(service);
                 Collections = new CollectionsResource(service);
                 DataStores = new DataStoresResource(service);
                 Evaluations = new EvaluationsResource(service);
@@ -304,6 +305,213 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 SampleQuerySets = new SampleQuerySetsResource(service);
                 UserEvents = new UserEventsResource(service);
                 UserStores = new UserStoresResource(service);
+            }
+
+            /// <summary>Gets the CmekConfigs resource.</summary>
+            public virtual CmekConfigsResource CmekConfigs { get; }
+
+            /// <summary>The "cmekConfigs" collection of methods.</summary>
+            public class CmekConfigsResource
+            {
+                private const string Resource = "cmekConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CmekConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets the CmekConfig.</summary>
+                /// <param name="name">
+                /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
+                /// `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the
+                /// CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the CmekConfig.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCmekConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
+                    /// `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the
+                    /// CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the CmekConfigs with the project.</summary>
+                /// <param name="parent">
+                /// Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If
+                /// the caller does not have permission to list CmekConfigs under this location, regardless of whether
+                /// or not a CmekConfig exists, a PERMISSION_DENIED error is returned.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the CmekConfigs with the project.</summary>
+                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent location resource name, such as `projects/{project}/locations/{location}`.
+                    /// If the caller does not have permission to list CmekConfigs under this location, regardless of
+                    /// whether or not a CmekConfig exists, a PERMISSION_DENIED error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/cmekConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Provisions a CMEK key for use in a location of a customer's project. This method will also conduct
+                /// location validation on the provided cmekConfig to make sure the key is valid and can be used in the
+                /// selected location.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig`
+                /// or `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCmekConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Provisions a CMEK key for use in a location of a customer's project. This method will also conduct
+                /// location validation on the provided cmekConfig to make sure the key is valid and can be used in the
+                /// selected location.
+                /// </summary>
+                public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCmekConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the CmekConfig, of the form
+                    /// `projects/{project}/locations/{location}/cmekConfig` or
+                    /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Set the following CmekConfig as the default to be used for child resources if one is not
+                    /// specified.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("setDefault", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> SetDefault { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCmekConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("setDefault", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "setDefault",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Collections resource.</summary>
@@ -6287,6 +6495,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Resource name of the CmekConfig to use for protecting this DataStore.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("cmekConfigName", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string CmekConfigName { get; set; }
+
                         /// <summary>
                         /// A boolean flag indicating whether user want to directly create an advanced data store for
                         /// site search. If the data store is not configured as site search (GENERIC vertical and
@@ -6303,6 +6515,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dataStoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string DataStoreId { get; set; }
+
+                        /// <summary>
+                        /// DataStore without CMEK protections. If a default CmekConfig is set for the project, setting
+                        /// this field will override the default CmekConfig as well.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("disableCmek", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> DisableCmek { get; set; }
 
                         /// <summary>
                         /// A boolean flag indicating whether to skip the default schema creation for the data store.
@@ -6341,6 +6560,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
                             });
+                            RequestParameters.Add("cmekConfigName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "cmekConfigName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                             RequestParameters.Add("createAdvancedSiteSearch", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "createAdvancedSiteSearch",
@@ -6352,6 +6579,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("dataStoreId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "dataStoreId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("disableCmek", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "disableCmek",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -14470,6 +14705,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Resource name of the CmekConfig to use for protecting this DataStore.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("cmekConfigName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CmekConfigName { get; set; }
+
                     /// <summary>
                     /// A boolean flag indicating whether user want to directly create an advanced data store for site
                     /// search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE
@@ -14486,6 +14725,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataStoreId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataStoreId { get; set; }
+
+                    /// <summary>
+                    /// DataStore without CMEK protections. If a default CmekConfig is set for the project, setting this
+                    /// field will override the default CmekConfig as well.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("disableCmek", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> DisableCmek { get; set; }
 
                     /// <summary>
                     /// A boolean flag indicating whether to skip the default schema creation for the data store. Only
@@ -14523,6 +14769,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
+                        RequestParameters.Add("cmekConfigName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "cmekConfigName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("createAdvancedSiteSearch", new Google.Apis.Discovery.Parameter
                         {
                             Name = "createAdvancedSiteSearch",
@@ -14534,6 +14788,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         RequestParameters.Add("dataStoreId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dataStoreId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("disableCmek", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "disableCmek",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -17347,6 +17609,59 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
+            /// <summary>Gets the CmekConfig.</summary>
+            /// <param name="name">
+            /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
+            /// `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the CmekConfig,
+            /// regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+            /// </param>
+            public virtual GetCmekConfigRequest GetCmekConfig(string name)
+            {
+                return new GetCmekConfigRequest(this.service, name);
+            }
+
+            /// <summary>Gets the CmekConfig.</summary>
+            public class GetCmekConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCmekConfig>
+            {
+                /// <summary>Constructs a new GetCmekConfig request.</summary>
+                public GetCmekConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or
+                /// `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the
+                /// CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes GetCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Default ACL configuration for use in a location of a customer's project. Updates will only reflect to
             /// new data stores. Existing data stores will still use the old value.
@@ -17410,6 +17725,87 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+/aclConfig$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Provisions a CMEK key for use in a location of a customer's project. This method will also conduct
+            /// location validation on the provided cmekConfig to make sure the key is valid and can be used in the
+            /// selected location.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+            /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+            /// </param>
+            public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCmekConfig body, string name)
+            {
+                return new UpdateCmekConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Provisions a CMEK key for use in a location of a customer's project. This method will also conduct
+            /// location validation on the provided cmekConfig to make sure the key is valid and can be used in the
+            /// selected location.
+            /// </summary>
+            public class UpdateCmekConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new UpdateCmekConfig request.</summary>
+                public UpdateCmekConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCmekConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig`
+                /// or `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Set the following CmekConfig as the default to be used for child resources if one is not specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("setDefault", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> SetDefault { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCmekConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes UpdateCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                    RequestParameters.Add("setDefault", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "setDefault",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -18281,6 +18677,45 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurations used to enable CMEK data encryption with Cloud KMS keys.</summary>
+    public class GoogleCloudDiscoveryengineV1CmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The default CmekConfig for the Customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>
+        /// Kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>Output only. The timestamp of the last key rotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRotationTimestampMicros")]
+        public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
+
+        /// <summary>
+        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the CmekConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines circumstances to be checked before allowing a behavior</summary>
     public class GoogleCloudDiscoveryengineV1Condition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18883,6 +19318,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1DataStoreBillingEstimation BillingEstimation { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1CmekConfig CmekConfig { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -18945,6 +19384,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
+        /// need to comply with CMEK Org Policy protections. If this field is set and processed successfully, the
+        /// DataStore will be protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>
         /// Immutable. The full resource name of the data store. Format:
@@ -21318,6 +21765,90 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the CmekConfigService.UpdateCmekConfig operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for UpdateSchema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23322,6 +23853,45 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurations used to enable CMEK data encryption with Cloud KMS keys.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The default CmekConfig for the Customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>
+        /// Kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>Output only. The timestamp of the last key rotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRotationTimestampMicros")]
+        public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
+
+        /// <summary>
+        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the CmekConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for CompletionService.CompleteQuery method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24465,6 +25035,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation BillingEstimation { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCmekConfig CmekConfig { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -24531,6 +25105,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
+        /// need to comply with CMEK Org Policy protections. If this field is set and processed successfully, the
+        /// DataStore will be protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>Language info for DataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageInfo")]
@@ -27594,6 +28176,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for CmekConfigService.ListCmekConfigs method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListCmekConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the customer's CmekConfigs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCmekConfig> CmekConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListControls method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListControlsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29781,6 +30374,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<int> Offset { get; set; }
+
+        /// <summary>
+        /// The maximum number of results to return for OneBox. This applies to each OneBox type individually. Default
+        /// number is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneBoxPageSize")]
+        public virtual System.Nullable<int> OneBoxPageSize { get; set; }
 
         /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
@@ -32234,6 +32834,90 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the CmekConfigService.UpdateCmekConfig operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for UpdateSchema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1alphaUpdateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -32759,6 +33443,45 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>TargetSites created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSites")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaTargetSite> TargetSites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations used to enable CMEK data encryption with Cloud KMS keys.</summary>
+    public class GoogleCloudDiscoveryengineV1betaCmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The default CmekConfig for the Customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>
+        /// Kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>Output only. The timestamp of the last key rotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRotationTimestampMicros")]
+        public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
+
+        /// <summary>
+        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the CmekConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33484,6 +34207,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation BillingEstimation { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaCmekConfig CmekConfig { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -33546,6 +34273,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
+        /// need to comply with CMEK Org Policy protections. If this field is set and processed successfully, the
+        /// DataStore will be protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>Language info for DataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageInfo")]
@@ -36057,6 +36792,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<int> Offset { get; set; }
+
+        /// <summary>
+        /// The maximum number of results to return for OneBox. This applies to each OneBox type individually. Default
+        /// number is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneBoxPageSize")]
+        public virtual System.Nullable<int> OneBoxPageSize { get; set; }
 
         /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
