@@ -1210,7 +1210,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing ContactCenter object Next ID: 23</summary>
+    /// <summary>Message describing ContactCenter object Next ID: 24</summary>
     public class ContactCenter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Info about the first admin user, such as given name and family name.</summary>
