@@ -3000,6 +3000,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Risk analysis result for an event.</summary>
     public class GoogleCloudRecaptchaenterpriseV1RiskAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Challenge information for SCORE_AND_CHALLENGE keys</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
+        public virtual string Challenge { get; set; }
+
         /// <summary>
         /// Output only. Extended verdict reasons to be used for experimentation only. The set of possible reasons is
         /// subject to change.
