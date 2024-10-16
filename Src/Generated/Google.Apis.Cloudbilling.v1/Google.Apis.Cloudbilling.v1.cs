@@ -1982,6 +1982,16 @@ namespace Google.Apis.Cloudbilling.v1.Data
     public class BillingAccount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The currency in which the billing account is billed and charged, represented as an ISO 4217 code
+        /// such as `USD`. Billing account currency is determined at the time of billing account creation and cannot be
+        /// updated subsequently, so this field should not be set on update requests. In addition, a subaccount always
+        /// matches the currency of its parent billing account, so this field should not be set on subaccount creation
+        /// requests. Clients can read this field to determine the currency of an existing billing account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
         /// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the
         /// Google Cloud Console.
         /// </summary>
