@@ -1,0 +1,11 @@
+{
+  "Google.Apis.NetAppFiles.v1beta1.NetAppFilesBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.NetAppFiles.v1beta1.NetAppFilesBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
