@@ -8014,9 +8014,41 @@ namespace Google.Apis.Spanner.v1
 }
 namespace Google.Apis.Spanner.v1.Data
 {
+    /// <summary>
+    /// AsymmetricAutoscalingOption specifies the scaling of replicas identified by the given selection.
+    /// </summary>
+    public class AsymmetricAutoscalingOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Overrides applied to the top-level autoscaling configuration for the selected replicas.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
+        public virtual AutoscalingConfigOverrides Overrides { get; set; }
+
+        /// <summary>
+        /// Required. Selects the replicas to which this AsymmetricAutoscalingOption applies. Only read-only replicas
+        /// are supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaSelection")]
+        public virtual InstanceReplicaSelection ReplicaSelection { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Autoscaling configuration for an instance.</summary>
     public class AutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Optional asymmetric autoscaling options. Replicas matching the replica selection criteria will be
+        /// autoscaled independently from other replicas. The autoscaler will scale the replicas based on the
+        /// utilization of replicas identified by the replica selection. Replica selections should not overlap with each
+        /// other. Other replicas (those do not match any replica selection) will be autoscaled together and will have
+        /// the same compute capacity allocated to them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asymmetricAutoscalingOptions")]
+        public virtual System.Collections.Generic.IList<AsymmetricAutoscalingOption> AsymmetricAutoscalingOptions { get; set; }
+
         /// <summary>Required. Autoscaling limits for an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingLimits")]
         public virtual AutoscalingLimits AutoscalingLimits { get; set; }
@@ -8024,6 +8056,31 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. The autoscaling targets for an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTargets")]
         public virtual AutoscalingTargets AutoscalingTargets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Overrides the top-level autoscaling configuration for the replicas identified by `replica_selection`. All fields
+    /// in this message are optional. Any unspecified fields will use the corresponding values from the top-level
+    /// autoscaling configuration.
+    /// </summary>
+    public class AutoscalingConfigOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If specified, overrides the min/max limit in the top-level autoscaling configuration for the
+        /// selected replicas.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingLimits")]
+        public virtual AutoscalingLimits AutoscalingLimits { get; set; }
+
+        /// <summary>
+        /// Optional. If specified, overrides the autoscaling target high_priority_cpu_utilization_percent in the
+        /// top-level autoscaling configuration for the selected replicas.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingTargetHighPriorityCpuUtilizationPercent")]
+        public virtual System.Nullable<int> AutoscalingTargetHighPriorityCpuUtilizationPercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10800,8 +10857,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// should be present in the message. Users can set the `node_count` field to specify the target number of nodes
         /// allocated to the instance. If autoscaling is enabled, `node_count` is treated as an `OUTPUT_ONLY` field and
         /// reflects the current number of nodes allocated to the instance. This might be zero in API responses for
-        /// instances that are not yet in the `READY` state. For more information, see [Compute capacity, nodes, and
-        /// processing units](https://cloud.google.com/spanner/docs/compute-capacity).
+        /// instances that are not yet in the `READY` state. If the instance has varying node count across replicas
+        /// (achieved by setting asymmetric_autoscaling_options in autoscaling config), the node_count here is the
+        /// maximum node count across all replicas. For more information, see [Compute capacity, nodes, and processing
+        /// units](https://cloud.google.com/spanner/docs/compute-capacity).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -10811,12 +10870,22 @@ namespace Google.Apis.Spanner.v1.Data
         /// `node_count` should be present in the message. Users can set the `processing_units` field to specify the
         /// target number of processing units allocated to the instance. If autoscaling is enabled, `processing_units`
         /// is treated as an `OUTPUT_ONLY` field and reflects the current number of processing units allocated to the
-        /// instance. This might be zero in API responses for instances that are not yet in the `READY` state. For more
+        /// instance. This might be zero in API responses for instances that are not yet in the `READY` state. If the
+        /// instance has varying processing units per replica (achieved by setting asymmetric_autoscaling_options in
+        /// autoscaling config), the processing_units here is the maximum processing units across all replicas. For more
         /// information, see [Compute capacity, nodes and processing
         /// units](https://cloud.google.com/spanner/docs/compute-capacity).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
         public virtual System.Nullable<int> ProcessingUnits { get; set; }
+
+        /// <summary>
+        /// Output only. Lists the compute capacity per ReplicaSelection. A replica selection identifies a set of
+        /// replicas with common properties. Replicas identified by a ReplicaSelection are scaled with the same compute
+        /// capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaComputeCapacity")]
+        public virtual System.Collections.Generic.IList<ReplicaComputeCapacity> ReplicaComputeCapacity { get; set; }
 
         /// <summary>
         /// Output only. The current instance state. For CreateInstance, the state must be either omitted or set to
@@ -11210,6 +11279,17 @@ namespace Google.Apis.Spanner.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>ReplicaSelection identifies replicas with common properties.</summary>
+    public class InstanceReplicaSelection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the location of the replicas (e.g., "us-central1").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -12757,6 +12837,37 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Read lock mode for the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readLockMode")]
         public virtual string ReadLockMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ReplicaComputeCapacity describes the amount of server resources that are allocated to each replica identified by
+    /// the replica selection.
+    /// </summary>
+    public class ReplicaComputeCapacity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of nodes allocated to each replica. This may be zero in API responses for instances that are not
+        /// yet in state `READY`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>
+        /// The number of processing units allocated to each replica. This may be zero in API responses for instances
+        /// that are not yet in state `READY`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
+        public virtual System.Nullable<int> ProcessingUnits { get; set; }
+
+        /// <summary>
+        /// Required. Identifies replicas by specified properties. All replicas in the selection have the same amount of
+        /// compute capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaSelection")]
+        public virtual InstanceReplicaSelection ReplicaSelection { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
