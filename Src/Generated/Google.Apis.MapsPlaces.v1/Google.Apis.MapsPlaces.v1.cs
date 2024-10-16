@@ -699,6 +699,98 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A relational description of a location. Includes a ranked set of nearby landmarks and precise containing areas
+    /// and their relationship to the target location.
+    /// </summary>
+    public class GoogleMapsPlacesV1AddressDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A ranked list of containing or adjacent areas. The most recognizable and precise areas are ranked first.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("areas")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1AddressDescriptorArea> Areas { get; set; }
+
+        /// <summary>
+        /// A ranked list of nearby landmarks. The most recognizable and nearby landmarks are ranked first.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("landmarks")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1AddressDescriptorLandmark> Landmarks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Area information and the area's relationship with the target location. Areas includes precise sublocality,
+    /// neighborhoods, and large compounds that are useful for describing a location.
+    /// </summary>
+    public class GoogleMapsPlacesV1AddressDescriptorArea : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines the spatial relationship between the target location and the area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containment")]
+        public virtual string Containment { get; set; }
+
+        /// <summary>The area's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual GoogleTypeLocalizedText DisplayName { get; set; }
+
+        /// <summary>The area's resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The area's place id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Basic landmark information and the landmark's relationship with the target location. Landmarks are prominent
+    /// places that can be used to describe a location.
+    /// </summary>
+    public class GoogleMapsPlacesV1AddressDescriptorLandmark : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The landmark's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual GoogleTypeLocalizedText DisplayName { get; set; }
+
+        /// <summary>The landmark's resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The landmark's place id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
+
+        /// <summary>Defines the spatial relationship between the target location and the landmark.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spatialRelationship")]
+        public virtual string SpatialRelationship { get; set; }
+
+        /// <summary>The straight line distance in meters between the target location and the landmark.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("straightLineDistanceMeters")]
+        public virtual System.Nullable<float> StraightLineDistanceMeters { get; set; }
+
+        /// <summary>
+        /// The travel distance in meters along the road network if known. This does not take into account the mode of
+        /// transportation (walking/driving).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("travelDistanceMeters")]
+        public virtual System.Nullable<float> TravelDistanceMeters { get; set; }
+
+        /// <summary>
+        /// A set of type tags for this landmark. For a complete list of possible values, see
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about the author of the UGC data. Used in Photo, and Review.</summary>
     public class GoogleMapsPlacesV1AuthorAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1417,6 +1509,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressComponents")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceAddressComponent> AddressComponents { get; set; }
+
+        /// <summary>
+        /// The address descriptor of the place. Address descriptors include additional information that help describe a
+        /// location using landmarks and areas. See address descriptor regional coverage in
+        /// https://developers.google.com/maps/documentation/geocoding/address-descriptors/coverage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressDescriptor")]
+        public virtual GoogleMapsPlacesV1AddressDescriptor AddressDescriptor { get; set; }
 
         /// <summary>The place's address in adr microformat: http://microformats.org/wiki/adr.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adrFormatAddress")]
