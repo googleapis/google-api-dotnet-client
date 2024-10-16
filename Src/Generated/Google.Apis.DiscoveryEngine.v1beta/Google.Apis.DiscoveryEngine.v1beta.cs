@@ -5881,6 +5881,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Resource name of the CmekConfig to use for protecting this DataStore.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("cmekConfigName", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string CmekConfigName { get; set; }
+
                         /// <summary>
                         /// A boolean flag indicating whether user want to directly create an advanced data store for
                         /// site search. If the data store is not configured as site search (GENERIC vertical and
@@ -5897,6 +5901,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dataStoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string DataStoreId { get; set; }
+
+                        /// <summary>
+                        /// DataStore without CMEK protections. If a default CmekConfig is set for the project, setting
+                        /// this field will override the default CmekConfig as well.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("disableCmek", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> DisableCmek { get; set; }
 
                         /// <summary>
                         /// A boolean flag indicating whether to skip the default schema creation for the data store.
@@ -5935,6 +5946,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
                             });
+                            RequestParameters.Add("cmekConfigName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "cmekConfigName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                             RequestParameters.Add("createAdvancedSiteSearch", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "createAdvancedSiteSearch",
@@ -5946,6 +5965,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             RequestParameters.Add("dataStoreId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "dataStoreId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("disableCmek", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "disableCmek",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -13649,6 +13676,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Resource name of the CmekConfig to use for protecting this DataStore.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("cmekConfigName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CmekConfigName { get; set; }
+
                     /// <summary>
                     /// A boolean flag indicating whether user want to directly create an advanced data store for site
                     /// search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE
@@ -13665,6 +13696,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataStoreId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataStoreId { get; set; }
+
+                    /// <summary>
+                    /// DataStore without CMEK protections. If a default CmekConfig is set for the project, setting this
+                    /// field will override the default CmekConfig as well.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("disableCmek", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> DisableCmek { get; set; }
 
                     /// <summary>
                     /// A boolean flag indicating whether to skip the default schema creation for the data store. Only
@@ -13702,6 +13740,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
+                        RequestParameters.Add("cmekConfigName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "cmekConfigName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("createAdvancedSiteSearch", new Google.Apis.Discovery.Parameter
                         {
                             Name = "createAdvancedSiteSearch",
@@ -13713,6 +13759,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         RequestParameters.Add("dataStoreId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dataStoreId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("disableCmek", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "disableCmek",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -16516,6 +16570,45 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurations used to enable CMEK data encryption with Cloud KMS keys.</summary>
+    public class GoogleCloudDiscoveryengineV1CmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The default CmekConfig for the Customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>
+        /// Kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>Output only. The timestamp of the last key rotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRotationTimestampMicros")]
+        public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
+
+        /// <summary>
+        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the CmekConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines circumstances to be checked before allowing a behavior</summary>
     public class GoogleCloudDiscoveryengineV1Condition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17118,6 +17211,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1DataStoreBillingEstimation BillingEstimation { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1CmekConfig CmekConfig { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -17180,6 +17277,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
+        /// need to comply with CMEK Org Policy protections. If this field is set and processed successfully, the
+        /// DataStore will be protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>
         /// Immutable. The full resource name of the data store. Format:
@@ -19553,6 +19658,90 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the CmekConfigService.UpdateCmekConfig operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1UpdateCmekConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for UpdateSchema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20318,6 +20507,45 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurations used to enable CMEK data encryption with Cloud KMS keys.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The default CmekConfig for the Customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>
+        /// Kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>Output only. The timestamp of the last key rotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRotationTimestampMicros")]
+        public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
+
+        /// <summary>
+        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the CmekConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines circumstances to be checked before allowing a behavior</summary>
     public class GoogleCloudDiscoveryengineV1alphaCondition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21059,6 +21287,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation BillingEstimation { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCmekConfig CmekConfig { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -21125,6 +21357,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
+        /// need to comply with CMEK Org Policy protections. If this field is set and processed successfully, the
+        /// DataStore will be protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>Language info for DataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageInfo")]
@@ -24406,6 +24646,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Nullable<int> Offset { get; set; }
 
         /// <summary>
+        /// The maximum number of results to return for OneBox. This applies to each OneBox type individually. Default
+        /// number is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneBoxPageSize")]
+        public virtual System.Nullable<int> OneBoxPageSize { get; set; }
+
+        /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
         /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering
         /// the website search results, see [Order web search
@@ -25747,6 +25994,90 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Response associated with a tune operation.</summary>
     public class GoogleCloudDiscoveryengineV1alphaTuneEngineResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CmekConfigService.UpdateCmekConfig operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27599,6 +27930,45 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurations used to enable CMEK data encryption with Cloud KMS keys.</summary>
+    public class GoogleCloudDiscoveryengineV1betaCmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The default CmekConfig for the Customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>
+        /// Kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>Output only. The timestamp of the last key rotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRotationTimestampMicros")]
+        public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
+
+        /// <summary>
+        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the CmekConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for CompletionService.CompleteQuery method.</summary>
     public class GoogleCloudDiscoveryengineV1betaCompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28721,6 +29091,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation BillingEstimation { get; set; }
 
+        /// <summary>Output only. CMEK-related information for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaCmekConfig CmekConfig { get; set; }
+
         /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
@@ -28783,6 +29157,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
+        /// need to comply with CMEK Org Policy protections. If this field is set and processed successfully, the
+        /// DataStore will be protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>Language info for DataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageInfo")]
@@ -32936,6 +33318,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<int> Offset { get; set; }
+
+        /// <summary>
+        /// The maximum number of results to return for OneBox. This applies to each OneBox type individually. Default
+        /// number is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneBoxPageSize")]
+        public virtual System.Nullable<int> OneBoxPageSize { get; set; }
 
         /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
