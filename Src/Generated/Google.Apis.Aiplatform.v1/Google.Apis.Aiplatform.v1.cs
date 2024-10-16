@@ -9392,6 +9392,69 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
 
+                    /// <summary>Creates a batch of Features in a given FeatureGroup.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the EntityType/FeatureGroup to create the batch of Features
+                    /// under. Format:
+                    /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                    /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                    /// </param>
+                    public virtual BatchCreateRequest BatchCreate(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateFeaturesRequest body, string parent)
+                    {
+                        return new BatchCreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a batch of Features in a given FeatureGroup.</summary>
+                    public class BatchCreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new BatchCreate request.</summary>
+                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateFeaturesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the EntityType/FeatureGroup to create the batch of Features
+                        /// under. Format:
+                        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCreateFeaturesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchCreate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/features:batchCreate";
+
+                        /// <summary>Initializes BatchCreate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureGroups/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a new Feature in a given FeatureGroup.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -40558,6 +40621,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageRaiScores")]
         public virtual CloudAiLargeModelsVisionImageRAIScores ImageRaiScores { get; set; }
 
+        /// <summary>
+        /// Image size. The size of the image. Can be self reported, or computed from the image bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSize")]
+        public virtual CloudAiLargeModelsVisionImageImageSize ImageSize { get; set; }
+
         /// <summary>RAI info for image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiInfo")]
         public virtual CloudAiLargeModelsVisionRaiInfo RaiInfo { get; set; }
@@ -40573,6 +40642,22 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Path to another storage (typically Google Cloud Storage).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Image size.</summary>
+    public class CloudAiLargeModelsVisionImageImageSize : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("channels")]
+        public virtual System.Nullable<int> Channels { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43873,6 +43958,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedArtifactLocationId")]
         public virtual string ProtectedArtifactLocationId { get; set; }
+
+        /// <summary>Optional. Configuration for PSC-I for CustomJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfig")]
+        public virtual GoogleCloudAiplatformV1PscInterfaceConfig PscInterfaceConfig { get; set; }
 
         /// <summary>
         /// Optional. A list of names for the reserved ip ranges under the VPC network that can be used for this job. If
@@ -48772,6 +48861,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Configuration for Sync. Only one option is set.</summary>
     public class GoogleCloudAiplatformV1FeatureViewSyncConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, syncs the FeatureView in a continuous manner to Online Store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuous")]
+        public virtual System.Nullable<bool> Continuous { get; set; }
+
         /// <summary>
         /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to
         /// the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The
@@ -49820,6 +49913,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Generation config.</summary>
     public class GoogleCloudAiplatformV1GenerationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If enabled, audio timestamp will be included in the request to the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioTimestamp")]
+        public virtual System.Nullable<bool> AudioTimestamp { get; set; }
+
         /// <summary>Optional. Number of candidates to generate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidateCount")]
         public virtual System.Nullable<int> CandidateCount { get; set; }
@@ -57712,6 +57809,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for PSC-I.</summary>
+    public class GoogleCloudAiplatformV1PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Model Garden Publisher Model.</summary>
     public class GoogleCloudAiplatformV1PublisherModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -59995,8 +60099,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum
-        /// Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+        /// Optional. Possible values of the element of primitive type with enum format. Examples: 1. We can define
+        /// direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]} 2. We can define apartment
+        /// number as : {type:INTEGER, format:enum, enum:["101", "201", "301"]}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
         public virtual System.Collections.Generic.IList<string> Enum__ { get; set; }
@@ -61919,6 +62024,149 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The A2 schema of a prompt.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptApiSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Schema version that represents changes to the API behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiSchemaVersion")]
+        public virtual string ApiSchemaVersion { get; set; }
+
+        /// <summary>A list of execution instances for constructing a ready-to-use prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution> Executions { get; set; }
+
+        /// <summary>Multimodal prompt which embeds preambles to prompt string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multimodalPrompt")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt MultimodalPrompt { get; set; }
+
+        /// <summary>The prompt variation that stores preambles in separate fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredPrompt")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt StructuredPrompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A prompt instance's parameters set that contains a set of variable values.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maps variable names to their value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1SchemaPromptInstanceVariableValue> Arguments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The value of a variable in prompt.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptInstanceVariableValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parts of the variable value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partList")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecPartList PartList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Prompt variation that embeds preambles to prompt string.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The prompt message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptMessage")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage PromptMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of elements and information that make up a portion of prompt.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecPartList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of elements that can be part of a prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Part> Parts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The prompt message that aligns with the prompt message in google.cloud.aiplatform.master.GenerateContentRequest.
+    /// </summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The content of the current conversation with the model. For single-turn queries, this is a single instance.
+        /// For multi-turn queries, this is a repeated field that contains conversation history + latest request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> Contents { get; set; }
+
+        /// <summary>Generation config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
+        public virtual GoogleCloudAiplatformV1GenerationConfig GenerationConfig { get; set; }
+
+        /// <summary>The model name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>
+        /// Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SafetySetting> SafetySettings { get; set; }
+
+        /// <summary>
+        /// The user provided system instructions for the model. Note: only text should be used in parts and content in
+        /// each part will be in a separate paragraph.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual GoogleCloudAiplatformV1Content SystemInstruction { get; set; }
+
+        /// <summary>Tool config. This config is shared for all tools provided in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolConfig")]
+        public virtual GoogleCloudAiplatformV1ToolConfig ToolConfig { get; set; }
+
+        /// <summary>
+        /// A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables
+        /// the system to interact with external systems to perform an action, or set of actions, outside of knowledge
+        /// and scope of the model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Tool> Tools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Prompt variation that stores preambles in separate fields.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Preamble: The context of the prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual GoogleCloudAiplatformV1Content Context { get; set; }
+
+        /// <summary>Preamble: A set of examples for expected model response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("examples")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPromptSpecPartList> Examples { get; set; }
+
+        /// <summary>Preamble: The input prefixes before each example input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputPrefixes")]
+        public virtual System.Collections.Generic.IList<string> InputPrefixes { get; set; }
+
+        /// <summary>Preamble: The output prefixes before each example output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputPrefixes")]
+        public virtual System.Collections.Generic.IList<string> OutputPrefixes { get; set; }
+
+        /// <summary>The prompt message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptMessage")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage PromptMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata of Datasets that contain tables data.</summary>
     public class GoogleCloudAiplatformV1SchemaTablesDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -62064,6 +62312,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>User-created prompt note. Note size limit is 2KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("note")]
         public virtual string Note { get; set; }
+
+        /// <summary>The API schema of the prompt to support both UI and SDK usages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptApiSchema")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptApiSchema PromptApiSchema { get; set; }
 
         /// <summary>Type of the prompt dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptType")]
@@ -66999,7 +67251,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Spec for tool parameter key value match metric.</summary>
     public class GoogleCloudAiplatformV1ToolParameterKVMatchSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Whether to use STRCIT string match on parameter values.</summary>
+        /// <summary>Optional. Whether to use STRICT string match on parameter values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useStrictStringMatch")]
         public virtual System.Nullable<bool> UseStrictStringMatch { get; set; }
 
