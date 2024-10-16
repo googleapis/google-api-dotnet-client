@@ -586,51 +586,6 @@ namespace Google.Apis.Texttospeech.v1beta1
             this.service = service;
         }
 
-        /// <summary>
-        /// Generates voice clone key given a short voice prompt. This method validates the voice prompts with a series
-        /// of checks against the voice talent statement to verify the voice clone is safe to generate.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual GenerateVoiceCloningKeyRequest GenerateVoiceCloningKey(Google.Apis.Texttospeech.v1beta1.Data.GenerateVoiceCloningKeyRequest body)
-        {
-            return new GenerateVoiceCloningKeyRequest(this.service, body);
-        }
-
-        /// <summary>
-        /// Generates voice clone key given a short voice prompt. This method validates the voice prompts with a series
-        /// of checks against the voice talent statement to verify the voice clone is safe to generate.
-        /// </summary>
-        public class GenerateVoiceCloningKeyRequest : TexttospeechBaseServiceRequest<Google.Apis.Texttospeech.v1beta1.Data.GenerateVoiceCloningKeyResponse>
-        {
-            /// <summary>Constructs a new GenerateVoiceCloningKey request.</summary>
-            public GenerateVoiceCloningKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.Texttospeech.v1beta1.Data.GenerateVoiceCloningKeyRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Texttospeech.v1beta1.Data.GenerateVoiceCloningKeyRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "generateVoiceCloningKey";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1beta1/voices:generateVoiceCloningKey";
-
-            /// <summary>Initializes GenerateVoiceCloningKey parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
         /// <summary>Returns a list of Voice supported for synthesis.</summary>
         public virtual ListRequest List()
         {
@@ -800,54 +755,6 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for the `GenerateVoiceCloningKey` method.</summary>
-    public class GenerateVoiceCloningKeyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The script used for the voice talent statement. The script will be provided to the caller through
-        /// other channels. It must be returned unchanged in this field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consentScript")]
-        public virtual string ConsentScript { get; set; }
-
-        /// <summary>
-        /// Required. The language of the supplied audio as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-        /// language tag. Example: "en-US". See [Language
-        /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported
-        /// language codes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>
-        /// Required. The training audio used to create voice clone. This is currently limited to LINEAR16 PCM WAV files
-        /// mono audio with 24khz sample rate. This needs to be specified in [InputAudio.audio_config], other values
-        /// will be explicitly rejected.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("referenceAudio")]
-        public virtual InputAudio ReferenceAudio { get; set; }
-
-        /// <summary>Required. The voice talent audio used to verify consent to voice clone.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("voiceTalentConsent")]
-        public virtual InputAudio VoiceTalentConsent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for the `GenerateVoiceCloningKey` method.</summary>
-    public class GenerateVoiceCloningKeyResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The voice clone key. Use it in the SynthesizeSpeechRequest by setting [voice.voice_clone.voice_cloning_key].
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("voiceCloningKey")]
-        public virtual string VoiceCloningKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata for response returned by the `SynthesizeLongAudio` method.</summary>
     public class GoogleCloudTexttospeechV1beta1SynthesizeLongAudioMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -930,40 +837,6 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Holds audio content and config.</summary>
-    public class InputAudio : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Provides information that specifies how to process content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
-        public virtual InputAudioConfig AudioConfig { get; set; }
-
-        /// <summary>
-        /// Required. The audio data bytes encoded as specified in `InputAudioConfig`. Note: as with all bytes fields,
-        /// proto buffers use a pure binary representation, whereas JSON representations use base64. Audio samples
-        /// should be between 5-25 seconds in length.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Description of inputted audio data.</summary>
-    public class InputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The format of the audio byte stream.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
-        public virtual string AudioEncoding { get; set; }
-
-        /// <summary>Required. The sample rate (in hertz) for this audio.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
-        public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1309,17 +1182,6 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The configuration of Voice Clone feature.</summary>
-    public class VoiceCloneParams : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Created by GenerateVoiceCloningKey.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("voiceCloningKey")]
-        public virtual string VoiceCloningKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Description of which voice to use for a synthesis request.</summary>
     public class VoiceSelectionParams : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1357,13 +1219,6 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssmlGender")]
         public virtual string SsmlGender { get; set; }
-
-        /// <summary>
-        /// Optional. The configuration for a voice clone. If [VoiceCloneParams.voice_clone_key] is set, the service
-        /// will choose the voice clone matching the specified configuration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("voiceClone")]
-        public virtual VoiceCloneParams VoiceClone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
