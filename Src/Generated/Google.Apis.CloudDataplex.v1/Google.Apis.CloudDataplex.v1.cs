@@ -14609,6 +14609,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// The version of the data format used to produce this data. This field is used to indicated when the
+        /// underlying data format changes (e.g., schema modifications, changes to the source URL format definition,
+        /// etc).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataVersion")]
+        public virtual string DataVersion { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -16306,7 +16314,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY",
-        /// "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        /// "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -16423,7 +16431,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Required. The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported
-        /// dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        /// dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
         public virtual string Dimension { get; set; }
@@ -16955,19 +16963,19 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual GoogleCloudDataplexV1DataSource Data { get; set; }
 
-        /// <summary>Output only. The result of the data profile scan.</summary>
+        /// <summary>Output only. The result of a data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
         public virtual GoogleCloudDataplexV1DataProfileResult DataProfileResult { get; set; }
 
-        /// <summary>DataProfileScan related setting.</summary>
+        /// <summary>Settings for a data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileSpec")]
         public virtual GoogleCloudDataplexV1DataProfileSpec DataProfileSpec { get; set; }
 
-        /// <summary>Output only. The result of the data quality scan.</summary>
+        /// <summary>Output only. The result of a data quality scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualityResult")]
         public virtual GoogleCloudDataplexV1DataQualityResult DataQualityResult { get; set; }
 
-        /// <summary>DataQualityScan related setting.</summary>
+        /// <summary>Settings for a data quality scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualitySpec")]
         public virtual GoogleCloudDataplexV1DataQualitySpec DataQualitySpec { get; set; }
 
@@ -17536,19 +17544,19 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The result of the data profile scan.</summary>
+        /// <summary>Output only. The result of a data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
         public virtual GoogleCloudDataplexV1DataProfileResult DataProfileResult { get; set; }
 
-        /// <summary>Output only. DataProfileScan related setting.</summary>
+        /// <summary>Output only. Settings for a data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileSpec")]
         public virtual GoogleCloudDataplexV1DataProfileSpec DataProfileSpec { get; set; }
 
-        /// <summary>Output only. The result of the data quality scan.</summary>
+        /// <summary>Output only. The result of a data quality scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualityResult")]
         public virtual GoogleCloudDataplexV1DataQualityResult DataQualityResult { get; set; }
 
-        /// <summary>Output only. DataQualityScan related setting.</summary>
+        /// <summary>Output only. Settings for a data quality scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualitySpec")]
         public virtual GoogleCloudDataplexV1DataQualitySpec DataQualitySpec { get; set; }
 
@@ -17857,6 +17865,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Details about the action.</summary>
     public class GoogleCloudDataplexV1DiscoveryEventActionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The human readable issue associated with the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issue")]
+        public virtual string Issue { get; set; }
+
         /// <summary>The type of action. Eg. IncompatibleDataSchema, InvalidDataFormat</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
