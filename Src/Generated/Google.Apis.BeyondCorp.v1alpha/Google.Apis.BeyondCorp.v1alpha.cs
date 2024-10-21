@@ -14656,8 +14656,8 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// Required. The name of the Target VPC network name in the format:
         /// `projects/{project}/global/networks/{network}
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetVpcNetwork")]
-        public virtual string TargetVpcNetwork { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("targetNetwork")]
+        public virtual string TargetNetwork { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
