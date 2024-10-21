@@ -4898,6 +4898,13 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("costProjection")]
         public virtual GoogleCloudRecommenderV1beta1CostProjection CostProjection { get; set; }
 
+        /// <summary>
+        /// If populated, the impact contains multiple components. In this case, the top-level impact contains
+        /// aggregated values and each component contains per-service details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impactComponents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Impact> ImpactComponents { get; set; }
+
         /// <summary>Use with CategoryType.RELIABILITY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reliabilityProjection")]
         public virtual GoogleCloudRecommenderV1beta1ReliabilityProjection ReliabilityProjection { get; set; }
@@ -4905,6 +4912,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Use with CategoryType.SECURITY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityProjection")]
         public virtual GoogleCloudRecommenderV1beta1SecurityProjection SecurityProjection { get; set; }
+
+        /// <summary>The service that this impact is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>Use with CategoryType.SUSTAINABILITY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sustainabilityProjection")]
