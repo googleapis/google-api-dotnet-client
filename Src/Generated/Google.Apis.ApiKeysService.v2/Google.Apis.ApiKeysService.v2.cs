@@ -1233,6 +1233,13 @@ namespace Google.Apis.ApiKeysService.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
         public virtual V2Restrictions Restrictions { get; set; }
 
+        /// <summary>
+        /// Optional. The email address of [the service account](https://cloud.google.com/iam/docs/service-accounts) the
+        /// key is bound to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
         /// <summary>Output only. Unique id in UUID4 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
