@@ -22218,9 +22218,69 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Details of Adloox settings.</summary>
     public class Adloox : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Adult explicit sexual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adultExplicitSexualContent")]
+        public virtual string AdultExplicitSexualContent { get; set; }
+
+        /// <summary>Optional. Arms ammunition content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("armsAmmunitionContent")]
+        public virtual string ArmsAmmunitionContent { get; set; }
+
+        /// <summary>Optional. Crime harmful acts to individuals society human rights violations content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent")]
+        public virtual string CrimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent { get; set; }
+
+        /// <summary>Optional. Death injury military conflict content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deathInjuryMilitaryConflictContent")]
+        public virtual string DeathInjuryMilitaryConflictContent { get; set; }
+
+        /// <summary>Optional. Debated sensitive social issue content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debatedSensitiveSocialIssueContent")]
+        public virtual string DebatedSensitiveSocialIssueContent { get; set; }
+
+        /// <summary>Optional. Display IAB viewability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayIabViewability")]
+        public virtual string DisplayIabViewability { get; set; }
+
         /// <summary>Adloox's brand safety settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAdlooxCategories")]
         public virtual System.Collections.Generic.IList<string> ExcludedAdlooxCategories { get; set; }
+
+        /// <summary>Optional. Adloox's fraud IVT MFA settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedFraudIvtMfaCategories")]
+        public virtual System.Collections.Generic.IList<string> ExcludedFraudIvtMfaCategories { get; set; }
+
+        /// <summary>Optional. Hate speech acts of aggression content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hateSpeechActsAggressionContent")]
+        public virtual string HateSpeechActsAggressionContent { get; set; }
+
+        /// <summary>Optional. Illegal drugs tobacco ecigarettes vaping alcohol content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("illegalDrugsTobaccoEcigarettesVapingAlcoholContent")]
+        public virtual string IllegalDrugsTobaccoEcigarettesVapingAlcoholContent { get; set; }
+
+        /// <summary>Optional. Misinformation content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("misinformationContent")]
+        public virtual string MisinformationContent { get; set; }
+
+        /// <summary>Optional. Obscenity profanity content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obscenityProfanityContent")]
+        public virtual string ObscenityProfanityContent { get; set; }
+
+        /// <summary>Optional. Online piracy content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlinePiracyContent")]
+        public virtual string OnlinePiracyContent { get; set; }
+
+        /// <summary>Optional. Spam harmful content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spamHarmfulContent")]
+        public virtual string SpamHarmfulContent { get; set; }
+
+        /// <summary>Optional. Terrorism content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terrorismContent")]
+        public virtual string TerrorismContent { get; set; }
+
+        /// <summary>Optional. Video IAB viewability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoIabViewability")]
+        public virtual string VideoIabViewability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
