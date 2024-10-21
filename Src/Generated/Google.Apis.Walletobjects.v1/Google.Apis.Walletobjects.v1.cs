@@ -7682,6 +7682,15 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string MultipleDevicesAndHoldersAllowedStatus { get; set; }
 
         /// <summary>
+        /// Whether or not field updates to this class should trigger notifications. When set to NOTIFY, we will attempt
+        /// to trigger a field update notification to users. These notifications will only be sent to users if the field
+        /// is part of an allowlist. If not specified, no notification will be triggered. This setting is ephemeral and
+        /// needs to be set with each PATCH or UPDATE request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
+
+        /// <summary>
         /// Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by
         /// their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap`
         /// and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to
@@ -7941,6 +7950,16 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
+        /// <summary>
+        /// Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will
+        /// attempt to trigger a field update notification to users. These notifications will only be sent to users if
+        /// the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        /// notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE
+        /// request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
 
         /// <summary>Pass constraints for the object. Includes limiting NFC and screenshot behaviors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passConstraints")]
@@ -8408,6 +8427,15 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipleDevicesAndHoldersAllowedStatus")]
         public virtual string MultipleDevicesAndHoldersAllowedStatus { get; set; }
 
+        /// <summary>
+        /// Whether or not field updates to this class should trigger notifications. When set to NOTIFY, we will attempt
+        /// to trigger a field update notification to users. These notifications will only be sent to users if the field
+        /// is part of an allowlist. If not specified, no notification will be triggered. This setting is ephemeral and
+        /// needs to be set with each PATCH or UPDATE request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
+
         /// <summary>Required. Origin airport.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual AirportInfo Origin { get; set; }
@@ -8666,6 +8694,16 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
+        /// <summary>
+        /// Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will
+        /// attempt to trigger a field update notification to users. These notifications will only be sent to users if
+        /// the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        /// notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE
+        /// request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
 
         /// <summary>Pass constraints for the object. Includes limiting NFC and screenshot behaviors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passConstraints")]
@@ -9298,6 +9336,15 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipleDevicesAndHoldersAllowedStatus")]
         public virtual string MultipleDevicesAndHoldersAllowedStatus { get; set; }
 
+        /// <summary>
+        /// Whether or not field updates to this class should trigger notifications. When set to NOTIFY, we will attempt
+        /// to trigger a field update notification to users. These notifications will only be sent to users if the field
+        /// is part of an allowlist. If not specified, no notification will be triggered. This setting is ephemeral and
+        /// needs to be set with each PATCH or UPDATE request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
+
         /// <summary>The label to display for the PIN, such as "4-digit PIN".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinLabel")]
         public virtual string PinLabel { get; set; }
@@ -9534,6 +9581,16 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
+        /// <summary>
+        /// Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will
+        /// attempt to trigger a field update notification to users. These notifications will only be sent to users if
+        /// the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        /// notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE
+        /// request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
 
         /// <summary>Pass constraints for the object. Includes limiting NFC and screenshot behaviors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passConstraints")]
@@ -10158,6 +10215,15 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string MultipleDevicesAndHoldersAllowedStatus { get; set; }
 
         /// <summary>
+        /// Whether or not field updates to this class should trigger notifications. When set to NOTIFY, we will attempt
+        /// to trigger a field update notification to users. These notifications will only be sent to users if the field
+        /// is part of an allowlist. If not specified, no notification will be triggered. This setting is ephemeral and
+        /// needs to be set with each PATCH or UPDATE request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
+
+        /// <summary>
         /// Required. The logo of the loyalty program or company. This logo is displayed in both the details and list
         /// views of the app.
         /// </summary>
@@ -10422,6 +10488,16 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
+        /// <summary>
+        /// Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will
+        /// attempt to trigger a field update notification to users. These notifications will only be sent to users if
+        /// the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        /// notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE
+        /// request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
 
         /// <summary>Pass constraints for the object. Includes limiting NFC and screenshot behaviors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passConstraints")]
@@ -11104,6 +11180,15 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string MultipleDevicesAndHoldersAllowedStatus { get; set; }
 
         /// <summary>
+        /// Whether or not field updates to this class should trigger notifications. When set to NOTIFY, we will attempt
+        /// to trigger a field update notification to users. These notifications will only be sent to users if the field
+        /// is part of an allowlist. If not specified, no notification will be triggered. This setting is ephemeral and
+        /// needs to be set with each PATCH or UPDATE request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
+
+        /// <summary>
         /// Required. The offer provider (either the aggregator name or merchant name). Recommended maximum length is 12
         /// characters to ensure full string is displayed on smaller screens.
         /// </summary>
@@ -11340,6 +11425,16 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
+        /// <summary>
+        /// Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will
+        /// attempt to trigger a field update notification to users. These notifications will only be sent to users if
+        /// the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        /// notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE
+        /// request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
 
         /// <summary>Pass constraints for the object. Includes limiting NFC and screenshot behaviors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passConstraints")]
@@ -12370,6 +12465,16 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string MultipleDevicesAndHoldersAllowedStatus { get; set; }
 
         /// <summary>
+        /// Whether or not field updates to this class should trigger notifications. When set to NOTIFY, we will attempt
+        /// to trigger a field update notification to users. These notifications will only be sent to users if the field
+        /// is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will
+        /// be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise a
+        /// notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
+
+        /// <summary>
         /// Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by
         /// their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap`
         /// and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to
@@ -12616,6 +12721,16 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
+        /// <summary>
+        /// Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will
+        /// attempt to trigger a field update notification to users. These notifications will only be sent to users if
+        /// the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no
+        /// notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE
+        /// request, otherwise a notification will not be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyPreference")]
+        public virtual string NotifyPreference { get; set; }
 
         /// <summary>Pass constraints for the object. Includes limiting NFC and screenshot behaviors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passConstraints")]
