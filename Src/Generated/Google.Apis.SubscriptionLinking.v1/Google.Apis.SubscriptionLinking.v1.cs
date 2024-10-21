@@ -553,7 +553,6 @@ namespace Google.Apis.SubscriptionLinking.v1.Data
         /// <summary>
         /// Required. Expiration time of the entitlement. Entitlements that have expired over 30 days will be purged.
         /// The max expire_time is 398 days from now().
-        /// LINT.ThenChange(//depot/google3/java/com/google/subscribewithgoogle/accountlinking/subscriptionlink/service/config/protoconf.pi:max_expiry_age)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
