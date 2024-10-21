@@ -6979,8 +6979,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a log scope.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of the log scope.For
-                /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                /// Output only. The resource name of the log scope.Log scopes are only available in the global
+                /// location. For example:projects/my-project/locations/global/logScopes/my-log-scope
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogScope body, string name)
                 {
@@ -6999,8 +6999,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of the log scope.For
-                    /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                    /// Output only. The resource name of the log scope.Log scopes are only available in the global
+                    /// location. For example:projects/my-project/locations/global/logScopes/my-log-scope
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -13527,8 +13527,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a log scope.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of the log scope.For
-                /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                /// Output only. The resource name of the log scope.Log scopes are only available in the global
+                /// location. For example:projects/my-project/locations/global/logScopes/my-log-scope
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogScope body, string name)
                 {
@@ -13547,8 +13547,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of the log scope.For
-                    /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                    /// Output only. The resource name of the log scope.Log scopes are only available in the global
+                    /// location. For example:projects/my-project/locations/global/logScopes/my-log-scope
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -17998,8 +17998,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a log scope.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of the log scope.For
-                /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                /// Output only. The resource name of the log scope.Log scopes are only available in the global
+                /// location. For example:projects/my-project/locations/global/logScopes/my-log-scope
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogScope body, string name)
                 {
@@ -18018,8 +18018,8 @@ namespace Google.Apis.Logging.v2
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of the log scope.For
-                    /// example:projects/my-project/locations/global/logScopes/my-log-scope
+                    /// Output only. The resource name of the log scope.Log scopes are only available in the global
+                    /// location. For example:projects/my-project/locations/global/logScopes/my-log-scope
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -23393,7 +23393,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the log scope.For
+        /// Output only. The resource name of the log scope.Log scopes are only available in the global location. For
         /// example:projects/my-project/locations/global/logScopes/my-log-scope
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
