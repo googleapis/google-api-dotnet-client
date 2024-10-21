@@ -718,7 +718,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
 
             /// <summary>
-            /// Returns the email preferences for a Merchant Center account user. Use the
+            /// Returns the email preferences for a Merchant Center account user. This service only permits retrieving
+            /// and updating email preferences for the authenticated user. Use the
             /// name=accounts/*/users/me/emailPreferences alias to get preferences for the authenticated user.
             /// </summary>
             /// <param name="name">
@@ -731,7 +732,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
 
             /// <summary>
-            /// Returns the email preferences for a Merchant Center account user. Use the
+            /// Returns the email preferences for a Merchant Center account user. This service only permits retrieving
+            /// and updating email preferences for the authenticated user. Use the
             /// name=accounts/*/users/me/emailPreferences alias to get preferences for the authenticated user.
             /// </summary>
             public class GetEmailPreferencesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences>
@@ -2370,7 +2372,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 }
             }
 
-            /// <summary>Deletes a Merchant Center account user. Executing this method requires admin access.</summary>
+            /// <summary>
+            /// Deletes a Merchant Center account user. Executing this method requires admin access. The user to be
+            /// deleted can't be the last admin user of that account. Also a user is protected from deletion if it is
+            /// managed by Business Manager"
+            /// </summary>
             /// <param name="name">
             /// Required. The name of the user to delete. Format: `accounts/{account}/users/{email}` It is also possible
             /// to delete the user corresponding to the caller by using `me` rather than an email address as in
@@ -2381,7 +2387,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 return new DeleteRequest(this.service, name);
             }
 
-            /// <summary>Deletes a Merchant Center account user. Executing this method requires admin access.</summary>
+            /// <summary>
+            /// Deletes a Merchant Center account user. Executing this method requires admin access. The user to be
+            /// deleted can't be the last admin user of that account. Also a user is protected from deletion if it is
+            /// managed by Business Manager"
+            /// </summary>
             public class DeleteRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -3384,7 +3394,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountAggregation")]
         public virtual AccountAggregation AccountAggregation { get; set; }
 
-        /// <summary>Optional. The provider of the service. Format: `accounts/{account}`</summary>
+        /// <summary>Required. The provider of the service. Format: `accounts/{account}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
@@ -3608,6 +3618,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// <summary>Request message for the `ClaimHomepage` method.</summary>
     public class ClaimHomepageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. When set to `true`, this option removes any existing claim on the requested website and replaces
+        /// it with a claim from the account that makes the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overwrite")]
+        public virtual System.Nullable<bool> Overwrite { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
