@@ -3052,7 +3052,9 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Optional. Should be present if usage is set to FOR_MIGRATION.</summary>
+        /// <summary>
+        /// Optional. Must be present if usage is set to FOR_MIGRATION. This field is for internal use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migration")]
         public virtual Migration Migration { get; set; }
 
