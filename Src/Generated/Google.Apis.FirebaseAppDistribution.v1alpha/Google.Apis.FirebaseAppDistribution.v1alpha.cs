@@ -1196,6 +1196,33 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// Optional. The requested view on the returned ReleaseTests. Defaults to the basic view.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The requested view on the returned ReleaseTests. Defaults to the basic view.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. The default view depends on the RPC.</summary>
+                            [Google.Apis.Util.StringValueAttribute("RELEASE_TEST_VIEW_UNSPECIFIED")]
+                            RELEASETESTVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Include basic metadata about the release test and its status, but not the full result
+                            /// details. This is the default value for ListReleaseTests.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("RELEASE_TEST_VIEW_BASIC")]
+                            RELEASETESTVIEWBASIC = 1,
+
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("RELEASE_TEST_VIEW_FULL")]
+                            RELEASETESTVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -1228,6 +1255,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1825,6 +1860,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>An interaction with the device, such as a tap, text entry, wait, etc.</summary>
     public class GoogleFirebaseAppdistroV1alphaDeviceInteraction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Key code for a key event action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyCode")]
+        public virtual string KeyCode { get; set; }
+
         /// <summary>
         /// Output only. The screenshot used in the context of this action. The screen may have changed before the
         /// action was actually taken.

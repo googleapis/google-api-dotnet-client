@@ -12,5 +12,10 @@
   "Google.Apis.FirebaseAppDistribution.v1alpha.FirebaseAppDistributionBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.FirebaseAppDistribution.v1alpha.ProjectsResource+AppsResource+ReleasesResource+TestsResource+ListRequest.ViewEnum": [
+    "RELEASE_TEST_VIEW_UNSPECIFIED",
+    "RELEASE_TEST_VIEW_BASIC",
+    "RELEASE_TEST_VIEW_FULL"
   ]
 }
