@@ -2140,6 +2140,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. execution result summary per rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleResults")]
+        public virtual System.Collections.Generic.IList<RuleExecutionResult> RuleResults { get; set; }
+
         /// <summary>
         /// type represent whether the execution executed directly by user or scheduled according evaluation.schedule
         /// field.
@@ -2872,6 +2876,33 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>the docuement url for the rule</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for execution result summary per rule</summary>
+    public class RuleExecutionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Execution message, if any</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Number of violations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultCount")]
+        public virtual System.Nullable<long> ResultCount { get; set; }
+
+        /// <summary>rule name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rule")]
+        public virtual string Rule { get; set; }
+
+        /// <summary>Number of total scanned resources</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scannedResourceCount")]
+        public virtual System.Nullable<long> ScannedResourceCount { get; set; }
+
+        /// <summary>Output only. The execution status</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
