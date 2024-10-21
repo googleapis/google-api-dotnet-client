@@ -295,7 +295,9 @@ namespace Google.Apis.Merchant.products_v1beta
             /// </summary>
             /// <param name="name">
             /// Required. The name of the product input resource to delete. Format:
-            /// accounts/{account}/productInputs/{product}
+            /// accounts/{account}/productInputs/{product} where the last section `product` consists of 4 parts:
+            /// channel~content_language~feed_label~offer_id example for product name is
+            /// "accounts/123/productInputs/online~en~US~sku123"
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -317,7 +319,9 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Required. The name of the product input resource to delete. Format:
-                /// accounts/{account}/productInputs/{product}
+                /// accounts/{account}/productInputs/{product} where the last section `product` consists of 4 parts:
+                /// channel~content_language~feed_label~offer_id example for product name is
+                /// "accounts/123/productInputs/online~en~US~sku123"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -465,7 +469,9 @@ namespace Google.Apis.Merchant.products_v1beta
             /// deleting a product input, it may take several minutes before the updated final product can be retrieved.
             /// </summary>
             /// <param name="name">
-            /// Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}`
+            /// Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}` where the
+            /// last section `product` consists of 4 parts: channel~content_language~feed_label~offer_id example for
+            /// product name is "accounts/123/products/online~en~US~sku123"
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -486,7 +492,9 @@ namespace Google.Apis.Merchant.products_v1beta
                 }
 
                 /// <summary>
-                /// Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}`
+                /// Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}` where
+                /// the last section `product` consists of 4 parts: channel~content_language~feed_label~offer_id example
+                /// for product name is "accounts/123/products/online~en~US~sku123"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
