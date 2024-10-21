@@ -2330,6 +2330,13 @@ namespace Google.Apis.Backupdr.v1
                     public virtual System.Nullable<bool> Force { get; set; }
 
                     /// <summary>
+                    /// Optional. If set to true, backupvault deletion will proceed even if there are backup plans
+                    /// referencing the backupvault. The default is 'false'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreBackupPlanReferences", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreBackupPlanReferences { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
@@ -2388,6 +2395,14 @@ namespace Google.Apis.Backupdr.v1
                         RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
                         {
                             Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("ignoreBackupPlanReferences", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ignoreBackupPlanReferences",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
