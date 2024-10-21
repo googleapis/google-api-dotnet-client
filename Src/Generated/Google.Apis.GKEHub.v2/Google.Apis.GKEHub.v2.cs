@@ -1456,6 +1456,10 @@ namespace Google.Apis.GKEHub.v2.Data
     /// <summary>State information for ConfigSync.</summary>
     public class ConfigManagementConfigSyncState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether syncing resources to the cluster is stopped at the cluster level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterLevelStopSyncingState")]
+        public virtual string ClusterLevelStopSyncingState { get; set; }
+
         /// <summary>
         /// Information about the deployment of ConfigSync, including the version. of the various Pods deployed
         /// </summary>
