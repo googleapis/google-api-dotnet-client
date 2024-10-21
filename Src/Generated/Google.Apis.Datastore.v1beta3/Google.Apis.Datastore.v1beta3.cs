@@ -1998,6 +1998,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual System.Nullable<long> BaseVersion { get; set; }
 
         /// <summary>
+        /// The strategy to use when a conflict is detected. Defaults to `SERVER_VALUE`. If this is set, then
+        /// `conflict_detection_strategy` must also be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictResolutionStrategy")]
+        public virtual string ConflictResolutionStrategy { get; set; }
+
+        /// <summary>
         /// The key of the entity to delete. The entity may or may not already exist. Must have a complete key path and
         /// must not be reserved/read-only.
         /// </summary>
@@ -2019,6 +2026,14 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyMask")]
         public virtual PropertyMask PropertyMask { get; set; }
+
+        /// <summary>
+        /// Optional. The transforms to perform on the entity. This field can be set only when the operation is
+        /// `insert`, `update`, or `upsert`. If present, the transforms are be applied to the entity regardless of the
+        /// property mask, in order, after the operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyTransforms")]
+        public virtual System.Collections.Generic.IList<PropertyTransform> PropertyTransforms { get; set; }
 
         /// <summary>The entity to update. The entity must already exist. Must have a complete key path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
@@ -2125,6 +2140,10 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// <summary>The automatically allocated key. Set only when the mutation allocated a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual Key Key { get; set; }
+
+        /// <summary>The results of applying each PropertyTransform, in the same order of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformResults")]
+        public virtual System.Collections.Generic.IList<Value> TransformResults { get; set; }
 
         private string _updateTimeRaw;
 
@@ -2323,6 +2342,82 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A transformation of an entity property.</summary>
+    public class PropertyTransform : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Appends the given elements in order if they are not already present in the current property value. If the
+        /// property is not an array, or if the property does not yet exist, it is first set to the empty array.
+        /// Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when checking if a value is
+        /// missing. NaN is equal to NaN, and the null value is equal to the null value. If the input contains multiple
+        /// equivalent values, only the first will be considered. The corresponding transform result will be the null
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appendMissingElements")]
+        public virtual ArrayValue AppendMissingElements { get; set; }
+
+        /// <summary>
+        /// Adds the given value to the property's current value. This must be an integer or a double value. If the
+        /// property is not an integer or double, or if the property does not yet exist, the transformation will set the
+        /// property to the given value. If either of the given value or the current property value are doubles, both
+        /// values will be interpreted as doubles. Double arithmetic and representation of double values follows IEEE
+        /// 754 semantics. If there is positive/negative integer overflow, the property is resolved to the largest
+        /// magnitude positive/negative integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("increment")]
+        public virtual Value Increment { get; set; }
+
+        /// <summary>
+        /// Sets the property to the maximum of its current value and the given value. This must be an integer or a
+        /// double value. If the property is not an integer or double, or if the property does not yet exist, the
+        /// transformation will set the property to the given value. If a maximum operation is applied where the
+        /// property and the input value are of mixed types (that is - one is an integer and one is a double) the
+        /// property takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the
+        /// property does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input
+        /// value is always the stored value. The maximum of any numeric value x and NaN is NaN.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual Value Maximum { get; set; }
+
+        /// <summary>
+        /// Sets the property to the minimum of its current value and the given value. This must be an integer or a
+        /// double value. If the property is not an integer or double, or if the property does not yet exist, the
+        /// transformation will set the property to the input value. If a minimum operation is applied where the
+        /// property and the input value are of mixed types (that is - one is an integer and one is a double) the
+        /// property takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the
+        /// property does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input
+        /// value is always the stored value. The minimum of any numeric value x and NaN is NaN.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual Value Minimum { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the property. Property paths (a list of property names separated by dots (`.`)) may be
+        /// used to refer to properties inside entity values. For example `foo.bar` means the property `bar` inside the
+        /// entity property `foo`. If a property name contains a dot `.` or a backlslash `\`, then that name must be
+        /// escaped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>
+        /// Removes all of the given elements from the array in the property. If the property is not an array, or if the
+        /// property does not yet exist, it is set to the empty array. Equivalent numbers of different types (e.g. 3L
+        /// and 3.0) are considered equal when deciding whether an element should be removed. NaN is equal to NaN, and
+        /// the null value is equal to the null value. This will remove all equivalent values if there are duplicates.
+        /// The corresponding transform result will be the null value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeAllFromArray")]
+        public virtual ArrayValue RemoveAllFromArray { get; set; }
+
+        /// <summary>Sets the property to the given server value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setToServerValue")]
+        public virtual string SetToServerValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
