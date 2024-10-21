@@ -292,13 +292,2177 @@ namespace Google.Apis.Contactcenterinsights.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AnalysisRules = new AnalysisRulesResource(service);
+                AuthorizedViewSet = new AuthorizedViewSetResource(service);
+                AuthorizedViewSets = new AuthorizedViewSetsResource(service);
                 Conversations = new ConversationsResource(service);
                 EncryptionSpec = new EncryptionSpecResource(service);
                 Insightsdata = new InsightsdataResource(service);
                 IssueModels = new IssueModelsResource(service);
                 Operations = new OperationsResource(service);
                 PhraseMatchers = new PhraseMatchersResource(service);
+                QaScorecards = new QaScorecardsResource(service);
                 Views = new ViewsResource(service);
+            }
+
+            /// <summary>Gets the AnalysisRules resource.</summary>
+            public virtual AnalysisRulesResource AnalysisRules { get; }
+
+            /// <summary>The "analysisRules" collection of methods.</summary>
+            public class AnalysisRulesResource
+            {
+                private const string Resource = "analysisRules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AnalysisRulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a analysis rule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the analysis rule. Required. The location to create a analysis rule
+                /// for. Format: `projects//locations/` or `projects//locations/`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a analysis rule.</summary>
+                public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the analysis rule. Required. The location to create a analysis
+                    /// rule for. Format: `projects//locations/` or `projects//locations/`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/analysisRules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a analysis rule.</summary>
+                /// <param name="name">Required. The name of the analysis rule to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a analysis rule.</summary>
+                public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the analysis rule to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/analysisRules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get a analysis rule.</summary>
+                /// <param name="name">Required. The name of the AnalysisRule to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a analysis rule.</summary>
+                public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the AnalysisRule to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/analysisRules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists analysis rules.</summary>
+                /// <param name="parent">Required. The parent resource of the analysis rules.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists analysis rules.</summary>
+                public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the analysis rules.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of analysis rule to return in the response. If this value is zero,
+                    /// the service will select a default size. A call may return fewer objects than requested. A
+                    /// non-empty `next_page_token` in the response indicates that more data is available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The value returned by the last `ListAnalysisRulesResponse`; indicates that this is a
+                    /// continuation of a prior `ListAnalysisRules` call and the system should return the next page of
+                    /// data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/analysisRules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a analysis rule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the analysis rule. Format:
+                /// projects/{project}/locations/{location}/analysisRules/{analysis_rule}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a analysis rule.</summary>
+                public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the analysis rule. Format:
+                    /// projects/{project}/locations/{location}/analysisRules/{analysis_rule}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The list of fields to be updated. If the update_mask is not provided, the update will
+                    /// be applied to all fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1AnalysisRule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/analysisRules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the AuthorizedViewSet resource.</summary>
+            public virtual AuthorizedViewSetResource AuthorizedViewSet { get; }
+
+            /// <summary>The "authorizedViewSet" collection of methods.</summary>
+            public class AuthorizedViewSetResource
+            {
+                private const string Resource = "authorizedViewSet";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuthorizedViewSetResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    AuthorizedView = new AuthorizedViewResource(service);
+                    AuthorizedViews = new AuthorizedViewsResource(service);
+                }
+
+                /// <summary>Gets the AuthorizedView resource.</summary>
+                public virtual AuthorizedViewResource AuthorizedView { get; }
+
+                /// <summary>The "authorizedView" collection of methods.</summary>
+                public class AuthorizedViewResource
+                {
+                    private const string Resource = "authorizedView";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AuthorizedViewResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets conversation statistics.</summary>
+                    /// <param name="location">Required. The location of the conversations.</param>
+                    public virtual CalculateStatsRequest CalculateStats(string location)
+                    {
+                        return new CalculateStatsRequest(this.service, location);
+                    }
+
+                    /// <summary>Gets conversation statistics.</summary>
+                    public class CalculateStatsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
+                    {
+                        /// <summary>Constructs a new CalculateStats request.</summary>
+                        public CalculateStatsRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+                        {
+                            Location = location;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The location of the conversations.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Location { get; private set; }
+
+                        /// <summary>
+                        /// A filter to reduce results to a specific subset. This field is useful for getting statistics
+                        /// about conversations with specific properties.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "calculateStats";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+location}:calculateStats";
+
+                        /// <summary>Initializes CalculateStats parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedView/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Query metrics.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="location">
+                    /// Required. The location of the data. "projects/{project}/locations/{location}"
+                    /// </param>
+                    public virtual QueryMetricsRequest QueryMetrics(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest body, string location)
+                    {
+                        return new QueryMetricsRequest(this.service, body, location);
+                    }
+
+                    /// <summary>Query metrics.</summary>
+                    public class QueryMetricsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new QueryMetrics request.</summary>
+                        public QueryMetricsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest body, string location) : base(service)
+                        {
+                            Location = location;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The location of the data. "projects/{project}/locations/{location}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Location { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "queryMetrics";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+location}:queryMetrics";
+
+                        /// <summary>Initializes QueryMetrics parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedView/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the AuthorizedViews resource.</summary>
+                public virtual AuthorizedViewsResource AuthorizedViews { get; }
+
+                /// <summary>The "authorizedViews" collection of methods.</summary>
+                public class AuthorizedViewsResource
+                {
+                    private const string Resource = "authorizedViews";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AuthorizedViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Conversations = new ConversationsResource(service);
+                    }
+
+                    /// <summary>Gets the Conversations resource.</summary>
+                    public virtual ConversationsResource Conversations { get; }
+
+                    /// <summary>The "conversations" collection of methods.</summary>
+                    public class ConversationsResource
+                    {
+                        private const string Resource = "conversations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ConversationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            FeedbackLabels = new FeedbackLabelsResource(service);
+                        }
+
+                        /// <summary>Gets the FeedbackLabels resource.</summary>
+                        public virtual FeedbackLabelsResource FeedbackLabels { get; }
+
+                        /// <summary>The "feedbackLabels" collection of methods.</summary>
+                        public class FeedbackLabelsResource
+                        {
+                            private const string Resource = "feedbackLabels";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public FeedbackLabelsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Create feedback label.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">Required. The parent resource of the feedback label.</param>
+                            public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel body, string parent)
+                            {
+                                return new CreateRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>Create feedback label.</summary>
+                            public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The parent resource of the feedback label.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. The ID of the feedback label to create. If one is not specified it will be
+                                /// generated by the server.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("feedbackLabelId", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string FeedbackLabelId { get; set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "create";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/feedbackLabels";
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
+                                    });
+                                    RequestParameters.Add("feedbackLabelId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "feedbackLabelId",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Delete feedback label.</summary>
+                            /// <param name="name">Required. The name of the feedback label to delete.</param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(this.service, name);
+                            }
+
+                            /// <summary>Delete feedback label.</summary>
+                            public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The name of the feedback label to delete.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "delete";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedViews/[^/]+/conversations/[^/]+/feedbackLabels/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Get feedback label.</summary>
+                            /// <param name="name">Required. The name of the feedback label to get.</param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Get feedback label.</summary>
+                            public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The name of the feedback label to get.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedViews/[^/]+/conversations/[^/]+/feedbackLabels/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>List feedback labels.</summary>
+                            /// <param name="parent">Required. The parent resource of the feedback labels.</param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>List feedback labels.</summary>
+                            public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The parent resource of the feedback labels.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. A filter to reduce results to a specific subset. Supports disjunctions
+                                /// (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all
+                                /// feedback labels in a project see ListAllFeedbackLabels. Supported fields: *
+                                /// `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` *
+                                /// `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`:
+                                /// QUALITY_AI, TOPIC_MODELING
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Filter { get; set; }
+
+                                /// <summary>
+                                /// Optional. The maximum number of feedback labels to return in the response. A valid
+                                /// page size ranges from 0 to 100,000 inclusive. If the page size is zero or
+                                /// unspecified, a default page size of 100 will be chosen. Note that a call might
+                                /// return fewer results than the requested page size.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>
+                                /// Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value
+                                /// indicates that this is a continuation of a prior `ListFeedbackLabels` call and that
+                                /// the system should return the next page of data.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/feedbackLabels";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
+                                    });
+                                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filter",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Update feedback label.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">
+                            /// Immutable. Resource name of the FeedbackLabel. Format:
+                            /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+                            /// </param>
+                            public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel body, string name)
+                            {
+                                return new PatchRequest(this.service, body, name);
+                            }
+
+                            /// <summary>Update feedback label.</summary>
+                            public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel>
+                            {
+                                /// <summary>Constructs a new Patch request.</summary>
+                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Immutable. Resource name of the FeedbackLabel. Format:
+                                /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Required. The list of fields to be updated.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual object UpdateMask { get; set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "patch";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "PATCH";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Patch parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedViews/[^/]+/conversations/[^/]+/feedbackLabels/[^/]+$",
+                                    });
+                                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            /// <summary>Gets the AuthorizedViewSets resource.</summary>
+            public virtual AuthorizedViewSetsResource AuthorizedViewSets { get; }
+
+            /// <summary>The "authorizedViewSets" collection of methods.</summary>
+            public class AuthorizedViewSetsResource
+            {
+                private const string Resource = "authorizedViewSets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuthorizedViewSetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    AuthorizedViews = new AuthorizedViewsResource(service);
+                }
+
+                /// <summary>Gets the AuthorizedViews resource.</summary>
+                public virtual AuthorizedViewsResource AuthorizedViews { get; }
+
+                /// <summary>The "authorizedViews" collection of methods.</summary>
+                public class AuthorizedViewsResource
+                {
+                    private const string Resource = "authorizedViews";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AuthorizedViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Conversations = new ConversationsResource(service);
+                        Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the Conversations resource.</summary>
+                    public virtual ConversationsResource Conversations { get; }
+
+                    /// <summary>The "conversations" collection of methods.</summary>
+                    public class ConversationsResource
+                    {
+                        private const string Resource = "conversations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ConversationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Analyses = new AnalysesResource(service);
+                        }
+
+                        /// <summary>Gets the Analyses resource.</summary>
+                        public virtual AnalysesResource Analyses { get; }
+
+                        /// <summary>The "analyses" collection of methods.</summary>
+                        public class AnalysesResource
+                        {
+                            private const string Resource = "analyses";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public AnalysesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// Creates an analysis. The long running operation is done when the analysis has completed.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">Required. The parent resource of the analysis.</param>
+                            public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis body, string parent)
+                            {
+                                return new CreateRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>
+                            /// Creates an analysis. The long running operation is done when the analysis has completed.
+                            /// </summary>
+                            public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The parent resource of the analysis.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "create";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/analyses";
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Deletes an analysis.</summary>
+                            /// <param name="name">Required. The name of the analysis to delete.</param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(this.service, name);
+                            }
+
+                            /// <summary>Deletes an analysis.</summary>
+                            public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The name of the analysis to delete.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "delete";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+/analyses/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Gets an analysis.</summary>
+                            /// <param name="name">Required. The name of the analysis to get.</param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Gets an analysis.</summary>
+                            public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Analysis>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The name of the analysis to get.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+/analyses/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Lists analyses.</summary>
+                            /// <param name="parent">Required. The parent resource of the analyses.</param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>Lists analyses.</summary>
+                            public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListAnalysesResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The parent resource of the analyses.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// A filter to reduce results to a specific subset. Useful for querying conversations
+                                /// with specific properties.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Filter { get; set; }
+
+                                /// <summary>
+                                /// The maximum number of analyses to return in the response. If this value is zero, the
+                                /// service will select a default size. A call might return fewer objects than
+                                /// requested. A non-empty `next_page_token` in the response indicates that more data is
+                                /// available.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>
+                                /// The value returned by the last `ListAnalysesResponse`; indicates that this is a
+                                /// continuation of a prior `ListAnalyses` call and the system should return the next
+                                /// page of data.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/analyses";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
+                                    });
+                                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filter",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>
+                        /// Creates a conversation. Note that this method does not support audio transcription or
+                        /// redaction. Use `conversations.upload` instead.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The parent resource of the conversation.</param>
+                        public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a conversation. Note that this method does not support audio transcription or
+                        /// redaction. Use `conversations.upload` instead.
+                        /// </summary>
+                        public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource of the conversation.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// A unique ID for the new conversation. This ID will become the final component of the
+                            /// conversation's resource name. If no ID is specified, a server-generated ID will be used.
+                            /// This value should be 4-64 characters and must match the regular expression
+                            /// `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("conversationId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ConversationId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/conversations";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                                });
+                                RequestParameters.Add("conversationId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "conversationId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes a conversation.</summary>
+                        /// <param name="name">Required. The name of the conversation to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Deletes a conversation.</summary>
+                        public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the conversation to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// If set to true, all of this conversation's analyses will also be deleted. Otherwise, the
+                            /// request will only succeed if the conversation has no analyses.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Force { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
+                                });
+                                RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "force",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets a conversation.</summary>
+                        /// <param name="name">Required. The name of the conversation to get.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets a conversation.</summary>
+                        public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the conversation to get.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The level of details of the conversation. Default is `FULL`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>The level of details of the conversation. Default is `FULL`.</summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>
+                                /// The conversation view is not specified. * Defaults to `FULL` in
+                                /// `GetConversationRequest`. * Defaults to `BASIC` in `ListConversationsRequest`.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_UNSPECIFIED")]
+                                CONVERSATIONVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Populates all fields in the conversation.</summary>
+                                [Google.Apis.Util.StringValueAttribute("FULL")]
+                                FULL = 1,
+
+                                /// <summary>Populates all fields in the conversation except the transcript.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                                BASIC = 2,
+                            }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists conversations.</summary>
+                        /// <param name="parent">Required. The parent resource of the conversation.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists conversations.</summary>
+                        public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListConversationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource of the conversation.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// A filter to reduce results to a specific subset. Useful for querying conversations with
+                            /// specific properties.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// Optional. The attribute by which to order conversations in the response. If empty,
+                            /// conversations will be ordered by descending creation time. Supported values are one of
+                            /// the following: * create_time * customer_satisfaction_rating * duration * latest_analysis
+                            /// * start_time * turn_count The default sort order is ascending. To specify order, append
+                            /// `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs
+                            /// Ordering](https://google.aip.dev/132#ordering).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// The maximum number of conversations to return in the response. A valid page size ranges
+                            /// from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page
+                            /// size of 100 will be chosen. Note that a call might return fewer results than the
+                            /// requested page size.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// The value returned by the last `ListConversationsResponse`. This value indicates that
+                            /// this is a continuation of a prior `ListConversations` call and that the system should
+                            /// return the next page of data.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>The level of details of the conversation. Default is `BASIC`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>The level of details of the conversation. Default is `BASIC`.</summary>
+                            public enum ViewEnum
+                            {
+                                /// <summary>
+                                /// The conversation view is not specified. * Defaults to `FULL` in
+                                /// `GetConversationRequest`. * Defaults to `BASIC` in `ListConversationsRequest`.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_UNSPECIFIED")]
+                                CONVERSATIONVIEWUNSPECIFIED = 0,
+
+                                /// <summary>Populates all fields in the conversation.</summary>
+                                [Google.Apis.Util.StringValueAttribute("FULL")]
+                                FULL = 1,
+
+                                /// <summary>Populates all fields in the conversation except the transcript.</summary>
+                                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                                BASIC = 2,
+                            }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/conversations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates a conversation.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. The resource name of the conversation. Format:
+                        /// projects/{project}/locations/{location}/conversations/{conversation}
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates a conversation.</summary>
+                        public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. The resource name of the conversation. Format:
+                            /// projects/{project}/locations/{location}/conversations/{conversation}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// The list of fields to be updated. All possible fields can be updated by passing `*`, or
+                            /// a subset of the following updateable fields can be provided: * `agent_id` *
+                            /// `language_code` * `labels` * `metadata` * `quality_metadata` * `call_metadata` *
+                            /// `start_time` * `expire_time` or `ttl` * `data_source.gcs_source.audio_uri` or
+                            /// `data_source.dialogflow_source.audio_uri`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/conversations/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Create a long-running conversation upload operation. This method differs from
+                        /// `CreateConversation` by allowing audio transcription and optional DLP redaction.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The parent resource of the conversation.</param>
+                        public virtual UploadRequest Upload(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation body, string parent)
+                        {
+                            return new UploadRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Create a long-running conversation upload operation. This method differs from
+                        /// `CreateConversation` by allowing audio transcription and optional DLP redaction.
+                        /// </summary>
+                        public class UploadRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Upload request.</summary>
+                            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource of the conversation.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. A unique ID for the new conversation. This ID will become the final component
+                            /// of the conversation's resource name. If no ID is specified, a server-generated ID will
+                            /// be used. This value should be 4-64 characters and must match the regular expression
+                            /// `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("conversationId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ConversationId { get; set; }
+
+                            /// <summary>
+                            /// The fully-qualified DLP deidentify template resource name. Format:
+                            /// `projects/{project}/deidentifyTemplates/{template}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("redactionConfig.deidentifyTemplate", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RedactionConfigDeidentifyTemplate { get; set; }
+
+                            /// <summary>
+                            /// The fully-qualified DLP inspect template resource name. Format:
+                            /// `projects/{project}/locations/{location}/inspectTemplates/{template}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("redactionConfig.inspectTemplate", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RedactionConfigInspectTemplate { get; set; }
+
+                            /// <summary>
+                            /// The fully-qualified Speech Recognizer resource name. Format:
+                            /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("speechConfig.speechRecognizer", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string SpeechConfigSpeechRecognizer { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "upload";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/conversations:upload";
+
+                            /// <summary>Initializes Upload parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                                });
+                                RequestParameters.Add("conversationId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "conversationId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("redactionConfig.deidentifyTemplate", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "redactionConfig.deidentifyTemplate",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("redactionConfig.inspectTemplate", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "redactionConfig.inspectTemplate",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("speechConfig.speechRecognizer", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "speechConfig.speechRecognizer",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource to be cancelled.</param>
+                        public virtual CancelRequest Cancel(string name)
+                        {
+                            return new CancelRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        public class CancelRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Cancel request.</summary>
+                            public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be cancelled.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "cancel";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:cancel";
+
+                            /// <summary>Initializes Cancel parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation's parent resource.</param>
+                        public virtual ListRequest List(string name)
+                        {
+                            return new ListRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningListOperationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation's parent resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The standard list filter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The standard list page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The standard list page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}/operations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    public class GetIamPolicyRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    public class SetIamPolicyRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Gets the Conversations resource.</summary>
@@ -317,6 +2481,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 {
                     this.service = service;
                     Analyses = new AnalysesResource(service);
+                    FeedbackLabels = new FeedbackLabelsResource(service);
                 }
 
                 /// <summary>Gets the Analyses resource.</summary>
@@ -566,6 +2731,349 @@ namespace Google.Apis.Contactcenterinsights.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the FeedbackLabels resource.</summary>
+                public virtual FeedbackLabelsResource FeedbackLabels { get; }
+
+                /// <summary>The "feedbackLabels" collection of methods.</summary>
+                public class FeedbackLabelsResource
+                {
+                    private const string Resource = "feedbackLabels";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public FeedbackLabelsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Create feedback label.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The parent resource of the feedback label.</param>
+                    public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Create feedback label.</summary>
+                    public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource of the feedback label.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The ID of the feedback label to create. If one is not specified it will be
+                        /// generated by the server.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("feedbackLabelId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string FeedbackLabelId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/feedbackLabels";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
+                            });
+                            RequestParameters.Add("feedbackLabelId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "feedbackLabelId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Delete feedback label.</summary>
+                    /// <param name="name">Required. The name of the feedback label to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Delete feedback label.</summary>
+                    public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the feedback label to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+/feedbackLabels/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Get feedback label.</summary>
+                    /// <param name="name">Required. The name of the feedback label to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get feedback label.</summary>
+                    public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the feedback label to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+/feedbackLabels/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List feedback labels.</summary>
+                    /// <param name="parent">Required. The parent resource of the feedback labels.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>List feedback labels.</summary>
+                    public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource of the feedback labels.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and
+                        /// conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels
+                        /// in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` *
+                        /// `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` *
+                        /// `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of feedback labels to return in the response. A valid page size
+                        /// ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page
+                        /// size of 100 will be chosen. Note that a call might return fewer results than the requested
+                        /// page size.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates
+                        /// that this is a continuation of a prior `ListFeedbackLabels` call and that the system should
+                        /// return the next page of data.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/feedbackLabels";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Update feedback label.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. Resource name of the FeedbackLabel. Format:
+                    /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Update feedback label.</summary>
+                    public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. Resource name of the FeedbackLabel. Format:
+                        /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The list of fields to be updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1FeedbackLabel Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+/feedbackLabels/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2762,6 +5270,1135 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
+            /// <summary>Gets the QaScorecards resource.</summary>
+            public virtual QaScorecardsResource QaScorecards { get; }
+
+            /// <summary>The "qaScorecards" collection of methods.</summary>
+            public class QaScorecardsResource
+            {
+                private const string Resource = "qaScorecards";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public QaScorecardsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Revisions = new RevisionsResource(service);
+                }
+
+                /// <summary>Gets the Revisions resource.</summary>
+                public virtual RevisionsResource Revisions { get; }
+
+                /// <summary>The "revisions" collection of methods.</summary>
+                public class RevisionsResource
+                {
+                    private const string Resource = "revisions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RevisionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        QaQuestions = new QaQuestionsResource(service);
+                    }
+
+                    /// <summary>Gets the QaQuestions resource.</summary>
+                    public virtual QaQuestionsResource QaQuestions { get; }
+
+                    /// <summary>The "qaQuestions" collection of methods.</summary>
+                    public class QaQuestionsResource
+                    {
+                        private const string Resource = "qaQuestions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public QaQuestionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Create a QaQuestion.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The parent resource of the QaQuestion.</param>
+                        public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Create a QaQuestion.</summary>
+                        public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource of the QaQuestion.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. A unique ID for the new question. This ID will become the final component of
+                            /// the question's resource name. If no ID is specified, a server-generated ID will be used.
+                            /// This value should be 4-64 characters and must match the regular expression
+                            /// `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("qaQuestionId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string QaQuestionId { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/qaQuestions";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+$",
+                                });
+                                RequestParameters.Add("qaQuestionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "qaQuestionId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes a QaQuestion.</summary>
+                        /// <param name="name">Required. The name of the QaQuestion to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Deletes a QaQuestion.</summary>
+                        public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the QaQuestion to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+/qaQuestions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets a QaQuestion.</summary>
+                        /// <param name="name">Required. The name of the QaQuestion to get.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets a QaQuestion.</summary>
+                        public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the QaQuestion to get.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+/qaQuestions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists QaQuestions.</summary>
+                        /// <param name="parent">Required. The parent resource of the questions.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists QaQuestions.</summary>
+                        public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource of the questions.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of questions to return in the response. If the value is
+                            /// zero, the service will select a default size. A call might return fewer objects than
+                            /// requested. A non-empty `next_page_token` in the response indicates that more data is
+                            /// available.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. The value returned by the last `ListQaQuestionsResponse`. This value indicates
+                            /// that this is a continuation of a prior `ListQaQuestions` call and that the system should
+                            /// return the next page of data.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/qaQuestions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates a QaQuestion.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Identifier. The resource name of the question. Format:
+                        /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question}
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates a QaQuestion.</summary>
+                        public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Identifier. The resource name of the question. Format:
+                            /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Required. The list of fields to be updated. All possible fields can be updated by
+                            /// passing `*`, or a subset of the following updateable fields can be provided: *
+                            /// `abbreviation` * `answer_choices` * `answer_instructions` * `order` * `question_body` *
+                            /// `tags`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaQuestion Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+/qaQuestions/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Creates a QaScorecardRevision.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The parent resource of the QaScorecardRevision.</param>
+                    public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecardRevision body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a QaScorecardRevision.</summary>
+                    public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecardRevision>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecardRevision body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource of the QaScorecardRevision.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A unique ID for the new QaScorecardRevision. This ID will become the final
+                        /// component of the QaScorecardRevision's resource name. If no ID is specified, a
+                        /// server-generated ID will be used. This value should be 4-64 characters and must match the
+                        /// regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("qaScorecardRevisionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string QaScorecardRevisionId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecardRevision Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/revisions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+$",
+                            });
+                            RequestParameters.Add("qaScorecardRevisionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "qaScorecardRevisionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a QaScorecardRevision.</summary>
+                    /// <param name="name">Required. The name of the QaScorecardRevision to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a QaScorecardRevision.</summary>
+                    public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the QaScorecardRevision to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If set to true, all of this QaScorecardRevision's child resources will also be
+                        /// deleted. Otherwise, the request will only succeed if it has none.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deploy a QaScorecardRevision.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the QaScorecardRevision to deploy.</param>
+                    public virtual DeployRequest Deploy(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest body, string name)
+                    {
+                        return new DeployRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Deploy a QaScorecardRevision.</summary>
+                    public class DeployRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecardRevision>
+                    {
+                        /// <summary>Constructs a new Deploy request.</summary>
+                        public DeployRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the QaScorecardRevision to deploy.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deploy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:deploy";
+
+                        /// <summary>Initializes Deploy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a QaScorecardRevision.</summary>
+                    /// <param name="name">Required. The name of the QaScorecardRevision to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a QaScorecardRevision.</summary>
+                    public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecardRevision>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the QaScorecardRevision to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all revisions under the parent QaScorecard.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent resource of the scorecard revisions. To list all revisions of all
+                    /// scorecards, substitute the QaScorecard ID with a '-' character.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all revisions under the parent QaScorecard.</summary>
+                    public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource of the scorecard revisions. To list all revisions of all
+                        /// scorecards, substitute the QaScorecard ID with a '-' character.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A filter to reduce results to a specific subset. Useful for querying scorecard
+                        /// revisions with specific properties.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of scorecard revisions to return in the response. If the value
+                        /// is zero, the service will select a default size. A call might return fewer objects than
+                        /// requested. A non-empty `next_page_token` in the response indicates that more data is
+                        /// available.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The value returned by the last `ListQaScorecardRevisionsResponse`. This value
+                        /// indicates that this is a continuation of a prior `ListQaScorecardRevisions` call and that
+                        /// the system should return the next page of data.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/revisions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Fine tune one or more QaModels.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The parent resource for new fine tuning job instance.</param>
+                    public virtual TuneQaScorecardRevisionRequest TuneQaScorecardRevision(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest body, string parent)
+                    {
+                        return new TuneQaScorecardRevisionRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Fine tune one or more QaModels.</summary>
+                    public class TuneQaScorecardRevisionRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new TuneQaScorecardRevision request.</summary>
+                        public TuneQaScorecardRevisionRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource for new fine tuning job instance.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "tuneQaScorecardRevision";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}:tuneQaScorecardRevision";
+
+                        /// <summary>Initializes TuneQaScorecardRevision parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Undeploy a QaScorecardRevision.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the QaScorecardRevision to undeploy.</param>
+                    public virtual UndeployRequest Undeploy(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest body, string name)
+                    {
+                        return new UndeployRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Undeploy a QaScorecardRevision.</summary>
+                    public class UndeployRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecardRevision>
+                    {
+                        /// <summary>Constructs a new Undeploy request.</summary>
+                        public UndeployRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the QaScorecardRevision to undeploy.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "undeploy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:undeploy";
+
+                        /// <summary>Initializes Undeploy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Create a QaScorecard.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource of the QaScorecard.</param>
+                public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a QaScorecard.</summary>
+                public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the QaScorecard.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A unique ID for the new QaScorecard. This ID will become the final component of the
+                    /// QaScorecard's resource name. If no ID is specified, a server-generated ID will be used. This
+                    /// value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid
+                    /// characters are `a-z-`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("qaScorecardId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string QaScorecardId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/qaScorecards";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("qaScorecardId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "qaScorecardId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a QaScorecard.</summary>
+                /// <param name="name">Required. The name of the QaScorecard to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a QaScorecard.</summary>
+                public class DeleteRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the QaScorecard to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, all of this QaScorecard's child resources will also be deleted.
+                    /// Otherwise, the request will only succeed if it has none.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets a QaScorecard.</summary>
+                /// <param name="name">Required. The name of the QaScorecard to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a QaScorecard.</summary>
+                public class GetRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the QaScorecard to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists QaScorecards.</summary>
+                /// <param name="parent">Required. The parent resource of the scorecards.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists QaScorecards.</summary>
+                public class ListRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the scorecards.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of scorecards to return in the response. If the value is zero, the
+                    /// service will select a default size. A call might return fewer objects than requested. A
+                    /// non-empty `next_page_token` in the response indicates that more data is available.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The value returned by the last `ListQaScorecardsResponse`. This value indicates that
+                    /// this is a continuation of a prior `ListQaScorecards` call and that the system should return the
+                    /// next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/qaScorecards";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a QaScorecard.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The scorecard name. Format:
+                /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a QaScorecard.</summary>
+                public class PatchRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The scorecard name. Format:
+                    /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to be updated. All possible fields can be updated by passing `*`,
+                    /// or a subset of the following updateable fields can be provided: * `description` * `display_name`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QaScorecard Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/qaScorecards/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Views resource.</summary>
             public virtual ViewsResource Views { get; }
 
@@ -3076,6 +6713,112 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
+            /// <summary>Download feedback labels in bulk.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent resource for new feedback labels.</param>
+            public virtual BulkDownloadFeedbackLabelsRequest BulkDownloadFeedbackLabels(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest body, string parent)
+            {
+                return new BulkDownloadFeedbackLabelsRequest(this.service, body, parent);
+            }
+
+            /// <summary>Download feedback labels in bulk.</summary>
+            public class BulkDownloadFeedbackLabelsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new BulkDownloadFeedbackLabels request.</summary>
+                public BulkDownloadFeedbackLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent resource for new feedback labels.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkDownloadFeedbackLabels";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:bulkDownloadFeedbackLabels";
+
+                /// <summary>Initializes BulkDownloadFeedbackLabels parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Upload feedback labels in bulk.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent resource for new feedback labels.</param>
+            public virtual BulkUploadFeedbackLabelsRequest BulkUploadFeedbackLabels(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest body, string parent)
+            {
+                return new BulkUploadFeedbackLabelsRequest(this.service, body, parent);
+            }
+
+            /// <summary>Upload feedback labels in bulk.</summary>
+            public class BulkUploadFeedbackLabelsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new BulkUploadFeedbackLabels request.</summary>
+                public BulkUploadFeedbackLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent resource for new feedback labels.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkUploadFeedbackLabels";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:bulkUploadFeedbackLabels";
+
+                /// <summary>Initializes BulkUploadFeedbackLabels parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets location-level encryption key specification.</summary>
             /// <param name="name">Required. The name of the encryption spec resource to get.</param>
             public virtual GetEncryptionSpecRequest GetEncryptionSpec(string name)
@@ -3162,6 +6905,155 @@ namespace Google.Apis.Contactcenterinsights.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+/settings$",
+                    });
+                }
+            }
+
+            /// <summary>List all feedback labels by project number.</summary>
+            /// <param name="parent">Required. The parent resource of all feedback labels per project.</param>
+            public virtual ListAllFeedbackLabelsRequest ListAllFeedbackLabels(string parent)
+            {
+                return new ListAllFeedbackLabelsRequest(this.service, parent);
+            }
+
+            /// <summary>List all feedback labels by project number.</summary>
+            public class ListAllFeedbackLabelsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>
+            {
+                /// <summary>Constructs a new ListAllFeedbackLabels request.</summary>
+                public ListAllFeedbackLabelsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent resource of all feedback labels per project.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. A filter to reduce results to a specific subset in the entire project. Supports
+                /// disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` *
+                /// `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` *
+                /// `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of feedback labels to return in the response. A valid page size ranges
+                /// from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100
+                /// will be chosen. Note that a call might return fewer results than the requested page size.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. The value returned by the last `ListAllFeedbackLabelsResponse`. This value indicates that
+                /// this is a continuation of a prior `ListAllFeedbackLabels` call and that the system should return the
+                /// next page of data.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "listAllFeedbackLabels";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:listAllFeedbackLabels";
+
+                /// <summary>Initializes ListAllFeedbackLabels parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Query metrics.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The location of the data. "projects/{project}/locations/{location}"
+            /// </param>
+            public virtual QueryMetricsRequest QueryMetrics(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest body, string location)
+            {
+                return new QueryMetricsRequest(this.service, body, location);
+            }
+
+            /// <summary>Query metrics.</summary>
+            public class QueryMetricsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new QueryMetrics request.</summary>
+                public QueryMetricsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The location of the data. "projects/{project}/locations/{location}"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "queryMetrics";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+location}:queryMetrics";
+
+                /// <summary>Initializes QueryMetrics parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
                     });
                 }
             }
@@ -3414,6 +7306,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1PhraseMatchData> PhraseMatchers { get; set; }
 
+        /// <summary>Results of scoring QaScorecards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaScorecardResult> QaScorecardResults { get; set; }
+
         /// <summary>Overall conversation-level sentiment for each channel of the call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiments")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment> Sentiments { get; set; }
@@ -3421,6 +7317,131 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Overall conversation-level silence during the call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("silence")]
         public virtual GoogleCloudContactcenterinsightsV1ConversationLevelSilence Silence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The CCAI Insights project wide analysis rule. This rule will be applied to all conversations that match the
+    /// filter defined in the rule. For a conversation matches the filter, the annotators specified in the rule will be
+    /// run. If a conversation matches multiple rules, a union of all the annotators will be run. One project can have
+    /// multiple analysis rules.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1AnalysisRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, apply this rule to conversations. Otherwise, this rule is inactive and saved as a draft.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; }
+
+        /// <summary>
+        /// Percentage of conversations that we should apply this analysis setting automatically, between [0, 1]. For
+        /// example, 0.1 means 10%. Conversations are sampled in a determenestic way. The original runtime_percentage
+        /// &amp;amp; upload percentage will be replaced by defining filters on the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisPercentage")]
+        public virtual System.Nullable<double> AnalysisPercentage { get; set; }
+
+        /// <summary>
+        /// Selector of annotators to run and the phrase matchers to use for conversations that matches the
+        /// conversation_filter. If not specified, NO annotators will be run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatorSelector")]
+        public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelector AnnotatorSelector { get; set; }
+
+        /// <summary>
+        /// Filter for the conversations that should apply this analysis rule. An empty filter means this analysis rule
+        /// applies to all conversations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
+        public virtual string ConversationFilter { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which this analysis rule was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Display Name of the analysis rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the analysis rule. Format:
+        /// projects/{project}/locations/{location}/analysisRules/{analysis_rule}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which this analysis rule was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3468,6 +7489,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
         public virtual System.Collections.Generic.IList<string> PhraseMatchers { get; set; }
 
+        /// <summary>Configuration for the QA annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig QaConfig { get; set; }
+
         /// <summary>Whether to run the entity annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runEntityAnnotator")]
         public virtual System.Nullable<bool> RunEntityAnnotator { get; set; }
@@ -3490,6 +7515,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runPhraseMatcherAnnotator")]
         public virtual System.Nullable<bool> RunPhraseMatcherAnnotator { get; set; }
 
+        /// <summary>Whether to run the QA annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runQaAnnotator")]
+        public virtual System.Nullable<bool> RunQaAnnotator { get; set; }
+
         /// <summary>Whether to run the sentiment annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runSentimentAnnotator")]
         public virtual System.Nullable<bool> RunSentimentAnnotator { get; set; }
@@ -3505,6 +7534,28 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Configuration for the summarization annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationConfig")]
         public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig SummarizationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the QA feature.</summary>
+    public class GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A manual list of scorecards to score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scorecardList")]
+        public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList ScorecardList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container for a list of scorecards.</summary>
+    public class GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of QaScorecardRevisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardRevisions")]
+        public virtual System.Collections.Generic.IList<string> QaScorecardRevisions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3861,6 +7912,257 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The response for a bulk delete conversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the BulkDownloadFeedbackLabel endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Statistics for BulkDownloadFeedbackLabels operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadStats")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats DownloadStats { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Partial errors during ingest operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for download.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for BulkDownloadFeedbackLabels operation.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Full name of the files written to Cloud storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileNames")]
+        public virtual System.Collections.Generic.IList<string> FileNames { get; set; }
+
+        /// <summary>The number of objects processed during the download operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processedObjectCount")]
+        public virtual System.Nullable<int> ProcessedObjectCount { get; set; }
+
+        /// <summary>
+        /// The number of new feedback labels downloaded during this operation. Different from "processed" because some
+        /// labels might not be downloaded because an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulDownloadCount")]
+        public virtual System.Nullable<int> SuccessfulDownloadCount { get; set; }
+
+        /// <summary>Total number of files written to the provided Cloud Storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFilesWritten")]
+        public virtual System.Nullable<int> TotalFilesWritten { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the BulkDownloadFeedbackLabel endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Filter parent conversations to download feedback labels for. When specified, the feedback labels
+        /// will be downloaded for the conversations that match the filter. If `template_qa_scorecard_id` is set, all
+        /// the conversations that match the filter will be paired with the questions under the scorecard for labeling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
+        public virtual string ConversationFilter { get; set; }
+
+        /// <summary>Optional. The type of feedback labels that will be downloaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabelType")]
+        public virtual string FeedbackLabelType { get; set; }
+
+        /// <summary>
+        /// Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions
+        /// (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` *
+        /// `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI,
+        /// TOPIC_MODELING
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>A cloud storage bucket destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination GcsDestination { get; set; }
+
+        /// <summary>
+        /// Optional. Limits the maximum number of feedback labels that will be downloaded. The first `N` feedback
+        /// labels will be downloaded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDownloadCount")]
+        public virtual System.Nullable<int> MaxDownloadCount { get; set; }
+
+        /// <summary>Required. The parent resource for new feedback labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. If set, a template for labeling conversations and scorecard questions will be created from the
+        /// conversation_filter and the questions under the scorecard(s). The feedback label `filter` will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateQaScorecardId")]
+        public virtual System.Collections.Generic.IList<string> TemplateQaScorecardId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object details to write the feedback labels to.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Add whitespace to the JSON file. Makes easier to read, but increases file size. Only applicable
+        /// for JSON format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addWhitespace")]
+        public virtual System.Nullable<bool> AddWhitespace { get; set; }
+
+        /// <summary>
+        /// Optional. Always print fields with no presence. This is useful for printing fields that are not set, like
+        /// implicit 0 value or empty lists/maps. Only applicable for JSON format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alwaysPrintEmptyFields")]
+        public virtual System.Nullable<bool> AlwaysPrintEmptyFields { get; set; }
+
+        /// <summary>Required. File format in which the labels will be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// Required. The Google Cloud Storage URI to write the feedback labels to. The file name will be used as a
+        /// prefix for the files written to the bucket if the output needs to be split across multiple files, otherwise
+        /// it will be used as is. The file extension will be appended to the file name based on the format selected.
+        /// E.g. `gs://bucket_name/object_uri_prefix`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
+        /// <summary>Optional. The number of records per file. Applicable for either format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordsPerFileCount")]
+        public virtual System.Nullable<long> RecordsPerFileCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the BulkDownloadFeedbackLabel endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for bulk uploading feedback labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A cloud storage bucket source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource GcsSource { get; set; }
+
+        /// <summary>
+        /// Optional. If set, upload will not happen and the labels will be validated. If not set, then default behavior
+        /// will be to upload the labels after validation is complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object details to get the feedback label file from.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. File format which will be ingested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// Required. The Google Cloud Storage URI of the file to import. Format: `gs://bucket_name/object_name`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5011,6 +9313,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request to deploy a QaScorecardRevision</summary>
+    public class GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
     /// </summary>
@@ -5056,6 +9365,119 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowConversation")]
         public virtual string DialogflowConversation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A dimension determines the grouping key for the query. In SQL terms, these would be part of both the "SELECT"
+    /// and "GROUP BY" clauses.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1Dimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metadata about the agent dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata AgentDimensionMetadata { get; set; }
+
+        /// <summary>The key of the dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionKey")]
+        public virtual string DimensionKey { get; set; }
+
+        /// <summary>Output only. Metadata about the issue dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata IssueDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the QA question-answer dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionAnswerDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata QaQuestionAnswerDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the QA question dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata QaQuestionDimensionMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the agent dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The agent's name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
+        public virtual string AgentDisplayName { get; set; }
+
+        /// <summary>Optional. A user-specified string representing the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>Optional. A user-specified string representing the agent's team.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentTeam")]
+        public virtual string AgentTeam { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the issue dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The issue display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDisplayName")]
+        public virtual string IssueDisplayName { get; set; }
+
+        /// <summary>The issue ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueId")]
+        public virtual string IssueId { get; set; }
+
+        /// <summary>The parent issue model ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModelId")]
+        public virtual string IssueModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata about the QA question-answer dimension. This is useful for showing the answer distribution for
+    /// questions for a given scorecard.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual string AnswerValue { get; set; }
+
+        /// <summary>Optional. The QA question ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionId")]
+        public virtual string QaQuestionId { get; set; }
+
+        /// <summary>Optional. The QA scorecard ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardId")]
+        public virtual string QaScorecardId { get; set; }
+
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the QA question dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The QA question ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionId")]
+        public virtual string QaQuestionId { get; set; }
+
+        /// <summary>Optional. The QA scorecard ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardId")]
+        public virtual string QaScorecardId { get; set; }
+
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5471,6 +9893,106 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a conversation, resource, and label provided by the user.</summary>
+    public class GoogleCloudContactcenterinsightsV1FeedbackLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>String label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Resource name of the resource to be labeled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labeledResource")]
+        public virtual string LabeledResource { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource name of the FeedbackLabel. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>QaAnswer label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaAnswerLabel")]
+        public virtual GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue QaAnswerLabel { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6358,12 +10880,48 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for listing all feedback labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The feedback labels that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1FeedbackLabel> FeedbackLabels { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response to list analyses.</summary>
     public class GoogleCloudContactcenterinsightsV1ListAnalysesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The analyses that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyses")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1Analysis> Analyses { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of listing views.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The analysis_rule that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisRules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1AnalysisRule> AnalysisRules { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
@@ -6387,6 +10945,21 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// A token which can be sent as `page_token` to retrieve the next page. If this field is set, it means there is
         /// another page available. If it is not set, it means no other pages are available.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for listing feedback labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The feedback labels that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1FeedbackLabel> FeedbackLabels { get; set; }
+
+        /// <summary>The next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -6429,6 +11002,60 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The phrase matchers that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1PhraseMatcher> PhraseMatchers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from a ListQaQuestions request.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The QaQuestions under the parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaQuestion> QaQuestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from a ListQaScorecardRevisions request.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The QaScorecards under the parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardRevisions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaScorecardRevision> QaScorecardRevisions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from a ListQaScorecards request.</summary>
+    public class GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The QaScorecards under the parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecards")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaScorecard> QaScorecards { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6682,6 +11309,861 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionTag")]
         public virtual string VersionTag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An answer to a QaQuestion.</summary>
+    public class GoogleCloudContactcenterinsightsV1QaAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of all individual answers given to the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource> AnswerSources { get; set; }
+
+        /// <summary>The main answer value, incorporating any manual edits if they exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue AnswerValue { get; set; }
+
+        /// <summary>The conversation the answer applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>
+        /// The maximum potential score of the question. If the question was answered using `na_value`, this field will
+        /// be zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>The QaQuestion answered by this answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestion")]
+        public virtual string QaQuestion { get; set; }
+
+        /// <summary>Question text. E.g., "Did the agent greet the customer?"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>
+        /// User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for
+        /// grouping/organization and for weighting the score of each answer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A question may have multiple answers from varying sources, one of which becomes the "main" answer above.
+    /// AnswerSource represents each individual answer.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The answer value from this source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue AnswerValue { get; set; }
+
+        /// <summary>What created the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message for holding the value of the answer. QaQuestion.AnswerChoice defines the possible answer values for a
+    /// question.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>
+        /// A short string used as an identifier. Matches the value used in QaQuestion.AnswerChoice.key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>A value of "Not Applicable (N/A)".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naValue")]
+        public virtual System.Nullable<bool> NaValue { get; set; }
+
+        /// <summary>Numerical value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numValue")]
+        public virtual System.Nullable<double> NumValue { get; set; }
+
+        /// <summary>Numerical score of the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>String value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strValue")]
+        public virtual string StrValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single question to be scored by the Insights QA feature.</summary>
+    public class GoogleCloudContactcenterinsightsV1QaQuestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Short, descriptive string, used in the UI where it's not practical to display the full question body. E.g.,
+        /// "Greeting".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abbreviation")]
+        public virtual string Abbreviation { get; set; }
+
+        /// <summary>A list of valid answers to the question, which the LLM must choose from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerChoices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice> AnswerChoices { get; set; }
+
+        /// <summary>Instructions describing how to determine the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerInstructions")]
+        public virtual string AnswerInstructions { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which this question was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Metrics of the underlying tuned LLM over a holdout/test set while fine tuning the underlying LLM for the
+        /// given question. This field will only be populated if and only if the question is part of a scorecard
+        /// revision that has been tuned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual GoogleCloudContactcenterinsightsV1QaQuestionMetrics Metrics { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the question. Format:
+        /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Defines the order of the question within its parent scorecard revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual System.Nullable<int> Order { get; set; }
+
+        /// <summary>Question text. E.g., "Did the agent greet the customer?"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>
+        /// User-defined list of arbitrary tags for the question. Used for grouping/organization and for weighting the
+        /// score of each question.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>
+        /// Metadata about the tuning operation for the question.This field will only be populated if and only if the
+        /// question is part of a scorecard revision that has been tuned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata TuningMetadata { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which the question was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message representing a possible answer to the question.</summary>
+    public class GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>A short string used as an identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// A value of "Not Applicable (N/A)". If provided, this field may only be set to `true`. If a question receives
+        /// this answer, it will be excluded from any score calculations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naValue")]
+        public virtual System.Nullable<bool> NaValue { get; set; }
+
+        /// <summary>Numerical value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numValue")]
+        public virtual System.Nullable<double> NumValue { get; set; }
+
+        /// <summary>
+        /// Numerical score of the answer, used for generating the overall score of a QaScorecardResult. If the answer
+        /// uses na_value, this field is unused.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>String value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strValue")]
+        public virtual string StrValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A wrapper representing metrics calculated against a test-set on a LLM that was fine tuned for this question.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaQuestionMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Accuracy of the model. Measures the percentage of correct answers the model gave on the test
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
+        public virtual System.Nullable<double> Accuracy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata about the tuning operation for the question. Will only be set if a scorecard containing this question
+    /// has been tuned.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of any applicable data validation warnings about the question's feedback labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetValidationWarnings")]
+        public virtual System.Collections.Generic.IList<string> DatasetValidationWarnings { get; set; }
+
+        /// <summary>Total number of valid labels provided for the question at the time of tuining.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalValidLabelCount")]
+        public virtual System.Nullable<long> TotalValidLabelCount { get; set; }
+
+        /// <summary>
+        /// Error status of the tuning operation for the question. Will only be set if the tuning operation failed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningError")]
+        public virtual string TuningError { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A QaScorecard represents a collection of questions to be scored during analysis.</summary>
+    public class GoogleCloudContactcenterinsightsV1QaScorecard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which this scorecard was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>A text description explaining the intent of the scorecard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The user-specified display name of the scorecard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time at which the scorecard was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The results of scoring a single conversation against a QaScorecard. Contains a collection of QaAnswers and
+    /// aggregate score.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaScorecardResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the agent that handled the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The conversation scored by this result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the scorecard result. Format:
+        /// projects/{project}/locations/{location}/qaScorecardResults/{qa_scorecard_result}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normalized score, which is the score divided by the potential score. Any manual edits are included if
+        /// they exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>
+        /// The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded
+        /// from this calculation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Set of QaAnswers represented in the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaAnswer> QaAnswers { get; set; }
+
+        /// <summary>The QaScorecardRevision scored by this result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardRevision")]
+        public virtual string QaScorecardRevision { get; set; }
+
+        /// <summary>Collection of tags and their scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult> QaTagResults { get; set; }
+
+        /// <summary>The overall numerical score of the result, incorporating any manual edits if they exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>List of all individual score sets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource> ScoreSources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tags and their corresponding results.</summary>
+    public class GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The normalized score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>The potential score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>The score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The tag the score applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A scorecard result may have multiple sets of scores from varying sources, one of which becomes the "main" answer
+    /// above. A ScoreSource represents each individual set of scores.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The normalized score, which is the score divided by the potential score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>
+        /// The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded
+        /// from this calculation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Collection of tags and their scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult> QaTagResults { get; set; }
+
+        /// <summary>The overall numerical score of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>What created the score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A revision of a QaScorecard. Modifying published scorecard fields would invalidate existing scorecard results —
+    /// the questions may have changed, or the score weighting will make existing scores impossible to understand. So
+    /// changes must create a new revision, rather than modifying the existing resource.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QaScorecardRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Alternative IDs for this revision of the scorecard, e.g., `latest`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateIds")]
+        public virtual System.Collections.Generic.IList<string> AlternateIds { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the scorecard revision. Format:
+        /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The snapshot of the scorecard at the time of this revision's creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual GoogleCloudContactcenterinsightsV1QaScorecard Snapshot { get; set; }
+
+        /// <summary>
+        /// Output only. State of the scorecard revision, indicating whether it's ready to be used in analysis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata from querying metrics.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for querying metrics.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The dimensions that determine the grouping key for the query. Defaults to no dimension if this field is
+        /// unspecified. If a dimension is specified, its key must also be specified. Each dimension's key must be
+        /// unique. If a time granularity is also specified, metric values in the dimension will be bucketed by this
+        /// granularity. Up to one dimension is supported for now.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1Dimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// Required. Filter to select a subset of conversations to compute the metrics. Must specify a window of the
+        /// conversation create time to compute the metrics. The returned metrics will be from the range [DATE(starting
+        /// create time), DATE(ending create time)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Measures to return. Defaults to all measures if this field is unspecified. A valid mask should traverse from
+        /// the `measure` field from the response. For example, a path from a measure mask to get the conversation count
+        /// is "conversation_measure.count".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measureMask")]
+        public virtual object MeasureMask { get; set; }
+
+        /// <summary>
+        /// The time granularity of each data point in the time series. Defaults to NONE if this field is unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeGranularity")]
+        public virtual string TimeGranularity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for querying metrics.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the data. "projects/{project}/locations/{location}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// The macro average slice contains aggregated averages across the selected dimension. i.e. if group_by agent
+        /// is specified this field will contain the average across all agents. This field is only populated if the
+        /// request specifies a Dimension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macroAverageSlice")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice MacroAverageSlice { get; set; }
+
+        /// <summary>
+        /// A slice contains a total and (if the request specified a time granularity) a time series of metric values.
+        /// Each slice contains a unique combination of the cardinality of dimensions from the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice> Slices { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The metrics last update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A slice contains a total and (if the request specified a time granularity) a time series of metric values. Each
+    /// slice contains a unique combination of the cardinality of dimensions from the request. For example, if the
+    /// request specifies a single ISSUE dimension and it has a cardinality of 2 (i.e. the data used to compute the
+    /// metrics has 2 issues in total), the response will have 2 slices: * Slice 1 -&amp;gt; dimensions=[Issue 1] *
+    /// Slice 2 -&amp;gt; dimensions=[Issue 2]
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A unique combination of dimensions that this slice represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1Dimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// A time series of metric values. This is only populated if the request specifies a time granularity other
+        /// than NONE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries TimeSeries { get; set; }
+
+        /// <summary>
+        /// The total metric value. The interval of this data point is [starting create time, ending create time) from
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint Total { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A data point contains the metric values mapped to an interval.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The measure related to conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationMeasure")]
+        public virtual GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure ConversationMeasure { get; set; }
+
+        /// <summary>
+        /// The interval that this data point represents. * If this is the total data point, the interval is [starting
+        /// create time, ending create time) from the request. * If this a data point from the time series, the interval
+        /// is [time, time + time granularity from the request).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual GoogleTypeInterval Interval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The measure related to conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The average agent's sentiment score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageAgentSentimentScore")]
+        public virtual System.Nullable<float> AverageAgentSentimentScore { get; set; }
+
+        /// <summary>The average client's sentiment score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageClientSentimentScore")]
+        public virtual System.Nullable<float> AverageClientSentimentScore { get; set; }
+
+        /// <summary>The average customer satisfaction rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageCustomerSatisfactionRating")]
+        public virtual System.Nullable<double> AverageCustomerSatisfactionRating { get; set; }
+
+        /// <summary>The average duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageDuration")]
+        public virtual object AverageDuration { get; set; }
+
+        /// <summary>Average QA normalized score. Will exclude 0's in average calculation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageQaNormalizedScore")]
+        public virtual System.Nullable<double> AverageQaNormalizedScore { get; set; }
+
+        /// <summary>
+        /// Average QA normalized score averaged for questions averaged across all revisions of the parent scorecard.
+        /// Will be only populated if the request specifies a dimension of QA_QUESTION_ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageQaQuestionNormalizedScore")]
+        public virtual System.Nullable<double> AverageQaQuestionNormalizedScore { get; set; }
+
+        /// <summary>The average silence percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSilencePercentage")]
+        public virtual System.Nullable<float> AverageSilencePercentage { get; set; }
+
+        /// <summary>The average turn count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageTurnCount")]
+        public virtual System.Nullable<float> AverageTurnCount { get; set; }
+
+        /// <summary>The conversation count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationCount")]
+        public virtual System.Nullable<int> ConversationCount { get; set; }
+
+        /// <summary>Average QA normalized score for all the tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagScores")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> QaTagScores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Average QA normalized score for the tag.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average tag normalized score per tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageTagNormalizedScore")]
+        public virtual System.Nullable<double> AverageTagNormalizedScore { get; set; }
+
+        /// <summary>Tag name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A time series of metric values.</summary>
+    public class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data points that make up the time series .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint> DataPoints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7099,6 +12581,29 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for TuneQaScorecardRevision endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Filter for selecting the feedback labels that needs to be used for training. This filter can be
+        /// used to limit the feedback labels used for tuning to a feedback labels created or updated for a specific
+        /// time-window etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Run in validate only mode, no fine tuning will actually run. Data quality validations like
+        /// training data distributions will run. Even when set to false, the data quality validations will still run
+        /// but once the validations complete we will proceed with the fine tune, if applicable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for undeploying an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7197,6 +12702,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The response to undeploy an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to undeploy a QaScorecardRevision</summary>
+    public class GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7596,6 +13108,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData> PhraseMatchers { get; set; }
 
+        /// <summary>Results of scoring QaScorecards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult> QaScorecardResults { get; set; }
+
         /// <summary>Overall conversation-level sentiment for each channel of the call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiments")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment> Sentiments { get; set; }
@@ -7650,6 +13166,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatchers")]
         public virtual System.Collections.Generic.IList<string> PhraseMatchers { get; set; }
 
+        /// <summary>Configuration for the QA annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig QaConfig { get; set; }
+
         /// <summary>Whether to run the entity annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runEntityAnnotator")]
         public virtual System.Nullable<bool> RunEntityAnnotator { get; set; }
@@ -7672,6 +13192,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runPhraseMatcherAnnotator")]
         public virtual System.Nullable<bool> RunPhraseMatcherAnnotator { get; set; }
 
+        /// <summary>Whether to run the QA annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runQaAnnotator")]
+        public virtual System.Nullable<bool> RunQaAnnotator { get; set; }
+
         /// <summary>Whether to run the sentiment annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runSentimentAnnotator")]
         public virtual System.Nullable<bool> RunSentimentAnnotator { get; set; }
@@ -7687,6 +13211,28 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Configuration for the summarization annotator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig SummarizationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the QA feature.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A manual list of scorecards to score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scorecardList")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList ScorecardList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container for a list of scorecards.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of QaScorecardRevisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardRevisions")]
+        public virtual System.Collections.Generic.IList<string> QaScorecardRevisions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9106,6 +14652,119 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     }
 
     /// <summary>
+    /// A dimension determines the grouping key for the query. In SQL terms, these would be part of both the "SELECT"
+    /// and "GROUP BY" clauses.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1Dimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metadata about the agent dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata AgentDimensionMetadata { get; set; }
+
+        /// <summary>The key of the dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionKey")]
+        public virtual string DimensionKey { get; set; }
+
+        /// <summary>Output only. Metadata about the issue dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata IssueDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the QA question-answer dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionAnswerDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata QaQuestionAnswerDimensionMetadata { get; set; }
+
+        /// <summary>Output only. Metadata about the QA question dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionDimensionMetadata")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata QaQuestionDimensionMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the agent dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The agent's name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentDisplayName")]
+        public virtual string AgentDisplayName { get; set; }
+
+        /// <summary>Optional. A user-specified string representing the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>Optional. A user-specified string representing the agent's team.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentTeam")]
+        public virtual string AgentTeam { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the issue dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The issue display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDisplayName")]
+        public virtual string IssueDisplayName { get; set; }
+
+        /// <summary>The issue ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueId")]
+        public virtual string IssueId { get; set; }
+
+        /// <summary>The parent issue model ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModelId")]
+        public virtual string IssueModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata about the QA question-answer dimension. This is useful for showing the answer distribution for
+    /// questions for a given scorecard.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual string AnswerValue { get; set; }
+
+        /// <summary>Optional. The QA question ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionId")]
+        public virtual string QaQuestionId { get; set; }
+
+        /// <summary>Optional. The QA scorecard ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardId")]
+        public virtual string QaScorecardId { get; set; }
+
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the QA question dimension.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The QA question ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionId")]
+        public virtual string QaQuestionId { get; set; }
+
+        /// <summary>Optional. The QA scorecard ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardId")]
+        public virtual string QaScorecardId { get; set; }
+
+        /// <summary>Optional. The full body of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
     /// `Conversation`).
     /// </summary>
@@ -9504,6 +15163,106 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a conversation, resource, and label provided by the user.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>String label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Resource name of the resource to be labeled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labeledResource")]
+        public virtual string LabeledResource { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource name of the FeedbackLabel. Format:
+        /// projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>QaAnswer label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaAnswerLabel")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue QaAnswerLabel { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10289,6 +16048,39 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for listing all feedback labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The feedback labels that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel> FeedbackLabels { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for listing feedback labels.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The feedback labels that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel> FeedbackLabels { get; set; }
+
+        /// <summary>The next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match.
     /// </summary>
@@ -10301,6 +16093,449 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The unique identifier (the resource name) of the phrase matcher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseMatcher")]
         public virtual string PhraseMatcher { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An answer to a QaQuestion.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QaAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of all individual answers given to the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource> AnswerSources { get; set; }
+
+        /// <summary>The main answer value, incorporating any manual edits if they exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue AnswerValue { get; set; }
+
+        /// <summary>The conversation the answer applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>
+        /// The maximum potential score of the question. If the question was answered using `na_value`, this field will
+        /// be zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>The QaQuestion answered by this answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaQuestion")]
+        public virtual string QaQuestion { get; set; }
+
+        /// <summary>Question text. E.g., "Did the agent greet the customer?"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionBody")]
+        public virtual string QuestionBody { get; set; }
+
+        /// <summary>
+        /// User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for
+        /// grouping/organization and for weighting the score of each answer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A question may have multiple answers from varying sources, one of which becomes the "main" answer above.
+    /// AnswerSource represents each individual answer.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The answer value from this source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerValue")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue AnswerValue { get; set; }
+
+        /// <summary>What created the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message for holding the value of the answer. QaQuestion.AnswerChoice defines the possible answer values for a
+    /// question.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>
+        /// A short string used as an identifier. Matches the value used in QaQuestion.AnswerChoice.key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>A value of "Not Applicable (N/A)".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naValue")]
+        public virtual System.Nullable<bool> NaValue { get; set; }
+
+        /// <summary>Numerical value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numValue")]
+        public virtual System.Nullable<double> NumValue { get; set; }
+
+        /// <summary>Numerical score of the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>String value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strValue")]
+        public virtual string StrValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The results of scoring a single conversation against a QaScorecard. Contains a collection of QaAnswers and
+    /// aggregate score.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the agent that handled the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The conversation scored by this result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the scorecard result. Format:
+        /// projects/{project}/locations/{location}/qaScorecardResults/{qa_scorecard_result}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normalized score, which is the score divided by the potential score. Any manual edits are included if
+        /// they exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>
+        /// The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded
+        /// from this calculation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Set of QaAnswers represented in the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QaAnswer> QaAnswers { get; set; }
+
+        /// <summary>The QaScorecardRevision scored by this result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaScorecardRevision")]
+        public virtual string QaScorecardRevision { get; set; }
+
+        /// <summary>Collection of tags and their scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult> QaTagResults { get; set; }
+
+        /// <summary>The overall numerical score of the result, incorporating any manual edits if they exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>List of all individual score sets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource> ScoreSources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tags and their corresponding results.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The normalized score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>The potential score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>The score the tag applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The tag the score applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A scorecard result may have multiple sets of scores from varying sources, one of which becomes the "main" answer
+    /// above. A ScoreSource represents each individual set of scores.
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The normalized score, which is the score divided by the potential score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
+        /// <summary>
+        /// The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded
+        /// from this calculation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Collection of tags and their scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult> QaTagResults { get; set; }
+
+        /// <summary>The overall numerical score of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>What created the score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata from querying metrics.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for querying metrics.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the data. "projects/{project}/locations/{location}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// The macro average slice contains aggregated averages across the selected dimension. i.e. if group_by agent
+        /// is specified this field will contain the average across all agents. This field is only populated if the
+        /// request specifies a Dimension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macroAverageSlice")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice MacroAverageSlice { get; set; }
+
+        /// <summary>
+        /// A slice contains a total and (if the request specified a time granularity) a time series of metric values.
+        /// Each slice contains a unique combination of the cardinality of dimensions from the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice> Slices { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The metrics last update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A slice contains a total and (if the request specified a time granularity) a time series of metric values. Each
+    /// slice contains a unique combination of the cardinality of dimensions from the request. For example, if the
+    /// request specifies a single ISSUE dimension and it has a cardinality of 2 (i.e. the data used to compute the
+    /// metrics has 2 issues in total), the response will have 2 slices: * Slice 1 -&amp;gt; dimensions=[Issue 1] *
+    /// Slice 2 -&amp;gt; dimensions=[Issue 2]
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A unique combination of dimensions that this slice represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1Dimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// A time series of metric values. This is only populated if the request specifies a time granularity other
+        /// than NONE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries TimeSeries { get; set; }
+
+        /// <summary>
+        /// The total metric value. The interval of this data point is [starting create time, ending create time) from
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint Total { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A data point contains the metric values mapped to an interval.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The measure related to conversations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationMeasure")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure ConversationMeasure { get; set; }
+
+        /// <summary>
+        /// The interval that this data point represents. * If this is the total data point, the interval is [starting
+        /// create time, ending create time) from the request. * If this a data point from the time series, the interval
+        /// is [time, time + time granularity from the request).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual GoogleTypeInterval Interval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The measure related to conversations.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The average agent's sentiment score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageAgentSentimentScore")]
+        public virtual System.Nullable<float> AverageAgentSentimentScore { get; set; }
+
+        /// <summary>The average client's sentiment score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageClientSentimentScore")]
+        public virtual System.Nullable<float> AverageClientSentimentScore { get; set; }
+
+        /// <summary>The average customer satisfaction rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageCustomerSatisfactionRating")]
+        public virtual System.Nullable<double> AverageCustomerSatisfactionRating { get; set; }
+
+        /// <summary>The average duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageDuration")]
+        public virtual object AverageDuration { get; set; }
+
+        /// <summary>Average QA normalized score. Will exclude 0's in average calculation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageQaNormalizedScore")]
+        public virtual System.Nullable<double> AverageQaNormalizedScore { get; set; }
+
+        /// <summary>
+        /// Average QA normalized score averaged for questions averaged across all revisions of the parent scorecard.
+        /// Will be only populated if the request specifies a dimension of QA_QUESTION_ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageQaQuestionNormalizedScore")]
+        public virtual System.Nullable<double> AverageQaQuestionNormalizedScore { get; set; }
+
+        /// <summary>The average silence percentage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageSilencePercentage")]
+        public virtual System.Nullable<float> AverageSilencePercentage { get; set; }
+
+        /// <summary>The average turn count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageTurnCount")]
+        public virtual System.Nullable<float> AverageTurnCount { get; set; }
+
+        /// <summary>The conversation count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationCount")]
+        public virtual System.Nullable<int> ConversationCount { get; set; }
+
+        /// <summary>Average QA normalized score for all the tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qaTagScores")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> QaTagScores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Average QA normalized score for the tag.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average tag normalized score per tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageTagNormalizedScore")]
+        public virtual System.Nullable<double> AverageTagNormalizedScore { get; set; }
+
+        /// <summary>Tag name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A time series of metric values.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data points that make up the time series .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint> DataPoints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10777,6 +17012,256 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
+    /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
+    /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
+    /// for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
+    /// "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ]
+    /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+    /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
+    /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
+    /// </summary>
+    public class GoogleIamV1AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for logging of each type of permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleIamV1AuditLogConfig> AuditLogConfigs { get; set; }
+
+        /// <summary>
+        /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type":
+    /// "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+    /// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+    /// </summary>
+    public class GoogleIamV1AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of
+        /// Binding.members.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
+    public class GoogleIamV1Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual GoogleTypeExpr Condition { get; set; }
+
+        /// <summary>
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
+
+        /// <summary>
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
+    public class GoogleIamV1Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleIamV1AuditConfig> AuditConfigs { get; set; }
+
+        /// <summary>
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; }
+
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Request message for `SetIamPolicy` method.</summary>
+    public class GoogleIamV1SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
+        /// reject them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual GoogleIamV1Policy Policy { get; set; }
+
+        /// <summary>
+        /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be
+        /// modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `TestIamPermissions` method.</summary>
+    public class GoogleIamV1TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
+        /// are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `TestIamPermissions` method.</summary>
+    public class GoogleIamV1TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class GoogleLongrunningListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10870,6 +17355,141 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
+    public class GoogleTypeExpr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; }
+
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class GoogleTypeInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
