@@ -5156,6 +5156,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Represent the source AWS VM details.</summary>
     public class AwsSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The VM architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
         /// <summary>Output only. The total size of the disks being migrated in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
         public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
@@ -5330,6 +5334,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Represent the source Azure VM details.</summary>
     public class AzureSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The VM architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
         /// <summary>Output only. The total size of the disks being migrated in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
         public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
@@ -5353,6 +5361,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>AzureVmDetails describes a VM in Azure.</summary>
     public class AzureVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The CPU architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
         /// <summary>The VM Boot Option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
         public virtual string BootOption { get; set; }
@@ -9576,6 +9588,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Represent the source Vmware VM details.</summary>
     public class VmwareSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The VM architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
         /// <summary>Output only. The total size of the disks being migrated in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
         public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
@@ -9599,6 +9615,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>VmwareVmDetails describes a VM in vCenter.</summary>
     public class VmwareVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The CPU architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
         /// <summary>Output only. The VM Boot Option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
         public virtual string BootOption { get; set; }
