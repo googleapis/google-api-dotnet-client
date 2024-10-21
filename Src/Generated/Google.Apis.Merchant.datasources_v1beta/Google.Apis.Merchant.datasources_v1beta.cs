@@ -783,6 +783,12 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual LocalInventoryDataSource LocalInventoryDataSource { get; set; }
 
         /// <summary>
+        /// Required. The [merchant review](https://support.google.com/merchants/answer/7045996) data source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantReviewDataSource")]
+        public virtual MerchantReviewDataSource MerchantReviewDataSource { get; set; }
+
+        /// <summary>
         /// Identifier. The name of the data source. Format:
         /// `{datasource.name=accounts/{account}/dataSources/{datasource}}`
         /// </summary>
@@ -795,6 +801,12 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryProductDataSource")]
         public virtual PrimaryProductDataSource PrimaryProductDataSource { get; set; }
+
+        /// <summary>
+        /// Required. The [product review](https://support.google.com/merchants/answer/7045996) data source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productReviewDataSource")]
+        public virtual ProductReviewDataSource ProductReviewDataSource { get; set; }
 
         /// <summary>
         /// Required. The [promotion](https://support.google.com/merchants/answer/2906014) data source.
@@ -1128,6 +1140,13 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The merchant review data source.</summary>
+    public class MerchantReviewDataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The primary data source for local and online products.</summary>
     public class PrimaryProductDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1194,6 +1213,13 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
         public virtual string ReportingContext { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The product review data source.</summary>
+    public class ProductReviewDataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1297,8 +1323,9 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         /// to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). See also [migration to feed
         /// labels](https://developers.google.com/shopping-content/guides/products/feed-labels). `feedLabel` and
         /// `contentLanguage` must be either both set or unset for data sources with product content type. They must be
-        /// set for data sources with a file input. If set, the data source will only accept products matching this
-        /// combination. If unset, the data source will accept produts without that restriction.
+        /// set for data sources with a file input. The fields must be unset for data sources without file input. If
+        /// set, the data source will only accept products matching this combination. If unset, the data source will
+        /// accept produts without that restriction.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
