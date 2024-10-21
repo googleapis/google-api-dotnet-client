@@ -1815,7 +1815,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("utcOffsetMinutes")]
         public virtual System.Nullable<int> UtcOffsetMinutes { get; set; }
 
-        /// <summary>A viewport suitable for displaying the place on an average-sized map.</summary>
+        /// <summary>
+        /// A viewport suitable for displaying the place on an average-sized map. This viewport should not be used as
+        /// the physical boundary or the service area of the business.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewport")]
         public virtual GoogleGeoTypeViewport Viewport { get; set; }
 
