@@ -2145,7 +2145,10 @@ namespace Google.Apis.Drive.v3
                     DENY = 2,
                 }
 
-                /// <summary>Optional. The roles the approver has allowed, if any.</summary>
+                /// <summary>
+                /// Optional. The roles the approver has allowed, if any. Note: This field is required for the `ACCEPT`
+                /// action.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("role", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Role { get; set; }
 
