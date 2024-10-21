@@ -6705,6 +6705,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableGlobalAccess")]
         public virtual System.Nullable<bool> DisableGlobalAccess { get; set; }
 
+        /// <summary>The requested IP version for the PSC connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
+        public virtual string IpVersion { get; set; }
+
         /// <summary>
         /// The resource path of the consumer network where PSC connections are allowed to be created in. Note, this
         /// network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example:
@@ -6777,6 +6781,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ip")]
         public virtual string Ip { get; set; }
+
+        /// <summary>The requested IP version for the PSC connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
+        public virtual string IpVersion { get; set; }
 
         /// <summary>
         /// The consumer network whose PSC forwarding rule is connected to the service attachments in this service
@@ -7412,7 +7420,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Optional. Should be present if usage is set to FOR_MIGRATION.</summary>
+        /// <summary>
+        /// Optional. Must be present if usage is set to FOR_MIGRATION. This field is for internal use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migration")]
         public virtual Migration Migration { get; set; }
 
@@ -8548,6 +8558,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>The last Compute Engine operation to setup PSC connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceOperation")]
         public virtual string GceOperation { get; set; }
+
+        /// <summary>The requested IP version for the PSC connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
+        public virtual string IpVersion { get; set; }
 
         /// <summary>
         /// Immutable. Deprecated. Use producer_instance_metadata instead. An immutable identifier for the producer
