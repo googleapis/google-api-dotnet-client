@@ -13097,6 +13097,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requiredSystemFeatures")]
         public virtual System.Collections.Generic.IList<SystemFeature> RequiredSystemFeatures { get; set; }
 
+        /// <summary>Optional. The SoCs included by this selector. Only works for Android S+ devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemOnChips")]
+        public virtual System.Collections.Generic.IList<SystemOnChip> SystemOnChips { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16481,6 +16485,29 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Information specific to cancellations initiated by Google system.</summary>
     public class SystemInitiatedCancellation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Representation of a System-on-Chip (SoC) of an Android device. Can be used to target S+ devices.
+    /// </summary>
+    public class SystemOnChip : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The designer of the SoC, eg. "Google" Value of build property "ro.soc.manufacturer"
+        /// https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+        public virtual string Manufacturer { get; set; }
+
+        /// <summary>
+        /// Required. The model of the SoC, eg. "Tensor" Value of build property "ro.soc.model"
+        /// https://developer.android.com/reference/android/os/Build#SOC_MODEL Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
