@@ -6435,7 +6435,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The environment values to be set at runtime for flex template. LINT.IfChange</summary>
+    /// <summary>The environment values to be set at runtime for flex template.</summary>
     public class FlexTemplateRuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional experiment flags for the job.</summary>
@@ -8758,7 +8758,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The environment values to set at runtime. LINT.IfChange</summary>
+    /// <summary>The environment values to set at runtime.</summary>
     public class RuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
