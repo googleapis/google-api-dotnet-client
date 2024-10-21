@@ -5470,8 +5470,9 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Ingress { get; set; }
 
         /// <summary>
-        /// Optional. Disables IAM permission check for run.routes.invoke for callers of this service. This setting
-        /// should not be used with external ingress.
+        /// Optional. Disables IAM permission check for run.routes.invoke for callers of this service. This feature is
+        /// available by invitation only. For more information, visit
+        /// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invokerIamDisabled")]
         public virtual System.Nullable<bool> InvokerIamDisabled { get; set; }
