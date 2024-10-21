@@ -8,6 +8,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+AuthorizedViewSetsResource+AuthorizedViewsResource+ConversationsResource+GetRequest.ViewEnum": [
+    "CONVERSATION_VIEW_UNSPECIFIED",
+    "FULL",
+    "BASIC"
+  ],
+  "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+AuthorizedViewSetsResource+AuthorizedViewsResource+ConversationsResource+ListRequest.ViewEnum": [
+    "CONVERSATION_VIEW_UNSPECIFIED",
+    "FULL",
+    "BASIC"
+  ],
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+ConversationsResource+GetRequest.ViewEnum": [
     "CONVERSATION_VIEW_UNSPECIFIED",
     "BASIC",
