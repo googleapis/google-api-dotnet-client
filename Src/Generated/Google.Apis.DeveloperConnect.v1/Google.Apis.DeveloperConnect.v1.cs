@@ -900,6 +900,130 @@ namespace Google.Apis.DeveloperConnect.v1
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise instances for
+                    /// notifying events.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The GitRepositoryLink resource where the webhook will be received. Format:
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual ProcessGitLabEnterpriseWebhookRequest ProcessGitLabEnterpriseWebhook(Google.Apis.DeveloperConnect.v1.Data.ProcessGitLabEnterpriseWebhookRequest body, string name)
+                    {
+                        return new ProcessGitLabEnterpriseWebhookRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise instances for
+                    /// notifying events.
+                    /// </summary>
+                    public class ProcessGitLabEnterpriseWebhookRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new ProcessGitLabEnterpriseWebhook request.</summary>
+                        public ProcessGitLabEnterpriseWebhookRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.ProcessGitLabEnterpriseWebhookRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The GitRepositoryLink resource where the webhook will be received. Format:
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DeveloperConnect.v1.Data.ProcessGitLabEnterpriseWebhookRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "processGitLabEnterpriseWebhook";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:processGitLabEnterpriseWebhook";
+
+                        /// <summary>Initializes ProcessGitLabEnterpriseWebhook parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>ProcessGitLabWebhook is called by the GitLab.com for notifying events.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The GitRepositoryLink resource where the webhook will be received. Format:
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual ProcessGitLabWebhookRequest ProcessGitLabWebhook(Google.Apis.DeveloperConnect.v1.Data.ProcessGitLabWebhookRequest body, string name)
+                    {
+                        return new ProcessGitLabWebhookRequest(this.service, body, name);
+                    }
+
+                    /// <summary>ProcessGitLabWebhook is called by the GitLab.com for notifying events.</summary>
+                    public class ProcessGitLabWebhookRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new ProcessGitLabWebhook request.</summary>
+                        public ProcessGitLabWebhookRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.ProcessGitLabWebhookRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The GitRepositoryLink resource where the webhook will be received. Format:
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DeveloperConnect.v1.Data.ProcessGitLabWebhookRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "processGitLabWebhook";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:processGitLabWebhook";
+
+                        /// <summary>Initializes ProcessGitLabWebhook parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new Connection in a given project and location.</summary>
@@ -1496,6 +1620,70 @@ namespace Google.Apis.DeveloperConnect.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// ProcessGitHubEnterpriseWebhook is called by the external GitHub Enterprise instances for notifying
+                /// events.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Project and location where the webhook will be received. Format: `projects/*/locations/*`.
+                /// </param>
+                public virtual ProcessGitHubEnterpriseWebhookRequest ProcessGitHubEnterpriseWebhook(Google.Apis.DeveloperConnect.v1.Data.ProcessGitHubEnterpriseWebhookRequest body, string parent)
+                {
+                    return new ProcessGitHubEnterpriseWebhookRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// ProcessGitHubEnterpriseWebhook is called by the external GitHub Enterprise instances for notifying
+                /// events.
+                /// </summary>
+                public class ProcessGitHubEnterpriseWebhookRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new ProcessGitHubEnterpriseWebhook request.</summary>
+                    public ProcessGitHubEnterpriseWebhookRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.ProcessGitHubEnterpriseWebhookRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Project and location where the webhook will be received. Format:
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DeveloperConnect.v1.Data.ProcessGitHubEnterpriseWebhookRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "processGitHubEnterpriseWebhook";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/connections:processGitHubEnterpriseWebhook";
+
+                    /// <summary>Initializes ProcessGitHubEnterpriseWebhook parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -2631,6 +2819,39 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string WebhookId { get; set; }
     }
 
+    /// <summary>
+    /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
+    /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
+    /// non-streaming API methods in the request as well as the response. It can be used as a top-level request field,
+    /// which is convenient if one wants to extract parameters from either the URL or HTTP template into the request
+    /// fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id.
+    /// string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
+    /// ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service
+    /// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes
+    /// how the request and response bodies are handled, all other features will continue to work unchanged.
+    /// </summary>
+    public class HttpBody : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>The HTTP request/response body as raw binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an installation of the GitHub App.</summary>
     public class Installation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2951,6 +3172,39 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC request object accepted by the ProcessGitHubEnterpriseWebhook RPC method.</summary>
+    public class ProcessGitHubEnterpriseWebhookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. HTTP request body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual HttpBody Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC request object accepted by the ProcessGitLabEnterpriseWebhook RPC method.</summary>
+    public class ProcessGitLabEnterpriseWebhookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. HTTP request body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual HttpBody Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC request object accepted by the ProcessGitLabWebhook RPC method.</summary>
+    public class ProcessGitLabWebhookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. HTTP request body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual HttpBody Body { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
