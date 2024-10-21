@@ -2799,6 +2799,64 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A configuration that workstations can boost to.</summary>
+    public class BoostConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of the type and count of accelerator cards attached to the boost instance. Defaults to
+        /// `none`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
+
+        /// <summary>
+        /// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB.
+        /// Defaults to `50` GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
+        public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable nested virtualization on boosted Cloud Workstations VMs running using this boost
+        /// configuration. Defaults to false. Nested virtualization lets you run virtual machine (VM) instances inside
+        /// your workstation. Before enabling nested virtualization, consider the following important considerations.
+        /// Cloud Workstations instances are subject to the [same restrictions as Compute Engine
+        /// instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): *
+        /// **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if
+        /// the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more
+        /// information, see the Compute Engine section, [Checking whether nested virtualization is
+        /// allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed).
+        /// * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that
+        /// are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. *
+        /// **Machine Type**: nested virtualization can only be enabled on boost configurations that specify a
+        /// machine_type in the N1 or N2 machine series.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
+        public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
+
+        /// <summary>Optional. Required. The id to be used for the boost configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional. The type of machine that boosted VM instances will use—for example, `e2-standard-4`. For more
+        /// information about machine types that Cloud Workstations supports, see the list of [available machine
+        /// types](https://cloud.google.com/workstations/docs/available-machine-types). Defaults to `e2-standard-4`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Optional. The number of boost VMs that the system should keep idle so that workstations can be boosted
+        /// quickly. Defaults to `0`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poolSize")]
+        public virtual System.Nullable<int> PoolSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2965,6 +3023,13 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// <summary>Optional. A list of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
+
+        /// <summary>
+        /// Optional. A list of the boost configurations that workstations created using this workstation configuration
+        /// are allowed to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostConfigs")]
+        public virtual System.Collections.Generic.IList<BoostConfig> BoostConfigs { get; set; }
 
         /// <summary>
         /// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB.
@@ -4269,6 +4334,13 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
+
+        /// <summary>
+        /// Optional. Tag keys/values directly bound to this resource. For example: "123/environment": "production",
+        /// "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>Output only. A system-assigned unique identifier for this workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
