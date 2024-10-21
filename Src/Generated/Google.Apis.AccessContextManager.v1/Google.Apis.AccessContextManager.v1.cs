@@ -2868,13 +2868,15 @@ namespace Google.Apis.AccessContextManager.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. This field will be used to control whether or not scoped access settings are appended to
-                /// the existing list of scoped access settings. If true, the scoped access settings in the request will
-                /// be appended to the existing list of scoped access settings. If false, the scoped access settings in
-                /// the request replace the existing list of scoped access settings.
+                /// Optional. This field controls whether or not certain repeated settings in the update request
+                /// overwrite or append to existing settings on the binding. If true, then append. Otherwise overwrite.
+                /// So far, only scoped_access_settings supports appending. Global access_levels, dry_run_access_levels,
+                /// and reauth_settings are not compatible with append functionality, and the request will return an
+                /// error if append=true when these settings are in the update_mask. The request will also return an
+                /// error if append=true when "scoped_access_settings" is not set in the update_mask.
                 /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("appendScopedAccessSettings", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> AppendScopedAccessSettings { get; set; }
+                [Google.Apis.Util.RequestParameterAttribute("append", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Append { get; set; }
 
                 /// <summary>
                 /// Required. Only the fields specified in this mask are updated. Because name and group_key cannot be
@@ -2912,9 +2914,9 @@ namespace Google.Apis.AccessContextManager.v1
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/gcpUserAccessBindings/[^/]+$",
                     });
-                    RequestParameters.Add("appendScopedAccessSettings", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("append", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "appendScopedAccessSettings",
+                        Name = "append",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
