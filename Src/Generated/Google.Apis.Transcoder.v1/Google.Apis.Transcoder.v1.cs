@@ -1091,7 +1091,7 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` -
-        /// `aac-he-v2` - `mp3` - `ac3` - `eac3`
+        /// `aac-he-v2` - `mp3` - `ac3` - `eac3` - `vorbis`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codec")]
         public virtual string Codec { get; set; }
@@ -2205,7 +2205,7 @@ namespace Google.Apis.Transcoder.v1.Data
     {
         /// <summary>
         /// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding
-        /// file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output
+        /// file extension is `.m4s` - `mp4` - `vtt` - `ogg` See also: [Supported input and output
         /// formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
