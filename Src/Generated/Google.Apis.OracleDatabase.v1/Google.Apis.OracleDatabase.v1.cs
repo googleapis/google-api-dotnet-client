@@ -3793,7 +3793,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("computeCount")]
         public virtual System.Nullable<int> ComputeCount { get; set; }
 
-        /// <summary>Optional. The number of enabled CPU cores.</summary>
+        /// <summary>Output only. The number of enabled CPU cores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
@@ -3805,7 +3805,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageSizeTb")]
         public virtual System.Nullable<double> DataStorageSizeTb { get; set; }
 
-        /// <summary>Optional. The local node storage allocated in GBs.</summary>
+        /// <summary>Output only. The local node storage allocated in GBs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbNodeStorageSizeGb")]
         public virtual System.Nullable<int> DbNodeStorageSizeGb { get; set; }
 
@@ -3835,7 +3835,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxMemoryGb")]
         public virtual System.Nullable<int> MaxMemoryGb { get; set; }
 
-        /// <summary>Optional. The memory allocated in GBs.</summary>
+        /// <summary>Output only. The memory allocated in GBs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
         public virtual System.Nullable<int> MemorySizeGb { get; set; }
 
