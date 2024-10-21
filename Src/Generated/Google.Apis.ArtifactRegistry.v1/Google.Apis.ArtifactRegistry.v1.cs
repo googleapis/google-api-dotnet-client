@@ -4573,7 +4573,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// The name of the rule, for example:
-                    /// "projects/p1/locations/us-central1/repositories/repo1/rules/rule1".
+                    /// `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.GoogleDevtoolsArtifactregistryV1Rule body, string name)
                     {
@@ -4593,7 +4593,7 @@ namespace Google.Apis.ArtifactRegistry.v1
 
                         /// <summary>
                         /// The name of the rule, for example:
-                        /// "projects/p1/locations/us-central1/repositories/repo1/rules/rule1".
+                        /// `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -6945,23 +6945,24 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     }
 
     /// <summary>
-    /// A Rule applies to repository or package level. It defines the deny or allow action of the operation when the
-    /// conditions in the rule are met.
+    /// A rule defines the deny or allow action of the operation it applies to and the conditions required for the rule
+    /// to apply. You can set one rule for an entire repository and one rule for each package within.
     /// </summary>
     public class GoogleDevtoolsArtifactregistryV1Rule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The action this rule makes.</summary>
+        /// <summary>The action this rule takes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
         /// <summary>
-        /// Optional. The condition of the rule in CEL expression. If not provided, the rule matches all the objects.
+        /// Optional. A CEL expression for conditions that must be met in order for the rule to apply. If not provided,
+        /// the rule matches all objects.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
         /// <summary>
-        /// The name of the rule, for example: "projects/p1/locations/us-central1/repositories/repo1/rules/rule1".
+        /// The name of the rule, for example: `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6970,7 +6971,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string Operation { get; set; }
 
         /// <summary>
-        /// The package ID the rule applies to. If empty, this rule applies to all the packages inside the repository.
+        /// The package ID the rule applies to. If empty, this rule applies to all packages inside the repository.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageId")]
         public virtual string PackageId { get; set; }
@@ -8279,6 +8280,12 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("virtualRepositoryConfig")]
         public virtual VirtualRepositoryConfig VirtualRepositoryConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Config and state for vulnerability scanning of resources within this Repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityScanningConfig")]
+        public virtual VulnerabilityScanningConfig VulnerabilityScanningConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8824,6 +8831,69 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upstreamPolicies")]
         public virtual System.Collections.Generic.IList<UpstreamPolicy> UpstreamPolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Config on whether to perform vulnerability scanning for resources in this repository, as well as output fields
+    /// describing current state.
+    /// </summary>
+    public class VulnerabilityScanningConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Config for whether this repository has vulnerability scanning disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablementConfig")]
+        public virtual string EnablementConfig { get; set; }
+
+        /// <summary>
+        /// Output only. State of feature enablement, combining repository enablement config and API enablement state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablementState")]
+        public virtual string EnablementState { get; set; }
+
+        /// <summary>Output only. Reason for the repository state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablementStateReason")]
+        public virtual string EnablementStateReason { get; set; }
+
+        private string _lastEnableTimeRaw;
+
+        private object _lastEnableTime;
+
+        /// <summary>Output only. The last time this repository config was enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEnableTime")]
+        public virtual string LastEnableTimeRaw
+        {
+            get => _lastEnableTimeRaw;
+            set
+            {
+                _lastEnableTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastEnableTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastEnableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastEnableTimeDateTimeOffset instead.")]
+        public virtual object LastEnableTime
+        {
+            get => _lastEnableTime;
+            set
+            {
+                _lastEnableTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastEnableTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastEnableTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastEnableTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastEnableTimeRaw);
+            set => LastEnableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
