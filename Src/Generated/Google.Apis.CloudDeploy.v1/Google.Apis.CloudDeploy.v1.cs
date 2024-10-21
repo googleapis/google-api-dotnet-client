@@ -5696,6 +5696,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about entities associated with a `Target`.</summary>
+    public class AssociatedEntities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Information specifying Anthos clusters as associated entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anthosClusters")]
+        public virtual System.Collections.Generic.IList<AnthosCluster> AnthosClusters { get; set; }
+
+        /// <summary>Optional. Information specifying GKE clusters as associated entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClusters")]
+        public virtual System.Collections.Generic.IList<GkeCluster> GkeClusters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -7584,6 +7599,15 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podSelectorLabel")]
         public virtual string PodSelectorLabel { get; set; }
+
+        /// <summary>
+        /// Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional
+        /// clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in
+        /// the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target
+        /// cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeDestinations")]
+        public virtual RouteDestinations RouteDestinations { get; set; }
 
         /// <summary>
         /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in
@@ -9965,6 +9989,29 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about route destinations for the Gateway API service mesh.</summary>
+    public class RouteDestinations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include
+        /// the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationIds")]
+        public virtual System.Collections.Generic.IList<string> DestinationIds { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will
+        /// always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to
+        /// facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations
+        /// are specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propagateService")]
+        public virtual System.Nullable<bool> PropagateService { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RuntimeConfig contains the runtime specific configurations for a deployment strategy.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10432,6 +10479,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Optional. Information specifying an Anthos Cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anthosCluster")]
         public virtual AnthosCluster AnthosCluster { get; set; }
+
+        /// <summary>
+        /// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other
+        /// than the deployment target for specific features. For example, the Gateway API canary can be configured to
+        /// deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An
+        /// entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a
+        /// letter or a number, and have a max length of 63 characters. In other words, it must match the following
+        /// regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedEntities")]
+        public virtual System.Collections.Generic.IDictionary<string, AssociatedEntities> AssociatedEntities { get; set; }
 
         private string _createTimeRaw;
 
