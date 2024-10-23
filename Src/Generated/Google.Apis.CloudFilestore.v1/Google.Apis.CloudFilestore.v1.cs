@@ -2323,7 +2323,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// <summary>Fixed IOPS (input/output operations per second) parameters.</summary>
     public class FixedIOPS : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Maximum raw read IOPS.</summary>
+        /// <summary>Required. Maximum IOPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxIops")]
+        public virtual System.Nullable<long> MaxIops { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: `max_iops` should be used instead of this parameter. Maximum raw read IOPS.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
         public virtual System.Nullable<long> MaxReadIops { get; set; }
 
@@ -2836,7 +2842,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// <summary>IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB).</summary>
     public class IOPSPerTB : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Maximum read IOPS per TiB.</summary>
+        /// <summary>Required. Maximum IOPS per TiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxIopsPerTb")]
+        public virtual System.Nullable<long> MaxIopsPerTb { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: `max_iops_per_tb` should be used instead of this parameter. Maximum read IOPS per TiB.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadIopsPerTb")]
         public virtual System.Nullable<long> MaxReadIopsPerTb { get; set; }
 
