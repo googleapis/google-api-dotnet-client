@@ -1326,13 +1326,6 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMode")]
         public virtual string EvaluationMode { get; set; }
 
-        /// <summary>
-        /// Optional. The resource names of the attestors that must attest to a container image, in the format
-        /// `projects/*/attestors/*`. Each attestor must exist before a policy can reference it. To add an attestor to a
-        /// policy the principal issuing the policy change request must be able to read the attestor resource. Note:
-        /// this field must be non-empty when the evaluation_mode field specifies REQUIRE_ATTESTATION, otherwise it must
-        /// be empty.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireAttestationsBy")]
         public virtual System.Collections.Generic.IList<string> RequireAttestationsBy { get; set; }
 
