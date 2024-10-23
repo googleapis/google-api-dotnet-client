@@ -7189,6 +7189,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
 
         /// <summary>
+        /// An identifier for the policy that will be passed with the app install feedback sent from the Play Store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
+        public virtual string PolicyId { get; set; }
+
+        /// <summary>
         /// The availability granted to the device for the specified products. "all" gives the device access to all
         /// products, regardless of approval status. "all" does not enable automatic visibility of "alpha" or "beta"
         /// tracks. "whitelist" grants the device access the products specified in productPolicy[]. Only products that
