@@ -9354,10 +9354,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customRolesSupportLevel")]
         public virtual string CustomRolesSupportLevel { get; set; }
 
-        /// <summary>
-        /// A brief description of what this Permission is used for. This permission can ONLY be used in predefined
-        /// roles.
-        /// </summary>
+        /// <summary>A brief description of what this Permission is used for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
