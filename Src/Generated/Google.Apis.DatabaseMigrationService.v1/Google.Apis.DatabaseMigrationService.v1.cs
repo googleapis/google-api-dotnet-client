@@ -5905,6 +5905,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
+        /// <summary>Optional. The connection profile role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
         /// <summary>Connection profile for a SQL Server data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlserver")]
         public virtual SqlServerConnectionProfile Sqlserver { get; set; }
