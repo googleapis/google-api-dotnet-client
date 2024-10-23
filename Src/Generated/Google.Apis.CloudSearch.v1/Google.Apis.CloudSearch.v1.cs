@@ -9768,7 +9768,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The search API request.</summary>
+    /// <summary>The search API request. NEXT ID: 17</summary>
     public class SearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9822,7 +9822,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The search API response.</summary>
+    /// <summary>The search API response. NEXT ID: 17</summary>
     public class SearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Debugging information about the response.</summary>
