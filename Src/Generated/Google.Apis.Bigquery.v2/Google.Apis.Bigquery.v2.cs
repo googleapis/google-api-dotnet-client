@@ -462,6 +462,21 @@ namespace Google.Apis.Bigquery.v2
             public virtual string DatasetId { get; private set; }
 
             /// <summary>
+            /// Optional. The version of the access policy schema to fetch. Valid values are 0, 1, and 3. Requests
+            /// specifying an invalid value will be rejected. Requests for conditional access policy binding in datasets
+            /// must specify version 3. Dataset with no conditional role bindings in access policy may specify any valid
+            /// value or leave the field unset. This field will be maped to [IAM Policy version]
+            /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to fetch policy from IAM. If
+            /// unset or if 0 or 1 value is used for dataset with conditional bindings, access entry with condition will
+            /// have role string appended by 'withcond' string followed by a hash value. For example : { "access": [ {
+            /// "role": "roles/bigquery.dataViewer_with_conditionalbinding_7a34awqsda", "userByEmail":
+            /// "user@example.com", } ] } Please refer https://cloud.google.com/iam/docs/troubleshooting-withcond for
+            /// more details.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("accessPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> AccessPolicyVersion { get; set; }
+
+            /// <summary>
             /// Optional. Specifies the view that determines which dataset information is returned. By default, metadata
             /// and ACL information are returned.
             /// </summary>
@@ -524,6 +539,14 @@ namespace Google.Apis.Bigquery.v2
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
                 });
+                RequestParameters.Add("accessPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accessPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("datasetView", new Google.Apis.Discovery.Parameter
                 {
                     Name = "datasetView",
@@ -558,6 +581,19 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
+            /// <summary>
+            /// Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests
+            /// specifying an invalid value will be rejected. This version refers to the schema version of the access
+            /// policy and not the version of access policy. This field's value can be equal or more than the access
+            /// policy schema provided in the request. For example, * Requests with conditional access policy binding in
+            /// datasets must specify version 3. * But dataset with no conditional role bindings in access policy may
+            /// specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with
+            /// conditional bindings, request will be rejected. This field will be maped to IAM Policy version
+            /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("accessPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> AccessPolicyVersion { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
 
@@ -584,6 +620,14 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("accessPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accessPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -731,6 +775,21 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
+            /// <summary>
+            /// Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests
+            /// specifying an invalid value will be rejected. This version refers to the schema version of the access
+            /// policy and not the version of access policy. This field's value can be equal or more than the access
+            /// policy schema provided in the request. For example, * Operations updating conditional access policy
+            /// binding in datasets must specify version 3. Some of the operations are : - Adding a new access policy
+            /// entry with condition. - Removing an access policy entry with condition. - Updating an access policy
+            /// entry with condition. * But dataset with no conditional role bindings in access policy may specify any
+            /// valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional
+            /// bindings, request will be rejected. This field will be maped to IAM Policy version
+            /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("accessPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> AccessPolicyVersion { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
 
@@ -765,6 +824,14 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("accessPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accessPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -877,6 +944,21 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
+            /// <summary>
+            /// Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests
+            /// specifying an invalid value will be rejected. This version refers to the schema version of the access
+            /// policy and not the version of access policy. This field's value can be equal or more than the access
+            /// policy schema provided in the request. For example, * Operations updating conditional access policy
+            /// binding in datasets must specify version 3. Some of the operations are : - Adding a new access policy
+            /// entry with condition. - Removing an access policy entry with condition. - Updating an access policy
+            /// entry with condition. * But dataset with no conditional role bindings in access policy may specify any
+            /// valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional
+            /// bindings, request will be rejected. This field will be maped to IAM Policy version
+            /// (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("accessPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> AccessPolicyVersion { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
 
@@ -911,6 +993,14 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("accessPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accessPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -5513,6 +5603,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         public class AccessData
         {
+            /// <summary>
+            /// Optional. condition for the binding. If CEL expression in this field is true, this access binding will
+            /// be considered
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+            public virtual Expr Condition { get; set; }
+
             /// <summary>
             /// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this
             /// dataset. Only views are supported for now. The role field is not required when this field is set. If
