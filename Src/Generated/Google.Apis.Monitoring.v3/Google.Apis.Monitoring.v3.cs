@@ -4246,8 +4246,8 @@ namespace Google.Apis.Monitoring.v3
 
                 /// <summary>
                 /// If true, the notification channel will be deleted regardless of its use in alert policies (the
-                /// policies will be updated to remove the channel). If false, channels that are still referenced by an
-                /// existing alerting policy will fail to be deleted in a delete operation.
+                /// policies will be updated to remove the channel). If false, this operation will fail if the
+                /// notification channel is referenced by existing alerting policies.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Force { get; set; }
