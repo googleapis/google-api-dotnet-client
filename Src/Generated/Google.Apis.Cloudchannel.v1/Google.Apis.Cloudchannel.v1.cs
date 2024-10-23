@@ -9215,6 +9215,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1alpha1Parameter> Parameters { get; set; }
 
+        /// <summary>
+        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
+        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
+        /// order. Yet to be implemented: this field is currently not evaluated in the API if populated in a request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
+        public virtual string PriceReferenceId { get; set; }
+
         /// <summary>Output only. Service provisioning details for the entitlement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedService")]
         public virtual GoogleCloudChannelV1alpha1ProvisionedService ProvisionedService { get; set; }
