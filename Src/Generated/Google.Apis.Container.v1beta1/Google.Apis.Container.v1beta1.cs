@@ -703,6 +703,71 @@ namespace Google.Apis.Container.v1beta1
                         }
                     }
 
+                    /// <summary>Fetch upgrade information of a specific nodepool.</summary>
+                    /// <param name="name">
+                    /// Required. The name (project, location, cluster, nodepool) of the nodepool to get. Specified in
+                    /// the format `projects/*/locations/*/clusters/*/nodePools/*` or
+                    /// `projects/*/zones/*/clusters/*/nodePools/*`.
+                    /// </param>
+                    public virtual FetchNodePoolUpgradeInfoRequest FetchNodePoolUpgradeInfo(string name)
+                    {
+                        return new FetchNodePoolUpgradeInfoRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetch upgrade information of a specific nodepool.</summary>
+                    public class FetchNodePoolUpgradeInfoRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.NodePoolUpgradeInfo>
+                    {
+                        /// <summary>Constructs a new FetchNodePoolUpgradeInfo request.</summary>
+                        public FetchNodePoolUpgradeInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name (project, location, cluster, nodepool) of the nodepool to get. Specified
+                        /// in the format `projects/*/locations/*/clusters/*/nodePools/*` or
+                        /// `projects/*/zones/*/clusters/*/nodePools/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>API request version that initiates this operation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Version { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchNodePoolUpgradeInfo";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:fetchNodePoolUpgradeInfo";
+
+                        /// <summary>Initializes FetchNodePoolUpgradeInfo parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
+                            RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "version",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Retrieves the requested node pool.</summary>
                     /// <param name="name">
                     /// The name (project, location, cluster, node pool id) of the node pool to get. Specified in the
@@ -1584,6 +1649,69 @@ namespace Google.Apis.Container.v1beta1
                         RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
                         {
                             Name = "zone",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Fetch upgrade information of a specific cluster.</summary>
+                /// <param name="name">
+                /// Required. The name (project, location, cluster) of the cluster to get. Specified in the format
+                /// `projects/*/locations/*/clusters/*` or `projects/*/zones/*/clusters/*`.
+                /// </param>
+                public virtual FetchClusterUpgradeInfoRequest FetchClusterUpgradeInfo(string name)
+                {
+                    return new FetchClusterUpgradeInfoRequest(this.service, name);
+                }
+
+                /// <summary>Fetch upgrade information of a specific cluster.</summary>
+                public class FetchClusterUpgradeInfoRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.ClusterUpgradeInfo>
+                {
+                    /// <summary>Constructs a new FetchClusterUpgradeInfo request.</summary>
+                    public FetchClusterUpgradeInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name (project, location, cluster) of the cluster to get. Specified in the format
+                    /// `projects/*/locations/*/clusters/*` or `projects/*/zones/*/clusters/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>API request version that initiates this operation.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Version { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchClusterUpgradeInfo";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:fetchClusterUpgradeInfo";
+
+                    /// <summary>Initializes FetchClusterUpgradeInfo parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                        RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "version",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3348,6 +3476,71 @@ namespace Google.Apis.Container.v1beta1
                         }
                     }
 
+                    /// <summary>Fetch upgrade information of a specific nodepool.</summary>
+                    /// <param name="name">
+                    /// Required. The name (project, location, cluster, nodepool) of the nodepool to get. Specified in
+                    /// the format `projects/*/locations/*/clusters/*/nodePools/*` or
+                    /// `projects/*/zones/*/clusters/*/nodePools/*`.
+                    /// </param>
+                    public virtual FetchNodePoolUpgradeInfoRequest FetchNodePoolUpgradeInfo(string name)
+                    {
+                        return new FetchNodePoolUpgradeInfoRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetch upgrade information of a specific nodepool.</summary>
+                    public class FetchNodePoolUpgradeInfoRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.NodePoolUpgradeInfo>
+                    {
+                        /// <summary>Constructs a new FetchNodePoolUpgradeInfo request.</summary>
+                        public FetchNodePoolUpgradeInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name (project, location, cluster, nodepool) of the nodepool to get. Specified
+                        /// in the format `projects/*/locations/*/clusters/*/nodePools/*` or
+                        /// `projects/*/zones/*/clusters/*/nodePools/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>API request version that initiates this operation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Version { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchNodePoolUpgradeInfo";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:fetchNodePoolUpgradeInfo";
+
+                        /// <summary>Initializes FetchNodePoolUpgradeInfo parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/zones/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
+                            });
+                            RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "version",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Retrieves the requested node pool.</summary>
                     /// <param name="projectId">
                     /// Required. Deprecated. The Google Developers Console [project ID or project
@@ -4508,6 +4701,69 @@ namespace Google.Apis.Container.v1beta1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Fetch upgrade information of a specific cluster.</summary>
+                /// <param name="name">
+                /// Required. The name (project, location, cluster) of the cluster to get. Specified in the format
+                /// `projects/*/locations/*/clusters/*` or `projects/*/zones/*/clusters/*`.
+                /// </param>
+                public virtual FetchClusterUpgradeInfoRequest FetchClusterUpgradeInfo(string name)
+                {
+                    return new FetchClusterUpgradeInfoRequest(this.service, name);
+                }
+
+                /// <summary>Fetch upgrade information of a specific cluster.</summary>
+                public class FetchClusterUpgradeInfoRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.ClusterUpgradeInfo>
+                {
+                    /// <summary>Constructs a new FetchClusterUpgradeInfo request.</summary>
+                    public FetchClusterUpgradeInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name (project, location, cluster) of the cluster to get. Specified in the format
+                    /// `projects/*/locations/*/clusters/*` or `projects/*/zones/*/clusters/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>API request version that initiates this operation.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Version { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchClusterUpgradeInfo";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:fetchClusterUpgradeInfo";
+
+                    /// <summary>Initializes FetchClusterUpgradeInfo parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/zones/[^/]+/clusters/[^/]+$",
+                        });
+                        RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "version",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6449,6 +6705,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
         public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; }
 
+        /// <summary>Configuration for the Cloud Storage Parallelstore CSI driver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parallelstoreCsiDriverConfig")]
+        public virtual ParallelstoreCsiDriverConfig ParallelstoreCsiDriverConfig { get; set; }
+
         /// <summary>Optional. Configuration for Ray Operator addon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rayOperatorConfig")]
         public virtual RayOperatorConfig RayOperatorConfig { get; set; }
@@ -6513,6 +6773,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The name of the security group-of-groups to be used. Only relevant if enabled = true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityGroup")]
         public virtual string SecurityGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AutoMonitoringConfig defines the configuration for GKE Workload Auto-Monitoring.</summary>
+    public class AutoMonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Scope for GKE Workload Auto-Monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7908,6 +8179,41 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual UserManagedKeysConfig UserManagedKeysConfig { get; set; }
     }
 
+    /// <summary>ClusterUpgradeInfo contains the upgrade information of a cluster.</summary>
+    public class ClusterUpgradeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The auto upgrade status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpgradeStatus")]
+        public virtual System.Collections.Generic.IList<string> AutoUpgradeStatus { get; set; }
+
+        /// <summary>The cluster's current minor version's end of extended support timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfExtendedSupportTimestamp")]
+        public virtual string EndOfExtendedSupportTimestamp { get; set; }
+
+        /// <summary>The cluster's current minor version's end of standard support timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfStandardSupportTimestamp")]
+        public virtual string EndOfStandardSupportTimestamp { get; set; }
+
+        /// <summary>minor_target_version indicates the target version for minor upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorTargetVersion")]
+        public virtual string MinorTargetVersion { get; set; }
+
+        /// <summary>patch_target_version indicates the target version for patch upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patchTargetVersion")]
+        public virtual string PatchTargetVersion { get; set; }
+
+        /// <summary>The auto upgrade paused reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pausedReason")]
+        public virtual System.Collections.Generic.IList<string> PausedReason { get; set; }
+
+        /// <summary>The list of past auto upgrades.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeDetails")]
+        public virtual System.Collections.Generic.IList<UpgradeDetails> UpgradeDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CompleteIPRotationRequest moves the cluster master back into single-IP mode.</summary>
     public class CompleteIPRotationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9263,6 +9569,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class ManagedPrometheusConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GKE Workload Auto-Monitoring Configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoMonitoringConfig")]
+        public virtual AutoMonitoringConfig AutoMonitoringConfig { get; set; }
+
         /// <summary>Enable Managed Collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -10315,6 +10625,41 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>NodePoolUpgradeInfo contains the upgrade information of a nodepool.</summary>
+    public class NodePoolUpgradeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The auto upgrade status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpgradeStatus")]
+        public virtual System.Collections.Generic.IList<string> AutoUpgradeStatus { get; set; }
+
+        /// <summary>The nodepool's current minor version's end of extended support timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfExtendedSupportTimestamp")]
+        public virtual string EndOfExtendedSupportTimestamp { get; set; }
+
+        /// <summary>The nodepool's current minor version's end of standard support timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfStandardSupportTimestamp")]
+        public virtual string EndOfStandardSupportTimestamp { get; set; }
+
+        /// <summary>minor_target_version indicates the target version for minor upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorTargetVersion")]
+        public virtual string MinorTargetVersion { get; set; }
+
+        /// <summary>patch_target_version indicates the target version for patch upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patchTargetVersion")]
+        public virtual string PatchTargetVersion { get; set; }
+
+        /// <summary>The auto upgrade paused reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pausedReason")]
+        public virtual System.Collections.Generic.IList<string> PausedReason { get; set; }
+
+        /// <summary>The list of past auto upgrades.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeDetails")]
+        public virtual System.Collections.Generic.IList<UpgradeDetails> UpgradeDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types:
     /// NoSchedule, PreferNoSchedule or NoExecute. See
@@ -10569,6 +10914,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIdleTimeWindow")]
         public virtual object NodeIdleTimeWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Cloud Storage Parallelstore CSI driver.</summary>
+    public class ParallelstoreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Cloud Storage Parallelstore CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10946,6 +11302,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The default version for newly created clusters on the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVersion")]
         public virtual string DefaultVersion { get; set; }
+
+        /// <summary>The auto upgrade target version for clusters on the channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeTargetVersion")]
+        public virtual string UpgradeTargetVersion { get; set; }
 
         /// <summary>List of valid versions for the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validVersions")]
@@ -12439,6 +12799,99 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Windows node versions info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsVersions")]
         public virtual WindowsVersions WindowsVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UpgradeDetails contains detailed information of each individual upgrade operation.</summary>
+    public class UpgradeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The end timestamp of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The version before the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialVersion")]
+        public virtual string InitialVersion { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The start timestamp of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The state of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The version after the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
