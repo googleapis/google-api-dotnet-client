@@ -10825,27 +10825,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frequentlyBoughtTogetherConfig")]
         public virtual GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig FrequentlyBoughtTogetherConfig { get; set; }
 
-        /// <summary>Optional. LLM embedding config to use for this model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("llmEmbeddingConfig")]
-        public virtual GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig LlmEmbeddingConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Config that turns on usage of llm embeddings as features to the model. Embeddings leverage unstructured text
-    /// fields like description and title.
-    /// </summary>
-    public class GoogleCloudRetailV2alphaModelModelFeaturesConfigLlmEmbeddingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The LLM embedding version to use. Currently only `v0` is supported. If not specified, feature will
-        /// not be turned on.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("llmEmbeddingVersion")]
-        public virtual string LlmEmbeddingVersion { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
