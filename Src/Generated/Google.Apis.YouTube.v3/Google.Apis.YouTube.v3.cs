@@ -13395,7 +13395,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Describes an invideo branding.</summary>
+    /// <summary>Describes an invideo branding.</summary>
     public class InvideoBranding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The bytes the uploaded image. Only used in api to youtube communication.</summary>
@@ -16156,6 +16156,10 @@ namespace Google.Apis.YouTube.v3.Data
 
     public class TestItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Etag for the resource. See https://en.wikipedia.org/wiki/HTTP_ETag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("featuredPart")]
         public virtual System.Nullable<bool> FeaturedPart { get; set; }
 
@@ -16167,9 +16171,6 @@ namespace Google.Apis.YouTube.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual TestItemTestItemSnippet Snippet { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     public class TestItemTestItemSnippet : Google.Apis.Requests.IDirectResponseSchema
