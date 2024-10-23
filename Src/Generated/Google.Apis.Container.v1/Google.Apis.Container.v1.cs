@@ -6383,6 +6383,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
         public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; }
 
+        /// <summary>Configuration for the Cloud Storage Parallelstore CSI driver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parallelstoreCsiDriverConfig")]
+        public virtual ParallelstoreCsiDriverConfig ParallelstoreCsiDriverConfig { get; set; }
+
         /// <summary>Optional. Configuration for Ray Operator addon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rayOperatorConfig")]
         public virtual RayOperatorConfig RayOperatorConfig { get; set; }
@@ -10141,6 +10145,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the Cloud Storage Parallelstore CSI driver.</summary>
+    public class ParallelstoreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Cloud Storage Parallelstore CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google
     /// internal products that are built on top of a GKE cluster and take the ownership of the cluster.
@@ -10466,6 +10481,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The default version for newly created clusters on the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVersion")]
         public virtual string DefaultVersion { get; set; }
+
+        /// <summary>The auto upgrade target version for clusters on the channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeTargetVersion")]
+        public virtual string UpgradeTargetVersion { get; set; }
 
         /// <summary>List of valid versions for the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validVersions")]
