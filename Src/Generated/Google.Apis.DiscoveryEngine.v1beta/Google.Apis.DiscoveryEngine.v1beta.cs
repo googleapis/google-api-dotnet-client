@@ -16475,6 +16475,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration data for advance site search.</summary>
+    public class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -16616,7 +16623,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activeTimeRange")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ConditionTimeRange> ActiveTimeRange { get; set; }
 
-        /// <summary>Search only A list of terms to match the query on. Maximum of 10 query terms.</summary>
+        /// <summary>
+        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. This
+        /// is currently supporting promotion use case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRegex")]
+        public virtual string QueryRegex { get; set; }
+
+        /// <summary>
+        /// Search only A list of terms to match the query on. Cannot be set when Condition.query_regex is set. Maximum
+        /// of 10 query terms.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryTerms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ConditionQueryTerm> QueryTerms { get; set; }
 
@@ -17207,6 +17224,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1DataStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration for advanced site search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSiteSearchConfig")]
+        public virtual GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig AdvancedSiteSearchConfig { get; set; }
+
         /// <summary>Output only. Data size estimation for billing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1DataStoreBillingEstimation BillingEstimation { get; set; }
@@ -17296,7 +17317,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>Optional. Stores serving config at DataStore level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigDataStore")]
-        public virtual GoogleCloudDiscoveryengineV1ServingConfigDataStore ServingConfigDataStore { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore ServingConfigDataStore { get; set; }
 
         /// <summary>
         /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
@@ -17459,6 +17480,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
             set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
+        public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19364,17 +19396,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
-    public class GoogleCloudDiscoveryengineV1ServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
-        public virtual System.Nullable<bool> DisabledForServing { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Verification information for target sites in advanced site search.</summary>
     public class GoogleCloudDiscoveryengineV1SiteVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19955,6 +19976,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration data for advance site search.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set true, automatic refresh is disabled for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAutomaticRefresh")]
+        public virtual System.Nullable<bool> DisableAutomaticRefresh { get; set; }
+
+        /// <summary>If set true, initial indexing is disabled for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableInitialIndex")]
+        public virtual System.Nullable<bool> DisableInitialIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines an answer.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20346,7 +20382,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Data representation. The structured JSON data for the document. It's populated from the struct data from the
-        /// Document, or the Chunk in search result. .
+        /// Document, or the Chunk in search result.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
@@ -20553,7 +20589,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activeTimeRange")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConditionTimeRange> ActiveTimeRange { get; set; }
 
-        /// <summary>Search only A list of terms to match the query on. Maximum of 10 query terms.</summary>
+        /// <summary>
+        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. This
+        /// is currently supporting promotion use case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRegex")]
+        public virtual string QueryRegex { get; set; }
+
+        /// <summary>
+        /// Search only A list of terms to match the query on. Cannot be set when Condition.query_regex is set. Maximum
+        /// of 10 query terms.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryTerms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConditionQueryTerm> QueryTerms { get; set; }
 
@@ -21166,7 +21212,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         private object _createTime;
 
-        /// <summary>Timestamp the Model was created at.</summary>
+        /// <summary>Deprecated: Timestamp the Model was created at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -21283,6 +21329,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aclEnabled")]
         public virtual System.Nullable<bool> AclEnabled { get; set; }
 
+        /// <summary>Optional. Configuration for advanced site search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSiteSearchConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig AdvancedSiteSearchConfig { get; set; }
+
         /// <summary>Output only. Data size estimation for billing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1alphaDataStoreBillingEstimation BillingEstimation { get; set; }
@@ -21384,7 +21434,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>Optional. Stores serving config at DataStore level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigDataStore")]
-        public virtual GoogleCloudDiscoveryengineV1alphaServingConfigDataStore ServingConfigDataStore { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore ServingConfigDataStore { get; set; }
 
         /// <summary>
         /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
@@ -21547,6 +21597,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
             set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
+        public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24397,12 +24458,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Unique URIs in the request that don't match any TargetSite in the DataStore, only match TargetSites that
-        /// haven't been fully indexed, or match a TargetSite with type EXCLUDE.
-        /// </summary>
+        /// <summary>Unique URIs in the request that have invalid format. Sample limited to 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invalidUris")]
         public virtual System.Collections.Generic.IList<string> InvalidUris { get; set; }
+
+        /// <summary>Total number of unique URIs in the request that have invalid format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidUrisCount")]
+        public virtual System.Nullable<int> InvalidUrisCount { get; set; }
 
         /// <summary>Total number of URIs that have yet to be crawled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingCount")]
@@ -24452,6 +24514,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Unique URIs in the request that don't match any TargetSite in the DataStore, only match TargetSites that
+        /// haven't been fully indexed, or match a TargetSite with type EXCLUDE. Sample limited to 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urisNotMatchingTargetSites")]
+        public virtual System.Collections.Generic.IList<string> UrisNotMatchingTargetSites { get; set; }
+
+        /// <summary>Total number of URIs that don't match any TargetSites.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urisNotMatchingTargetSitesCount")]
+        public virtual System.Nullable<int> UrisNotMatchingTargetSitesCount { get; set; }
 
         /// <summary>Total number of unique URIs in the request that are not in invalid_uris.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validUrisCount")]
@@ -25474,17 +25547,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
-        public virtual System.Nullable<bool> DisabledForServing { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>External session proto definition.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSession : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26298,6 +26360,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration data for advance site search.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27216,7 +27285,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Data representation. The structured JSON data for the document. It's populated from the struct data from the
-        /// Document, or the Chunk in search result. .
+        /// Document, or the Chunk in search result.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
@@ -27467,7 +27536,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Format:
+        /// Format:
         /// projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fhirResource")]
@@ -27663,7 +27732,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Request message for GroundedGenerationService.CheckGrounding method.</summary>
     public class GoogleCloudDiscoveryengineV1betaCheckGroundingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Answer candidate to check. Can have a maximum length of 1024 characters.</summary>
+        /// <summary>Answer candidate to check. It can have a maximum length of 4096 tokens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerCandidate")]
         public virtual string AnswerCandidate { get; set; }
 
@@ -27701,7 +27770,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citedChunks")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaFactChunk> CitedChunks { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseFactChunk> CitedChunks { get; set; }
 
         /// <summary>Claim texts and citation info across all claims in the answer candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
@@ -27751,6 +27820,24 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
         public virtual System.Nullable<int> StartPos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fact chunk for grounding check.</summary>
+    public class GoogleCloudDiscoveryengineV1betaCheckGroundingResponseFactChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text content of the fact chunk. Can be at most 10K characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
+        public virtual string ChunkText { get; set; }
+
+        /// <summary>
+        /// Source from which this fact chunk was retrieved. For a fact chunk retrieved from inline facts, this field
+        /// will contain the index of the specific fact from which this chunk was retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28075,7 +28162,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activeTimeRange")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaConditionTimeRange> ActiveTimeRange { get; set; }
 
-        /// <summary>Search only A list of terms to match the query on. Maximum of 10 query terms.</summary>
+        /// <summary>
+        /// Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. This
+        /// is currently supporting promotion use case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRegex")]
+        public virtual string QueryRegex { get; set; }
+
+        /// <summary>
+        /// Search only A list of terms to match the query on. Cannot be set when Condition.query_regex is set. Maximum
+        /// of 10 query terms.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryTerms")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaConditionQueryTerm> QueryTerms { get; set; }
 
@@ -28980,7 +29077,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         private object _createTime;
 
-        /// <summary>Timestamp the Model was created at.</summary>
+        /// <summary>Deprecated: Timestamp the Model was created at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -29087,6 +29184,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1betaDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration for advanced site search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSiteSearchConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig AdvancedSiteSearchConfig { get; set; }
+
         /// <summary>Output only. Data size estimation for billing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingEstimation")]
         public virtual GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation BillingEstimation { get; set; }
@@ -29184,7 +29285,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>Optional. Stores serving config at DataStore level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigDataStore")]
-        public virtual GoogleCloudDiscoveryengineV1betaServingConfigDataStore ServingConfigDataStore { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore ServingConfigDataStore { get; set; }
 
         /// <summary>
         /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
@@ -29347,6 +29448,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WebsiteDataUpdateTimeRaw);
             set => WebsiteDataUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
+        public virtual System.Nullable<bool> DisabledForServing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30667,32 +30779,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleQuerySet")]
         public virtual string SampleQuerySet { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Fact Chunk.</summary>
-    public class GoogleCloudDiscoveryengineV1betaFactChunk : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Text content of the fact chunk. Can be at most 10K characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
-        public virtual string ChunkText { get; set; }
-
-        /// <summary>The index of this chunk. Currently, only used for the streaming mode.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; }
-
-        /// <summary>
-        /// Source from which this fact chunk was retrieved. If it was retrieved from the GroundingFacts provided in the
-        /// request then this field will contain the index of the specific fact from which this chunk was retrieved.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
-
-        /// <summary>More fine-grained information for the source reference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string, string> SourceMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34951,17 +35037,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Stores information regarding the serving configurations at DataStore level.</summary>
-    public class GoogleCloudDiscoveryengineV1betaServingConfigDataStore : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
-        public virtual System.Nullable<bool> DisabledForServing { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Specifies the configurations needed for Generic Discovery.Currently we support: * `content_search_spec`:
     /// configuration for generic content search.
@@ -35006,6 +35081,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Specifies the content watched minutes threshold for demotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentWatchedSecondsThreshold")]
         public virtual System.Nullable<float> ContentWatchedSecondsThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the number of days to look back for demoting watched content. If set to zero or unset,
+        /// defaults to the maximum of 365 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demoteContentWatchedPastDays")]
+        public virtual System.Nullable<int> DemoteContentWatchedPastDays { get; set; }
 
         /// <summary>
         /// Specifies the event type used for demoting recommendation result. Currently supported values: * `view-item`:
