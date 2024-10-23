@@ -1360,7 +1360,8 @@ namespace Google.Apis.SQLAdmin.v1
         /// <summary>
         /// Lists all versions of server certificates and certificate authorities (CAs) for the specified instance.
         /// There can be up to three sets of certs listed: the certificate that is currently in use, a future that has
-        /// been added but not yet used to sign a certificate, and a certificate that has been rotated out.
+        /// been added but not yet used to sign a certificate, and a certificate that has been rotated out. For
+        /// instances not using Certificate Authority Service (CAS) server CA, use ListServerCas instead.
         /// </summary>
         /// <param name="project">Required. Project ID of the project that contains the instance.</param>
         /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
@@ -1372,7 +1373,8 @@ namespace Google.Apis.SQLAdmin.v1
         /// <summary>
         /// Lists all versions of server certificates and certificate authorities (CAs) for the specified instance.
         /// There can be up to three sets of certs listed: the certificate that is currently in use, a future that has
-        /// been added but not yet used to sign a certificate, and a certificate that has been rotated out.
+        /// been added but not yet used to sign a certificate, and a certificate that has been rotated out. For
+        /// instances not using Certificate Authority Service (CAS) server CA, use ListServerCas instead.
         /// </summary>
         public class ListServerCertificatesRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.InstancesListServerCertificatesResponse>
         {
