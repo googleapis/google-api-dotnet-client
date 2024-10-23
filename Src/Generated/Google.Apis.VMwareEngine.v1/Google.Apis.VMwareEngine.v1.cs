@@ -1010,9 +1010,9 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of the network peering. NetworkPeering is a global resource and
-                /// location can only be global. Resource names are scheme-less URIs that follow the conventions in
-                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// Output only. Identifier. The resource name of the network peering. NetworkPeering is a global
+                /// resource and location can only be global. Resource names are scheme-less URIs that follow the
+                /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
                 /// `projects/my-project/locations/global/networkPeerings/my-peering`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string name)
@@ -1036,9 +1036,9 @@ namespace Google.Apis.VMwareEngine.v1
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of the network peering. NetworkPeering is a global resource and
-                    /// location can only be global. Resource names are scheme-less URIs that follow the conventions in
-                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// Output only. Identifier. The resource name of the network peering. NetworkPeering is a global
+                    /// resource and location can only be global. Resource names are scheme-less URIs that follow the
+                    /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
                     /// `projects/my-project/locations/global/networkPeerings/my-peering`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2107,9 +2107,9 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of this network policy. Resource names are schemeless URIs that
-                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
-                /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+                /// Output only. Identifier. The resource name of this network policy. Resource names are schemeless
+                /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                /// example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.NetworkPolicy body, string name)
                 {
@@ -2137,9 +2137,9 @@ namespace Google.Apis.VMwareEngine.v1
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of this network policy. Resource names are schemeless URIs that
-                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
-                    /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+                    /// Output only. Identifier. The resource name of this network policy. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3268,8 +3268,8 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. The resource name of this cluster. Resource names are schemeless URIs that follow
-                    /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// Output only. Identifier. The resource name of this cluster. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
                     /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.Cluster body, string name)
@@ -3294,8 +3294,9 @@ namespace Google.Apis.VMwareEngine.v1
                         }
 
                         /// <summary>
-                        /// Output only. The resource name of this cluster. Resource names are schemeless URIs that
-                        /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                        /// Output only. Identifier. The resource name of this cluster. Resource names are schemeless
+                        /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                        /// example:
                         /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3928,8 +3929,9 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. The resource name of this external IP address. Resource names are schemeless URIs
-                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// Output only. Identifier. The resource name of this external IP address. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
                     /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.ExternalAddress body, string name)
@@ -3954,9 +3956,9 @@ namespace Google.Apis.VMwareEngine.v1
                         }
 
                         /// <summary>
-                        /// Output only. The resource name of this external IP address. Resource names are schemeless
-                        /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
-                        /// example:
+                        /// Output only. Identifier. The resource name of this external IP address. Resource names are
+                        /// schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
                         /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5753,8 +5755,8 @@ namespace Google.Apis.VMwareEngine.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. The resource name of this subnet. Resource names are schemeless URIs that follow
-                    /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// Output only. Identifier. The resource name of this subnet. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
                     /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.Subnet body, string name)
@@ -5778,8 +5780,9 @@ namespace Google.Apis.VMwareEngine.v1
                         }
 
                         /// <summary>
-                        /// Output only. The resource name of this subnet. Resource names are schemeless URIs that
-                        /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                        /// Output only. Identifier. The resource name of this subnet. Resource names are schemeless
+                        /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                        /// example:
                         /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6409,8 +6412,8 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of this private cloud. Resource names are schemeless URIs that follow
-                /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// Output only. Identifier. The resource name of this private cloud. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
                 /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.PrivateCloud body, string name)
@@ -6436,9 +6439,9 @@ namespace Google.Apis.VMwareEngine.v1
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of this private cloud. Resource names are schemeless URIs that
-                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
-                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// Output only. Identifier. The resource name of this private cloud. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6969,8 +6972,8 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of this DNS profile. Resource names are schemeless URIs that follow
-                /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// Output only. Identifier. The resource name of this DNS profile. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
                 /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
                 /// </param>
                 public virtual UpdateDnsForwardingRequest UpdateDnsForwarding(Google.Apis.VMwareEngine.v1.Data.DnsForwarding body, string name)
@@ -6993,9 +6996,9 @@ namespace Google.Apis.VMwareEngine.v1
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of this DNS profile. Resource names are schemeless URIs that
-                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
-                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
+                    /// Output only. Identifier. The resource name of this DNS profile. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8098,9 +8101,9 @@ namespace Google.Apis.VMwareEngine.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of the VMware Engine network. Resource names are schemeless URIs that
-                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
-                /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
+                /// Output only. Identifier. The resource name of the VMware Engine network. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork body, string name)
                 {
@@ -8122,8 +8125,9 @@ namespace Google.Apis.VMwareEngine.v1
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of the VMware Engine network. Resource names are schemeless URIs
-                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// Output only. Identifier. The resource name of the VMware Engine network. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
                     /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8659,8 +8663,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual System.Nullable<bool> Management { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of this cluster. Resource names are schemeless URIs that follow the
-        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// Output only. Identifier. The resource name of this cluster. Resource names are schemeless URIs that follow
+        /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8819,8 +8823,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual System.Collections.Generic.IList<ForwardingRule> ForwardingRules { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of this DNS profile. Resource names are schemeless URIs that follow the
-        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// Output only. Identifier. The resource name of this DNS profile. Resource names are schemeless URIs that
+        /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9136,8 +9140,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string InternalIp { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of this external IP address. Resource names are schemeless URIs that follow
-        /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// Output only. Identifier. The resource name of this external IP address. Resource names are schemeless URIs
+        /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -10177,8 +10181,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual System.Nullable<bool> ImportCustomRoutesWithPublicIp { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the network peering. NetworkPeering is a global resource and location can
-        /// only be global. Resource names are scheme-less URIs that follow the conventions in
+        /// Output only. Identifier. The resource name of the network peering. NetworkPeering is a global resource and
+        /// location can only be global. Resource names are scheme-less URIs that follow the conventions in
         /// https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/global/networkPeerings/my-peering`
         /// </summary>
@@ -10340,8 +10344,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual NetworkService InternetAccess { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of this network policy. Resource names are schemeless URIs that follow the
-        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// Output only. Identifier. The resource name of this network policy. Resource names are schemeless URIs that
+        /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -10991,8 +10995,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual ManagementCluster ManagementCluster { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of this private cloud. Resource names are schemeless URIs that follow the
-        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// Output only. Identifier. The resource name of this private cloud. Resource names are schemeless URIs that
+        /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -11404,8 +11408,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string IpCidrRange { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of this subnet. Resource names are schemeless URIs that follow the
-        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// Output only. Identifier. The resource name of this subnet. Resource names are schemeless URIs that follow
+        /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -11558,8 +11562,8 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the VMware Engine network. Resource names are schemeless URIs that follow
-        /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// Output only. Identifier. The resource name of the VMware Engine network. Resource names are schemeless URIs
+        /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
