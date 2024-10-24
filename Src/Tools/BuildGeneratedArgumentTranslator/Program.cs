@@ -23,10 +23,7 @@
 // small utility standalone than to put it into the generator itself (or have some common
 // dependency library).
 
-using Google.Api.Generator.Rest.Models;
-using Google.Api.Generator.Utils;
-using Google.Apis.Discovery.v1.Data;
-using Google.Apis.Json;
+using ToolUtilities;
 
 if (args.Length == 0)
 {
@@ -57,15 +54,8 @@ foreach (string path in args)
         continue;
     }
 
-    // The code below is taken from PackageModel in the REST generator.
-    var discoveryDoc = NewtonsoftJsonSerializer.Instance.Deserialize<RestDescription>(File.ReadAllText(path));
-
-    var className = (discoveryDoc.CanonicalName ?? discoveryDoc.Name).Replace(" ", "").ToMemberName();
-    string versionNoDots = discoveryDoc.Version.Replace('.', '_');
-    var camelizedPackagePath = discoveryDoc.PackagePath is null
-        ? ""
-        : string.Join('.', discoveryDoc.PackagePath.Split('/').Select(part => part.ToUpperCamelCase())) + ".";
-    var packageName = $"Google.Apis.{camelizedPackagePath}{className}.{versionNoDots}";
+    var json = File.ReadAllText(path);
+    string packageName = Discovery.GetPackageName(json);
     Console.Write($" {generationDir}/{packageName}");
 }
 
