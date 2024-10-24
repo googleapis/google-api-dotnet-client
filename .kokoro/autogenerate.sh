@@ -81,6 +81,11 @@ done
 git add --all
 git commit -a -m "chore: Delete obsolete Discovery docs" || true
 
+# Regenerate the package table in README.md
+dotnet run --project Src/Tools/UpdateReadmePackageList -- README.md DiscoveryJson
+git add --all
+git commit -a -m "chore: Update the package table in README.md" || true
+
 # Push changes to git, not to the main branch but to branchname
 # We change the origin URL so that we can push with SSH
 git remote set-url origin git@github.com:googleapis/google-api-dotnet-client.git
