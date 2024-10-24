@@ -51,7 +51,13 @@ To make it easier for you to develop with the Google APIs using the Google API c
 
 The generator that produces the source code for API-specific libraries is in https://github.com/googleapis/gapic-generator-csharp. The most recently generated code is available in `Src/Generated/`, and the discovery documents from which that code was generated are in `DiscoveryJson/`.
 
+The libraries are shown in the following table.
+
+|API|NuGet package|Reference documentation|
+|---|---|---|
+
 # Support Forums
 
 If you find an issue with in the client library we would appreciate you adding an issue in the [issue tracker](https://github.com/googleapis/google-api-dotnet-client/issues).
 Questions regarding usage of the client library should be posted to [stackoverflow.com](http://stackoverflow.com/)  using the tag [#google-api-dotnet-client](http://stackoverflow.com/questions/tagged/google-api-dotnet-client)
+
