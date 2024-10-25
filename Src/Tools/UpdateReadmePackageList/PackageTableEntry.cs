@@ -24,6 +24,7 @@ internal class PackageTableEntry
 {
     public string PackageName { get; }
     public string NugetLink => $"https://www.nuget.org/packages/{PackageName}";
+    public string NugetBadgeLink => $"https://img.shields.io/nuget/v/{PackageName}";
     public string ReferenceDocsLink => $"https://googleapis.dev/dotnet/{PackageName}/latest/api/{PackageName}.html";
     public string ApiDocsLink { get; }
     public string ApiName { get; }
@@ -39,5 +40,5 @@ internal class PackageTableEntry
         new(Discovery.ParseDiscoveryJson(File.ReadAllText(discoveryFilePath)));
 
     internal string ToMarkdown() =>
-        $"|[{ApiName}]({ApiDocsLink})|[{PackageName}]({NugetLink})|[Library documentation]({ReferenceDocsLink})|";
+        $"| [{PackageName}]({ReferenceDocsLink}) | [![NuGet]({NugetBadgeLink})]({NugetLink}) | [{ApiName}]({ApiDocsLink}) |";
 }
