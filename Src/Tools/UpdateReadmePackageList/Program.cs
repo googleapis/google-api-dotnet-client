@@ -12,17 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Translates the arguments from BuildGenerated.sh into directories containing
-// libraries. This is primarily for the sake of being able to accept Discovery file
-// paths as reported by earlier phases of the build pipeline. See BuildGenerated.sh
-// for details of the expected arguments. The first argument is the generation directory,
-// and is specified by BuildGenerated.sh itself.
-
-// This code copies elements from the REST generator. While duplication isn't great,
-// this is code that isn't expected to change regularly, and it's cleaner to make this
-// small utility standalone than to put it into the generator itself (or have some common
-// dependency library).
-
 using UpdateReadmePackageList;
 
 // Everything before this line is preserved.
