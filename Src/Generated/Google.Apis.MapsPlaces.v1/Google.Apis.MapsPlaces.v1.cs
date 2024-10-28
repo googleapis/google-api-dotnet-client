@@ -769,13 +769,16 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spatialRelationship")]
         public virtual string SpatialRelationship { get; set; }
 
-        /// <summary>The straight line distance in meters between the target location and the landmark.</summary>
+        /// <summary>
+        /// The straight line distance, in meters, between the center point of the target and the center point of the
+        /// landmark. In some situations, this value can be longer than `travel_distance_meters`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("straightLineDistanceMeters")]
         public virtual System.Nullable<float> StraightLineDistanceMeters { get; set; }
 
         /// <summary>
-        /// The travel distance in meters along the road network if known. This does not take into account the mode of
-        /// transportation (walking/driving).
+        /// The travel distance, in meters, along the road network from the target to the landmark, if known. This value
+        /// does not take into account the mode of transportation, such as walking, driving, or biking.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("travelDistanceMeters")]
         public virtual System.Nullable<float> TravelDistanceMeters { get; set; }
