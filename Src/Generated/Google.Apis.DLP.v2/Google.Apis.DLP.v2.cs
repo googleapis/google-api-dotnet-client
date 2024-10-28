@@ -12768,8 +12768,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string DatasetId { get; set; }
 
         /// <summary>
-        /// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred
-        /// from the API call.
+        /// The Google Cloud project ID of the project containing the table. If omitted, project ID is inferred from the
+        /// API call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
