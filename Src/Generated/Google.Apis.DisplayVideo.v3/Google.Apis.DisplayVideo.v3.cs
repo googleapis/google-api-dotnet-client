@@ -22215,70 +22215,105 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of Adloox settings.</summary>
+    /// <summary>Details of Adloox brand safety settings.</summary>
     public class Adloox : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Adult explicit sexual content.</summary>
+        /// <summary>
+        /// Optional. Adult and Explicit Sexual Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk
+        /// ranges to exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adultExplicitSexualContent")]
         public virtual string AdultExplicitSexualContent { get; set; }
 
-        /// <summary>Optional. Arms ammunition content.</summary>
+        /// <summary>
+        /// Optional. Arms and Ammunition Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+        /// exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("armsAmmunitionContent")]
         public virtual string ArmsAmmunitionContent { get; set; }
 
-        /// <summary>Optional. Crime harmful acts to individuals society human rights violations content.</summary>
+        /// <summary>
+        /// Optional. Crime and Harmful Acts Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges
+        /// to exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent")]
         public virtual string CrimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent { get; set; }
 
-        /// <summary>Optional. Death injury military conflict content.</summary>
+        /// <summary>
+        /// Optional. Death, Injury, or Military Conflict Content [GARM](https://wfanet.org/leadership/garm/about-garm)
+        /// risk ranges to exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deathInjuryMilitaryConflictContent")]
         public virtual string DeathInjuryMilitaryConflictContent { get; set; }
 
-        /// <summary>Optional. Debated sensitive social issue content.</summary>
+        /// <summary>
+        /// Optional. Debated Sensitive Social Issue Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk
+        /// ranges to exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debatedSensitiveSocialIssueContent")]
         public virtual string DebatedSensitiveSocialIssueContent { get; set; }
 
-        /// <summary>Optional. Display IAB viewability.</summary>
+        /// <summary>Optional. IAB viewability threshold for display ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayIabViewability")]
         public virtual string DisplayIabViewability { get; set; }
 
-        /// <summary>Adloox's brand safety settings.</summary>
+        /// <summary>Adloox categories to exclude.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAdlooxCategories")]
         public virtual System.Collections.Generic.IList<string> ExcludedAdlooxCategories { get; set; }
 
-        /// <summary>Optional. Adloox's fraud IVT MFA settings.</summary>
+        /// <summary>Optional. Adloox's fraud IVT MFA categories to exclude.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFraudIvtMfaCategories")]
         public virtual System.Collections.Generic.IList<string> ExcludedFraudIvtMfaCategories { get; set; }
 
-        /// <summary>Optional. Hate speech acts of aggression content.</summary>
+        /// <summary>
+        /// Optional. Hate Speech and Acts of Aggression Content [GARM](https://wfanet.org/leadership/garm/about-garm)
+        /// risk ranges to exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hateSpeechActsAggressionContent")]
         public virtual string HateSpeechActsAggressionContent { get; set; }
 
-        /// <summary>Optional. Illegal drugs tobacco ecigarettes vaping alcohol content.</summary>
+        /// <summary>
+        /// Optional. Illegal Drugs/Alcohol Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+        /// exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("illegalDrugsTobaccoEcigarettesVapingAlcoholContent")]
         public virtual string IllegalDrugsTobaccoEcigarettesVapingAlcoholContent { get; set; }
 
-        /// <summary>Optional. Misinformation content.</summary>
+        /// <summary>
+        /// Optional. Misinformation Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+        /// exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("misinformationContent")]
         public virtual string MisinformationContent { get; set; }
 
-        /// <summary>Optional. Obscenity profanity content.</summary>
+        /// <summary>
+        /// Optional. Obscenity and Profanity Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges
+        /// to exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obscenityProfanityContent")]
         public virtual string ObscenityProfanityContent { get; set; }
 
-        /// <summary>Optional. Online piracy content.</summary>
+        /// <summary>
+        /// Optional. Online Piracy Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+        /// exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlinePiracyContent")]
         public virtual string OnlinePiracyContent { get; set; }
 
-        /// <summary>Optional. Spam harmful content.</summary>
+        /// <summary>
+        /// Optional. Spam or Harmful Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to
+        /// exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spamHarmfulContent")]
         public virtual string SpamHarmfulContent { get; set; }
 
-        /// <summary>Optional. Terrorism content.</summary>
+        /// <summary>
+        /// Optional. Terrorism Content [GARM](https://wfanet.org/leadership/garm/about-garm) risk ranges to exclude.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terrorismContent")]
         public virtual string TerrorismContent { get; set; }
 
-        /// <summary>Optional. Video IAB viewability.</summary>
+        /// <summary>Optional. IAB viewability threshold for video ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoIabViewability")]
         public virtual string VideoIabViewability { get; set; }
 
@@ -22297,7 +22332,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Optional. Required. Billing related settings of the advertiser.</summary>
+        /// <summary>Required. Billing related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
         public virtual AdvertiserBillingConfig BillingConfig { get; set; }
 
@@ -22417,7 +22452,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Billing related settings of an advertiser.</summary>
     public class AdvertiserBillingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The ID of a billing profile assigned to the advertiser.</summary>
+        /// <summary>Required. The ID of a billing profile assigned to the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
         public virtual System.Nullable<long> BillingProfileId { get; set; }
 
