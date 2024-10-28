@@ -2088,13 +2088,6 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>
-        /// ID of Cloud Run Service this revision belongs to. Was never set, is not exported to v1 proto and public
-        /// protos. Do not export to v1beta1 public proto.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
-        public virtual string ServiceName { get; set; }
-
         /// <summary>URI of Cloud Run service this revision belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
         public virtual string ServiceUri { get; set; }
@@ -4093,6 +4086,13 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. A diagnostic bit - describes the state of the configured target resource for diagnostic
+        /// purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceState")]
+        public virtual string TargetResourceState { get; set; }
 
         private string _updateTimeRaw;
 
