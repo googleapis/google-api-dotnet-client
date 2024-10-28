@@ -22182,10 +22182,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of Adloox settings.</summary>
+    /// <summary>Details of Adloox brand safety settings.</summary>
     public class Adloox : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Adloox's brand safety settings.</summary>
+        /// <summary>Adloox categories to exclude.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAdlooxCategories")]
         public virtual System.Collections.Generic.IList<string> ExcludedAdlooxCategories { get; set; }
 
@@ -22204,7 +22204,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Optional. Required. Billing related settings of the advertiser.</summary>
+        /// <summary>Required. Billing related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
         public virtual AdvertiserBillingConfig BillingConfig { get; set; }
 
@@ -22324,7 +22324,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Billing related settings of an advertiser.</summary>
     public class AdvertiserBillingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The ID of a billing profile assigned to the advertiser.</summary>
+        /// <summary>Required. The ID of a billing profile assigned to the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
         public virtual System.Nullable<long> BillingProfileId { get; set; }
 
