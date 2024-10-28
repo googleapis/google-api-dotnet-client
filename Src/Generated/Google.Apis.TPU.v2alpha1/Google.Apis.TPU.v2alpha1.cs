@@ -2571,6 +2571,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIdPrefix")]
         public virtual string NodeIdPrefix { get; set; }
 
+        /// <summary>Optional. The workload type for the multi-node request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadType")]
+        public virtual string WorkloadType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
