@@ -2871,9 +2871,9 @@ namespace Google.Apis.AccessContextManager.v1
                 /// Optional. This field controls whether or not certain repeated settings in the update request
                 /// overwrite or append to existing settings on the binding. If true, then append. Otherwise overwrite.
                 /// So far, only scoped_access_settings supports appending. Global access_levels, dry_run_access_levels,
-                /// and reauth_settings are not compatible with append functionality, and the request will return an
-                /// error if append=true when these settings are in the update_mask. The request will also return an
-                /// error if append=true when "scoped_access_settings" is not set in the update_mask.
+                /// reauth_settings, and session_settings are not compatible with append functionality, and the request
+                /// will return an error if append=true when these settings are in the update_mask. The request will
+                /// also return an error if append=true when "scoped_access_settings" is not set in the update_mask.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("append", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Append { get; set; }
@@ -2881,8 +2881,8 @@ namespace Google.Apis.AccessContextManager.v1
                 /// <summary>
                 /// Required. Only the fields specified in this mask are updated. Because name and group_key cannot be
                 /// changed, update_mask is required and may only contain the following fields: `access_levels`,
-                /// `dry_run_access_levels`, `reauth_settings`, `scoped_access_settings`. update_mask { paths:
-                /// "access_levels" }
+                /// `dry_run_access_levels`, `reauth_settings` `session_settings`, `scoped_access_settings`. update_mask
+                /// { paths: "access_levels" }
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3177,6 +3177,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>Optional. Reauth settings applied to user access on a given AccessScope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
         public virtual ReauthSettings ReauthSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Session settings applied to user access on a given AccessScope. Migrated from ReauthSettings
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionSettings")]
+        public virtual SessionSettings SessionSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3762,7 +3768,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
-    /// Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access.
+    /// Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access. Next ID:
+    /// 11
     /// </summary>
     public class GcpUserAccessBinding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4513,6 +4520,50 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>Configuration for APIs allowed within Perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessibleServices")]
         public virtual VpcAccessibleServices VpcAccessibleServices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Stores settings related to Google Cloud Session Length including session duration, the type of challenge (i.e.
+    /// method) they should face when their session expires, and other related settings.
+    /// </summary>
+    public class SessionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. How long a user is allowed to take between actions before a new access token must be issued.
+        /// Presently only set for Cloud Apps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInactivity")]
+        public virtual object MaxInactivity { get; set; }
+
+        /// <summary>
+        /// Optional. The session length. Setting this field to zero is equal to disabling. Session. Also can set
+        /// infinite session by flipping the enabled bit to false below. If use_oidc_max_age is true, for OIDC apps, the
+        /// session length will be the minimum of this field and OIDC max_age param.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionLength")]
+        public virtual object SessionLength { get; set; }
+
+        /// <summary>
+        /// Optional. Big red button to turn off GCSL. When false, all fields set above will be disregarded and the
+        /// session length is basically infinite.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionLengthEnabled")]
+        public virtual System.Nullable<bool> SessionLengthEnabled { get; set; }
+
+        /// <summary>Optional. Session method when users GCP session is up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionReauthMethod")]
+        public virtual string SessionReauthMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication
+        /// request will be ignored. When true, the re-auth period will be the minimum of the session_length field and
+        /// the max_age OIDC param.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useOidcMaxAge")]
+        public virtual System.Nullable<bool> UseOidcMaxAge { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
