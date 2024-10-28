@@ -21480,6 +21480,10 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Snippet Source for a Generative Prediction.</summary>
     public class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
         /// <summary>Text taken from that URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -24108,6 +24112,10 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>Snippet Source for a Generative Prediction.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
         /// <summary>Text taken from that URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
