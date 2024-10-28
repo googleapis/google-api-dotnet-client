@@ -28920,6 +28920,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contextFilterSettings")]
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings ContextFilterSettings { get; set; }
 
+        /// <summary>
+        /// Optional. The number of recent messages to include in the context. Supported features: KNOWLEDGE_ASSIST.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
         /// <summary>Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowQuerySource")]
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource DialogflowQuerySource { get; set; }
@@ -29446,6 +29452,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseHints")]
         public virtual System.Collections.Generic.IList<string> PhraseHints { get; set; }
+
+        /// <summary>A collection of phrase set resources to use for speech adaptation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
+        public virtual System.Collections.Generic.IList<string> PhraseSets { get; set; }
 
         /// <summary>
         /// Required. Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API
@@ -30448,6 +30458,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Snippet Source for a Generative Prediction.</summary>
     public class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
         /// <summary>Text taken from that URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -31521,6 +31535,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The sources of the answers.</summary>
     public class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata associated with the article.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
         /// <summary>The relevant snippet of the article.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual string Snippet { get; set; }
@@ -31555,6 +31573,22 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ConversationProfile { get; set; }
 
         /// <summary>
+        /// Optional. Information about the end-user to improve the relevance and accuracy of generative answers. This
+        /// will be interpreted and used by a language model, so, for good results, the data should be self-descriptive,
+        /// and in a simple structure. Example:
+        /// ```
+        /// json { "subscription plan": "Business Premium Plus", "devices owned":
+        /// [ {"model": "Google Pixel 7"}, {"model": "Google Pixel Tablet"} ] }
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> EndUserMetadata { get; set; }
+
+        /// <summary>Optional. Whether to search the query exactly without query rewrite.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactSearch")]
+        public virtual System.Nullable<bool> ExactSearch { get; set; }
+
+        /// <summary>
         /// Optional. The name of the latest conversation message when the request is triggered. Format:
         /// `projects//locations//conversations//messages/`.
         /// </summary>
@@ -31572,6 +31606,14 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDialogflowV2TextInput Query { get; set; }
 
+        /// <summary>Optional. The source of the query in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySource")]
+        public virtual string QuerySource { get; set; }
+
+        /// <summary>Optional. Configuration specific to search queries with data stores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
+        public virtual GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig SearchConfig { get; set; }
+
         /// <summary>
         /// Required. The ID of the search session. The session_id can be combined with Dialogflow V3 Agent ID retrieved
         /// from conversation profile or on its own to identify a search session. The search history of the same session
@@ -31581,6 +31623,175 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
         public virtual string SessionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration specific to search queries with data stores.</summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Boost specifications for data stores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs> BoostSpecs { get; set; }
+
+        /// <summary>Optional. Filter specification for data store queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs> FilterSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost specifications for data stores.</summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Data Stores where the boosting configuration is applied. The full names of the referenced data
+        /// stores. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+        /// `projects/{project}/locations/{location}/dataStores/{data_store}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStores")]
+        public virtual System.Collections.Generic.IList<string> DataStores { get; set; }
+
+        /// <summary>Optional. A list of boosting specifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec> Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Boost specification to boost certain documents. A copy of google.cloud.discoveryengine.v1main.BoostSpec, field
+    /// documentation is available at
+    /// https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/BoostSpec
+    /// </summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Condition boost specifications. If a document matches multiple conditions in the specifictions,
+        /// boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of
+        /// specifications is 20.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost applies to documents which match a condition.</summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Strength of the condition boost, which should be in [-1, 1]. Negative boost means demotion.
+        /// Default is 0.0. Setting to 1.0 gives the document a big promotion. However, it does not necessarily mean
+        /// that the boosted document will be the top result at all times, nor that other documents will be excluded.
+        /// Results could still be shown even when none of them matches the condition. And results that are
+        /// significantly more relevant to the search query can still trump your heavily favored but irrelevant
+        /// documents. Setting to -1.0 gives the document a big demotion. However, results that are deeply relevant
+        /// might still be shown. The document will have an upstream battle to get a fairly high ranking, but it is not
+        /// blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>
+        /// Optional. Complex specification for custom ranking based on customer defined attribute value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostControlSpec")]
+        public virtual GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec BoostControlSpec { get; set; }
+
+        /// <summary>
+        /// Optional. An expression which specifies a boost condition. The syntax and supported fields are the same as a
+        /// filter expression. Examples: * To boost documents with document ID "doc_1" or "doc_2", and color "Red" or
+        /// "Blue": * (id: ANY("doc_1", "doc_2")) AND (color: ANY("Red","Blue"))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for custom ranking based on customer specified attribute value. It provides more controls for
+    /// customized ranking than the simple (condition, boost) combination above.
+    /// </summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived
+        /// from the field value of the specified field_name. In the case of numerical it is straightforward i.e.
+        /// attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() -
+        /// datetime_field_value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeType")]
+        public virtual string AttributeType { get; set; }
+
+        /// <summary>
+        /// Optional. The control points used to define the curve. The monotonic function (defined through the
+        /// interpolation_type above) passes through the control points listed here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint> ControlPoints { get; set; }
+
+        /// <summary>Optional. The name of the field whose value will be used to determine the boost amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>
+        /// Optional. The interpolation type to be applied to connect the control points listed below.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationType")]
+        public virtual string InterpolationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The control points used to define the curve. The curve defined through these control points can only be
+    /// monotonically increasing or decreasing(constant values are acceptable).
+    /// </summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be
+        /// formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern
+        /// for this is: `nDnM]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; }
+
+        /// <summary>
+        /// Optional. The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the
+        /// value specified above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostAmount")]
+        public virtual System.Nullable<float> BoostAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filter specification for data store queries.</summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The data store where the filter configuration is applied. Full resource name of data store, such
+        /// as projects/{project}/locations/{location}/collections/{collectionId}/ dataStores/{dataStoreId}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStores")]
+        public virtual System.Collections.Generic.IList<string> DataStores { get; set; }
+
+        /// <summary>
+        /// Optional. The filter expression to be applied. Expression syntax is documented at
+        /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata#filter-expression-syntax
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31910,6 +32121,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>List of names of Cloud Speech phrase sets that are used for transcription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
+        public virtual System.Collections.Generic.IList<string> PhraseSets { get; set; }
 
         /// <summary>
         /// Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API
@@ -34616,6 +34831,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Snippet Source for a Generative Prediction.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
         /// <summary>Text taken from that URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
