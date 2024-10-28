@@ -1058,7 +1058,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `ListCompilationResults` call. Provide this to
                         /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListCompilationResults` must match the call that provided the page token.
+                        /// `ListCompilationResults`, with the exception of `page_size`, must match the call that
+                        /// provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -1157,7 +1158,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `QueryCompilationResultActions` call. Provide
                         /// this to retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `QueryCompilationResultActions` must match the call that provided the page token.
+                        /// `QueryCompilationResultActions`, with the exception of `page_size`, must match the call that
+                        /// provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -1429,7 +1431,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `ListReleaseConfigs` call. Provide this to
                         /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListReleaseConfigs` must match the call that provided the page token.
+                        /// `ListReleaseConfigs`, with the exception of `page_size`, must match the call that provided
+                        /// the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -1761,7 +1764,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `ListWorkflowConfigs` call. Provide this to
                         /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListWorkflowConfigs` must match the call that provided the page token.
+                        /// `ListWorkflowConfigs`, with the exception of `page_size`, must match the call that provided
+                        /// the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -2142,7 +2146,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `ListWorkflowInvocations` call. Provide this
                         /// to retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListWorkflowInvocations` must match the call that provided the page token.
+                        /// `ListWorkflowInvocations`, with the exception of `page_size`, must match the call that
+                        /// provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -2234,7 +2239,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `QueryWorkflowInvocationActions` call. Provide
                         /// this to retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `QueryWorkflowInvocationActions` must match the call that provided the page token.
+                        /// `QueryWorkflowInvocationActions`, with the exception of `page_size`, must match the call
+                        /// that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -2860,7 +2866,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `ListWorkspaces` call. Provide this to
                         /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListWorkspaces` must match the call that provided the page token.
+                        /// `ListWorkspaces`, with the exception of `page_size`, must match the call that provided the
+                        /// page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -3221,7 +3228,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `QueryDirectoryContents` call. Provide this to
                         /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `QueryDirectoryContents` must match the call that provided the page token.
+                        /// `QueryDirectoryContents`, with the exception of `page_size`, must match the call that
+                        /// provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -3552,7 +3560,8 @@ namespace Google.Apis.Dataform.v1beta1
                         /// <summary>
                         /// Optional. Page token received from a previous `SearchFilesRequest` call. Provide this to
                         /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `SearchFilesRequest` must match the call that provided the page token.
+                        /// `SearchFilesRequest`, with the exception of `page_size`, must match the call that provided
+                        /// the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -4072,7 +4081,8 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <summary>
                     /// Optional. Page token received from a previous `FetchRepositoryHistory` call. Provide this to
                     /// retrieve the subsequent page. When paginating, all other parameters provided to
-                    /// `FetchRepositoryHistory` must match the call that provided the page token.
+                    /// `FetchRepositoryHistory`, with the exception of `page_size`, must match the call that provided
+                    /// the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -4334,8 +4344,8 @@ namespace Google.Apis.Dataform.v1beta1
 
                     /// <summary>
                     /// Optional. Page token received from a previous `ListRepositories` call. Provide this to retrieve
-                    /// the subsequent page. When paginating, all other parameters provided to `ListRepositories` must
-                    /// match the call that provided the page token.
+                    /// the subsequent page. When paginating, all other parameters provided to `ListRepositories`, with
+                    /// the exception of `page_size`, must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -4508,7 +4518,8 @@ namespace Google.Apis.Dataform.v1beta1
                     /// <summary>
                     /// Optional. Page token received from a previous `QueryRepositoryDirectoryContents` call. Provide
                     /// this to retrieve the subsequent page. When paginating, all other parameters provided to
-                    /// `QueryRepositoryDirectoryContents` must match the call that provided the page token.
+                    /// `QueryRepositoryDirectoryContents`, with the exception of `page_size`, must match the call that
+                    /// provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -5517,10 +5528,6 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalTarget")]
         public virtual Target CanonicalTarget { get; set; }
 
-        /// <summary>The data preparation executed by this action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataPreparation")]
-        public virtual DataPreparation DataPreparation { get; set; }
-
         /// <summary>The declaration declared by this action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaration")]
         public virtual Declaration Declaration { get; set; }
@@ -5585,29 +5592,6 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>The KMS key version name with which data of a resource is encrypted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
         public virtual string KmsKeyVersionName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines a compiled Data Preparation entity</summary>
-    public class DataPreparation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The data preparation definition, stored as a binary encoded proto.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
-        public virtual string Contents { get; set; }
-
-        /// <summary>A list of actions that this action depends on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dependencyTargets")]
-        public virtual System.Collections.Generic.IList<Target> DependencyTargets { get; set; }
-
-        /// <summary>Whether this action is disabled (i.e. should not be run).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; }
-
-        /// <summary>Arbitrary, user-defined tags on this action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6784,7 +6768,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Records of the 10 most recent scheduled release attempts, ordered in in descending order of
+        /// Output only. Records of the 10 most recent scheduled release attempts, ordered in descending order of
         /// `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentScheduledReleaseRecords")]
@@ -6894,7 +6878,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the
         /// repository and all child resources. It is not possible to add or update the encryption key after the
         /// repository is created. Example:
-        /// `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
+        /// `projects/{kms_project}/locations/{location}/keyRings/{key_location}/cryptoKeys/{key}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
@@ -7286,7 +7270,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Records of the 10 most recent scheduled execution attempts, ordered in in descending order of
+        /// Output only. Records of the 10 most recent scheduled execution attempts, ordered in descending order of
         /// `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by
         /// cron_schedule.
         /// </summary>
@@ -7441,6 +7425,43 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Represents a Dataform Git workspace.</summary>
     public class Workspace : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp of when the workspace was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Output only. A data encryption state of a Git repository if this Workspace is protected by a KMS key.
         /// </summary>
