@@ -1407,14 +1407,14 @@ namespace Google.Apis.ChromeManagement.v1
                 /// Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not
                 /// supported in this filter. Supported filter fields: * app_name * app_type * install_type *
                 /// number_of_permissions * total_install_count * latest_profile_active_date * permission_name * app_id
-                /// * manifest_versions
+                /// * manifest_versions * risk_score
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
                 /// <summary>
                 /// Field used to order results. Supported order by fields: * app_name * app_type * install_type *
-                /// number_of_permissions * total_install_count * app_id * manifest_versions
+                /// number_of_permissions * total_install_count * app_id * manifest_versions * risk_score
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -4594,6 +4594,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
+        /// <summary>Output only. If available, the risk assessment data about this extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("riskAssessment")]
+        public virtual GoogleChromeManagementV1RiskAssessmentData RiskAssessment { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5429,6 +5433,64 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Number of users that have sent print jobs to the printer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCount")]
         public virtual System.Nullable<long> UserCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Risk assessment for a Chrome extension.</summary>
+    public class GoogleChromeManagementV1RiskAssessment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Risk assessment for the extension. Currently, this is a numerical value, and its interpretation is specific
+        /// to each risk assessment provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assessment")]
+        public virtual string Assessment { get; set; }
+
+        /// <summary>A URL that a user can navigate to for more information about the risk assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailsUrl")]
+        public virtual string DetailsUrl { get; set; }
+
+        /// <summary>The version of the extension that this assessment applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Risk assessment data about an extension/app.</summary>
+    public class GoogleChromeManagementV1RiskAssessmentData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Individual risk assessments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1RiskAssessmentEntry> Entries { get; set; }
+
+        /// <summary>
+        /// Overall assessed risk level across all entries. This will be the highest risk level from all entries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overallRiskLevel")]
+        public virtual string OverallRiskLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>One risk assessment entry.</summary>
+    public class GoogleChromeManagementV1RiskAssessmentEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The risk assessment provider from which this entry comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>The details of the provider's risk assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("riskAssessment")]
+        public virtual GoogleChromeManagementV1RiskAssessment RiskAssessment { get; set; }
+
+        /// <summary>The bucketed risk level for the risk assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("riskLevel")]
+        public virtual string RiskLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
