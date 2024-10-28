@@ -2037,45 +2037,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Provides the mapping of a cloud asset to a direct physical location or to a proxy that defines the location on
-    /// its behalf.
-    /// </summary>
-    public class AssetLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants that use CCFE RMS for storing
-        /// resource metadata.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ccfeRmsPath")]
-        public virtual string CcfeRmsPath { get; set; }
-
-        /// <summary>
-        /// Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state of the region at the time of
-        /// asset creation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expected")]
-        public virtual IsolationExpectations Expected { get; set; }
-
-        /// <summary>Defines extra parameters required for specific asset types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extraParameters")]
-        public virtual System.Collections.Generic.IList<ExtraParameter> ExtraParameters { get; set; }
-
-        /// <summary>Contains all kinds of physical location definitions for this asset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationData")]
-        public virtual System.Collections.Generic.IList<LocationData> LocationData { get; set; }
-
-        /// <summary>
-        /// Defines parents assets if any in order to allow later generation of child_asset_location data via child
-        /// assets.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parentAsset")]
-        public virtual System.Collections.Generic.IList<CloudAsset> ParentAsset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Configuration for availability of database instance</summary>
     public class AvailabilityConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2224,19 +2185,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Policy ID that identified data placement in Blobstore as per
-    /// go/blobstore-user-guide#data-metadata-placement-and-failure-domains
-    /// </summary>
-    public class BlobstoreLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
-        public virtual System.Collections.Generic.IList<string> PolicyId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class CertChain : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The certificates that form the CA chain, from leaf to root order.</summary>
@@ -2264,27 +2212,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class CloudAsset : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("assetName")]
-        public virtual string AssetName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
-        public virtual string AssetType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CloudAssetComposition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("childAsset")]
-        public virtual System.Collections.Generic.IList<CloudAsset> ChildAsset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A cluster instance.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2294,6 +2221,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationMode")]
         public virtual string AuthorizationMode { get; set; }
+
+        /// <summary>Optional. A list of cluster enpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterEndpoints")]
+        public virtual System.Collections.Generic.IList<ClusterEndpoint> ClusterEndpoints { get; set; }
 
         private string _createTimeRaw;
 
@@ -2378,7 +2309,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Nullable<double> PreciseSizeGb { get; set; }
 
         /// <summary>
-        /// Required. Each PscConfig configures the consumer network where IPs will be designated to the cluster for
+        /// Optional. Each PscConfig configures the consumer network where IPs will be designated to the cluster for
         /// client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConfigs")]
@@ -2389,6 +2320,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnections")]
         public virtual System.Collections.Generic.IList<PscConnection> PscConnections { get; set; }
+
+        /// <summary>Output only. Service attachment details to configure Psc connections</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachments")]
+        public virtual System.Collections.Generic.IList<PscServiceAttachment> PscServiceAttachments { get; set; }
 
         /// <summary>Optional. Key/Value pairs of customer overrides for mutable Redis Configs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisConfigs")]
@@ -2435,6 +2370,23 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneDistributionConfig")]
         public virtual ZoneDistributionConfig ZoneDistributionConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ClusterEndpoint consists of PSC connections that are created as a group in each VPC network for accessing the
+    /// cluster. In each group, there shall be one connection for each service attachment in the cluster.
+    /// </summary>
+    public class ClusterEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the
+        /// cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connections")]
+        public virtual System.Collections.Generic.IList<ConnectionDetail> Connections { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2657,6 +2609,19 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Version of the standard or benchmark, for example, 1.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed information of each PSC connection.</summary>
+    public class ConnectionDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Detailed information of a PSC connection that is created by the customer who owns the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConnection")]
+        public virtual PscConnection PscConnection { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3238,15 +3203,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class DirectLocationAssignment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual System.Collections.Generic.IList<LocationAssignment> Location { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Endpoints on each network, for Redis clients to connect to the cluster.</summary>
     public class DiscoveryEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3301,19 +3257,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Required. Specify data to be exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual OutputConfig OutputConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines parameters that should only be used for specific asset types.</summary>
-    public class ExtraParameter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Details about zones used by regional compute.googleapis.com/InstanceGroupManager to create instances.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionalMigDistributionPolicy")]
-        public virtual RegionalMigDistributionPolicy RegionalMigDistributionPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3815,48 +3758,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class IsolationExpectations : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Explicit overrides for ZI and ZS requirements to be used for resources that should be excluded from ZI/ZS
-        /// verification logic.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requirementOverride")]
-        public virtual RequirementOverride RequirementOverride { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("ziOrgPolicy")]
-        public virtual string ZiOrgPolicy { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionPolicy")]
-        public virtual string ZiRegionPolicy { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionState")]
-        public virtual string ZiRegionState { get; set; }
-
-        /// <summary>
-        /// Deprecated: use zi_org_policy, zi_region_policy and zi_region_state instead for setting ZI expectations as
-        /// per go/zicy-publish-physical-location.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zoneIsolation")]
-        public virtual string ZoneIsolation { get; set; }
-
-        /// <summary>
-        /// Deprecated: use zs_org_policy, and zs_region_stateinstead for setting Zs expectations as per
-        /// go/zicy-publish-physical-location.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zoneSeparation")]
-        public virtual string ZoneSeparation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("zsOrgPolicy")]
-        public virtual string ZsOrgPolicy { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("zsRegionState")]
-        public virtual string ZsRegionState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response for ListClusters.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3973,42 +3874,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class LocationAssignment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
-        public virtual string LocationType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class LocationData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("blobstoreLocation")]
-        public virtual BlobstoreLocation BlobstoreLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("childAssetLocation")]
-        public virtual CloudAssetComposition ChildAssetLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("directLocation")]
-        public virtual DirectLocationAssignment DirectLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectProxy")]
-        public virtual TenantProjectProxy GcpProjectProxy { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("placerLocation")]
-        public virtual PlacerLocation PlacerLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("spannerLocation")]
-        public virtual SpannerLocation SpannerLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4650,17 +4515,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing that the location of the customer resource is tied to placer allocations</summary>
-    public class PlacerLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Directory with a config related to it in placer (e.g. "/placer/prod/home/my-root/my-dir")</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("placerConfig")]
-        public virtual string PlacerConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Product specification for Condor resources.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4703,6 +4557,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
 
+        /// <summary>Output only. Type of the PSC connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
         /// <summary>
         /// Required. The URI of the consumer side forwarding rule. Example:
         /// projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
@@ -4728,8 +4586,33 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string PscConnectionId { get; set; }
 
         /// <summary>
+        /// Output only. The status of the PSC connection. Please note that this value is updated periodically. To get
+        /// the latest status of a PSC connection, follow
+        /// https://cloud.google.com/vpc/docs/configure-private-service-connect-services#endpoint-details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionStatus")]
+        public virtual string PscConnectionStatus { get; set; }
+
+        /// <summary>
         /// Required. The service attachment which is the target of the PSC connection, in the form of
         /// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
+        public virtual string ServiceAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of a service attachment of the cluster, for creating PSC connections.</summary>
+    public class PscServiceAttachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Type of a PSC connection targeting this service attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>
+        /// Output only. Service attachment URI which your self-created PscConnection should use as target
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
         public virtual string ServiceAttachment { get; set; }
@@ -4807,26 +4690,6 @@ namespace Google.Apis.CloudRedis.v1.Data
     }
 
     /// <summary>
-    /// To be used for specifying the intended distribution of regional compute.googleapis.com/InstanceGroupManager
-    /// instances
-    /// </summary>
-    public class RegionalMigDistributionPolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The shape in which the group converges around distribution of resources. Instance of proto2 enum
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetShape")]
-        public virtual System.Nullable<int> TargetShape { get; set; }
-
-        /// <summary>Cloud zones used by regional MIG to create instances.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
-        public virtual System.Collections.Generic.IList<ZoneConfiguration> Zones { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Details of the remote cluster associated with this cluster in a cross cluster replication setup.
     /// </summary>
     public class RemoteCluster : Google.Apis.Requests.IDirectResponseSchema
@@ -4840,18 +4703,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Output only. The unique identifier of the remote cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class RequirementOverride : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("ziOverride")]
-        public virtual string ZiOverride { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("zsOverride")]
-        public virtual string ZsOverride { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4975,22 +4826,44 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
         public virtual object TimeBasedRetention { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
+        private string _timestampBasedRetentionTimeRaw;
 
-    public class SpannerLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
+        private object _timestampBasedRetentionTime;
+
+        /// <summary>Timestamp based retention period i.e. 2024-05-01T00:00:00Z</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampBasedRetentionTime")]
+        public virtual string TimestampBasedRetentionTimeRaw
+        {
+            get => _timestampBasedRetentionTimeRaw;
+            set
+            {
+                _timestampBasedRetentionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampBasedRetentionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampBasedRetentionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampBasedRetentionTimeDateTimeOffset instead.")]
+        public virtual object TimestampBasedRetentionTime
+        {
+            get => _timestampBasedRetentionTime;
+            set
+            {
+                _timestampBasedRetentionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestampBasedRetentionTime = value;
+            }
+        }
+
         /// <summary>
-        /// Set of backups used by the resource with name in the same format as what is available at
-        /// http://table/spanner_automon.backup_metadata
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampBasedRetentionTimeRaw"/>.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backupName")]
-        public virtual System.Collections.Generic.IList<string> BackupName { get; set; }
-
-        /// <summary>Set of databases used by the resource in format /span//</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dbName")]
-        public virtual System.Collections.Generic.IList<string> DbName { get; set; }
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampBasedRetentionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampBasedRetentionTimeRaw);
+            set => TimestampBasedRetentionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5045,15 +4918,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>The Tag key/value mappings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> TagsValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class TenantProjectProxy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("projectNumbers")]
-        public virtual System.Collections.Generic.IList<string> ProjectNumbers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5274,15 +5138,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Required. Start time of the window in UTC time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
