@@ -307,6 +307,7 @@ namespace Google.Apis.NetworkServices.v1
                 ServiceLbPolicies = new ServiceLbPoliciesResource(service);
                 TcpRoutes = new TcpRoutesResource(service);
                 TlsRoutes = new TlsRoutesResource(service);
+                WasmPlugins = new WasmPluginsResource(service);
             }
 
             /// <summary>Gets the EdgeCacheKeysets resource.</summary>
@@ -4421,7 +4422,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single ServiceLbPolicy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the ServiceLbPolicy resource. It matches pattern
+                /// Identifier. Name of the ServiceLbPolicy resource. It matches pattern
                 /// `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.ServiceLbPolicy body, string name)
@@ -4441,7 +4442,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the ServiceLbPolicy resource. It matches pattern
+                    /// Identifier. Name of the ServiceLbPolicy resource. It matches pattern
                     /// `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5183,6 +5184,668 @@ namespace Google.Apis.NetworkServices.v1
                 }
             }
 
+            /// <summary>Gets the WasmPlugins resource.</summary>
+            public virtual WasmPluginsResource WasmPlugins { get; }
+
+            /// <summary>The "wasmPlugins" collection of methods.</summary>
+            public class WasmPluginsResource
+            {
+                private const string Resource = "wasmPlugins";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public WasmPluginsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Versions = new VersionsResource(service);
+                }
+
+                /// <summary>Gets the Versions resource.</summary>
+                public virtual VersionsResource Versions { get; }
+
+                /// <summary>The "versions" collection of methods.</summary>
+                public class VersionsResource
+                {
+                    private const string Resource = "versions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public VersionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new `WasmPluginVersion` resource in a given project and location.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource of the `WasmPluginVersion` resource. Must be in the format
+                    /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.WasmPluginVersion body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new `WasmPluginVersion` resource in a given project and location.</summary>
+                    public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.WasmPluginVersion body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource of the `WasmPluginVersion` resource. Must be in the format
+                        /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. User-provided ID of the `WasmPluginVersion` resource to be created.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("wasmPluginVersionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string WasmPluginVersionId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.NetworkServices.v1.Data.WasmPluginVersion Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/versions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/wasmPlugins/[^/]+$",
+                            });
+                            RequestParameters.Add("wasmPluginVersionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "wasmPluginVersionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes the specified `WasmPluginVersion` resource.</summary>
+                    /// <param name="name">
+                    /// Required. A name of the `WasmPluginVersion` resource to delete. Must be in the format
+                    /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}/versions/{wasm_plugin_version}`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes the specified `WasmPluginVersion` resource.</summary>
+                    public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. A name of the `WasmPluginVersion` resource to delete. Must be in the format
+                        /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}/versions/{wasm_plugin_version}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/wasmPlugins/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of the specified `WasmPluginVersion` resource.</summary>
+                    /// <param name="name">
+                    /// Required. A name of the `WasmPluginVersion` resource to get. Must be in the format
+                    /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}/versions/{wasm_plugin_version}`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of the specified `WasmPluginVersion` resource.</summary>
+                    public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.WasmPluginVersion>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. A name of the `WasmPluginVersion` resource to get. Must be in the format
+                        /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}/versions/{wasm_plugin_version}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/wasmPlugins/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists `WasmPluginVersion` resources in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. The `WasmPlugin` resource whose `WasmPluginVersion`s are listed, specified in the
+                    /// following format: `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists `WasmPluginVersion` resources in a given project and location.</summary>
+                    public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListWasmPluginVersionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The `WasmPlugin` resource whose `WasmPluginVersion`s are listed, specified in the
+                        /// following format: `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Maximum number of `WasmPluginVersion` resources to return per call. If not specified, at
+                        /// most 50 `WasmPluginVersion`s are returned. The maximum value is 1000; values above 1000 are
+                        /// coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The value returned by the last `ListWasmPluginVersionsResponse` call. Indicates that this is
+                        /// a continuation of a prior `ListWasmPluginVersions` call, and that the next page of data is
+                        /// to be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/versions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/wasmPlugins/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new `WasmPlugin` resource in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the `WasmPlugin` resource. Must be in the format
+                /// `projects/{project}/locations/global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.WasmPlugin body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new `WasmPlugin` resource in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.WasmPlugin body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the `WasmPlugin` resource. Must be in the format
+                    /// `projects/{project}/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. User-provided ID of the `WasmPlugin` resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("wasmPluginId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string WasmPluginId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.WasmPlugin Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/wasmPlugins";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("wasmPluginId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "wasmPluginId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the specified `WasmPlugin` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `WasmPlugin` resource to delete. Must be in the format
+                /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes the specified `WasmPlugin` resource.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `WasmPlugin` resource to delete. Must be in the format
+                    /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/wasmPlugins/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of the specified `WasmPlugin` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `WasmPlugin` resource to get. Must be in the format
+                /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of the specified `WasmPlugin` resource.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.WasmPlugin>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `WasmPlugin` resource to get. Must be in the format
+                    /// `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Determine how much data should be returned by the API. See
+                    /// [AIP-157](https://google.aip.dev/157).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Determine how much data should be returned by the API. See
+                    /// [AIP-157](https://google.aip.dev/157).
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("WASM_PLUGIN_VIEW_UNSPECIFIED")]
+                        WASMPLUGINVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Include just WasmPlugin record.</summary>
+                        [Google.Apis.Util.StringValueAttribute("WASM_PLUGIN_VIEW_BASIC")]
+                        WASMPLUGINVIEWBASIC = 1,
+
+                        /// <summary>Include WasmPlugin record and all its WasmPluginVersions.</summary>
+                        [Google.Apis.Util.StringValueAttribute("WASM_PLUGIN_VIEW_FULL")]
+                        WASMPLUGINVIEWFULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/wasmPlugins/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists `WasmPlugin` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the `WasmPlugin` resources are listed, specified in
+                /// the following format: `projects/{project}/locations/global`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists `WasmPlugin` resources in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListWasmPluginsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the `WasmPlugin` resources are listed, specified
+                    /// in the following format: `projects/{project}/locations/global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Maximum number of `WasmPlugin` resources to return per call. If not specified, at most 50
+                    /// `WasmPlugin`s are returned. The maximum value is 1000; values above 1000 are coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListWasmPluginsResponse` call. Indicates that this is a
+                    /// continuation of a prior `ListWasmPlugins` call, and that the next page of data is to be
+                    /// returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/wasmPlugins";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of the specified `WasmPlugin` resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Name of the `WasmPlugin` resource in the following format:
+                /// `projects/{project}/locations/{location}/wasmPlugins/{wasm_plugin}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.WasmPlugin body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of the specified `WasmPlugin` resource.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.WasmPlugin body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Name of the `WasmPlugin` resource in the following format:
+                    /// `projects/{project}/locations/{location}/wasmPlugins/{wasm_plugin}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Used to specify the fields to be overwritten in the `WasmPlugin` resource by the
+                    /// update. The fields specified in the `update_mask` field are relative to the resource, not the
+                    /// full request. An omitted `update_mask` field is treated as an implied `update_mask` field
+                    /// equivalent to all fields that are populated (that have a non-empty value). The `update_mask`
+                    /// field supports a special value `*`, which means that each field in the given `WasmPlugin`
+                    /// resource (including the empty ones) replaces the current value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.WasmPlugin Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/wasmPlugins/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -5744,7 +6407,7 @@ namespace Google.Apis.NetworkServices.v1.Data
     {
         /// <summary>
         /// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for
-        /// Callout extensions.
+        /// Callout extensions. This field is not supported for plugin extensions and must not be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
@@ -5769,6 +6432,17 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IList<string> ForwardHeaders { get; set; }
 
         /// <summary>
+        /// Optional. The metadata provided here is included as part of the `metadata_context` (of type
+        /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata is
+        /// available under the namespace `com.google....`. For example:
+        /// `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The following variables are supported in
+        /// the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+        /// This field is not supported for plugin extensions and must not be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
         /// Required. The name for this extension. The name is logged as part of the HTTP request logs. The name must
         /// conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum
         /// length of 63 characters. Additionally, the first character must be a letter and the last a letter or a
@@ -5782,7 +6456,11 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// supported here. To configure a callout extension, `service` must be a fully-qualified reference to a
         /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
         /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
-        /// or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
+        /// or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`. To
+        /// configure a plugin extension, this must be a reference to a [wasm
+        /// plugin](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
+        /// in the format: `projects/{project}/locations/{location}/wasmPlugins/{plugin}` or
+        /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -5797,7 +6475,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between
-        /// 10-1000 milliseconds. Required for Callout extensions.
+        /// 10-1000 milliseconds. Required for callout extensions. This field is not supported for plugin extensions and
+        /// must not be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
@@ -7245,7 +7924,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata is
         /// available under the namespace `com.google.lb_route_extension.`. The following variables are supported in the
         /// metadata Struct: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource
-        /// name.
+        /// name. This field is not supported for plugin extensions and must not be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -7383,7 +8062,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// Optional. The metadata provided here is included in the `ProcessingRequest.metadata_context.filter_metadata`
         /// map field. The metadata is available under the key `com.google.lb_traffic_extension.`. The following
         /// variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's
-        /// fully qualified resource name.
+        /// fully qualified resource name. This field is not supported for plugin extensions and must not be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -7665,6 +8344,42 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>List of TlsRoute resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tlsRoutes")]
         public virtual System.Collections.Generic.IList<TlsRoute> TlsRoutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the `ListWasmPluginVersions` method.</summary>
+    public class ListWasmPluginVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of `WasmPluginVersion` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wasmPluginVersions")]
+        public virtual System.Collections.Generic.IList<WasmPluginVersion> WasmPluginVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the `ListWasmPlugins` method.</summary>
+    public class ListWasmPluginsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of `WasmPlugin` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wasmPlugins")]
+        public virtual System.Collections.Generic.IList<WasmPlugin> WasmPlugins { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8251,7 +8966,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string LoadBalancingAlgorithm { get; set; }
 
         /// <summary>
-        /// Required. Name of the ServiceLbPolicy resource. It matches pattern
+        /// Identifier. Name of the ServiceLbPolicy resource. It matches pattern
         /// `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8848,6 +9563,457 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<string> Ports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`WasmPlugin` is a resource representing a service executing a customer-provided Wasm module.</summary>
+    public class WasmPlugin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Set of labels associated with the `WasmPlugin` resource. The format must comply with [the
+        /// following requirements](/compute/docs/labeling-resources#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the logging options for the activity performed by this `WasmPlugin`. If logging is
+        /// enabled, plugin logs are exported to Cloud Logging. Note that the settings relate to the logs generated by
+        /// using logging statements in your Wasm code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual WasmPluginLogConfig LogConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The ID of the `WasmPluginVersion` resource that is the currently serving one. The version referred
+        /// to must be a child of this `WasmPlugin` resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainVersionId")]
+        public virtual string MainVersionId { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the `WasmPlugin` resource in the following format:
+        /// `projects/{project}/locations/{location}/wasmPlugins/{wasm_plugin}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. List of all [Service Extensions](https://cloud.google.com/service-extensions/docs/overview)
+        /// that use this `WasmPlugin`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedBy")]
+        public virtual System.Collections.Generic.IList<WasmPluginUsedBy> UsedBy { get; set; }
+
+        /// <summary>
+        /// Optional. All versions of this `WasmPlugin` in the key-value format. The key is the resource ID, the value
+        /// is the `VersionDetails`. Allows to create or update `WasmPlugin` and its WasmPluginVersions in a single
+        /// request. When the `main_version_id` field is not empty it must point to one of the VersionDetails in the
+        /// map. If provided in the update request, the new versions replace the previous set. Any version omitted from
+        /// the `versions` will be removed. Since the `WasmPluginVersion` resource is immutable, if the
+        /// WasmPluginVersion with the same name already exists and differs the Update request will fail. Note: In the
+        /// GET request, this field is populated only if the GetWasmPluginRequest.view is set to WASM_PLUGIN_VIEW_FULL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IDictionary<string, WasmPluginVersionDetails> Versions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the logging options for the activity performed by this `WasmPlugin`. If logging is enabled, plugin
+    /// logs are exported to Cloud Logging.
+    /// </summary>
+    public class WasmPluginLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies whether to enable logging for activity by this `WasmPlugin`. Defaults to `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; }
+
+        /// <summary>
+        /// Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This
+        /// setting relates to the logs generated by using logging statements in your Wasm code. This field is can be
+        /// set only if logging is enabled for the `WasmPlugin` resource. If the field is not provided when logging is
+        /// enabled, it is set to `INFO` by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minLogLevel")]
+        public virtual string MinLogLevel { get; set; }
+
+        /// <summary>
+        /// Non-empty default. Configures the sampling rate of activity logs, where `1.0` means all logged activity is
+        /// reported and `0.0` means no activity is reported. A floating point value between `0.0` and `1.0` indicates
+        /// that a percentage of log messages is stored. The default value when logging is enabled is `1.0`. The value
+        /// of the field must be between `0` and `1` (inclusive). This field can only be specified if logging is enabled
+        /// for this `WasmPlugin`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRate")]
+        public virtual System.Nullable<float> SampleRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a resource that uses the `WasmPlugin`.</summary>
+    public class WasmPluginUsedBy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Full name of the resource https://google.aip.dev/122#full-resource-names, e.g.
+        /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/lbRouteExtensions/{extension}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single immutable version of a `WasmPlugin`. Defines the Wasm module used and optionally its runtime config.
+    /// </summary>
+    public class WasmPluginVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The resolved digest for the image specified in `image`. The digest is resolved during the
+        /// creation of `WasmPluginVersion` resource. This field holds the digest value regardless of whether a tag or
+        /// digest was originally specified in the `image` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
+        public virtual string ImageDigest { get; set; }
+
+        /// <summary>
+        /// Optional. URI of the container image containing the Wasm plugin, stored in the Artifact Registry. When a new
+        /// `WasmPluginVersion` resource is created, the digest of the container image is saved in the `image_digest`
+        /// field. When downloading an image, the digest value is used instead of an image tag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>Optional. Set of labels associated with the `WasmPluginVersion` resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the `WasmPluginVersion` resource in the following format:
+        /// `projects/{project}/locations/{location}/wasmPlugins/{wasm_plugin}/ versions/{wasm_plugin_version}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Configuration for the Wasm plugin. The configuration is provided to the Wasm plugin at runtime through the
+        /// `ON_CONFIGURE` callback. When a new `WasmPluginVersion` resource is created, the digest of the contents is
+        /// saved in the `plugin_config_digest` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigData")]
+        public virtual string PluginConfigData { get; set; }
+
+        /// <summary>
+        /// Output only. This field holds the digest (usually checksum) value for the plugin configuration. The value is
+        /// calculated based on the contents of the `plugin_config_data` or the container image defined by the
+        /// `plugin_config_uri` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigDigest")]
+        public virtual string PluginConfigDigest { get; set; }
+
+        /// <summary>
+        /// URI of the Wasm plugin configuration stored in the Artifact Registry. The configuration is provided to the
+        /// plugin at runtime through the `ON_CONFIGURE` callback. The container image must contain only a single file
+        /// with the name `plugin.config`. When a new `WasmPluginVersion` resource is created, the digest of the
+        /// container image is saved in the `plugin_config_digest` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigUri")]
+        public virtual string PluginConfigUri { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a `WasmPluginVersion` resource to be inlined in the `WasmPlugin` resource.</summary>
+    public class WasmPluginVersionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The resolved digest for the image specified in `image`. The digest is resolved during the
+        /// creation of a `WasmPluginVersion` resource. This field holds the digest value regardless of whether a tag or
+        /// digest was originally specified in the `image` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
+        public virtual string ImageDigest { get; set; }
+
+        /// <summary>
+        /// Optional. URI of the container image containing the Wasm module, stored in the Artifact Registry. The
+        /// container image must contain only a single file with the name `plugin.wasm`. When a new `WasmPluginVersion`
+        /// resource is created, the URI gets resolved to an image digest and saved in the `image_digest` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>Optional. Set of labels associated with the `WasmPluginVersion` resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Configuration for the Wasm plugin. The configuration is provided to the Wasm plugin at runtime through the
+        /// `ON_CONFIGURE` callback. When a new `WasmPluginVersion` version is created, the digest of the contents is
+        /// saved in the `plugin_config_digest` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigData")]
+        public virtual string PluginConfigData { get; set; }
+
+        /// <summary>
+        /// Output only. This field holds the digest (usually checksum) value for the plugin configuration. The value is
+        /// calculated based on the contents of the `plugin_config_data` or the container image defined by the
+        /// `plugin_config_uri` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigDigest")]
+        public virtual string PluginConfigDigest { get; set; }
+
+        /// <summary>
+        /// URI of the WasmPlugin configuration stored in the Artifact Registry. The configuration is provided to the
+        /// Wasm plugin at runtime through the `ON_CONFIGURE` callback. The container image must contain only a single
+        /// file with the name `plugin.config`. When a new `WasmPluginVersion` resource is created, the digest of the
+        /// container image is saved in the `plugin_config_digest` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigUri")]
+        public virtual string PluginConfigUri { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
