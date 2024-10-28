@@ -2259,7 +2259,7 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticConfig")]
         public virtual DiagnosticConfig DiagnosticConfig { get; set; }
 
-        /// <summary>Optional. Maxmium amount of time in minutes before the operation times out.</summary>
+        /// <summary>Optional. Maximum amount of time in minutes before the operation times out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutMinutes")]
         public virtual System.Nullable<int> TimeoutMinutes { get; set; }
 
