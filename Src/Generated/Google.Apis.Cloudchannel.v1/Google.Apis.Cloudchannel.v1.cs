@@ -35,6 +35,7 @@ namespace Google.Apis.Cloudchannel.v1
         public CloudchannelService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Accounts = new AccountsResource(this);
+            Integrators = new IntegratorsResource(this);
             Operations = new OperationsResource(this);
             Products = new ProductsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudchannel.googleapis.com/");
@@ -81,6 +82,9 @@ namespace Google.Apis.Cloudchannel.v1
 
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }
+
+        /// <summary>Gets the Integrators resource.</summary>
+        public virtual IntegratorsResource Integrators { get; }
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
@@ -4740,7 +4744,7 @@ namespace Google.Apis.Cloudchannel.v1
 
                     /// <summary>
                     /// Optional. A token identifying a page of results beyond the first page. Obtained through
-                    /// ListSkuGroupBillableSkus.next_page_token of the previous
+                    /// ListSkuGroupBillableSkusResponse.next_page_token of the previous
                     /// CloudChannelService.ListSkuGroupBillableSkus call.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -4840,7 +4844,7 @@ namespace Google.Apis.Cloudchannel.v1
 
                 /// <summary>
                 /// Optional. A token identifying a page of results beyond the first page. Obtained through
-                /// ListSkuGroups.next_page_token of the previous CloudChannelService.ListSkuGroups call.
+                /// ListSkuGroupsResponse.next_page_token of the previous CloudChannelService.ListSkuGroups call.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -4958,28 +4962,31 @@ namespace Google.Apis.Cloudchannel.v1
         }
 
         /// <summary>
-        /// Lists service accounts with subscriber privileges on the Cloud Pub/Sub topic created for this Channel
-        /// Services account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request and the
-        /// provided reseller account are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT:
-        /// Required request parameters are missing or invalid. * NOT_FOUND: The topic resource doesn't exist. *
-        /// INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. *
-        /// UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-        /// Return value: A list of service email addresses.
+        /// Lists service accounts with subscriber privileges on the Pub/Sub topic created for this Channel Services
+        /// account or integrator. Possible error codes: * PERMISSION_DENIED: The reseller account making the request
+        /// and the provided reseller account are different, or the impersonated user is not a super admin. *
+        /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The topic resource
+        /// doesn't exist. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud
+        /// Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud
+        /// Channel support. Return value: A list of service email addresses.
         /// </summary>
-        /// <param name="account">Optional. Resource name of the account.</param>
+        /// <param name="account">
+        /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </param>
         public virtual ListSubscribersRequest ListSubscribers(string account)
         {
             return new ListSubscribersRequest(this.service, account);
         }
 
         /// <summary>
-        /// Lists service accounts with subscriber privileges on the Cloud Pub/Sub topic created for this Channel
-        /// Services account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request and the
-        /// provided reseller account are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT:
-        /// Required request parameters are missing or invalid. * NOT_FOUND: The topic resource doesn't exist. *
-        /// INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. *
-        /// UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-        /// Return value: A list of service email addresses.
+        /// Lists service accounts with subscriber privileges on the Pub/Sub topic created for this Channel Services
+        /// account or integrator. Possible error codes: * PERMISSION_DENIED: The reseller account making the request
+        /// and the provided reseller account are different, or the impersonated user is not a super admin. *
+        /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The topic resource
+        /// doesn't exist. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud
+        /// Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud
+        /// Channel support. Return value: A list of service email addresses.
         /// </summary>
         public class ListSubscribersRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListSubscribersResponse>
         {
@@ -4990,9 +4997,19 @@ namespace Google.Apis.Cloudchannel.v1
                 InitParameters();
             }
 
-            /// <summary>Optional. Resource name of the account.</summary>
+            /// <summary>
+            /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this
+            /// field empty/unset.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Account { get; private set; }
+
+            /// <summary>
+            /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this
+            /// field empty/unset.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("integrator", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Integrator { get; set; }
 
             /// <summary>
             /// Optional. The maximum number of service accounts to return. The service may return fewer than this
@@ -5030,6 +5047,14 @@ namespace Google.Apis.Cloudchannel.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^accounts/[^/]+$",
+                });
+                RequestParameters.Add("integrator", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "integrator",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
@@ -5193,29 +5218,34 @@ namespace Google.Apis.Cloudchannel.v1
         }
 
         /// <summary>
-        /// Registers a service account with subscriber privileges on the Cloud Pub/Sub topic for this Channel Services
-        /// account. After you create a subscriber, you get the events through SubscriberEvent Possible error codes: *
-        /// PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different,
-        /// or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing
-        /// or invalid. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud
-        /// Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud
-        /// Channel support. Return value: The topic name with the registered service email address.
+        /// Registers a service account with subscriber privileges on the Pub/Sub topic for this Channel Services
+        /// account or integrator. After you create a subscriber, you get the events through SubscriberEvent Possible
+        /// error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account
+        /// are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request
+        /// parameters are missing or invalid. * INTERNAL: Any non-user error related to a technical issue in the
+        /// backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the
+        /// backend. Contact Cloud Channel support. Return value: The topic name with the registered service email
+        /// address.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="account">Optional. Resource name of the account.</param>
+        /// <param name="account">
+        /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </param>
         public virtual RegisterRequest Register(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1RegisterSubscriberRequest body, string account)
         {
             return new RegisterRequest(this.service, body, account);
         }
 
         /// <summary>
-        /// Registers a service account with subscriber privileges on the Cloud Pub/Sub topic for this Channel Services
-        /// account. After you create a subscriber, you get the events through SubscriberEvent Possible error codes: *
-        /// PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different,
-        /// or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing
-        /// or invalid. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud
-        /// Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud
-        /// Channel support. Return value: The topic name with the registered service email address.
+        /// Registers a service account with subscriber privileges on the Pub/Sub topic for this Channel Services
+        /// account or integrator. After you create a subscriber, you get the events through SubscriberEvent Possible
+        /// error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account
+        /// are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request
+        /// parameters are missing or invalid. * INTERNAL: Any non-user error related to a technical issue in the
+        /// backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the
+        /// backend. Contact Cloud Channel support. Return value: The topic name with the registered service email
+        /// address.
         /// </summary>
         public class RegisterRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1RegisterSubscriberResponse>
         {
@@ -5227,7 +5257,10 @@ namespace Google.Apis.Cloudchannel.v1
                 InitParameters();
             }
 
-            /// <summary>Optional. Resource name of the account.</summary>
+            /// <summary>
+            /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this
+            /// field empty/unset.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Account { get; private set; }
 
@@ -5262,33 +5295,38 @@ namespace Google.Apis.Cloudchannel.v1
         }
 
         /// <summary>
-        /// Unregisters a service account with subscriber privileges on the Cloud Pub/Sub topic created for this Channel
-        /// Services account. If there are no service accounts left with subscriber privileges, this deletes the topic.
-        /// You can call ListSubscribers to check for these accounts. Possible error codes: * PERMISSION_DENIED: The
-        /// reseller account making the request and the provided reseller account are different, or the impersonated
-        /// user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-        /// NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a technical issue in
-        /// the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-        /// the backend. Contact Cloud Channel support. Return value: The topic name that unregistered the service email
-        /// address. Returns a success response if the service email address wasn't registered with the topic.
+        /// Unregisters a service account with subscriber privileges on the Pub/Sub topic created for this Channel
+        /// Services account or integrator. If there are no service accounts left with subscriber privileges, this
+        /// deletes the topic. You can call ListSubscribers to check for these accounts. Possible error codes: *
+        /// PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different,
+        /// or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing
+        /// or invalid. * NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a
+        /// technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
+        /// technical issue in the backend. Contact Cloud Channel support. Return value: The topic name that
+        /// unregistered the service email address. Returns a success response if the service email address wasn't
+        /// registered with the topic.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="account">Optional. Resource name of the account.</param>
+        /// <param name="account">
+        /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </param>
         public virtual UnregisterRequest Unregister(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1UnregisterSubscriberRequest body, string account)
         {
             return new UnregisterRequest(this.service, body, account);
         }
 
         /// <summary>
-        /// Unregisters a service account with subscriber privileges on the Cloud Pub/Sub topic created for this Channel
-        /// Services account. If there are no service accounts left with subscriber privileges, this deletes the topic.
-        /// You can call ListSubscribers to check for these accounts. Possible error codes: * PERMISSION_DENIED: The
-        /// reseller account making the request and the provided reseller account are different, or the impersonated
-        /// user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-        /// NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a technical issue in
-        /// the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-        /// the backend. Contact Cloud Channel support. Return value: The topic name that unregistered the service email
-        /// address. Returns a success response if the service email address wasn't registered with the topic.
+        /// Unregisters a service account with subscriber privileges on the Pub/Sub topic created for this Channel
+        /// Services account or integrator. If there are no service accounts left with subscriber privileges, this
+        /// deletes the topic. You can call ListSubscribers to check for these accounts. Possible error codes: *
+        /// PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different,
+        /// or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing
+        /// or invalid. * NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a
+        /// technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
+        /// technical issue in the backend. Contact Cloud Channel support. Return value: The topic name that
+        /// unregistered the service email address. Returns a success response if the service email address wasn't
+        /// registered with the topic.
         /// </summary>
         public class UnregisterRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1UnregisterSubscriberResponse>
         {
@@ -5300,7 +5338,10 @@ namespace Google.Apis.Cloudchannel.v1
                 InitParameters();
             }
 
-            /// <summary>Optional. Resource name of the account.</summary>
+            /// <summary>
+            /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this
+            /// field empty/unset.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Account { get; private set; }
 
@@ -5330,6 +5371,293 @@ namespace Google.Apis.Cloudchannel.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^accounts/[^/]+$",
+                });
+            }
+        }
+    }
+
+    /// <summary>The "integrators" collection of methods.</summary>
+    public class IntegratorsResource
+    {
+        private const string Resource = "integrators";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public IntegratorsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Lists service accounts with subscriber privileges on the Pub/Sub topic created for this Channel Services
+        /// account or integrator. Possible error codes: * PERMISSION_DENIED: The reseller account making the request
+        /// and the provided reseller account are different, or the impersonated user is not a super admin. *
+        /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The topic resource
+        /// doesn't exist. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud
+        /// Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud
+        /// Channel support. Return value: A list of service email addresses.
+        /// </summary>
+        /// <param name="integrator">
+        /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </param>
+        public virtual ListSubscribersRequest ListSubscribers(string integrator)
+        {
+            return new ListSubscribersRequest(this.service, integrator);
+        }
+
+        /// <summary>
+        /// Lists service accounts with subscriber privileges on the Pub/Sub topic created for this Channel Services
+        /// account or integrator. Possible error codes: * PERMISSION_DENIED: The reseller account making the request
+        /// and the provided reseller account are different, or the impersonated user is not a super admin. *
+        /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The topic resource
+        /// doesn't exist. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud
+        /// Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud
+        /// Channel support. Return value: A list of service email addresses.
+        /// </summary>
+        public class ListSubscribersRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListSubscribersResponse>
+        {
+            /// <summary>Constructs a new ListSubscribers request.</summary>
+            public ListSubscribersRequest(Google.Apis.Services.IClientService service, string integrator) : base(service)
+            {
+                Integrator = integrator;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this
+            /// field empty/unset.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("integrator", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Integrator { get; private set; }
+
+            /// <summary>
+            /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this
+            /// field empty/unset.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Account { get; set; }
+
+            /// <summary>
+            /// Optional. The maximum number of service accounts to return. The service may return fewer than this
+            /// value. If unspecified, returns at most 100 service accounts. The maximum value is 1000; the server will
+            /// coerce values above 1000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous `ListSubscribers` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListSubscribers` must match the call
+            /// that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listSubscribers";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+integrator}:listSubscribers";
+
+            /// <summary>Initializes ListSubscribers parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("integrator", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "integrator",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^integrators/[^/]+$",
+                });
+                RequestParameters.Add("account", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "account",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Registers a service account with subscriber privileges on the Pub/Sub topic for this Channel Services
+        /// account or integrator. After you create a subscriber, you get the events through SubscriberEvent Possible
+        /// error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account
+        /// are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request
+        /// parameters are missing or invalid. * INTERNAL: Any non-user error related to a technical issue in the
+        /// backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the
+        /// backend. Contact Cloud Channel support. Return value: The topic name with the registered service email
+        /// address.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="integrator">
+        /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </param>
+        public virtual RegisterSubscriberRequest RegisterSubscriber(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1RegisterSubscriberRequest body, string integrator)
+        {
+            return new RegisterSubscriberRequest(this.service, body, integrator);
+        }
+
+        /// <summary>
+        /// Registers a service account with subscriber privileges on the Pub/Sub topic for this Channel Services
+        /// account or integrator. After you create a subscriber, you get the events through SubscriberEvent Possible
+        /// error codes: * PERMISSION_DENIED: The reseller account making the request and the provided reseller account
+        /// are different, or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request
+        /// parameters are missing or invalid. * INTERNAL: Any non-user error related to a technical issue in the
+        /// backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the
+        /// backend. Contact Cloud Channel support. Return value: The topic name with the registered service email
+        /// address.
+        /// </summary>
+        public class RegisterSubscriberRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1RegisterSubscriberResponse>
+        {
+            /// <summary>Constructs a new RegisterSubscriber request.</summary>
+            public RegisterSubscriberRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1RegisterSubscriberRequest body, string integrator) : base(service)
+            {
+                Integrator = integrator;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this
+            /// field empty/unset.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("integrator", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Integrator { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1RegisterSubscriberRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "registerSubscriber";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+integrator}:registerSubscriber";
+
+            /// <summary>Initializes RegisterSubscriber parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("integrator", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "integrator",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^integrators/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Unregisters a service account with subscriber privileges on the Pub/Sub topic created for this Channel
+        /// Services account or integrator. If there are no service accounts left with subscriber privileges, this
+        /// deletes the topic. You can call ListSubscribers to check for these accounts. Possible error codes: *
+        /// PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different,
+        /// or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing
+        /// or invalid. * NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a
+        /// technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
+        /// technical issue in the backend. Contact Cloud Channel support. Return value: The topic name that
+        /// unregistered the service email address. Returns a success response if the service email address wasn't
+        /// registered with the topic.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="integrator">
+        /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </param>
+        public virtual UnregisterSubscriberRequest UnregisterSubscriber(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1UnregisterSubscriberRequest body, string integrator)
+        {
+            return new UnregisterSubscriberRequest(this.service, body, integrator);
+        }
+
+        /// <summary>
+        /// Unregisters a service account with subscriber privileges on the Pub/Sub topic created for this Channel
+        /// Services account or integrator. If there are no service accounts left with subscriber privileges, this
+        /// deletes the topic. You can call ListSubscribers to check for these accounts. Possible error codes: *
+        /// PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different,
+        /// or the impersonated user is not a super admin. * INVALID_ARGUMENT: Required request parameters are missing
+        /// or invalid. * NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error related to a
+        /// technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
+        /// technical issue in the backend. Contact Cloud Channel support. Return value: The topic name that
+        /// unregistered the service email address. Returns a success response if the service email address wasn't
+        /// registered with the topic.
+        /// </summary>
+        public class UnregisterSubscriberRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1UnregisterSubscriberResponse>
+        {
+            /// <summary>Constructs a new UnregisterSubscriber request.</summary>
+            public UnregisterSubscriberRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1UnregisterSubscriberRequest body, string integrator) : base(service)
+            {
+                Integrator = integrator;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this
+            /// field empty/unset.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("integrator", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Integrator { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1UnregisterSubscriberRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "unregisterSubscriber";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+integrator}:unregisterSubscriber";
+
+            /// <summary>Initializes UnregisterSubscriber parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("integrator", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "integrator",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^integrators/[^/]+$",
                 });
             }
         }
@@ -6055,7 +6383,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for CloudChannelService.ChangeParametersRequest.</summary>
+    /// <summary>Request message for CloudChannelService.ChangeParameters.</summary>
     public class GoogleCloudChannelV1ChangeParametersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7447,8 +7775,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1BillableSku> BillableSkus { get; set; }
 
         /// <summary>
-        /// A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkus.page_token to obtain that
-        /// page.
+        /// A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkusRequest.page_token to obtain
+        /// that page.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -7461,7 +7789,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
     public class GoogleCloudChannelV1ListSkuGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token to retrieve the next page of results. Pass to ListSkuGroups.page_token to obtain that page.
+        /// A token to retrieve the next page of results. Pass to ListSkuGroupsRequest.page_token to obtain that page.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -8137,6 +8465,20 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Request Message for RegisterSubscriber.</summary>
     public class GoogleCloudChannelV1RegisterSubscriberRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual string Account { get; set; }
+
+        /// <summary>
+        /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integrator")]
+        public virtual string Integrator { get; set; }
+
         /// <summary>Required. Service account that provides subscriber access to the registered topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -8845,6 +9187,20 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Request Message for UnregisterSubscriber.</summary>
     public class GoogleCloudChannelV1UnregisterSubscriberRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual string Account { get; set; }
+
+        /// <summary>
+        /// Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field
+        /// empty/unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integrator")]
+        public virtual string Integrator { get; set; }
+
         /// <summary>Required. Service account to unregister from subscriber access to the topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
