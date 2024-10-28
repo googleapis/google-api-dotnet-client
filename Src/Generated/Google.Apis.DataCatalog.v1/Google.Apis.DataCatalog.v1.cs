@@ -36,6 +36,7 @@ namespace Google.Apis.DataCatalog.v1
         {
             Catalog = new CatalogResource(this);
             Entries = new EntriesResource(this);
+            Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://datacatalog.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://datacatalog.googleapis.com/batch");
@@ -84,6 +85,9 @@ namespace Google.Apis.DataCatalog.v1
 
         /// <summary>Gets the Entries resource.</summary>
         public virtual EntriesResource Entries { get; }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -474,6 +478,203 @@ namespace Google.Apis.DataCatalog.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+            }
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Retrieves the configuration related to the migration from Data Catalog to Dataplex for a specific
+            /// organization, including all the projects under it which have a separate configuration set.
+            /// </summary>
+            /// <param name="name">Required. The organization whose config is being retrieved.</param>
+            public virtual RetrieveConfigRequest RetrieveConfig(string name)
+            {
+                return new RetrieveConfigRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the configuration related to the migration from Data Catalog to Dataplex for a specific
+            /// organization, including all the projects under it which have a separate configuration set.
+            /// </summary>
+            public class RetrieveConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1OrganizationConfig>
+            {
+                /// <summary>Constructs a new RetrieveConfig request.</summary>
+                public RetrieveConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The organization whose config is being retrieved.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrieveConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:retrieveConfig";
+
+                /// <summary>Initializes RetrieveConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex for a
+            /// specific organization or project. If there is no specific configuration set for the resource, the
+            /// setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource
+            /// itself.
+            /// </summary>
+            /// <param name="name">Required. The resource whose effective config is being retrieved.</param>
+            public virtual RetrieveEffectiveConfigRequest RetrieveEffectiveConfig(string name)
+            {
+                return new RetrieveEffectiveConfigRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex for a
+            /// specific organization or project. If there is no specific configuration set for the resource, the
+            /// setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource
+            /// itself.
+            /// </summary>
+            public class RetrieveEffectiveConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1MigrationConfig>
+            {
+                /// <summary>Constructs a new RetrieveEffectiveConfig request.</summary>
+                public RetrieveEffectiveConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource whose effective config is being retrieved.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrieveEffectiveConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:retrieveEffectiveConfig";
+
+                /// <summary>Initializes RetrieveEffectiveConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Sets the configuration related to the migration to Dataplex for an organization or project.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The organization or project whose config is being specified.</param>
+            public virtual SetConfigRequest SetConfig(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1SetConfigRequest body, string name)
+            {
+                return new SetConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Sets the configuration related to the migration to Dataplex for an organization or project.
+            /// </summary>
+            public class SetConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1MigrationConfig>
+            {
+                /// <summary>Constructs a new SetConfig request.</summary>
+                public SetConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1SetConfigRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The organization or project whose config is being specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1SetConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "setConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:setConfig";
+
+                /// <summary>Initializes SetConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                    });
+                }
             }
         }
     }
@@ -5122,6 +5323,118 @@ namespace Google.Apis.DataCatalog.v1
                     }
                 }
             }
+
+            /// <summary>
+            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex for a
+            /// specific organization or project. If there is no specific configuration set for the resource, the
+            /// setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource
+            /// itself.
+            /// </summary>
+            /// <param name="name">Required. The resource whose effective config is being retrieved.</param>
+            public virtual RetrieveEffectiveConfigRequest RetrieveEffectiveConfig(string name)
+            {
+                return new RetrieveEffectiveConfigRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the effective configuration related to the migration from Data Catalog to Dataplex for a
+            /// specific organization or project. If there is no specific configuration set for the resource, the
+            /// setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource
+            /// itself.
+            /// </summary>
+            public class RetrieveEffectiveConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1MigrationConfig>
+            {
+                /// <summary>Constructs a new RetrieveEffectiveConfig request.</summary>
+                public RetrieveEffectiveConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource whose effective config is being retrieved.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrieveEffectiveConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:retrieveEffectiveConfig";
+
+                /// <summary>Initializes RetrieveEffectiveConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Sets the configuration related to the migration to Dataplex for an organization or project.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The organization or project whose config is being specified.</param>
+            public virtual SetConfigRequest SetConfig(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1SetConfigRequest body, string name)
+            {
+                return new SetConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Sets the configuration related to the migration to Dataplex for an organization or project.
+            /// </summary>
+            public class SetConfigRequest : DataCatalogBaseServiceRequest<Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1MigrationConfig>
+            {
+                /// <summary>Constructs a new SetConfig request.</summary>
+                public SetConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1SetConfigRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The organization or project whose config is being specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1SetConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "setConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:setConfig";
+
+                /// <summary>Initializes SetConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
         }
     }
 }
@@ -6015,6 +6328,14 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. When set to [true], it means DataCatalog EntryGroup was transferred to Dataplex Catalog Service.
+        /// It makes EntryGroup and its Entries to be read-only in DataCatalog. However, new Tags on EntryGroup and its
+        /// Entries can be created. After setting the flag to [true] it cannot be unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferredToDataplex")]
+        public virtual System.Nullable<bool> TransferredToDataplex { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6362,6 +6683,24 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The configuration related to the migration to Dataplex applied to an organization or project. It is the response
+    /// message for SetConfig and RetrieveEffectiveConfig.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1MigrationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Opt-in status for the UI switch to Dataplex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogUiExperience")]
+        public virtual string CatalogUiExperience { get; set; }
+
+        /// <summary>Opt-in status for the migration of Tag Templates to Dataplex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagTemplateMigration")]
+        public virtual string TagTemplateMigration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification that applies to a model. Valid only for entries with the `MODEL` type.</summary>
     public class GoogleCloudDatacatalogV1ModelSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6390,6 +6729,23 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Required. The new value for the Entry Overview.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryOverview")]
         public virtual GoogleCloudDatacatalogV1EntryOverview EntryOverview { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The configuration related to the migration from Data Catalog to Dataplex that has been applied to an
+    /// organization and any projects under it. It is the response message for RetrieveConfig.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1OrganizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map of organizations and project resource names and their configuration. The format for the map keys is
+        /// `organizations/{organizationId}` or `projects/{projectId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1MigrationConfig> Config { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7057,6 +7413,21 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for SetConfig.</summary>
+    public class GoogleCloudDatacatalogV1SetConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Opt-in status for the UI switch to Dataplex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogUiExperience")]
+        public virtual string CatalogUiExperience { get; set; }
+
+        /// <summary>Opt-in status for the migration of Tag Templates to Dataplex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagTemplateMigration")]
+        public virtual string TagTemplateMigration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
     /// </summary>
@@ -7278,6 +7649,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
+
+        /// <summary>Output only. Denotes the transfer status of the Tag Template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexTransferStatus")]
+        public virtual string DataplexTransferStatus { get; set; }
 
         /// <summary>
         /// Required. Maps the ID of a tag field to its value and additional information about that field. Tag template
