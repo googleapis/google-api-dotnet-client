@@ -1388,6 +1388,222 @@ namespace Google.Apis.Eventarc.v1
                     this.service = service;
                 }
 
+                /// <summary>Create a new Enrollment in a particular project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent collection in which to add this enrollment.</param>
+                public virtual CreateRequest Create(Google.Apis.Eventarc.v1.Data.Enrollment body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new Enrollment in a particular project and location.</summary>
+                public class CreateRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.Enrollment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent collection in which to add this enrollment.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The user-provided ID to be assigned to the Enrollment. It should match the format
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("enrollmentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EnrollmentId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.Enrollment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/enrollments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("enrollmentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "enrollmentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single Enrollment.</summary>
+                /// <param name="name">Required. The name of the Enrollment to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single Enrollment.</summary>
+                public class DeleteRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the Enrollment to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the Enrollment is not found, the request will succeed but no
+                    /// action will be taken on the server.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. If provided, the Enrollment will only be deleted if the etag matches the current etag
+                    /// on the resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/enrollments/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Get a single Enrollment.</summary>
+                /// <param name="name">Required. The name of the Enrollment to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a single Enrollment.</summary>
+                public class GetRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.Enrollment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the Enrollment to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/enrollments/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -1460,6 +1676,217 @@ namespace Google.Apis.Eventarc.v1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List Enrollments.</summary>
+                /// <param name="parent">Required. The parent collection to list triggers on.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List Enrollments.</summary>
+                public class ListRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.ListEnrollmentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent collection to list triggers on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The filter field that the list request will filter on. Possible filtersare described
+                    /// in https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The sorting order of the resources returned. Value should be a comma-separated list of
+                    /// fields. The default sorting order is ascending. To specify descending order for a field, append
+                    /// a `desc` suffix; for example: `name desc, update_time`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return on each page. Note: The service may send
+                    /// fewer.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token; provide the value from the `next_page_token` field in a previous call
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided must match the
+                    /// previous call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/enrollments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single Enrollment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Resource name of the form
+                /// projects/{project}/locations/{location}/enrollments/{enrollment}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Eventarc.v1.Data.Enrollment body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single Enrollment.</summary>
+                public class PatchRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.Enrollment body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Resource name of the form
+                    /// projects/{project}/locations/{location}/enrollments/{enrollment}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the Enrollment is not found, a new Enrollment will be created. In
+                    /// this situation, `update_mask` is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. The fields to be updated; only fields explicitly provided are updated. If no field
+                    /// mask is provided, all provided fields in the request are updated. To update all fields, provide
+                    /// a field mask of "*".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.Enrollment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/enrollments/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1624,6 +2051,222 @@ namespace Google.Apis.Eventarc.v1
                     this.service = service;
                 }
 
+                /// <summary>Create a new GoogleApiSource in a particular project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent collection in which to add this google api source.</param>
+                public virtual CreateRequest Create(Google.Apis.Eventarc.v1.Data.GoogleApiSource body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new GoogleApiSource in a particular project and location.</summary>
+                public class CreateRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.GoogleApiSource body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent collection in which to add this google api source.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The user-provided ID to be assigned to the GoogleApiSource. It should match the format
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("googleApiSourceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GoogleApiSourceId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.GoogleApiSource Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/googleApiSources";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("googleApiSourceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "googleApiSourceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single GoogleApiSource.</summary>
+                /// <param name="name">Required. The name of the GoogleApiSource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single GoogleApiSource.</summary>
+                public class DeleteRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the GoogleApiSource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the MessageBus is not found, the request will succeed but no
+                    /// action will be taken on the server.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. If provided, the MessageBus will only be deleted if the etag matches the current etag
+                    /// on the resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/googleApiSources/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Get a single GoogleApiSource.</summary>
+                /// <param name="name">Required. The name of the google api source to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a single GoogleApiSource.</summary>
+                public class GetRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleApiSource>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the google api source to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/googleApiSources/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -1696,6 +2339,217 @@ namespace Google.Apis.Eventarc.v1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List GoogleApiSources.</summary>
+                /// <param name="parent">Required. The parent collection to list GoogleApiSources on.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List GoogleApiSources.</summary>
+                public class ListRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.ListGoogleApiSourcesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent collection to list GoogleApiSources on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The filter field that the list request will filter on. Possible filtersare described
+                    /// in https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The sorting order of the resources returned. Value should be a comma-separated list of
+                    /// fields. The default sorting order is ascending. To specify descending order for a field, append
+                    /// a `desc` suffix; for example: `name desc, update_time`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return on each page. Note: The service may send
+                    /// fewer.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token; provide the value from the `next_page_token` field in a previous call
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided must match the
+                    /// previous call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/googleApiSources";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single GoogleApiSource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Resource name of the form
+                /// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Eventarc.v1.Data.GoogleApiSource body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single GoogleApiSource.</summary>
+                public class PatchRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.GoogleApiSource body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Resource name of the form
+                    /// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the GoogleApiSource is not found, a new GoogleApiSource will be
+                    /// created. In this situation, `update_mask` is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. The fields to be updated; only fields explicitly provided are updated. If no field
+                    /// mask is provided, all provided fields in the request are updated. To update all fields, provide
+                    /// a field mask of "*".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.GoogleApiSource Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/googleApiSources/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1860,6 +2714,222 @@ namespace Google.Apis.Eventarc.v1
                     this.service = service;
                 }
 
+                /// <summary>Create a new MessageBus in a particular project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent collection in which to add this message bus.</param>
+                public virtual CreateRequest Create(Google.Apis.Eventarc.v1.Data.MessageBus body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new MessageBus in a particular project and location.</summary>
+                public class CreateRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.MessageBus body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent collection in which to add this message bus.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The user-provided ID to be assigned to the MessageBus. It should match the format
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("messageBusId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MessageBusId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.MessageBus Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/messageBuses";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("messageBusId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "messageBusId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single message bus.</summary>
+                /// <param name="name">Required. The name of the MessageBus to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single message bus.</summary>
+                public class DeleteRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the MessageBus to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the MessageBus is not found, the request will succeed but no
+                    /// action will be taken on the server.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. If provided, the MessageBus will only be deleted if the etag matches the current etag
+                    /// on the resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/messageBuses/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Get a single MessageBus.</summary>
+                /// <param name="name">Required. The name of the message bus to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a single MessageBus.</summary>
+                public class GetRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.MessageBus>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the message bus to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/messageBuses/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -1932,6 +3002,293 @@ namespace Google.Apis.Eventarc.v1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List message buses.</summary>
+                /// <param name="parent">Required. The parent collection to list triggers on.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List message buses.</summary>
+                public class ListRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.ListMessageBusesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent collection to list triggers on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The filter field that the list request will filter on. Possible filtersare described
+                    /// in https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The sorting order of the resources returned. Value should be a comma-separated list of
+                    /// fields. The default sorting order is ascending. To specify descending order for a field, append
+                    /// a `desc` suffix; for example: `name desc, update_time`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return on each page. Note: The service may send
+                    /// fewer.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token; provide the value from the `next_page_token` field in a previous call
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided must match the
+                    /// previous call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/messageBuses";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List message bus enrollments.</summary>
+                /// <param name="parent">Required. The parent message bus to list enrollments on.</param>
+                public virtual ListEnrollmentsRequest ListEnrollments(string parent)
+                {
+                    return new ListEnrollmentsRequest(this.service, parent);
+                }
+
+                /// <summary>List message bus enrollments.</summary>
+                public class ListEnrollmentsRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.ListMessageBusEnrollmentsResponse>
+                {
+                    /// <summary>Constructs a new ListEnrollments request.</summary>
+                    public ListEnrollmentsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent message bus to list enrollments on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return on each page. Note: The service may send
+                    /// fewer.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token; provide the value from the `next_page_token` field in a previous call
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided must match the
+                    /// previous call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listEnrollments";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:listEnrollments";
+
+                    /// <summary>Initializes ListEnrollments parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/messageBuses/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single message bus.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Resource name of the form
+                /// projects/{project}/locations/{location}/messageBuses/{message_bus}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Eventarc.v1.Data.MessageBus body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single message bus.</summary>
+                public class PatchRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.MessageBus body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Resource name of the form
+                    /// projects/{project}/locations/{location}/messageBuses/{message_bus}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the MessageBus is not found, a new MessageBus will be created. In
+                    /// this situation, `update_mask` is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. The fields to be updated; only fields explicitly provided are updated. If no field
+                    /// mask is provided, all provided fields in the request are updated. To update all fields, provide
+                    /// a field mask of "*".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.MessageBus Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/messageBuses/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2372,6 +3729,219 @@ namespace Google.Apis.Eventarc.v1
                     this.service = service;
                 }
 
+                /// <summary>Create a new Pipeline in a particular project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent collection in which to add this pipeline.</param>
+                public virtual CreateRequest Create(Google.Apis.Eventarc.v1.Data.Pipeline body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new Pipeline in a particular project and location.</summary>
+                public class CreateRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.Pipeline body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent collection in which to add this pipeline.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The user-provided ID to be assigned to the Pipeline.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pipelineId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PipelineId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.Pipeline Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/pipelines";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pipelineId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pipelineId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a single pipeline.</summary>
+                /// <param name="name">Required. The name of the Pipeline to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a single pipeline.</summary>
+                public class DeleteRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the Pipeline to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the Pipeline is not found, the request will succeed but no action
+                    /// will be taken on the server.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. If provided, the Pipeline will only be deleted if the etag matches the current etag on
+                    /// the resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/pipelines/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Get a single Pipeline.</summary>
+                /// <param name="name">Required. The name of the pipeline to get.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a single Pipeline.</summary>
+                public class GetRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.Pipeline>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the pipeline to get.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/pipelines/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -2444,6 +4014,217 @@ namespace Google.Apis.Eventarc.v1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List pipelines.</summary>
+                /// <param name="parent">Required. The parent collection to list pipelines on.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List pipelines.</summary>
+                public class ListRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.ListPipelinesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent collection to list pipelines on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The filter field that the list request will filter on. Possible filters are described
+                    /// in https://google.aip.dev/160.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The sorting order of the resources returned. Value should be a comma-separated list of
+                    /// fields. The default sorting order is ascending. To specify descending order for a field, append
+                    /// a `desc` suffix; for example: `name desc, update_time`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return on each page. Note: The service may send
+                    /// fewer.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token; provide the value from the `next_page_token` field in a previous call
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided must match the
+                    /// previous call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/pipelines";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a single pipeline.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the Pipeline. Must be unique within the location of the project and
+                /// must be in `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Eventarc.v1.Data.Pipeline body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a single pipeline.</summary>
+                public class PatchRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Eventarc.v1.Data.Pipeline body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the Pipeline. Must be unique within the location of the project
+                    /// and must be in `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the Pipeline is not found, a new Pipeline will be created. In this
+                    /// situation, `update_mask` is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. The fields to be updated; only fields explicitly provided are updated. If no field
+                    /// mask is provided, all provided fields in the request are updated. To update all fields, provide
+                    /// a field mask of "*".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Eventarc.v1.Data.Pipeline Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/pipelines/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4132,6 +5913,137 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An enrollment represents a subscription for messages on a particular message bus. It defines a matching criteria
+    /// for messages on the bus and the subscriber endpoint where matched messages should be delivered.
+    /// </summary>
+    public class Enrollment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Resource annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Required. A CEL expression identifying which messages this enrollment applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celMatch")]
+        public virtual string CelMatch { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Destination is the Pipeline that the Enrollment is delivering to. It must point to the full
+        /// resource name of a Pipeline. Format: "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>Optional. Resource display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields, and might be sent
+        /// only on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Resource labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Resource name of the message bus identifying the source of the messages. It matches the form
+        /// projects/{project}/locations/{location}/messageBuses/{messageBus}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageBus")]
+        public virtual string MessageBus { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the form projects/{project}/locations/{location}/enrollments/{enrollment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed
+        /// to remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>Filters events based on exact matches on the CloudEvents attributes.</summary>
     public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4303,6 +6215,136 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A GoogleApiSource represents a subscription of 1P events from a MessageBus.</summary>
+    public class GoogleApiSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Resource annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data.
+        /// It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>
+        /// Required. Destination is the message bus that the GoogleApiSource is delivering to. It must be point to the
+        /// full resource name of a MessageBus. Format:
+        /// "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>Optional. Resource display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields, and might be sent
+        /// only on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Resource labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Config to control Platform logging for the GoogleApiSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the form
+        /// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed
+        /// to remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>
     /// A GoogleChannelConfig is a resource that stores the custom settings respected by Eventarc first-party triggers
     /// in the matching region. Once configured, first-party event data will be protected using the specified custom
@@ -4360,6 +6402,336 @@ namespace Google.Apis.Eventarc.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a target of an invocation over HTTP.</summary>
+    public class GoogleCloudEventarcV1PipelineDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An authentication config used to authenticate message requests, such that destinations can verify
+        /// the source. For example, this can be used with private GCP destinations that require GCP credentials to
+        /// access like Cloud Run. This field is optional and should be set only by users interested in authenticated
+        /// push
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationConfig")]
+        public virtual GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig AuthenticationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. An HTTP endpoint destination described by an URI. If a DNS FQDN is provided as the endpoint,
+        /// Pipeline will create a peering zone to the consumer VPC and forward DNS requests to the VPC specified by
+        /// network config to resolve the service endpoint. See:
+        /// https://cloud.google.com/dns/docs/zones/zones-overview#peering_zones
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpEndpoint")]
+        public virtual GoogleCloudEventarcV1PipelineDestinationHttpEndpoint HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the Message Bus to which events should be published. The Message Bus resource
+        /// should exist in the same project as the Pipeline. Format:
+        /// `projects/{project}/locations/{location}/messageBuses/{message_bus}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageBus")]
+        public virtual string MessageBus { get; set; }
+
+        /// <summary>
+        /// Optional. Network config is used to configure how Pipeline resolves and connects to a destination.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual GoogleCloudEventarcV1PipelineDestinationNetworkConfig NetworkConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The message format before it is delivered to the destination. If not set, the message will be
+        /// delivered in the format it was originally delivered to the Pipeline. This field can only be set if
+        /// Pipeline.input_payload_format is also set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputPayloadFormat")]
+        public virtual GoogleCloudEventarcV1PipelineMessagePayloadFormat OutputPayloadFormat { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the Pub/Sub topic to which events should be published. Format:
+        /// `projects/{project}/locations/{location}/topics/{topic}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the Workflow whose Executions are triggered by the events. The Workflow
+        /// resource should be deployed in the same project as the Pipeline. Format:
+        /// `projects/{project}/locations/{location}/workflows/{workflow}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workflow")]
+        public virtual string Workflow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a config used to authenticate message requests.</summary>
+    public class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This authenticate method will apply Google OIDC tokens signed by a GCP service account to the
+        /// requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleOidc")]
+        public virtual GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken GoogleOidc { get; set; }
+
+        /// <summary>
+        /// Optional. If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be
+        /// generated and attached as an `Authorization` header in the HTTP request. This type of authorization should
+        /// generally only be used when calling Google APIs hosted on *.googleapis.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthToken")]
+        public virtual GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken OauthToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains information needed for generating an [OAuth
+    /// token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally
+    /// only be used when calling Google APIs hosted on *.googleapis.com.
+    /// </summary>
+    public class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. OAuth scope to be used for generating OAuth access token. If not specified,
+        /// "https://www.googleapis.com/auth/cloud-platform" will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// Required. Service account email used to generate the [OAuth
+        /// token](https://developers.google.com/identity/protocols/OAuth2). The principal who calls this API must have
+        /// iam.serviceAccounts.actAs permission in the service account. See
+        /// https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information.
+        /// Eventarc service agents must have roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline to
+        /// create OAuth2 tokens for authenticated requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a config used to authenticate with a Google OIDC token using a GCP service account. Use this
+    /// authentication method to invoke your Cloud Run and Cloud Functions destinations or HTTP endpoints that support
+    /// Google OIDC.
+    /// </summary>
+    public class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Audience to be used to generate the OIDC Token. The audience claim identifies the recipient that
+        /// the JWT is intended for. If unspecified, the destination URI will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; }
+
+        /// <summary>
+        /// Required. Service account email used to generate the OIDC Token. The principal who calls this API must have
+        /// iam.serviceAccounts.actAs permission in the service account. See
+        /// https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information.
+        /// Eventarc service agents must have roles/roles/iam.serviceAccountTokenCreator role to allow the Pipeline to
+        /// create OpenID tokens for authenticated requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a HTTP endpoint destination.</summary>
+    public class GoogleCloudEventarcV1PipelineDestinationHttpEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The CEL expression used to construct a new HTTP request to be sent to the final destination. The
+        /// result of the CEL expression must be a map of key/value pairs such that: - If a map named `headers` exists
+        /// on the result of the expression, then its key/value pairs are directly mapped to the HTTP request headers.
+        /// The headers values are constructed from the corresponding value type’s canonical representation. If the
+        /// `headers` field doesn’t exist then the resulting HTTP request will be without headers. - If a field named
+        /// `body` exists on the result of the expression then its value is directly mapped to the body of the request.
+        /// If the value of the `body` field is of type bytes or string then it is used for the HTTP request body as-is,
+        /// with no conversion. If the body field is of any other type then it is converted to a JSON string. If the
+        /// body field doesn’t exist then the resulting HTTP request will be without a body. - Any other fields in the
+        /// resulting expression will be ignored. The CEL expression may access the incoming CloudEvent message in its
+        /// definition, as follows: - The `data` field of the incoming CloudEvent message can be accessed using the
+        /// `message.data` value. - Each attribute of the incoming CloudEvent message can be accessed using the
+        /// `message.` value, where is replaced with the name of the attribute. Headers added to the request by previous
+        /// filters in the chain can be accessed in the CEL expression using the `headers` variable. The `headers`
+        /// variable defines a map of key/value pairs corresponding to the HTTP headers added by previous mediation
+        /// steps and not the headers present on the original incoming request. For example, the following CEL
+        /// expression can be used to construct a Headers-only HTTP request by adding an additional header to the
+        /// headers added by previous mediations in the Pipeline:
+        /// ```
+        /// {"headers": headers.merge({"new-header-key":
+        /// "new-header-value"})}
+        /// ```
+        /// Additionally, the following CEL extension functions are provided for use in this
+        /// CEL expression: - toBase64Url: map.toBase64Url() -&amp;gt; string - Converts a CelValue to a base64url
+        /// encoded string - toJsonString: map.toJsonString() -&amp;gt; string - Converts a CelValue to a JSON string -
+        /// merge: map1.merge(map2) -&amp;gt; map3 - Merges the passed CEL map with the existing CEL map the function is
+        /// applied to. - If the same key exists in both maps, if the key's value is type map both maps are merged else
+        /// the value from the passed map is used. - toMap: list(map).toMap() -&amp;gt; map - Converts a CEL list of CEL
+        /// maps to a single CEL map - toDestinationPayloadFormat(): message.data.toDestinationPayloadFormat() -&amp;gt;
+        /// string or bytes - Converts the message data to the destination payload format specified in
+        /// Pipeline.Destination.output_payload_format - This function is meant to be applied to the message.data field.
+        /// - If the destination payload format is not set, the function will return the message data unchanged. -
+        /// toCloudEventJsonWithPayloadFormat: message.toCloudEventJsonWithPayloadFormat() -&amp;gt; map - Converts a
+        /// message to the corresponding structure of JSON format for CloudEvents - This function applies
+        /// toDestinationPayloadFormat() to the message data. It also sets the corresponding datacontenttype of the
+        /// CloudEvent, as indicated by Pipeline.Destination.output_payload_format. If no output_payload_format is set
+        /// it will use the existing datacontenttype on the CloudEvent if present, else leave datacontenttype absent. -
+        /// This function expects that the content of the message will adhere to the standard CloudEvent format. If it
+        /// doesn’t then this function will fail. - The result is a CEL map that corresponds to the JSON representation
+        /// of the CloudEvent. To convert that data to a JSON string it can be chained with the toJsonString function.
+        /// If a binding is not specified here, by default the message is treated as a CloudEvent and is mapped to the
+        /// HTTP request according to the CloudEvent HTTP Protocol Binding Binary Content Mode. The Pipeline converts
+        /// the data field of the message to the format provided in Pipeline.Destination.output_payload_format and maps
+        /// it to the body field of the result. It also sets the corresponding Content-Type header to the
+        /// output_payload_format type. If the Pipeline.Destination.output_payload_format is not set, then the Pipeline
+        /// will treat the data field of the message as opaque binary data and attach it to the request body as bytes.
+        /// In this case the Content-type header will be set to the value of the datacontenttype attribute set on the
+        /// incoming CloudEvent message if present and the `application/octet-stream` MIME type otherwise. The Pipeline
+        /// expects that the content of the message will adhere to the standard CloudEvent format. If it doesn’t then
+        /// the outgoing message request may fail with a persistent error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageBindingTemplate")]
+        public virtual string MessageBindingTemplate { get; set; }
+
+        /// <summary>
+        /// Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples:
+        /// `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are
+        /// supported. The host can be either a static IP addressable from the VPC specified by the network config, or
+        /// an internal DNS hostname of the service resolvable via Cloud DNS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a network config to be used for destination resolution and connectivity.</summary>
+    public class GoogleCloudEventarcV1PipelineDestinationNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the NetworkAttachment that allows access to the consumer VPC. Format:
+        /// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mediation defines different ways to modify the Pipeline.</summary>
+    public class GoogleCloudEventarcV1PipelineMediation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. How the Pipeline is to transform messages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformation")]
+        public virtual GoogleCloudEventarcV1PipelineMediationTransformation Transformation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Transformation defines the way to transform an incoming message.</summary>
+    public class GoogleCloudEventarcV1PipelineMediationTransformation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The template to apply to transform messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformationTemplate")]
+        public virtual string TransformationTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the format of message data.</summary>
+    public class GoogleCloudEventarcV1PipelineMessagePayloadFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Avro format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avro")]
+        public virtual GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat Avro { get; set; }
+
+        /// <summary>Optional. JSON format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("json")]
+        public virtual GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat Json { get; set; }
+
+        /// <summary>Optional. Protobuf format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protobuf")]
+        public virtual GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat Protobuf { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The format of an AVRO message payload.</summary>
+    public class GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The entire schema definition is stored in this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaDefinition")]
+        public virtual string SchemaDefinition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The format of a JSON message payload.</summary>
+    public class GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The format of a Protobuf message payload.</summary>
+    public class GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The entire schema definition is stored in this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaDefinition")]
+        public virtual string SchemaDefinition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is
+    /// non responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with
+    /// a 5 second delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The
+    /// delay is capped at 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay
+    /// fields to the same value this will make the duration between retries constant.
+    /// </summary>
+    public class GoogleCloudEventarcV1PipelineRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The maximum number of delivery attempts for any message. The value must be between 1 and 100. The
+        /// default value for this field is 5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAttempts")]
+        public virtual System.Nullable<int> MaxAttempts { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum amount of seconds to wait between retry attempts. The value must be between 0 and 600.
+        /// The default value for this field is 60.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetryDelay")]
+        public virtual object MaxRetryDelay { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum amount of seconds to wait between retry attempts. The value must be between 0 and 600.
+        /// The default value for this field is 5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minRetryDelay")]
+        public virtual object MinRetryDelay { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4519,6 +6891,50 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for the `ListEnrollments` method.</summary>
+    public class ListEnrollmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested Enrollments, up to the number specified in `page_size`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollments")]
+        public virtual System.Collections.Generic.IList<Enrollment> Enrollments { get; set; }
+
+        /// <summary>
+        /// A page token that can be sent to `ListEnrollments` to request the next page. If this is empty, then there
+        /// are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unreachable resources, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the `ListGoogleApiSources` method.</summary>
+    public class ListGoogleApiSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested GoogleApiSources, up to the number specified in `page_size`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleApiSources")]
+        public virtual System.Collections.Generic.IList<GoogleApiSource> GoogleApiSources { get; set; }
+
+        /// <summary>
+        /// A page token that can be sent to `ListMessageBusEnrollments` to request the next page. If this is empty,
+        /// then there are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unreachable resources, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4529,6 +6945,72 @@ namespace Google.Apis.Eventarc.v1.Data
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the `ListMessageBusEnrollments` method.`</summary>
+    public class ListMessageBusEnrollmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested enrollments, up to the number specified in `page_size`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollments")]
+        public virtual System.Collections.Generic.IList<string> Enrollments { get; set; }
+
+        /// <summary>
+        /// A page token that can be sent to `ListMessageBusEnrollments` to request the next page. If this is empty,
+        /// then there are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unreachable resources, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the `ListMessageBuses` method.</summary>
+    public class ListMessageBusesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested message buses, up to the number specified in `page_size`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageBuses")]
+        public virtual System.Collections.Generic.IList<MessageBus> MessageBuses { get; set; }
+
+        /// <summary>
+        /// A page token that can be sent to `ListMessageBuses` to request the next page. If this is empty, then there
+        /// are no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unreachable resources, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the ListPipelines method.</summary>
+    public class ListPipelinesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A page token that can be sent to `ListPipelines` to request the next page. If this is empty, then there are
+        /// no more pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The requested pipelines, up to the number specified in `page_size`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelines")]
+        public virtual System.Collections.Generic.IList<Pipeline> Pipelines { get; set; }
+
+        /// <summary>Unreachable resources, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4608,6 +7090,148 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for Platform Telemetry logging for Eventarc Avdvanced resources.</summary>
+    public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform Telemetry. Logs at
+        /// severitiy ≥ this value will be sent, unless it is NONE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logSeverity")]
+        public virtual string LogSeverity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MessageBus for the messages flowing through the system. The admin has visibility and control over the messages
+    /// being published and consumed and can restrict publishers and subscribers to only a subset of data available in
+    /// the system by defining authorization policies.
+    /// </summary>
+    public class MessageBus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Resource annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data.
+        /// It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>Optional. Resource display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields, and might be sent
+        /// only on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Resource labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Config to control Platform logging for the Message Bus. This log configuration is applied to the
+        /// Message Bus itself, and all the Enrollments attached to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the form projects/{project}/locations/{location}/messageBuses/{message_bus}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed
+        /// to remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>Network Configuration that can be inherited by other protos.</summary>
@@ -4727,6 +7351,166 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A representation of the Pipeline resource.</summary>
+    public class Pipeline : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User-defined annotations. See https://google.aip.dev/128#annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. The creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+        /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If
+        /// not set, an internal Google-owned key will be used to encrypt messages. It must match the pattern
+        /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>
+        /// Required. List of destinations to which messages will be forwarded. Currently, exactly one destination is
+        /// supported per Pipeline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudEventarcV1PipelineDestination> Destinations { get; set; }
+
+        /// <summary>Optional. Display name of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields, and might be sent
+        /// only on create requests to ensure that the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. The payload format expected for the messages received by the Pipeline. If input_payload_format is
+        /// set then any messages not matching this format will be treated as persistent errors. If input_payload_format
+        /// is not set, then the message data will be treated as an opaque binary and no output format can be set on the
+        /// Pipeline through the Pipeline.Destination.output_payload_format field. Any Mediations on the Pipeline that
+        /// involve access to the data field will fail as persistent errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputPayloadFormat")]
+        public virtual GoogleCloudEventarcV1PipelineMessagePayloadFormat InputPayloadFormat { get; set; }
+
+        /// <summary>
+        /// Optional. User labels attached to the Pipeline that can be used to group resources. An object containing a
+        /// list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Config to control Platform Logging for Pipelines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. List of mediation operations to be performed on the message. Currently, only one Transformation
+        /// operation is allowed in each Pipeline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudEventarcV1PipelineMediation> Mediations { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the Pipeline. Must be unique within the location of the project and must be
+        /// in `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The retry policy to use in the pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
+        public virtual GoogleCloudEventarcV1PipelineRetryPolicy RetryPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. Server-assigned unique identifier for the Pipeline. The value is a UUID4 string and guaranteed
+        /// to remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The last-modified time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+        /// and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>
