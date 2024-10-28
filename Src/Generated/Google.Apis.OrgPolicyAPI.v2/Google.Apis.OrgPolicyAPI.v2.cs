@@ -2385,6 +2385,92 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     /// </summary>
     public class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Custom constraint definition. This is set only for Managed Constraints</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraintDefinition")]
+        public virtual GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition CustomConstraintDefinition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Currently used for Managed Constraints. This represents a subset of fields missing from Constraint proto that
+    /// are required to describe CustomConstraint
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow or deny type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; }
+
+        /// <summary>
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+        /// or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>All the operations being applied for this constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodTypes")]
+        public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
+
+        /// <summary>
+        /// Stores Structure of parameters used by Constraint condition. Key of map represents name of the parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter> Parameters { get; set; }
+
+        /// <summary>
+        /// The resource instance type on which this policy applies. Format will be of the form : `/` Example: *
+        /// `compute.googleapis.com/Instance`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a parameter structure.</summary>
+    public class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sets the value of the parameter in an assignment if no value is given.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual object DefaultValue { get; set; }
+
+        /// <summary>
+        /// Determines the parameter’s value structure. For example, LIST can be specified by defining type : LIST, and
+        /// item type as : STRING.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("item")]
+        public virtual string Item { get; set; }
+
+        /// <summary>Defines subproperties primarily used by the UI to display user-friendly information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata Metadata { get; set; }
+
+        /// <summary>Type of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Provides a CEL expression to specify the acceptable parameter values during assignment. For example,
+        /// parameterName in ("parameterValue1", "parameterValue2")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validValuesExpr")]
+        public virtual string ValidValuesExpr { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines Medata structure.</summary>
+    public class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed description of what this `parameter` is and use of it. Mutable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
