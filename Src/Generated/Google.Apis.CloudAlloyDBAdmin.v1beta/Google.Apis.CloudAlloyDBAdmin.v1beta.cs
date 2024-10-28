@@ -6761,6 +6761,45 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
         public virtual object TimeBasedRetention { get; set; }
 
+        private string _timestampBasedRetentionTimeRaw;
+
+        private object _timestampBasedRetentionTime;
+
+        /// <summary>Timestamp based retention period i.e. 2024-05-01T00:00:00Z</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampBasedRetentionTime")]
+        public virtual string TimestampBasedRetentionTimeRaw
+        {
+            get => _timestampBasedRetentionTimeRaw;
+            set
+            {
+                _timestampBasedRetentionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampBasedRetentionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampBasedRetentionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampBasedRetentionTimeDateTimeOffset instead.")]
+        public virtual object TimestampBasedRetentionTime
+        {
+            get => _timestampBasedRetentionTime;
+            set
+            {
+                _timestampBasedRetentionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestampBasedRetentionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampBasedRetentionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampBasedRetentionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampBasedRetentionTimeRaw);
+            set => TimestampBasedRetentionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
