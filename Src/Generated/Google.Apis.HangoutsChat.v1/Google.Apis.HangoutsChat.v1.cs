@@ -5038,6 +5038,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
+        /// <summary>
+        /// Optional. The type of a button. If unset, button type defaults to `OUTLINED`. If the `color` field is set,
+        /// the button type is forced to `FILLED` and any value set for this field is ignored. [Google Chat
+        /// apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5231,6 +5239,97 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A text, icon, or text and icon chip that users can click. [Google Chat
+    /// apps](https://developers.google.com/workspace/chat):
+    /// </summary>
+    public class GoogleAppsCardV1Chip : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The alternative text that's used for accessibility. Set descriptive text that lets users know what the chip
+        /// does. For example, if a chip opens a hyperlink, write: "Opens a new browser tab and navigates to the Google
+        /// Chat developer documentation at https://developers.google.com/workspace/chat".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>Whether the chip is in an inactive state and ignores user actions. Defaults to `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>
+        /// Whether the chip is in an active state and responds to user actions. Defaults to `true`. Deprecated. Use
+        /// `disabled` instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The icon image. If both `icon` and `text` are set, then the icon appears before the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual GoogleAppsCardV1Icon Icon { get; set; }
+
+        /// <summary>The text displayed inside the chip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// Optional. The action to perform when a user clicks the chip, such as opening a hyperlink or running a custom
+        /// function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of chips layed out horizontally, which can either scroll horizontally or wrap to the next line. [Google
+    /// Chat apps](https://developers.google.com/workspace/chat):
+    /// </summary>
+    public class GoogleAppsCardV1ChipList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An array of chips.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chips")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1Chip> Chips { get; set; }
+
+        /// <summary>Specified chip list layout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual string Layout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represent an expand and collapse control. [Google Chat apps](https://developers.google.com/workspace/chat):
+    /// </summary>
+    public class GoogleAppsCardV1CollapseControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Define a customizable button to collapse the section. Both expand_button and collapse_button field
+        /// must be set. Only one field set will not take into effect. If this field isn't set, the default button is
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapseButton")]
+        public virtual GoogleAppsCardV1Button CollapseButton { get; set; }
+
+        /// <summary>
+        /// Optional. Define a customizable button to expand the section. Both expand_button and collapse_button field
+        /// must be set. Only one field set will not take into effect. If this field isn't set, the default button is
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandButton")]
+        public virtual GoogleAppsCardV1Button ExpandButton { get; set; }
+
+        /// <summary>The horizontal alignment of the expand and collapse button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
+        public virtual string HorizontalAlignment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5732,6 +5831,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
         public virtual GoogleAppsCardV1OpenLink OpenLink { get; set; }
 
+        /// <summary>
+        /// If specified, this `onClick` opens an overflow menu. [Google Chat
+        /// apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overflowMenu")]
+        public virtual GoogleAppsCardV1OverflowMenu OverflowMenu { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5758,6 +5864,51 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The URL to open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A widget that presents a pop-up menu with one or more actions that users can invoke. For example, showing
+    /// non-primary actions in a card. You can use this widget when actions don't fit in the available space. To use,
+    /// specify this widget in the `OnClick` action of widgets that support it. For example, in a `Button`. [Google Chat
+    /// apps](https://developers.google.com/workspace/chat):
+    /// </summary>
+    public class GoogleAppsCardV1OverflowMenu : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of menu options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1OverflowMenuItem> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An option that users can invoke in an overflow menu. [Google Chat
+    /// apps](https://developers.google.com/workspace/chat):
+    /// </summary>
+    public class GoogleAppsCardV1OverflowMenuItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the menu option is disabled. Defaults to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>
+        /// Required. The action invoked when a menu option is selected. This `OnClick` cannot contain an
+        /// `OverflowMenu`, any specified `OverflowMenu` is dropped and the menu item disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
+
+        /// <summary>The icon displayed in front of the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
+        public virtual GoogleAppsCardV1Icon StartIcon { get; set; }
+
+        /// <summary>Required. The text that identifies or describes the item to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5793,6 +5944,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1Section : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Define the expand and collapse button of the section. This button will be shown only if the
+        /// section is collapsible. If this field isn't set, the default button is used. [Google Chat
+        /// apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapseControl")]
+        public virtual GoogleAppsCardV1CollapseControl CollapseControl { get; set; }
+
         /// <summary>
         /// Indicates whether this section is collapsible. Collapsible sections hide some or all widgets, but users can
         /// expand the section to reveal the hidden widgets by clicking **Show more**. Users can hide the widgets again
@@ -6124,6 +6283,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1TextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The maximum number of lines of text that are displayed in the widget. If the text exceeds the specified
+        /// maximum number of lines, the excess content is concealed behind a **show more** button. If the text is equal
+        /// or shorter than the specified maximum number of lines, a **show more** button isn't displayed. The default
+        /// value is 0, in which case all context is displayed. Negative values are ignored. [Google Chat
+        /// apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxLines")]
+        public virtual System.Nullable<int> MaxLines { get; set; }
+
         /// <summary>The text that's shown in the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -6149,6 +6318,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
         public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
+
+        /// <summary>
+        /// A list of chips. For example, the following JSON creates two chips. The first is a text chip and the second
+        /// is an icon chip that opens a link:
+        /// ```
+        /// "chipList": { "chips": [ { "text": "Edit", "disabled": true, }, {
+        /// "icon": { "knownIcon": "INVITE", "altText": "check calendar" }, "onClick": { "openLink": { "url":
+        /// "https://example.com/calendar" } } } ] }
+        /// ```
+        /// [Google Chat
+        /// apps](https://developers.google.com/workspace/chat):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chipList")]
+        public virtual GoogleAppsCardV1ChipList ChipList { get; set; }
 
         /// <summary>
         /// Displays up to 2 columns. To include more than 2 columns, or to use rows, use the `Grid` widget. For
@@ -6285,6 +6468,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>ButtonList widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
         public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
+
+        /// <summary>ChipList widget. [Google Chat apps](https://developers.google.com/workspace/chat):</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chipList")]
+        public virtual GoogleAppsCardV1ChipList ChipList { get; set; }
 
         /// <summary>DateTimePicker widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
