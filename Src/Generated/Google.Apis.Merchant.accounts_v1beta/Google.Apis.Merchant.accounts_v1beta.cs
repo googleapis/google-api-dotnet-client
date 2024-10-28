@@ -521,7 +521,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. List of fields being updated.</summary>
+                /// <summary>
+                /// Optional. List of fields being updated. The following fields are supported (in both `snake_case` and
+                /// `lowerCamelCase`): - `black_owned` - `latino_owned` - `promotions_consent` - `small_business` -
+                /// `veteran_owned` - `women_owned`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -657,7 +661,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. List of fields being updated.</summary>
+                /// <summary>
+                /// Optional. List of fields being updated. The following fields are supported (in both `snake_case` and
+                /// `lowerCamelCase`): - `address` - `customer_service` - `korean_business_registration_number`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -816,7 +823,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. List of fields being updated.</summary>
+                /// <summary>
+                /// Required. List of fields being updated. The following fields are supported (in both `snake_case` and
+                /// `lowerCamelCase`): - `news_and_tips`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -1082,7 +1092,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. List of fields being updated.</summary>
+                /// <summary>
+                /// Optional. List of fields being updated. The following fields are supported (in both `snake_case` and
+                /// `lowerCamelCase`): - `uri`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -2596,7 +2609,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. List of fields being updated.</summary>
+                /// <summary>
+                /// Optional. List of fields being updated. The following fields are supported (in both `snake_case` and
+                /// `lowerCamelCase`): - `access_rights`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -3007,7 +3023,10 @@ namespace Google.Apis.Merchant.accounts_v1beta
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Required. List of fields being updated.</summary>
+            /// <summary>
+            /// Optional. List of fields being updated. The following fields are supported (in both `snake_case` and
+            /// `lowerCamelCase`): - `account_name` - `adult_content` - `language_code` - `time_zone`
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -4616,6 +4635,45 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// <summary>A message to describe the change that happened to the product</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changes")]
         public virtual System.Collections.Generic.IList<ProductChange> Changes { get; set; }
+
+        private string _expirationTimeRaw;
+
+        private object _expirationTime;
+
+        /// <summary>The product expiration time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual string ExpirationTimeRaw
+        {
+            get => _expirationTimeRaw;
+            set
+            {
+                _expirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
+        public virtual object ExpirationTime
+        {
+            get => _expirationTime;
+            set
+            {
+                _expirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>
         /// The account that manages the merchant's account. can be the same as merchant id if it is standalone account.
