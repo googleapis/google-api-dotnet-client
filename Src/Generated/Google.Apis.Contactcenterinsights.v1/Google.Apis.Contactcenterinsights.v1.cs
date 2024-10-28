@@ -11331,7 +11331,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// The maximum potential score of the question. If the question was answered using `na_value`, this field will
-        /// be zero.
+        /// be zero. Deprecated: Use AnswerValue.potential_score instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
         public virtual System.Nullable<double> PotentialScore { get; set; }
@@ -11393,11 +11393,22 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("naValue")]
         public virtual System.Nullable<bool> NaValue { get; set; }
 
+        /// <summary>
+        /// Output only. Normalized score of the questions. Calculated as score / potential_score iff potential_score !=
+        /// 0 else 0
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
         /// <summary>Numerical value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numValue")]
         public virtual System.Nullable<double> NumValue { get; set; }
 
-        /// <summary>Numerical score of the answer.</summary>
+        /// <summary>Output only. The maximum potential score of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Output only. Numerical score of the answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<double> Score { get; set; }
 
@@ -16115,7 +16126,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// The maximum potential score of the question. If the question was answered using `na_value`, this field will
-        /// be zero.
+        /// be zero. Deprecated: Use AnswerValue.potential_score instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
         public virtual System.Nullable<double> PotentialScore { get; set; }
@@ -16177,11 +16188,22 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("naValue")]
         public virtual System.Nullable<bool> NaValue { get; set; }
 
+        /// <summary>
+        /// Output only. Normalized score of the questions. Calculated as score / potential_score iff potential_score !=
+        /// 0 else 0
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedScore")]
+        public virtual System.Nullable<double> NormalizedScore { get; set; }
+
         /// <summary>Numerical value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numValue")]
         public virtual System.Nullable<double> NumValue { get; set; }
 
-        /// <summary>Numerical score of the answer.</summary>
+        /// <summary>Output only. The maximum potential score of the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentialScore")]
+        public virtual System.Nullable<double> PotentialScore { get; set; }
+
+        /// <summary>Output only. Numerical score of the answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<double> Score { get; set; }
 
