@@ -1230,6 +1230,10 @@ namespace Google.Apis.Connectors.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>Optional. Flag to indicate if schema should be returned as string or not</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("schemaAsString", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> SchemaAsString { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -1270,6 +1274,14 @@ namespace Google.Apis.Connectors.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("schemaAsString", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "schemaAsString",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6501,6 +6513,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionRatelimitWindowSeconds")]
         public virtual System.Nullable<long> ConnectionRatelimitWindowSeconds { get; set; }
 
+        /// <summary>Indicate whether connector versioning is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorVersioningEnabled")]
+        public virtual System.Nullable<bool> ConnectorVersioningEnabled { get; set; }
+
         /// <summary>Indicate whether connector is deployed on GKE/CloudRun</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
         public virtual string DeploymentModel { get; set; }
@@ -9992,6 +10008,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
         public virtual System.Collections.Generic.IList<InputParameter> InputParameters { get; set; }
 
+        /// <summary>Output only. Input schema as string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputSchemaAsString")]
+        public virtual string InputSchemaAsString { get; set; }
+
         /// <summary>Output only. JsonSchema representation of this action's result metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultJsonSchema")]
         public virtual JsonSchema ResultJsonSchema { get; set; }
@@ -9999,6 +10019,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. List of result field metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultMetadata")]
         public virtual System.Collections.Generic.IList<ResultMetadata> ResultMetadata { get; set; }
+
+        /// <summary>Output only. Result schema as string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultSchemaAsString")]
+        public virtual string ResultSchemaAsString { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10486,23 +10510,26 @@ namespace Google.Apis.Connectors.v1.Data
     public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
-        /// scenarios like business closing time.
+        /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+        /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
-        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
         public virtual System.Nullable<int> Minutes { get; set; }
 
-        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        /// <summary>
+        /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+        /// 999,999,999.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
-        /// leap-seconds.
+        /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An
+        /// API may allow the value 60 if it allows leap-seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
