@@ -5646,7 +5646,9 @@ namespace Google.Apis.GKEHub.v1.Data
         /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud
         /// Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric
         /// Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
-        /// `config-management-monitoring` should be bound to the GSA.
+        /// `config-management-monitoring` should be bound to the GSA. Deprecated: If Workload Identity Federation for
+        /// GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics:
+        /// https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricsGcpServiceAccountEmail")]
         public virtual string MetricsGcpServiceAccountEmail { get; set; }
@@ -5730,6 +5732,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Whether syncing resources to the cluster is stopped at the cluster level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterLevelStopSyncingState")]
         public virtual string ClusterLevelStopSyncingState { get; set; }
+
+        /// <summary>Output only. The number of RootSync and RepoSync CRs in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crCount")]
+        public virtual System.Nullable<int> CrCount { get; set; }
 
         /// <summary>
         /// Information about the deployment of ConfigSync, including the version of the various Pods deployed
@@ -8014,6 +8020,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual Authority Authority { get; set; }
+
+        /// <summary>Output only. The tier of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterTier")]
+        public virtual string ClusterTier { get; set; }
 
         private string _createTimeRaw;
 
