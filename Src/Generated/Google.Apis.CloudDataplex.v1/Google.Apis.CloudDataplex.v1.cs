@@ -15966,6 +15966,152 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The output of a data discovery scan.</summary>
+    public class GoogleCloudDataplexV1DataDiscoveryResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Configuration for metadata publishing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryPublishing")]
+        public virtual GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing BigqueryPublishing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes BigQuery publishing configurations.</summary>
+    public class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The BigQuery dataset to publish to. It takes the form
+        /// projects/{project_id}/datasets/{dataset_id}. If not set, the service creates a default publishing dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Spec for a data discovery scan.</summary>
+    public class GoogleCloudDataplexV1DataDiscoverySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for metadata publishing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryPublishingConfig")]
+        public virtual GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig BigqueryPublishingConfig { get; set; }
+
+        /// <summary>Cloud Storage related configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageConfig")]
+        public virtual GoogleCloudDataplexV1DataDiscoverySpecStorageConfig StorageConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes BigQuery publishing configurations.</summary>
+    public class GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The BigQuery connection used to create BigLake tables. Must be in the form
+        /// projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual string Connection { get; set; }
+
+        /// <summary>
+        /// Optional. Determines whether to publish discovered tables as BigLake external tables or non-BigLake external
+        /// tables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableType")]
+        public virtual string TableType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations related to Cloud Storage as the data source.</summary>
+    public class GoogleCloudDataplexV1DataDiscoverySpecStorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for CSV data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvOptions")]
+        public virtual GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions CsvOptions { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the data to exclude during discovery. Provide a list of patterns that identify the data to
+        /// exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match
+        /// object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludePatterns")]
+        public virtual System.Collections.Generic.IList<string> ExcludePatterns { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the data to include during discovery when only a subset of the data should be considered.
+        /// Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these
+        /// patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these
+        /// patterns are interpreted as patterns to match table names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includePatterns")]
+        public virtual System.Collections.Generic.IList<string> IncludePatterns { get; set; }
+
+        /// <summary>Optional. Configuration for JSON data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonOptions")]
+        public virtual GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions JsonOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes CSV and similar semi-structured data formats.</summary>
+    public class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The delimiter that is used to separate values. The default is , (comma).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delimiter")]
+        public virtual string Delimiter { get; set; }
+
+        /// <summary>Optional. The character encoding of the data. The default is UTF-8.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        /// <summary>
+        /// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerRows")]
+        public virtual System.Nullable<int> HeaderRows { get; set; }
+
+        /// <summary>
+        /// Optional. The character used to quote column values. Accepts " (double quotation mark) or ' (single
+        /// quotation mark). If unspecified, defaults to " (double quotation mark).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quote")]
+        public virtual string Quote { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to disable the inference of data types for CSV data. If true, all columns are registered
+        /// as strings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeInferenceDisabled")]
+        public virtual System.Nullable<bool> TypeInferenceDisabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes JSON data format.</summary>
+    public class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The character encoding of the data. The default is UTF-8.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to disable the inference of data types for JSON data. If true, all columns are registered
+        /// as their primitive types (strings, number, or boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeInferenceDisabled")]
+        public virtual System.Nullable<bool> TypeInferenceDisabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific
     /// profile result.
@@ -16963,6 +17109,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual GoogleCloudDataplexV1DataSource Data { get; set; }
 
+        /// <summary>Output only. The result of a data discovery scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiscoveryResult")]
+        public virtual GoogleCloudDataplexV1DataDiscoveryResult DataDiscoveryResult { get; set; }
+
+        /// <summary>Settings for a data discovery scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiscoverySpec")]
+        public virtual GoogleCloudDataplexV1DataDiscoverySpec DataDiscoverySpec { get; set; }
+
         /// <summary>Output only. The result of a data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
         public virtual GoogleCloudDataplexV1DataProfileResult DataProfileResult { get; set; }
@@ -17543,6 +17697,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. The result of a data discovery scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiscoveryResult")]
+        public virtual GoogleCloudDataplexV1DataDiscoveryResult DataDiscoveryResult { get; set; }
+
+        /// <summary>Output only. Settings for a data discovery scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiscoverySpec")]
+        public virtual GoogleCloudDataplexV1DataDiscoverySpec DataDiscoverySpec { get; set; }
 
         /// <summary>Output only. The result of a data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
