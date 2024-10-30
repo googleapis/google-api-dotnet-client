@@ -3356,8 +3356,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>
         /// Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior
         /// of the specified `distance_measure` will affect the meaning of the distance threshold. Since DOT_PRODUCT
-        /// distances increase when the vectors are more similar, the comparison is inverted. For EUCLIDEAN, COSINE:
-        /// WHERE distance &amp;lt;= distance_threshold For DOT_PRODUCT: WHERE distance &amp;gt;= distance_threshold
+        /// distances increase when the vectors are more similar, the comparison is inverted. * For EUCLIDEAN, COSINE:
+        /// WHERE distance &amp;lt;= distance_threshold * For DOT_PRODUCT: WHERE distance &amp;gt;= distance_threshold
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceThreshold")]
         public virtual System.Nullable<double> DistanceThreshold { get; set; }
@@ -4972,7 +4972,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
 
     /// <summary>
     /// A Firestore query. The query stages are executed in the following order: 1. from 2. where 3. select 4. order_by
-    /// + start_at + end_at 5. offset 6. limit
+    /// + start_at + end_at 5. offset 6. limit 7. find_nearest
     /// </summary>
     public class StructuredQuery : Google.Apis.Requests.IDirectResponseSchema
     {
