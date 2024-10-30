@@ -1991,6 +1991,56 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple
+    /// documents have the same vector distance, the returned document order is not guaranteed to be stable between
+    /// queries.
+    /// </summary>
+    public class FindNearest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Distance Measure to use, required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceMeasure")]
+        public virtual string DistanceMeasure { get; set; }
+
+        /// <summary>
+        /// Optional. Optional name of the field to output the result of the vector distance calculation. Must conform
+        /// to entity property limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceResultProperty")]
+        public virtual string DistanceResultProperty { get; set; }
+
+        /// <summary>
+        /// Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior
+        /// of the specified `distance_measure` will affect the meaning of the distance threshold. Since DOT_PRODUCT
+        /// distances increase when the vectors are more similar, the comparison is inverted. * For EUCLIDEAN, COSINE:
+        /// WHERE distance &amp;lt;= distance_threshold * For DOT_PRODUCT: WHERE distance &amp;gt;= distance_threshold
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceThreshold")]
+        public virtual System.Nullable<double> DistanceThreshold { get; set; }
+
+        /// <summary>
+        /// Required. The number of nearest neighbors to return. Must be a positive integer of no more than 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<int> Limit { get; set; }
+
+        /// <summary>
+        /// Required. The query vector that we are searching on. Must be a vector of no more than 2048 dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryVector")]
+        public virtual Value QueryVector { get; set; }
+
+        /// <summary>
+        /// Required. An indexed vector property to search upon. Only documents which contain vectors whose
+        /// dimensionality match the query_vector can be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorProperty")]
+        public virtual PropertyReference VectorProperty { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata common to all Datastore Admin operations.</summary>
     public class GoogleDatastoreAdminV1CommonMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3365,7 +3415,10 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A query for entities.</summary>
+    /// <summary>
+    /// A query for entities. The query stages are executed in the following order: 1. kind 2. filter 3. projection 4.
+    /// order + start_cursor + end_cursor 5. offset 6. limit 7. find_nearest
+    /// </summary>
     public class Query : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3388,6 +3441,13 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The filter to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual Filter Filter { get; set; }
+
+        /// <summary>
+        /// Optional. A potential Nearest Neighbors Search. Applies after all other filters and ordering. Finds the
+        /// closest vector embeddings to the given query vector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findNearest")]
+        public virtual FindNearest FindNearest { get; set; }
 
         /// <summary>
         /// The kinds to query (if empty, returns entities of all kinds). Currently at most 1 kind may be specified.
