@@ -726,6 +726,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     {
                         this.service = service;
                         Branches = new BranchesResource(service);
+                        CompletionConfig = new CompletionConfigResource(service);
                         CompletionSuggestions = new CompletionSuggestionsResource(service);
                         Controls = new ControlsResource(service);
                         Conversations = new ConversationsResource(service);
@@ -1881,6 +1882,87 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the CompletionConfig resource.</summary>
+                    public virtual CompletionConfigResource CompletionConfig { get; }
+
+                    /// <summary>The "completionConfig" collection of methods.</summary>
+                    public class CompletionConfigResource
+                    {
+                        private const string Resource = "completionConfig";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CompletionConfigResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Completes the user input with advanced keyword suggestions.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="completionConfig">
+                        /// Required. The completion_config of the parent dataStore or engine resource name for which
+                        /// the completion is performed, such as
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig`
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`.
+                        /// </param>
+                        public virtual CompleteQueryRequest CompleteQuery(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest body, string completionConfig)
+                        {
+                            return new CompleteQueryRequest(this.service, body, completionConfig);
+                        }
+
+                        /// <summary>Completes the user input with advanced keyword suggestions.</summary>
+                        public class CompleteQueryRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse>
+                        {
+                            /// <summary>Constructs a new CompleteQuery request.</summary>
+                            public CompleteQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest body, string completionConfig) : base(service)
+                            {
+                                CompletionConfig = completionConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The completion_config of the parent dataStore or engine resource name for
+                            /// which the completion is performed, such as
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig`
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("completionConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string CompletionConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "completeQuery";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+completionConfig}:completeQuery";
+
+                            /// <summary>Initializes CompleteQuery parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("completionConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "completionConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/completionConfig$",
                                 });
                             }
                         }
@@ -4202,6 +4284,89 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             public override string RestPath => "v1alpha/{+servingConfig}:search";
 
                             /// <summary>Initializes Search parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Performs a search. Similar to the SearchService.Search method, but a lite version that
+                        /// allows API key for authentication, where OAuth and IAM checks are not required. Only public
+                        /// website search is supported by this method. If data stores and engines not associated with
+                        /// public website search are specified, a `FAILED_PRECONDITION` error is returned. This method
+                        /// can be used for easy onboarding without having to implement an authentication backend.
+                        /// However, it is strongly recommended to use SearchService.Search instead with required OAuth
+                        /// and IAM checks to provide better data security.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </param>
+                        public virtual SearchLiteRequest SearchLite(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig)
+                        {
+                            return new SearchLiteRequest(this.service, body, servingConfig);
+                        }
+
+                        /// <summary>
+                        /// Performs a search. Similar to the SearchService.Search method, but a lite version that
+                        /// allows API key for authentication, where OAuth and IAM checks are not required. Only public
+                        /// website search is supported by this method. If data stores and engines not associated with
+                        /// public website search are specified, a `FAILED_PRECONDITION` error is returned. This method
+                        /// can be used for easy onboarding without having to implement an authentication backend.
+                        /// However, it is strongly recommended to use SearchService.Search instead with required OAuth
+                        /// and IAM checks to provide better data security.
+                        /// </summary>
+                        public class SearchLiteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchResponse>
+                        {
+                            /// <summary>Constructs a new SearchLite request.</summary>
+                            public SearchLiteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                            /// This field is used to identify the serving configuration name, set of models used to
+                            /// make the search.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "searchLite";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+servingConfig}:searchLite";
+
+                            /// <summary>Initializes SearchLite parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -7161,11 +7326,93 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     public EnginesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        CompletionConfig = new CompletionConfigResource(service);
                         Controls = new ControlsResource(service);
                         Conversations = new ConversationsResource(service);
                         Operations = new OperationsResource(service);
                         ServingConfigs = new ServingConfigsResource(service);
                         Sessions = new SessionsResource(service);
+                    }
+
+                    /// <summary>Gets the CompletionConfig resource.</summary>
+                    public virtual CompletionConfigResource CompletionConfig { get; }
+
+                    /// <summary>The "completionConfig" collection of methods.</summary>
+                    public class CompletionConfigResource
+                    {
+                        private const string Resource = "completionConfig";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CompletionConfigResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Completes the user input with advanced keyword suggestions.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="completionConfig">
+                        /// Required. The completion_config of the parent dataStore or engine resource name for which
+                        /// the completion is performed, such as
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig`
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`.
+                        /// </param>
+                        public virtual CompleteQueryRequest CompleteQuery(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest body, string completionConfig)
+                        {
+                            return new CompleteQueryRequest(this.service, body, completionConfig);
+                        }
+
+                        /// <summary>Completes the user input with advanced keyword suggestions.</summary>
+                        public class CompleteQueryRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse>
+                        {
+                            /// <summary>Constructs a new CompleteQuery request.</summary>
+                            public CompleteQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest body, string completionConfig) : base(service)
+                            {
+                                CompletionConfig = completionConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The completion_config of the parent dataStore or engine resource name for
+                            /// which the completion is performed, such as
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig`
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("completionConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string CompletionConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "completeQuery";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+completionConfig}:completeQuery";
+
+                            /// <summary>Initializes CompleteQuery parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("completionConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "completionConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/completionConfig$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Controls resource.</summary>
@@ -8603,6 +8850,89 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 });
                             }
                         }
+
+                        /// <summary>
+                        /// Performs a search. Similar to the SearchService.Search method, but a lite version that
+                        /// allows API key for authentication, where OAuth and IAM checks are not required. Only public
+                        /// website search is supported by this method. If data stores and engines not associated with
+                        /// public website search are specified, a `FAILED_PRECONDITION` error is returned. This method
+                        /// can be used for easy onboarding without having to implement an authentication backend.
+                        /// However, it is strongly recommended to use SearchService.Search instead with required OAuth
+                        /// and IAM checks to provide better data security.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </param>
+                        public virtual SearchLiteRequest SearchLite(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig)
+                        {
+                            return new SearchLiteRequest(this.service, body, servingConfig);
+                        }
+
+                        /// <summary>
+                        /// Performs a search. Similar to the SearchService.Search method, but a lite version that
+                        /// allows API key for authentication, where OAuth and IAM checks are not required. Only public
+                        /// website search is supported by this method. If data stores and engines not associated with
+                        /// public website search are specified, a `FAILED_PRECONDITION` error is returned. This method
+                        /// can be used for easy onboarding without having to implement an authentication backend.
+                        /// However, it is strongly recommended to use SearchService.Search instead with required OAuth
+                        /// and IAM checks to provide better data security.
+                        /// </summary>
+                        public class SearchLiteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchResponse>
+                        {
+                            /// <summary>Constructs a new SearchLite request.</summary>
+                            public SearchLiteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                            /// This field is used to identify the serving configuration name, set of models used to
+                            /// make the search.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "searchLite";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+servingConfig}:searchLite";
+
+                            /// <summary>Initializes SearchLite parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Sessions resource.</summary>
@@ -9776,6 +10106,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 {
                     this.service = service;
                     Branches = new BranchesResource(service);
+                    CompletionConfig = new CompletionConfigResource(service);
                     CompletionSuggestions = new CompletionSuggestionsResource(service);
                     Controls = new ControlsResource(service);
                     Conversations = new ConversationsResource(service);
@@ -10922,6 +11253,87 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the CompletionConfig resource.</summary>
+                public virtual CompletionConfigResource CompletionConfig { get; }
+
+                /// <summary>The "completionConfig" collection of methods.</summary>
+                public class CompletionConfigResource
+                {
+                    private const string Resource = "completionConfig";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CompletionConfigResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Completes the user input with advanced keyword suggestions.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="completionConfig">
+                    /// Required. The completion_config of the parent dataStore or engine resource name for which the
+                    /// completion is performed, such as
+                    /// `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig`
+                    /// `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`.
+                    /// </param>
+                    public virtual CompleteQueryRequest CompleteQuery(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest body, string completionConfig)
+                    {
+                        return new CompleteQueryRequest(this.service, body, completionConfig);
+                    }
+
+                    /// <summary>Completes the user input with advanced keyword suggestions.</summary>
+                    public class CompleteQueryRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse>
+                    {
+                        /// <summary>Constructs a new CompleteQuery request.</summary>
+                        public CompleteQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest body, string completionConfig) : base(service)
+                        {
+                            CompletionConfig = completionConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The completion_config of the parent dataStore or engine resource name for which
+                        /// the completion is performed, such as
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig`
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("completionConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string CompletionConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "completeQuery";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+completionConfig}:completeQuery";
+
+                        /// <summary>Initializes CompleteQuery parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("completionConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "completionConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/completionConfig$",
                             });
                         }
                     }
@@ -13010,6 +13422,89 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public override string RestPath => "v1alpha/{+servingConfig}:search";
 
                         /// <summary>Initializes Search parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servingConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Performs a search. Similar to the SearchService.Search method, but a lite version that allows
+                    /// API key for authentication, where OAuth and IAM checks are not required. Only public website
+                    /// search is supported by this method. If data stores and engines not associated with public
+                    /// website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used
+                    /// for easy onboarding without having to implement an authentication backend. However, it is
+                    /// strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to
+                    /// provide better data security.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="servingConfig">
+                    /// Required. The resource name of the Search serving config, such as
+                    /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                    /// or
+                    /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                    /// This field is used to identify the serving configuration name, set of models used to make the
+                    /// search.
+                    /// </param>
+                    public virtual SearchLiteRequest SearchLite(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig)
+                    {
+                        return new SearchLiteRequest(this.service, body, servingConfig);
+                    }
+
+                    /// <summary>
+                    /// Performs a search. Similar to the SearchService.Search method, but a lite version that allows
+                    /// API key for authentication, where OAuth and IAM checks are not required. Only public website
+                    /// search is supported by this method. If data stores and engines not associated with public
+                    /// website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used
+                    /// for easy onboarding without having to implement an authentication backend. However, it is
+                    /// strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to
+                    /// provide better data security.
+                    /// </summary>
+                    public class SearchLiteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchResponse>
+                    {
+                        /// <summary>Constructs a new SearchLite request.</summary>
+                        public SearchLiteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest body, string servingConfig) : base(service)
+                        {
+                            ServingConfig = servingConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServingConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSearchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchLite";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+servingConfig}:searchLite";
+
+                        /// <summary>Initializes SearchLite parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -18417,6 +18912,29 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// A specific metric, identified by specifying values for all of the labels of a `MetricDescriptor`.
+    /// </summary>
+    public class GoogleApiMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The set of label values that uniquely identify this metric. All labels listed in the `MetricDescriptor` must
+        /// be assigned values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// An existing metric type, see google.api.MetricDescriptor. For example,
+        /// `custom.googleapis.com/invoice/paid/amount`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples
     /// include virtual machine instances, databases, and storage devices such as disks. The `type` field identifies a
     /// MonitoredResourceDescriptor object that describes the resource's schema. Information in the `labels` field
@@ -18442,6 +18960,31 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of
+    /// information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata.
+    /// Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store
+    /// the metadata in this message.
+    /// </summary>
+    public class GoogleApiMonitoredResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by
+        /// Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values
+        /// can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance",
+        /// "security_group": ["a", "b", "c"], "spot_instance": false }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, object> SystemLabels { get; set; }
+
+        /// <summary>Output only. A map of user-defined metadata labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22083,6 +22626,273 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for CompletionService.AdvancedCompleteQuery method. .</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specification to boost suggestions matching the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec BoostSpec { get; set; }
+
+        /// <summary>
+        /// Indicates if tail suggestions should be returned if there are no suggestions that match the full query. Even
+        /// if set to true, if there are suggestions that match the full query, those are returned and no tail
+        /// suggestions are returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeTailSuggestions")]
+        public virtual System.Nullable<bool> IncludeTailSuggestions { get; set; }
+
+        /// <summary>
+        /// Required. The typeahead input used to fetch suggestions. Maximum length is 128 characters. The query can not
+        /// be empty for most of the suggestion types. If it is empty, an `INVALID_ARGUMENT` error is returned. The
+        /// exception is when the suggestion_types contains only the type `RECENT_SEARCH`, the query can be an empty
+        /// string. The is called "zero prefix" feature, which returns user's recently searched queries given the empty
+        /// query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// Specifies the autocomplete data model. This overrides any model specified in the Configuration &amp;gt;
+        /// Autocomplete section of the Cloud console. Currently supported values: * `document` - Using suggestions
+        /// generated from user-imported documents. * `search-history` - Using suggestions generated from the past
+        /// history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. *
+        /// `user-event` - Using suggestions generated from user-imported search events. * `document-completable` -
+        /// Using suggestions taken directly from user-imported document fields marked as completable. Default values: *
+        /// `document` is the default model for regular dataStores. * `search-history` is the default model for site
+        /// search dataStores.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryModel")]
+        public virtual string QueryModel { get; set; }
+
+        /// <summary>
+        /// Optional. Suggestion types to return. If empty or unspecified, query suggestions are returned. Only one
+        /// suggestion type is supported at the moment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionTypes")]
+        public virtual System.Collections.Generic.IList<string> SuggestionTypes { get; set; }
+
+        /// <summary>
+        /// Optional. Information about the end user. This should be the same identifier information as
+        /// UserEvent.user_info and SearchRequest.user_info.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaUserInfo UserInfo { get; set; }
+
+        /// <summary>
+        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
+        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
+        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
+        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
+        public virtual string UserPseudoId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification to boost suggestions based on the condtion of the suggestion.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Condition boost specifications. If a suggestion matches multiple conditions in the specifictions, boost
+        /// values from these specifications are all applied and combined in a non-linear way. Maximum number of
+        /// specifications is 20. Note: Currently only support language condition boost.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost applies to suggestions which match a condition.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to
+        /// 1.0 gives the suggestions a big promotion. However, it does not necessarily mean that the top result will be
+        /// a boosted suggestion. Setting to -1.0 gives the suggestions a big demotion. However, other suggestions that
+        /// are relevant might still be shown. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>
+        /// An expression which specifies a boost condition. The syntax is the same as [filter expression
+        /// syntax](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata#filter-expression-syntax).
+        /// Currently, the only supported condition is a list of BCP-47 lang codes. Example: * To boost suggestions in
+        /// languages `en` or `fr`: `(lang_code: ANY("en", "fr"))`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.AdvancedCompleteQuery method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Results of the matched content suggestions. The result list is ordered and the first result is the top
+        /// suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseContentSuggestion> ContentSuggestions { get; set; }
+
+        /// <summary>
+        /// Results of the matched people suggestions. The result list is ordered and the first result is the top
+        /// suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peopleSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponsePersonSuggestion> PeopleSuggestions { get; set; }
+
+        /// <summary>
+        /// Results of the matched query suggestions. The result list is ordered and the first result is a top
+        /// suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseQuerySuggestion> QuerySuggestions { get; set; }
+
+        /// <summary>
+        /// Results of the matched "recent search" suggestions. The result list is ordered and the first result is the
+        /// top suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentSearchSuggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseRecentSearchSuggestion> RecentSearchSuggestions { get; set; }
+
+        /// <summary>
+        /// True if the returned suggestions are all tail suggestions. For tail matching to be triggered,
+        /// include_tail_suggestions in the request must be true and there must be no suggestions that match the full
+        /// query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tailMatchTriggered")]
+        public virtual System.Nullable<bool> TailMatchTriggered { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestions as content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseContentSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the content suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>The name of the dataStore that this suggestion belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>The document data snippet in the suggestion. Only a subset of fields will be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocument Document { get; set; }
+
+        /// <summary>The suggestion for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
+        public virtual string Suggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestions as people.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponsePersonSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the dataStore that this suggestion belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>The document data snippet in the suggestion. Only a subset of fields is populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocument Document { get; set; }
+
+        /// <summary>The type of the person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personType")]
+        public virtual string PersonType { get; set; }
+
+        /// <summary>The suggestion for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
+        public virtual string Suggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestions as search queries.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseQuerySuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique document field paths that serve as the source of this suggestion if it was generated from
+        /// completable fields. This field is only populated for the document-completable model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completableFieldPaths")]
+        public virtual System.Collections.Generic.IList<string> CompletableFieldPaths { get; set; }
+
+        /// <summary>The name of the dataStore that this suggestion belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual System.Collections.Generic.IList<string> DataStore { get; set; }
+
+        /// <summary>The suggestion for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
+        public virtual string Suggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestions from recent search history.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryResponseRecentSearchSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _recentSearchTimeRaw;
+
+        private object _recentSearchTime;
+
+        /// <summary>The time when this recent rearch happened.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentSearchTime")]
+        public virtual string RecentSearchTimeRaw
+        {
+            get => _recentSearchTimeRaw;
+            set
+            {
+                _recentSearchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _recentSearchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RecentSearchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RecentSearchTimeDateTimeOffset instead.")]
+        public virtual object RecentSearchTime
+        {
+            get => _recentSearchTime;
+            set
+            {
+                _recentSearchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _recentSearchTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RecentSearchTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RecentSearchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RecentSearchTimeRaw);
+            set => RecentSearchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The suggestion for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
+        public virtual string Suggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration data for advance site search.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22312,6 +23122,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("asynchronousMode")]
         public virtual System.Nullable<bool> AsynchronousMode { get; set; }
 
+        /// <summary>Optional. Grounding specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestGroundingSpec GroundingSpec { get; set; }
+
         /// <summary>Required. Current user query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
@@ -22453,6 +23267,27 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Customized preamble.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
         public virtual string Preamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestGroundingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies whether to enable the filtering based on grounding score and at what level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringLevel")]
+        public virtual string FilteringLevel { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether to include grounding_supports in the answer. The default value is `false`. When
+        /// this field is set to `true`, returned answer will have `grounding_score` and will contain GroundingSupports
+        /// for each claim.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeGroundingSupports")]
+        public virtual System.Nullable<bool> IncludeGroundingSupports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24578,6 +25413,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The historical crawl rate timeseries data, used for monitoring.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The QPS of the crawl rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qpsTimeSeries")]
+        public virtual GoogleMonitoringV3TimeSeries QpsTimeSeries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the DataStoreService.CreateDataStore operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -25374,6 +26220,32 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The historical dedicated crawl rate timeseries data, used for monitoring. Dedicated crawl is used by Vertex AI
+    /// to crawl the user's website when dedicate crawl is set.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Vertex AI's dedicated crawl rate time series of auto-refresh, which is the crawl rate of
+        /// Google-CloudVertexBot when dedicate crawl is set, and the crawl rate is for best effort use cases like
+        /// refreshing urls periodically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRefreshCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries AutoRefreshCrawlRate { get; set; }
+
+        /// <summary>
+        /// Vertex AI's dedicated crawl rate time series of user triggered crawl, which is the crawl rate of
+        /// Google-CloudVertexBot when dedicate crawl is set, and user triggered crawl rate is for deterministic use
+        /// cases like crawling urls or sitemaps specified by users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userTriggeredCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries UserTriggeredCrawlRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28522,6 +29394,60 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for CrawlRateManagementService.ObtainCrawlRate method. The response contains organcic or
+    /// dedicated crawl rate time series data for monitoring, depending on whether dedicated crawl rate is set.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The historical dedicated crawl rate timeseries data, used for monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedCrawlRateTimeSeries")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries DedicatedCrawlRateTimeSeries { get; set; }
+
+        /// <summary>Errors from service when handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The historical organic crawl rate timeseries data, used for monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organicCrawlRateTimeSeries")]
+        public virtual GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries OrganicCrawlRateTimeSeries { get; set; }
+
+        /// <summary>Output only. The state of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The historical organic crawl rate timeseries data, used for monitoring. Organic crawl is auto-determined by
+    /// Google to crawl the user's website when dedicate crawl is not set. Crawl rate is the QPS of crawl request Google
+    /// sends to the user's website.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google's organic crawl rate time series, which is the sum of all googlebots' crawl rate. Please refer to
+        /// https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers for more details about
+        /// googlebots.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleOrganicCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries GoogleOrganicCrawlRate { get; set; }
+
+        /// <summary>
+        /// Vertex AI's organic crawl rate time series, which is the crawl rate of Google-CloudVertexBot when dedicate
+        /// crawl is not set. Please refer to
+        /// https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers#google-cloudvertexbot for
+        /// more details about Google-CloudVertexBot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiOrganicCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries VertexAiOrganicCrawlRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33270,10 +34196,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Required. User event type. Allowed values are: Generic values: * `search`: Search for Documents. *
         /// `view-item`: Detailed page view of a Document. * `view-item-list`: View of a panel or ordered list of
         /// Documents. * `view-home-page`: View of the home page. * `view-category-page`: View of a category page, e.g.
-        /// Home &amp;gt; Men &amp;gt; Jeans Retail-related values: * `add-to-cart`: Add an item(s) to cart, e.g. in
-        /// Retail online shopping * `purchase`: Purchase an item(s) Media-related values: * `media-play`: Start/resume
-        /// watching a video, playing a song, etc. * `media-complete`: Finished or stopped midway through a video, song,
-        /// etc.
+        /// Home &amp;gt; Men &amp;gt; Jeans * `add-feedback`: Add a user feedback. Retail-related values: *
+        /// `add-to-cart`: Add an item(s) to cart, e.g. in Retail online shopping * `purchase`: Purchase an item(s)
+        /// Media-related values: * `media-play`: Start/resume watching a video, playing a song, etc. *
+        /// `media-complete`: Finished or stopped midway through a video, song, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
@@ -38299,6 +39225,190 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single data point in a time series.</summary>
+    public class GoogleMonitoringV3Point : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The time interval to which the data point applies. For `GAUGE` metrics, the start time is optional, but if
+        /// it is supplied, it must equal the end time. For `DELTA` metrics, the start and end time should specify a
+        /// non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For
+        /// `CUMULATIVE` metrics, the start and end time should specify a non-zero interval, with subsequent points
+        /// specifying the same start time and increasing end times, until an event resets the cumulative value to zero
+        /// and sets a new start time for the following points.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual GoogleMonitoringV3TimeInterval Interval { get; set; }
+
+        /// <summary>The value of the data point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleMonitoringV3TypedValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A time interval extending just after a start time through an end time. If the start time is the same as the end
+    /// time, then the interval represents a single point in time.
+    /// </summary>
+    public class GoogleMonitoringV3TimeInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Required. The end of the time interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. The beginning of the time interval. The default value for the start time is the end time. The
+        /// start time must not be later than the end time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A collection of data points that describes the time-varying values of a metric. A time series is identified by a
+    /// combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both
+    /// listing and creating time series.
+    /// </summary>
+    public class GoogleMonitoringV3TimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. A detailed description of the time series that will be associated with the
+        /// google.api.MetricDescriptor for the metric. Once set, this field cannot be changed through CreateTimeSeries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The associated monitored resource metadata. When reading a time series, this field will include
+        /// metadata labels that are explicitly named in the reduction. When creating a time series, this field is
+        /// ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleApiMonitoredResourceMetadata Metadata { get; set; }
+
+        /// <summary>The associated metric. A fully-specified metric used to identify the time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual GoogleApiMetric Metric { get; set; }
+
+        /// <summary>
+        /// The metric kind of the time series. When listing time series, this metric kind might be different from the
+        /// metric kind of the associated metric if this time series is an alignment or reduction of other time series.
+        /// When creating a time series, this field is optional. If present, it must be the same as the metric kind of
+        /// the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies
+        /// the metric kind of the new descriptor and must be either `GAUGE` (the default) or `CUMULATIVE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
+        public virtual string MetricKind { get; set; }
+
+        /// <summary>
+        /// The data points of this time series. When listing time series, points are returned in reverse time order.
+        /// When creating a time series, this field must contain exactly one point and the point's type must be the same
+        /// as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then
+        /// the value type of the descriptor is determined by the point's type, which must be `BOOL`, `INT64`, `DOUBLE`,
+        /// or `DISTRIBUTION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("points")]
+        public virtual System.Collections.Generic.IList<GoogleMonitoringV3Point> Points { get; set; }
+
+        /// <summary>
+        /// The associated monitored resource. Custom metrics can use only certain monitored resource types in their
+        /// time series data. For more information, see [Monitored resources for custom
+        /// metrics](https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual GoogleApiMonitoredResource Resource { get; set; }
+
+        /// <summary>
+        /// The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`,
+        /// `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. This field
+        /// can only be changed through CreateTimeSeries when it is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>
+        /// The value type of the time series. When listing time series, this value type might be different from the
+        /// value type of the associated metric if this time series is an alignment or reduction of other time series.
+        /// When creating a time series, this field is optional. If present, it must be the same as the type of the data
+        /// in the `points` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
