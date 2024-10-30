@@ -10987,6 +10987,37 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata for pinning to be returned in the response. This is used for distinguishing between applied vs dropped
+    /// pins.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaPinControlMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Map of all matched pins, keyed by pin position.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allMatchedPins")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaPinControlMetadataProductPins> AllMatchedPins { get; set; }
+
+        /// <summary>
+        /// Map of pins that were dropped due to overlap with other matching pins, keyed by pin position.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedPins")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2alphaPinControlMetadataProductPins> DroppedPins { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of product ids which have associated pins.</summary>
+    public class GoogleCloudRetailV2alphaPinControlMetadataProductPins : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of product ids which have associated pins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual System.Collections.Generic.IList<string> ProductId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for Predict method.</summary>
     public class GoogleCloudRetailV2alphaPredictRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13309,6 +13340,14 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Metadata for pin controls which were applicable to the request. This contains two map fields, one for all
+        /// matched pins and one for pins which were matched but not applied. The two maps are keyed by pin position,
+        /// and the values are the product ids which were matched to that pin.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinControlMetadata")]
+        public virtual GoogleCloudRetailV2alphaPinControlMetadata PinControlMetadata { get; set; }
 
         /// <summary>Query expansion information for the returned results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionInfo")]
