@@ -3596,7 +3596,11 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A list of carrier rates that can be referred to by `main_table` or `single_value`.</summary>
+    /// <summary>
+    /// A list of carrier rates that can be referred to by `main_table` or `single_value`. Supported carrier services
+    /// are defined in
+    /// https://support.google.com/merchants/answer/12577710?hl=en&amp;amp;ref_topic=12570808&amp;amp;sjid=10662598224319463032-NC#zippy=%2Cdelivery-cost-rate-type%2Ccarrier-rate-au-de-uk-and-us-only.
+    /// </summary>
     public class CarrierRate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Carrier service, such as `"UPS"` or `"Fedex"`.</summary>
@@ -5402,7 +5406,10 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
     /// </summary>
     public class WarehouseBasedDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Carrier, such as `"UPS"` or `"Fedex"`.</summary>
+        /// <summary>
+        /// Required. Carrier, such as `"UPS"` or `"Fedex"`. [supported
+        /// carriers](https://support.google.com/merchants/answer/7050921#zippy=%2Ccarrier-rates-au-de-uk-and-us-only)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; }
 
