@@ -1652,7 +1652,9 @@ namespace Google.Apis.Iam.v1
             /// Creates a new WorkforcePool. You cannot reuse the name of a deleted pool until 30 days after deletion.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="location">The location of the pool to create. Format: `locations/{location}`.</param>
+            /// <param name="location">
+            /// Optional. The location of the pool to create. Format: `locations/{location}`.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePool body, string location)
             {
                 return new CreateRequest(this.service, body, location);
@@ -1671,15 +1673,15 @@ namespace Google.Apis.Iam.v1
                     InitParameters();
                 }
 
-                /// <summary>The location of the pool to create. Format: `locations/{location}`.</summary>
+                /// <summary>Optional. The location of the pool to create. Format: `locations/{location}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Location { get; private set; }
 
                 /// <summary>
-                /// The ID to use for the pool, which becomes the final component of the resource name. The IDs must be
-                /// a globally unique string of 6 to 63 lowercase letters, digits, or hyphens. It must start with a
-                /// letter, and cannot have a trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
-                /// not be specified.
+                /// Optional. The ID to use for the pool, which becomes the final component of the resource name. The
+                /// IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens. It must start
+                /// with a letter, and cannot have a trailing hyphen. The prefix `gcp-` is reserved for use by Google,
+                /// and may not be specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("workforcePoolId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string WorkforcePoolId { get; set; }
@@ -8542,7 +8544,9 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>The optional client secret. Required to enable Authorization Code flow for web sign-in.</summary>
+        /// <summary>
+        /// Optional. The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret ClientSecret { get; set; }
 
@@ -8551,7 +8555,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string IssuerUri { get; set; }
 
         /// <summary>
-        /// OIDC JWKs in JSON String format. For details on the definition of a JWK, see
+        /// Optional. OIDC JWKs in JSON String format. For details on the definition of a JWK, see
         /// https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the
         /// .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The
         /// JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg":
@@ -8586,8 +8590,8 @@ namespace Google.Apis.Iam.v1.Data
     public class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. The plain text of the client secret value. For security reasons, this field is only used for
-        /// input and will never be populated in any response.
+        /// Optional. Input only. The plain text of the client secret value. For security reasons, this field is only
+        /// used for input and will never be populated in any response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plainText")]
         public virtual string PlainText { get; set; }
@@ -8604,9 +8608,9 @@ namespace Google.Apis.Iam.v1.Data
     public class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default.
-        /// By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are
-        /// requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be
+        /// Optional. Additional scopes to request for in the OIDC authentication request on top of scopes requested by
+        /// default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider
+        /// are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be
         /// configured.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalScopes")]
@@ -10193,19 +10197,19 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessRestrictions")]
         public virtual AccessRestrictions AccessRestrictions { get; set; }
 
-        /// <summary>A user-specified description of the pool. Cannot exceed 256 characters.</summary>
+        /// <summary>Optional. A user-specified description of the pool. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to
-        /// access resources. If the pool is re-enabled, existing tokens grant access again.
+        /// Optional. Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing
+        /// tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>
-        /// A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
+        /// Optional. A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -10261,9 +10265,9 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// Duration that the Google Cloud access tokens, console sign-in sessions, and `gcloud` sign-in sessions from
-        /// this pool are valid. Must be greater than 15 minutes (900s) and less than 12 hours (43200s). If
-        /// `session_duration` is not configured, minted credentials have a default duration of one hour (3600s). For
+        /// Optional. Duration that the Google Cloud access tokens, console sign-in sessions, and `gcloud` sign-in
+        /// sessions from this pool are valid. Must be greater than 15 minutes (900s) and less than 12 hours (43200s).
+        /// If `session_duration` is not configured, minted credentials have a default duration of one hour (3600s). For
         /// SAML providers, the lifetime of the token is the minimum of the `session_duration` and the
         /// `SessionNotOnOrAfter` claim in the SAML assertion.
         /// </summary>
@@ -10282,11 +10286,11 @@ namespace Google.Apis.Iam.v1.Data
     public class WorkforcePoolProvider : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A [Common Expression Language](https://opensource.google/projects/cel) expression, in plain text, to
-        /// restrict what otherwise valid authentication credentials issued by the provider should not be accepted. The
-        /// expression must output a boolean representing whether to allow the federation. The following keywords may be
-        /// referenced in the expressions: * `assertion`: JSON representing the authentication credential issued by the
-        /// provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
+        /// Optional. A [Common Expression Language](https://opensource.google/projects/cel) expression, in plain text,
+        /// to restrict what otherwise valid authentication credentials issued by the provider should not be accepted.
+        /// The expression must output a boolean representing whether to allow the federation. The following keywords
+        /// may be referenced in the expressions: * `assertion`: JSON representing the authentication credential issued
+        /// by the provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
         /// `google.profile_photo`, `google.display_name` and `google.posix_username` are not supported. * `attribute`:
         /// The custom attributes mapped from the assertion in the `attribute_mappings`. The maximum length of the
         /// attribute condition expression is 4096 characters. If unspecified, all valid authentication credentials will
@@ -10338,18 +10342,18 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> AttributeMapping { get; set; }
 
-        /// <summary>A user-specified description of the provider. Cannot exceed 256 characters.</summary>
+        /// <summary>Optional. A user-specified description of the provider. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However,
-        /// existing tokens still grant access.
+        /// Optional. Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens.
+        /// However, existing tokens still grant access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>A user-specified display name for the provider. Cannot exceed 32 characters.</summary>
+        /// <summary>Optional. A user-specified display name for the provider. Cannot exceed 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
