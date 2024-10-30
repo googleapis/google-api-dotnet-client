@@ -1456,6 +1456,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorAttributions")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1AuthorAttribution> AuthorAttributions { get; set; }
 
+        /// <summary>A link where users can flag a problem with the photo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
+        public virtual string FlagContentUri { get; set; }
+
+        /// <summary>A link to show the photo on Google Maps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleMapsUri")]
+        public virtual string GoogleMapsUri { get; set; }
+
         /// <summary>The maximum available height, in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPx")]
         public virtual System.Nullable<int> HeightPx { get; set; }
@@ -1624,6 +1632,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Place is suitable for watching sports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goodForWatchingSports")]
         public virtual System.Nullable<bool> GoodForWatchingSports { get; set; }
+
+        /// <summary>Links to trigger different Google Maps actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleMapsLinks")]
+        public virtual GoogleMapsPlacesV1PlaceGoogleMapsLinks GoogleMapsLinks { get; set; }
 
         /// <summary>A URL providing more information about this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMapsUri")]
@@ -1902,6 +1914,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentBlocks")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1ContentBlock> ContentBlocks { get; set; }
 
+        /// <summary>A link where users can flag a problem with the summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
+        public virtual string FlagContentUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1932,13 +1948,60 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual GoogleTypeLocalizedText Description { get; set; }
 
+        /// <summary>A link where users can flag a problem with the description summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptionFlagContentUri")]
+        public virtual string DescriptionFlagContentUri { get; set; }
+
         /// <summary>The overview of the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
         public virtual GoogleTypeLocalizedText Overview { get; set; }
 
+        /// <summary>A link where users can flag a problem with the overview summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overviewFlagContentUri")]
+        public virtual string OverviewFlagContentUri { get; set; }
+
         /// <summary>References that are used to generate the summary description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("references")]
         public virtual GoogleMapsPlacesV1References References { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Links to trigger different Google Maps actions.</summary>
+    public class GoogleMapsPlacesV1PlaceGoogleMapsLinks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A link to show the directions to the place. The link only populates the destination location and uses the
+        /// default travel mode `DRIVE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directionsUri")]
+        public virtual string DirectionsUri { get; set; }
+
+        /// <summary>
+        /// A link to show photos of this place. This link is currently not supported on Google Maps Mobile and only
+        /// works on the web version of Google Maps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photosUri")]
+        public virtual string PhotosUri { get; set; }
+
+        /// <summary>A link to show this place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeUri")]
+        public virtual string PlaceUri { get; set; }
+
+        /// <summary>
+        /// A link to show reviews of this place. This link is currently not supported on Google Maps Mobile and only
+        /// works on the web version of Google Maps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewsUri")]
+        public virtual string ReviewsUri { get; set; }
+
+        /// <summary>
+        /// A link to write a review for this place. This link is currently not supported on Google Maps Mobile and only
+        /// works on the web version of Google Maps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeAReviewUri")]
+        public virtual string WriteAReviewUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2201,6 +2264,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorAttribution")]
         public virtual GoogleMapsPlacesV1AuthorAttribution AuthorAttribution { get; set; }
 
+        /// <summary>A link where users can flag a problem with the review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagContentUri")]
+        public virtual string FlagContentUri { get; set; }
+
+        /// <summary>A link to show the review on Google Maps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleMapsUri")]
+        public virtual string GoogleMapsUri { get; set; }
+
         /// <summary>
         /// A reference representing this place review which may be used to look up this place review again (also called
         /// the API "resource" name: `places/{place_id}/reviews/{review}`).
@@ -2344,6 +2415,15 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// </summary>
     public class GoogleMapsPlacesV1RoutingSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A link to show directions on Google Maps using the waypoints from the given routing summary. The route
+        /// generated by this link is not guaranteed to be the same as the route used to generate the routing summary.
+        /// The link uses information provided in the request, from fields including `routingParameters` and
+        /// `searchAlongRouteParameters` when applicable, to generate the directions link.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directionsUri")]
+        public virtual string DirectionsUri { get; set; }
+
         /// <summary>
         /// The legs of the trip. When you calculate travel duration and distance from a set origin, `legs` contains a
         /// single leg containing the duration and distance from the origin to the destination. When you do a search
@@ -2749,6 +2829,12 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingSummaries")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1RoutingSummary> RoutingSummaries { get; set; }
+
+        /// <summary>
+        /// A link allows the user to search with the same text query as specified in the request on Google Maps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchUri")]
+        public virtual string SearchUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
