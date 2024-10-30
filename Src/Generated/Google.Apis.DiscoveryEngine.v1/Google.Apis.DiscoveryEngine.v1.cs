@@ -3503,6 +3503,89 @@ namespace Google.Apis.DiscoveryEngine.v1
                                 });
                             }
                         }
+
+                        /// <summary>
+                        /// Performs a search. Similar to the SearchService.Search method, but a lite version that
+                        /// allows API key for authentication, where OAuth and IAM checks are not required. Only public
+                        /// website search is supported by this method. If data stores and engines not associated with
+                        /// public website search are specified, a `FAILED_PRECONDITION` error is returned. This method
+                        /// can be used for easy onboarding without having to implement an authentication backend.
+                        /// However, it is strongly recommended to use SearchService.Search instead with required OAuth
+                        /// and IAM checks to provide better data security.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </param>
+                        public virtual SearchLiteRequest SearchLite(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest body, string servingConfig)
+                        {
+                            return new SearchLiteRequest(this.service, body, servingConfig);
+                        }
+
+                        /// <summary>
+                        /// Performs a search. Similar to the SearchService.Search method, but a lite version that
+                        /// allows API key for authentication, where OAuth and IAM checks are not required. Only public
+                        /// website search is supported by this method. If data stores and engines not associated with
+                        /// public website search are specified, a `FAILED_PRECONDITION` error is returned. This method
+                        /// can be used for easy onboarding without having to implement an authentication backend.
+                        /// However, it is strongly recommended to use SearchService.Search instead with required OAuth
+                        /// and IAM checks to provide better data security.
+                        /// </summary>
+                        public class SearchLiteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchResponse>
+                        {
+                            /// <summary>Constructs a new SearchLite request.</summary>
+                            public SearchLiteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                            /// This field is used to identify the serving configuration name, set of models used to
+                            /// make the search.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "searchLite";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+servingConfig}:searchLite";
+
+                            /// <summary>Initializes SearchLite parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Sessions resource.</summary>
@@ -7425,6 +7508,89 @@ namespace Google.Apis.DiscoveryEngine.v1
                                 });
                             }
                         }
+
+                        /// <summary>
+                        /// Performs a search. Similar to the SearchService.Search method, but a lite version that
+                        /// allows API key for authentication, where OAuth and IAM checks are not required. Only public
+                        /// website search is supported by this method. If data stores and engines not associated with
+                        /// public website search are specified, a `FAILED_PRECONDITION` error is returned. This method
+                        /// can be used for easy onboarding without having to implement an authentication backend.
+                        /// However, it is strongly recommended to use SearchService.Search instead with required OAuth
+                        /// and IAM checks to provide better data security.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </param>
+                        public virtual SearchLiteRequest SearchLite(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest body, string servingConfig)
+                        {
+                            return new SearchLiteRequest(this.service, body, servingConfig);
+                        }
+
+                        /// <summary>
+                        /// Performs a search. Similar to the SearchService.Search method, but a lite version that
+                        /// allows API key for authentication, where OAuth and IAM checks are not required. Only public
+                        /// website search is supported by this method. If data stores and engines not associated with
+                        /// public website search are specified, a `FAILED_PRECONDITION` error is returned. This method
+                        /// can be used for easy onboarding without having to implement an authentication backend.
+                        /// However, it is strongly recommended to use SearchService.Search instead with required OAuth
+                        /// and IAM checks to provide better data security.
+                        /// </summary>
+                        public class SearchLiteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchResponse>
+                        {
+                            /// <summary>Constructs a new SearchLite request.</summary>
+                            public SearchLiteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                            /// This field is used to identify the serving configuration name, set of models used to
+                            /// make the search.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "searchLite";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+servingConfig}:searchLite";
+
+                            /// <summary>Initializes SearchLite parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Sessions resource.</summary>
@@ -11157,6 +11323,89 @@ namespace Google.Apis.DiscoveryEngine.v1
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Performs a search. Similar to the SearchService.Search method, but a lite version that allows
+                    /// API key for authentication, where OAuth and IAM checks are not required. Only public website
+                    /// search is supported by this method. If data stores and engines not associated with public
+                    /// website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used
+                    /// for easy onboarding without having to implement an authentication backend. However, it is
+                    /// strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to
+                    /// provide better data security.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="servingConfig">
+                    /// Required. The resource name of the Search serving config, such as
+                    /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                    /// or
+                    /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                    /// This field is used to identify the serving configuration name, set of models used to make the
+                    /// search.
+                    /// </param>
+                    public virtual SearchLiteRequest SearchLite(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest body, string servingConfig)
+                    {
+                        return new SearchLiteRequest(this.service, body, servingConfig);
+                    }
+
+                    /// <summary>
+                    /// Performs a search. Similar to the SearchService.Search method, but a lite version that allows
+                    /// API key for authentication, where OAuth and IAM checks are not required. Only public website
+                    /// search is supported by this method. If data stores and engines not associated with public
+                    /// website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used
+                    /// for easy onboarding without having to implement an authentication backend. However, it is
+                    /// strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to
+                    /// provide better data security.
+                    /// </summary>
+                    public class SearchLiteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchResponse>
+                    {
+                        /// <summary>Constructs a new SearchLite request.</summary>
+                        public SearchLiteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest body, string servingConfig) : base(service)
+                        {
+                            ServingConfig = servingConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServingConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1SearchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchLite";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+servingConfig}:searchLite";
+
+                        /// <summary>Initializes SearchLite parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servingConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Sessions resource.</summary>
@@ -14272,6 +14521,248 @@ namespace Google.Apis.DiscoveryEngine.v1
 namespace Google.Apis.DiscoveryEngine.v1.Data
 {
     /// <summary>
+    /// `Distribution` contains summary statistics for a population of values. It optionally contains a histogram
+    /// representing the distribution of those values across a set of buckets. The summary statistics are the count,
+    /// mean, sum of the squared deviation from the mean, the minimum, and the maximum of the set of population of
+    /// values. The histogram is based on a sequence of buckets and gives a count of values that fall into each bucket.
+    /// The boundaries of the buckets are given either explicitly or by formulas for buckets of fixed or exponentially
+    /// increasing widths. Although it is not forbidden, it is generally a bad idea to include non-finite values
+    /// (infinities or NaNs) in the population of values, as this will render the `mean` and `sum_of_squared_deviation`
+    /// fields meaningless.
+    /// </summary>
+    public class GoogleApiDistribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of values in each bucket of the histogram, as described in `bucket_options`. If the distribution
+        /// does not have a histogram, then omit this field. If there is a histogram, then the sum of the values in
+        /// `bucket_counts` must equal the value in the `count` field of the distribution. If present, `bucket_counts`
+        /// should contain N values, where N is the number of buckets specified in `bucket_options`. If you supply fewer
+        /// than N values, the remaining values are assumed to be 0. The order of the values in `bucket_counts` follows
+        /// the bucket numbering schemes described for the three bucket types. The first value must be the count for the
+        /// underflow bucket (number 0). The next N-2 values are the counts for the finite buckets (number 1 through
+        /// N-2). The N'th value in `bucket_counts` is the count for the overflow bucket (number N-1).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketCounts")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> BucketCounts { get; set; }
+
+        /// <summary>
+        /// Defines the histogram bucket boundaries. If the distribution does not contain a histogram, then omit this
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
+        public virtual GoogleApiDistributionBucketOptions BucketOptions { get; set; }
+
+        /// <summary>
+        /// The number of values in the population. Must be non-negative. This value must equal the sum of the values in
+        /// `bucket_counts` if a histogram is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Must be in increasing order of `value` field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemplars")]
+        public virtual System.Collections.Generic.IList<GoogleApiDistributionExemplar> Exemplars { get; set; }
+
+        /// <summary>
+        /// The arithmetic mean of the values in the population. If `count` is zero then this field must be zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mean")]
+        public virtual System.Nullable<double> Mean { get; set; }
+
+        /// <summary>
+        /// If specified, contains the range of the population values. The field must not be present if the `count` is
+        /// zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GoogleApiDistributionRange Range { get; set; }
+
+        /// <summary>
+        /// The sum of squared deviations from the mean of the values in the population. For values x_i this is:
+        /// Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of Computer Programming", Vol. 2, page 232, 3rd edition
+        /// describes Welford's method for accumulating this sum in one pass. If `count` is zero then this field must be
+        /// zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquaredDeviation")]
+        public virtual System.Nullable<double> SumOfSquaredDeviation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `BucketOptions` describes the bucket boundaries used to create a histogram for the distribution. The buckets can
+    /// be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. `BucketOptions`
+    /// does not include the number of values in each bucket. A bucket has an inclusive lower bound and exclusive upper
+    /// bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than
+    /// the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero
+    /// or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are
+    /// contiguous: the lower bound of bucket i (i &amp;gt; 0) is the same as the upper bound of bucket i - 1. The
+    /// buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper
+    /// bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.
+    /// </summary>
+    public class GoogleApiDistributionBucketOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The explicit buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explicitBuckets")]
+        public virtual GoogleApiDistributionBucketOptionsExplicit ExplicitBuckets { get; set; }
+
+        /// <summary>The exponential buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exponentialBuckets")]
+        public virtual GoogleApiDistributionBucketOptionsExponential ExponentialBuckets { get; set; }
+
+        /// <summary>The linear bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linearBuckets")]
+        public virtual GoogleApiDistributionBucketOptionsLinear LinearBuckets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a set of buckets with arbitrary widths. There are `size(bounds) + 1` (= N) buckets. Bucket `i` has the
+    /// following boundaries: Upper bound (0 &amp;lt;= i &amp;lt; N-1): bounds[i] Lower bound (1 &amp;lt;= i &amp;lt;
+    /// N); bounds[i - 1] The `bounds` field must contain at least one element. If `bounds` has only one element, then
+    /// there are no finite buckets, and that single element is the common boundary of the overflow and underflow
+    /// buckets.
+    /// </summary>
+    public class GoogleApiDistributionBucketOptionsExplicit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The values must be monotonically increasing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bounds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Bounds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower
+    /// bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket. There are
+    /// `num_finite_buckets + 2` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 &amp;lt;= i
+    /// &amp;lt; N-1): scale * (growth_factor ^ i). Lower bound (1 &amp;lt;= i &amp;lt; N): scale * (growth_factor ^ (i
+    /// - 1)).
+    /// </summary>
+    public class GoogleApiDistributionBucketOptionsExponential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("growthFactor")]
+        public virtual System.Nullable<double> GrowthFactor { get; set; }
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; }
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<double> Scale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket
+    /// represents a constant absolute uncertainty on the specific value in the bucket. There are `num_finite_buckets +
+    /// 2` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 &amp;lt;= i &amp;lt; N-1): offset +
+    /// (width * i). Lower bound (1 &amp;lt;= i &amp;lt; N): offset + (width * (i - 1)).
+    /// </summary>
+    public class GoogleApiDistributionBucketOptionsLinear : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; }
+
+        /// <summary>Lower bound of the first bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<double> Offset { get; set; }
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<double> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Exemplars are example points that may be used to annotate aggregated distribution values. They are metadata that
+    /// gives information about a particular value added to a Distribution bucket, such as a trace ID that was active
+    /// when a value was added. They may contain further information, such as a example values and timestamps, origin,
+    /// etc.
+    /// </summary>
+    public class GoogleApiDistributionExemplar : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Contextual information about the example value. Examples are: Trace:
+        /// type.googleapis.com/google.monitoring.v3.SpanContext Literal string:
+        /// type.googleapis.com/google.protobuf.StringValue Labels dropped during aggregation:
+        /// type.googleapis.com/google.monitoring.v3.DroppedLabels There may be only a single attachment of any given
+        /// message type in a single exemplar, and this is enforced by the system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Attachments { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>The observation (sampling) time of the above value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Value of the exemplar point. This value determines to which bucket the exemplar belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The range of the population values.</summary>
+    public class GoogleApiDistributionRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum of the population values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<double> Max { get; set; }
+
+        /// <summary>The minimum of the population values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<double> Min { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
     /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
     /// non-streaming API methods in the request as well as the response. It can be used as a top-level request field,
@@ -14299,6 +14790,85 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A specific metric, identified by specifying values for all of the labels of a `MetricDescriptor`.
+    /// </summary>
+    public class GoogleApiMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The set of label values that uniquely identify this metric. All labels listed in the `MetricDescriptor` must
+        /// be assigned values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// An existing metric type, see google.api.MetricDescriptor. For example,
+        /// `custom.googleapis.com/invoice/paid/amount`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples
+    /// include virtual machine instances, databases, and storage devices such as disks. The `type` field identifies a
+    /// MonitoredResourceDescriptor object that describes the resource's schema. Information in the `labels` field
+    /// identifies the actual resource and its attributes according to the schema. For example, a particular Compute
+    /// Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for
+    /// `"gce_instance"` has labels `"project_id"`, `"instance_id"` and `"zone"`: { "type": "gce_instance", "labels": {
+    /// "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
+    /// </summary>
+    public class GoogleApiMonitoredResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Values for all of the labels listed in the associated monitored resource descriptor. For example,
+        /// Compute Engine VM instances use the labels `"project_id"`, `"instance_id"`, and `"zone"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. The monitored resource type. This field must match the `type` field of a
+        /// MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is `gce_instance`.
+        /// Some descriptors include the service name in the type; for example, the type of a Datastream stream is
+        /// `datastream.googleapis.com/Stream`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of
+    /// information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata.
+    /// Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store
+    /// the metadata in this message.
+    /// </summary>
+    public class GoogleApiMonitoredResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by
+        /// Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values
+        /// can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance",
+        /// "security_group": ["a", "b", "c"], "spot_instance": false }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, object> SystemLabels { get; set; }
+
+        /// <summary>Output only. A map of user-defined metadata labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14660,6 +15230,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("asynchronousMode")]
         public virtual System.Nullable<bool> AsynchronousMode { get; set; }
 
+        /// <summary>Optional. Grounding specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec GroundingSpec { get; set; }
+
         /// <summary>Required. Current user query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1Query Query { get; set; }
@@ -14801,6 +15375,21 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Customized preamble.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
         public virtual string Preamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding specification.</summary>
+    public class GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies whether to include grounding_supports in the answer. The default value is `false`. When
+        /// this field is set to `true`, returned answer will have `grounding_score` and will contain GroundingSupports
+        /// for each claim.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeGroundingSupports")]
+        public virtual System.Nullable<bool> IncludeGroundingSupports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22805,10 +23394,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// Required. User event type. Allowed values are: Generic values: * `search`: Search for Documents. *
         /// `view-item`: Detailed page view of a Document. * `view-item-list`: View of a panel or ordered list of
         /// Documents. * `view-home-page`: View of the home page. * `view-category-page`: View of a category page, e.g.
-        /// Home &amp;gt; Men &amp;gt; Jeans Retail-related values: * `add-to-cart`: Add an item(s) to cart, e.g. in
-        /// Retail online shopping * `purchase`: Purchase an item(s) Media-related values: * `media-play`: Start/resume
-        /// watching a video, playing a song, etc. * `media-complete`: Finished or stopped midway through a video, song,
-        /// etc.
+        /// Home &amp;gt; Men &amp;gt; Jeans * `add-feedback`: Add a user feedback. Retail-related values: *
+        /// `add-to-cart`: Add an item(s) to cart, e.g. in Retail online shopping * `purchase`: Purchase an item(s)
+        /// Media-related values: * `media-play`: Start/resume watching a video, playing a song, etc. *
+        /// `media-complete`: Finished or stopped midway through a video, song, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
@@ -23846,6 +24435,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The historical crawl rate timeseries data, used for monitoring.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The QPS of the crawl rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qpsTimeSeries")]
+        public virtual GoogleMonitoringV3TimeSeries QpsTimeSeries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the DataStoreService.CreateDataStore operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -24600,6 +25200,32 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The historical dedicated crawl rate timeseries data, used for monitoring. Dedicated crawl is used by Vertex AI
+    /// to crawl the user's website when dedicate crawl is set.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Vertex AI's dedicated crawl rate time series of auto-refresh, which is the crawl rate of
+        /// Google-CloudVertexBot when dedicate crawl is set, and the crawl rate is for best effort use cases like
+        /// refreshing urls periodically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRefreshCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries AutoRefreshCrawlRate { get; set; }
+
+        /// <summary>
+        /// Vertex AI's dedicated crawl rate time series of user triggered crawl, which is the crawl rate of
+        /// Google-CloudVertexBot when dedicate crawl is set, and user triggered crawl rate is for deterministic use
+        /// cases like crawling urls or sitemaps specified by users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userTriggeredCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries UserTriggeredCrawlRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26686,6 +27312,60 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for CrawlRateManagementService.ObtainCrawlRate method. The response contains organcic or
+    /// dedicated crawl rate time series data for monitoring, depending on whether dedicated crawl rate is set.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The historical dedicated crawl rate timeseries data, used for monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedCrawlRateTimeSeries")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries DedicatedCrawlRateTimeSeries { get; set; }
+
+        /// <summary>Errors from service when handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The historical organic crawl rate timeseries data, used for monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organicCrawlRateTimeSeries")]
+        public virtual GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries OrganicCrawlRateTimeSeries { get; set; }
+
+        /// <summary>Output only. The state of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The historical organic crawl rate timeseries data, used for monitoring. Organic crawl is auto-determined by
+    /// Google to crawl the user's website when dedicate crawl is not set. Crawl rate is the QPS of crawl request Google
+    /// sends to the user's website.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaOrganicCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google's organic crawl rate time series, which is the sum of all googlebots' crawl rate. Please refer to
+        /// https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers for more details about
+        /// googlebots.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleOrganicCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries GoogleOrganicCrawlRate { get; set; }
+
+        /// <summary>
+        /// Vertex AI's organic crawl rate time series, which is the crawl rate of Google-CloudVertexBot when dedicate
+        /// crawl is not set. Please refer to
+        /// https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers#google-cloudvertexbot for
+        /// more details about Google-CloudVertexBot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiOrganicCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries VertexAiOrganicCrawlRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34241,6 +34921,220 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single data point in a time series.</summary>
+    public class GoogleMonitoringV3Point : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The time interval to which the data point applies. For `GAUGE` metrics, the start time is optional, but if
+        /// it is supplied, it must equal the end time. For `DELTA` metrics, the start and end time should specify a
+        /// non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For
+        /// `CUMULATIVE` metrics, the start and end time should specify a non-zero interval, with subsequent points
+        /// specifying the same start time and increasing end times, until an event resets the cumulative value to zero
+        /// and sets a new start time for the following points.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual GoogleMonitoringV3TimeInterval Interval { get; set; }
+
+        /// <summary>The value of the data point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleMonitoringV3TypedValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A time interval extending just after a start time through an end time. If the start time is the same as the end
+    /// time, then the interval represents a single point in time.
+    /// </summary>
+    public class GoogleMonitoringV3TimeInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Required. The end of the time interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. The beginning of the time interval. The default value for the start time is the end time. The
+        /// start time must not be later than the end time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A collection of data points that describes the time-varying values of a metric. A time series is identified by a
+    /// combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both
+    /// listing and creating time series.
+    /// </summary>
+    public class GoogleMonitoringV3TimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. A detailed description of the time series that will be associated with the
+        /// google.api.MetricDescriptor for the metric. Once set, this field cannot be changed through CreateTimeSeries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The associated monitored resource metadata. When reading a time series, this field will include
+        /// metadata labels that are explicitly named in the reduction. When creating a time series, this field is
+        /// ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleApiMonitoredResourceMetadata Metadata { get; set; }
+
+        /// <summary>The associated metric. A fully-specified metric used to identify the time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual GoogleApiMetric Metric { get; set; }
+
+        /// <summary>
+        /// The metric kind of the time series. When listing time series, this metric kind might be different from the
+        /// metric kind of the associated metric if this time series is an alignment or reduction of other time series.
+        /// When creating a time series, this field is optional. If present, it must be the same as the metric kind of
+        /// the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies
+        /// the metric kind of the new descriptor and must be either `GAUGE` (the default) or `CUMULATIVE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
+        public virtual string MetricKind { get; set; }
+
+        /// <summary>
+        /// The data points of this time series. When listing time series, points are returned in reverse time order.
+        /// When creating a time series, this field must contain exactly one point and the point's type must be the same
+        /// as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then
+        /// the value type of the descriptor is determined by the point's type, which must be `BOOL`, `INT64`, `DOUBLE`,
+        /// or `DISTRIBUTION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("points")]
+        public virtual System.Collections.Generic.IList<GoogleMonitoringV3Point> Points { get; set; }
+
+        /// <summary>
+        /// The associated monitored resource. Custom metrics can use only certain monitored resource types in their
+        /// time series data. For more information, see [Monitored resources for custom
+        /// metrics](https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual GoogleApiMonitoredResource Resource { get; set; }
+
+        /// <summary>
+        /// The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`,
+        /// `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. This field
+        /// can only be changed through CreateTimeSeries when it is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>
+        /// The value type of the time series. When listing time series, this value type might be different from the
+        /// value type of the associated metric if this time series is an alignment or reduction of other time series.
+        /// When creating a time series, this field is optional. If present, it must be the same as the type of the data
+        /// in the `points` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single strongly-typed value.</summary>
+    public class GoogleMonitoringV3TypedValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A Boolean value: `true` or `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>A distribution value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distributionValue")]
+        public virtual GoogleApiDistribution DistributionValue { get; set; }
+
+        /// <summary>
+        /// A 64-bit double-precision floating-point number. Its magnitude is approximately ±10±300 and it has 16
+        /// significant digits of precision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>A 64-bit integer. Its range is approximately ±9.2x1018.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>A variable-length string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
