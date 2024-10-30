@@ -2320,6 +2320,12 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceExecutions")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaDeviceExecution> DeviceExecutions { get; set; }
 
+        /// <summary>
+        /// Optional. Display name of the release test. Required if the release test is created with multiple goals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Optional. Input only. Login credentials for the test. Input only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginCredential")]
         public virtual GoogleFirebaseAppdistroV1alphaLoginCredential LoginCredential { get; set; }
