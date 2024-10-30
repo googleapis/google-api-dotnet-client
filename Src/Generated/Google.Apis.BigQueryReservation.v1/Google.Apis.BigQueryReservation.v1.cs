@@ -2035,6 +2035,17 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assignee")]
         public virtual string Assignee { get; set; }
 
+        /// <summary>
+        /// Optional. This field controls if "Gemini in BigQuery"
+        /// (https://cloud.google.com/gemini/docs/bigquery/overview) features should be enabled for this reservation
+        /// assignment, which is not on by default. "Gemini in BigQuery" has a distinct compliance posture from
+        /// BigQuery. If this field is set to true, the assignment job type is QUERY, and the parent reservation edition
+        /// is ENTERPRISE_PLUS, then the assignment will give the grantee project/organization access to "Gemini in
+        /// BigQuery" features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGeminiInBigquery")]
+        public virtual System.Nullable<bool> EnableGeminiInBigquery { get; set; }
+
         /// <summary>Which type of jobs will use the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobType")]
         public virtual string JobType { get; set; }
@@ -2060,7 +2071,9 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     {
         /// <summary>
         /// Output only. The slot capacity added to this reservation when autoscale happens. Will be between [0,
-        /// max_slots].
+        /// max_slots]. Note: after users reduce max_slots, it may take a while before it can be propagated, so
+        /// current_slots may stay in the original value and could be larger than max_slots for that brief period (less
+        /// than one minute)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSlots")]
         public virtual System.Nullable<long> CurrentSlots { get; set; }
@@ -2454,6 +2467,13 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreIdleSlots")]
         public virtual System.Nullable<bool> IgnoreIdleSlots { get; set; }
+
+        /// <summary>
+        /// Optional. The labels associated with this reservation. You can use these to organize and group your
+        /// reservations. You can set this property when inserting or updating a reservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to
