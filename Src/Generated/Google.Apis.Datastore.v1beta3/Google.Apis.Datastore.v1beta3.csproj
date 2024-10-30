@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Datastore.v1beta3 Client Library</Title>
-    <Version>1.68.0.3568</Version>
+    <Version>1.68.0.3578</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
