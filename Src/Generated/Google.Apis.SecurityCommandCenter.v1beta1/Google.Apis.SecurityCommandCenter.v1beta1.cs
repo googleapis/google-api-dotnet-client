@@ -11284,7 +11284,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         private object _startTime;
 
-        /// <summary>Required. The time at which the updated state takes effect.</summary>
+        /// <summary>
+        /// Optional. The time at which the updated state takes effect. If not set uses the current time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
