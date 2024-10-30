@@ -642,7 +642,7 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     public class AdvancedVoiceOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Only for Jounrney voices. If false, the synthesis will be context aware and have higher latency.
+        /// Only for Journey voices. If false, the synthesis will be context aware and have higher latency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowLatencyJourneySynthesis")]
         public virtual System.Nullable<bool> LowLatencyJourneySynthesis { get; set; }
@@ -868,6 +868,17 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A collection of turns for multi-speaker synthesis.</summary>
+    public class MultiSpeakerMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Speaker turns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turns")]
+        public virtual System.Collections.Generic.IList<Turn> Turns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -956,6 +967,10 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customPronunciations")]
         public virtual CustomPronunciations CustomPronunciations { get; set; }
+
+        /// <summary>The multi-speaker input to be synthesized. Only applicable for multi-speaker synthesis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiSpeakerMarkup")]
+        public virtual MultiSpeakerMarkup MultiSpeakerMarkup { get; set; }
 
         /// <summary>
         /// The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will
@@ -1089,7 +1104,7 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     /// <summary>The top-level message sent by the client for the `SynthesizeSpeech` method.</summary>
     public class SynthesizeSpeechRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Adnanced voice options.</summary>
+        /// <summary>Advanced voice options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedVoiceOptions")]
         public virtual AdvancedVoiceOptions AdvancedVoiceOptions { get; set; }
 
@@ -1156,6 +1171,24 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Multi-speaker turn.</summary>
+    public class Turn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The speaker of the turn, for example, 'O' or 'Q'. Please refer to documentation for available
+        /// speakers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speaker")]
+        public virtual string Speaker { get; set; }
+
+        /// <summary>Required. The text to speak.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Description of a voice supported by the TTS service.</summary>
     public class Voice : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1177,6 +1210,17 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// <summary>The gender of this voice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssmlGender")]
         public virtual string SsmlGender { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of Voice Clone feature.</summary>
+    public class VoiceCloneParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Created by GenerateVoiceCloningKey.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceCloningKey")]
+        public virtual string VoiceCloningKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1219,6 +1263,13 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssmlGender")]
         public virtual string SsmlGender { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration for a voice clone. If [VoiceCloneParams.voice_clone_key] is set, the service
+        /// will choose the voice clone matching the specified configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceClone")]
+        public virtual VoiceCloneParams VoiceClone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
