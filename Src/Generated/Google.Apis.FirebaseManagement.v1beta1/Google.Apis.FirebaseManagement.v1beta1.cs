@@ -3459,8 +3459,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         private object _expireTime;
 
         /// <summary>
-        /// Output only. Timestamp of when the App will be considered expired and cannot be undeleted. This value is
-        /// only provided if the App is in the `DELETED` state.
+        /// Output only. If the App has been removed from the Project, this is the timestamp of when the App is
+        /// considered expired and will be permanently deleted. After this time, the App cannot be undeleted (that is,
+        /// restored to the Project). This value is only provided if the App is in the `DELETED` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
@@ -3673,8 +3674,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         private object _expireTime;
 
         /// <summary>
-        /// Output only. Timestamp of when the App will be considered expired and cannot be undeleted. This value is
-        /// only provided if the App is in the `DELETED` state.
+        /// Output only. If the App has been removed from the Project, this is the timestamp of when the App is
+        /// considered expired and will be permanently deleted. After this time, the App cannot be undeleted (that is,
+        /// restored to the Project). This value is only provided if the App is in the `DELETED` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
@@ -3861,8 +3863,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         private object _expireTime;
 
         /// <summary>
-        /// Output only. Timestamp of when the App will be considered expired and cannot be undeleted. This value is
-        /// only provided if the App is in the `DELETED` state.
+        /// Output only. If the App has been removed from the Project, this is the timestamp of when the App is
+        /// considered expired and will be permanently deleted. After this time, the App cannot be undeleted (that is,
+        /// restored to the Project). This value is only provided if the App is in the `DELETED` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
@@ -4222,9 +4225,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
         /// <summary>
         /// Determines whether to _immediately_ delete the AndroidApp. If set to true, the App is immediately deleted
-        /// from the Project and cannot be restored to the Project. If not set, defaults to false, which means the App
-        /// will be set to expire in 30 days. Within the 30 days, the App may be restored to the Project using
-        /// UndeleteAndroidApp.
+        /// from the Project and cannot be undeleted (that is, restored to the Project). If not set, defaults to false,
+        /// which means the App will be set to expire in 30 days. Within the 30 days, the App may be restored to the
+        /// Project using UndeleteAndroidApp.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("immediate")]
         public virtual System.Nullable<bool> Immediate { get; set; }
@@ -4252,8 +4255,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
         /// <summary>
         /// Determines whether to _immediately_ delete the IosApp. If set to true, the App is immediately deleted from
-        /// the Project and cannot be restored to the Project. If not set, defaults to false, which means the App will
-        /// be set to expire in 30 days. Within the 30 days, the App may be restored to the Project using UndeleteIosApp
+        /// the Project and cannot be undeleted (that is, restored to the Project). If not set, defaults to false, which
+        /// means the App will be set to expire in 30 days. Within the 30 days, the App may be restored to the Project
+        /// using UndeleteIosApp
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("immediate")]
         public virtual System.Nullable<bool> Immediate { get; set; }
@@ -4281,8 +4285,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
         /// <summary>
         /// Determines whether to _immediately_ delete the WebApp. If set to true, the App is immediately deleted from
-        /// the Project and cannot be restored to the Project. If not set, defaults to false, which means the App will
-        /// be set to expire in 30 days. Within the 30 days, the App may be restored to the Project using UndeleteWebApp
+        /// the Project and cannot be undeleted (that is, restored to the Project). If not set, defaults to false, which
+        /// means the App will be set to expire in 30 days. Within the 30 days, the App may be restored to the Project
+        /// using UndeleteWebApp
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("immediate")]
         public virtual System.Nullable<bool> Immediate { get; set; }
@@ -4523,8 +4528,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         private object _expireTime;
 
         /// <summary>
-        /// Output only. Timestamp of when the App will be considered expired and cannot be undeleted. This value is
-        /// only provided if the App is in the `DELETED` state.
+        /// Output only. If the App has been removed from the Project, this is the timestamp of when the App is
+        /// considered expired and will be permanently deleted. After this time, the App cannot be undeleted (that is,
+        /// restored to the Project). This value is only provided if the App is in the `DELETED` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
