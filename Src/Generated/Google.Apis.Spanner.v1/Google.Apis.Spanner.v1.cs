@@ -2067,13 +2067,13 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>
                     /// Optional. Specifies the KMS configuration for the one or more keys used to protect the backup.
                     /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by
-                    /// kms_key_names must fully cover all regions of the backup's instance configuration. Some
-                    /// examples: * For single region instance configs, specify a single regional location KMS key. *
-                    /// For multi-regional instance configs of type GOOGLE_MANAGED, either specify a multi-regional
-                    /// location KMS key or multiple regional location KMS keys that cover all regions in the instance
-                    /// config. * For an instance config of type USER_MANAGED, please specify only regional location KMS
-                    /// keys to cover each region in the instance config. Multi-regional location KMS keys are not
-                    /// supported for USER_MANAGED instance configs.
+                    /// `kms_key_names` must fully cover all regions of the backup's instance configuration. Some
+                    /// examples: * For regional (single-region) instance configurations, specify a regional location
+                    /// KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a
+                    /// multi-region location KMS key or multiple regional location KMS keys that cover all regions in
+                    /// the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only
+                    /// regional location KMS keys to cover each region in the instance configuration. Multi-region
+                    /// location KMS keys aren't supported for `USER_MANAGED` type instance configurations.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("encryptionConfig.kmsKeyNames", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> EncryptionConfigKmsKeyNames { get; set; }
@@ -2242,7 +2242,8 @@ namespace Google.Apis.Spanner.v1
                 /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
                 /// database or backup exists but does not have a policy set. Authorization requires
                 /// `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires
-                /// `spanner.backups.getIamPolicy` permission on resource.
+                /// `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires
+                /// `spanner.backupSchedules.getIamPolicy` permission on resource.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -2259,7 +2260,8 @@ namespace Google.Apis.Spanner.v1
                 /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
                 /// database or backup exists but does not have a policy set. Authorization requires
                 /// `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires
-                /// `spanner.backups.getIamPolicy` permission on resource.
+                /// `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires
+                /// `spanner.backupSchedules.getIamPolicy` permission on resource.
                 /// </summary>
                 public class GetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                 {
@@ -2512,7 +2514,8 @@ namespace Google.Apis.Spanner.v1
                 /// <summary>
                 /// Sets the access control policy on a database or backup resource. Replaces any existing policy.
                 /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
-                /// authorization requires `spanner.backups.setIamPolicy` permission on resource.
+                /// authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules,
+                /// authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -2528,7 +2531,8 @@ namespace Google.Apis.Spanner.v1
                 /// <summary>
                 /// Sets the access control policy on a database or backup resource. Replaces any existing policy.
                 /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
-                /// authorization requires `spanner.backups.setIamPolicy` permission on resource.
+                /// authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules,
+                /// authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource.
                 /// </summary>
                 public class SetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                 {
@@ -2584,6 +2588,8 @@ namespace Google.Apis.Spanner.v1
                 /// `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an
                 /// empty set of permissions. Calling this method on a backup that does not exist will result in a
                 /// NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance.
+                /// Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the
+                /// user has `spanner.backupSchedules.list` permission on the containing database.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -2602,6 +2608,8 @@ namespace Google.Apis.Spanner.v1
                 /// `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an
                 /// empty set of permissions. Calling this method on a backup that does not exist will result in a
                 /// NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance.
+                /// Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the
+                /// user has `spanner.backupSchedules.list` permission on the containing database.
                 /// </summary>
                 public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
                 {
@@ -2710,7 +2718,7 @@ namespace Google.Apis.Spanner.v1
                     /// field name, a comparison operator, and a value for filtering. The value must be a string, a
                     /// number, or a boolean. The comparison operator must be one of: `&amp;lt;`, `&amp;gt;`,
                     /// `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules
-                    /// are not case sensitive. The following fields in the Operation are eligible for filtering: *
+                    /// are not case sensitive. The following fields in the operation are eligible for filtering: *
                     /// `name` - The name of the long-running operation * `done` - False if the operation is in
                     /// progress, else true. * `metadata.@type` - the type of metadata. For example, the type string for
                     /// RestoreDatabaseMetadata is
@@ -3010,7 +3018,8 @@ namespace Google.Apis.Spanner.v1
                     /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
                     /// database or backup exists but does not have a policy set. Authorization requires
                     /// `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires
-                    /// `spanner.backups.getIamPolicy` permission on resource.
+                    /// `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization
+                    /// requires `spanner.backupSchedules.getIamPolicy` permission on resource.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -3027,7 +3036,8 @@ namespace Google.Apis.Spanner.v1
                     /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
                     /// database or backup exists but does not have a policy set. Authorization requires
                     /// `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires
-                    /// `spanner.backups.getIamPolicy` permission on resource.
+                    /// `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization
+                    /// requires `spanner.backupSchedules.getIamPolicy` permission on resource.
                     /// </summary>
                     public class GetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                     {
@@ -3243,7 +3253,8 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>
                     /// Sets the access control policy on a database or backup resource. Replaces any existing policy.
                     /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
-                    /// authorization requires `spanner.backups.setIamPolicy` permission on resource.
+                    /// authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup
+                    /// schedules, authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -3259,7 +3270,8 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>
                     /// Sets the access control policy on a database or backup resource. Replaces any existing policy.
                     /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
-                    /// authorization requires `spanner.backups.setIamPolicy` permission on resource.
+                    /// authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup
+                    /// schedules, authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource.
                     /// </summary>
                     public class SetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                     {
@@ -3315,7 +3327,9 @@ namespace Google.Apis.Spanner.v1
                     /// has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
                     /// returns an empty set of permissions. Calling this method on a backup that does not exist will
                     /// result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
-                    /// instance.
+                    /// instance. Calling this method on a backup schedule that does not exist will result in a
+                    /// NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing
+                    /// database.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -3334,7 +3348,9 @@ namespace Google.Apis.Spanner.v1
                     /// has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
                     /// returns an empty set of permissions. Calling this method on a backup that does not exist will
                     /// result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
-                    /// instance.
+                    /// instance. Calling this method on a backup schedule that does not exist will result in a
+                    /// NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing
+                    /// database.
                     /// </summary>
                     public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
                     {
@@ -3489,7 +3505,9 @@ namespace Google.Apis.Spanner.v1
                     /// has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
                     /// returns an empty set of permissions. Calling this method on a backup that does not exist will
                     /// result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
-                    /// instance.
+                    /// instance. Calling this method on a backup schedule that does not exist will result in a
+                    /// NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing
+                    /// database.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -3508,7 +3526,9 @@ namespace Google.Apis.Spanner.v1
                     /// has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
                     /// returns an empty set of permissions. Calling this method on a backup that does not exist will
                     /// result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
-                    /// instance.
+                    /// instance. Calling this method on a backup schedule that does not exist will result in a
+                    /// NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing
+                    /// database.
                     /// </summary>
                     public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
                     {
@@ -5228,7 +5248,8 @@ namespace Google.Apis.Spanner.v1
                 /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
                 /// database or backup exists but does not have a policy set. Authorization requires
                 /// `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires
-                /// `spanner.backups.getIamPolicy` permission on resource.
+                /// `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires
+                /// `spanner.backupSchedules.getIamPolicy` permission on resource.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -5245,7 +5266,8 @@ namespace Google.Apis.Spanner.v1
                 /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
                 /// database or backup exists but does not have a policy set. Authorization requires
                 /// `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires
-                /// `spanner.backups.getIamPolicy` permission on resource.
+                /// `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires
+                /// `spanner.backupSchedules.getIamPolicy` permission on resource.
                 /// </summary>
                 public class GetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                 {
@@ -5731,7 +5753,8 @@ namespace Google.Apis.Spanner.v1
                 /// <summary>
                 /// Sets the access control policy on a database or backup resource. Replaces any existing policy.
                 /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
-                /// authorization requires `spanner.backups.setIamPolicy` permission on resource.
+                /// authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules,
+                /// authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -5747,7 +5770,8 @@ namespace Google.Apis.Spanner.v1
                 /// <summary>
                 /// Sets the access control policy on a database or backup resource. Replaces any existing policy.
                 /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
-                /// authorization requires `spanner.backups.setIamPolicy` permission on resource.
+                /// authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules,
+                /// authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource.
                 /// </summary>
                 public class SetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
                 {
@@ -5803,6 +5827,8 @@ namespace Google.Apis.Spanner.v1
                 /// `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an
                 /// empty set of permissions. Calling this method on a backup that does not exist will result in a
                 /// NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance.
+                /// Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the
+                /// user has `spanner.backupSchedules.list` permission on the containing database.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -5821,6 +5847,8 @@ namespace Google.Apis.Spanner.v1
                 /// `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an
                 /// empty set of permissions. Calling this method on a backup that does not exist will result in a
                 /// NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance.
+                /// Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the
+                /// user has `spanner.backupSchedules.list` permission on the containing database.
                 /// </summary>
                 public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
                 {
@@ -8217,7 +8245,7 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Output only. The encryption information for the backup, whether it is protected by one or more KMS keys. The
-        /// information includes all Cloud KMS key versions used to encrypt the backup. The `encryption_status' field
+        /// information includes all Cloud KMS key versions used to encrypt the backup. The `encryption_status` field
         /// inside of each `EncryptionInfo` is not populated. At least one of the key versions must be available for the
         /// backup to be restored. If a key version is revoked in the middle of a restore, the restore behavior is
         /// undefined.
@@ -8774,6 +8802,14 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>The request for BeginTransaction.</summary>
     public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Required for read-write transactions on a multiplexed session that commit mutations but do not
+        /// perform any reads or queries. Clients should randomly select one of the mutations from the mutation set and
+        /// send it as a part of this request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationKey")]
+        public virtual Mutation MutationKey { get; set; }
+
         /// <summary>Required. Options for the new transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual TransactionOptions Options { get; set; }
@@ -9019,6 +9055,14 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
         public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; }
 
+        /// <summary>
+        /// Optional. If the read-write transaction was executed on a multiplexed session, the precommit token with the
+        /// highest sequence number received in this transaction attempt, should be included here. Failing to do so will
+        /// result in a FailedPrecondition error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precommitToken")]
+        public virtual MultiplexedSessionPrecommitToken PrecommitToken { get; set; }
+
         /// <summary>Common options for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
         public virtual RequestOptions RequestOptions { get; set; }
@@ -9097,6 +9141,12 @@ namespace Google.Apis.Spanner.v1.Data
             set => CommitTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// If specified, transaction has not committed yet. Clients must retry the commit with the new precommit token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precommitToken")]
+        public virtual MultiplexedSessionPrecommitToken PrecommitToken { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9161,13 +9211,14 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of
-        /// the form `projects//locations//keyRings//cryptoKeys/`. Kms keys specified can be in any order. The keys
-        /// referenced by kms_key_names must fully cover all regions of the backup's instance configuration. Some
-        /// examples: * For single region instance configs, specify a single regional location KMS key. * For
-        /// multi-regional instance configs of type GOOGLE_MANAGED, either specify a multi-regional location KMS key or
-        /// multiple regional location KMS keys that cover all regions in the instance config. * For an instance config
-        /// of type USER_MANAGED, please specify only regional location KMS keys to cover each region in the instance
-        /// config. Multi-regional location KMS keys are not supported for USER_MANAGED instance configs.
+        /// the form `projects//locations//keyRings//cryptoKeys/`. KMS keys specified can be in any order. The keys
+        /// referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some
+        /// examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For
+        /// multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS
+        /// key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an
+        /// instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region
+        /// in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type
+        /// instance configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyNames")]
         public virtual System.Collections.Generic.IList<string> KmsKeyNames { get; set; }
@@ -9333,13 +9384,13 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of
-        /// the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by kms_key_names must fully cover
-        /// all regions of the backup's instance configuration. Some examples: * For single region instance configs,
-        /// specify a single regional location KMS key. * For multi-regional instance configs of type GOOGLE_MANAGED,
-        /// either specify a multi-regional location KMS key or multiple regional location KMS keys that cover all
-        /// regions in the instance config. * For an instance config of type USER_MANAGED, please specify only regional
-        /// location KMS keys to cover each region in the instance config. Multi-regional location KMS keys are not
-        /// supported for USER_MANAGED instance configs.
+        /// the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully
+        /// cover all regions of the backup's instance configuration. Some examples: * For regional (single-region)
+        /// instance configurations, specify a regional location KMS key. * For multi-region instance configurations of
+        /// type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys
+        /// that cover all regions in the instance configuration. * For an instance configuration of type
+        /// `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration.
+        /// Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyNames")]
         public virtual System.Collections.Generic.IList<string> KmsKeyNames { get; set; }
@@ -10010,7 +10061,7 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Output only. For databases that are using customer managed encryption, this field contains the encryption
-        /// information for the database, such as all Cloud KMS key versions that are in use. The `encryption_status'
+        /// information for the database, such as all Cloud KMS key versions that are in use. The `encryption_status`
         /// field inside of each `EncryptionInfo` is not populated. For databases that are using Google default or other
         /// types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a
         /// delay from when a key version is being used and when it appears in this field.
@@ -10231,14 +10282,14 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
-        /// Specifies the KMS configuration for the one or more keys used to encrypt the database. Values are of the
-        /// form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by kms_key_names must fully cover all
-        /// regions of the database instance configuration. Some examples: * For single region database instance
-        /// configs, specify a single regional location KMS key. * For multi-regional database instance configs of type
-        /// GOOGLE_MANAGED, either specify a multi-regional location KMS key or multiple regional location KMS keys that
-        /// cover all regions in the instance config. * For a database instance config of type USER_MANAGED, please
-        /// specify only regional location KMS keys to cover each region in the instance config. Multi-regional location
-        /// KMS keys are not supported for USER_MANAGED instance configs.
+        /// Specifies the KMS configuration for one or more keys used to encrypt the database. Values are of the form
+        /// `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all
+        /// regions of the database's instance configuration. Some examples: * For regional (single-region) instance
+        /// configurations, specify a regional location KMS key. * For multi-region instance configurations of type
+        /// `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that
+        /// cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`,
+        /// specify only regional location KMS keys to cover each region in the instance configuration. Multi-region
+        /// location KMS keys aren't supported for `USER_MANAGED` type instance configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyNames")]
         public virtual System.Collections.Generic.IList<string> KmsKeyNames { get; set; }
@@ -10336,6 +10387,14 @@ namespace Google.Apis.Spanner.v1.Data
     /// </summary>
     public class ExecuteBatchDmlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A precommit token will be included if the read-write transaction is on a multiplexed session. The
+        /// precommit token with the highest sequence number from this transaction attempt should be passed to the
+        /// Commit request for this transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precommitToken")]
+        public virtual MultiplexedSessionPrecommitToken PrecommitToken { get; set; }
+
         /// <summary>
         /// One ResultSet for each statement in the request that ran successfully, in the same order as the statements
         /// in the request. Each ResultSet does not contain any rows. The ResultSetStats in each ResultSet contain the
@@ -10805,6 +10864,15 @@ namespace Google.Apis.Spanner.v1.Data
         }
 
         /// <summary>
+        /// Optional. Controls the default backup behavior for new databases within the instance. Note that `AUTOMATIC`
+        /// is not permitted for free instances, as backups and backup schedules are not allowed for free instances. In
+        /// the `GetInstance` or `ListInstances` response, if the value of default_backup_schedule_type is unset or
+        /// NONE, no default backup schedule will be created for new databases within the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultBackupScheduleType")]
+        public virtual string DefaultBackupScheduleType { get; set; }
+
+        /// <summary>
         /// Required. The descriptive name for this instance as it appears in UIs. Must be unique per project and
         /// between 4 and 30 characters in length.
         /// </summary>
@@ -10857,10 +10925,8 @@ namespace Google.Apis.Spanner.v1.Data
         /// should be present in the message. Users can set the `node_count` field to specify the target number of nodes
         /// allocated to the instance. If autoscaling is enabled, `node_count` is treated as an `OUTPUT_ONLY` field and
         /// reflects the current number of nodes allocated to the instance. This might be zero in API responses for
-        /// instances that are not yet in the `READY` state. If the instance has varying node count across replicas
-        /// (achieved by setting asymmetric_autoscaling_options in autoscaling config), the node_count here is the
-        /// maximum node count across all replicas. For more information, see [Compute capacity, nodes, and processing
-        /// units](https://cloud.google.com/spanner/docs/compute-capacity).
+        /// instances that are not yet in the `READY` state. For more information, see [Compute capacity, nodes, and
+        /// processing units](https://cloud.google.com/spanner/docs/compute-capacity).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -10870,9 +10936,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// `node_count` should be present in the message. Users can set the `processing_units` field to specify the
         /// target number of processing units allocated to the instance. If autoscaling is enabled, `processing_units`
         /// is treated as an `OUTPUT_ONLY` field and reflects the current number of processing units allocated to the
-        /// instance. This might be zero in API responses for instances that are not yet in the `READY` state. If the
-        /// instance has varying processing units per replica (achieved by setting asymmetric_autoscaling_options in
-        /// autoscaling config), the processing_units here is the maximum processing units across all replicas. For more
+        /// instance. This might be zero in API responses for instances that are not yet in the `READY` state. For more
         /// information, see [Compute capacity, nodes and processing
         /// units](https://cloud.google.com/spanner/docs/compute-capacity).
         /// </summary>
@@ -12109,6 +12173,14 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual ResultSetMetadata Metadata { get; set; }
 
         /// <summary>
+        /// Optional. A precommit token will be included if the read-write transaction is on a multiplexed session. The
+        /// precommit token with the highest sequence number from this transaction attempt should be passed to the
+        /// Commit request for this transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precommitToken")]
+        public virtual MultiplexedSessionPrecommitToken PrecommitToken { get; set; }
+
+        /// <summary>
         /// Streaming calls might be interrupted for a variety of reasons, such as TCP connection loss. If this occurs,
         /// the stream of results can be resumed by re-sending the original request and including `resume_token`. Note
         /// that executing any other transaction in the same session invalidates the token.
@@ -12834,6 +12906,13 @@ namespace Google.Apis.Spanner.v1.Data
     /// </summary>
     public class ReadWrite : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Clients should pass the transaction ID of the previous transaction attempt that was aborted if
+        /// this transaction is being executed on a multiplexed session.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiplexedSessionPreviousTransactionId")]
+        public virtual string MultiplexedSessionPreviousTransactionId { get; set; }
+
         /// <summary>Read lock mode for the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readLockMode")]
         public virtual string ReadLockMode { get; set; }
@@ -12967,15 +13046,14 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the KMS configuration for the one or more keys used to encrypt the database. Values have
-        /// the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by kms_key_names must fully cover
-        /// all regions of the database instance configuration. Some examples: * For single region database instance
-        /// configurations, specify a single regional location KMS key. * For multi-regional database instance
-        /// configurations of type `GOOGLE_MANAGED`, either specify a multi-regional location KMS key or multiple
-        /// regional location KMS keys that cover all regions in the instance configuration. * For a database instance
-        /// configuration of type `USER_MANAGED`, please specify only regional location KMS keys to cover each region in
-        /// the instance configuration. Multi-regional location KMS keys are not supported for USER_MANAGED instance
-        /// configurations.
+        /// Optional. Specifies the KMS configuration for one or more keys used to encrypt the database. Values have the
+        /// form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover
+        /// all regions of the database's instance configuration. Some examples: * For regional (single-region) instance
+        /// configurations, specify a regional location KMS key. * For multi-region instance configurations of type
+        /// `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that
+        /// cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`,
+        /// specify only regional location KMS keys to cover each region in the instance configuration. Multi-region
+        /// location KMS keys aren't supported for `USER_MANAGED` type instance configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyNames")]
         public virtual System.Collections.Generic.IList<string> KmsKeyNames { get; set; }
@@ -13116,6 +13194,14 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Metadata about the result set, such as row type information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ResultSetMetadata Metadata { get; set; }
+
+        /// <summary>
+        /// Optional. A precommit token will be included if the read-write transaction is on a multiplexed session. The
+        /// precommit token with the highest sequence number from this transaction attempt should be passed to the
+        /// Commit request for this transaction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precommitToken")]
+        public virtual MultiplexedSessionPrecommitToken PrecommitToken { get; set; }
 
         /// <summary>
         /// Each element in `rows` is a row whose format is defined by metadata.row_type. The ith element in each row
@@ -14035,9 +14121,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// `operation_id` is used to construct the name of the resulting Operation. Specifying an explicit operation ID
         /// simplifies determining whether the statements were executed in the event that the UpdateDatabaseDdl call is
         /// replayed, or the return value is otherwise lost: the database and `operation_id` fields can be combined to
-        /// form the name of the resulting longrunning.Operation: `/operations/`. `operation_id` should be unique within
-        /// the database, and must be a valid identifier: `a-z*`. Note that automatically-generated operation IDs always
-        /// begin with an underscore. If the named operation already exists, UpdateDatabaseDdl returns `ALREADY_EXISTS`.
+        /// form the `name` of the resulting longrunning.Operation: `/operations/`. `operation_id` should be unique
+        /// within the database, and must be a valid identifier: `a-z*`. Note that automatically-generated operation IDs
+        /// always begin with an underscore. If the named operation already exists, UpdateDatabaseDdl returns
+        /// `ALREADY_EXISTS`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
