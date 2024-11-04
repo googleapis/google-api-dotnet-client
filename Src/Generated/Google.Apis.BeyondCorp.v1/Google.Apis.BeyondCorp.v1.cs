@@ -36,7 +36,6 @@ namespace Google.Apis.BeyondCorp.v1
         {
             Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
-            V = new VResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://beyondcorp.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://beyondcorp.googleapis.com/batch");
         }
@@ -84,9 +83,6 @@ namespace Google.Apis.BeyondCorp.v1
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
-
-        /// <summary>Gets the V resource.</summary>
-        public virtual VResource V { get; }
     }
 
     /// <summary>A base abstract class for BeyondCorp requests.</summary>
@@ -5655,6 +5651,73 @@ namespace Google.Apis.BeyondCorp.v1
                 }
 
                 /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BeyondCorp.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BeyondCorp.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// This is a custom method to allow customers to create a peering connections between Google network
                 /// and customer networks. This is enabled only for the allowlisted customers.
                 /// </summary>
@@ -5922,145 +5985,6 @@ namespace Google.Apis.BeyondCorp.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                }
-            }
-        }
-    }
-
-    /// <summary>The "v" collection of methods.</summary>
-    public class VResource
-    {
-        private const string Resource = "v";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public VResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            Projects = new ProjectsResource(service);
-        }
-
-        /// <summary>Gets the Projects resource.</summary>
-        public virtual ProjectsResource Projects { get; }
-
-        /// <summary>The "projects" collection of methods.</summary>
-        public class ProjectsResource
-        {
-            private const string Resource = "projects";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public ProjectsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-                Locations = new LocationsResource(service);
-            }
-
-            /// <summary>Gets the Locations resource.</summary>
-            public virtual LocationsResource Locations { get; }
-
-            /// <summary>The "locations" collection of methods.</summary>
-            public class LocationsResource
-            {
-                private const string Resource = "locations";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public LocationsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    SecurityGateways = new SecurityGatewaysResource(service);
-                }
-
-                /// <summary>Gets the SecurityGateways resource.</summary>
-                public virtual SecurityGatewaysResource SecurityGateways { get; }
-
-                /// <summary>The "securityGateways" collection of methods.</summary>
-                public class SecurityGatewaysResource
-                {
-                    private const string Resource = "securityGateways";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public SecurityGatewaysResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>
-                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
-                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BeyondCorp.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
-                    {
-                        return new SetIamPolicyRequest(this.service, body, resource);
-                    }
-
-                    /// <summary>
-                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
-                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                    /// </summary>
-                    public class SetIamPolicyRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1.Data.GoogleIamV1Policy>
-                    {
-                        /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.BeyondCorp.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "setIamPolicy";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v/{+resource}:setIamPolicy";
-
-                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+$",
-                            });
-                        }
-                    }
                 }
             }
         }
