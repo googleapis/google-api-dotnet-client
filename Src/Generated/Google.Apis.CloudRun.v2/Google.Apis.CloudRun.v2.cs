@@ -4083,6 +4083,12 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
+        /// <summary>
+        /// A list of additional flags to pass to the gcsfuse CLI. Options should be specified without the leading "--".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountOptions")]
+        public virtual System.Collections.Generic.IList<string> MountOptions { get; set; }
+
         /// <summary>If true, the volume will be mounted as read only for all mounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; }
