@@ -3850,6 +3850,10 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
 
+        /// <summary>Optional. BigQuery destination dataset to create for the subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
+        public virtual DestinationDataset DestinationDataset { get; set; }
+
         /// <summary>Email of the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriberContact")]
         public virtual string SubscriberContact { get; set; }
