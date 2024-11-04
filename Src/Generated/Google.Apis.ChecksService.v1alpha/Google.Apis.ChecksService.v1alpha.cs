@@ -35,6 +35,7 @@ namespace Google.Apis.ChecksService.v1alpha
         public ChecksServiceService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Accounts = new AccountsResource(this);
+            Aisafety = new AisafetyResource(this);
             Media = new MediaResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://checks.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://checks.googleapis.com/batch");
@@ -60,6 +61,9 @@ namespace Google.Apis.ChecksService.v1alpha
 
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }
+
+        /// <summary>Gets the Aisafety resource.</summary>
+        public virtual AisafetyResource Aisafety { get; }
 
         /// <summary>Gets the Media resource.</summary>
         public virtual MediaResource Media { get; }
@@ -1043,6 +1047,60 @@ namespace Google.Apis.ChecksService.v1alpha
         }
     }
 
+    /// <summary>The "aisafety" collection of methods.</summary>
+    public class AisafetyResource
+    {
+        private const string Resource = "aisafety";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AisafetyResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Analyze a piece of content with the provided set of policies.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ClassifyContentRequest ClassifyContent(Google.Apis.ChecksService.v1alpha.Data.GoogleChecksAisafetyV1alphaClassifyContentRequest body)
+        {
+            return new ClassifyContentRequest(this.service, body);
+        }
+
+        /// <summary>Analyze a piece of content with the provided set of policies.</summary>
+        public class ClassifyContentRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.GoogleChecksAisafetyV1alphaClassifyContentResponse>
+        {
+            /// <summary>Constructs a new ClassifyContent request.</summary>
+            public ClassifyContentRequest(Google.Apis.Services.IClientService service, Google.Apis.ChecksService.v1alpha.Data.GoogleChecksAisafetyV1alphaClassifyContentRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ChecksService.v1alpha.Data.GoogleChecksAisafetyV1alphaClassifyContentRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "classifyContent";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/aisafety:classifyContent";
+
+            /// <summary>Initializes ClassifyContent parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+    }
+
     /// <summary>The "media" collection of methods.</summary>
     public class MediaResource
     {
@@ -1352,6 +1410,119 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request proto for ClassifyContent RPC.</summary>
+    public class GoogleChecksAisafetyV1alphaClassifyContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Version of the classifier to use. If not specified, the latest version will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classifierVersion")]
+        public virtual string ClassifierVersion { get; set; }
+
+        /// <summary>Optional. Context about the input that will be used to help on the classification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual GoogleChecksAisafetyV1alphaClassifyContentRequestContext Context { get; set; }
+
+        /// <summary>Required. Content to be classified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("input")]
+        public virtual GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent Input { get; set; }
+
+        /// <summary>Required. List of policies to classify against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Context about the input that will be used to help on the classification.</summary>
+    public class GoogleChecksAisafetyV1alphaClassifyContentRequestContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Prompt that generated the model response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Content to be classified.</summary>
+    public class GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Content in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
+        public virtual GoogleChecksAisafetyV1alphaTextInput TextInput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of policies to classify against.</summary>
+    public class GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyType")]
+        public virtual string PolicyType { get; set; }
+
+        /// <summary>
+        /// Optional. Score threshold to use when deciding if the content is violative or non-violative. If not
+        /// specified, the default 0.5 threshold for the policy will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<float> Threshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response proto for ClassifyContent RPC.</summary>
+    public class GoogleChecksAisafetyV1alphaClassifyContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results of the classification for each policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyResults")]
+        public virtual System.Collections.Generic.IList<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult> PolicyResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result for one policy against the corresponding input.</summary>
+    public class GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyType")]
+        public virtual string PolicyType { get; set; }
+
+        /// <summary>Final score for the results of this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>Result of the classification for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationResult")]
+        public virtual string ViolationResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Text input to be classified.</summary>
+    public class GoogleChecksAisafetyV1alphaTextInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Actual piece of text to be classified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Optional. Language of the text in ISO 639-1 format. If the language is invalid or not specified, the system
+        /// will try to detect it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
