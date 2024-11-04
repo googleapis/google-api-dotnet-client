@@ -10957,6 +10957,21 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string NextPageToken { get; set; }
     }
 
+    /// <summary>Represents a data capacity with some amount of current usage in bytes.</summary>
+    public class ByteUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The total capacity value, in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityBytes")]
+        public virtual System.Nullable<long> CapacityBytes { get; set; }
+
+        /// <summary>Output only. The current usage value, in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedBytes")]
+        public virtual System.Nullable<long> UsedBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Public API: Resources.calendars</summary>
     public class CalendarResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11229,6 +11244,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Output only. Device license type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceLicenseType")]
         public virtual string DeviceLicenseType { get; set; }
+
+        /// <summary>Output only. How much disk space the device has available and is currently using.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSpaceUsage")]
+        public virtual ByteUsage DiskSpaceUsage { get; set; }
 
         /// <summary>Reports of disk space and other info about mounted/connected volumes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskVolumeReports")]
