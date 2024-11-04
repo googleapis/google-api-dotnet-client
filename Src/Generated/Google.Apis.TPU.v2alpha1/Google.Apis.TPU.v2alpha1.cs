@@ -842,6 +842,59 @@ namespace Google.Apis.TPU.v2alpha1
                     }
                 }
 
+                /// <summary>Perform manual maintenance on a node.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The resource name.</param>
+                public virtual PerformMaintenanceRequest PerformMaintenance(Google.Apis.TPU.v2alpha1.Data.PerformMaintenanceRequest body, string name)
+                {
+                    return new PerformMaintenanceRequest(this.service, body, name);
+                }
+
+                /// <summary>Perform manual maintenance on a node.</summary>
+                public class PerformMaintenanceRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new PerformMaintenance request.</summary>
+                    public PerformMaintenanceRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v2alpha1.Data.PerformMaintenanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v2alpha1.Data.PerformMaintenanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "performMaintenance";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha1/{+name}:performMaintenance";
+
+                    /// <summary>Initializes PerformMaintenance parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Simulates a maintenance event.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name.</param>
@@ -1550,6 +1603,63 @@ namespace Google.Apis.TPU.v2alpha1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Perform manual maintenance on specific nodes of a QueuedResource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the QueuedResource which holds the nodes to perform maintenance on.
+                /// </param>
+                public virtual PerformMaintenanceQueuedResourceRequest PerformMaintenanceQueuedResource(Google.Apis.TPU.v2alpha1.Data.PerformMaintenanceQueuedResourceRequest body, string name)
+                {
+                    return new PerformMaintenanceQueuedResourceRequest(this.service, body, name);
+                }
+
+                /// <summary>Perform manual maintenance on specific nodes of a QueuedResource.</summary>
+                public class PerformMaintenanceQueuedResourceRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new PerformMaintenanceQueuedResource request.</summary>
+                    public PerformMaintenanceQueuedResourceRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v2alpha1.Data.PerformMaintenanceQueuedResourceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the QueuedResource which holds the nodes to perform maintenance on.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v2alpha1.Data.PerformMaintenanceQueuedResourceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "performMaintenanceQueuedResource";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha1/{+name}:performMaintenanceQueuedResource";
+
+                    /// <summary>Initializes PerformMaintenanceQueuedResource parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/queuedResources/[^/]+$",
                         });
                     }
                 }
@@ -2797,6 +2907,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
+        /// <summary>Output only. Upcoming maintenance on this TPU node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenance")]
+        public virtual UpcomingMaintenance UpcomingMaintenance { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2971,6 +3085,24 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for PerformMaintenanceQueuedResource.</summary>
+    public class PerformMaintenanceQueuedResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The names of the nodes to perform maintenance on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeNames")]
+        public virtual System.Collections.Generic.IList<string> NodeNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for PerformMaintenance.</summary>
+    public class PerformMaintenanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3485,6 +3617,44 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>The TPU node(s) being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSpec")]
         public virtual System.Collections.Generic.IList<NodeSpec> NodeSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Upcoming Maintenance notification information.</summary>
+    public class UpcomingMaintenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if the maintenance can be customer triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
+        public virtual System.Nullable<bool> CanReschedule { get; set; }
+
+        /// <summary>
+        /// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestWindowStartTime")]
+        public virtual string LatestWindowStartTime { get; set; }
+
+        /// <summary>The status of the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceStatus")]
+        public virtual string MaintenanceStatus { get; set; }
+
+        /// <summary>Defines the type of maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text
+        /// format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowEndTime")]
+        public virtual string WindowEndTime { get; set; }
+
+        /// <summary>
+        /// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowStartTime")]
+        public virtual string WindowStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
