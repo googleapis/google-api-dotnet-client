@@ -6682,8 +6682,8 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. VPC networks to which the ManagementServer instance is connected. For this version, only a single
-        /// network is supported.
+        /// Optional. VPC networks to which the ManagementServer instance is connected. For this version, only a single
+        /// network is supported. This field is optional if MS is created without PSA
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; }
