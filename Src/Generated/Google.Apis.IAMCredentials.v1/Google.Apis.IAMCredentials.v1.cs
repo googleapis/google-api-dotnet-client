@@ -416,6 +416,51 @@ namespace Google.Apis.IAMCredentials.v1
                 }
             }
 
+            /// <summary>Returns the trust boundary info for a given service account.</summary>
+            /// <param name="name">Required. Resource name of service account.</param>
+            public virtual GetAllowedLocationsRequest GetAllowedLocations(string name)
+            {
+                return new GetAllowedLocationsRequest(this.service, name);
+            }
+
+            /// <summary>Returns the trust boundary info for a given service account.</summary>
+            public class GetAllowedLocationsRequest : IAMCredentialsBaseServiceRequest<Google.Apis.IAMCredentials.v1.Data.ServiceAccountAllowedLocations>
+            {
+                /// <summary>Constructs a new GetAllowedLocations request.</summary>
+                public GetAllowedLocationsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Resource name of service account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAllowedLocations";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}/allowedLocations";
+
+                /// <summary>Initializes GetAllowedLocations parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Signs a blob using a service account's system-managed private key.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -662,6 +707,23 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// <summary>The OpenId Connect ID token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a list of allowed locations for given service account.</summary>
+    public class ServiceAccountAllowedLocations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The hex encoded bitmap of the trust boundary locations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encodedLocations")]
+        public virtual string EncodedLocations { get; set; }
+
+        /// <summary>
+        /// Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
