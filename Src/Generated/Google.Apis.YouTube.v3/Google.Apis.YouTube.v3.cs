@@ -15339,8 +15339,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual System.Collections.Generic.IList<PlaylistItem> Items { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "youtube#playlistItemListResponse". Etag
-        /// of this resource.
+        /// Identifies what kind of resource this is. Value: the fixed string "youtube#playlistItemListResponse".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17440,6 +17439,10 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>Basic details about a video category, such as its localized title. Next Id: 19</summary>
     public class VideoStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Indicates if the video contains altered or synthetic media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containsSyntheticMedia")]
+        public virtual System.Nullable<bool> ContainsSyntheticMedia { get; set; }
+
         /// <summary>
         /// This value indicates if the video can be embedded on another website. @mutable youtube.videos.insert
         /// youtube.videos.update
