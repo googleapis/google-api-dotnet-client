@@ -3004,6 +3004,28 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration to use Binary Log Parser CDC technique.</summary>
+    public class BinaryLogParser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use Oracle directories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logFileDirectories")]
+        public virtual LogFileDirectories LogFileDirectories { get; set; }
+
+        /// <summary>Use Oracle ASM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleAsmLogFileAccess")]
+        public virtual OracleAsmLogFileAccess OracleAsmLogFileAccess { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Use Binary log position based replication.</summary>
+    public class BinaryLogPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3448,6 +3470,13 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Use GTID based replication.</summary>
+    public class Gtid : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>JSON file format configuration.</summary>
     public class JsonFileFormat : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3628,6 +3657,28 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration to specify the Oracle directories to access the log files.</summary>
+    public class LogFileDirectories : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Oracle directory for archived logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archivedLogDirectory")]
+        public virtual string ArchivedLogDirectory { get; set; }
+
+        /// <summary>Required. Oracle directory for online logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlineLogDirectory")]
+        public virtual string OnlineLogDirectory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to use LogMiner CDC method.</summary>
+    public class LogMiner : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for looking up a specific stream object by its source object identifier.</summary>
     public class LookupStreamObjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3788,9 +3839,17 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>MySQL source configuration</summary>
     public class MysqlSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Use Binary log position based replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryLogPosition")]
+        public virtual BinaryLogPosition BinaryLogPosition { get; set; }
+
         /// <summary>MySQL objects to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual MysqlRdbms ExcludeObjects { get; set; }
+
+        /// <summary>Use GTID based replication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtid")]
+        public virtual Gtid Gtid { get; set; }
 
         /// <summary>MySQL objects to retrieve from the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
@@ -4030,6 +4089,48 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Oracle Automatic Storage Management (ASM) connection.</summary>
+    public class OracleAsmConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ASM service name for the Oracle ASM connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asmService")]
+        public virtual string AsmService { get; set; }
+
+        /// <summary>Optional. Connection string attributes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ConnectionAttributes { get; set; }
+
+        /// <summary>Required. Hostname for the Oracle ASM connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Optional. SSL configuration for the Oracle connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleSslConfig")]
+        public virtual OracleSslConfig OracleSslConfig { get; set; }
+
+        /// <summary>Required. Password for the Oracle ASM connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>Required. Port for the Oracle ASM connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Required. Username for the Oracle ASM connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to use Oracle ASM to access the log files.</summary>
+    public class OracleAsmLogFileAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Oracle Column.</summary>
     public class OracleColumn : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4103,6 +4204,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
 
+        /// <summary>Optional. Configuration for Oracle ASM connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleAsmConfig")]
+        public virtual OracleAsmConfig OracleAsmConfig { get; set; }
+
         /// <summary>Optional. SSL configuration for the Oracle connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleSslConfig")]
         public virtual OracleSslConfig OracleSslConfig { get; set; }
@@ -4117,6 +4222,13 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Port for the Oracle connection, default value is 1521.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the Oracle connection password. Mutually
+        /// exclusive with the `password` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredPassword")]
+        public virtual string SecretManagerStoredPassword { get; set; }
 
         /// <summary>Required. Username for the Oracle connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
@@ -4166,6 +4278,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Oracle data source configuration</summary>
     public class OracleSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Use Binary Log Parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryLogParser")]
+        public virtual BinaryLogParser BinaryLogParser { get; set; }
+
         /// <summary>Drop large object values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dropLargeObjects")]
         public virtual DropLargeObjects DropLargeObjects { get; set; }
@@ -4177,6 +4293,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Oracle objects to include in the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
         public virtual OracleRdbms IncludeObjects { get; set; }
+
+        /// <summary>Use LogMiner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logMiner")]
+        public virtual LogMiner LogMiner { get; set; }
 
         /// <summary>
         /// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0),
@@ -4291,7 +4411,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>PostgreSQL database profile. Next ID: 7.</summary>
+    /// <summary>PostgreSQL database profile.</summary>
     public class PostgresqlProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Database for the PostgreSQL connection.</summary>
