@@ -2870,10 +2870,11 @@ namespace Google.Apis.AccessContextManager.v1
                 /// <summary>
                 /// Optional. This field controls whether or not certain repeated settings in the update request
                 /// overwrite or append to existing settings on the binding. If true, then append. Otherwise overwrite.
-                /// So far, only scoped_access_settings supports appending. Global access_levels, dry_run_access_levels,
-                /// reauth_settings, and session_settings are not compatible with append functionality, and the request
-                /// will return an error if append=true when these settings are in the update_mask. The request will
-                /// also return an error if append=true when "scoped_access_settings" is not set in the update_mask.
+                /// So far, only scoped_access_settings with reauth_settings supports appending. Global access_levels,
+                /// access_levels in scoped_access_settings, dry_run_access_levels, reauth_settings, and
+                /// session_settings are not compatible with append functionality, and the request will return an error
+                /// if append=true when these settings are in the update_mask. The request will also return an error if
+                /// append=true when "scoped_access_settings" is not set in the update_mask.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("append", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Append { get; set; }
@@ -3768,8 +3769,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
-    /// Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access. Next ID:
-    /// 11
+    /// Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access.
     /// </summary>
     public class GcpUserAccessBinding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3825,6 +3825,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopedAccessSettings")]
         public virtual System.Collections.Generic.IList<ScopedAccessSettings> ScopedAccessSettings { get; set; }
+
+        /// <summary>Optional. GCSL policy for the group key. Migrated from ReauthSettings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionSettings")]
+        public virtual SessionSettings SessionSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
