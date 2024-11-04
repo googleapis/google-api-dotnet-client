@@ -1397,6 +1397,10 @@ namespace Google.Apis.GKEHub.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
 
+        /// <summary>Set to true to stop syncing configs for a single cluster. Default to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
+        public virtual System.Nullable<bool> StopSyncing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
