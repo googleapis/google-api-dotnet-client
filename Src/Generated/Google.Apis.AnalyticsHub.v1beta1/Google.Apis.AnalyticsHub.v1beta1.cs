@@ -1785,58 +1785,6 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines the destination bigquery dataset.</summary>
-    public class DestinationDataset : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. A reference that identifies the destination dataset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("datasetReference")]
-        public virtual DestinationDatasetReference DatasetReference { get; set; }
-
-        /// <summary>Optional. A user-friendly description of the dataset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Optional. A descriptive name for the dataset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-        public virtual string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Optional. The labels associated with this dataset. You can use these to organize and group your datasets.
-        /// You can set this property when inserting or updating a dataset. See
-        /// https://cloud.google.com/resource-manager/docs/creating-managing-labels for more information.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>
-        /// Required. The geographic location where the dataset should reside. See
-        /// https://cloud.google.com/bigquery/docs/locations for supported locations.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains the reference that identifies a destination bigquery dataset.</summary>
-    public class DestinationDatasetReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. A unique ID for this dataset, without the project name. The ID must contain only letters (a-z,
-        /// A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; }
-
-        /// <summary>Required. The ID of the project containing this dataset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1917,6 +1865,58 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the destination bigquery dataset.</summary>
+    public class GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A reference that identifies the destination dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetReference")]
+        public virtual GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference DatasetReference { get; set; }
+
+        /// <summary>Optional. A user-friendly description of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. A descriptive name for the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
+        public virtual string FriendlyName { get; set; }
+
+        /// <summary>
+        /// Optional. The labels associated with this dataset. You can use these to organize and group your datasets.
+        /// You can set this property when inserting or updating a dataset. See
+        /// https://cloud.google.com/resource-manager/docs/creating-managing-labels for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. The geographic location where the dataset should reside. See
+        /// https://cloud.google.com/bigquery/docs/locations for supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the reference that identifies a destination bigquery dataset.</summary>
+    public class GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A unique ID for this dataset, without the project name. The ID must contain only letters (a-z,
+        /// A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>Required. The ID of the project containing this dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2349,7 +2349,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
     {
         /// <summary>BigQuery destination dataset to create for the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
-        public virtual DestinationDataset DestinationDataset { get; set; }
+        public virtual GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset DestinationDataset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
