@@ -1658,6 +1658,17 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
         public virtual string Goal { get; set; }
 
+        /// <summary>Optional. Hint text containing suggestions to help the agent accomplish the goal</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hint")]
+        public virtual string Hint { get; set; }
+
+        /// <summary>
+        /// Optional. A description of criteria the agent should use to determine if the goal has been successfully
+        /// completed
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCriteria")]
+        public virtual string SuccessCriteria { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2321,7 +2332,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaDeviceExecution> DeviceExecutions { get; set; }
 
         /// <summary>
-        /// Optional. Display name of the release test. Required if the release test is created with multiple goals
+        /// Optional. Display name of the release test. Required if the release test is created with multiple goals.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -2420,6 +2431,12 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>Configuration for automated tests</summary>
     public class GoogleFirebaseAppdistroV1alphaTestConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Display name of the AI driven test. Required if the release test is created with multiple goals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Identifier. The name of the test configuration resource. Format:
         /// `projects/{project_number}/apps/{app_id}/testConfig`
