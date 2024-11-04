@@ -1721,8 +1721,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Alerts from AppSettingsChanged bucket Rules configured by Admin which contain the below rules. Calendar settings
-    /// changed Drive settings changed Email settings changed Mobile settings changed
+    /// * Alerts from AppSettingsChanged bucket Rules configured by Admin which contain the below rules. Calendar
+    /// settings changed Drive settings changed Email settings changed Mobile settings changed
     /// </summary>
     public class AppSettingsChanged : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2583,7 +2583,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Event occurred when primary admin changed in customer's account. The event are being received from insight
+    /// * Event occurred when primary admin changed in customer's account. The event are being received from insight
     /// forwarder
     /// </summary>
     public class PrimaryAdminChangedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -2752,7 +2752,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Event occurred when SSO Profile created in customer's account. The event are being received from insight
+    /// * Event occurred when SSO Profile created in customer's account. The event are being received from insight
     /// forwarder
     /// </summary>
     public class SSOProfileCreatedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -2766,7 +2766,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Event occurred when SSO Profile deleted in customer's account. The event are being received from insight
+    /// * Event occurred when SSO Profile deleted in customer's account. The event are being received from insight
     /// forwarder
     /// </summary>
     public class SSOProfileDeletedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -2780,7 +2780,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Event occurred when SSO Profile updated in customer's account. The event are being received from insight
+    /// * Event occurred when SSO Profile updated in customer's account. The event are being received from insight
     /// forwarder
     /// </summary>
     public class SSOProfileUpdatedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -2917,8 +2917,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Event occurred when password was reset for super admin in customer's account. The event are being received from
-    /// insight forwarder
+    /// * Event occurred when password was reset for super admin in customer's account. The event are being received
+    /// from insight forwarder
     /// </summary>
     public class SuperAdminPasswordResetEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3076,7 +3076,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Alerts from UserChanges bucket Rules for predefined rules which contain the below rules. Suspended user made
+    /// * Alerts from UserChanges bucket Rules for predefined rules which contain the below rules. Suspended user made
     /// active New user Added User suspended (by admin) User granted admin privileges User admin privileges revoked User
     /// deleted Users password changed
     /// </summary>
