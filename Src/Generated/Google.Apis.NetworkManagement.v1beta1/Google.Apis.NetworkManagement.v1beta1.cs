@@ -2405,8 +2405,16 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ForwardingRuleTarget { get; set; }
 
         /// <summary>
-        /// A cluster URI for [Google Kubernetes Engine
-        /// master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+        /// DNS endpoint of [Google Kubernetes Engine cluster control
+        /// plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture). Requires
+        /// gke_master_cluster to be set, can't be used simultaneoulsly with ip_address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
+        public virtual string Fqdn { get; set; }
+
+        /// <summary>
+        /// A cluster URI for [Google Kubernetes Engine cluster control
+        /// plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeMasterCluster")]
         public virtual string GkeMasterCluster { get; set; }
