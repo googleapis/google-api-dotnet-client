@@ -10929,6 +10929,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Describes the Migration Center settings related to the project.</summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Customer consent for Google sales to access their Cloud Migration Center project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerConsentForGoogleSalesToAccessMigrationCenter")]
+        public virtual System.Nullable<bool> CustomerConsentForGoogleSalesToAccessMigrationCenter { get; set; }
+
         /// <summary>Disable Cloud Logging for the Migration Center API. Users are billed for the logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableCloudLogging")]
         public virtual System.Nullable<bool> DisableCloudLogging { get; set; }
