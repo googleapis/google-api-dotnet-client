@@ -1549,7 +1549,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributions")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceAttribution> Attributions { get; set; }
 
-        /// <summary>The business status for the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessStatus")]
         public virtual string BusinessStatus { get; set; }
 
