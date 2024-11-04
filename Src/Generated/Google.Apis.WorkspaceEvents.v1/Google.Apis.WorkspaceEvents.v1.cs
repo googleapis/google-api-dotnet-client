@@ -94,6 +94,23 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// <summary>View chat and spaces in Google Chat</summary>
             public static string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
 
+            /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
+            public static string Drive = "https://www.googleapis.com/auth/drive";
+
+            /// <summary>
+            /// See, edit, create, and delete only the specific Google Drive files you use with this app
+            /// </summary>
+            public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
+
+            /// <summary>View and manage metadata of files in your Google Drive</summary>
+            public static string DriveMetadata = "https://www.googleapis.com/auth/drive.metadata";
+
+            /// <summary>See information about your Google Drive files</summary>
+            public static string DriveMetadataReadonly = "https://www.googleapis.com/auth/drive.metadata.readonly";
+
+            /// <summary>See and download all your Google Drive files</summary>
+            public static string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
+
             /// <summary>
             /// Create, edit, and see information about your Google Meet conferences created by the app.
             /// </summary>
@@ -138,6 +155,23 @@ namespace Google.Apis.WorkspaceEvents.v1
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public const string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
+
+            /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
+            public const string Drive = "https://www.googleapis.com/auth/drive";
+
+            /// <summary>
+            /// See, edit, create, and delete only the specific Google Drive files you use with this app
+            /// </summary>
+            public const string DriveFile = "https://www.googleapis.com/auth/drive.file";
+
+            /// <summary>View and manage metadata of files in your Google Drive</summary>
+            public const string DriveMetadata = "https://www.googleapis.com/auth/drive.metadata";
+
+            /// <summary>See information about your Google Drive files</summary>
+            public const string DriveMetadataReadonly = "https://www.googleapis.com/auth/drive.metadata.readonly";
+
+            /// <summary>See and download all your Google Drive files</summary>
+            public const string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
 
             /// <summary>
             /// Create, edit, and see information about your Google Meet conferences created by the app.
@@ -831,8 +865,9 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// <summary>
         /// [Developer Preview](https://developers.google.com/workspace/preview): Reactivates a suspended Google
         /// Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use
-        /// this method, you must fix the error that suspended the subscription. To learn how to use this method, see
-        /// [Reactivate a Google Workspace
+        /// this method, you must fix the error that suspended the subscription. This method will ignore or reject any
+        /// subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a
+        /// Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -847,8 +882,9 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// <summary>
         /// [Developer Preview](https://developers.google.com/workspace/preview): Reactivates a suspended Google
         /// Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use
-        /// this method, you must fix the error that suspended the subscription. To learn how to use this method, see
-        /// [Reactivate a Google Workspace
+        /// this method, you must fix the error that suspended the subscription. This method will ignore or reject any
+        /// subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a
+        /// Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription).
         /// </summary>
         public class ReactivateRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Operation>
