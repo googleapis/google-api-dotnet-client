@@ -18073,6 +18073,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("llmModelSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1LlmModelSettings LlmModelSettings { get; set; }
 
+        /// <summary>Parameters passed to the LLM to configure its behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelParameter")]
+        public virtual GoogleCloudDialogflowCxV3beta1GeneratorModelParameter ModelParameter { get; set; }
+
         /// <summary>
         /// The unique identifier of the generator. Must be set for the Generators.UpdateGenerator method.
         /// Generators.CreateGenerate populates the name automatically. Format:
@@ -18088,6 +18092,39 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. Prompt for the LLM model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptText")]
         public virtual GoogleCloudDialogflowCxV3beta1Phrase PromptText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters to be passed to the LLM. If not set, default values will be used.</summary>
+    public class GoogleCloudDialogflowCxV3beta1GeneratorModelParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of tokens to generate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDecodeSteps")]
+        public virtual System.Nullable<int> MaxDecodeSteps { get; set; }
+
+        /// <summary>
+        /// The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+        /// Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+        public virtual System.Nullable<float> Temperature { get; set; }
+
+        /// <summary>
+        /// If set, the sampling process in each step is limited to the top_k tokens with highest probabilities. Valid
+        /// range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
+        public virtual System.Nullable<int> TopK { get; set; }
+
+        /// <summary>
+        /// If set, only the tokens comprising the top top_p probability mass are considered. If both top_p and top_k
+        /// are set, top_p will be used for further refining candidates selected with top_k. Valid range: (0.0, 1.0].
+        /// Small topP = less random. Large topP = more random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topP")]
+        public virtual System.Nullable<float> TopP { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
