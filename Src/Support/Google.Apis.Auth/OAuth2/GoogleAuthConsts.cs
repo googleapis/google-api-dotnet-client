@@ -57,7 +57,7 @@ namespace Google.Apis.Auth.OAuth2
         private const string ComputeTokenUrlSuffix = "/computeMetadata/v1/instance/service-accounts/default/token";
         private const string ComputeOidcTokenUrlSuffix = "/computeMetadata/v1/instance/service-accounts/default/identity";
         private const string ComputeDefaultServiceAccountEmailSuffix = "/computeMetadata/v1/instance/service-accounts/default/email";
-        private const string ComputeUniverseDomainUrlSuffix = "/computeMetadata/v1/universe/universe_domain";
+        private const string ComputeUniverseDomainUrlSuffix = "/computeMetadata/v1/universe/universe-domain";
 
         /// <summary>The Compute Engine authorization token server URL</summary>
         /// <remarks>IP address instead of name to avoid DNS resolution</remarks>
