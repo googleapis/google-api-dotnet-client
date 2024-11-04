@@ -7437,6 +7437,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
         public virtual System.Nullable<bool> DesiredEnablePrivateEndpoint { get; set; }
 
+        /// <summary>The desired enterprise configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEnterpriseConfig")]
+        public virtual DesiredEnterpriseConfig DesiredEnterpriseConfig { get; set; }
+
         /// <summary>The desired fleet configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredFleet")]
         public virtual Fleet DesiredFleet { get; set; }
@@ -8020,6 +8024,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.</summary>
+    public class DesiredEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredTier")]
+        public virtual string DesiredTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for NodeLocal DNSCache</summary>
     public class DnsCacheConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8048,6 +8063,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Output only. cluster_tier indicates the effective tier of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterTier")]
         public virtual string ClusterTier { get; set; }
+
+        /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredTier")]
+        public virtual string DesiredTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
