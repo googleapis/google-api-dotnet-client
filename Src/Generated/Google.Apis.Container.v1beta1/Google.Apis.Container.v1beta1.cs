@@ -7600,6 +7600,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentProductConfig")]
         public virtual ParentProductConfig ParentProductConfig { get; set; }
 
+        /// <summary>The config for pod autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podAutoscaling")]
+        public virtual PodAutoscaling PodAutoscaling { get; set; }
+
         /// <summary>Configuration for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podSecurityPolicyConfig")]
         public virtual PodSecurityPolicyConfig PodSecurityPolicyConfig { get; set; }
@@ -7893,6 +7897,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
         public virtual System.Nullable<bool> DesiredEnablePrivateEndpoint { get; set; }
 
+        /// <summary>The desired enterprise configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEnterpriseConfig")]
+        public virtual DesiredEnterpriseConfig DesiredEnterpriseConfig { get; set; }
+
         /// <summary>The desired fleet configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredFleet")]
         public virtual Fleet DesiredFleet { get; set; }
@@ -8067,6 +8075,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired parent product config for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredParentProductConfig")]
         public virtual ParentProductConfig DesiredParentProductConfig { get; set; }
+
+        /// <summary>The desired config for pod autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredPodAutoscaling")]
+        public virtual PodAutoscaling DesiredPodAutoscaling { get; set; }
 
         /// <summary>The desired configuration options for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPodSecurityPolicyConfig")]
@@ -8583,6 +8595,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.</summary>
+    public class DesiredEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredTier")]
+        public virtual string DesiredTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for NodeLocal DNSCache</summary>
     public class DnsCacheConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8611,6 +8634,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Output only. cluster_tier indicates the effective tier of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterTier")]
         public virtual string ClusterTier { get; set; }
+
+        /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredTier")]
+        public virtual string DesiredTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10968,6 +10995,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The type of placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PodAutoscaling is used for configuration of parameters for workload autoscaling.</summary>
+    public class PodAutoscaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Selected Horizontal Pod Autoscaling profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hpaProfile")]
+        public virtual string HpaProfile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
