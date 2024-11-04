@@ -2136,7 +2136,10 @@ namespace Google.Apis.Drive.v3
                     [Google.Apis.Util.StringValueAttribute("ACTION_UNSPECIFIED")]
                     ACTIONUNSPECIFIED = 0,
 
-                    /// <summary>The user accepts the proposal</summary>
+                    /// <summary>
+                    /// The user accepts the proposal. Note: If this action is used, the `role` field must have at least
+                    /// one value.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ACCEPT")]
                     ACCEPT = 1,
 
