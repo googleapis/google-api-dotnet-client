@@ -2941,7 +2941,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The removeIpOverride request message.</summary>
+    /// <summary>The RemoveIpOverride request message.</summary>
     public class GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. IP override to be removed from the key.</summary>
@@ -3000,7 +3000,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Risk analysis result for an event.</summary>
     public class GoogleCloudRecaptchaenterpriseV1RiskAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Challenge information for SCORE_AND_CHALLENGE keys</summary>
+        /// <summary>Output only. Challenge information for SCORE_AND_CHALLENGE and INVISIBLE keys</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
         public virtual string Challenge { get; set; }
 
