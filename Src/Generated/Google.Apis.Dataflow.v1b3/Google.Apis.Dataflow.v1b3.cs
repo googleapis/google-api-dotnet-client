@@ -6623,6 +6623,67 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about the GPU usage on the worker.</summary>
+    public class GPUUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>Required. Timestamp of the measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Utilization info about the GPU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilization")]
+        public virtual GPUUtilization Utilization { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Utilization details about the GPU.</summary>
+    public class GPUUtilization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. GPU utilization rate of any kernel over the last sample period in the range of [0, 1].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rate")]
+        public virtual System.Nullable<double> Rate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to get updated debug configuration for component.</summary>
     public class GetDebugConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8742,6 +8803,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>CPU utilization samples.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuTime")]
         public virtual System.Collections.Generic.IList<CPUTime> CpuTime { get; set; }
+
+        /// <summary>Optional. GPU usage samples.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuUsage")]
+        public virtual System.Collections.Generic.IList<GPUUsage> GpuUsage { get; set; }
 
         /// <summary>Memory utilization samples.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryInfo")]
