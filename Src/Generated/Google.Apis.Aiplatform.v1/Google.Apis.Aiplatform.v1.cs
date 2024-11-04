@@ -8321,6 +8321,67 @@ namespace Google.Apis.Aiplatform.v1
                     }
                 }
 
+                /// <summary>Fetch an asynchronous online prediction operation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="endpoint">
+                /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+                /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+                /// </param>
+                public virtual FetchPredictOperationRequest FetchPredictOperation(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchPredictOperationRequest body, string endpoint)
+                {
+                    return new FetchPredictOperationRequest(this.service, body, endpoint);
+                }
+
+                /// <summary>Fetch an asynchronous online prediction operation.</summary>
+                public class FetchPredictOperationRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new FetchPredictOperation request.</summary>
+                    public FetchPredictOperationRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchPredictOperationRequest body, string endpoint) : base(service)
+                    {
+                        Endpoint = endpoint;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+                    /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Endpoint { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchPredictOperationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchPredictOperation";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+endpoint}:fetchPredictOperation";
+
+                    /// <summary>Initializes FetchPredictOperation parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endpoint",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Generate content with multimodal inputs.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="model">
@@ -8739,6 +8800,67 @@ namespace Google.Apis.Aiplatform.v1
                     public override string RestPath => "v1/{+endpoint}:predict";
 
                     /// <summary>Initializes Predict parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endpoint",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary></summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="endpoint">
+                /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+                /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+                /// </param>
+                public virtual PredictLongRunningRequest PredictLongRunning(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictLongRunningRequest body, string endpoint)
+                {
+                    return new PredictLongRunningRequest(this.service, body, endpoint);
+                }
+
+                /// <summary></summary>
+                public class PredictLongRunningRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new PredictLongRunning request.</summary>
+                    public PredictLongRunningRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictLongRunningRequest body, string endpoint) : base(service)
+                    {
+                        Endpoint = endpoint;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+                    /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Endpoint { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictLongRunningRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "predictLongRunning";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+endpoint}:predictLongRunning";
+
+                    /// <summary>Initializes PredictLongRunning parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -11565,7 +11687,8 @@ namespace Google.Apis.Aiplatform.v1
                         /// update_mask to `*` to override all fields. Updatable fields: * `labels` *
                         /// `service_agent_type` * `big_query_source` * `big_query_source.uri` *
                         /// `big_query_source.entity_id_columns` * `feature_registry_source` *
-                        /// `feature_registry_source.feature_groups` * `sync_config` * `sync_config.cron`
+                        /// `feature_registry_source.feature_groups` * `sync_config` * `sync_config.cron` *
+                        /// `optimized_config.automatic_resources`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -29243,6 +29366,67 @@ namespace Google.Apis.Aiplatform.v1
                     }
                 }
 
+                /// <summary>Stops a NotebookRuntime.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the NotebookRuntime resource to be stopped. Instead of checking whether the
+                /// name is in valid NotebookRuntime resource name format, directly throw NotFound exception if there is
+                /// no such NotebookRuntime in spanner.
+                /// </param>
+                public virtual StopRequest Stop(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StopNotebookRuntimeRequest body, string name)
+                {
+                    return new StopRequest(this.service, body, name);
+                }
+
+                /// <summary>Stops a NotebookRuntime.</summary>
+                public class StopRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StopNotebookRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the NotebookRuntime resource to be stopped. Instead of checking whether
+                    /// the name is in valid NotebookRuntime resource name format, directly throw NotFound exception if
+                    /// there is no such NotebookRuntime in spanner.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StopNotebookRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stop";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:stop";
+
+                    /// <summary>Initializes Stop parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimes/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Upgrades a NotebookRuntime.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -31441,6 +31625,67 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
 
+                    /// <summary>Fetch an asynchronous online prediction operation.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="endpoint">
+                    /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+                    /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+                    /// </param>
+                    public virtual FetchPredictOperationRequest FetchPredictOperation(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchPredictOperationRequest body, string endpoint)
+                    {
+                        return new FetchPredictOperationRequest(this.service, body, endpoint);
+                    }
+
+                    /// <summary>Fetch an asynchronous online prediction operation.</summary>
+                    public class FetchPredictOperationRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new FetchPredictOperation request.</summary>
+                        public FetchPredictOperationRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchPredictOperationRequest body, string endpoint) : base(service)
+                        {
+                            Endpoint = endpoint;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                        /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+                        /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Endpoint { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FetchPredictOperationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchPredictOperation";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+endpoint}:fetchPredictOperation";
+
+                        /// <summary>Initializes FetchPredictOperation parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endpoint",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/publishers/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Generate content with multimodal inputs.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="model">
@@ -31547,6 +31792,67 @@ namespace Google.Apis.Aiplatform.v1
                         public override string RestPath => "v1/{+endpoint}:predict";
 
                         /// <summary>Initializes Predict parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endpoint",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/publishers/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary></summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="endpoint">
+                    /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+                    /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+                    /// </param>
+                    public virtual PredictLongRunningRequest PredictLongRunning(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictLongRunningRequest body, string endpoint)
+                    {
+                        return new PredictLongRunningRequest(this.service, body, endpoint);
+                    }
+
+                    /// <summary></summary>
+                    public class PredictLongRunningRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new PredictLongRunning request.</summary>
+                        public PredictLongRunningRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictLongRunningRequest body, string endpoint) : base(service)
+                        {
+                            Endpoint = endpoint;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                        /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+                        /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Endpoint { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictLongRunningRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "predictLongRunning";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+endpoint}:predictLongRunning";
+
+                        /// <summary>Initializes PredictLongRunning parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -40181,6 +40487,104 @@ namespace Google.Apis.Aiplatform.v1
                 }
             }
         }
+
+        /// <summary>Gets a GenAI cache config.</summary>
+        /// <param name="name">Required. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</param>
+        public virtual GetCacheConfigRequest GetCacheConfig(string name)
+        {
+            return new GetCacheConfigRequest(this.service, name);
+        }
+
+        /// <summary>Gets a GenAI cache config.</summary>
+        public class GetCacheConfigRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CacheConfig>
+        {
+            /// <summary>Constructs a new GetCacheConfig request.</summary>
+            public GetCacheConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getCacheConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetCacheConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/cacheConfig$",
+                });
+            }
+        }
+
+        /// <summary>Updates a cache config.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Identifier. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</param>
+        public virtual UpdateCacheConfigRequest UpdateCacheConfig(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CacheConfig body, string name)
+        {
+            return new UpdateCacheConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates a cache config.</summary>
+        public class UpdateCacheConfigRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new UpdateCacheConfig request.</summary>
+            public UpdateCacheConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CacheConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifier. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CacheConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateCacheConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes UpdateCacheConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/cacheConfig$",
+                });
+            }
+        }
     }
 
     /// <summary>The "publishers" collection of methods.</summary>
@@ -40835,6 +41239,14 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Video</summary>
     public class CloudAiLargeModelsVisionVideo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Base 64 encoded video bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encodedVideo")]
+        public virtual string EncodedVideo { get; set; }
+
+        /// <summary>Video encoding, for example "video/mp4".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
         /// <summary>Path to another storage (typically Google Cloud Storage).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -42585,6 +42997,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config of GenAI caching features. This is a singleton resource.</summary>
+    public class GoogleCloudAiplatformV1CacheConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set to true, disables GenAI caching. Otherwise caching is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableCache")]
+        public virtual System.Nullable<bool> DisableCache { get; set; }
+
+        /// <summary>Identifier. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for JobService.CancelBatchPredictionJob.</summary>
     public class GoogleCloudAiplatformV1CancelBatchPredictionJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -42770,6 +43197,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. List of citations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Citation> Citations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations (e.g. inference timeout) that are applied on your endpoints.</summary>
+    public class GoogleCloudAiplatformV1ClientConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Customizable online prediction request timeout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inferenceTimeout")]
+        public virtual object InferenceTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43958,10 +44396,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedArtifactLocationId")]
         public virtual string ProtectedArtifactLocationId { get; set; }
-
-        /// <summary>Optional. Configuration for PSC-I for CustomJob.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfig")]
-        public virtual GoogleCloudAiplatformV1PscInterfaceConfig PscInterfaceConfig { get; set; }
 
         /// <summary>
         /// Optional. A list of names for the reserved ip ranges under the VPC network that can be used for this job. If
@@ -45289,6 +45723,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedResources")]
         public virtual string SharedResources { get; set; }
 
+        /// <summary>
+        /// System labels to apply to Model Garden deployments. System labels are managed by Google for internal use
+        /// only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SystemLabels { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -45542,6 +45983,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configurations that are applied to the endpoint for online prediction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientConnectionConfig")]
+        public virtual GoogleCloudAiplatformV1ClientConnectionConfig ClientConnectionConfig { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -48577,6 +49022,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Configuration for FeatureView created under Optimized FeatureOnlineStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizedConfig")]
+        public virtual GoogleCloudAiplatformV1FeatureViewOptimizedConfig OptimizedConfig { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -48776,6 +49225,22 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leafNodeEmbeddingCount")]
         public virtual System.Nullable<long> LeafNodeEmbeddingCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for FeatureViews created in Optimized FeatureOnlineStore.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewOptimizedConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A description of resources that the FeatureView uses, which to large degree are decided by Vertex
+        /// AI, and optionally allows only a modest additional configuration. If min_replica_count is not set, the
+        /// default value is 2. If max_replica_count is not set, the default value is 6. The max allowed replica count
+        /// is 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticResources")]
+        public virtual GoogleCloudAiplatformV1AutomaticResources AutomaticResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49322,6 +49787,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for PredictionService.FetchPredictOperation.</summary>
+    public class GoogleCloudAiplatformV1FetchPredictOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The server-assigned name for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
+        public virtual string OperationName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>URI based data.</summary>
     public class GoogleCloudAiplatformV1FileData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -49695,9 +50171,9 @@ namespace Google.Apis.Aiplatform.v1.Data
 
     /// <summary>
     /// Structured representation of a function declaration as defined by the [OpenAPI 3.0
-    /// specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name and
-    /// parameters. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the
-    /// model and executed by the client.
+    /// specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name,
+    /// description, parameters and response type. This FunctionDeclaration is a representation of a block of code that
+    /// can be used as a `Tool` by the model and executed by the client.
     /// </summary>
     public class GoogleCloudAiplatformV1FunctionDeclaration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -50221,6 +50697,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Chunk from context retrieved by the retrieval tools.</summary>
     public class GoogleCloudAiplatformV1GroundingChunkRetrievedContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Text of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
         /// <summary>Title of the attribution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -55680,6 +56160,10 @@ namespace Google.Apis.Aiplatform.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The custom compute configuration for an execution job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customEnvironmentSpec")]
+        public virtual GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec CustomEnvironmentSpec { get; set; }
+
         /// <summary>The Dataform Repository pointing to a single file notebook repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataformRepositorySource")]
         public virtual GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource DataformRepositorySource { get; set; }
@@ -55799,6 +56283,25 @@ namespace Google.Apis.Aiplatform.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compute configuration to use for an execution job.</summary>
+    public class GoogleCloudAiplatformV1NotebookExecutionJobCustomEnvironmentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specification of a single machine for the execution job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineSpec")]
+        public virtual GoogleCloudAiplatformV1MachineSpec MachineSpec { get; set; }
+
+        /// <summary>The network configuration to use for the execution job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkSpec")]
+        public virtual GoogleCloudAiplatformV1NetworkSpec NetworkSpec { get; set; }
+
+        /// <summary>The specification of a persistent disk to attach for the execution job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentDiskSpec")]
+        public virtual GoogleCloudAiplatformV1PersistentDiskSpec PersistentDiskSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57532,6 +58035,30 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for PredictionService.PredictLongRunning.</summary>
+    public class GoogleCloudAiplatformV1PredictLongRunningRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The instances that are the input to the prediction call. A DeployedModel may have an upper limit
+        /// on the number of instances it supports per request, and when it is exceeded the prediction call errors in
+        /// case of AutoML Models, or, in case of customer created Models, the behaviour is as documented by that Model.
+        /// The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's
+        /// instance_schema_uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<object> Instances { get; set; }
+
+        /// <summary>
+        /// Optional. The parameters that govern the prediction. The schema of the parameters may be specified via
+        /// Endpoint's DeployedModels' Model's PredictSchemata's parameters_schema_uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual object Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for PredictionService.Predict.</summary>
     public class GoogleCloudAiplatformV1PredictRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -57809,13 +58336,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for PSC-I.</summary>
-    public class GoogleCloudAiplatformV1PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A Model Garden Publisher Model.</summary>
     public class GoogleCloudAiplatformV1PublisherModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -58001,8 +58521,8 @@ namespace Google.Apis.Aiplatform.v1.Data
     public class GoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Labels for the deployment. For managing deployment config like verifying, source of deployment
-        /// config, etc.
+        /// Optional. Labels for the deployment config. For managing deployment config like verifying, source of
+        /// deployment config, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -62043,6 +62563,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("structuredPrompt")]
         public virtual GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt StructuredPrompt { get; set; }
 
+        /// <summary>The prompt variation for Translation use case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("translationPrompt")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecTranslationPrompt TranslationPrompt { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -62140,6 +62664,32 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A pair of sentences used as reference in source and target languages.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source sentence in the sentence pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSentence")]
+        public virtual string SourceSentence { get; set; }
+
+        /// <summary>Target sentence in the sentence pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSentence")]
+        public virtual string TargetSentence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of reference sentence pairs.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reference sentence pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceSentencePairs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair> ReferenceSentencePairs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Prompt variation that stores preambles in separate fields.</summary>
     public class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -62151,6 +62701,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("examples")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPromptSpecPartList> Examples { get; set; }
 
+        /// <summary>Preamble: For infill prompt, the prefix before expected model response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infillPrefix")]
+        public virtual string InfillPrefix { get; set; }
+
+        /// <summary>Preamble: For infill prompt, the suffix after expected model response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infillSuffix")]
+        public virtual string InfillSuffix { get; set; }
+
         /// <summary>Preamble: The input prefixes before each example input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputPrefixes")]
         public virtual System.Collections.Generic.IList<string> InputPrefixes { get; set; }
@@ -62159,9 +62717,111 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputPrefixes")]
         public virtual System.Collections.Generic.IList<string> OutputPrefixes { get; set; }
 
+        /// <summary>
+        /// Preamble: The input test data for prediction. Each PartList in this field represents one text-only input set
+        /// for a single model request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictionInputs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPromptSpecPartList> PredictionInputs { get; set; }
+
         /// <summary>The prompt message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptMessage")]
         public virtual GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage PromptMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The translation example that contains reference sentences from various sources.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reference sentences from inline text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceSentencePairLists")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList> ReferenceSentencePairLists { get; set; }
+
+        /// <summary>The reference sentences from file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceSentencesFileInputs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput> ReferenceSentencesFileInputs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1SchemaPromptSpecTranslationFileInputSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file's contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The file's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The file's mime type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1SchemaPromptSpecTranslationGcsInputSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source data URI. For example, `gs://my_bucket/my_object`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
+        public virtual string InputUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Optional settings for translation prompt.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecTranslationOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How many shots to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfShots")]
+        public virtual System.Nullable<int> NumberOfShots { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Prompt variation for Translation use case.</summary>
+    public class GoogleCloudAiplatformV1SchemaPromptSpecTranslationPrompt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The translation example.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("example")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample Example { get; set; }
+
+        /// <summary>The translation option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("option")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecTranslationOption Option { get; set; }
+
+        /// <summary>The prompt message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptMessage")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage PromptMessage { get; set; }
+
+        /// <summary>The source language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
+        public virtual string SourceLanguageCode { get; set; }
+
+        /// <summary>The target language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
+        public virtual string TargetLanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inlined file source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileInputSource")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecTranslationFileInputSource FileInputSource { get; set; }
+
+        /// <summary>Cloud Storage file source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsInputSource")]
+        public virtual GoogleCloudAiplatformV1SchemaPromptSpecTranslationGcsInputSource GcsInputSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64923,6 +65583,13 @@ namespace Google.Apis.Aiplatform.v1.Data
 
     /// <summary>Request message for NotebookService.StartNotebookRuntime.</summary>
     public class GoogleCloudAiplatformV1StartNotebookRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for NotebookService.StopNotebookRuntime.</summary>
+    public class GoogleCloudAiplatformV1StopNotebookRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67843,7 +68510,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Represents a TuningJob that runs with Google owned models.</summary>
     public class GoogleCloudAiplatformV1TuningJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The base model that is being tuned, e.g., "gemini-1.0-pro-002".</summary>
+        /// <summary>The base model that is being tuned, e.g., "gemini-1.0-pro-002". .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseModel")]
         public virtual string BaseModel { get; set; }
 
