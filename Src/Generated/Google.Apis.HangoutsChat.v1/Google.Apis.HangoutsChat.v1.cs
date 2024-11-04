@@ -931,10 +931,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
-                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
-                /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships`
-                /// [OAuth 2.0
+                /// Optional. When `true`, the method runs using the user's Google Workspace administrator privileges.
+                /// The calling user must be a Google Workspace administrator with the [manage chat and spaces
+                /// conversations privilege](https://support.google.com/a/answer/13369245). Requires the
+                /// `chat.admin.memberships` [OAuth 2.0
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
                 /// Creating app memberships or creating memberships for users outside the administrator's Google
                 /// Workspace organization isn't supported using admin access.
@@ -1038,10 +1038,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
-                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
-                /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships`
-                /// [OAuth 2.0
+                /// Optional. When `true`, the method runs using the user's Google Workspace administrator privileges.
+                /// The calling user must be a Google Workspace administrator with the [manage chat and spaces
+                /// conversations privilege](https://support.google.com/a/answer/13369245). Requires the
+                /// `chat.admin.memberships` [OAuth 2.0
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
                 /// Deleting app memberships in a space isn't supported using admin access.
                 /// </summary>
@@ -1132,10 +1132,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
-                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
-                /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` or
-                /// `chat.admin.memberships.readonly` [OAuth 2.0
+                /// Optional. When `true`, the method runs using the user's Google Workspace administrator privileges.
+                /// The calling user must be a Google Workspace administrator with the [manage chat and spaces
+                /// conversations privilege](https://support.google.com/a/answer/13369245). Requires the
+                /// `chat.admin.memberships` or `chat.admin.memberships.readonly` [OAuth 2.0
                 /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
                 /// Getting app memberships in a space isn't supported when using admin access.
                 /// </summary>
@@ -1287,9 +1287,9 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual System.Nullable<bool> ShowInvited { get; set; }
 
                 /// <summary>
-                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
-                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
-                /// privilege](https://support.google.com/a/answer/13369245). Requires either the
+                /// Optional. When `true`, the method runs using the user's Google Workspace administrator privileges.
+                /// The calling user must be a Google Workspace administrator with the [manage chat and spaces
+                /// conversations privilege](https://support.google.com/a/answer/13369245). Requires either the
                 /// `chat.admin.memberships.readonly` or `chat.admin.memberships` [OAuth 2.0
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Listing
                 /// app memberships in a space isn't supported when using admin access.
@@ -1382,7 +1382,8 @@ namespace Google.Apis.HangoutsChat.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name of the membership, assigned by the server. Format: `spaces/{space}/members/{member}`
+            /// Identifier. Resource name of the membership, assigned by the server. Format:
+            /// `spaces/{space}/members/{member}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Membership body, string name)
             {
@@ -1411,7 +1412,8 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Resource name of the membership, assigned by the server. Format: `spaces/{space}/members/{member}`
+                /// Identifier. Resource name of the membership, assigned by the server. Format:
+                /// `spaces/{space}/members/{member}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1424,10 +1426,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual object UpdateMask { get; set; }
 
                 /// <summary>
-                /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
-                /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
-                /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships`
-                /// [OAuth 2.0
+                /// Optional. When `true`, the method runs using the user's Google Workspace administrator privileges.
+                /// The calling user must be a Google Workspace administrator with the [manage chat and spaces
+                /// conversations privilege](https://support.google.com/a/answer/13369245). Requires the
+                /// `chat.admin.memberships` [OAuth 2.0
                 /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
@@ -2774,10 +2776,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous list space events call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to list space events must match the
-                /// call that provided the page token. Passing different values to the other parameters might lead to
-                /// unexpected results.
+                /// Optional. A page token, received from a previous list space events call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to list space events must match
+                /// the call that provided the page token. Passing different values to the other parameters might lead
+                /// to unexpected results.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -6891,14 +6893,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         }
 
         /// <summary>
-        /// The Google Group the membership corresponds to. Reading or mutating memberships for Google Groups requires
-        /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// Optional. The Google Group the membership corresponds to. Reading or mutating memberships for Google Groups
+        /// requires [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupMember")]
         public virtual Group GroupMember { get; set; }
 
         /// <summary>
-        /// The Google Chat user or app the membership corresponds to. If your Chat app [authenticates as a
+        /// Optional. The Google Chat user or app the membership corresponds to. If your Chat app [authenticates as a
         /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output populates
         /// the [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User) `name` and `type`.
         /// </summary>
@@ -6906,7 +6909,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual User Member { get; set; }
 
         /// <summary>
-        /// Resource name of the membership, assigned by the server. Format: `spaces/{space}/members/{member}`
+        /// Identifier. Resource name of the membership, assigned by the server. Format:
+        /// `spaces/{space}/members/{member}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
