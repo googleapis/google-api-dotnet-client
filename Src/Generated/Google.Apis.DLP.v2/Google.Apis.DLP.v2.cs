@@ -289,7 +289,7 @@ namespace Google.Apis.DLP.v2
         }
 
         /// <summary>
-        /// Returns a list of the sensitive information types that DLP API supports. See
+        /// Returns a list of the sensitive information types that the DLP API supports. See
         /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
         /// </summary>
         public virtual ListRequest List()
@@ -298,7 +298,7 @@ namespace Google.Apis.DLP.v2
         }
 
         /// <summary>
-        /// Returns a list of the sensitive information types that DLP API supports. See
+        /// Returns a list of the sensitive information types that the DLP API supports. See
         /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
         /// </summary>
         public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
@@ -414,7 +414,7 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Returns a list of the sensitive information types that DLP API supports. See
+            /// Returns a list of the sensitive information types that the DLP API supports. See
             /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
             /// </summary>
             /// <param name="parent">
@@ -426,7 +426,7 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Returns a list of the sensitive information types that DLP API supports. See
+            /// Returns a list of the sensitive information types that the DLP API supports. See
             /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
@@ -13075,7 +13075,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseEngine")]
         public virtual string DatabaseEngine { get; set; }
 
-        /// <summary>Required. DLP will limit its connections to max_connections. Must be 2 or greater.</summary>
+        /// <summary>
+        /// Required. The DLP API will limit its connections to max_connections. Must be 2 or greater.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConnections")]
         public virtual System.Nullable<int> MaxConnections { get; set; }
 
@@ -13471,7 +13473,7 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// A data connection to allow DLP to profile data in locations that require additional configuration.
+    /// A data connection to allow the DLP API to profile data in locations that require additional configuration.
     /// </summary>
     public class GooglePrivacyDlpV2Connection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14089,7 +14091,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishToChronicle")]
         public virtual GooglePrivacyDlpV2PublishToChronicle PublishToChronicle { get; set; }
 
-        /// <summary>Publishes findings to SCC for each data profile.</summary>
+        /// <summary>Publishes findings to Security Command Center for each data profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishToScc")]
         public virtual GooglePrivacyDlpV2PublishToSecurityCommandCenter PublishToScc { get; set; }
 
@@ -14222,7 +14224,7 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// The project that will run the scan. The DLP service account that exists within this project must have access
-        /// to all resources that are profiled, and the Cloud DLP API must be enabled.
+        /// to all resources that are profiled, and the DLP API must be enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -18251,7 +18253,7 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// The project that will run the scan. The DLP service account that exists within this project must have access
-        /// to all resources that are profiled, and the Cloud DLP API must be enabled.
+        /// to all resources that are profiled, and the DLP API must be enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -18817,7 +18819,9 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>If set, a summary finding will be created/updated in SCC for each profile.</summary>
+    /// <summary>
+    /// If set, a summary finding will be created or updated in Security Command Center for each profile.
+    /// </summary>
     public class GooglePrivacyDlpV2PublishToSecurityCommandCenter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
