@@ -3313,7 +3313,14 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An account.</summary>
+    /// <summary>
+    /// The `Account` message represents a merchant's account within Shopping Ads. It's the primary entity for managing
+    /// product data, settings, and interactions with Google's services and external providers. Accounts can operate as
+    /// standalone entities or be part of a multi-client account (MCA) structure. In an MCA setup the parent account
+    /// manages multiple sub-accounts. Establishing an account involves configuring attributes like the account name,
+    /// time zone, and language preferences. The `Account` message is the parent entity for many other resources, for
+    /// example, `AccountRelationship`, `Homepage`, `BusinessInfo` and so on.
+    /// </summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The ID of the account.</summary>
@@ -3559,10 +3566,16 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Collection of information related to a business.</summary>
+    /// <summary>
+    /// The `BusinessInfo` message contains essential information about a merchant's business. This message captures key
+    /// business details such as physical address, customer service contacts, and region-specific identifiers.
+    /// </summary>
     public class BusinessInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The address of the business.</summary>
+        /// <summary>
+        /// Optional. The address of the business. Only `region_code`, `address_lines`, `postal_code`,
+        /// `administrative_area` and `locality` fields are supported. All other fields are ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual PostalAddress Address { get; set; }
 
@@ -3999,7 +4012,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A store's homepage.</summary>
+    /// <summary>
+    /// The `Homepage` message represents a merchant's store homepage within the system. A merchant's homepage is the
+    /// primary domain where customers interact with their store. The homepage can be claimed and verified as a proof of
+    /// ownership and allows the merchant to unlock features that require a verified website. For more information, see
+    /// [Understanding online store URL verification](//support.google.com/merchants/answer/176793).
+    /// </summary>
     public class Homepage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5128,7 +5146,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A `TermsOfService`.</summary>
+    /// <summary>
+    /// The `TermsOfService` message represents a specific version of the terms of service that merchants must accept to
+    /// access certain features or services (see https://support.google.com/merchants/answer/160173). This message is
+    /// important for the onboarding process, ensuring that merchants agree to the necessary legal agreements for using
+    /// the service. Merchants can retrieve the latest terms of service for a given `kind` and `region` through
+    /// `RetrieveLatestTermsOfService`, and accept them as required through `AcceptTermsOfService`.
+    /// </summary>
     public class TermsOfService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5298,7 +5322,11 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A [user](https://support.google.com/merchants/answer/12160472).</summary>
+    /// <summary>
+    /// The `User` message represents a user associated with a Merchant Center account. It is used to manage user
+    /// permissions and access rights within the account. For more information, see [Frequently asked questions about
+    /// people and access levels](//support.google.com/merchants/answer/12160472).
+    /// </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
