@@ -187,7 +187,9 @@ namespace Google.Apis.Services
             ApiKey = initializer.ApiKey;
             ApplicationName = initializer.ApplicationName;
             BaseUriOverride = initializer.BaseUri;
+#pragma warning disable CS0618 // We still need to initialize the value on construction but the setter is rightly obsolete.
             UniverseDomain = initializer.UniverseDomain;
+#pragma warning restore CS0618 // Type or member is obsolete
             HttpClientTimeout = initializer.HttpClientTimeout;
             ValidateParameters = initializer.ValidateParameters;
             if (ApplicationName == null)
@@ -220,7 +222,14 @@ namespace Google.Apis.Services
         /// is set, in which case <see cref="BaseUriOverride"/> will be used without further modification.
         /// </para>
         /// </remarks>
-        public string UniverseDomain { get; set; }
+        public string UniverseDomain
+        { 
+            get;
+            [Obsolete(
+                "Using this setter never had any effect, the UniverseDomain value is used on Client construction only. " +
+                "Build a new Client specifying a new universe domain value instead.")]
+            set; 
+        }
 
         /// <summary>
         /// The timeout to set on <see cref="HttpClient"/> instances used by the service.
