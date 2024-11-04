@@ -5742,6 +5742,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
 
+        /// <summary>Set to true to stop syncing configs for a single cluster. Default to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
+        public virtual System.Nullable<bool> StopSyncing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9975,6 +9979,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// <summary>**Service Mesh**: Spec for a single Membership for the servicemesh feature</summary>
     public class ServiceMeshMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specifies the API that will be used for configuring the mesh workloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configApi")]
+        public virtual string ConfigApi { get; set; }
+
         /// <summary>Deprecated: use `management` instead Enables automatic control plane management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlane")]
         public virtual string ControlPlane { get; set; }
