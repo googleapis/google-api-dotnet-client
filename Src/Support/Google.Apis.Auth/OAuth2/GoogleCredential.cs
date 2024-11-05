@@ -429,7 +429,9 @@ namespace Google.Apis.Auth.OAuth2
         // Proxy IHttpExecuteInterceptor's only method.
         async Task IHttpExecuteInterceptor.InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if (request?.TryGetOption(GoogleAuthConsts.UniverseDomainKey, out string targetUniverseDomain) == true)
+            if (request?.TryGetOption(GoogleAuthConsts.UniverseDomainKey, out string targetUniverseDomain) == true
+                // b/377378462 Temporarily avoid automatic requests to the MDS UniverseDomain endpoint.
+                && UnderlyingCredential is not ComputeCredential)
             {
                 string credentialUniverseDomain = await credential.GetUniverseDomainAsync(cancellationToken).ConfigureAwait(false);
                 if (targetUniverseDomain != credentialUniverseDomain)
