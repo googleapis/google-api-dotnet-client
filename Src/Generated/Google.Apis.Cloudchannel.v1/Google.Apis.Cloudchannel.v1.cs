@@ -6364,6 +6364,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
 
+        /// <summary>
+        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
+        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
+        /// order. Yet to be implemented: this field is currently not evaluated in the API if populated in a request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
+        public virtual string PriceReferenceId { get; set; }
+
         /// <summary>Optional. Purchase order id provided by the reseller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderId")]
         public virtual string PurchaseOrderId { get; set; }
@@ -7098,7 +7106,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
 
-        /// <summary>Type of event which happened on the customer.</summary>
+        /// <summary>Type of event which happened for the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
@@ -7299,6 +7307,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
 
+        /// <summary>
+        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
+        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
+        /// order. Yet to be implemented: this field is currently not evaluated in the API if populated in a request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
+        public virtual string PriceReferenceId { get; set; }
+
         /// <summary>Output only. Service provisioning details for the entitlement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedService")]
         public virtual GoogleCloudChannelV1ProvisionedService ProvisionedService { get; set; }
@@ -7474,7 +7490,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
         public virtual string Entitlement { get; set; }
 
-        /// <summary>Type of event which happened on the entitlement.</summary>
+        /// <summary>Type of event which happened for the entitlement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
@@ -8432,6 +8448,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offer")]
         public virtual GoogleCloudChannelV1Offer Offer { get; set; }
 
+        /// <summary>
+        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
+        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
+        /// order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
+        public virtual string PriceReferenceId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9104,6 +9128,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offer")]
         public virtual GoogleCloudChannelV1Offer Offer { get; set; }
 
+        /// <summary>
+        /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
+        /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
+        /// order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
+        public virtual string PriceReferenceId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9291,7 +9323,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channelPartner")]
         public virtual string ChannelPartner { get; set; }
 
-        /// <summary>Type of event performed on the Channel Partner.</summary>
+        /// <summary>Type of event which happened for the channel partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
@@ -9417,7 +9449,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
 
-        /// <summary>Type of event which happened on the customer.</summary>
+        /// <summary>Type of event which happened for the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
@@ -9654,7 +9686,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
         public virtual string Entitlement { get; set; }
 
-        /// <summary>Type of event which happened on the entitlement.</summary>
+        /// <summary>Type of event which happened for the entitlement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
@@ -9668,6 +9700,21 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>The RPC that initiated this Long Running Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents Pub/Sub message content describing opportunity updates.</summary>
+    public class GoogleCloudChannelV1alpha1OpportunityEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of event which happened for the opportunity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>Resource name of the opportunity. Format: opportunities/{opportunity}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("opportunity")]
+        public virtual string Opportunity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9981,6 +10028,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementEvent")]
         public virtual GoogleCloudChannelV1alpha1EntitlementEvent EntitlementEvent { get; set; }
 
+        /// <summary>Opportunity event sent as part of Pub/Sub event to partners/integrators.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("opportunityEvent")]
+        public virtual GoogleCloudChannelV1alpha1OpportunityEvent OpportunityEvent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10288,9 +10339,9 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
     /// <summary>
     /// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal
-    /// formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]:
-    /// https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]:
-    /// https://docs.python.org/3/library/decimal.html
+    /// formats, such as Java's
+    /// [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's
+    /// [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
     /// </summary>
     public class GoogleTypeDecimal : Google.Apis.Requests.IDirectResponseSchema
     {
