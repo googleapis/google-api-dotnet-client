@@ -1870,7 +1870,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// the message sender and attributes the Chat app to the message by displaying its name. The content of
             /// message can only contain text (`text`). ![Message sent with user
             /// authentication](https://developers.google.com/workspace/chat/images/message-user-auth.svg) The maximum
-            /// message size, including the message contents, is 32,000 bytes.
+            /// message size, including the message contents, is 32,000 bytes. For
+            /// [webhook](https://developers.google.com/workspace/chat/quickstart/webhooks) requests, the response
+            /// doesn't contain the full message. The response only populates the `name` and `thread.name` fields in
+            /// addition to the information that was in the request.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1896,7 +1899,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// the message sender and attributes the Chat app to the message by displaying its name. The content of
             /// message can only contain text (`text`). ![Message sent with user
             /// authentication](https://developers.google.com/workspace/chat/images/message-user-auth.svg) The maximum
-            /// message size, including the message contents, is 32,000 bytes.
+            /// message size, including the message contents, is 32,000 bytes. For
+            /// [webhook](https://developers.google.com/workspace/chat/quickstart/webhooks) requests, the response
+            /// doesn't contain the full message. The response only populates the `name` and `thread.name` fields in
+            /// addition to the information that was in the request.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -4814,7 +4820,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
         public virtual CustomEmoji CustomEmoji { get; set; }
 
-        /// <summary>A basic emoji represented by a unicode string.</summary>
+        /// <summary>Optional. A basic emoji represented by a unicode string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unicode")]
         public virtual string Unicode { get; set; }
 
@@ -4825,11 +4831,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>The number of people who reacted to a message with a specific emoji.</summary>
     public class EmojiReactionSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Emoji associated with the reactions.</summary>
+        /// <summary>Output only. Emoji associated with the reactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
         public virtual Emoji Emoji { get; set; }
 
-        /// <summary>The total number of reactions using the associated emoji.</summary>
+        /// <summary>Output only. The total number of reactions using the associated emoji.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactionCount")]
         public virtual System.Nullable<int> ReactionCount { get; set; }
 
@@ -7550,12 +7556,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>A reaction to a message.</summary>
     public class Reaction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The emoji used in the reaction.</summary>
+        /// <summary>Required. The emoji used in the reaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
         public virtual Emoji Emoji { get; set; }
 
         /// <summary>
-        /// The resource name of the reaction. Format: `spaces/{space}/messages/{message}/reactions/{reaction}`
+        /// Identifier. The resource name of the reaction. Format:
+        /// `spaces/{space}/messages/{message}/reactions/{reaction}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
