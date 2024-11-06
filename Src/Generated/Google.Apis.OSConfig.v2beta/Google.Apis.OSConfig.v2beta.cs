@@ -347,9 +347,9 @@ namespace Google.Apis.OSConfig.v2beta
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent resource name in the form of:
-                    /// `organizations/{organization_id}/locations/global` `folders/{folder_id}/locations/global`
-                    /// 'projects/{project_id_or_number}/locations/global'
+                    /// Required. The parent resource name in the form of: *
+                    /// `organizations/{organization_id}/locations/global` * `folders/{folder_id}/locations/global` *
+                    /// `projects/{project_id_or_number}/locations/global`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.OSConfig.v2beta.Data.GoogleCloudOsconfigV2betaPolicyOrchestrator body, string parent)
                     {
@@ -373,9 +373,9 @@ namespace Google.Apis.OSConfig.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The parent resource name in the form of:
-                        /// `organizations/{organization_id}/locations/global` `folders/{folder_id}/locations/global`
-                        /// 'projects/{project_id_or_number}/locations/global'
+                        /// Required. The parent resource name in the form of: *
+                        /// `organizations/{organization_id}/locations/global` * `folders/{folder_id}/locations/global`
+                        /// * `projects/{project_id_or_number}/locations/global`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1105,9 +1105,9 @@ namespace Google.Apis.OSConfig.v2beta
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent resource name in the form of:
-                    /// `organizations/{organization_id}/locations/global` `folders/{folder_id}/locations/global`
-                    /// 'projects/{project_id_or_number}/locations/global'
+                    /// Required. The parent resource name in the form of: *
+                    /// `organizations/{organization_id}/locations/global` * `folders/{folder_id}/locations/global` *
+                    /// `projects/{project_id_or_number}/locations/global`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.OSConfig.v2beta.Data.GoogleCloudOsconfigV2betaPolicyOrchestrator body, string parent)
                     {
@@ -1131,9 +1131,9 @@ namespace Google.Apis.OSConfig.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The parent resource name in the form of:
-                        /// `organizations/{organization_id}/locations/global` `folders/{folder_id}/locations/global`
-                        /// 'projects/{project_id_or_number}/locations/global'
+                        /// Required. The parent resource name in the form of: *
+                        /// `organizations/{organization_id}/locations/global` * `folders/{folder_id}/locations/global`
+                        /// * `projects/{project_id_or_number}/locations/global`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1867,9 +1867,9 @@ namespace Google.Apis.OSConfig.v2beta
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent resource name in the form of:
-                    /// `organizations/{organization_id}/locations/global` `folders/{folder_id}/locations/global`
-                    /// 'projects/{project_id_or_number}/locations/global'
+                    /// Required. The parent resource name in the form of: *
+                    /// `organizations/{organization_id}/locations/global` * `folders/{folder_id}/locations/global` *
+                    /// `projects/{project_id_or_number}/locations/global`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.OSConfig.v2beta.Data.GoogleCloudOsconfigV2betaPolicyOrchestrator body, string parent)
                     {
@@ -1893,9 +1893,9 @@ namespace Google.Apis.OSConfig.v2beta
                         }
 
                         /// <summary>
-                        /// Required. The parent resource name in the form of:
-                        /// `organizations/{organization_id}/locations/global` `folders/{folder_id}/locations/global`
-                        /// 'projects/{project_id_or_number}/locations/global'
+                        /// Required. The parent resource name in the form of: *
+                        /// `organizations/{organization_id}/locations/global` * `folders/{folder_id}/locations/global`
+                        /// * `projects/{project_id_or_number}/locations/global`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
