@@ -6215,7 +6215,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountTypesWithManagementDisabled")]
         public virtual System.Collections.Generic.IList<string> AccountTypesWithManagementDisabled { get; set; }
 
-        /// <summary>Whether adding new users and profiles is disabled.</summary>
+        /// <summary>
+        /// Whether adding new users and profiles is disabled. For devices where managementMode is DEVICE_OWNER this
+        /// field is ignored and the user is never allowed to add or remove users.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addUserDisabled")]
         public virtual System.Nullable<bool> AddUserDisabled { get; set; }
 
