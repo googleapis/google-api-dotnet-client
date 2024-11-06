@@ -4180,6 +4180,116 @@ namespace Google.Apis.GKEOnPrem.v1
                 }
 
                 /// <summary>
+                /// Creates a new VMware admin cluster in a given project and location. The API needs to be combined
+                /// with creating a bootstrap cluster to work.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent of the project and location where the cluster is created in. Format:
+                /// "projects/{project}/locations/{location}"
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.GKEOnPrem.v1.Data.VmwareAdminCluster body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new VMware admin cluster in a given project and location. The API needs to be combined
+                /// with creating a bootstrap cluster to work.
+                /// </summary>
+                public class CreateRequest : GKEOnPremBaseServiceRequest<Google.Apis.GKEOnPrem.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEOnPrem.v1.Data.VmwareAdminCluster body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent of the project and location where the cluster is created in. Format:
+                    /// "projects/{project}/locations/{location}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the
+                    /// creation fails during standalone preflight checks. In that case the subsequent create call will
+                    /// fail with "cluster already exists" error and hence a update cluster is required to fix the
+                    /// cluster.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowPreflightFailure", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowPreflightFailure { get; set; }
+
+                    /// <summary>Validate the request without actually doing any updates.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>
+                    /// Required. User provided identifier that is used as part of the resource name; must conform to
+                    /// RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to:
+                    /// /^a-z+[a-z0-9]$/
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("vmwareAdminClusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VmwareAdminClusterId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEOnPrem.v1.Data.VmwareAdminCluster Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vmwareAdminClusters";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("allowPreflightFailure", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowPreflightFailure",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("vmwareAdminClusterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "vmwareAdminClusterId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Enrolls an existing VMware admin cluster to the Anthos On-Prem API within a given project and
                 /// location. Through enrollment, an existing admin cluster will become Anthos On-Prem API managed. The
                 /// corresponding GCP resources will be created and all future modifications to the cluster will be
