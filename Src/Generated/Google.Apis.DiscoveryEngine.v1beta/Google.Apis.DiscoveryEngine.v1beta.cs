@@ -29548,7 +29548,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citedChunks")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseFactChunk> CitedChunks { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaFactChunk> CitedChunks { get; set; }
+
+        /// <summary>
+        /// List of facts cited across all claims in the answer candidate. These are derived from the facts supplied in
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedFacts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk> CitedFacts { get; set; }
 
         /// <summary>Claim texts and citation info across all claims in the answer candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
@@ -29560,6 +29567,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportScore")]
         public virtual System.Nullable<float> SupportScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fact chunk for grounding check.</summary>
+    public class GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text content of the fact chunk. Can be at most 10K characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
+        public virtual string ChunkText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29598,24 +29616,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
         public virtual System.Nullable<int> StartPos { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Fact chunk for grounding check.</summary>
-    public class GoogleCloudDiscoveryengineV1betaCheckGroundingResponseFactChunk : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Text content of the fact chunk. Can be at most 10K characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
-        public virtual string ChunkText { get; set; }
-
-        /// <summary>
-        /// Source from which this fact chunk was retrieved. For a fact chunk retrieved from inline facts, this field
-        /// will contain the index of the specific fact from which this chunk was retrieved.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -32730,6 +32730,79 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Fact Chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1betaFactChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text content of the fact chunk. Can be at most 10K characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
+        public virtual string ChunkText { get; set; }
+
+        /// <summary>The index of this chunk. Currently, only used for the streaming mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>
+        /// Source from which this fact chunk was retrieved. If it was retrieved from the GroundingFacts provided in the
+        /// request then this field will contain the index of the specific fact from which this chunk was retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>More fine-grained information for the source reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SourceMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the user feedback. This information will be used for logging and metrics purpose.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The additional user comment of the feedback if user gives a thumb down.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>The related conversation information when user gives feedback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationInfo")]
+        public virtual GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo ConversationInfo { get; set; }
+
+        /// <summary>
+        /// Required. Indicate whether the user gives a positive or negative feedback. If the user gives a negative
+        /// feedback, there might be more feedback details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackType")]
+        public virtual string FeedbackType { get; set; }
+
+        /// <summary>The version of the LLM model that was used to generate the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("llmModelVersion")]
+        public virtual string LlmModelVersion { get; set; }
+
+        /// <summary>Optional. The reason if user gives a thumb down.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
+        public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The conversation information such as the question index and session name.</summary>
+    public class GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The index of the user input within the conversation messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionIndex")]
+        public virtual System.Nullable<int> QuestionIndex { get; set; }
+
+        /// <summary>Name of the newly generated or continued session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for SiteSearchEngineService.FetchDomainVerificationStatus method.</summary>
     public class GoogleCloudDiscoveryengineV1betaFetchDomainVerificationStatusResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -34096,6 +34169,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The display name of the panel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The document IDs associated with this panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaDocumentInfo> Documents { get; set; }
 
         /// <summary>Required. The panel ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("panelId")]
@@ -38051,6 +38128,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
+        /// <summary>Optional. This field is optional except for the `add-feedback` event types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedback")]
+        public virtual GoogleCloudDiscoveryengineV1betaFeedback Feedback { get; set; }
+
         /// <summary>
         /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
         /// the documents being filtered. One example is for `search` events, the associated SearchRequest may contain a
@@ -38076,6 +38157,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Panel metadata associated with this user event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("panel")]
         public virtual GoogleCloudDiscoveryengineV1betaPanelInfo Panel { get; set; }
+
+        /// <summary>Optional. List of panels associated with this event. Used for page-level impression data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaPanelInfo> Panels { get; set; }
 
         /// <summary>
         /// The promotion IDs if this is an event associated with promotions. Currently, this field is restricted to at
