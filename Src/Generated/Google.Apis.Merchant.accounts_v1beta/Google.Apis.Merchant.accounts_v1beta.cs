@@ -278,6 +278,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
             EmailPreferences = new EmailPreferencesResource(service);
             Homepage = new HomepageResource(service);
             Issues = new IssuesResource(service);
+            OmnichannelSettings = new OmnichannelSettingsResource(service);
             OnlineReturnPolicies = new OnlineReturnPoliciesResource(service);
             Programs = new ProgramsResource(service);
             Regions = new RegionsResource(service);
@@ -1264,6 +1265,670 @@ namespace Google.Apis.Merchant.accounts_v1beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the OmnichannelSettings resource.</summary>
+        public virtual OmnichannelSettingsResource OmnichannelSettings { get; }
+
+        /// <summary>The "omnichannelSettings" collection of methods.</summary>
+        public class OmnichannelSettingsResource
+        {
+            private const string Resource = "omnichannelSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OmnichannelSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                GbpAccounts = new GbpAccountsResource(service);
+                LfpProviders = new LfpProvidersResource(service);
+            }
+
+            /// <summary>Gets the GbpAccounts resource.</summary>
+            public virtual GbpAccountsResource GbpAccounts { get; }
+
+            /// <summary>The "gbpAccounts" collection of methods.</summary>
+            public class GbpAccountsResource
+            {
+                private const string Resource = "gbpAccounts";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GbpAccountsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Link the specified merchant to a GBP account for all countries.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The name of the parent resource under which the GBP accounts are listed. Format:
+                /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`.
+                /// </param>
+                public virtual LinkGbpAccountRequest LinkGbpAccount(Google.Apis.Merchant.accounts_v1beta.Data.LinkGbpAccountRequest body, string parent)
+                {
+                    return new LinkGbpAccountRequest(this.service, body, parent);
+                }
+
+                /// <summary>Link the specified merchant to a GBP account for all countries.</summary>
+                public class LinkGbpAccountRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.LinkGbpAccountResponse>
+                {
+                    /// <summary>Constructs a new LinkGbpAccount request.</summary>
+                    public LinkGbpAccountRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.LinkGbpAccountRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the parent resource under which the GBP accounts are listed. Format:
+                    /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Merchant.accounts_v1beta.Data.LinkGbpAccountRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "linkGbpAccount";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1beta/{+parent}/gbpAccounts:linkGbpAccount";
+
+                    /// <summary>Initializes LinkGbpAccount parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/omnichannelSettings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List the GBP accounts for a given merchant.</summary>
+                /// <param name="parent">
+                /// Required. The name of the parent resource under which the GBP accounts are listed. Format:
+                /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List the GBP accounts for a given merchant.</summary>
+                public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListGbpAccountsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the parent resource under which the GBP accounts are listed. Format:
+                    /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of `GbpAccount` resources to return. The service returns fewer than
+                    /// this value if the number of gbp accounts is less that than the `pageSize`. The default value is
+                    /// 50. The maximum value is 1000; If a value higher than the maximum is specified, then the
+                    /// `pageSize` will default to the maximum.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListGbpAccounts` call. Provide the page token
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListGbpAccounts` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1beta/{+parent}/gbpAccounts";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/omnichannelSettings/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the LfpProviders resource.</summary>
+            public virtual LfpProvidersResource LfpProviders { get; }
+
+            /// <summary>The "lfpProviders" collection of methods.</summary>
+            public class LfpProvidersResource
+            {
+                private const string Resource = "lfpProviders";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LfpProvidersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Link the specified merchant to a LFP provider for the specified country.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The name of the parent resource under which the LFP provider is linked. Format:
+                /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`.
+                /// </param>
+                public virtual LinkLfpProviderRequest LinkLfpProvider(Google.Apis.Merchant.accounts_v1beta.Data.LinkLfpProviderRequest body, string parent)
+                {
+                    return new LinkLfpProviderRequest(this.service, body, parent);
+                }
+
+                /// <summary>Link the specified merchant to a LFP provider for the specified country.</summary>
+                public class LinkLfpProviderRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.LinkLfpProviderResponse>
+                {
+                    /// <summary>Constructs a new LinkLfpProvider request.</summary>
+                    public LinkLfpProviderRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.LinkLfpProviderRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the parent resource under which the LFP provider is linked. Format:
+                    /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Merchant.accounts_v1beta.Data.LinkLfpProviderRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "linkLfpProvider";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1beta/{+parent}/lfpProviders:linkLfpProvider";
+
+                    /// <summary>Initializes LinkLfpProvider parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/omnichannelSettings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List the LFP provider settings for a given merchant in a given country.</summary>
+                /// <param name="parent">
+                /// Required. The name of the parent resource under which the LFP providers are listed. Format:
+                /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List the LFP provider settings for a given merchant in a given country.</summary>
+                public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListLfpProvidersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the parent resource under which the LFP providers are listed. Format:
+                    /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of `LfpProvider` resources to return. The service returns fewer
+                    /// than this value if the number of lfp providers is less that than the `pageSize`. The default
+                    /// value is 50. The maximum value is 1000; If a value higher than the maximum is specified, then
+                    /// the `pageSize` will default to the maximum.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListLfpProviders` call. Provide the page token
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListLfpProviders` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "accounts/v1beta/{+parent}/lfpProviders";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/omnichannelSettings/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Create the omnichannel settings for a given merchant.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource where this omnichannel setting will be created. Format:
+            /// `accounts/{account}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Create the omnichannel settings for a given merchant.</summary>
+            public class CreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource where this omnichannel setting will be created. Format:
+                /// `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/omnichannelSettings";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Get the omnichannel settings for a given merchant.</summary>
+            /// <param name="name">
+            /// Required. The name of the omnichannel setting to retrieve. Format:
+            /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Get the omnichannel settings for a given merchant.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the omnichannel setting to retrieve. Format:
+                /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/omnichannelSettings/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List all the omnichannel settings for a given merchant.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of omnichannel settings. Format: `accounts/{account}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>List all the omnichannel settings for a given merchant.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListOmnichannelSettingsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns this collection of omnichannel settings. Format:
+                /// `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of omnichannel settings to return. The service may return fewer than
+                /// this value. If unspecified, at most 50 omnichannel settings will be returned. The maximum value is
+                /// 1000; values above 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListOmnichannelSettings` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListOmnichannelSettings` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/omnichannelSettings";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Update the omnichannel setting for a given merchant in a given country.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the omnichannel setting. Format:
+            /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Update the omnichannel setting for a given merchant in a given country.</summary>
+            public class PatchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the omnichannel setting. Format:
+                /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The list of fields to be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.OmnichannelSetting Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/omnichannelSettings/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Requests inventory verification for a given merchant in a given country.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the omnichannel setting to request inventory verification. Format:
+            /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`
+            /// </param>
+            public virtual RequestInventoryVerificationRequest RequestInventoryVerification(Google.Apis.Merchant.accounts_v1beta.Data.RequestInventoryVerificationRequest body, string name)
+            {
+                return new RequestInventoryVerificationRequest(this.service, body, name);
+            }
+
+            /// <summary>Requests inventory verification for a given merchant in a given country.</summary>
+            public class RequestInventoryVerificationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.RequestInventoryVerificationResponse>
+            {
+                /// <summary>Constructs a new RequestInventoryVerification request.</summary>
+                public RequestInventoryVerificationRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.RequestInventoryVerificationRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the omnichannel setting to request inventory verification. Format:
+                /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.RequestInventoryVerificationRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "requestInventoryVerification";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:requestInventoryVerification";
+
+                /// <summary>Initializes RequestInventoryVerification parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/omnichannelSettings/[^/]+$",
                     });
                 }
             }
@@ -3285,6 +3950,24 @@ namespace Google.Apis.Merchant.accounts_v1beta
 }
 namespace Google.Apis.Merchant.accounts_v1beta.Data
 {
+    /// <summary>
+    /// Collection of information related to the about page
+    /// ([impressum](https://support.google.com/merchants/answer/14675634?hl=en&amp;amp;ref_topic=15145634&amp;amp;sjid=6892280366904591178-NC)).
+    /// </summary>
+    public class About : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The state of the URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. The about page URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes the accepted terms of service.</summary>
     public class Accepted : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3566,10 +4249,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The `BusinessInfo` message contains essential information about a merchant's business. This message captures key
-    /// business details such as physical address, customer service contacts, and region-specific identifiers.
-    /// </summary>
+    /// <summary>Collection of information related to a business.</summary>
     public class BusinessInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3944,6 +4624,43 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Collection of information related to a Google Business Profile (GBP) account.</summary>
+    public class GbpAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email which identifies the Business Profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The id of the GBP account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gbpAccountId")]
+        public virtual string GbpAccountId { get; set; }
+
+        /// <summary>
+        /// The name of the Business Profile. For personal accounts: Email id of the owner. For Business accounts: Name
+        /// of the Business Account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gbpAccountName")]
+        public virtual string GbpAccountName { get; set; }
+
+        /// <summary>Number of listings under this account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listingCount")]
+        public virtual System.Nullable<long> ListingCount { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the GBP account. Format:
+        /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}/gbpAccount/{gbp_account}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The type of the Business Profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A list of geotargets that defines the region area.</summary>
     public class GeoTargetArea : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4012,12 +4729,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The `Homepage` message represents a merchant's store homepage within the system. A merchant's homepage is the
-    /// primary domain where customers interact with their store. The homepage can be claimed and verified as a proof of
-    /// ownership and allows the merchant to unlock features that require a verified website. For more information, see
-    /// [Understanding online store URL verification](//support.google.com/merchants/answer/176793).
-    /// </summary>
+    /// <summary>A store's homepage.</summary>
     public class Homepage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4081,6 +4793,121 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Collection of information related to [inventory
+    /// verification](https://support.google.com/merchants/answer/14684499?hl=en&amp;amp;ref_topic=15145634&amp;amp;sjid=6892280366904591178-NC).
+    /// </summary>
+    public class InventoryVerification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the contact for the inventory verification process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contact")]
+        public virtual string Contact { get; set; }
+
+        /// <summary>Required. The email address of the contact for the inventory verification process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
+        public virtual string ContactEmail { get; set; }
+
+        /// <summary>Output only. The state of the contact verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactState")]
+        public virtual string ContactState { get; set; }
+
+        /// <summary>Output only. The state of the inventory verification process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of information related to the LFP link.</summary>
+    public class LfpLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The account ID by which this merchant is known to the LFP provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
+        public virtual string ExternalAccountId { get; set; }
+
+        /// <summary>Required. The ID of the LFP provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
+        public virtual string ProviderId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of information related to a Local Feed Partnership (LFP) provider.</summary>
+    public class LfpProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the LFP provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ID of the LFP provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lfpProviderId")]
+        public virtual string LfpProviderId { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the LFP provider. Format:
+        /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}/lfpProviders/{lfp_provider}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Region code defined by [CLDR](https://cldr.unicode.org/).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the LinkGbpAccount method.</summary>
+    public class LinkGbpAccountRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The email address of the Business Profile account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gbpEmail")]
+        public virtual string GbpEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the LinkGbpAccount method.</summary>
+    public class LinkGbpAccountResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Empty response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual Empty Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the LinkLfpProvider method.</summary>
+    public class LinkLfpProviderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The external account ID by which this merchant is known to the LFP provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
+        public virtual string ExternalAccountId { get; set; }
+
+        /// <summary>Required. The id of the LFP provider to link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lfpProviderId")]
+        public virtual string LfpProviderId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the LinkLfpProvider method.</summary>
+    public class LinkLfpProviderResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Empty response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual Empty Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the `ListAccountIssues` method.</summary>
     public class ListAccountIssuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4112,6 +4939,60 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the ListGbpAccounts method.</summary>
+    public class ListGbpAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The GBP accounts from the specified merchant in the specified country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gbpAccounts")]
+        public virtual System.Collections.Generic.IList<GbpAccount> GbpAccounts { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the ListLfpProviders method.</summary>
+    public class ListLfpProvidersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The LFP providers from the specified merchant in the specified country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lfpProviders")]
+        public virtual System.Collections.Generic.IList<LfpProvider> LfpProviders { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the ListOmnichannelSettings method.</summary>
+    public class ListOmnichannelSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The omnichannel settings from the specified merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("omnichannelSettings")]
+        public virtual System.Collections.Generic.IList<OmnichannelSetting> OmnichannelSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4274,6 +5155,21 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Collection of information related to the Local Store Front (LSF) type.</summary>
+    public class LsfType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Local Store Front (LSF) type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lsfType")]
+        public virtual string LsfTypeValue { get; set; }
+
+        /// <summary>Output only. The state of the LSF.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Table of per store minimum order values for the pickup fulfillment type.</summary>
     public class MinimumOrderValueTable : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4284,6 +5180,73 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCodeSetWithMovs")]
         public virtual System.Collections.Generic.IList<StoreCodeSetWithMov> StoreCodeSetWithMovs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of information related to the omnichannel settings of a merchant.</summary>
+    public class OmnichannelSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The about page URI and state for this country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("about")]
+        public virtual About About { get; set; }
+
+        /// <summary>Optional. The inventory verification process state for this country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerification")]
+        public virtual InventoryVerification InventoryVerification { get; set; }
+
+        /// <summary>Output only. The established link to a LFP provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lfpLink")]
+        public virtual LfpLink LfpLink { get; set; }
+
+        /// <summary>
+        /// Optional. The Local Store Front ([LSF](https://support.google.com/merchants/answer/7178526)) type and state
+        /// for this country.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lsfType")]
+        public virtual LsfType LsfType { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the omnichannel setting. Format:
+        /// `accounts/{account}/omnichannelSettings/{omnichannel_setting}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The on display to order (ODO) policy URI and state for this country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odo")]
+        public virtual OnDisplayToOrder Odo { get; set; }
+
+        /// <summary>Optional. The Pickup types asnd state for this country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupTypes")]
+        public virtual System.Collections.Generic.IList<PickupType> PickupTypes { get; set; }
+
+        /// <summary>Immutable. Region code defined by [CLDR](https://cldr.unicode.org/).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>Output only. The state of the omnichannel setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Collection of information related to the on display to order
+    /// ([ODO](https://support.google.com/merchants/answer/14615056?hl=en&amp;amp;ref_topic=15145747&amp;amp;sjid=6892280366904591178-NC)).
+    /// </summary>
+    public class OnDisplayToOrder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The state of the URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. The on display to order (ODO) policy URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4418,6 +5381,21 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// <summary>A short code. Reference(s): - https://en.wikipedia.org/wiki/Short_code</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortCode")]
         public virtual ShortCode ShortCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of information related to the pickup type.</summary>
+    public class PickupType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of the pickup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupType")]
+        public virtual string PickupTypeValue { get; set; }
+
+        /// <summary>Output only. The state of the PickupType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4847,6 +5825,24 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingEligible")]
         public virtual System.Nullable<bool> ShippingEligible { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the RequestInventoryVerification method.</summary>
+    public class RequestInventoryVerificationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the RequestInventoryVerification method.</summary>
+    public class RequestInventoryVerificationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The omnichannel setting that was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("omnichannelSetting")]
+        public virtual OmnichannelSetting OmnichannelSetting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
