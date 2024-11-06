@@ -1184,7 +1184,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Infra Usage of billing metrics. Next ID: 6</summary>
+    /// <summary>Infra Usage of billing metrics.</summary>
     public class InfraUsage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Aggregated core metrics since requested start_time.</summary>
@@ -1695,10 +1695,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// =========================================================================== # The fields below are used
-    /// exclusively for Forecasting.
-    /// </summary>
     public class XPSColumnSpecForecastingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of the column for FORECASTING model training purposes.</summary>
@@ -2156,15 +2152,15 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual System.Nullable<bool> ExportFirebaseAuxiliaryInfo { get; set; }
 
         /// <summary>
-        /// The Google Contained Registry (GCR) path the exported files to be pushed to. This location is set if the
-        /// exported format is DOCKDER.
+        /// The Google Contained Registry path the exported files to be pushed to. This location is set if the exported
+        /// format is DOCKDER.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcrUri")]
         public virtual string OutputGcrUri { get; set; }
 
         /// <summary>
-        /// The Google Cloud Storage (GCS) directory where XPS will output the exported models and related files.
-        /// Format: gs://bucket/directory
+        /// The Google Cloud Storage directory where XPS will output the exported models and related files. Format:
+        /// gs://bucket/directory
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsUri")]
         public virtual string OutputGcsUri { get; set; }
@@ -2182,7 +2178,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Spec of input and output files, on external file systems (CNS, GCS, etc).</summary>
+    /// <summary>
+    /// Spec of input and output files, on external file systems (for example, Colossus Namespace System or Google Cloud
+    /// Storage).
+    /// </summary>
     public class XPSFileSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated. Use file_spec.</summary>
@@ -2316,8 +2315,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     public class XPSImageExportModelSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Contains the model format and internal location of the model files to be exported/downloaded. Use the GCS
-        /// bucket name which is provided via TrainRequest.gcs_bucket_name to store the model files.
+        /// Contains the model format and internal location of the model files to be exported/downloaded. Use the Google
+        /// Cloud Storage bucket name which is provided via TrainRequest.gcs_bucket_name to store the model files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportModelOutputConfig")]
         public virtual System.Collections.Generic.IList<XPSExportModelOutputConfig> ExportModelOutputConfig { get; set; }
@@ -2339,7 +2338,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exportArtifact")]
         public virtual System.Collections.Generic.IList<XPSModelArtifactItem> ExportArtifact { get; set; }
 
-        /// <summary>GCS uri of decoded labels file for model export 'dict.txt'.</summary>
+        /// <summary>Google Cloud Storage URI of decoded labels file for model export 'dict.txt'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelGcsUri")]
         public virtual string LabelGcsUri { get; set; }
 
@@ -2350,11 +2349,13 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("servingArtifact")]
         public virtual XPSModelArtifactItem ServingArtifact { get; set; }
 
-        /// <summary>GCS uri prefix of Tensorflow JavaScript binary files 'groupX-shardXofX.bin' Deprecated.</summary>
+        /// <summary>
+        /// Google Cloud Storage URI prefix of Tensorflow JavaScript binary files 'groupX-shardXofX.bin'. Deprecated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tfJsBinaryGcsPrefix")]
         public virtual string TfJsBinaryGcsPrefix { get; set; }
 
-        /// <summary>GCS uri of Tensorflow Lite metadata 'tflite_metadata.json'.</summary>
+        /// <summary>Google Cloud Storage URI of Tensorflow Lite metadata 'tflite_metadata.json'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tfLiteMetadataGcsUri")]
         public virtual string TfLiteMetadataGcsUri { get; set; }
 
@@ -2621,7 +2622,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("artifactFormat")]
         public virtual string ArtifactFormat { get; set; }
 
-        /// <summary>The Google Cloud Storage (GCS) uri that stores the model binary files.</summary>
+        /// <summary>The Google Cloud Storage URI that stores the model binary files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
@@ -2629,7 +2630,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 8</summary>
     public class XPSPreprocessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2783,10 +2783,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Specification of Model explanation. Feature-based XAI in AutoML Vision ICN is deprecated, see b/288407203 for
-    /// context.
-    /// </summary>
+    /// <summary>Specification of Model explanation. Feature-based XAI in AutoML Vision ICN is deprecated.</summary>
     public class XPSResponseExplanationSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3165,7 +3162,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for a dataset used for AutoML Tables. Next ID: 6</summary>
+    /// <summary>Metadata for a dataset used for AutoML Tables.</summary>
     public class XPSTablesDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Id the column to split the table.</summary>
@@ -3417,7 +3414,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Component model. Next ID: 10</summary>
+    /// <summary>Component model.</summary>
     public class XPSTextComponentModel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Cloud Storage resource path to hold batch prediction model.</summary>
@@ -3703,7 +3700,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 18</summary>
     public class XPSTrainResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Estimated model size in bytes once deployed.</summary>
@@ -4008,8 +4004,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     public class XPSVideoExportModelSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Contains the model format and internal location of the model files to be exported/downloaded. Use the GCS
-        /// bucket name which is provided via TrainRequest.gcs_bucket_name to store the model files.
+        /// Contains the model format and internal location of the model files to be exported/downloaded. Use the Google
+        /// Cloud Storage bucket name which is provided via TrainRequest.gcs_bucket_name to store the model files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportModelOutputConfig")]
         public virtual System.Collections.Generic.IList<XPSExportModelOutputConfig> ExportModelOutputConfig { get; set; }
