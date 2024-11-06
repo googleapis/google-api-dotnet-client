@@ -707,6 +707,16 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>
+        /// Optional. [Apple Live
+        /// Activity](https://developer.apple.com/design/human-interface-guidelines/live-activities) token to send
+        /// updates to. This token can either be a push token or
+        /// [push-to-start](https://developer.apple.com/documentation/activitykit/activity/pushtostarttoken) token from
+        /// Apple.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("liveActivityToken")]
+        public virtual string LiveActivityToken { get; set; }
+
+        /// <summary>
         /// APNs payload as a JSON object, including both `aps` dictionary and custom payload. See [Payload Key
         /// Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
         /// If present, it overrides google.firebase.fcm.v1.Notification.title and
