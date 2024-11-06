@@ -2666,7 +2666,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>An environment for running orchestration tasks.</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Configuration parameters for this environment.</summary>
+        /// <summary>Optional. Configuration parameters for this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual EnvironmentConfig Config { get; set; }
 
@@ -2717,7 +2717,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The resource name of the environment, in the form:
+        /// Identifier. The resource name of the environment, in the form:
         /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a
         /// lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         /// </summary>
@@ -2862,7 +2862,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; }
 
-        /// <summary>The configuration used for the Kubernetes Engine cluster.</summary>
+        /// <summary>Optional. The configuration used for the Kubernetes Engine cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; }
 
@@ -2873,7 +2873,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
-        /// <summary>The configuration used for the Private IP Cloud Composer environment.</summary>
+        /// <summary>Optional. The configuration used for the Private IP Cloud Composer environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEnvironmentConfig")]
         public virtual PrivateEnvironmentConfig PrivateEnvironmentConfig { get; set; }
 
@@ -2891,7 +2891,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resilienceMode")]
         public virtual string ResilienceMode { get; set; }
 
-        /// <summary>The configuration settings for software inside the environment.</summary>
+        /// <summary>Optional. The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; }
 
@@ -3942,8 +3942,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> EnvVariables { get; set; }
 
         /// <summary>
-        /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
-        /// functionality and the version of Apache Airflow. It must match the regular expression
+        /// Optional. The version of the software running in the environment. This encapsulates both the version of
+        /// Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression
         /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`.
         /// When used as input, the server also checks if the provided version is supported and denies the request for
         /// an unsupported version. The Cloud Composer portion of the image version is a full [semantic
@@ -4116,7 +4116,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     {
         /// <summary>
         /// Optional. The "data" field of Kubernetes ConfigMap, organized in key-value pairs. For details see:
-        /// https://kubernetes.io/docs/concepts/configuration/configmap/
+        /// https://kubernetes.io/docs/concepts/configuration/configmap/ Example: { "example_key": "example_value",
+        /// "another_key": "another_value" }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string, string> Data { get; set; }
@@ -4140,7 +4141,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>
         /// Optional. The "data" field of Kubernetes Secret, organized in key-value pairs, which can contain sensitive
         /// values such as a password, a token, or a key. The values for all keys have to be base64-encoded strings. For
-        /// details see: https://kubernetes.io/docs/concepts/configuration/secret/
+        /// details see: https://kubernetes.io/docs/concepts/configuration/secret/ Example: { "example":
+        /// "ZXhhbXBsZV92YWx1ZQ==", "another-example": "YW5vdGhlcl9leGFtcGxlX3ZhbHVl" }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string, string> Data { get; set; }
