@@ -5998,6 +5998,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repairRolloutRule")]
         public virtual RepairRolloutRule RepairRolloutRule { get; set; }
 
+        /// <summary>
+        /// Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to
+        /// the specified target(s) on a configured schedule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timedPromoteReleaseRule")]
+        public virtual TimedPromoteReleaseRule TimedPromoteReleaseRule { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6008,6 +6015,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Optional. Details around targets enumerated in the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetsPresentCondition")]
         public virtual TargetsPresentCondition TargetsPresentCondition { get; set; }
+
+        /// <summary>
+        /// Optional. TimedPromoteReleaseCondition contains rule conditions specific to a an Automation with a timed
+        /// promote release rule defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timedPromoteReleaseCondition")]
+        public virtual TimedPromoteReleaseCondition TimedPromoteReleaseCondition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6159,11 +6173,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string StateDescription { get; set; }
 
         /// <summary>
-        /// Output only. The ID of the target that represents the promotion stage that initiates the `AutomationRun`.
-        /// The value of this field is the last segment of a target name.
+        /// Output only. The ID of the source target that initiates the `AutomationRun`. The value of this field is the
+        /// last segment of a target name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual string TargetId { get; set; }
+
+        /// <summary>
+        /// Output only. Promotes a release to a specified 'Target' as defined in a Timed Promote Release rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timedPromoteReleaseOperation")]
+        public virtual TimedPromoteReleaseOperation TimedPromoteReleaseOperation { get; set; }
 
         private string _updateTimeRaw;
 
@@ -10736,6 +10756,21 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The targets involved in a single timed promotion.</summary>
+    public class Targets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The destination target ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTargetId")]
+        public virtual string DestinationTargetId { get; set; }
+
+        /// <summary>Optional. The source target ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTargetId")]
+        public virtual string SourceTargetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `TargetsPresentCondition` contains information on any Targets referenced in the Delivery Pipeline that do not
     /// actually exist.
@@ -10918,6 +10953,127 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Optional. Recurring weekly windows within which actions are restricted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeklyWindows")]
         public virtual System.Collections.Generic.IList<WeeklyWindow> WeeklyWindows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `TimedPromoteReleaseCondition` contains conditions specific to an Automation with a Timed Promote Release rule
+    /// defined.
+    /// </summary>
+    public class TimedPromoteReleaseCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _nextPromotionTimeRaw;
+
+        private object _nextPromotionTime;
+
+        /// <summary>Output only. When the next scheduled promotion(s) will occur.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPromotionTime")]
+        public virtual string NextPromotionTimeRaw
+        {
+            get => _nextPromotionTimeRaw;
+            set
+            {
+                _nextPromotionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextPromotionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextPromotionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextPromotionTimeDateTimeOffset instead.")]
+        public virtual object NextPromotionTime
+        {
+            get => _nextPromotionTime;
+            set
+            {
+                _nextPromotionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextPromotionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextPromotionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextPromotionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextPromotionTimeRaw);
+            set => NextPromotionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. A list of targets involved in the upcoming timed promotion(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetsList")]
+        public virtual System.Collections.Generic.IList<Targets> TargetsList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the information of an automated timed promote-release operation.</summary>
+    public class TimedPromoteReleaseOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The starting phase of the rollout created by this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        /// <summary>Output only. The name of the release to be promoted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("release")]
+        public virtual string Release { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the target that represents the promotion stage to which the release will be promoted.
+        /// The value of this field is the last segment of a target name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual string TargetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified
+    /// target(s) on a configured schedule.
+    /// </summary>
+    public class TimedPromoteReleaseRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Information around the state of the Automation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual AutomationRuleCondition Condition { get; set; }
+
+        /// <summary>
+        /// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
+        public virtual string DestinationPhase { get; set; }
+
+        /// <summary>
+        /// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default
+        /// it to the next stage in the promotion flow. The value of this field could be one of the following: * The
+        /// last segment of a target name * "@next", the next target in the promotion sequence
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTargetId")]
+        public virtual string DestinationTargetId { get; set; }
+
+        /// <summary>
+        /// Required. ID of the rule. This ID must be unique in the `Automation` resource to which this rule belongs.
+        /// The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Schedule in crontab format. e.g. "0 9 * * 1" for every Monday at 9am.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual string Schedule { get; set; }
+
+        /// <summary>
+        /// Required. The time zone in IANA format [IANA Time Zone Database](https://www.iana.org/time-zones) (e.g.
+        /// America/New_York).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
