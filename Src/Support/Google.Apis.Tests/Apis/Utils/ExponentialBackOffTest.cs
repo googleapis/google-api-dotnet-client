@@ -34,28 +34,41 @@ namespace Google.Apis.Tests.Apis.Utils
             Assert.Throws<ArgumentOutOfRangeException>(() => backOff.GetNextBackOff(value));
         }
 
-        /// <summary>Tests constructor with invalid time span object (less then 0 or greater than 1sec).</summary>
+        /// <summary>Tests constructor with invalid maximum number of retries (less than 0 or greater than 20).</summary>
         [Theory]
-        [InlineData(-1, 10)]
-        [InlineData(-1 * TimeSpan.TicksPerDay / TimeSpan.TicksPerMillisecond, 10)]
-        [InlineData(1001, 10)]
-        [InlineData(500, -1)]
-        [InlineData(500, 21)]
-        public void Constructor_InvalidValue(int milliseconds, int max)
+        [InlineData(-1)]
+        [InlineData(21)]
+        public void Constructor_InvalidMaxRetries(int max) =>
+            Assert.Throws<ArgumentOutOfRangeException>(() => new ExponentialBackOff(TimeSpan.FromMilliseconds(500), max));
+
+        /// <summary>Tests constructor with invalid time span object (less than 0 or greater than 1sec).</summary>
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(-1 * TimeSpan.TicksPerDay / TimeSpan.TicksPerMillisecond)]
+        [InlineData(1001)]
+        public void Constructor_InvalidTimespanJitter(int deltaBackoffMs)
         {
-            var deltaBackoff = TimeSpan.FromMilliseconds(milliseconds);
-            Assert.Throws<ArgumentOutOfRangeException>(() => new ExponentialBackOff(deltaBackoff, max));
+            var deltaBackoff = TimeSpan.FromMilliseconds(deltaBackoffMs);
+            Assert.Throws<ArgumentOutOfRangeException>(() => new ExponentialBackOff(deltaBackoff));
         }
 
-        /// <summary>Tests next back-off time span maximum, minimum and average values for tries 1 to 15.</summary>
+        /// <summary>Tests constructor with invalid percent jitter (less than 0 or greater than 100).</summary>
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(101)]
+        public void Constructor_InvalidValue(short percentJitter)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => ExponentialBackOff.FromDeltaBackOffPercent(percentJitter));
+        }
+
         [Fact]
-        public void GetNextBackOff_Retry1To15()
+        public void GetNextBackOff_TimestampBoundJitter()
         {
             foreach (int i in Enumerable.Range(1, 10))
             {
-                SubtestGetNextBackOff(i);
-                SubtestGetNextBackOff(i, TimeSpan.FromMilliseconds(20));
-                SubtestGetNextBackOff(i, TimeSpan.FromMilliseconds(0), 0);
+                SubtestGetNextBackOff_TimestampBoundJitter(i);
+                SubtestGetNextBackOff_TimestampBoundJitter(i, TimeSpan.FromMilliseconds(20));
+                SubtestGetNextBackOff_TimestampBoundJitter(i, TimeSpan.Zero);
             }
         }
 
@@ -64,26 +77,51 @@ namespace Google.Apis.Tests.Apis.Utils
         /// <param name="delta">The delta the exponential back-off uses. 
         /// <seealso cref="ExponentialBackOff.DeltaBackOff"/> for more details.
         /// </param>
-        /// <param name="epsilon">Used for checking the average result of the input retry [In milliseconds].</param>
-        private void SubtestGetNextBackOff(int retry, Nullable<TimeSpan> delta = null, int epsilon = 20)
+        private void SubtestGetNextBackOff_TimestampBoundJitter(int retry, TimeSpan? delta = null)
         {
             int expectedMillis = (int)Math.Pow(2, (retry - 1)) * 1000;
-            ExponentialBackOff backOff = delta.HasValue ?
-                new ExponentialBackOff(delta.Value) : new ExponentialBackOff();
+            ExponentialBackOff backOff = delta.HasValue ? new ExponentialBackOff(delta.Value) : new ExponentialBackOff();
 
             TimeSpan min = TimeSpan.FromMilliseconds(expectedMillis - backOff.DeltaBackOff.TotalMilliseconds);
             TimeSpan max = TimeSpan.FromMilliseconds(expectedMillis + backOff.DeltaBackOff.TotalMilliseconds);
-            long total = 0;
-            long repeat = 1000;
-            for (int i = 0; i < repeat; ++i)
+
+            for (int i = 0; i < 1000; ++i)
             {
                 var ts = backOff.GetNextBackOff(retry);
                 Assert.InRange(ts, min, max);
-                total += (int)ts.TotalMilliseconds;
             }
+        }
 
-            var average = (int)(total / repeat);
-            Assert.InRange(average, expectedMillis - epsilon, expectedMillis + epsilon);
+        [Fact]
+        public void GetNextBackOff_PercentBoundJitter()
+        {
+            foreach (int i in Enumerable.Range(1, 10))
+            {
+                SubtestGetNextBackOff_PercentBoundJitter(i, 10);
+                SubtestGetNextBackOff_PercentBoundJitter(i, 100);
+                SubtestGetNextBackOff_PercentBoundJitter(i, 0);
+            }
+        }
+
+        /// <summary>Test helper for testing retrying using exponential back-off.</summary>
+        /// <param name="retry">Index of current retry.</param>
+        /// <param name="delta">The delta the exponential back-off uses. 
+        /// <seealso cref="ExponentialBackOff.DeltaBackOff"/> for more details.
+        /// </param>
+        private void SubtestGetNextBackOff_PercentBoundJitter(int retry, short percent)
+        {
+            int expectedMillis = (int)Math.Pow(2, (retry - 1)) * 1000;
+            ExponentialBackOff backOff = ExponentialBackOff.FromDeltaBackOffPercent(percent);
+
+            int jitterBound = percent * expectedMillis / 100;
+            TimeSpan min = TimeSpan.FromMilliseconds(expectedMillis - jitterBound);
+            TimeSpan max = TimeSpan.FromMilliseconds(expectedMillis + jitterBound);
+
+            for (int i = 0; i < 1000; ++i)
+            {
+                var ts = backOff.GetNextBackOff(retry);
+                Assert.InRange(ts, min, max);
+            }
         }
 
         /// <summary>Tests next back-off time span with specific maximum of retries.</summary>
