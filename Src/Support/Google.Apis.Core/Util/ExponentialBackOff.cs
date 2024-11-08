@@ -28,48 +28,45 @@ namespace Google.Apis.Util
         /// <summary>The maximum allowed number of retries.</summary>
         private const int MaxAllowedNumRetries = 20;
 
-        private readonly TimeSpan deltaBackOff;
+        /// <summary>The random instance which generates a random number to add the to next back-off.</summary>
+        private static readonly Random Random = new Random();
+
         /// <summary>
-        /// Gets the delta time span used to generate a random milliseconds to add to the next back-off.
+        /// Time span used to bound the back-off jitter.
         /// If the value is <see cref="System.TimeSpan.Zero"/> then the generated back-off will be exactly 1, 2, 4,
         /// 8, 16, etc. seconds. A valid value is between zero and one second. The default value is 250ms, which means
         /// that the generated back-off will be [0.75-1.25]sec, [1.75-2.25]sec, [3.75-4.25]sec, and so on.
         /// </summary>
-        public TimeSpan DeltaBackOff
-        {
-            get { return deltaBackOff; }
-        }
+        public TimeSpan DeltaBackOff { get; }
 
-        private readonly int maxNumOfRetries;
-        /// <summary>Gets the maximum number of retries. Default value is <c>10</c>.</summary>
-        public int MaxNumOfRetries
-        {
-            get { return maxNumOfRetries; }
-        }
+        /// <summary>The maximum number of retries. Default value is <c>10</c>.</summary>
+        public int MaxNumOfRetries { get; }
 
-        /// <summary>The random instance which generates a random number to add the to next back-off.</summary>
-        private Random random = new Random();
-
-        /// <summary>Constructs a new exponential back-off with default values.</summary>
-        public ExponentialBackOff()
-            : this(TimeSpan.FromMilliseconds(250))
+        /// <summary>
+        /// Constructs a new exponential back-off with <see cref="DeltaBackOff"/> set to 250ms
+        /// and <see cref="MaxNumOfRetries"/> set to 10.
+        /// </summary>
+        public ExponentialBackOff() : this(TimeSpan.FromMilliseconds(250))
         {
         }
 
-        /// <summary>Constructs a new exponential back-off with the given delta and maximum retries.</summary>
+        /// <summary>
+        /// Constructs a new exponential back-off with the given delta and maximum retries.
+        /// If unspecified, <paramref name="maximumNumOfRetries"/> is set to 10.
+        /// </summary>
         public ExponentialBackOff(TimeSpan deltaBackOff, int maximumNumOfRetries = 10)
         {
             if (deltaBackOff < TimeSpan.Zero || deltaBackOff > TimeSpan.FromSeconds(1))
             {
-                throw new ArgumentOutOfRangeException("deltaBackOff");
+                throw new ArgumentOutOfRangeException(nameof(deltaBackOff));
             }
             if (maximumNumOfRetries < 0 || maximumNumOfRetries > MaxAllowedNumRetries)
             {
-                throw new ArgumentOutOfRangeException("deltaBackOff");
+                throw new ArgumentOutOfRangeException(nameof(maximumNumOfRetries));
             }
 
-            this.deltaBackOff = deltaBackOff;
-            this.maxNumOfRetries = maximumNumOfRetries;
+            DeltaBackOff = deltaBackOff;
+            MaxNumOfRetries = maximumNumOfRetries;
         }
 
         #region IBackOff Members
@@ -79,7 +76,7 @@ namespace Google.Apis.Util
         {
             if (currentRetry <= 0)
             {
-                throw new ArgumentOutOfRangeException("currentRetry");
+                throw new ArgumentOutOfRangeException(nameof(currentRetry));
             }
             if (currentRetry > MaxNumOfRetries)
             {
@@ -87,7 +84,7 @@ namespace Google.Apis.Util
             }
 
             // Generate a random number of milliseconds and add it to the current exponential number.
-            var randomMilli = (double)random.Next(
+            var randomMilli = (double)Random.Next(
                 (int)(DeltaBackOff.TotalMilliseconds * -1),
                 (int)(DeltaBackOff.TotalMilliseconds * 1));
             int backOffMilli = (int)(Math.Pow(2.0, (double)currentRetry - 1) * 1000 + randomMilli);
