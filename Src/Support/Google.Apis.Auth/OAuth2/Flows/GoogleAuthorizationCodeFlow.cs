@@ -18,7 +18,6 @@ using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Json;
-using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -35,22 +34,24 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>
         /// The project ID associated with the credential using this flow.
         /// </summary>
-        public string ProjectId { get; private set; }
-
-        private readonly string revokeTokenUrl;
+        public string ProjectId { get; }
 
         /// <summary>Gets the token revocation URL.</summary>
-        public string RevokeTokenUrl { get { return revokeTokenUrl; } }
+        public string RevokeTokenUrl { get; }
 
-        /// <summary>Gets the include granted scopes indicator.
-        /// Do not use, use <see cref="IncludeGrantedScopes"/> instead.</summary>
+        /// <summary>Gets the include granted scopes indicator. </summary>
+        [Obsolete("Use IncludeGrantedScopes instead.")]
         public readonly bool? includeGrantedScopes;
 
         /// <summary>Gets the include granted scopes indicator.</summary>
-        public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
+        public bool? IncludeGrantedScopes =>
+#pragma warning disable CS0618 // Type or member is obsolete
+                includeGrantedScopes;
+#pragma warning restore CS0618 // Type or member is obsolete
+
 
         /// <summary>Gets the login_hint.</summary>
-        public string LoginHint { get; private set; }
+        public string LoginHint { get; }
 
         /// <summary>
         /// Gets the prompt for consent behaviour.
@@ -58,30 +59,27 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// See <a href="https://developers.google.com/identity/protocols/OpenIDConnect#prompt">OpenIDConnect documentation</a>
         /// for details.
         /// </summary>
-        public string Prompt { get; private set; }
+        public string Prompt { get; }
 
         /// <summary>Gets the nonce.</summary>
-        public string Nonce { get; private set; }
-
-        private readonly IEnumerable<KeyValuePair<string, string>> userDefinedQueryParams;
+        public string Nonce { get; }
 
         /// <summary>Gets the user defined query parameters.</summary>
-        public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams
-        { 
-            get { return userDefinedQueryParams; } 
-        }
+        public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; }
 
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
         {
             ProjectId = initializer.ProjectId;
-            revokeTokenUrl = initializer.RevokeTokenUrl;
+            RevokeTokenUrl = initializer.RevokeTokenUrl;
+#pragma warning disable CS0618 // Type or member is obsolete
             includeGrantedScopes = initializer.IncludeGrantedScopes;
+#pragma warning restore CS0618 // Type or member is obsolete
             LoginHint = initializer.LoginHint;
             Prompt = initializer.Prompt;
             Nonce = initializer.Nonce;
-            userDefinedQueryParams = initializer.UserDefinedQueryParams;
+            UserDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
 
         /// <inheritdoc/>
@@ -183,7 +181,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 : base(flow)
             {
                 ProjectId = flow.ProjectId;
-                RevokeTokenUrl = flow.revokeTokenUrl;
+                RevokeTokenUrl = flow.RevokeTokenUrl;
                 IncludeGrantedScopes = flow.IncludeGrantedScopes;
                 LoginHint = flow.LoginHint;
                 Prompt = flow.Prompt;
