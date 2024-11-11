@@ -8026,6 +8026,13 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual NodeKubeletConfig DesiredNodePoolAutoConfigKubeletConfig { get; set; }
 
         /// <summary>
+        /// The desired Linux node config for all auto-provisioned node pools in autopilot clusters and node
+        /// auto-provisioning enabled clusters. Currently only `cgroup_mode` can be set here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolAutoConfigLinuxNodeConfig")]
+        public virtual LinuxNodeConfig DesiredNodePoolAutoConfigLinuxNodeConfig { get; set; }
+
+        /// <summary>
         /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node
         /// auto-provisioning enabled clusters.
         /// </summary>
@@ -10092,6 +10099,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
         public virtual System.Nullable<int> LocalSsdCount { get; set; }
 
+        /// <summary>Specifies which method should be used for encrypting the Local SSDs attahced to the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSsdEncryptionMode")]
+        public virtual string LocalSsdEncryptionMode { get; set; }
+
         /// <summary>Logging configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
         public virtual NodePoolLoggingConfig LoggingConfig { get; set; }
@@ -10554,6 +10565,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class NodePoolAutoConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Configuration options for Linux nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
+        public virtual LinuxNodeConfig LinuxNodeConfig { get; set; }
+
         /// <summary>
         /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for
         /// network firewalls and are specified by the client during cluster creation. Each tag within the list must
@@ -10599,29 +10614,30 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string LocationPolicy { get; set; }
 
         /// <summary>
-        /// Maximum number of nodes for one location in the NodePool. Must be &amp;gt;= min_node_count. There has to be
+        /// Maximum number of nodes for one location in the node pool. Must be &amp;gt;= min_node_count. There has to be
         /// enough quota to scale up the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
         public virtual System.Nullable<int> MaxNodeCount { get; set; }
 
         /// <summary>
-        /// Minimum number of nodes for one location in the NodePool. Must be &amp;gt;= 1 and &amp;lt;= max_node_count.
+        /// Minimum number of nodes for one location in the node pool. Must be greater than or equal to 0 and less than
+        /// or equal to max_node_count.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
 
         /// <summary>
-        /// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough
-        /// quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count
-        /// fields.
+        /// Maximum number of nodes in the node pool. Must be greater than or equal to total_min_node_count. There has
+        /// to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the
+        /// *_node_count fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalMaxNodeCount")]
         public virtual System.Nullable<int> TotalMaxNodeCount { get; set; }
 
         /// <summary>
-        /// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The
-        /// total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        /// Minimum number of nodes in the node pool. Must be greater than or equal to 0 and less than or equal to
+        /// total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalMinNodeCount")]
         public virtual System.Nullable<int> TotalMinNodeCount { get; set; }
@@ -12997,6 +13013,120 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The resource type that is upgrading.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
+
+        /// <summary>The target version for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// UpgradeInfoEvent is a notification sent to customers about the upgrade information of a resource.
+    /// </summary>
+    public class UpgradeInfoEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current version before the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
+        public virtual string CurrentVersion { get; set; }
+
+        /// <summary>A brief description of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time when the operation ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The operation associated with this upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>
+        /// Optional relative path to the resource. For example in node pool upgrades, the relative path of the node
+        /// pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The resource type associated with the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time when the operation was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The state of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The target version for the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
