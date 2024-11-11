@@ -1813,6 +1813,129 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
+                    /// <summary>Query PSC propagation status the status of a Network Connectivity Center hub.</summary>
+                    /// <param name="name">Required. The name of the hub.</param>
+                    public virtual QueryStatusRequest QueryStatus(string name)
+                    {
+                        return new QueryStatusRequest(this.service, name);
+                    }
+
+                    /// <summary>Query PSC propagation status the status of a Network Connectivity Center hub.</summary>
+                    public class QueryStatusRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.QueryHubStatusResponse>
+                    {
+                        /// <summary>Constructs a new QueryStatus request.</summary>
+                        public QueryStatusRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the hub.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An expression that filters the list of results. The filter can be used to filter
+                        /// the results by the following fields: * psc_propagation_status.source_spoke *
+                        /// psc_propagation_status.source_group * psc_propagation_status.source_forwarding_rule *
+                        /// psc_propagation_status.target_spoke * psc_propagation_status.target_group *
+                        /// psc_propagation_status.code * psc_propagation_status.message
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. A field that counts are grouped by. A comma-separated list of any of these fields:
+                        /// * psc_propagation_status.source_spoke * psc_propagation_status.source_group *
+                        /// psc_propagation_status.source_forwarding_rule * psc_propagation_status.target_spoke *
+                        /// psc_propagation_status.target_group * psc_propagation_status.code
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("groupBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GroupBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. Sort the results in the ascending order by specific fields returned in the
+                        /// response. A comma-separated list of any of these fields: *
+                        /// psc_propagation_status.source_spoke * psc_propagation_status.source_group *
+                        /// psc_propagation_status.source_forwarding_rule * psc_propagation_status.target_spoke *
+                        /// psc_propagation_status.target_group * psc_propagation_status.code If `group_by` is set, the
+                        /// value of the `order_by` field must be the same as or a subset of the `group_by` field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>Optional. The maximum number of results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. The page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "queryStatus";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:queryStatus";
+
+                        /// <summary>Initializes QueryStatus parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("groupBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "groupBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Rejects a Network Connectivity Center spoke from being attached to a hub. If the spoke was
                     /// previously in the `ACTIVE` state, it transitions to the `INACTIVE` state and is no longer able
@@ -7346,6 +7469,25 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The hub status entry.</summary>
+    public class HubStatusEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of status. If group_by is not set in the request, the default is 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>The same group_by field from the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupBy")]
+        public virtual string GroupBy { get; set; }
+
+        /// <summary>The PSC propagation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscPropagationStatus")]
+        public virtual PscPropagationStatus PscPropagationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>InterconnectAttachment that this route applies to.</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7557,12 +7699,15 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 7</summary>
     public class LinkedProducerVpcNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. IP ranges encompassing the subnets to be excluded from peering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ExcludeExportRanges { get; set; }
+
+        /// <summary>Optional. IP ranges allowed to be included from peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> IncludeExportRanges { get; set; }
 
         /// <summary>Immutable. The URI of the Service Consumer VPC that the Producer VPC is peered with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -8599,6 +8744,59 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The PSC propagation status in a hub.</summary>
+    public class PscPropagationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The propagation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The human-readable summary of the PSC connection propagation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The name of the forwarding rule exported to the hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceForwardingRule")]
+        public virtual string SourceForwardingRule { get; set; }
+
+        /// <summary>The name of the group that the source spoke belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceGroup")]
+        public virtual string SourceGroup { get; set; }
+
+        /// <summary>The name of the spoke that the source forwarding rule belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSpoke")]
+        public virtual string SourceSpoke { get; set; }
+
+        /// <summary>The name of the group that the target spoke belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetGroup")]
+        public virtual string TargetGroup { get; set; }
+
+        /// <summary>The name of the spoke that the source forwarding rule propagates to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSpoke")]
+        public virtual string TargetSpoke { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for HubService.QueryHubStatus.</summary>
+    public class QueryHubStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of hub status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hubStatusEntries")]
+        public virtual System.Collections.Generic.IList<HubStatusEntry> HubStatusEntries { get; set; }
+
+        /// <summary>
+        /// The token for the next page of the response. To see more results, use this value as the page_token for your
+        /// next request. If this value is empty, there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The RegionalEndpoint resource.</summary>
     public class RegionalEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9096,7 +9294,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ServiceClass resource. Next id: 9</summary>
+    /// <summary>The ServiceClass resource.</summary>
     public class ServiceClass : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -9204,7 +9402,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         }
     }
 
-    /// <summary>The ServiceConnectionMap resource. Next id: 15</summary>
+    /// <summary>The ServiceConnectionMap resource.</summary>
     public class ServiceConnectionMap : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The PSC configurations on consumer side.</summary>
@@ -9339,7 +9537,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         }
     }
 
-    /// <summary>The ServiceConnectionPolicy resource. Next id: 12</summary>
+    /// <summary>The ServiceConnectionPolicy resource.</summary>
     public class ServiceConnectionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -9470,7 +9668,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         }
     }
 
-    /// <summary>The ServiceConnectionToken resource. Next id: 10</summary>
+    /// <summary>The ServiceConnectionToken resource.</summary>
     public class ServiceConnectionToken : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -9731,10 +9929,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Output only. The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE`
-        /// state.
-        /// </summary>
+        /// <summary>Output only. The reasons for current state of the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<StateReason> Reasons { get; set; }
 
