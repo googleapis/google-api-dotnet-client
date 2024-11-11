@@ -817,6 +817,16 @@ namespace Google.Apis.MapsPlaces.v1.Data
     public class GoogleMapsPlacesV1AutocompletePlacesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Include pure service area businesses if the field is set to true. Pure service area business is a
+        /// business that visits or delivers to customers directly but does not serve customers at their business
+        /// address. For example, businesses like cleaning services or plumbers. Those businesses do not have a physical
+        /// address or location on Google Maps. Places will not return fields including `location`, `plus_code`, and
+        /// other location related fields for these businesses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includePureServiceAreaBusinesses")]
+        public virtual System.Nullable<bool> IncludePureServiceAreaBusinesses { get; set; }
+
+        /// <summary>
         /// Optional. If true, the response will include both Place and query predictions. Otherwise the response will
         /// only return Place predictions.
         /// </summary>
@@ -1549,8 +1559,13 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributions")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceAttribution> Attributions { get; set; }
 
+        /// <summary>The business status for the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessStatus")]
         public virtual string BusinessStatus { get; set; }
+
+        /// <summary>List of places in which the current place is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containingPlaces")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceContainingPlace> ContainingPlaces { get; set; }
 
         /// <summary>Specifies if the business supports curbside pickup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("curbsidePickup")]
@@ -1710,6 +1725,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceLevel")]
         public virtual string PriceLevel { get; set; }
 
+        /// <summary>The price range associated with a Place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceRange")]
+        public virtual GoogleMapsPlacesV1PriceRange PriceRange { get; set; }
+
         /// <summary>
         /// The primary type of the given result. This type must one of the Places API supported types. For example,
         /// "restaurant", "cafe", "airport", etc. A place can only have a single primary type. For the complete list of
@@ -1726,6 +1745,15 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryTypeDisplayName")]
         public virtual GoogleTypeLocalizedText PrimaryTypeDisplayName { get; set; }
+
+        /// <summary>
+        /// Indicates whether the place is a pure service area business. Pure service area business is a business that
+        /// visits or delivers to customers directly but does not serve customers at their business address. For
+        /// example, businesses like cleaning services or plumbers. Those businesses may not have a physical address or
+        /// location on Google Maps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pureServiceAreaBusiness")]
+        public virtual System.Nullable<bool> PureServiceAreaBusiness { get; set; }
 
         /// <summary>A rating between 1.0 and 5.0, based on user reviews of this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
@@ -1936,6 +1964,21 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Info about the place in which this place is located.</summary>
+    public class GoogleMapsPlacesV1PlaceContainingPlace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The place id of the place in which this place is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The resource name of the place in which this place is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Experimental: See
     /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
@@ -2009,6 +2052,86 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>Information about business hour of the place.</summary>
     public class GoogleMapsPlacesV1PlaceOpeningHours : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _nextCloseTimeRaw;
+
+        private object _nextCloseTime;
+
+        /// <summary>
+        /// The next time the current opening hours period ends up to 7 days in the future. This field is only populated
+        /// if the opening hours period is active at the time of serving the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextCloseTime")]
+        public virtual string NextCloseTimeRaw
+        {
+            get => _nextCloseTimeRaw;
+            set
+            {
+                _nextCloseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextCloseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextCloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextCloseTimeDateTimeOffset instead.")]
+        public virtual object NextCloseTime
+        {
+            get => _nextCloseTime;
+            set
+            {
+                _nextCloseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextCloseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NextCloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextCloseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextCloseTimeRaw);
+            set => NextCloseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _nextOpenTimeRaw;
+
+        private object _nextOpenTime;
+
+        /// <summary>
+        /// The next time the current opening hours period starts up to 7 days in the future. This field is only
+        /// populated if the opening hours period is not active at the time of serving the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextOpenTime")]
+        public virtual string NextOpenTimeRaw
+        {
+            get => _nextOpenTimeRaw;
+            set
+            {
+                _nextOpenTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextOpenTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextOpenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextOpenTimeDateTimeOffset instead.")]
+        public virtual object NextOpenTime
+        {
+            get => _nextOpenTime;
+            set
+            {
+                _nextOpenTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextOpenTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NextOpenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextOpenTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextOpenTimeRaw);
+            set => NextOpenTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Whether the opening hours period is currently active. For regular opening hours and current opening hours,
         /// this field means whether the place is open. For secondary opening hours and current secondary opening hours,
@@ -2229,6 +2352,24 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodedPolyline")]
         public virtual string EncodedPolyline { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The price range associated with a Place. `end_price` could be unset, which indicates a range without upper bound
+    /// (e.g. "More than $100").
+    /// </summary>
+    public class GoogleMapsPlacesV1PriceRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The high end of the price range (exclusive). Price should be lower than this amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endPrice")]
+        public virtual GoogleTypeMoney EndPrice { get; set; }
+
+        /// <summary>The low end of the price range (inclusive). Price should be at or above this amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startPrice")]
+        public virtual GoogleTypeMoney StartPrice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2592,6 +2733,16 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Optional. Set the searchable EV options of a place search request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evOptions")]
         public virtual GoogleMapsPlacesV1SearchTextRequestEVOptions EvOptions { get; set; }
+
+        /// <summary>
+        /// Optional. Include pure service area businesses if the field is set to true. Pure service area business is a
+        /// business that visits or delivers to customers directly but does not serve customers at their business
+        /// address. For example, businesses like cleaning services or plumbers. Those businesses do not have a physical
+        /// address or location on Google Maps. Places will not return fields including `location`, `plus_code`, and
+        /// other location related fields for these businesses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includePureServiceAreaBusinesses")]
+        public virtual System.Nullable<bool> IncludePureServiceAreaBusinesses { get; set; }
 
         /// <summary>
         /// The requested place type. Full list of types supported:
