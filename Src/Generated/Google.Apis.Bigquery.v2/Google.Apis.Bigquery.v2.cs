@@ -4281,7 +4281,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("argumentKind")]
         public virtual string ArgumentKind { get; set; }
 
-        /// <summary>Required unless argument_kind = ANY_TYPE.</summary>
+        /// <summary>Set if argument_kind == FIXED_TYPE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual StandardSqlDataType DataType { get; set; }
 
@@ -4634,25 +4634,25 @@ namespace Google.Apis.Bigquery.v2.Data
     public class BigLakeConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The connection specifying the credentials to be used to read and write to external storage, such
+        /// Optional. The connection specifying the credentials to be used to read and write to external storage, such
         /// as Cloud Storage. The connection_id can have the form `{project}.{location}.{connection_id}` or
         /// `projects/{project}/locations/{location}/connections/{connection_id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionId")]
         public virtual string ConnectionId { get; set; }
 
-        /// <summary>Required. The file format the table data is stored in.</summary>
+        /// <summary>Optional. The file format the table data is stored in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
         public virtual string FileFormat { get; set; }
 
         /// <summary>
-        /// Required. The fully qualified location prefix of the external folder where table data is stored. The '*'
+        /// Optional. The fully qualified location prefix of the external folder where table data is stored. The '*'
         /// wildcard character is not allowed. The URI should be in the format `gs://bucket/path_to_table/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageUri")]
         public virtual string StorageUri { get; set; }
 
-        /// <summary>Required. The table format the metadata only snapshots are stored in.</summary>
+        /// <summary>Optional. The table format the metadata only snapshots are stored in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableFormat")]
         public virtual string TableFormat { get; set; }
 
@@ -12046,7 +12046,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// The contribution metric. Applies to contribution analysis models. Allowed formats supported are for summable
-        /// and summable ratio contribution metrics. These include expressions such as "SUM(x)" or "SUM(x)/SUM(y)",
+        /// and summable ratio contribution metrics. These include expressions such as `SUM(x)` or `SUM(x)/SUM(y)`,
         /// where x and y are column names from the base table.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contributionMetric")]
