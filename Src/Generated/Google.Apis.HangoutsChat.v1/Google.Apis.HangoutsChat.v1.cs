@@ -1934,14 +1934,20 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named
-                /// spaces.
+                /// spaces. When [responding to user
+                /// interactions](https://developers.google.com/workspace/chat/receive-respond-interactions), this field
+                /// is ignored. For interactions within a thread, the reply is created in the same thread. Otherwise,
+                /// the reply is created as a new thread.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("messageReplyOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<MessageReplyOptionEnum> MessageReplyOption { get; set; }
 
                 /// <summary>
                 /// Optional. Specifies whether a message starts a thread or replies to one. Only supported in named
-                /// spaces.
+                /// spaces. When [responding to user
+                /// interactions](https://developers.google.com/workspace/chat/receive-respond-interactions), this field
+                /// is ignored. For interactions within a thread, the reply is created in the same thread. Otherwise,
+                /// the reply is created as a new thread.
                 /// </summary>
                 public enum MessageReplyOptionEnum
                 {
@@ -2092,8 +2098,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// When `true`, deleting a message also deletes its threaded replies. When `false`, if a message has
-                /// threaded replies, deletion fails. Only applies when [authenticating as a
+                /// Optional. When `true`, deleting a message also deletes its threaded replies. When `false`, if a
+                /// message has threaded replies, deletion fails. Only applies when [authenticating as a
                 /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Has no effect
                 /// when [authenticating as a Chat app]
                 /// (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
@@ -2240,13 +2246,13 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// A query filter. You can filter messages by date (`create_time`) and thread (`thread.name`). To
-                /// filter messages by the date they were created, specify the `create_time` with a timestamp in
-                /// [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339) format and double quotation marks. For example,
-                /// `"2023-04-21T11:30:00-04:00"`. You can use the greater than operator `&amp;gt;` to list messages
-                /// that were created after a timestamp, or the less than operator `&amp;lt;` to list messages that were
-                /// created before a timestamp. To filter messages within a time interval, use the `AND` operator
-                /// between two timestamps. To filter by thread, specify the `thread.name`, formatted as
+                /// Optional. A query filter. You can filter messages by date (`create_time`) and thread
+                /// (`thread.name`). To filter messages by the date they were created, specify the `create_time` with a
+                /// timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339) format and double quotation marks.
+                /// For example, `"2023-04-21T11:30:00-04:00"`. You can use the greater than operator `&amp;gt;` to list
+                /// messages that were created after a timestamp, or the less than operator `&amp;lt;` to list messages
+                /// that were created before a timestamp. To filter messages within a time interval, use the `AND`
+                /// operator between two timestamps. To filter by thread, specify the `thread.name`, formatted as
                 /// `spaces/{space}/threads/{thread}`. You can only specify one `thread.name` per query. To filter by
                 /// both thread and date, use the `AND` operator in your query. For example, the following queries are
                 /// valid:
@@ -2263,33 +2269,33 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// Optional, if resuming from a previous query. How the list of messages is ordered. Specify a value to
-                /// order by an ordering operation. Valid ordering operation values are as follows: - `ASC` for
-                /// ascending. - `DESC` for descending. The default ordering is `create_time ASC`.
+                /// Optional. Optional, if resuming from a previous query. How the list of messages is ordered. Specify
+                /// a value to order by an ordering operation. Valid ordering operation values are as follows: - `ASC`
+                /// for ascending. - `DESC` for descending. The default ordering is `create_time ASC`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// The maximum number of messages returned. The service might return fewer messages than this value. If
-                /// unspecified, at most 25 are returned. The maximum value is 1000. If you use a value more than 1000,
-                /// it's automatically changed to 1000. Negative values return an `INVALID_ARGUMENT` error.
+                /// Optional. The maximum number of messages returned. The service might return fewer messages than this
+                /// value. If unspecified, at most 25 are returned. The maximum value is 1000. If you use a value more
+                /// than 1000, it's automatically changed to 1000. Negative values return an `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Optional, if resuming from a previous query. A page token received from a previous list messages
-                /// call. Provide this parameter to retrieve the subsequent page. When paginating, all other parameters
-                /// provided should match the call that provided the page token. Passing different values to the other
-                /// parameters might lead to unexpected results.
+                /// Optional. Optional, if resuming from a previous query. A page token received from a previous list
+                /// messages call. Provide this parameter to retrieve the subsequent page. When paginating, all other
+                /// parameters provided should match the call that provided the page token. Passing different values to
+                /// the other parameters might lead to unexpected results.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
                 /// <summary>
-                /// Whether to include deleted messages. Deleted messages include deleted time and metadata about their
-                /// deletion, but message content is unavailable.
+                /// Optional. Whether to include deleted messages. Deleted messages include deleted time and metadata
+                /// about their deletion, but message content is unavailable.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -2370,12 +2376,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID of
-            /// the space where the message is posted and `{message}` is a system-assigned ID for the message. For
-            /// example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you create a
-            /// message, you can use this ID to specify the message in a request by replacing `{message}` with the value
-            /// from the `clientAssignedMessageId` field. For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`.
-            /// For details, see [Name a
+            /// Identifier. Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is
+            /// the ID of the space where the message is posted and `{message}` is a system-assigned ID for the message.
+            /// For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
+            /// create a message, you can use this ID to specify the message in a request by replacing `{message}` with
+            /// the value from the `clientAssignedMessageId` field. For example,
+            /// `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details, see [Name a
             /// message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
@@ -2404,11 +2410,11 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID
-                /// of the space where the message is posted and `{message}` is a system-assigned ID for the message.
-                /// For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
-                /// create a message, you can use this ID to specify the message in a request by replacing `{message}`
-                /// with the value from the `clientAssignedMessageId` field. For example,
+                /// Identifier. Resource name of the message. Format: `spaces/{space}/messages/{message}` Where
+                /// `{space}` is the ID of the space where the message is posted and `{message}` is a system-assigned ID
+                /// for the message. For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a
+                /// custom ID when you create a message, you can use this ID to specify the message in a request by
+                /// replacing `{message}` with the value from the `clientAssignedMessageId` field. For example,
                 /// `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details, see [Name a
                 /// message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
                 /// </summary>
@@ -2492,12 +2498,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID of
-            /// the space where the message is posted and `{message}` is a system-assigned ID for the message. For
-            /// example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you create a
-            /// message, you can use this ID to specify the message in a request by replacing `{message}` with the value
-            /// from the `clientAssignedMessageId` field. For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`.
-            /// For details, see [Name a
+            /// Identifier. Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is
+            /// the ID of the space where the message is posted and `{message}` is a system-assigned ID for the message.
+            /// For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
+            /// create a message, you can use this ID to specify the message in a request by replacing `{message}` with
+            /// the value from the `clientAssignedMessageId` field. For example,
+            /// `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details, see [Name a
             /// message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
@@ -2526,11 +2532,11 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID
-                /// of the space where the message is posted and `{message}` is a system-assigned ID for the message.
-                /// For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you
-                /// create a message, you can use this ID to specify the message in a request by replacing `{message}`
-                /// with the value from the `clientAssignedMessageId` field. For example,
+                /// Identifier. Resource name of the message. Format: `spaces/{space}/messages/{message}` Where
+                /// `{space}` is the ID of the space where the message is posted and `{message}` is a system-assigned ID
+                /// for the message. For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a
+                /// custom ID when you create a message, you can use this ID to specify the message in a request by
+                /// replacing `{message}` with the value from the `clientAssignedMessageId` field. For example,
                 /// `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details, see [Name a
                 /// message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
                 /// </summary>
@@ -3029,8 +3035,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
-            /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
+            /// Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The
+            /// calling user must be a Google Workspace administrator with the [manage chat and spaces conversations
             /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.delete` [OAuth 2.0
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
             /// </summary>
@@ -3186,8 +3192,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
-            /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
+            /// Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The
+            /// calling user must be a Google Workspace administrator with the [manage chat and spaces conversations
             /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` or
             /// `chat.admin.spaces.readonly` [OAuth 2.0
             /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
@@ -3347,8 +3353,8 @@ namespace Google.Apis.HangoutsChat.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the system-assigned ID for
-        /// the space. You can obtain the space ID by calling the
+        /// Identifier. Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the
+        /// system-assigned ID for the space. You can obtain the space ID by calling the
         /// [`spaces.list()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list) method or
         /// from the space URL. For example, if the space URL is
         /// `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is `AAAAAAAAA`.
@@ -3382,8 +3388,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the system-assigned ID
-            /// for the space. You can obtain the space ID by calling the
+            /// Identifier. Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the
+            /// system-assigned ID for the space. You can obtain the space ID by calling the
             /// [`spaces.list()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list) method
             /// or from the space URL. For example, if the space URL is
             /// `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is `AAAAAAAAA`.
@@ -3427,8 +3433,8 @@ namespace Google.Apis.HangoutsChat.v1
             public virtual object UpdateMask { get; set; }
 
             /// <summary>
-            /// When `true`, the method runs using the user's Google Workspace administrator privileges. The calling
-            /// user must be a Google Workspace administrator with the [manage chat and spaces conversations
+            /// Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The
+            /// calling user must be a Google Workspace administrator with the [manage chat and spaces conversations
             /// privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` [OAuth 2.0
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Some
             /// `FieldMask` values are not supported using admin access. For details, see the description of
@@ -4193,7 +4199,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A reference to the attachment data. This field is used with the media API to download the attachment data.
+        /// Optional. A reference to the attachment data. This field is used to create or update messages with
+        /// attachments, or with the media API to download the attachment data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentDataRef")]
         public virtual AttachmentDataRef AttachmentDataRef { get; set; }
@@ -4220,7 +4227,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual DriveDataRef DriveDataRef { get; set; }
 
         /// <summary>
-        /// Resource name of the attachment, in the form `spaces/{space}/messages/{message}/attachments/{attachment}`.
+        /// Optional. Resource name of the attachment, in the form
+        /// `spaces/{space}/messages/{message}/attachments/{attachment}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4244,15 +4252,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class AttachmentDataRef : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Opaque token containing a reference to an uploaded attachment. Treated by clients as an opaque string and
-        /// used to create or update Chat messages with attachments.
+        /// Optional. Opaque token containing a reference to an uploaded attachment. Treated by clients as an opaque
+        /// string and used to create or update Chat messages with attachments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentUploadToken")]
         public virtual string AttachmentUploadToken { get; set; }
 
         /// <summary>
-        /// The resource name of the attachment data. This field is used with the media API to download the attachment
-        /// data.
+        /// Optional. The resource name of the attachment data. This field is used with the media API to download the
+        /// attachment data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -6006,7 +6014,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An external data source, such as a relational data base.</summary>
+        /// <summary>An external data source, such as a relational database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDataSource")]
         public virtual GoogleAppsCardV1Action ExternalDataSource { get; set; }
 
@@ -6033,9 +6041,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<int> MultiSelectMaxSelectedItems { get; set; }
 
         /// <summary>
-        /// For multiselect menus, the number of text characters that a user inputs before the app queries autocomplete
-        /// and displays suggested items in the menu. If unspecified, defaults to 0 characters for static data sources
-        /// and 3 characters for external data sources.
+        /// For multiselect menus, the number of text characters that a user inputs before the menu returns suggested
+        /// selection items. If unset, the multiselect menu uses the following default values: * If the menu uses a
+        /// static array of `SelectionInput` items, defaults to 0 characters and immediately populates items from the
+        /// array. * If the menu uses a dynamic data source (`multi_select_data_source`), defaults to 3 characters
+        /// before querying the data source to return suggested items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiSelectMinQueryLength")]
         public virtual System.Nullable<int> MultiSelectMinQueryLength { get; set; }
@@ -6072,8 +6082,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// An item that users can select in a selection input, such as a checkbox or switch. [Google Workspace Add-ons and
-    /// Chat apps](https://developers.google.com/workspace/extend):
+    /// An item that users can select in a selection input, such as a checkbox or switch. Supports up to 100 items.
+    /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6979,13 +6989,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class MembershipCount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Count of human users that have directly joined the space, not counting users joined by having membership in
-        /// a joined group.
+        /// Output only. Count of human users that have directly joined the space, not counting users joined by having
+        /// membership in a joined group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joinedDirectHumanUserCount")]
         public virtual System.Nullable<int> JoinedDirectHumanUserCount { get; set; }
 
-        /// <summary>Count of all groups that have directly joined the space.</summary>
+        /// <summary>Output only. Count of all groups that have directly joined the space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joinedGroupCount")]
         public virtual System.Nullable<int> JoinedGroupCount { get; set; }
 
@@ -7036,9 +7046,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Message : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// One or more interactive widgets that appear at the bottom of a message. You can add accessory widgets to
-        /// messages that contain text, cards, or both text and cards. Not supported for messages that contain dialogs.
-        /// For details, see [Add interactive widgets at the bottom of a
+        /// Optional. One or more interactive widgets that appear at the bottom of a message. You can add accessory
+        /// widgets to messages that contain text, cards, or both text and cards. Not supported for messages that
+        /// contain dialogs. For details, see [Add interactive widgets at the bottom of a
         /// message](https://developers.google.com/workspace/chat/create-messages#add-accessory-widgets). Creating a
         /// message with accessory widgets requires [app authentication]
         /// (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
@@ -7062,7 +7072,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attachedGifs")]
         public virtual System.Collections.Generic.IList<AttachedGif> AttachedGifs { get; set; }
 
-        /// <summary>User-uploaded attachment.</summary>
+        /// <summary>Optional. User-uploaded attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachment")]
         public virtual System.Collections.Generic.IList<Attachment> Attachment { get; set; }
 
@@ -7075,8 +7085,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<Card> Cards { get; set; }
 
         /// <summary>
-        /// An array of [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards). Only Chat
-        /// apps can create cards. If your Chat app [authenticates as a
+        /// Optional. An array of [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards).
+        /// Only Chat apps can create cards. If your Chat app [authenticates as a
         /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the messages can't
         /// contain cards. To learn how to create a message that contains cards, see [Send a
         /// message](https://developers.google.com/workspace/chat/create-messages). [Card
@@ -7086,8 +7096,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<CardWithId> CardsV2 { get; set; }
 
         /// <summary>
-        /// Optional. A custom ID for the message. You can use field to identify a message, or to get, delete, or update
-        /// a message. To set a custom ID, specify the
+        /// Optional. Optional. A custom ID for the message. You can use field to identify a message, or to get, delete,
+        /// or update a message. To set a custom ID, specify the
         /// [`messageId`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages/create#body.QUERY_PARAMETERS.message_id)
         /// field when you create the message. For details, see [Name a
         /// message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
@@ -7188,8 +7198,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<EmojiReactionSummary> EmojiReactionSummaries { get; set; }
 
         /// <summary>
-        /// A plain-text description of the message's cards, used when the actual cards can't be displayed—for example,
-        /// mobile notifications.
+        /// Optional. A plain-text description of the message's cards, used when the actual cards can't be displayed—for
+        /// example, mobile notifications.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
         public virtual string FallbackText { get; set; }
@@ -7259,20 +7269,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual MatchedUrl MatchedUrl { get; set; }
 
         /// <summary>
-        /// Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID of the
-        /// space where the message is posted and `{message}` is a system-assigned ID for the message. For example,
-        /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you create a message, you
-        /// can use this ID to specify the message in a request by replacing `{message}` with the value from the
-        /// `clientAssignedMessageId` field. For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details,
-        /// see [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
+        /// Identifier. Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the
+        /// ID of the space where the message is posted and `{message}` is a system-assigned ID for the message. For
+        /// example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you create a
+        /// message, you can use this ID to specify the message in a request by replacing `{message}` with the value
+        /// from the `clientAssignedMessageId` field. For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`. For
+        /// details, see [Name a
+        /// message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. Input for creating a message, otherwise output only. The user that can view the message. When
-        /// set, the message is private and only visible to the specified user and the Chat app. To include this field
-        /// in your request, you must call the Chat API using [app
+        /// Optional. Immutable. Input for creating a message, otherwise output only. The user that can view the
+        /// message. When set, the message is private and only visible to the specified user and the Chat app. To
+        /// include this field in your request, you must call the Chat API using [app
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and omit the
         /// following: *
         /// [Attachments](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages.attachments)
@@ -7304,18 +7315,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual SlashCommand SlashCommand { get; set; }
 
         /// <summary>
-        /// If your Chat app [authenticates as a
-        /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output populates
-        /// the [space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces) `name`.
+        /// Output only. If your Chat app [authenticates as a
+        /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output only
+        /// populates the [space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces) `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }
 
         /// <summary>
-        /// Plain-text body of the message. The first link to an image, video, or web page generates a [preview
-        /// chip](https://developers.google.com/workspace/chat/preview-links). You can also [@mention a Google Chat
-        /// user](https://developers.google.com/workspace/chat/format-messages#messages-@mention), or everyone in the
-        /// space. To learn about creating text messages, see [Send a
+        /// Optional. Plain-text body of the message. The first link to an image, video, or web page generates a
+        /// [preview chip](https://developers.google.com/workspace/chat/preview-links). You can also [@mention a Google
+        /// Chat user](https://developers.google.com/workspace/chat/format-messages#messages-@mention), or everyone in
+        /// the space. To learn about creating text messages, see [Send a
         /// message](https://developers.google.com/workspace/chat/create-messages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -7444,11 +7455,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Represents a space permission setting.</summary>
     public class PermissionSetting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether spaces managers have this permission.</summary>
+        /// <summary>Optional. Whether spaces managers have this permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managersAllowed")]
         public virtual System.Nullable<bool> ManagersAllowed { get; set; }
 
-        /// <summary>Whether non-manager members have this permission.</summary>
+        /// <summary>Optional. Whether non-manager members have this permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membersAllowed")]
         public virtual System.Nullable<bool> MembersAllowed { get; set; }
 
@@ -7463,19 +7474,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class PermissionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Setting for managing apps in a space.</summary>
+        /// <summary>Optional. Setting for managing apps in a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manageApps")]
         public virtual PermissionSetting ManageApps { get; set; }
 
-        /// <summary>Setting for managing members and groups in a space.</summary>
+        /// <summary>Optional. Setting for managing members and groups in a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manageMembersAndGroups")]
         public virtual PermissionSetting ManageMembersAndGroups { get; set; }
 
-        /// <summary>Setting for managing webhooks in a space.</summary>
+        /// <summary>Optional. Setting for managing webhooks in a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manageWebhooks")]
         public virtual PermissionSetting ManageWebhooks { get; set; }
 
-        /// <summary>Setting for updating space name, avatar, description and guidelines.</summary>
+        /// <summary>Optional. Setting for updating space name, avatar, description and guidelines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifySpaceDetails")]
         public virtual PermissionSetting ModifySpaceDetails { get; set; }
 
@@ -7483,15 +7494,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postMessages")]
         public virtual PermissionSetting PostMessages { get; set; }
 
-        /// <summary>Setting for replying to messages in a space.</summary>
+        /// <summary>Optional. Setting for replying to messages in a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replyMessages")]
         public virtual PermissionSetting ReplyMessages { get; set; }
 
-        /// <summary>Setting for toggling space history on and off.</summary>
+        /// <summary>Optional. Setting for toggling space history on and off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toggleHistory")]
         public virtual PermissionSetting ToggleHistory { get; set; }
 
-        /// <summary>Setting for using @all in a space.</summary>
+        /// <summary>Optional. Setting for using @all in a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAtMentionAll")]
         public virtual PermissionSetting UseAtMentionAll { get; set; }
 
@@ -7858,7 +7869,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         }
 
         /// <summary>
-        /// The space's display name. Required when [creating a
+        /// Optional. The space's display name. Required when [creating a
         /// space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create) with a `spaceType`
         /// of `SPACE`. If you receive the error message `ALREADY_EXISTS` when creating a space or updating the
         /// `displayName`, try a different `displayName`. An existing space within the Google Workspace organization
@@ -7869,9 +7880,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Immutable. Whether this space permits any Google Chat user as a member. Input when creating a space in a
-        /// Google Workspace organization. Omit this field when creating spaces in the following conditions: * The
-        /// authenticated user uses a consumer account (unmanaged user account). By default, a space created by a
+        /// Optional. Immutable. Whether this space permits any Google Chat user as a member. Input when creating a
+        /// space in a Google Workspace organization. Omit this field when creating spaces in the following conditions:
+        /// * The authenticated user uses a consumer account (unmanaged user account). By default, a space created by a
         /// consumer account permits any Google Chat user. For existing spaces, this field is output only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUserAllowed")]
@@ -7933,8 +7944,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual MembershipCount MembershipCount { get; set; }
 
         /// <summary>
-        /// Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the system-assigned ID for
-        /// the space. You can obtain the space ID by calling the
+        /// Identifier. Resource name of the space. Format: `spaces/{space}` Where `{space}` represents the
+        /// system-assigned ID for the space. You can obtain the space ID by calling the
         /// [`spaces.list()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/list) method or
         /// from the space URL. For example, if the space URL is
         /// `https://mail.google.com/mail/u/0/#chat/space/AAAAAAAAA`, the space ID is `AAAAAAAAA`.
@@ -7961,11 +7972,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
         public virtual System.Nullable<bool> SingleUserBotDm { get; set; }
 
-        /// <summary>Details about the space including description and rules.</summary>
+        /// <summary>Optional. Details about the space including description and rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceDetails")]
         public virtual SpaceDetails SpaceDetails { get; set; }
 
-        /// <summary>The message history state for messages and threads in this space.</summary>
+        /// <summary>Optional. The message history state for messages and threads in this space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceHistoryState")]
         public virtual string SpaceHistoryState { get; set; }
 
@@ -7974,8 +7985,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string SpaceThreadingState { get; set; }
 
         /// <summary>
-        /// The type of space. Required when creating a space or updating the space type of a space. Output only for
-        /// other usage.
+        /// Optional. The type of space. Required when creating a space or updating the space type of a space. Output
+        /// only for other usage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceType")]
         public virtual string SpaceType { get; set; }
@@ -8378,7 +8389,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Thread : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name of the thread. Example: `spaces/{space}/threads/{thread}`</summary>
+        /// <summary>Identifier. Resource name of the thread. Example: `spaces/{space}/threads/{thread}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -8486,7 +8497,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response of the updated widget. Used to provide autocomplete options for a widget.</summary>
+    /// <summary>For `selectionInput` widgets, returns autocomplete suggestions for a multiselect menu.</summary>
     public class UpdatedWidget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of widget autocomplete results</summary>
