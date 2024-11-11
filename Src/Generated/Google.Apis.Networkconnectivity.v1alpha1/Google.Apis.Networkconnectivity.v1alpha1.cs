@@ -3041,6 +3041,12 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Immutable ranges cannot have their fields modified, except for labels and description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("immutable")]
+        public virtual System.Nullable<bool> Immutable { get; set; }
+
+        /// <summary>
         /// IP range that this internal range defines. NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and
         /// peering=FOR_SELF. NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified
         /// explicitly.
