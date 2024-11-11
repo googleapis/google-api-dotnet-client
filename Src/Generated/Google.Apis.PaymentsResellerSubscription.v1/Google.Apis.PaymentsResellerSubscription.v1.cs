@@ -271,6 +271,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             Products = new ProductsResource(service);
             Promotions = new PromotionsResource(service);
             Subscriptions = new SubscriptionsResource(service);
+            UserSessions = new UserSessionsResource(service);
         }
 
         /// <summary>Gets the Products resource.</summary>
@@ -1089,6 +1090,89 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 }
             }
         }
+
+        /// <summary>Gets the UserSessions resource.</summary>
+        public virtual UserSessionsResource UserSessions { get; }
+
+        /// <summary>The "userSessions" collection of methods.</summary>
+        public class UserSessionsResource
+        {
+            private const string Resource = "userSessions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public UserSessionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// This API replaces user authorized OAuth consnet based APIs (Create, Entitle). Generates a short-lived
+            /// token for a user session based on the user intent. You can use the session token to redirect the user to
+            /// Google to finish the signup flow. You can re-generate new session token repeatedly for same request if
+            /// necessary, regardless of the previous tokens being expired or not.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent, the partner that can resell. Format: partners/{partner}
+            /// </param>
+            public virtual GenerateRequest Generate(Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest body, string parent)
+            {
+                return new GenerateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// This API replaces user authorized OAuth consnet based APIs (Create, Entitle). Generates a short-lived
+            /// token for a user session based on the user intent. You can use the session token to redirect the user to
+            /// Google to finish the signup flow. You can re-generate new session token repeatedly for same request if
+            /// necessary, regardless of the previous tokens being expired or not.
+            /// </summary>
+            public class GenerateRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse>
+            {
+                /// <summary>Constructs a new Generate request.</summary>
+                public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent, the partner that can resell. Format: partners/{partner}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/userSessions:generate";
+
+                /// <summary>Initializes Generate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^partners/[^/]+$",
+                    });
+                }
+            }
+        }
     }
 }
 namespace Google.Apis.PaymentsResellerSubscription.v1.Data
@@ -1142,6 +1226,29 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Intent message for creating a Subscription resource.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The parent resource name, which is the identifier of the partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Required. The Subscription to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+
+        /// <summary>
+        /// Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII
+        /// characters at the maximum. If a subscription was previously created with the same subscription_id, we will
+        /// directly return that one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionId")]
+        public virtual string SubscriptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes the length of a period of a time.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1Duration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1152,6 +1259,17 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>The unit used for the duration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Intent for entitling the previously provisioned subscription to an end user.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the subscription resource that is entitled to the current end user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1439,6 +1557,31 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>[Preview only] Request to generate a user session.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user intent to generate the user session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentPayload")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1IntentPayload IntentPayload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[Preview only] Response that contains the details for generated user session.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The generated user session. The token size of proportional to the size of the intent payload. Therefore,
+        /// please be mindful of keeping the request intent payload reasonably small.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSession")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1UserSession UserSession { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Payload specific to Google One products.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1457,6 +1600,21 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>The identifier for the partner store where the subscription was sold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeId")]
         public virtual string StoreId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The payload that describes the user intent.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The request to create a subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createIntent")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent CreateIntent { get; set; }
+
+        /// <summary>The request to entitle a subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitleIntent")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent EntitleIntent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2435,6 +2593,67 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>The updated subscription resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A user session contains a short-lived token that includes information required to interact with Google Payments
+    /// Reseller Platform using the following web endpoints. - A user session token should be generated dynamically for
+    /// an authenticated user. You should refrain from sharing a token directly with a user in an unauthenticated
+    /// context, such as SMS, or email. - You can re-generate new session tokens repeatedly for same `generate` request
+    /// if necessary, regardless of the previous tokens being expired or not. You don't need to worry about multiple
+    /// sessions resulting in duplicate fulfillments as guaranteed by the same subscription id. Please refer to the
+    /// [Google Managed
+    /// Signup](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup.\(In.Preview\))
+    /// documentation for additional integration details.
+    /// </summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1UserSession : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Output only. The time at which the user session expires.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The encrypted token of the user session, including the information of the user's intent and
+        /// request. This token should be provided when redirecting the user to Google.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
