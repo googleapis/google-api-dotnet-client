@@ -1573,9 +1573,12 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usesFeature")]
         public virtual System.Collections.Generic.IList<UsesFeature> UsesFeature { get; set; }
 
-        /// <summary>Permissions declared to be used by the application</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usesPermission")]
         public virtual System.Collections.Generic.IList<string> UsesPermission { get; set; }
+
+        /// <summary>Permissions declared to be used by the application</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usesPermissionTags")]
+        public virtual System.Collections.Generic.IList<UsesPermissionTag> UsesPermissionTags { get; set; }
 
         /// <summary>Version number used internally by the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
@@ -3428,6 +3431,23 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>The android:required value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isRequired")]
         public virtual System.Nullable<bool> IsRequired { get; set; }
+
+        /// <summary>The android:name value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The tag within a manifest. https://developer.android.com/guide/topics/manifest/uses-permission-element.html
+    /// </summary>
+    public class UsesPermissionTag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The android:name value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSdkVersion")]
+        public virtual System.Nullable<int> MaxSdkVersion { get; set; }
 
         /// <summary>The android:name value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
