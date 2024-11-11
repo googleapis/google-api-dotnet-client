@@ -3322,6 +3322,13 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string CreationTime { get; set; }
 
         /// <summary>
+        /// Output only. The resource names of effective labels attached to this ad. An effective label is a label
+        /// inherited or directly assigned to this ad.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveLabels")]
+        public virtual System.Collections.Generic.IList<string> EffectiveLabels { get; set; }
+
+        /// <summary>
         /// Output only. ID of the ad in the external engine account. This field is for Search Ads 360 account only, for
         /// example, Yahoo Japan, Microsoft, Baidu etc. For non-Search Ads 360 entity, use "ad_group_ad.ad.id" instead.
         /// </summary>
@@ -3356,6 +3363,35 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The status of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A relationship between an ad group ad and an effective label. An effective label is a label inherited or
+    /// directly assigned to this ad group ad.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupAdEffectiveLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The ad group ad to which the effective label is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAd")]
+        public virtual string AdGroupAd { get; set; }
+
+        /// <summary>Immutable. The effective label assigned to the ad group ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Output only. The ID of the Customer which owns the effective label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad group ad effective label. Ad group ad effective label resource names
+        /// have the form: `customers/{customer_id}/adGroupAdEffectiveLabels/{ad_group_id}~{ad_id}~{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3525,6 +3561,13 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<long> EffectiveCpcBidMicros { get; set; }
 
         /// <summary>
+        /// Output only. The resource names of effective labels attached to this ad group criterion. An effective label
+        /// is a label inherited or directly assigned to this ad group criterion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveLabels")]
+        public virtual System.Collections.Generic.IList<string> EffectiveLabels { get; set; }
+
+        /// <summary>
         /// Output only. ID of the ad group criterion in the external engine account. This field is for non-Google Ads
         /// account only, for example, Yahoo Japan, Microsoft, Baidu etc. For Google Ads entity, use
         /// "ad_group_criterion.criterion_id" instead.
@@ -3619,6 +3662,36 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Immutable. Webpage</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webpage")]
         public virtual GoogleAdsSearchads360V0CommonWebpageInfo Webpage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A relationship between an ad group criterion and an effective label. An effective label is a label inherited or
+    /// directly assigned to this ad group criterion.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupCriterionEffectiveLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The ad group criterion to which the effective label is attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterion")]
+        public virtual string AdGroupCriterion { get; set; }
+
+        /// <summary>Immutable. The effective label assigned to the ad group criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Output only. The ID of the Customer which owns the effective label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad group criterion effective label. Ad group criterion effective label
+        /// resource names have the form:
+        /// `customers/{customer_id}/adGroupCriterionEffectiveLabels/{ad_group_id}~{criterion_id}~{label_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6231,6 +6304,32 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A user location view. User Location View includes all metrics aggregated at the country level, one row per
+    /// country. It reports metrics at the actual physical location of the user by targeted or not targeted location. If
+    /// other segment fields are used, you may get more than one row per country.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesUserLocationView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Criterion Id for the country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCriterionId")]
+        public virtual System.Nullable<long> CountryCriterionId { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the user location view. UserLocation view resource names have the form:
+        /// `customers/{customer_id}/userLocationViews/{country_criterion_id}~{targeting_location}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. Indicates whether location was targeted or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingLocation")]
+        public virtual System.Nullable<bool> TargetingLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A visit.</summary>
     public class GoogleAdsSearchads360V0ResourcesVisit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6447,6 +6546,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAd")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupAd AdGroupAd { get; set; }
 
+        /// <summary>The ad group ad effective label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdEffectiveLabel")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupAdEffectiveLabel AdGroupAdEffectiveLabel { get; set; }
+
         /// <summary>The ad group ad label referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdLabel")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupAdLabel AdGroupAdLabel { get; set; }
@@ -6470,6 +6573,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The criterion referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterion")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupCriterion AdGroupCriterion { get; set; }
+
+        /// <summary>The ad group criterion effective label referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterionEffectiveLabel")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupCriterionEffectiveLabel AdGroupCriterionEffectiveLabel { get; set; }
 
         /// <summary>The ad group criterion label referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterionLabel")]
@@ -6650,6 +6757,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The user list referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userList")]
         public virtual GoogleAdsSearchads360V0ResourcesUserList UserList { get; set; }
+
+        /// <summary>The user location view referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLocationView")]
+        public virtual GoogleAdsSearchads360V0ResourcesUserLocationView UserLocationView { get; set; }
 
         /// <summary>The event level visit referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visit")]
