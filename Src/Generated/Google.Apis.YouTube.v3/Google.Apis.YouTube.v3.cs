@@ -17052,7 +17052,7 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>
         /// The time that the broadcast is scheduled to end. If the value is empty or the property is not present, then
-        /// the broadcast is scheduled to contiue indefinitely.
+        /// the broadcast is scheduled to continue indefinitely.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
         public virtual string ScheduledEndTimeRaw { get; set; }
