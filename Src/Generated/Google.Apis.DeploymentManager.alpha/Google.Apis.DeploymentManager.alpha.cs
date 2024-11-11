@@ -357,6 +357,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("compositeType", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CompositeType { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -385,6 +388,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -416,6 +427,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("compositeType", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CompositeType { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -445,6 +459,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
                 });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -470,6 +492,9 @@ namespace Google.Apis.DeploymentManager.alpha
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.alpha.Data.CompositeType Body { get; set; }
@@ -497,6 +522,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -671,6 +704,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("compositeType", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CompositeType { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.alpha.Data.CompositeType Body { get; set; }
 
@@ -706,6 +742,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
                 });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -737,6 +781,9 @@ namespace Google.Apis.DeploymentManager.alpha
             /// <summary>The name of the composite type for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("compositeType", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CompositeType { get; private set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.alpha.Data.CompositeType Body { get; set; }
@@ -772,6 +819,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -901,6 +956,9 @@ namespace Google.Apis.DeploymentManager.alpha
                 ABANDON = 1,
             }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -938,6 +996,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     DefaultValue = "DELETE",
                     Pattern = null,
                 });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -968,6 +1034,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -996,6 +1065,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -1031,6 +1108,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Requested IAM Policy version.</summary>
             [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
@@ -1063,6 +1143,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
                 {
@@ -1118,6 +1206,9 @@ namespace Google.Apis.DeploymentManager.alpha
                 CREATE = 2,
             }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>
             /// If set to true, creates a deployment and creates "shell" resources but does not actually instantiate
             /// these resources. This allows you to preview what your deployment looks like. After previewing a
@@ -1161,6 +1252,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "CREATE_OR_ACQUIRE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("preview", new Google.Apis.Discovery.Parameter
@@ -1380,6 +1479,9 @@ namespace Google.Apis.DeploymentManager.alpha
                 ABANDON = 1,
             }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>
             /// If set to true, updates the deployment and creates and updates the "shell" resources but does not
             /// actually alter or instantiate these resources. This allows you to preview what your deployment will look
@@ -1441,6 +1543,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "DELETE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("preview", new Google.Apis.Discovery.Parameter
@@ -1623,6 +1733,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.alpha.Data.TestPermissionsRequest Body { get; set; }
 
@@ -1657,6 +1770,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -1726,6 +1847,9 @@ namespace Google.Apis.DeploymentManager.alpha
                 ABANDON = 1,
             }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>
             /// If set to true, updates the deployment and creates and updates the "shell" resources but does not
             /// actually alter or instantiate these resources. This allows you to preview what your deployment will look
@@ -1789,6 +1913,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     DefaultValue = "DELETE",
                     Pattern = null,
                 });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("preview", new Google.Apis.Discovery.Parameter
                 {
                     Name = "preview",
@@ -1848,6 +1980,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("manifest", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Manifest { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -1884,6 +2019,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -2085,6 +2228,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Operation { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -2111,6 +2257,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     Name = "operation",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2306,6 +2460,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -2340,6 +2497,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     Name = "resource",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2543,6 +2708,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("typeProvider", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TypeProvider { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -2571,6 +2739,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -2602,6 +2778,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("typeProvider", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TypeProvider { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -2630,6 +2809,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -2666,6 +2853,9 @@ namespace Google.Apis.DeploymentManager.alpha
             /// <summary>The name of the type provider type for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Type { get; private set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getType";
@@ -2704,6 +2894,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -2729,6 +2927,9 @@ namespace Google.Apis.DeploymentManager.alpha
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.alpha.Data.TypeProvider Body { get; set; }
@@ -2756,6 +2957,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -3085,6 +3294,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("typeProvider", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TypeProvider { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.alpha.Data.TypeProvider Body { get; set; }
 
@@ -3120,6 +3332,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -3151,6 +3371,9 @@ namespace Google.Apis.DeploymentManager.alpha
             /// <summary>The name of the type provider for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("typeProvider", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TypeProvider { get; private set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.alpha.Data.TypeProvider Body { get; set; }
@@ -3186,6 +3409,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -3232,6 +3463,9 @@ namespace Google.Apis.DeploymentManager.alpha
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Type { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("header.bypassBillingFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> HeaderBypassBillingFilter { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -3260,6 +3494,14 @@ namespace Google.Apis.DeploymentManager.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("header.bypassBillingFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "header.bypassBillingFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -3750,6 +3992,21 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes additional debugging info.</summary>
+    public class DebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional debugging information provided by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>The stack trace entries indicating where the error occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackEntries")]
+        public virtual System.Collections.Generic.IList<string> StackEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>User provided default credential for the deployment.</summary>
@@ -3987,6 +4244,47 @@ namespace Google.Apis.DeploymentManager.alpha.Data
     }
 
     /// <summary>
+    /// Describes the cause of the error with structured details. Example of an error when contacting the
+    /// "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com"
+    /// "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that
+    /// the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a
+    /// Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com",
+    /// "metadata": { "availableRegions": "us-central1,us-east2" } }
+    /// </summary>
+    public class ErrorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The logical grouping to which the "reason" belongs. The error domain is typically the registered service
+        /// name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is
+        /// generated by some common infrastructure, the error domain must be a globally unique value that identifies
+        /// the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Additional structured details about this error. Keys must match /a-z+/ but should ideally be lowerCamelCase.
+        /// Also they must be limited to 64 characters in length. When identifying the current value of an exceeded
+        /// limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit":
+        /// "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number
+        /// of instances that can be created in a single (batch) request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error
+        /// reasons are unique within a particular domain of errors. This should be at most 63 characters and match a
+        /// regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -4051,6 +4349,39 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+    }
+
+    /// <summary>
+    /// Provides links to documentation or for performing an out of band action. For example, if a quota check failed
+    /// with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL
+    /// pointing directly to the right place in the developer console to flip the bit.
+    /// </summary>
+    public class Help : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL(s) pointing to additional information on handling the current error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual System.Collections.Generic.IList<HelpLink> Links { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a URL link.</summary>
+    public class HelpLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes what the link offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The URL of the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     public class ImportFile : Google.Apis.Requests.IDirectResponseSchema
@@ -4098,6 +4429,26 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         /// <summary>Status information per location (location name is key). Example key: zones/us-central1-a</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perLocationStatus")]
         public virtual System.Collections.Generic.IDictionary<string, BulkInsertOperationStatus> PerLocationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+    /// </summary>
+    public class LocalizedMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt.
+        /// Examples are: "en-US", "fr-CH", "es-MX"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locale")]
+        public virtual string Locale { get; set; }
+
+        /// <summary>The localized error message in the above locale.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4305,6 +4656,10 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
+        /// <summary>[Output Only] Server-defined URL for this resource with the resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
+        public virtual string SelfLinkWithId { get; set; }
+
         /// <summary>
         /// [Output Only] If the operation is for projects.setCommonInstanceMetadata, this field will contain
         /// information on all underlying zonal actions and their state.
@@ -4337,7 +4692,7 @@ namespace Google.Apis.DeploymentManager.alpha.Data
 
         /// <summary>
         /// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a
-        /// snapshot, this points to the persistent disk that the snapshot was created from.
+        /// snapshot, this points to the disk that the snapshot was created from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; }
@@ -4378,9 +4733,28 @@ namespace Google.Apis.DeploymentManager.alpha.Data
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             public class ErrorsData
             {
+                /// <summary>
+                /// [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal use-only
+                /// (like componentization) (thus the visibility "none") and in case of public exposure it is strongly
+                /// recommended to follow pattern of: https://aip.dev/193 and expose as details field.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
+                public virtual System.Collections.Generic.IList<string> Arguments { get; set; }
+
                 /// <summary>[Output Only] The error type identifier for this error.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; }
+
+                [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
+                public virtual DebugInfo DebugInfo { get; set; }
+
+                /// <summary>
+                /// [Output Only] An optional list of messages that contain the error details. There is a set of defined
+                /// message types to use for providing details.The syntax depends on the error code. For example,
+                /// QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
+                public virtual System.Collections.Generic.IList<ErrorDetailsData> ErrorDetails { get; set; }
 
                 /// <summary>
                 /// [Output Only] Indicates the field in the request that caused the error. This property is optional.
@@ -4391,6 +4765,26 @@ namespace Google.Apis.DeploymentManager.alpha.Data
                 /// <summary>[Output Only] An optional, human-readable error message.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("message")]
                 public virtual string Message { get; set; }
+
+                /// <summary>
+                /// [Output Only] An optional list of messages that contain the error details. There is a set of defined
+                /// message types to use for providing details.The syntax depends on the error code. For example,
+                /// QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+                /// </summary>
+                public class ErrorDetailsData
+                {
+                    [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
+                    public virtual ErrorInfo ErrorInfo { get; set; }
+
+                    [Newtonsoft.Json.JsonPropertyAttribute("help")]
+                    public virtual Help Help { get; set; }
+
+                    [Newtonsoft.Json.JsonPropertyAttribute("localizedMessage")]
+                    public virtual LocalizedMessage LocalizedMessage { get; set; }
+
+                    [Newtonsoft.Json.JsonPropertyAttribute("quotaInfo")]
+                    public virtual QuotaExceededInfo QuotaInfo { get; set; }
+                }
             }
         }
 
@@ -4586,6 +4980,39 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         /// <summary>JsonPath expression, after polling is completed, indicates where to fetch the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional details for quota exceeded error for resource quota.</summary>
+    public class QuotaExceededInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The map holding related quota dimensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("futureLimit")]
+        public virtual System.Nullable<double> FutureLimit { get; set; }
+
+        /// <summary>Current effective quota limit. The limit's unit depends on the quota type or metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<double> Limit { get; set; }
+
+        /// <summary>The name of the quota limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limitName")]
+        public virtual string LimitName { get; set; }
+
+        /// <summary>The Compute Engine quota metric name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricName")]
+        public virtual string MetricName { get; set; }
+
+        /// <summary>Rollout status of the future quota limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutStatus")]
+        public virtual string RolloutStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4797,9 +5224,28 @@ namespace Google.Apis.DeploymentManager.alpha.Data
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             public class ErrorsData
             {
+                /// <summary>
+                /// [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal use-only
+                /// (like componentization) (thus the visibility "none") and in case of public exposure it is strongly
+                /// recommended to follow pattern of: https://aip.dev/193 and expose as details field.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
+                public virtual System.Collections.Generic.IList<string> Arguments { get; set; }
+
                 /// <summary>[Output Only] The error type identifier for this error.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; }
+
+                [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
+                public virtual DebugInfo DebugInfo { get; set; }
+
+                /// <summary>
+                /// [Output Only] An optional list of messages that contain the error details. There is a set of defined
+                /// message types to use for providing details.The syntax depends on the error code. For example,
+                /// QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
+                public virtual System.Collections.Generic.IList<ErrorDetailsData> ErrorDetails { get; set; }
 
                 /// <summary>
                 /// [Output Only] Indicates the field in the request that caused the error. This property is optional.
@@ -4810,6 +5256,26 @@ namespace Google.Apis.DeploymentManager.alpha.Data
                 /// <summary>[Output Only] An optional, human-readable error message.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("message")]
                 public virtual string Message { get; set; }
+
+                /// <summary>
+                /// [Output Only] An optional list of messages that contain the error details. There is a set of defined
+                /// message types to use for providing details.The syntax depends on the error code. For example,
+                /// QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+                /// </summary>
+                public class ErrorDetailsData
+                {
+                    [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
+                    public virtual ErrorInfo ErrorInfo { get; set; }
+
+                    [Newtonsoft.Json.JsonPropertyAttribute("help")]
+                    public virtual Help Help { get; set; }
+
+                    [Newtonsoft.Json.JsonPropertyAttribute("localizedMessage")]
+                    public virtual LocalizedMessage LocalizedMessage { get; set; }
+
+                    [Newtonsoft.Json.JsonPropertyAttribute("quotaInfo")]
+                    public virtual QuotaExceededInfo QuotaInfo { get; set; }
+                }
             }
         }
 
