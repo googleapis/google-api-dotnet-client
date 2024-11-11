@@ -5176,6 +5176,10 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attendeesOmitted")]
         public virtual System.Nullable<bool> AttendeesOmitted { get; set; }
 
+        /// <summary>Birthday or special event data. Used if eventType is "birthday". Immutable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("birthdayProperties")]
+        public virtual EventBirthdayProperties BirthdayProperties { get; set; }
+
         /// <summary>
         /// The color of the event. This is an ID referring to an entry in the event section of the colors definition
         /// (see the  colors endpoint). Optional.
@@ -5708,6 +5712,37 @@ namespace Google.Apis.Calendar.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("self")]
         public virtual System.Nullable<bool> Self { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EventBirthdayProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of the contact this birthday event is linked to. This can be used to fetch contact details
+        /// from People API. Format: "people/c12345". Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contact")]
+        public virtual string Contact { get; set; }
+
+        /// <summary>
+        /// Custom type label specified for this event. This is populated if birthdayProperties.type is set to "custom".
+        /// Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTypeName")]
+        public virtual string CustomTypeName { get; set; }
+
+        /// <summary>
+        /// Type of birthday or special event. Possible values are:   - "anniversary" - An anniversary other than
+        /// birthday. Always has a contact.  - "birthday" - A birthday event. This is the default value.  - "custom" - A
+        /// special date whose label is further specified in the customTypeName field. Always has a contact.  - "other"
+        /// - A special date which does not fall into the other categories, and does not have a custom label. Always has
+        /// a contact.  - "self" - Calendar owner's own birthday. Cannot have a contact.  The Calendar API only supports
+        /// creating events with the type "birthday". The type cannot be changed after the event is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
