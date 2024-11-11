@@ -1899,6 +1899,14 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     public class ExperimentalFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Enables generation of protobuf code using new types that are more Pythonic which are included in
+        /// `protobuf&amp;gt;=5.29.x`. This feature will be enabled by default 1 month after launching the feature in
+        /// preview packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protobufPythonicTypesEnabled")]
+        public virtual System.Nullable<bool> ProtobufPythonicTypesEnabled { get; set; }
+
+        /// <summary>
         /// Enables generation of asynchronous REST clients if `rest` transport is enabled. By default, asynchronous
         /// REST clients will not be generated. This feature will be enabled by default 1 month after launching the
         /// feature in preview packages.
