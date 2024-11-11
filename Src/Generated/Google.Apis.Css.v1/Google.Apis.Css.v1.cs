@@ -727,14 +727,14 @@ namespace Google.Apis.Css.v1
                 }
             }
 
-            /// <summary>Lists the labels assigned to an account.</summary>
+            /// <summary>Lists the labels owned by an account.</summary>
             /// <param name="parent">Required. The parent account. Format: accounts/{account}</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>Lists the labels assigned to an account.</summary>
+            /// <summary>Lists the labels owned by an account.</summary>
             public class ListRequest : CssBaseServiceRequest<Google.Apis.Css.v1.Data.ListAccountLabelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
