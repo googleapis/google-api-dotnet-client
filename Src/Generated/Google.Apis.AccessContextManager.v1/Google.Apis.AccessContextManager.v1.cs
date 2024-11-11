@@ -3175,13 +3175,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
 
-        /// <summary>Optional. Reauth settings applied to user access on a given AccessScope.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
-        public virtual ReauthSettings ReauthSettings { get; set; }
-
-        /// <summary>
-        /// Optional. Session settings applied to user access on a given AccessScope. Migrated from ReauthSettings
-        /// </summary>
+        /// <summary>Optional. Session settings applied to user access on a given AccessScope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionSettings")]
         public virtual SessionSettings SessionSettings { get; set; }
 
@@ -3808,10 +3802,6 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. GCSL policy for the group key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
-        public virtual ReauthSettings ReauthSettings { get; set; }
-
         /// <summary>
         /// Optional. A list of applications that are subject to this binding's restrictions. If the list is empty, the
         /// binding restrictions will universally apply to all applications.
@@ -3826,7 +3816,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scopedAccessSettings")]
         public virtual System.Collections.Generic.IList<ScopedAccessSettings> ScopedAccessSettings { get; set; }
 
-        /// <summary>Optional. GCSL policy for the group key. Migrated from ReauthSettings</summary>
+        /// <summary>Optional. GCSL policy for the group key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionSettings")]
         public virtual SessionSettings SessionSettings { get; set; }
 
@@ -4263,50 +4253,6 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
-    /// Stores settings related to Google Cloud Session Length including session duration, the type of challenge (i.e.
-    /// method) they should face when their session expires, and other related settings.
-    /// </summary>
-    public class ReauthSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. How long a user is allowed to take between actions before a new access token must be issued.
-        /// Presently only set for Cloud Apps.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxInactivity")]
-        public virtual object MaxInactivity { get; set; }
-
-        /// <summary>Optional. Reauth method when users GCP session is up.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reauthMethod")]
-        public virtual string ReauthMethod { get; set; }
-
-        /// <summary>
-        /// Optional. The session length. Setting this field to zero is equal to disabling. Reauth. Also can set
-        /// infinite session by flipping the enabled bit to false below. If use_oidc_max_age is true, for OIDC apps, the
-        /// session length will be the minimum of this field and OIDC max_age param.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionLength")]
-        public virtual object SessionLength { get; set; }
-
-        /// <summary>
-        /// Optional. Big red button to turn off GCSL. When false, all fields set above will be disregarded and the
-        /// session length is basically infinite.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionLengthEnabled")]
-        public virtual System.Nullable<bool> SessionLengthEnabled { get; set; }
-
-        /// <summary>
-        /// Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication
-        /// request will be ignored. When true, the re-auth period will be the minimum of the session_length field and
-        /// the max_age OIDC param.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useOidcMaxAge")]
-        public virtual System.Nullable<bool> UseOidcMaxAge { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// A request to replace all existing Access Levels in an Access Policy with the Access Levels provided. This is
     /// done atomically.
     /// </summary>
@@ -4421,6 +4367,14 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. An opaque identifier for the current version of the `ServicePerimeter`. Clients should not expect
+        /// this to be in any specific format. If etag is not provided, the operation will be performed as if a valid
+        /// etag is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Identifier. Resource name for the `ServicePerimeter`. Format:
         /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component
         /// must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`,
@@ -4468,9 +4422,6 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
         public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
