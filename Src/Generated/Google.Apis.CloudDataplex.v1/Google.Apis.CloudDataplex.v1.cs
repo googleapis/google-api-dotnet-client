@@ -13342,6 +13342,13 @@ namespace Google.Apis.CloudDataplex.v1
                     [Google.Apis.Util.RequestParameterAttribute("metadataJobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MetadataJobId { get; set; }
 
+                    /// <summary>
+                    /// Optional. The service validates the request without performing any mutations. The default is
+                    /// false.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataJob Body { get; set; }
 
@@ -13372,6 +13379,14 @@ namespace Google.Apis.CloudDataplex.v1
                         RequestParameters.Add("metadataJobId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "metadataJobId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -17220,8 +17235,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// These messages contain information about the execution of a datascan. The monitored resource is 'DataScan' Next
-    /// ID: 13
+    /// These messages contain information about the execution of a datascan. The monitored resource is 'DataScan'
     /// </summary>
     public class GoogleCloudDataplexV1DataScanEvent : Google.Apis.Requests.IDirectResponseSchema
     {
