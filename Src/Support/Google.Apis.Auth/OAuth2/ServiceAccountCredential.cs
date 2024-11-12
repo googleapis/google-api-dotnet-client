@@ -205,6 +205,21 @@ namespace Google.Apis.Auth.OAuth2
             return result;
         }
 
+        private protected override void AddHttpClientRetryConfiguration(CreateHttpClientArgs args)
+        {
+            // In case the user explicitly configured retry policy.
+            var customRetryPolicy = GoogleAuthConsts.StripOAuth2TokenEndpointRecommendedPolicy(DefaultExponentialBackOffPolicy);
+            if (customRetryPolicy != ExponentialBackOffPolicy.None)
+            {
+                args.Initializers.Add(new ExponentialBackOffInitializer(customRetryPolicy, () => new BackOffHandler(new ExponentialBackOff())));
+            }
+            // In case recommended is also configured.
+            if (DefaultExponentialBackOffPolicy.HasFlag(ExponentialBackOffPolicy.RecommendedOrDefault))
+            {
+                args.Initializers.Add(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry);
+            }
+        }
+
         /// <inheritdoc/>
         Task<string> IGoogleCredential.GetUniverseDomainAsync(CancellationToken _) => Task.FromResult(UniverseDomain);
 

@@ -24,7 +24,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Xunit;
@@ -39,6 +38,97 @@ namespace Google.Apis.Auth.Tests.OAuth2
         private static readonly Assembly CurrentAssembly = typeof(ServiceAccountCredentialTests).Assembly;
         private static readonly TimeSpan JwtLifetime = TimeSpan.FromMinutes(60);
         private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+        [Fact]
+        public void Default_RecommendedRetryPolicy()
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            string fakeServiceAccountCredentialFileContents = GetContents(DefaultCredentialProviderTests.ServiceAccountCredentialMinimalFileName);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
+            var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
+            {
+                HttpClientFactory = mockFactory
+            }.FromPrivateKey(credentialParameters.PrivateKey));
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            var retryInitializer = Assert.Single(args.Initializers);
+            Assert.Same(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry, retryInitializer);
+        }
+
+        [Fact]
+        public void BadResponse503AndRecommended_RecommendedRetryPolicy()
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler()); string fakeServiceAccountCredentialFileContents = GetContents(DefaultCredentialProviderTests.ServiceAccountCredentialMinimalFileName);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
+            var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
+            {
+                HttpClientFactory = mockFactory,
+                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503 | ExponentialBackOffPolicy.RecommendedOrDefault
+            }.FromPrivateKey(credentialParameters.PrivateKey));
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            var retryInitializer = Assert.Single(args.Initializers);
+            Assert.Same(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry, retryInitializer);
+        }
+
+        [Fact]
+        public void ExceptionAndRecommended_RecommendedAndOtherRetryPolicy()
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            string fakeServiceAccountCredentialFileContents = GetContents(DefaultCredentialProviderTests.ServiceAccountCredentialMinimalFileName);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
+            var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
+            {
+                HttpClientFactory = mockFactory,
+                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception | ExponentialBackOffPolicy.RecommendedOrDefault
+            }.FromPrivateKey(credentialParameters.PrivateKey));
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            Assert.Equal(2, args.Initializers.Count);
+            Assert.Contains(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry, args.Initializers);
+            Assert.Contains(args.Initializers, initializer => initializer != GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry);
+        }
+
+        [Fact]
+        public void NoRetryPolicy()
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            string fakeServiceAccountCredentialFileContents = GetContents(DefaultCredentialProviderTests.ServiceAccountCredentialMinimalFileName);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
+            var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
+            {
+                HttpClientFactory = mockFactory,
+                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.None
+            }.FromPrivateKey(credentialParameters.PrivateKey));
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            Assert.Empty(args.Initializers);
+        }
+
+        [Theory]
+        [InlineData(ExponentialBackOffPolicy.Exception)]
+        [InlineData(ExponentialBackOffPolicy.UnsuccessfulResponse503)]
+        [InlineData(ExponentialBackOffPolicy.Exception | ExponentialBackOffPolicy.UnsuccessfulResponse503)]
+        public void OtherThanRecommendedRetryPolicy(ExponentialBackOffPolicy policy)
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            string fakeServiceAccountCredentialFileContents = GetContents(DefaultCredentialProviderTests.ServiceAccountCredentialMinimalFileName);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(fakeServiceAccountCredentialFileContents);
+            var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
+            {
+                HttpClientFactory = mockFactory,
+                DefaultExponentialBackOffPolicy = policy
+            }.FromPrivateKey(credentialParameters.PrivateKey));
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            var retryInitializer = Assert.Single(args.Initializers);
+            Assert.NotSame(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry, retryInitializer);
+        }
 
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromPrivateKey()
