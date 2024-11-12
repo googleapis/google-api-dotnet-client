@@ -15,25 +15,32 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Google.Apis.Http
 {
     /// <summary>
-    /// Indicates if exponential back-off is used automatically on exceptions in a service requests and \ or when 503 
-    /// responses is returned form the server.
+    /// Indicates which of exceptions and / or HTTP status codes are automatically retried using exponential backoff.
     /// </summary>
     [Flags]
     public enum ExponentialBackOffPolicy
     {
-        /// <summary>Exponential back-off is disabled.</summary>
+        /// <summary>
+        /// No automatic retries.
+        /// </summary>
         None = 0,
-        /// <summary>Exponential back-off is enabled only for exceptions.</summary>
+        /// <summary>
+        /// Exceptions are retried.
+        /// </summary>
         Exception = 1,
-        /// <summary>Exponential back-off is enabled only for 503 HTTP Status code.</summary>
-        UnsuccessfulResponse503 = 2
+        /// <summary>
+        /// HTTP Status Code 503 is retried.
+        /// </summary>
+        UnsuccessfulResponse503 = 2,
+        /// <summary>
+        /// Retries will be executed as recommended for each service.
+        /// For services with no recommendations, a default policy will be applied.
+        /// </summary>
+        RecommendedOrDefault = 4,
     }
 
     /// <summary>
@@ -50,6 +57,8 @@ namespace Google.Apis.Http
 
         /// <summary>
         /// Constructs a new back-off initializer with the given policy and back-off handler create function.
+        /// If <paramref name="policy"/> has the <see cref="ExponentialBackOffPolicy.RecommendedOrDefault"/> flag set,
+        /// the <see cref="BackOffHandler"/> will be set for handling both exceptions and HTTP Status codes.
         /// </summary>
         public ExponentialBackOffInitializer(ExponentialBackOffPolicy policy, Func<BackOffHandler> createBackOff)
         {
@@ -60,16 +69,20 @@ namespace Google.Apis.Http
         /// <inheritdoc/>
         public void Initialize(ConfigurableHttpClient httpClient)
         {
-            var backOff = CreateBackOff();
+            // This also decides which of HTTP status codes/exceptions are retryable.
+            BackOffHandler backOff = CreateBackOff();
 
             // Add exception handler and \ or unsuccessful response handler.
-            if ((Policy & ExponentialBackOffPolicy.Exception) == ExponentialBackOffPolicy.Exception)
+            if ((Policy & ExponentialBackOffPolicy.Exception) == ExponentialBackOffPolicy.Exception ||
+                // The recommendation may be to retry some exceptions, BackOffHandler will decide.
+                (Policy & ExponentialBackOffPolicy.RecommendedOrDefault) == ExponentialBackOffPolicy.RecommendedOrDefault)
             {
                 httpClient.MessageHandler.AddExceptionHandler(backOff);
             }
 
-            if ((Policy & ExponentialBackOffPolicy.UnsuccessfulResponse503) ==
-                ExponentialBackOffPolicy.UnsuccessfulResponse503)
+            if ((Policy & ExponentialBackOffPolicy.UnsuccessfulResponse503) == ExponentialBackOffPolicy.UnsuccessfulResponse503 ||
+                // The recommendation may be to retry some HTTP status code, BackOffHandler will decide.
+                (Policy & ExponentialBackOffPolicy.RecommendedOrDefault) == ExponentialBackOffPolicy.RecommendedOrDefault)
             {
                 httpClient.MessageHandler.AddUnsuccessfulResponseHandler(backOff);
             }
