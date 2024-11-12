@@ -73,13 +73,11 @@ namespace Google.Apis.Services
             public IConfigurableHttpClientInitializer HttpClientInitializer { get; set; }
 
             /// <summary>
-            /// Get or sets the exponential back-off policy used by the service. Default value is 
-            /// <c>UnsuccessfulResponse503</c>, which means that exponential back-off is used on 503 abnormal HTTP
-            /// response.
-            /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to the user to
-            /// configure the <see cref="ConfigurableMessageHandler"/> in an
-            /// <see cref="IConfigurableHttpClientInitializer"/> to set a specific back-off
-            /// implementation (using <see cref="BackOffHandler"/>).
+            /// Indicates which of exceptions and / or HTTP status codes are automatically retried using exponential backoff.
+            /// The default value is <see cref="ExponentialBackOffPolicy.UnsuccessfulResponse503"/> which means HTTP Status code 503
+            /// will be retried with exponential backoff.
+            /// If set to <see cref="ExponentialBackOffPolicy.None" /> no automatic retries will happen.
+            /// Calling code may still specify custom retries by configuring <see cref="HttpClient"/>.
             /// </summary>
             public ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; set; }
 
@@ -265,8 +263,8 @@ namespace Google.Apis.Services
             // Add exponential back-off initializer if necessary.
             if (initializer.DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
             {
-                args.Initializers.Add(new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
-                    CreateBackOffHandler));
+                var effectiveRetryPolicy = GetEffectiveRetryPolicy(initializer.DefaultExponentialBackOffPolicy);
+                args.Initializers.Add(new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy, CreateBackOffHandler));
             }
 
             // Add HTTP client timeout initializer if necessary.
@@ -281,6 +279,13 @@ namespace Google.Apis.Services
                 httpClient.MessageHandler.AddExecuteInterceptor(new MaxUrlLengthInterceptor(initializer.MaxUrlLength));
             }
             return httpClient;
+
+            static ExponentialBackOffPolicy GetEffectiveRetryPolicy(ExponentialBackOffPolicy retryPolicy) =>
+                retryPolicy.HasFlag(ExponentialBackOffPolicy.RecommendedOrDefault) ?
+                // At this level there's no recommendation, but we know default is retry 503.
+                // Remove RecommendedOrDefault and add UnsuccessfulResponse503.
+                (retryPolicy & ~ExponentialBackOffPolicy.RecommendedOrDefault) | ExponentialBackOffPolicy.UnsuccessfulResponse503 :
+                retryPolicy;
         }
 
         /// <summary>
