@@ -59,4 +59,26 @@ public class GoogleAuthConstsTests
         Assert.True(badResponseBackoffHandler.HandleUnsuccessfulResponseFunc(new HttpResponseMessage(HttpStatusCode.InternalServerError)));
         Assert.True(badResponseBackoffHandler.HandleUnsuccessfulResponseFunc(new HttpResponseMessage(HttpStatusCode.ServiceUnavailable)));
     }
+
+    [Theory]
+    [InlineData(ExponentialBackOffPolicy.None)]
+    [InlineData(ExponentialBackOffPolicy.UnsuccessfulResponse503)]
+    [InlineData(ExponentialBackOffPolicy.Exception)]
+    [InlineData(ExponentialBackOffPolicy.UnsuccessfulResponse503 | ExponentialBackOffPolicy.Exception)]
+    public void StripOAuth2TokenEndpointRecommendedPolicy_DoesNotStrip(ExponentialBackOffPolicy original)
+    {
+        var stripped = GoogleAuthConsts.StripOAuth2TokenEndpointRecommendedPolicy(original);
+        Assert.Equal(original, stripped);
+    }
+
+    [Theory]
+    [InlineData(ExponentialBackOffPolicy.RecommendedOrDefault, ExponentialBackOffPolicy.None)]
+    [InlineData(ExponentialBackOffPolicy.RecommendedOrDefault | ExponentialBackOffPolicy.UnsuccessfulResponse503, ExponentialBackOffPolicy.None)]
+    [InlineData(ExponentialBackOffPolicy.RecommendedOrDefault | ExponentialBackOffPolicy.Exception, ExponentialBackOffPolicy.Exception)]
+    [InlineData(ExponentialBackOffPolicy.RecommendedOrDefault | ExponentialBackOffPolicy.UnsuccessfulResponse503 | ExponentialBackOffPolicy.Exception, ExponentialBackOffPolicy.Exception)]
+    public void StripOAuth2TokenEndpointRecommendedPolicy_Strips(ExponentialBackOffPolicy original, ExponentialBackOffPolicy expected)
+    {
+        var stripped = GoogleAuthConsts.StripOAuth2TokenEndpointRecommendedPolicy(original);
+        Assert.Equal(expected, stripped);
+    }
 }

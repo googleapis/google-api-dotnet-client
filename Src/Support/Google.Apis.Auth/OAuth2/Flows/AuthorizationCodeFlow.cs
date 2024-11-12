@@ -194,16 +194,17 @@ namespace Google.Apis.Auth.OAuth2.Flows
             HttpClientFactory = initializer.HttpClientFactory ?? new HttpClientFactory();
 
             var httpArgs = new CreateHttpClientArgs();
-            // Add exponential back-off initializer if necessary.
-            if (DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
-            {
-                var effectiveRetryPolicy = (DefaultExponentialBackOffPolicy & ExponentialBackOffPolicy.RecommendedOrDefault) == ExponentialBackOffPolicy.RecommendedOrDefault ?
-                    // At this level there's no recommendation, but we know default is retry 503.
-                    // Remove RecommendedOrDefault and add UnsuccessfulResponse503.
-                    (DefaultExponentialBackOffPolicy & ~ExponentialBackOffPolicy.RecommendedOrDefault) | ExponentialBackOffPolicy.UnsuccessfulResponse503 :
-                    DefaultExponentialBackOffPolicy;
 
-                httpArgs.Initializers.Add(new ExponentialBackOffInitializer(effectiveRetryPolicy, () => new BackOffHandler(new ExponentialBackOff())));
+            // In case the user explicitly configured retry policy.
+            var customRetryPolicy = GoogleAuthConsts.StripOAuth2TokenEndpointRecommendedPolicy(DefaultExponentialBackOffPolicy);
+            if (customRetryPolicy != ExponentialBackOffPolicy.None)
+            {
+                httpArgs.Initializers.Add(new ExponentialBackOffInitializer(customRetryPolicy, () => new BackOffHandler(new ExponentialBackOff())));
+            }
+            // In case recommended is also configured.
+            if (DefaultExponentialBackOffPolicy.HasFlag(ExponentialBackOffPolicy.RecommendedOrDefault))
+            {
+                httpArgs.Initializers.Add(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry);
             }
             HttpClient = HttpClientFactory.CreateHttpClient(httpArgs);
         }

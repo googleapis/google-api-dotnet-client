@@ -25,7 +25,6 @@ using Google.Apis.Util;
 using Google.Apis.Util.Store;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -70,10 +69,14 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             // Disable "<member> is obsolete" warning for these uses.
             // MessageHandler no longer provides a supported way for clients to query the list of handlers,
             // but we rely on the obsolete property as an implementation detail here.
-            #pragma warning disable 618
-            Assert.Single(flow.HttpClient.MessageHandler.UnsuccessfulResponseHandlers);
-            Assert.IsType<BackOffHandler>(flow.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.First());
-            #pragma warning restore 618
+#pragma warning disable 618
+            IHttpUnsuccessfulResponseHandler badResponseHandler = Assert.Single(flow.HttpClient.MessageHandler.UnsuccessfulResponseHandlers);
+            IHttpExceptionHandler exceptionHandler = Assert.Single(flow.HttpClient.MessageHandler.ExceptionHandlers);
+#pragma warning restore 618
+
+            BackOffHandler backOffBadResponseHandler = Assert.IsType<BackOffHandler>(badResponseHandler);
+            BackOffHandler backOffExceptionHandler = Assert.IsType<BackOffHandler>(exceptionHandler);
+            Assert.Same(backOffBadResponseHandler, backOffExceptionHandler);
         }
 
         #endregion
@@ -90,6 +93,73 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             Assert.NotSame(flow.HttpClient, flowWithFactory.HttpClient);
             Assert.NotSame(flow.HttpClientFactory, flowWithFactory.HttpClientFactory);
             Assert.Same(factory, flowWithFactory.HttpClientFactory);
+        }
+
+        [Fact]
+        public void Deafault_RecommendedRetryPolicy()
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            var flow = CreateFlow(httpClientFactory: mockFactory);
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            var retryInitializer = Assert.Single(args.Initializers);
+            Assert.Same(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry, retryInitializer);
+        }
+
+        [Fact]
+        public void BadResponse503AndRecommended_RecommendedRetryPolicy()
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            var flow = CreateFlow(
+                httpClientFactory: mockFactory,
+                exponentialBackOffPolicy: ExponentialBackOffPolicy.UnsuccessfulResponse503 | ExponentialBackOffPolicy.RecommendedOrDefault);
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            var retryInitializer = Assert.Single(args.Initializers);
+            Assert.Same(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry, retryInitializer);
+        }
+
+        [Fact]
+        public void ExceptionAndRecommended_RecommendedAndOtherRetryPolicy()
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            var flow = CreateFlow(
+                httpClientFactory: mockFactory,
+                exponentialBackOffPolicy: ExponentialBackOffPolicy.Exception | ExponentialBackOffPolicy.RecommendedOrDefault);
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            Assert.Equal(2, args.Initializers.Count);
+            Assert.Contains(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry, args.Initializers);
+            Assert.Contains(args.Initializers, initializer => initializer != GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry);
+        }
+
+        [Fact]
+        public void NoRetryPolicy()
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            var flow = CreateFlow(httpClientFactory: mockFactory, exponentialBackOffPolicy: ExponentialBackOffPolicy.None);
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            Assert.Empty(args.Initializers);
+        }
+
+        [Theory]
+        [InlineData(ExponentialBackOffPolicy.Exception)]
+        [InlineData(ExponentialBackOffPolicy.UnsuccessfulResponse503)]
+        [InlineData(ExponentialBackOffPolicy.Exception | ExponentialBackOffPolicy.UnsuccessfulResponse503)]
+        public void OtherThanRecommendedRetryPolicy(ExponentialBackOffPolicy policy)
+        {
+            var mockFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler());
+            var flow = CreateFlow(httpClientFactory: mockFactory, exponentialBackOffPolicy: policy);
+
+            var args = Assert.Single(mockFactory.AllCreateHttpClientArgs);
+
+            var retryInitializer = Assert.Single(args.Initializers);
+            Assert.NotSame(GoogleAuthConsts.OAuth2TokenEndpointRecommendedRetry, retryInitializer);
         }
 
         #region LoadToken
@@ -406,8 +476,11 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
         /// <param name="scopes">The Scopes.</param>
         /// <param name="httpClientFactory">The HTTP client factory. If not set the default will be used.</param>
         /// <returns>Authorization code flow</returns>
-        private AuthorizationCodeFlow CreateFlow(IDataStore dataStore = null, IEnumerable<string> scopes = null,
-            IHttpClientFactory httpClientFactory = null)
+        private AuthorizationCodeFlow CreateFlow(
+            IDataStore dataStore = null,
+            IEnumerable<string> scopes = null,
+            IHttpClientFactory httpClientFactory = null,
+            ExponentialBackOffPolicy? exponentialBackOffPolicy = null)
         {
             var secrets = new ClientSecrets() { ClientId = "id", ClientSecret = "secret" };
             var initializer = new AuthorizationCodeFlow.Initializer(AuthorizationCodeUrl, TokenUrl)
@@ -421,6 +494,10 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
                 initializer.DataStore = dataStore;
             }
             initializer.Scopes = scopes;
+            if (exponentialBackOffPolicy.HasValue)
+            {
+                initializer.DefaultExponentialBackOffPolicy = exponentialBackOffPolicy.Value;
+            }
             return new AuthorizationCodeFlow(initializer);
         }
 
