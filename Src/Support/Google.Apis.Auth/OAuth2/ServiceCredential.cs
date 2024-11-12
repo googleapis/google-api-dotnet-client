@@ -231,32 +231,51 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
-        /// Builds HTTP client creation args from this credential settings.
+        /// Builds HTTP client creation args from all this credential settings.
+        /// These are used for initializing <see cref="HttpClient"/>.
         /// </summary>
         protected internal CreateHttpClientArgs BuildCreateHttpClientArgs()
         {
+            var args = BuildCreateHttpClientArgsWithNoRetries();
+            AddHttpClientRetryConfiguration(args);
+            return args;
+        }
+
+        /// <summary>
+        /// Builds HTTP client creation args from this credential settings except for <see cref="DefaultExponentialBackOffPolicy"/>.
+        /// </summary>
+        private protected CreateHttpClientArgs BuildCreateHttpClientArgsWithNoRetries()
+        {
             var httpArgs = new CreateHttpClientArgs();
 
-            // Add exponential back-off initializer if necessary.
-            if (DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
-            {
-                var effectiveRetryPolicy = (DefaultExponentialBackOffPolicy & ExponentialBackOffPolicy.RecommendedOrDefault) == ExponentialBackOffPolicy.RecommendedOrDefault ?
-                    // At this level there's no recommendation, but we know default is retry 503.
-                    // Remove RecommendedOrDefault and add UnsuccessfulResponse503.
-                    (DefaultExponentialBackOffPolicy & ~ExponentialBackOffPolicy.RecommendedOrDefault) | ExponentialBackOffPolicy.UnsuccessfulResponse503 :
-                    DefaultExponentialBackOffPolicy;
-
-                httpArgs.Initializers.Add(new ExponentialBackOffInitializer(effectiveRetryPolicy, () => new BackOffHandler(new ExponentialBackOff())));
-            }
-
-            // Add other initializers
+            // Add initializers
             foreach (var httpClientInitializer in HttpClientInitializers)
             {
                 httpArgs.Initializers.Add(httpClientInitializer);
             }
 
             return httpArgs;
-    }
+        }
+
+        /// <summary>
+        /// Configures <paramref name="args"/> with the expected retry policy for <see cref="HttpClient"/> based on
+        /// <see cref="DefaultExponentialBackOffPolicy"/>. Can be extended as different credentials use different token
+        /// endpoints that may recommende different retry strategies.
+        /// </summary>
+        private protected virtual void AddHttpClientRetryConfiguration(CreateHttpClientArgs args)
+        {
+            // Add exponential back-off initializer if necessary.
+            if (DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
+            {
+                var effectiveRetryPolicy = DefaultExponentialBackOffPolicy.HasFlag(ExponentialBackOffPolicy.RecommendedOrDefault) ?
+                    // At this level there's no recommendation, but we know default is retry 503.
+                    // Remove RecommendedOrDefault and add UnsuccessfulResponse503.
+                    (DefaultExponentialBackOffPolicy & ~ExponentialBackOffPolicy.RecommendedOrDefault) | ExponentialBackOffPolicy.UnsuccessfulResponse503 :
+                    DefaultExponentialBackOffPolicy;
+
+                args.Initializers.Add(new ExponentialBackOffInitializer(effectiveRetryPolicy, () => new BackOffHandler(new ExponentialBackOff())));
+            }
+        }
 
         #region IConfigurableHttpClientInitializer
 
