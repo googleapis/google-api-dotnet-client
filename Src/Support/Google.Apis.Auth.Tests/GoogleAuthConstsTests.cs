@@ -81,4 +81,59 @@ public class GoogleAuthConstsTests
         var stripped = GoogleAuthConsts.StripOAuth2TokenEndpointRecommendedPolicy(original);
         Assert.Equal(expected, stripped);
     }
+
+    [Fact]
+    public void IamSignBlobTokenEndpointRecommendedRetry()
+    {
+        var httpClient = new ConfigurableHttpClient(new ConfigurableMessageHandler(new DelegatedMessageHandler(request => Task.FromResult(new HttpResponseMessage()))));
+
+        GoogleAuthConsts.IamSignBlobEndpointRecommendedRetry.Initialize(httpClient);
+
+        // MessageHandler no longer provides a supported way for clients to query the list of handlers,
+        // but we rely on the obsolete property as an implementation detail here.
+#pragma warning disable CS0618 // Type or member is obsolete
+        var badResponseHandler = Assert.Single(httpClient.MessageHandler.UnsuccessfulResponseHandlers);
+        var exceptionHandler = Assert.Single(httpClient.MessageHandler.ExceptionHandlers);
+#pragma warning restore CS0618 // Type or member is obsolete
+
+        var badResponseBackoffHandler = Assert.IsType<BackOffHandler>(badResponseHandler);
+        var exceptionBackoffHandler = Assert.IsType<BackOffHandler>(exceptionHandler);
+        Assert.Same(badResponseBackoffHandler, exceptionBackoffHandler);
+
+        Assert.Equal(TimeSpan.MaxValue, badResponseBackoffHandler.MaxTimeSpan);
+
+        // Check that it doesn't handle (some) exceptions.
+        Assert.False(badResponseBackoffHandler.HandleExceptionFunc(new Exception()));
+        Assert.False(badResponseBackoffHandler.HandleExceptionFunc(new HttpRequestException()));
+        Assert.False(badResponseBackoffHandler.HandleExceptionFunc(new TaskCanceledException()));
+        Assert.False(badResponseBackoffHandler.HandleExceptionFunc(new OperationCanceledException()));
+
+        // Check that it handles the expected bad responses.
+        Assert.True(badResponseBackoffHandler.HandleUnsuccessfulResponseFunc(new HttpResponseMessage(HttpStatusCode.InternalServerError)));
+        Assert.True(badResponseBackoffHandler.HandleUnsuccessfulResponseFunc(new HttpResponseMessage(HttpStatusCode.BadGateway)));
+        Assert.True(badResponseBackoffHandler.HandleUnsuccessfulResponseFunc(new HttpResponseMessage(HttpStatusCode.ServiceUnavailable)));
+        Assert.True(badResponseBackoffHandler.HandleUnsuccessfulResponseFunc(new HttpResponseMessage(HttpStatusCode.GatewayTimeout)));
+    }
+
+    [Theory]
+    [InlineData(ExponentialBackOffPolicy.None)]
+    [InlineData(ExponentialBackOffPolicy.UnsuccessfulResponse503)]
+    [InlineData(ExponentialBackOffPolicy.Exception)]
+    [InlineData(ExponentialBackOffPolicy.UnsuccessfulResponse503 | ExponentialBackOffPolicy.Exception)]
+    public void StripIamSignBlobEndpointRecommendedPolicy_DoesNotStrip(ExponentialBackOffPolicy original)
+    {
+        var stripped = GoogleAuthConsts.StripIamSignBlobEndpointRecommendedPolicy(original);
+        Assert.Equal(original, stripped);
+    }
+
+    [Theory]
+    [InlineData(ExponentialBackOffPolicy.RecommendedOrDefault, ExponentialBackOffPolicy.None)]
+    [InlineData(ExponentialBackOffPolicy.RecommendedOrDefault | ExponentialBackOffPolicy.UnsuccessfulResponse503, ExponentialBackOffPolicy.None)]
+    [InlineData(ExponentialBackOffPolicy.RecommendedOrDefault | ExponentialBackOffPolicy.Exception, ExponentialBackOffPolicy.Exception)]
+    [InlineData(ExponentialBackOffPolicy.RecommendedOrDefault | ExponentialBackOffPolicy.UnsuccessfulResponse503 | ExponentialBackOffPolicy.Exception, ExponentialBackOffPolicy.Exception)]
+    public void StripIamSignBlobEndpointRecommendedPolicy_Strips(ExponentialBackOffPolicy original, ExponentialBackOffPolicy expected)
+    {
+        var stripped = GoogleAuthConsts.StripOAuth2TokenEndpointRecommendedPolicy(original);
+        Assert.Equal(expected, stripped);
+    }
 }
