@@ -184,6 +184,35 @@ namespace Google.Apis.Auth.OAuth2
             originalPolicy & ~ExponentialBackOffPolicy.RecommendedOrDefault & ~ExponentialBackOffPolicy.UnsuccessfulResponse503 :
             originalPolicy;
 
+        /// <summary>
+        /// Retry strategy recommended for the OAuth2 token endpoints.
+        /// </summary>
+        internal static ExponentialBackOffInitializer IamSignBlobEndpointRecommendedRetry { get; } = new ExponentialBackOffInitializer(
+            ExponentialBackOffPolicy.RecommendedOrDefault,
+            () => new BackOffHandler(new BackOffHandler.Initializer(ExponentialBackOff.FromDeltaBackOffPercent(deltaBackOffPercent: 10, maximumNumOfRetries: 3))
+            {
+                // Give the back-off strategy control over how much to wait for.
+                MaxTimeSpan = TimeSpan.MaxValue,
+                HandleExceptionFunc = ex => false,
+                HandleUnsuccessfulResponseFunc = response =>
+                    response.StatusCode == HttpStatusCode.InternalServerError || // 500
+                    response.StatusCode == HttpStatusCode.BadGateway || // 502
+                    response.StatusCode == HttpStatusCode.ServiceUnavailable || // 503
+                    response.StatusCode == HttpStatusCode.GatewayTimeout, // 504
+            }));
+
+        /// <summary>
+        /// If <paramref name="originalPolicy"/> has the <see cref="ExponentialBackOffPolicy.RecommendedOrDefault"/> flag, the returned value
+        /// will be identical to <paramref name="originalPolicy"/> except it won't have the <see cref="ExponentialBackOffPolicy.RecommendedOrDefault"/> or
+        /// <see cref="ExponentialBackOffPolicy.UnsuccessfulResponse503"/> flags. Otherwise, the returned value will be <paramref name="originalPolicy"/>.
+        /// This method facilitate honoring any custom policies that may have been set. Calling code is resposible for honoring the recommended policies.
+        /// </summary>
+        internal static ExponentialBackOffPolicy StripIamSignBlobEndpointRecommendedPolicy(ExponentialBackOffPolicy originalPolicy) =>
+            originalPolicy.HasFlag(ExponentialBackOffPolicy.RecommendedOrDefault) ?
+            // We remove 503 also because the recommended policy retries 503.
+            originalPolicy & ~ExponentialBackOffPolicy.RecommendedOrDefault & ~ExponentialBackOffPolicy.UnsuccessfulResponse503 :
+            originalPolicy;
+
         private static string GetEffectiveMetadataUrl(string suffix, string defaultValue)
         {
             string env = Environment.GetEnvironmentVariable("GCE_METADATA_HOST");
