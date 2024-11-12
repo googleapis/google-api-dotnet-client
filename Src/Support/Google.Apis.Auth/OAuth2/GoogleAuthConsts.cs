@@ -14,7 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Http;
+using Google.Apis.Util;
 using System;
+using System.Net;
 using System.Net.Http;
 
 namespace Google.Apis.Auth.OAuth2
@@ -151,6 +154,23 @@ namespace Google.Apis.Auth.OAuth2
         /// This takes account of the GCE_METADATA_HOST environment variable.
         /// </summary>
         internal static string EffectiveMetadataServerUrl => GetEffectiveMetadataUrl(null, DefaultMetadataServerUrl);
+
+        /// <summary>
+        /// Retry strategy recommended for the OAuth2 token endpoints.
+        /// </summary>
+        internal static ExponentialBackOffInitializer OAuth2TokenEndpointRecommendedRetry { get; } = new ExponentialBackOffInitializer(
+            ExponentialBackOffPolicy.RecommendedOrDefault,
+            () => new BackOffHandler(new BackOffHandler.Initializer(ExponentialBackOff.FromDeltaBackOffPercent(deltaBackOffPercent: 10, maximumNumOfRetries: 3))
+            {
+                // Give the back-off strategy control over how much to wait for.
+                MaxTimeSpan = TimeSpan.MaxValue,
+                HandleExceptionFunc = ex => false,
+                HandleUnsuccessfulResponseFunc = response =>
+                    response.StatusCode == HttpStatusCode.RequestTimeout || // 408
+                    (int) response.StatusCode == 429 || // 429 Enum value not available in .NET Standard 2.0 or .NET Framework 4.6.2. This is "Too many requests".
+                    response.StatusCode == HttpStatusCode.InternalServerError || // 500
+                    response.StatusCode == HttpStatusCode.ServiceUnavailable, // 503
+            }));
 
         private static string GetEffectiveMetadataUrl(string suffix, string defaultValue)
         {
