@@ -172,6 +172,18 @@ namespace Google.Apis.Auth.OAuth2
                     response.StatusCode == HttpStatusCode.ServiceUnavailable, // 503
             }));
 
+        /// <summary>
+        /// If <paramref name="originalPolicy"/> has the <see cref="ExponentialBackOffPolicy.RecommendedOrDefault"/> flag, the returned value
+        /// will be identical to <paramref name="originalPolicy"/> except it won't have the <see cref="ExponentialBackOffPolicy.RecommendedOrDefault"/> or
+        /// <see cref="ExponentialBackOffPolicy.UnsuccessfulResponse503"/> flags. Otherwise, the returned value will be <paramref name="originalPolicy"/>.
+        /// This method facilitate honoring any custom policies that may have been set. Calling code is resposible for honoring the recommended policies.
+        /// </summary>
+        internal static ExponentialBackOffPolicy StripOAuth2TokenEndpointRecommendedPolicy(ExponentialBackOffPolicy originalPolicy) =>
+            originalPolicy.HasFlag(ExponentialBackOffPolicy.RecommendedOrDefault) ?
+            // We remove 503 also because the recommended policy retries 503.
+            originalPolicy & ~ExponentialBackOffPolicy.RecommendedOrDefault & ~ExponentialBackOffPolicy.UnsuccessfulResponse503 :
+            originalPolicy;
+
         private static string GetEffectiveMetadataUrl(string suffix, string defaultValue)
         {
             string env = Environment.GetEnvironmentVariable("GCE_METADATA_HOST");

@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System.Net.Http;
-
 using Google.Apis.Http;
+using System.Collections.Generic;
+using System.Net.Http;
 
 namespace Google.Apis.Tests.Mocks
 {
@@ -26,7 +26,9 @@ namespace Google.Apis.Tests.Mocks
     /// </summary>
     public class MockHttpClientFactory : HttpClientFactory
     {
+        private readonly List<CreateHttpClientArgs> _args = new List<CreateHttpClientArgs>();
         private HttpMessageHandler Handler { get; set; }
+        public IEnumerable<CreateHttpClientArgs> AllCreateHttpClientArgs => _args;
 
         public MockHttpClientFactory(HttpMessageHandler handler)
         {
@@ -35,6 +37,7 @@ namespace Google.Apis.Tests.Mocks
 
         protected override HttpMessageHandler CreateHandler(CreateHttpClientArgs args)
         {
+            _args.Add(args);
             return Handler;
         }
     }
