@@ -1109,10 +1109,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// This API replaces user authorized OAuth consnet based APIs (Create, Entitle). Generates a short-lived
+            /// This API replaces user authorized OAuth consent based APIs (Create, Entitle). Generates a short-lived
             /// token for a user session based on the user intent. You can use the session token to redirect the user to
-            /// Google to finish the signup flow. You can re-generate new session token repeatedly for same request if
-            /// necessary, regardless of the previous tokens being expired or not.
+            /// Google to finish the signup flow. You can re-generate new session token repeatedly for the same request
+            /// if necessary, regardless of the previous tokens being expired or not.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1124,10 +1124,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// This API replaces user authorized OAuth consnet based APIs (Create, Entitle). Generates a short-lived
+            /// This API replaces user authorized OAuth consent based APIs (Create, Entitle). Generates a short-lived
             /// token for a user session based on the user intent. You can use the session token to redirect the user to
-            /// Google to finish the signup flow. You can re-generate new session token repeatedly for same request if
-            /// necessary, regardless of the previous tokens being expired or not.
+            /// Google to finish the signup flow. You can re-generate new session token repeatedly for the same request
+            /// if necessary, regardless of the previous tokens being expired or not.
             /// </summary>
             public class GenerateRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse>
             {
@@ -1276,8 +1276,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>
-    /// LINT.IfChange Partner request for entitling the previously provisioned subscription to an end user. The end user
-    /// identity is inferred from the request OAuth context.
+    /// Partner request for entitling the previously provisioned subscription to an end user. The end user identity is
+    /// inferred from the request OAuth context.
     /// </summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1572,8 +1572,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     public class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The generated user session. The token size of proportional to the size of the intent payload. Therefore,
-        /// please be mindful of keeping the request intent payload reasonably small.
+        /// The generated user session. The token size is proportional to the size of the intent payload.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userSession")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1UserSession UserSession { get; set; }
