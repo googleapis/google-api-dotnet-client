@@ -108,6 +108,12 @@ namespace Google.Apis.Auth.OAuth2
         private readonly Lazy<Task<string>> _signBlobUrlCache;
 
         /// <summary>
+        /// HttpClient used to call the IAM sign blob endpoint, authenticated as this credential.
+        /// </summary>
+        /// <remarks>Lazy to build one HtppClient only if it is needed.</remarks>
+        private readonly Lazy<ConfigurableHttpClient> _signBlobHttpClient;
+
+        /// <summary>
         /// Gets the source credential used to acquire the impersonated credentials.
         /// </summary>
         public GoogleCredential SourceCredential => HttpClientInitializers.OfType<GoogleCredential>().Single();
@@ -193,6 +199,7 @@ namespace Google.Apis.Auth.OAuth2
             HasCustomTokenUrlCache = new Lazy<Task<bool>>(HasCustomTokenUrlUncachedAsync);
             _oidcTokenUrlCache = new Lazy<Task<string>>(GetIdTokenUrlUncachedAsync);
             _signBlobUrlCache = new Lazy<Task<string>>(GetSignBlobUrlUncachedAsync);
+            _signBlobHttpClient = new Lazy<ConfigurableHttpClient>(BuildSignBlobHttpClientUncached);
         }
 
         /// <inheritdoc/>
@@ -298,7 +305,7 @@ namespace Google.Apis.Auth.OAuth2
             };
             var signBlobUrl = await _signBlobUrlCache.Value.WithCancellationToken(cancellationToken).ConfigureAwait(false);
 
-            var response = await request.PostJsonAsync<IamSignBlobResponse>(HttpClient, signBlobUrl, cancellationToken)
+            var response = await request.PostJsonAsync<IamSignBlobResponse>(_signBlobHttpClient.Value, signBlobUrl, cancellationToken)
                 .ConfigureAwait(false);
 
             return response.SignedBlob;
@@ -357,6 +364,13 @@ namespace Google.Apis.Auth.OAuth2
 
             string universeDomain = await (this as IGoogleCredential).GetUniverseDomainAsync(cancellationToken: default).ConfigureAwait(false);
             return string.Format(GoogleAuthConsts.IamSignEndpointFormatString, universeDomain, TargetPrincipal);
+        }
+
+        private ConfigurableHttpClient BuildSignBlobHttpClientUncached()
+        {
+            var httpClientArgs = BuildCreateHttpClientArgsWithNoRetries();
+            AddIamSignBlobRetryConfiguration(httpClientArgs);
+            return HttpClientFactory.CreateHttpClient(httpClientArgs);
         }
 
         /// <summary>
