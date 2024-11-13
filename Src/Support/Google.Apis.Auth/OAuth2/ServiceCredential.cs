@@ -277,6 +277,25 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
+        /// <summary>
+        /// Configures <paramref name="args"/> with the expected retry policy for an HttpClient that's used only with the IAM SignBlob endpoint, based on
+        /// <see cref="DefaultExponentialBackOffPolicy"/>.
+        /// </summary>
+        private protected void AddIamSignBlobRetryConfiguration(CreateHttpClientArgs args)
+        {
+            // In case the user explicitly configured retry policy.
+            var customRetryPolicy = GoogleAuthConsts.StripIamSignBlobEndpointRecommendedPolicy(DefaultExponentialBackOffPolicy);
+            if (customRetryPolicy != ExponentialBackOffPolicy.None)
+            {
+                args.Initializers.Add(new ExponentialBackOffInitializer(customRetryPolicy, () => new BackOffHandler(new ExponentialBackOff())));
+            }
+            // In case recommended is also configured.
+            if (DefaultExponentialBackOffPolicy.HasFlag(ExponentialBackOffPolicy.RecommendedOrDefault))
+            {
+                args.Initializers.Add(GoogleAuthConsts.IamSignBlobEndpointRecommendedRetry);
+            }
+        }
+
         #region IConfigurableHttpClientInitializer
 
         /// <inheritdoc/>
