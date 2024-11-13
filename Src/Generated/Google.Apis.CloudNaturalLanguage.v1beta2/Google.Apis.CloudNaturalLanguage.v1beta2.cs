@@ -1133,9 +1133,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         public virtual System.Nullable<float> Salience { get; set; }
 
         /// <summary>
-        /// For calls to AnalyzeEntitySentimentRequest or if AnnotateTextRequest.Features.extract_entity_sentiment is
-        /// set to true, this field will contain the aggregate sentiment expressed for this entity in the provided
-        /// document.
+        /// For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is set to
+        /// true, this field will contain the aggregate sentiment expressed for this entity in the provided document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
         public virtual Sentiment Sentiment { get; set; }
@@ -1154,8 +1153,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
     public class EntityMention : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For calls to AnalyzeEntitySentimentRequest or if AnnotateTextRequest.Features.extract_entity_sentiment is
-        /// set to true, this field will contain the sentiment expressed for this mention of the entity in the provided
+        /// For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is set to
+        /// true, this field will contain the sentiment expressed for this mention of the entity in the provided
         /// document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
@@ -1339,8 +1338,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
     public class Sentence : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For calls to AnalyzeSentimentRequest or if AnnotateTextRequest.Features.extract_document_sentiment is set to
-        /// true, this field will contain the sentiment for the sentence.
+        /// For calls to AnalyzeSentiment or if AnnotateTextRequest.Features.extract_document_sentiment is set to true,
+        /// this field will contain the sentiment for the sentence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
         public virtual Sentiment Sentiment { get; set; }
