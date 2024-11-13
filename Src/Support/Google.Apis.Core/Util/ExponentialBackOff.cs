@@ -29,7 +29,8 @@ namespace Google.Apis.Util
         private const int MaxAllowedNumRetries = 20;
 
         /// <summary>The random instance which generates a random number to add the to next back-off.</summary>
-        private static readonly Random Random = new Random();
+        private static readonly Random s_random = new Random();
+        private static readonly object s_lock = new object();
 
         /// <summary>
         /// Time span used to bound the back-off jitter.
@@ -137,8 +138,13 @@ namespace Google.Apis.Util
             0 :
             GetRandomBoundedValue((int)(DeltaBackOffPercent * rawBackOffMs) / 100);
 
-        private static int GetRandomBoundedValue(int upperBound) =>
-            Random.Next(-1 * upperBound, upperBound + 1);
+        private static int GetRandomBoundedValue(int upperBound)
+        {
+            lock (s_lock)
+            {
+                return s_random.Next(-1 * upperBound, upperBound + 1);
+            }
+        }
 
         #endregion
     }
