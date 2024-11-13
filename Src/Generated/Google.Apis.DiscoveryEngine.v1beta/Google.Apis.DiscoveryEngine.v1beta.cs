@@ -16831,6 +16831,75 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     }
                 }
 
+                /// <summary>
+                /// Bulk import of user events. Request processing might be synchronous. Events that already exist are
+                /// skipped. Use this method for backfilling historical user events. Operation.response is of type
+                /// ImportResponse. Note that it is possible for a subset of the items to be successfully inserted.
+                /// Operation.metadata is of type ImportMetadata.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Parent DataStore resource name, of the form
+                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                /// </param>
+                public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportUserEventsRequest body, string parent)
+                {
+                    return new ImportRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Bulk import of user events. Request processing might be synchronous. Events that already exist are
+                /// skipped. Use this method for backfilling historical user events. Operation.response is of type
+                /// ImportResponse. Note that it is possible for a subset of the items to be successfully inserted.
+                /// Operation.metadata is of type ImportMetadata.
+                /// </summary>
+                public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportUserEventsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent DataStore resource name, of the form
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportUserEventsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "import";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/userEvents:import";
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Writes a single user event.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -27087,6 +27156,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
         public virtual string Answer { get; set; }
 
+        /// <summary>
+        /// Output only. In ConversationalSearchService.GetSession API, if GetSessionRequest.include_answer_details is
+        /// set to true, this field will be populated when getting answer query session.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedAnswer")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswer DetailedAnswer { get; set; }
+
         /// <summary>The user query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
@@ -29608,7 +29684,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Indicates that this claim required grounding check. When the system decided this claim doesn't require
         /// attribution/grounding check, this field will be set to false. In that case, no grounding check was done for
-        /// the claim and therefore citation_indices, anti_citation_indices, and score should not be returned.
+        /// the claim and therefore citation_indices should not be returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingCheckRequired")]
         public virtual System.Nullable<bool> GroundingCheckRequired { get; set; }
@@ -29678,7 +29754,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Output only. Represents the relevance score based on similarity. Higher score indicates higher chunk
-        /// relevance. The score is in range [-1.0, 1.0]. Only populated on SearchService.SearchResponse.
+        /// relevance. The score is in range [-1.0, 1.0]. Only populated on SearchResponse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
         public virtual System.Nullable<double> RelevanceScore { get; set; }
@@ -32039,6 +32115,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Detailed document information associated with a user event.</summary>
     public class GoogleCloudDiscoveryengineV1betaDocumentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The conversion value associated with this Document. Must be set if UserEvent.event_type is
+        /// "conversion". For example, a value of 1000 signifies that 1000 seconds were spent viewing a Document for the
+        /// `watch` conversion type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionValue")]
+        public virtual System.Nullable<float> ConversionValue { get; set; }
+
         /// <summary>The Document resource ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -32751,53 +32835,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>More fine-grained information for the source reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> SourceMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Information about the user feedback. This information will be used for logging and metrics purpose.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1betaFeedback : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The additional user comment of the feedback if user gives a thumb down.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual string Comment { get; set; }
-
-        /// <summary>The related conversation information when user gives feedback.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conversationInfo")]
-        public virtual GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo ConversationInfo { get; set; }
-
-        /// <summary>
-        /// Required. Indicate whether the user gives a positive or negative feedback. If the user gives a negative
-        /// feedback, there might be more feedback details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feedbackType")]
-        public virtual string FeedbackType { get; set; }
-
-        /// <summary>The version of the LLM model that was used to generate the response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("llmModelVersion")]
-        public virtual string LlmModelVersion { get; set; }
-
-        /// <summary>Optional. The reason if user gives a thumb down.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
-        public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The conversation information such as the question index and session name.</summary>
-    public class GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The index of the user input within the conversation messages.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("questionIndex")]
-        public virtual System.Nullable<int> QuestionIndex { get; set; }
-
-        /// <summary>Name of the newly generated or continued session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("session")]
-        public virtual string Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34915,7 +34952,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The score of this record based on the given query and selected model.</summary>
+        /// <summary>
+        /// The score of this record based on the given query and selected model. The score will be rounded to 2 decimal
+        /// places. If the score is close to 0, it will be rounded to 0.0001 to avoid returning unset.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; }
 
@@ -37257,6 +37297,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
         public virtual string Answer { get; set; }
 
+        /// <summary>
+        /// Output only. In ConversationalSearchService.GetSession API, if GetSessionRequest.include_answer_details is
+        /// set to true, this field will be populated when getting answer query session.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedAnswer")]
+        public virtual GoogleCloudDiscoveryengineV1betaAnswer DetailedAnswer { get; set; }
+
         /// <summary>The user query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1betaQuery Query { get; set; }
@@ -38039,6 +38086,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1betaCompletionInfo CompletionInfo { get; set; }
 
         /// <summary>
+        /// Optional. Conversion type. Required if UserEvent.event_type is `conversion`. This is a customer-defined
+        /// conversion name in lowercase letters or numbers separated by "-", such as "watch", "good-visit" etc. Do not
+        /// set the field if UserEvent.event_type is not `conversion`. This mixes the custom conversion event with
+        /// predefined events like `search`, `view-item` etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionType")]
+        public virtual string ConversionType { get; set; }
+
+        /// <summary>
         /// The DataStore resource full name, of the form
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. Optional.
         /// Only required for user events whose data store can't by determined by UserEvent.engine or
@@ -38123,14 +38179,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Home &amp;gt; Men &amp;gt; Jeans * `add-feedback`: Add a user feedback. Retail-related values: *
         /// `add-to-cart`: Add an item(s) to cart, e.g. in Retail online shopping * `purchase`: Purchase an item(s)
         /// Media-related values: * `media-play`: Start/resume watching a video, playing a song, etc. *
-        /// `media-complete`: Finished or stopped midway through a video, song, etc.
+        /// `media-complete`: Finished or stopped midway through a video, song, etc. Custom conversion value: *
+        /// `conversion`: Customer defined conversion event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
-
-        /// <summary>Optional. This field is optional except for the `add-feedback` event types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feedback")]
-        public virtual GoogleCloudDiscoveryengineV1betaFeedback Feedback { get; set; }
 
         /// <summary>
         /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
