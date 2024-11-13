@@ -510,7 +510,7 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
 
         /// <summary>
         /// The language of the text, which will be the same as the language specified in the request or, if not
-        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// specified, the automatically-detected language. See Document.language_code field for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -550,7 +550,7 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
 
         /// <summary>
         /// The language of the text, which will be the same as the language specified in the request or, if not
-        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// specified, the automatically-detected language. See Document.language_code field for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -632,14 +632,14 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
 
         /// <summary>
         /// Entities, along with their semantic information, in the input document. Populated if the user enables
-        /// AnnotateTextRequest.Features.extract_entities or AnnotateTextRequest.Features.extract_entity_sentiment.
+        /// AnnotateTextRequest.Features.extract_entities .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
         /// <summary>
         /// The language of the text, which will be the same as the language specified in the request or, if not
-        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// specified, the automatically-detected language. See Document.language_code field for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -712,7 +712,7 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
 
         /// <summary>
         /// The language of the text, which will be the same as the language specified in the request or, if not
-        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// specified, the automatically-detected language. See Document.language_code field for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -898,9 +898,8 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// For calls to AnalyzeEntitySentimentRequest or if AnnotateTextRequest.Features.extract_entity_sentiment is
-        /// set to true, this field will contain the aggregate sentiment expressed for this entity in the provided
-        /// document.
+        /// For calls to AnalyzeEntitySentiment this field will contain the aggregate sentiment expressed for this
+        /// entity in the provided document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
         public virtual Sentiment Sentiment { get; set; }
@@ -926,9 +925,8 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
         public virtual System.Nullable<float> Probability { get; set; }
 
         /// <summary>
-        /// For calls to AnalyzeEntitySentimentRequest or if AnnotateTextRequest.Features.extract_entity_sentiment is
-        /// set to true, this field will contain the sentiment expressed for this mention of the entity in the provided
-        /// document.
+        /// For calls to AnalyzeEntitySentiment this field will contain the sentiment expressed for this mention of the
+        /// entity in the provided document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
         public virtual Sentiment Sentiment { get; set; }
@@ -1018,7 +1016,7 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
     {
         /// <summary>
         /// The language of the text, which will be the same as the language specified in the request or, if not
-        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// specified, the automatically-detected language. See Document.language_code field for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -1074,8 +1072,8 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
     public class Sentence : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For calls to AnalyzeSentimentRequest or if AnnotateTextRequest.Features.extract_document_sentiment is set to
-        /// true, this field will contain the sentiment for the sentence.
+        /// For calls to AnalyzeSentiment or if AnnotateTextRequest.Features.extract_document_sentiment is set to true,
+        /// this field will contain the sentiment for the sentence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
         public virtual Sentiment Sentiment { get; set; }
