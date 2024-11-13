@@ -299,7 +299,138 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }
 
         [Fact]
+        public async Task SignBlob_Default_RecommendedRetryPolicy()
+        {
+            var initializer = GetInitializerForSignBlob();
+            var mockFactory = initializer.HttpClientFactory as MockHttpClientFactory;
+            var credential = new ComputeCredential(initializer);
+
+            await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored"));
+
+            // Three clients have been created:
+            // - One is credential.HttpClient
+            // - One is the HttpClient of the IAM scoped Compute Credential that's used for authenticated IAM requests.
+            // - One is the HttpClient that will make requests to the IAM endpoint.
+            Assert.Equal(3, mockFactory.AllCreateHttpClientArgs.Count());
+            var signBlobArgs = mockFactory.AllCreateHttpClientArgs.Last();
+
+            // One initializer is the retry policy and the other one is the IAM scoped compute credential
+            Assert.Equal(2, signBlobArgs.Initializers.Count());
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer is ComputeCredential);
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer == GoogleAuthConsts.IamSignBlobEndpointRecommendedRetry);
+        }
+
+        [Fact]
+        public async Task SignBlob_BadResponse503AndRecommended_RecommendedRetryPolicy()
+        {
+            var initializer = GetInitializerForSignBlob();
+            var mockFactory = initializer.HttpClientFactory as MockHttpClientFactory;
+
+            initializer.DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503 | ExponentialBackOffPolicy.RecommendedOrDefault;
+            var credential = new ComputeCredential(initializer);
+
+            await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored"));
+
+            // Three clients have been created:
+            // - One is credential.HttpClient
+            // - One is the HttpClient of the IAM scoped Compute Credential that's used for authenticated IAM requests.
+            // - One is the HttpClient that will make requests to the IAM endpoint.
+            Assert.Equal(3, mockFactory.AllCreateHttpClientArgs.Count());
+            var signBlobArgs = mockFactory.AllCreateHttpClientArgs.Last();
+
+            // One initializer is the retry policy and the other one is the IAM scoped compute credential
+            Assert.Equal(2, signBlobArgs.Initializers.Count());
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer is ComputeCredential);
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer == GoogleAuthConsts.IamSignBlobEndpointRecommendedRetry);
+        }
+
+        [Fact]
+        public async Task SignBlob_ExceptionAndRecommended_RecommendedAndOtherRetryPolicy()
+        {
+            var initializer = GetInitializerForSignBlob();
+            var mockFactory = initializer.HttpClientFactory as MockHttpClientFactory;
+
+            initializer.DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception | ExponentialBackOffPolicy.RecommendedOrDefault;
+            var credential = new ComputeCredential(initializer);
+
+            await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored"));
+
+            // Three clients have been created:
+            // - One is credential.HttpClient
+            // - One is the HttpClient of the IAM scoped Compute Credential that's used for authenticated IAM requests.
+            // - One is the HttpClient that will make requests to the IAM endpoint.
+            Assert.Equal(3, mockFactory.AllCreateHttpClientArgs.Count());
+            var signBlobArgs = mockFactory.AllCreateHttpClientArgs.Last();
+
+            // Two retry policies and the IAM scoped compute credential
+            Assert.Equal(3, signBlobArgs.Initializers.Count());
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer is ComputeCredential);
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer == GoogleAuthConsts.IamSignBlobEndpointRecommendedRetry);
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer is ExponentialBackOffInitializer && initializer != GoogleAuthConsts.IamSignBlobEndpointRecommendedRetry);
+        }
+
+        [Fact]
+        public async Task SignBlob_NoRetryPolicy()
+        {
+            var initializer = GetInitializerForSignBlob();
+            var mockFactory = initializer.HttpClientFactory as MockHttpClientFactory;
+
+            initializer.DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.None;
+            var credential = new ComputeCredential(initializer);
+
+            await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored"));
+
+            // Three clients have been created:
+            // - One is credential.HttpClient
+            // - One is the HttpClient of the IAM scoped Compute Credential that's used for authenticated IAM requests.
+            // - One is the HttpClient that will make requests to the IAM endpoint.
+            Assert.Equal(3, mockFactory.AllCreateHttpClientArgs.Count());
+            var signBlobArgs = mockFactory.AllCreateHttpClientArgs.Last();
+
+            // Just the IAM scoped compute credential
+            var clientInitializer = Assert.Single(signBlobArgs.Initializers);
+            Assert.IsType<ComputeCredential>(clientInitializer);
+        }
+
+        [Theory]
+        [InlineData(ExponentialBackOffPolicy.Exception)]
+        [InlineData(ExponentialBackOffPolicy.UnsuccessfulResponse503)]
+        [InlineData(ExponentialBackOffPolicy.Exception | ExponentialBackOffPolicy.UnsuccessfulResponse503)]
+        public async Task SignBlob_OtherThanRecommendedRetryPolicy(ExponentialBackOffPolicy policy)
+        {
+            var initializer = GetInitializerForSignBlob();
+            var mockFactory = initializer.HttpClientFactory as MockHttpClientFactory;
+
+            initializer.DefaultExponentialBackOffPolicy = policy;
+            var credential = new ComputeCredential(initializer);
+
+            await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored"));
+
+            // Three clients have been created:
+            // - One is credential.HttpClient
+            // - One is the HttpClient of the IAM scoped Compute Credential that's used for authenticated IAM requests.
+            // - One is the HttpClient that will make requests to the IAM endpoint.
+            Assert.Equal(3, mockFactory.AllCreateHttpClientArgs.Count());
+            var signBlobArgs = mockFactory.AllCreateHttpClientArgs.Last();
+
+            // Two retry policy but not the default and the IAM scoped compute credential
+            Assert.Equal(2, signBlobArgs.Initializers.Count());
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer is ComputeCredential);
+            Assert.Contains(signBlobArgs.Initializers, initializer => initializer is ExponentialBackOffInitializer && initializer != GoogleAuthConsts.IamSignBlobEndpointRecommendedRetry);
+        }
+
+        [Fact]
         public async Task SignBlobAsync()
+        {
+            var initializer = GetInitializerForSignBlob();
+
+            var credential = new ComputeCredential(initializer);
+
+            var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored"));
+            Assert.Equal("Zm9v", signature);
+        }
+
+        private ComputeCredential.Initializer GetInitializerForSignBlob()
         {
             var clock = new MockClock(new DateTime(2020, 5, 21, 9, 20, 0, 0, DateTimeKind.Utc));
             var response = NewtonsoftJsonSerializer.Instance.Serialize(new { keyId = "1", signedBlob = "Zm9v" });
@@ -315,10 +446,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 UniverseDomain = fakeUniverseDomain,
             };
 
-            var credential = new ComputeCredential(initializer);
-
-            var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored"));
-            Assert.Equal("Zm9v", signature);
+            return initializer;
 
             Task<HttpResponseMessage> FetchServiceAccountId(HttpRequestMessage request)
             {

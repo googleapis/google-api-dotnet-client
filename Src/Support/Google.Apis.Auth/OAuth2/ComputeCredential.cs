@@ -75,11 +75,10 @@ namespace Google.Apis.Auth.OAuth2
         private readonly Lazy<Task<string>> _defaultServiceAccountEmailCache;
 
         /// <summary>
-        /// HttpClient used to call APIs internally authenticated as this ComputeCredential.
-        /// For instance, to perform IAM API calls for signing blobs of data.
+        /// HttpClient used to call the IAM sign blob endpoint, authenticated as this credential.
         /// </summary>
         /// <remarks>Lazy to build one HtppClient only if it is needed.</remarks>
-        private readonly Lazy<ConfigurableHttpClient> _authenticatedHttpClient;
+        private readonly Lazy<ConfigurableHttpClient> _signBlobHttpClient;
 
         /// <summary>
         /// Gets the OIDC Token URL.
@@ -170,7 +169,7 @@ namespace Google.Apis.Auth.OAuth2
                 EffectiveTokenServerUrl = TokenServerUrl;
             }
             _defaultServiceAccountEmailCache = new Lazy<Task<string>>(FetchDefaultServiceAccountEmailAsync, LazyThreadSafetyMode.ExecutionAndPublication);
-            _authenticatedHttpClient = new Lazy<ConfigurableHttpClient>(BuildAuthenticatedHttpClient, LazyThreadSafetyMode.ExecutionAndPublication);
+            _signBlobHttpClient = new Lazy<ConfigurableHttpClient>(BuildSignBlobHttpClient, LazyThreadSafetyMode.ExecutionAndPublication);
         }
 
         /// <inheritdoc/>
@@ -292,7 +291,7 @@ namespace Google.Apis.Auth.OAuth2
             var universeDomain = await (this as IGoogleCredential).GetUniverseDomainAsync(cancellationToken).ConfigureAwait(false);
             var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, universeDomain, serviceAccountEmail);
 
-            var response = await request.PostJsonAsync<IamSignBlobResponse>(_authenticatedHttpClient.Value, signBlobUrl, cancellationToken)
+            var response = await request.PostJsonAsync<IamSignBlobResponse>(_signBlobHttpClient.Value, signBlobUrl, cancellationToken)
                 .ConfigureAwait(false);
 
             return response.SignedBlob;
@@ -308,9 +307,10 @@ namespace Google.Apis.Auth.OAuth2
             return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
-        private ConfigurableHttpClient BuildAuthenticatedHttpClient()
+        private ConfigurableHttpClient BuildSignBlobHttpClient()
         {
-            var httpClientArgs = BuildCreateHttpClientArgs();
+            var httpClientArgs = BuildCreateHttpClientArgsWithNoRetries();
+            AddIamSignBlobRetryConfiguration(httpClientArgs);
             // We scope the credential because, although normal ComputeCredentials are scoped on origin,
             // GKE Workload Identity credentials accept scopes.
             // We know that the HttpClient is only used for IAM requests, so we scope it only for IAM.
