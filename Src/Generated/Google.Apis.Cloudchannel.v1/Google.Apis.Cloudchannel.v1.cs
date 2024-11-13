@@ -6676,7 +6676,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual System.Nullable<bool> Existing { get; set; }
 
         /// <summary>
-        /// Returns true if the Cloud Identity account is associated with a customer of the Channel Services partner.
+        /// Returns true if the Cloud Identity account is associated with a customer of the Channel Services partner
+        /// (with active subscriptions or purchase consents).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owned")]
         public virtual System.Nullable<bool> Owned { get; set; }
