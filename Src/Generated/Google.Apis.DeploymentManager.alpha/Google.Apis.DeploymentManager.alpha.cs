@@ -4269,8 +4269,8 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         /// "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number
         /// of instances that can be created in a single (batch) request.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("metadatas")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadatas { get; set; }
 
         /// <summary>
         /// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error
