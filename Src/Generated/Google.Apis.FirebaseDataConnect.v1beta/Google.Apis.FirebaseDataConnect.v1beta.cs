@@ -3062,7 +3062,11 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing Connectors.</summary>
+    /// <summary>
+    /// Message for response to listing Connectors. By default, `connectors.source` will not be included in the
+    /// response. To specify the fields included in the response, the response field mask can be provided by using the
+    /// query parameter `$fields` or the header `X-Goog-FieldMask`.
+    /// </summary>
     public class ListConnectorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of Connectors.</summary>
@@ -3114,7 +3118,11 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing Schemas.</summary>
+    /// <summary>
+    /// Message for response to listing Schemas. By default, `schemas.source` will not be included in the response. To
+    /// specify the fields included in the response, the response field mask can be provided by using the query
+    /// parameter `$fields` or the header `X-Goog-FieldMask`.
+    /// </summary>
     public class ListSchemasResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
