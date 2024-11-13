@@ -27,7 +27,7 @@ This package includes auth components like user-credential, authorization code f
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <PackageReference Include="System.Management" Version="7.0.2" />
+    <PackageReference Include="System.Management" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net462'">
@@ -36,7 +36,7 @@ This package includes auth components like user-credential, authorization code f
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
-    <PackageReference Include="System.Management" Version="7.0.2" />
+    <PackageReference Include="System.Management" Version="9.0.0" />
   </ItemGroup>
   
   <ItemGroup>
