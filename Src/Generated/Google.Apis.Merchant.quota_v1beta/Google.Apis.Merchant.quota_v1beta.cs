@@ -383,7 +383,7 @@ namespace Google.Apis.Merchant.quota_v1beta.Data
 
         /// <summary>
         /// The methods, current quota usage and limits per each group. The quota is shared between all methods in the
-        /// group. The groups are sorted in descending order based on quotaUsage.
+        /// group. The groups are sorted in descending order based on quota_usage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaGroups")]
         public virtual System.Collections.Generic.IList<QuotaGroup> QuotaGroups { get; set; }
