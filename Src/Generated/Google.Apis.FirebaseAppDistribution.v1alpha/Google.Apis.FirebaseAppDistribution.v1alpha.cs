@@ -941,6 +941,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
             {
                 this.service = service;
                 Releases = new ReleasesResource(service);
+                TestCases = new TestCasesResource(service);
             }
 
             /// <summary>Gets the Releases resource.</summary>
@@ -1269,6 +1270,342 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+            }
+
+            /// <summary>Gets the TestCases resource.</summary>
+            public virtual TestCasesResource TestCases { get; }
+
+            /// <summary>The "testCases" collection of methods.</summary>
+            public class TestCasesResource
+            {
+                private const string Resource = "testCases";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TestCasesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a new test case.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this test case will be created. Format:
+                /// `projects/{project_number}/apps/{app_id}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a new test case.</summary>
+                public class CreateRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this test case will be created. Format:
+                    /// `projects/{project_number}/apps/{app_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the test case, which will become the final component of the test
+                    /// case's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("testCaseId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TestCaseId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/testCases";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                        });
+                        RequestParameters.Add("testCaseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "testCaseId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a test case.</summary>
+                /// <param name="name">
+                /// Required. The name of the test case resource to delete. Format:
+                /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a test case.</summary>
+                public class DeleteRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the test case resource to delete. Format:
+                    /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/testCases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get a test case.</summary>
+                /// <param name="name">
+                /// Required. The name of the test case resource to retrieve. Format:
+                /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a test case.</summary>
+                public class GetRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the test case resource to retrieve. Format:
+                    /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/testCases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List test cases.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource from which to list test cases. Format:
+                /// `projects/{project_number}/apps/{app_id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List test cases.</summary>
+                public class ListRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaListTestCasesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource from which to list test cases. Format:
+                    /// `projects/{project_number}/apps/{app_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of test cases to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 test cases will be returned. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListTestCases` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListTestCases` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/testCases";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a test case.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the test case resource. Format:
+                /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a test case.</summary>
+                public class PatchRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the test case resource. Format:
+                    /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestCase Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/testCases/[^/]+$",
+                        });
                     }
                 }
             }
@@ -2070,6 +2407,24 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for `ListTestCases`.</summary>
+    public class GoogleFirebaseAppdistroV1alphaListTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The test cases from the specified app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaTestCase> TestCases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Login credential for automated tests</summary>
     public class GoogleFirebaseAppdistroV1alphaLoginCredential : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2428,6 +2783,28 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AI test cases</summary>
+    public class GoogleFirebaseAppdistroV1alphaTestCase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Instructions for AI driven test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiInstructions")]
+        public virtual GoogleFirebaseAppdistroV1alphaAiInstructions AiInstructions { get; set; }
+
+        /// <summary>Optional. Display name of the test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the test case resource. Format:
+        /// `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for automated tests</summary>
     public class GoogleFirebaseAppdistroV1alphaTestConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2494,6 +2871,17 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("udid")]
         public virtual string Udid { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
