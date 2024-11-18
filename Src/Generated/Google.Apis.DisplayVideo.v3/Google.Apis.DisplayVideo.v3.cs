@@ -27436,10 +27436,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string OptimizationObjective { get; set; }
 
         /// <summary>
-        /// Required. The budget spending speed setting of the insertion order. *Warning*: Starting on **November 5,
-        /// 2024**, pacing_type `PACING_TYPE_ASAP` will no longer be compatible with pacing_period
-        /// `PACING_PERIOD_FLIGHT`. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.io_asap).
+        /// Required. The budget spending speed setting of the insertion order. pacing_type `PACING_TYPE_ASAP` is not
+        /// compatible with pacing_period `PACING_PERIOD_FLIGHT`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacing")]
         public virtual Pacing Pacing { get; set; }
@@ -29635,9 +29633,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
 
         /// <summary>
         /// Required. The type of pacing that defines how the budget amount will be spent across the pacing_period.
-        /// *Warning*: Starting on **November 5, 2024**, `PACING_TYPE_ASAP` will no longer be compatible with
-        /// pacing_period `PACING_PERIOD_FLIGHT` for insertion orders. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.io_asap).
+        /// `PACING_TYPE_ASAP` is not compatible with pacing_period `PACING_PERIOD_FLIGHT` for insertion orders.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacingType")]
         public virtual string PacingType { get; set; }
