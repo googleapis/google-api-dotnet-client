@@ -17515,7 +17515,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Stores metadata of the invocation of a CX flow. Next Id: 7</summary>
+    /// <summary>Stores metadata of the invocation of a CX flow.</summary>
     public class GoogleCloudDialogflowCxV3beta1FlowInvocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -19767,7 +19767,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Stores metadata of the invocation of a child playbook. Next Id: 5</summary>
+    /// <summary>Stores metadata of the invocation of a child playbook.</summary>
     public class GoogleCloudDialogflowCxV3beta1PlaybookInvocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
