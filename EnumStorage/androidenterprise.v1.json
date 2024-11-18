@@ -13,6 +13,11 @@
     "dedicatedDevice",
     "knowledgeWorker"
   ],
+  "Google.Apis.AndroidEnterprise.v1.EnterprisesResource+CreateEnrollmentTokenRequest.EnrollmentTokenEnrollmentTokenTypeEnum": [
+    "enrollmentTokenTypeUnspecified",
+    "userlessDevice",
+    "userDevice"
+  ],
   "Google.Apis.AndroidEnterprise.v1.EnterprisesResource+GetServiceAccountRequest.KeyTypeEnum": [
     "googleCredentials",
     "pkcs12"
