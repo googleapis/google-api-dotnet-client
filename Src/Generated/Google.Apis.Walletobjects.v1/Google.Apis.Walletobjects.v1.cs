@@ -6554,6 +6554,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidAppLinkInfo")]
         public virtual AppLinkDataAppLinkInfo AndroidAppLinkInfo { get; set; }
 
+        /// <summary>Optional display text for the app link button. Character limit is 30.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
+        public virtual LocalizedString DisplayText { get; set; }
+
         /// <summary>Deprecated. Links to open iOS apps are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosAppLinkInfo")]
         public virtual AppLinkDataAppLinkInfo IosAppLinkInfo { get; set; }
