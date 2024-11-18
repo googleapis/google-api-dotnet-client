@@ -6827,6 +6827,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allConnectorVersions")]
         public virtual System.Collections.Generic.IList<string> AllConnectorVersions { get; set; }
 
+        /// <summary>Output only. All marketplace versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allMarketplaceVersions")]
+        public virtual System.Collections.Generic.IList<string> AllMarketplaceVersions { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -6893,6 +6897,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Published marketplace versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishedMarketplaceVersions")]
+        public virtual System.Collections.Generic.IList<string> PublishedMarketplaceVersions { get; set; }
 
         private string _updateTimeRaw;
 
@@ -7016,6 +7024,17 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Partner metadata details. This should be populated only when publishing the custom connector to
+        /// partner connector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerMetadata")]
+        public virtual PartnerMetadata PartnerMetadata { get; set; }
+
+        /// <summary>Output only. Publish status of a custom connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishStatus")]
+        public virtual PublishStatus PublishStatus { get; set; }
 
         /// <summary>Optional. Service account used by runtime plane to access auth config secrets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -7902,6 +7921,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Webhook data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookData")]
         public virtual WebhookData WebhookData { get; set; }
+
+        /// <summary>Output only. Webhook subscriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSubscriptions")]
+        public virtual WebhookSubscriptions WebhookSubscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9591,6 +9614,119 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Partner metadata details. This will be populated when publishing the custom connector as a partner connector
+    /// version. On publishing, parntner connector version will be created using the fields in PartnerMetadata.
+    /// </summary>
+    public class PartnerMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Whether the user has accepted the Google Cloud Platform Terms of Service
+        /// (https://cloud.google.com/terms/) and the Google Cloud Marketplace Terms of Service
+        /// (https://cloud.google.com/terms/marketplace/launcher?hl=en).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptGcpTos")]
+        public virtual System.Nullable<bool> AcceptGcpTos { get; set; }
+
+        /// <summary>Optional. Additional comments for the submission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalComments")]
+        public virtual string AdditionalComments { get; set; }
+
+        /// <summary>
+        /// Required. Confirmation that connector meets all applicable requirements mentioned in the Partner Connector
+        /// Publishing requirements list and Partner onboardiong requirements list
+        /// (https://cloud.google.com/marketplace/docs/partners/get-started#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmPartnerRequirements")]
+        public virtual System.Nullable<bool> ConfirmPartnerRequirements { get; set; }
+
+        /// <summary>Required. Public URL for the demo video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demoUri")]
+        public virtual string DemoUri { get; set; }
+
+        /// <summary>Required. Integration example templates for the custom connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integrationTemplates")]
+        public virtual string IntegrationTemplates { get; set; }
+
+        /// <summary>Optional. Marketplace product name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceProduct")]
+        public virtual string MarketplaceProduct { get; set; }
+
+        /// <summary>Required. Marketplace product ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceProductId")]
+        public virtual string MarketplaceProductId { get; set; }
+
+        /// <summary>Optional. Marketplace product project ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceProductProjectId")]
+        public virtual string MarketplaceProductProjectId { get; set; }
+
+        /// <summary>Optional. Marketplace product URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceProductUri")]
+        public virtual string MarketplaceProductUri { get; set; }
+
+        /// <summary>Required. Partner name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partner")]
+        public virtual string Partner { get; set; }
+
+        /// <summary>Required. Partner connector display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerConnectorDisplayName")]
+        public virtual string PartnerConnectorDisplayName { get; set; }
+
+        private string _publishRequestTimeRaw;
+
+        private object _publishRequestTime;
+
+        /// <summary>Output only. Publish request time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishRequestTime")]
+        public virtual string PublishRequestTimeRaw
+        {
+            get => _publishRequestTimeRaw;
+            set
+            {
+                _publishRequestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishRequestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishRequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishRequestTimeDateTimeOffset instead.")]
+        public virtual object PublishRequestTime
+        {
+            get => _publishRequestTime;
+            set
+            {
+                _publishRequestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishRequestTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishRequestTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishRequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishRequestTimeRaw);
+            set => PublishRequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Target application for which partner connector is built.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApplication")]
+        public virtual string TargetApplication { get; set; }
+
+        /// <summary>Required. Target customer segment for the partner connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCustomerSegment")]
+        public virtual string TargetCustomerSegment { get; set; }
+
+        /// <summary>Required. Details about partner connector use cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useCases")]
+        public virtual string UseCases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PerSliSloEligibility is a mapping from an SLI name to eligibility.</summary>
     public class PerSliSloEligibility : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9823,6 +9959,68 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Publish status of a custom connector.</summary>
+    public class PublishStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Publish state of the custom connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishState")]
+        public virtual string PublishState { get; set; }
+
+        private string _publishTimeRaw;
+
+        private object _publishTime;
+
+        /// <summary>Output only. Publish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
+        public virtual string PublishTimeRaw
+        {
+            get => _publishTimeRaw;
+            set
+            {
+                _publishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishTimeDateTimeOffset instead.")]
+        public virtual object PublishTime
+        {
+            get => _publishTime;
+            set
+            {
+                _publishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Partner connector name. Will be set on the custom connector. Format:
+        /// providers/partner/connectors//versions/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishedAs")]
+        public virtual string PublishedAs { get; set; }
+
+        /// <summary>
+        /// Output only. Custom connector name. Will be set on the partner connector. Format:
+        /// providers/customconnectors/connectors//versions/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishedSource")]
+        public virtual string PublishedSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10735,6 +10933,17 @@ namespace Google.Apis.Connectors.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>WebhookSubscriptions has details of webhook subscriptions.</summary>
+    public class WebhookSubscriptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Webhook data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookData")]
+        public virtual System.Collections.Generic.IList<WebhookData> WebhookData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
