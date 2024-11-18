@@ -3769,6 +3769,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about the disk associated with the finding.</summary>
+    public class Disk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the disk, for example,
+        /// "https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Path of the file in terms of underlying disk/partition identifiers.</summary>
     public class DiskPath : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4137,6 +4151,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>Contains more details about the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Disk associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disk")]
+        public virtual Disk Disk { get; set; }
 
         private string _eventTimeRaw;
 
@@ -4748,6 +4766,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// </summary>
     public class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The cloud provider of the custom module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
         /// <summary>Output only. The user-specified configuration for the module.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConfig")]
         public virtual GoogleCloudSecuritycenterV1CustomConfig CustomConfig { get; set; }
@@ -5379,8 +5401,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
-        /// "tagValues/123", "tagValues/456", "tagValues/789" ]`
+        /// Required. Tag values combined with `AND` to check against. For Google Cloud resources, they are tag value
+        /// IDs in the form of "tagValues/123". Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]`
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
@@ -5457,6 +5479,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestorModule")]
         public virtual string AncestorModule { get; set; }
+
+        /// <summary>The cloud provider of the custom module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
 
         /// <summary>The user specified custom configuration for the module.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConfig")]
@@ -7426,6 +7452,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about the disk associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2Disk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the disk, for example,
+        /// "https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Path of the file in terms of underlying disk/partition identifiers.</summary>
     public class GoogleCloudSecuritycenterV2DiskPath : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7943,6 +7983,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>Contains more details about the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Disk associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disk")]
+        public virtual GoogleCloudSecuritycenterV2Disk Disk { get; set; }
 
         private string _eventTimeRaw;
 
@@ -9259,8 +9303,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
-        /// "tagValues/123", "tagValues/456", "tagValues/789" ]`
+        /// Tag values combined with `AND` to check against. For Google Cloud resources, they are tag value IDs in the
+        /// form of "tagValues/123". Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]`
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
