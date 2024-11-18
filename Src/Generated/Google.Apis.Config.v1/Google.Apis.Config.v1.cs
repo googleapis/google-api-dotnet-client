@@ -3085,7 +3085,7 @@ namespace Google.Apis.Config.v1.Data
         public virtual string QuotaValidation { get; set; }
 
         /// <summary>
-        /// Optional. User-specified Service Account (SA) credentials to be used when actuating resources. Format:
+        /// Required. User-specified Service Account (SA) credentials to be used when actuating resources. Format:
         /// `projects/{projectID}/serviceAccounts/{serviceAccount}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -3906,7 +3906,7 @@ namespace Google.Apis.Config.v1.Data
         public virtual string PreviewMode { get; set; }
 
         /// <summary>
-        /// Optional. User-specified Service Account (SA) credentials to be used when previewing resources. Format:
+        /// Required. User-specified Service Account (SA) credentials to be used when previewing resources. Format:
         /// `projects/{projectID}/serviceAccounts/{serviceAccount}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
