@@ -5247,7 +5247,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this
+        /// Required. The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-resource) of this
         /// instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
@@ -5968,8 +5968,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
-        /// been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`,
+        /// corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -6771,7 +6771,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     public class SetInstanceMachineTypeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types).
+        /// Required. The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-resource).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
