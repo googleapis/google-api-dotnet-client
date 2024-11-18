@@ -2407,7 +2407,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>
         /// DNS endpoint of [Google Kubernetes Engine cluster control
         /// plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture). Requires
-        /// gke_master_cluster to be set, can't be used simultaneoulsly with ip_address.
+        /// gke_master_cluster to be set, can't be used simultaneoulsly with ip_address or network. Applicable only to
+        /// destination endpoint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
         public virtual string Fqdn { get; set; }
@@ -2712,11 +2713,15 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUri")]
         public virtual string ClusterUri { get; set; }
 
-        /// <summary>External IP address of a GKE cluster master.</summary>
+        /// <summary>DNS endpoint of a GKE cluster control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsEndpoint")]
+        public virtual string DnsEndpoint { get; set; }
+
+        /// <summary>External IP address of a GKE cluster control plane.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
         public virtual string ExternalIp { get; set; }
 
-        /// <summary>Internal IP address of a GKE cluster master.</summary>
+        /// <summary>Internal IP address of a GKE cluster control plane.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual string InternalIp { get; set; }
 
