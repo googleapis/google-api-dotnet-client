@@ -5474,6 +5474,19 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string OidcJwks { get; set; }
 
         /// <summary>
+        /// Optional. Output only. The identity provider for the scope-tenancy workload identity pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopeTenancyIdentityProvider")]
+        public virtual string ScopeTenancyIdentityProvider { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. The name of the scope-tenancy workload identity pool. This pool is set in the
+        /// fleet-level feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopeTenancyWorkloadIdentityPool")]
+        public virtual string ScopeTenancyWorkloadIdentityPool { get; set; }
+
+        /// <summary>
         /// Output only. The name of the workload identity pool in which `issuer` will be recognized. There is a single
         /// Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub
         /// hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to
