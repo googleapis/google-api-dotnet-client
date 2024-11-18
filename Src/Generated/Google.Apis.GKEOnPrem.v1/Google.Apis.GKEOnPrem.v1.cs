@@ -10723,6 +10723,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// </summary>
     public class VmwareAdminMetalLbConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether MetalLB is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
