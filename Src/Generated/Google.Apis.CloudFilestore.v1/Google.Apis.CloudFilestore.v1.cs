@@ -2328,7 +2328,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual System.Nullable<long> MaxIops { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated: `max_iops` should be used instead of this parameter. Maximum raw read IOPS.
+        /// Optional. Deprecated: `max_iops` should be used instead of this parameter. Maximum read IOPS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
         public virtual System.Nullable<long> MaxReadIops { get; set; }
