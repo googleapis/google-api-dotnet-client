@@ -7741,7 +7741,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>Updates a single MirroringEndpointGroup.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. The name of the MirroringEndpointGroup.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -7758,7 +7760,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. The name of the MirroringEndpointGroup.</summary>
+                    /// <summary>Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -11978,7 +11980,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringEndpointGroup object. Next ID: 10</summary>
+    /// <summary>Message describing MirroringEndpointGroup object.</summary>
     public class MirroringEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -12029,7 +12031,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringDeploymentGroup")]
         public virtual string MirroringDeploymentGroup { get; set; }
 
-        /// <summary>Immutable. Identifier. The name of the MirroringEndpointGroup.</summary>
+        /// <summary>Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
