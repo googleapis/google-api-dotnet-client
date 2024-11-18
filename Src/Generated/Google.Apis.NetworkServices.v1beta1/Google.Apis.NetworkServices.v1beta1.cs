@@ -1103,6 +1103,155 @@ namespace Google.Apis.NetworkServices.v1beta1
                 public GatewaysResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    RouteViews = new RouteViewsResource(service);
+                }
+
+                /// <summary>Gets the RouteViews resource.</summary>
+                public virtual RouteViewsResource RouteViews { get; }
+
+                /// <summary>The "routeViews" collection of methods.</summary>
+                public class RouteViewsResource
+                {
+                    private const string Resource = "routeViews";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RouteViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Get a single RouteView of a Gateway.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the GatewayRouteView resource. Formats:
+                    /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get a single RouteView of a Gateway.</summary>
+                    public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.GatewayRouteView>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the GatewayRouteView resource. Formats:
+                        /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+/routeViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists RouteViews</summary>
+                    /// <param name="parent">
+                    /// Required. The Gateway to which a Route is associated. Formats:
+                    /// projects/{project_number}/locations/{location}/gateways/{gateway_name}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists RouteViews</summary>
+                    public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListGatewayRouteViewsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Gateway to which a Route is associated. Formats:
+                        /// projects/{project_number}/locations/{location}/gateways/{gateway_name}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Maximum number of GatewayRouteViews to return per call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The value returned by the last `ListGatewayRouteViewsResponse` Indicates that this is a
+                        /// continuation of a prior `ListGatewayRouteViews` call, and that the system should return the
+                        /// next page of data.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/routeViews";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new Gateway in a given project and location.</summary>
@@ -2997,6 +3146,155 @@ namespace Google.Apis.NetworkServices.v1beta1
                 public MeshesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    RouteViews = new RouteViewsResource(service);
+                }
+
+                /// <summary>Gets the RouteViews resource.</summary>
+                public virtual RouteViewsResource RouteViews { get; }
+
+                /// <summary>The "routeViews" collection of methods.</summary>
+                public class RouteViewsResource
+                {
+                    private const string Resource = "routeViews";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RouteViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Get a single RouteView of a Mesh.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the MeshRouteView resource. Format:
+                    /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get a single RouteView of a Mesh.</summary>
+                    public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.MeshRouteView>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the MeshRouteView resource. Format:
+                        /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/meshes/[^/]+/routeViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists RouteViews</summary>
+                    /// <param name="parent">
+                    /// Required. The Mesh to which a Route is associated. Format:
+                    /// projects/{project_number}/locations/{location}/meshes/{mesh_name}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists RouteViews</summary>
+                    public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListMeshRouteViewsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Mesh to which a Route is associated. Format:
+                        /// projects/{project_number}/locations/{location}/meshes/{mesh_name}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Maximum number of MeshRouteViews to return per call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The value returned by the last `ListMeshRouteViewsResponse` Indicates that this is a
+                        /// continuation of a prior `ListMeshRouteViews` call, and that the system should return the
+                        /// next page of data.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/routeViews";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/meshes/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new Mesh in a given project and location.</summary>
@@ -5145,8 +5443,8 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                         /// <summary>
                         /// Maximum number of `WasmPluginVersion` resources to return per call. If not specified, at
-                        /// most 50 `WasmPluginVersion`s are returned. The maximum value is 1000; values above 1000 are
-                        /// coerced to 1000.
+                        /// most 50 `WasmPluginVersion` resources are returned. The maximum value is 1000; values above
+                        /// 1000 are coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -5350,27 +5648,33 @@ namespace Google.Apis.NetworkServices.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Determine how much data should be returned by the API. See
+                    /// Determines how much data must be returned in the response. See
                     /// [AIP-157](https://google.aip.dev/157).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
                     /// <summary>
-                    /// Determine how much data should be returned by the API. See
+                    /// Determines how much data must be returned in the response. See
                     /// [AIP-157](https://google.aip.dev/157).
                     /// </summary>
                     public enum ViewEnum
                     {
-                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        /// <summary>Unspecified value. Do not use.</summary>
                         [Google.Apis.Util.StringValueAttribute("WASM_PLUGIN_VIEW_UNSPECIFIED")]
                         WASMPLUGINVIEWUNSPECIFIED = 0,
 
-                        /// <summary>Include just WasmPlugin record.</summary>
+                        /// <summary>
+                        /// If specified in the `GET` request for a `WasmPlugin` resource, the server's response
+                        /// includes just the `WasmPlugin` resource.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("WASM_PLUGIN_VIEW_BASIC")]
                         WASMPLUGINVIEWBASIC = 1,
 
-                        /// <summary>Include WasmPlugin record and all its WasmPluginVersions.</summary>
+                        /// <summary>
+                        /// If specified in the `GET` request for a `WasmPlugin` resource, the server's response
+                        /// includes the `WasmPlugin` resource with all its versions.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("WASM_PLUGIN_VIEW_FULL")]
                         WASMPLUGINVIEWFULL = 2,
                     }
@@ -5436,7 +5740,8 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Maximum number of `WasmPlugin` resources to return per call. If not specified, at most 50
-                    /// `WasmPlugin`s are returned. The maximum value is 1000; values above 1000 are coerced to 1000.
+                    /// `WasmPlugin` resources are returned. The maximum value is 1000; values above 1000 are coerced to
+                    /// 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -6083,7 +6388,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     {
         /// <summary>
         /// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for
-        /// Callout extensions. This field is not supported for plugin extensions and must not be set.
+        /// Callout extensions. This field is not supported for plugin extensions. Setting it results in a validation
+        /// error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
@@ -6113,7 +6419,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// available under the namespace `com.google....`. For example:
         /// `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The following variables are supported in
         /// the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
-        /// This field is not supported for plugin extensions and must not be set.
+        /// This field is not supported for plugin extensions. Setting it results in a validation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -6128,15 +6434,16 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The reference to the service that runs the extension. Currently only callout extensions are
-        /// supported here. To configure a callout extension, `service` must be a fully-qualified reference to a
-        /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
+        /// Required. The reference to the service that runs the extension. To configure a callout extension, `service`
+        /// must be a fully-qualified reference to a [backend
+        /// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
         /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
         /// or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`. To
-        /// configure a plugin extension, this must be a reference to a [wasm
-        /// plugin](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
+        /// configure a plugin extension, `service` must be a reference to a [`WasmPlugin`
+        /// resource](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
         /// in the format: `projects/{project}/locations/{location}/wasmPlugins/{plugin}` or
-        /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`.
+        /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`. Plugin
+        /// extensions are currently supported for the `LbTrafficExtension` and the `LbRouteExtension` resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -6144,15 +6451,15 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// <summary>
         /// Optional. A set of events during request or response processing for which this extension is called. This
         /// field is required for the `LbTrafficExtension` resource. It must not be set for the `LbRouteExtension`
-        /// resource.
+        /// resource, otherwise a validation error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedEvents")]
         public virtual System.Collections.Generic.IList<string> SupportedEvents { get; set; }
 
         /// <summary>
         /// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between
-        /// 10-1000 milliseconds. Required for callout extensions. This field is not supported for plugin extensions and
-        /// must not be set.
+        /// `10`-`1000` milliseconds. Required for callout extensions. This field is not supported for plugin
+        /// extensions. Setting it results in a validation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
@@ -6365,6 +6672,36 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GatewayRouteView defines view-only resource for Routes to a Gateway</summary>
+    public class GatewayRouteView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Identifier. Full path name of the GatewayRouteView resource. Format:
+        /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The resource id for the route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeId")]
+        public virtual string RouteId { get; set; }
+
+        /// <summary>Output only. Location where the route exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeLocation")]
+        public virtual string RouteLocation { get; set; }
+
+        /// <summary>Output only. Project number where the route exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeProjectNumber")]
+        public virtual System.Nullable<long> RouteProjectNumber { get; set; }
+
+        /// <summary>Output only. Type of the route: HttpRoute,GrpcRoute,TcpRoute, or TlsRoute</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
+        public virtual string RouteType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7572,9 +7909,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<ExtensionChain> ExtensionChains { get; set; }
 
         /// <summary>
-        /// Required. A list of references to the forwarding rules to which this service extension is attached to. At
-        /// least one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding
-        /// rule.
+        /// Required. A list of references to the forwarding rules to which this service extension is attached. At least
+        /// one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding rule.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
         public virtual System.Collections.Generic.IList<string> ForwardingRules { get; set; }
@@ -7600,7 +7936,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata is
         /// available under the namespace `com.google.lb_route_extension.`. The following variables are supported in the
         /// metadata Struct: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource
-        /// name. This field is not supported for plugin extensions and must not be set.
+        /// name. This field is not supported for plugin extensions. Setting it results in a validation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -7711,9 +8047,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<ExtensionChain> ExtensionChains { get; set; }
 
         /// <summary>
-        /// Required. A list of references to the forwarding rules to which this service extension is attached to. At
-        /// least one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding
-        /// rule.
+        /// Optional. A list of references to the forwarding rules to which this service extension is attached. At least
+        /// one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding rule.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
         public virtual System.Collections.Generic.IList<string> ForwardingRules { get; set; }
@@ -7738,7 +8073,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// Optional. The metadata provided here is included in the `ProcessingRequest.metadata_context.filter_metadata`
         /// map field. The metadata is available under the key `com.google.lb_traffic_extension.`. The following
         /// variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's
-        /// fully qualified resource name. This field is not supported for plugin extensions and must not be set.
+        /// fully qualified resource name. This field is not supported for plugin extensions. Setting it results in a
+        /// validation error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
@@ -7820,6 +8156,24 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// <summary>
         /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
         /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListGatewayRouteViews method.</summary>
+    public class ListGatewayRouteViewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of GatewayRouteView resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayRouteViews")]
+        public virtual System.Collections.Generic.IList<GatewayRouteView> GatewayRouteViews { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -7932,6 +8286,24 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListMeshRouteViews method.</summary>
+    public class ListMeshRouteViewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of MeshRouteView resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshRouteViews")]
+        public virtual System.Collections.Generic.IList<MeshRouteView> MeshRouteViews { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -8239,6 +8611,36 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MeshRouteView defines view-only resource for Routes to a Mesh</summary>
+    public class MeshRouteView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Identifier. Full path name of the MeshRouteView resource. Format:
+        /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The resource id for the route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeId")]
+        public virtual string RouteId { get; set; }
+
+        /// <summary>Output only. Location where the route exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeLocation")]
+        public virtual string RouteLocation { get; set; }
+
+        /// <summary>Output only. Project number where the route exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeProjectNumber")]
+        public virtual System.Nullable<long> RouteProjectNumber { get; set; }
+
+        /// <summary>Output only. Type of the route: HttpRoute,GrpcRoute,TcpRoute, or TlsRoute</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
+        public virtual string RouteType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9236,9 +9638,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the logging options for the activity performed by this `WasmPlugin`. If logging is
-        /// enabled, plugin logs are exported to Cloud Logging. Note that the settings relate to the logs generated by
-        /// using logging statements in your Wasm code.
+        /// Optional. Specifies the logging options for the activity performed by this plugin. If logging is enabled,
+        /// plugin logs are exported to Cloud Logging. Note that the settings relate to the logs generated by using
+        /// logging statements in your Wasm code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
         public virtual WasmPluginLogConfig LogConfig { get; set; }
@@ -9295,20 +9697,21 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         }
 
         /// <summary>
-        /// Output only. List of all [Service Extensions](https://cloud.google.com/service-extensions/docs/overview)
-        /// that use this `WasmPlugin`.
+        /// Output only. List of all [extensions](https://cloud.google.com/service-extensions/docs/overview) that use
+        /// this `WasmPlugin` resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usedBy")]
         public virtual System.Collections.Generic.IList<WasmPluginUsedBy> UsedBy { get; set; }
 
         /// <summary>
-        /// Optional. All versions of this `WasmPlugin` in the key-value format. The key is the resource ID, the value
-        /// is the `VersionDetails`. Allows to create or update `WasmPlugin` and its WasmPluginVersions in a single
-        /// request. When the `main_version_id` field is not empty it must point to one of the VersionDetails in the
-        /// map. If provided in the update request, the new versions replace the previous set. Any version omitted from
-        /// the `versions` will be removed. Since the `WasmPluginVersion` resource is immutable, if the
-        /// WasmPluginVersion with the same name already exists and differs the Update request will fail. Note: In the
-        /// GET request, this field is populated only if the GetWasmPluginRequest.view is set to WASM_PLUGIN_VIEW_FULL.
+        /// Optional. All versions of this `WasmPlugin` resource in the key-value format. The key is the resource ID,
+        /// and the value is the `VersionDetails` object. Lets you create or update a `WasmPlugin` resource and its
+        /// versions in a single request. When the `main_version_id` field is not empty, it must point to one of the
+        /// `VersionDetails` objects in the map. If provided in a `PATCH` request, the new versions replace the previous
+        /// set. Any version omitted from the `versions` field is removed. Because the `WasmPluginVersion` resource is
+        /// immutable, if a `WasmPluginVersion` resource with the same name already exists and differs, the request
+        /// fails. Note: In a `GET` request, this field is populated only if the field `GetWasmPluginRequest.view` is
+        /// set to `WASM_PLUGIN_VIEW_FULL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IDictionary<string, WasmPluginVersionDetails> Versions { get; set; }
@@ -9318,13 +9721,13 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     }
 
     /// <summary>
-    /// Specifies the logging options for the activity performed by this `WasmPlugin`. If logging is enabled, plugin
-    /// logs are exported to Cloud Logging.
+    /// Specifies the logging options for the activity performed by this plugin. If logging is enabled, plugin logs are
+    /// exported to Cloud Logging.
     /// </summary>
     public class WasmPluginLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies whether to enable logging for activity by this `WasmPlugin`. Defaults to `false`.
+        /// Optional. Specifies whether to enable logging for activity by this plugin. Defaults to `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enable")]
         public virtual System.Nullable<bool> Enable { get; set; }
@@ -9332,8 +9735,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// <summary>
         /// Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This
         /// setting relates to the logs generated by using logging statements in your Wasm code. This field is can be
-        /// set only if logging is enabled for the `WasmPlugin` resource. If the field is not provided when logging is
-        /// enabled, it is set to `INFO` by default.
+        /// set only if logging is enabled for the plugin. If the field is not provided when logging is enabled, it is
+        /// set to `INFO` by default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLogLevel")]
         public virtual string MinLogLevel { get; set; }
@@ -9342,8 +9745,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// Non-empty default. Configures the sampling rate of activity logs, where `1.0` means all logged activity is
         /// reported and `0.0` means no activity is reported. A floating point value between `0.0` and `1.0` indicates
         /// that a percentage of log messages is stored. The default value when logging is enabled is `1.0`. The value
-        /// of the field must be between `0` and `1` (inclusive). This field can only be specified if logging is enabled
-        /// for this `WasmPlugin`.
+        /// of the field must be between `0` and `1` (inclusive). This field can be specified only if logging is enabled
+        /// for this plugin.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRate")]
         public virtual System.Nullable<float> SampleRate { get; set; }
@@ -9352,11 +9755,11 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines a resource that uses the `WasmPlugin`.</summary>
+    /// <summary>Defines a resource that uses the `WasmPlugin` resource.</summary>
     public class WasmPluginUsedBy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Full name of the resource https://google.aip.dev/122#full-resource-names, e.g.
+        /// Output only. Full name of the resource https://google.aip.dev/122#full-resource-names, for example
         /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/lbRouteExtensions/{extension}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9367,7 +9770,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     }
 
     /// <summary>
-    /// A single immutable version of a `WasmPlugin`. Defines the Wasm module used and optionally its runtime config.
+    /// A single immutable version of a `WasmPlugin` resource. Defines the Wasm module used and optionally its runtime
+    /// config.
     /// </summary>
     public class WasmPluginVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9413,15 +9817,15 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. The resolved digest for the image specified in `image`. The digest is resolved during the
-        /// creation of `WasmPluginVersion` resource. This field holds the digest value regardless of whether a tag or
-        /// digest was originally specified in the `image` field.
+        /// Output only. The resolved digest for the image specified in the `image` field. The digest is resolved during
+        /// the creation of `WasmPluginVersion` resource. This field holds the digest value, regardless of whether a tag
+        /// or digest was originally specified in the `image` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
         public virtual string ImageDigest { get; set; }
 
         /// <summary>
-        /// Optional. URI of the container image containing the Wasm plugin, stored in the Artifact Registry. When a new
+        /// Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new
         /// `WasmPluginVersion` resource is created, the digest of the container image is saved in the `image_digest`
         /// field. When downloading an image, the digest value is used instead of an image tag.
         /// </summary>
@@ -9440,7 +9844,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Configuration for the Wasm plugin. The configuration is provided to the Wasm plugin at runtime through the
+        /// Configuration for the plugin. The configuration is provided to the plugin at runtime through the
         /// `ON_CONFIGURE` callback. When a new `WasmPluginVersion` resource is created, the digest of the contents is
         /// saved in the `plugin_config_digest` field.
         /// </summary>
@@ -9449,17 +9853,17 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Output only. This field holds the digest (usually checksum) value for the plugin configuration. The value is
-        /// calculated based on the contents of the `plugin_config_data` or the container image defined by the
+        /// calculated based on the contents of `plugin_config_data` or the container image defined by the
         /// `plugin_config_uri` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigDigest")]
         public virtual string PluginConfigDigest { get; set; }
 
         /// <summary>
-        /// URI of the Wasm plugin configuration stored in the Artifact Registry. The configuration is provided to the
-        /// plugin at runtime through the `ON_CONFIGURE` callback. The container image must contain only a single file
-        /// with the name `plugin.config`. When a new `WasmPluginVersion` resource is created, the digest of the
-        /// container image is saved in the `plugin_config_digest` field.
+        /// URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin
+        /// at runtime through the `ON_CONFIGURE` callback. The container image must contain only a single file with the
+        /// name `plugin.config`. When a new `WasmPluginVersion` resource is created, the digest of the container image
+        /// is saved in the `plugin_config_digest` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigUri")]
         public virtual string PluginConfigUri { get; set; }
@@ -9570,7 +9974,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Configuration for the Wasm plugin. The configuration is provided to the Wasm plugin at runtime through the
+        /// Configuration for the plugin. The configuration is provided to the plugin at runtime through the
         /// `ON_CONFIGURE` callback. When a new `WasmPluginVersion` version is created, the digest of the contents is
         /// saved in the `plugin_config_digest` field.
         /// </summary>
@@ -9579,17 +9983,17 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Output only. This field holds the digest (usually checksum) value for the plugin configuration. The value is
-        /// calculated based on the contents of the `plugin_config_data` or the container image defined by the
+        /// calculated based on the contents of the `plugin_config_data` field or the container image defined by the
         /// `plugin_config_uri` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigDigest")]
         public virtual string PluginConfigDigest { get; set; }
 
         /// <summary>
-        /// URI of the WasmPlugin configuration stored in the Artifact Registry. The configuration is provided to the
-        /// Wasm plugin at runtime through the `ON_CONFIGURE` callback. The container image must contain only a single
-        /// file with the name `plugin.config`. When a new `WasmPluginVersion` resource is created, the digest of the
-        /// container image is saved in the `plugin_config_digest` field.
+        /// URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin
+        /// at runtime through the `ON_CONFIGURE` callback. The container image must contain only a single file with the
+        /// name `plugin.config`. When a new `WasmPluginVersion` resource is created, the digest of the container image
+        /// is saved in the `plugin_config_digest` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pluginConfigUri")]
         public virtual string PluginConfigUri { get; set; }
