@@ -3167,8 +3167,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual IamPolicyAnalysis MainAnalysis { get; set; }
 
         /// <summary>
-        /// The service account impersonation analysis if AnalyzeIamPolicyRequest.analyze_service_account_impersonation
-        /// is enabled.
+        /// The service account impersonation analysis if
+        /// IamPolicyAnalysisQuery.Options.analyze_service_account_impersonation is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountImpersonationAnalysis")]
         public virtual System.Collections.Generic.IList<IamPolicyAnalysis> ServiceAccountImpersonationAnalysis { get; set; }
@@ -3858,7 +3858,7 @@ namespace Google.Apis.CloudAsset.v1.Data
     {
         /// <summary>
         /// The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of the ancestor
-        /// from which an effective_tag is inherited, according to [tag
+        /// from which effective_tags are inherited, according to [tag
         /// inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachedResource")]
@@ -4240,9 +4240,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource GovernedResource { get; set; }
 
         /// <summary>
-        /// The ordered list of all organization policies from the
-        /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource to the scope specified in
-        /// the request. If the constraint is defined with default policy, it will also appear in the list.
+        /// The ordered list of all organization policies from the consolidated_policy.attached_resource to the scope
+        /// specified in the request. If the constraint is defined with default policy, it will also appear in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBundle")]
         public virtual System.Collections.Generic.IList<AnalyzerOrgPolicy> PolicyBundle { get; set; }
@@ -4579,9 +4578,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// The ordered list of all organization policies from the
-        /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource. to the scope specified in
-        /// the request. If the constraint is defined with default policy, it will also appear in the list.
+        /// The ordered list of all organization policies from the consolidated_policy.attached_resource. to the scope
+        /// specified in the request. If the constraint is defined with default policy, it will also appear in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBundle")]
         public virtual System.Collections.Generic.IList<AnalyzerOrgPolicy> PolicyBundle { get; set; }
@@ -5807,6 +5805,14 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. An opaque identifier for the current version of the `ServicePerimeter`. Clients should not expect
+        /// this to be in any specific format. If etag is not provided, the operation will be performed as if a valid
+        /// etag is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Identifier. Resource name for the `ServicePerimeter`. Format:
         /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component
         /// must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`,
@@ -5854,9 +5860,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
         public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -6630,8 +6633,8 @@ namespace Google.Apis.CloudAsset.v1.Data
     {
         /// <summary>
         /// The consolidated organization policy for the analyzed resource. The consolidated organization policy is
-        /// computed by merging and evaluating AnalyzeOrgPoliciesResponse.policy_bundle. The evaluation will respect the
-        /// organization policy [hierarchy
+        /// computed by merging and evaluating policy_bundle. The evaluation will respect the organization policy
+        /// [hierarchy
         /// rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consolidatedPolicy")]
@@ -6653,9 +6656,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string Organization { get; set; }
 
         /// <summary>
-        /// The ordered list of all organization policies from the
-        /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource. to the scope specified in
-        /// the request. If the constraint is defined with default policy, it will also appear in the list.
+        /// The ordered list of all organization policies from the consolidated_policy.attached_resource. to the scope
+        /// specified in the request. If the constraint is defined with default policy, it will also appear in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBundle")]
         public virtual System.Collections.Generic.IList<AnalyzerOrgPolicy> PolicyBundle { get; set; }
