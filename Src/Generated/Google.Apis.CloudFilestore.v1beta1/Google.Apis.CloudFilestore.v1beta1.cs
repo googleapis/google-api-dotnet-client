@@ -2705,12 +2705,12 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>Fixed IOPS (input/output operations per second) parameters.</summary>
     public class FixedIOPS : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Maximum raw IOPS.</summary>
+        /// <summary>Required. Maximum IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIops")]
         public virtual System.Nullable<long> MaxIops { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated: `max_iops` should be used instead of this parameter. Maximum raw read IOPS.
+        /// Optional. Deprecated: `max_iops` should be used instead of this parameter. Maximum read IOPS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
         public virtual System.Nullable<long> MaxReadIops { get; set; }
