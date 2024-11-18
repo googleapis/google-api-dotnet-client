@@ -5123,6 +5123,17 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual string EncryptionKey { get; set; }
 
+        /// <summary>Optional. The action to take if the encryption key is revoked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyRevocationAction")]
+        public virtual string EncryptionKeyRevocationAction { get; set; }
+
+        /// <summary>
+        /// Optional. If encryption_key_revocation_action is SHUTDOWN, the duration before shutting down all instances.
+        /// The minimum increment is 1 hour.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyShutdownDuration")]
+        public virtual object EncryptionKeyShutdownDuration { get; set; }
+
         /// <summary>Optional. The sandbox environment to host this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
         public virtual string ExecutionEnvironment { get; set; }
