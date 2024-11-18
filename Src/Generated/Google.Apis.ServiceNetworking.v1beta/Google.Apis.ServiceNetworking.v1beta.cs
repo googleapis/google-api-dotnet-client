@@ -2012,6 +2012,14 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonLanguageSettings Common { get; set; }
 
+        /// <summary>
+        /// Map of service names to renamed services. Keys are the package relative service names and values are the
+        /// name to be used for the service client and call options. publishing: go_settings: renamed_services:
+        /// Publisher: TopicAdmin
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renamedServices")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RenamedServices { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
