@@ -1820,41 +1820,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            private object _finalBackupExpiryTime;
-
-            /// <summary>
-            /// String representation of <see cref="FinalBackupExpiryTimeDateTimeOffset"/>, formatted for inclusion in
-            /// the HTTP request.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("finalBackupExpiryTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string FinalBackupExpiryTimeRaw { get; private set; }
-
-            /// <summary><seealso cref="object"/> representation of <see cref="FinalBackupExpiryTimeRaw"/>.</summary>
-            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinalBackupExpiryTimeDateTimeOffset instead.")]
-            public virtual object FinalBackupExpiryTime
-            {
-                get => _finalBackupExpiryTime;
-                set
-                {
-                    FinalBackupExpiryTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
-                    _finalBackupExpiryTime = value;
-                }
-            }
-
-            public virtual System.DateTimeOffset? FinalBackupExpiryTimeDateTimeOffset
-            {
-                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinalBackupExpiryTimeRaw);
-                set
-                {
-                    FinalBackupExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-                    _finalBackupExpiryTime = value;
-                }
-            }
-
-            /// <summary>Optional. Retention period of the final backup.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("finalBackupTtlDays", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> FinalBackupTtlDays { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -1881,22 +1846,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("finalBackupExpiryTime", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "finalBackupExpiryTime",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("finalBackupTtlDays", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "finalBackupTtlDays",
-                    IsRequired = false,
-                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -6482,6 +6431,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         }
     }
 
+    /// <summary>The selected object that Cloud SQL migrates.</summary>
+    public class ExternalSyncSelectedObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the database that Cloud SQL migrates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance failover context.</summary>
     public class FailoverContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7470,9 +7430,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
+        /// <summary>
+        /// Optional. A list of objects that the user selects for replication from an external source instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedObjects")]
+        public virtual System.Collections.Generic.IList<SelectedObjects> SelectedObjects { get; set; }
+
         /// <summary>The reference to Cloud SQL instance if the source is Cloud SQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
         public virtual InstanceReference SourceInstance { get; set; }
+
+        /// <summary>Optional. SslOption for replica connection to the on-premises source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslOption")]
+        public virtual string SslOption { get; set; }
 
         /// <summary>The username for connecting to on-premises instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
@@ -8183,6 +8153,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A list of objects that the user selects for replication from an external source instance.</summary>
+    public class SelectedObjects : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the database to migrate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance settings.</summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8574,6 +8555,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Optional. MySQL-specific settings for start external sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlSyncConfig")]
         public virtual MySqlSyncConfig MysqlSyncConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Migrate only the specified objects from the source instance. If this field is empty, then migrate
+        /// all objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedObjects")]
+        public virtual System.Collections.Generic.IList<ExternalSyncSelectedObject> SelectedObjects { get; set; }
 
         /// <summary>External sync mode</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
