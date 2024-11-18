@@ -2269,9 +2269,9 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// Optional. Optional, if resuming from a previous query. How the list of messages is ordered. Specify
-                /// a value to order by an ordering operation. Valid ordering operation values are as follows: - `ASC`
-                /// for ascending. - `DESC` for descending. The default ordering is `create_time ASC`.
+                /// Optional. How the list of messages is ordered. Specify a value to order by an ordering operation.
+                /// Valid ordering operation values are as follows: - `ASC` for ascending. - `DESC` for descending. The
+                /// default ordering is `create_time ASC`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -2285,10 +2285,10 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Optional. Optional, if resuming from a previous query. A page token received from a previous list
-                /// messages call. Provide this parameter to retrieve the subsequent page. When paginating, all other
-                /// parameters provided should match the call that provided the page token. Passing different values to
-                /// the other parameters might lead to unexpected results.
+                /// Optional. A page token received from a previous list messages call. Provide this parameter to
+                /// retrieve the subsequent page. When paginating, all other parameters provided should match the call
+                /// that provided the page token. Passing different values to the other parameters might lead to
+                /// unexpected results.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2911,12 +2911,11 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a space with no members. Can be used to create a named space. Spaces grouped by topics aren't
-        /// supported. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces).
-        /// If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An
-        /// existing space within the Google Workspace organization might already use this display name. If you're a
-        /// member of the [Developer Preview program](https://developers.google.com/workspace/preview), you can create a
-        /// group chat in import mode using `spaceType.GROUP_CHAT`. Supports the following types of
+        /// Creates a space with no members. Can be used to create a named space, or a group chat in `Import mode`.
+        /// Spaces grouped by topics aren't supported. For an example, see [Create a
+        /// space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message
+        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
+        /// Workspace organization might already use this display name. Supports the following types of
         /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
         /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
@@ -2931,12 +2930,11 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a space with no members. Can be used to create a named space. Spaces grouped by topics aren't
-        /// supported. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces).
-        /// If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An
-        /// existing space within the Google Workspace organization might already use this display name. If you're a
-        /// member of the [Developer Preview program](https://developers.google.com/workspace/preview), you can create a
-        /// group chat in import mode using `spaceType.GROUP_CHAT`. Supports the following types of
+        /// Creates a space with no members. Can be used to create a named space, or a group chat in `Import mode`.
+        /// Spaces grouped by topics aren't supported. For an example, see [Create a
+        /// space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message
+        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
+        /// Workspace organization might already use this display name. Supports the following types of
         /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
         /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
@@ -7096,8 +7094,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<CardWithId> CardsV2 { get; set; }
 
         /// <summary>
-        /// Optional. Optional. A custom ID for the message. You can use field to identify a message, or to get, delete,
-        /// or update a message. To set a custom ID, specify the
+        /// Optional. A custom ID for the message. You can use field to identify a message, or to get, delete, or update
+        /// a message. To set a custom ID, specify the
         /// [`messageId`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages/create#body.QUERY_PARAMETERS.message_id)
         /// field when you create the message. For details, see [Name a
         /// message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
