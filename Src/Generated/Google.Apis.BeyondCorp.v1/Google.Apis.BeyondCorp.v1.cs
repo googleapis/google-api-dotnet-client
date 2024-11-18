@@ -5718,71 +5718,6 @@ namespace Google.Apis.BeyondCorp.v1
                 }
 
                 /// <summary>
-                /// This is a custom method to allow customers to create a peering connections between Google network
-                /// and customer networks. This is enabled only for the allowlisted customers.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="securityGateway">
-                /// Required. BeyondCorp SecurityGateway name using the form:
-                /// `projects/{project}/locations/{location}/securityGateways/{security_gateway}`
-                /// </param>
-                public virtual SetPeeringRequest SetPeering(Google.Apis.BeyondCorp.v1.Data.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest body, string securityGateway)
-                {
-                    return new SetPeeringRequest(this.service, body, securityGateway);
-                }
-
-                /// <summary>
-                /// This is a custom method to allow customers to create a peering connections between Google network
-                /// and customer networks. This is enabled only for the allowlisted customers.
-                /// </summary>
-                public class SetPeeringRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new SetPeering request.</summary>
-                    public SetPeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1.Data.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest body, string securityGateway) : base(service)
-                    {
-                        SecurityGateway = securityGateway;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. BeyondCorp SecurityGateway name using the form:
-                    /// `projects/{project}/locations/{location}/securityGateways/{security_gateway}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("securityGateway", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string SecurityGateway { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BeyondCorp.v1.Data.GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "setPeering";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+securityGateway}:setPeering";
-
-                    /// <summary>Initializes SetPeering parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("securityGateway", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "securityGateway",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/securityGateways/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
                 /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
                 /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
                 /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
@@ -8162,24 +8097,6 @@ namespace Google.Apis.BeyondCorp.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>VPC Peering details.</summary>
-    public class GoogleCloudBeyondcorpSecuritygatewaysV1Peering : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. List of DNS zones for DNS peering with the customer VPC network.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dnsZones")]
-        public virtual System.Collections.Generic.IList<string> DnsZones { get; set; }
-
-        /// <summary>
-        /// Required. The name of the Target VPC network name in the format:
-        /// `projects/{project}/global/networks/{network}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetNetwork")]
-        public virtual string TargetNetwork { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Information about a BeyoncCorp SecurityGateway resource.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8385,35 +8302,6 @@ namespace Google.Apis.BeyondCorp.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Set Peering request for creating a VPC peering between Google network and customer networks.</summary>
-    public class GoogleCloudBeyondcorpSecuritygatewaysV1SetPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. List of Peering connection information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("peerings")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1Peering> Peerings { get; set; }
-
-        /// <summary>
-        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
-
-        /// <summary>
-        /// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
-        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
