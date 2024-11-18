@@ -780,8 +780,7 @@ namespace Google.Apis.CloudScheduler.v1
                     /// <summary>
                     /// A token identifying a page of results the server will return. To request the first page results,
                     /// page_token must be empty. To request the next page of results, page_token must be the value of
-                    /// next_page_token returned from the previous call to ListJobs. It is an error to switch the value
-                    /// of filter or order_by while iterating through pages.
+                    /// next_page_token returned from the previous call to ListJobs.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1847,8 +1846,8 @@ namespace Google.Apis.CloudScheduler.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
