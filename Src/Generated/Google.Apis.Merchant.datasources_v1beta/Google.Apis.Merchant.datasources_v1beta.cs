@@ -929,7 +929,7 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual string Frequency { get; set; }
 
         /// <summary>
-        /// Optional. An optional password for fetch url. Used for [submitting data sources through
+        /// Optional. An optional password for fetch_uri. Used for [submitting data sources through
         /// SFTP](https://support.google.com/merchants/answer/13813117).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
@@ -950,7 +950,7 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual string TimeZone { get; set; }
 
         /// <summary>
-        /// Optional. An optional user name for fetch url. Used for [submitting data sources through
+        /// Optional. An optional user name for fetch_uri. Used for [submitting data sources through
         /// SFTP](https://support.google.com/merchants/answer/13813117).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
