@@ -6319,7 +6319,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// header, and the `securityContext` field (not present in `DSTU2`) will be populated from the
                         /// `X-Security-Context` header if it exists. At this time `securityContext` has no special
                         /// behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method
-                        /// is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a
+                        /// is 1 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a
                         /// Binary resource. Some of the Healthcare API features, such as [exporting to
                         /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
                         /// [Pub/Sub
@@ -6353,7 +6353,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// header, and the `securityContext` field (not present in `DSTU2`) will be populated from the
                         /// `X-Security-Context` header if it exists. At this time `securityContext` has no special
                         /// behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method
-                        /// is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a
+                        /// is 1 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a
                         /// Binary resource. Some of the Healthcare API features, such as [exporting to
                         /// BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or
                         /// [Pub/Sub
@@ -12484,7 +12484,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Mask a string by replacing its characters with a fixed character.</summary>
     public class CharacterMaskConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Character to mask the sensitive values. If not supplied, defaults to "*".</summary>
+        /// <summary>Optional. Character to mask the sensitive values. If not supplied, defaults to "*".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maskingCharacter")]
         public virtual string MaskingCharacter { get; set; }
 
@@ -12891,7 +12891,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Contains configuration for streaming de-identified FHIR export.</summary>
     public class DeidentifiedStoreDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration to use when de-identifying resources that are added to this store.</summary>
+        /// <summary>
+        /// Optional. The configuration to use when de-identifying resources that are added to this store.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual DeidentifyConfig Config { get; set; }
 
@@ -12912,29 +12914,31 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// </summary>
     public class DeidentifyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Configures de-id of application/DICOM content.</summary>
+        /// <summary>Optional. Configures de-id of application/DICOM content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dicom")]
         public virtual DicomConfig Dicom { get; set; }
 
-        /// <summary>Configures de-id of application/FHIR content.</summary>
+        /// <summary>Optional. Configures de-id of application/FHIR content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fhir")]
         public virtual FhirConfig Fhir { get; set; }
 
         /// <summary>
-        /// Configures de-identification of image pixels wherever they are found in the source_dataset.
+        /// Optional. Configures de-identification of image pixels wherever they are found in the source_dataset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual ImageConfig Image { get; set; }
 
-        /// <summary>Configures de-identification of text wherever it is found in the source_dataset.</summary>
+        /// <summary>
+        /// Optional. Configures de-identification of text wherever it is found in the source_dataset.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual TextConfig Text { get; set; }
 
         /// <summary>
-        /// Ensures in-flight data remains in the region of origin during de-identification. The default value is false.
-        /// Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or
-        /// `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded
-        /// within ImageConfig if image redaction is required.
+        /// Optional. Ensures in-flight data remains in the region of origin during de-identification. The default value
+        /// is false. Using this option results in a significant reduction of throughput, and is not compatible with
+        /// `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be
+        /// excluded within ImageConfig if image redaction is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useRegionalDataProcessing")]
         public virtual System.Nullable<bool> UseRegionalDataProcessing { get; set; }
@@ -13072,11 +13076,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual TagFilterList RemoveList { get; set; }
 
         /// <summary>
-        /// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID
-        /// and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM
-        /// Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given
-        /// access to the original images, or to a database of the original images containing the UIDs, it would be
-        /// possible to recover the individual's identity."
+        /// Optional. If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and
+        /// MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by
+        /// default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an
+        /// individual out of context, given access to the original images, or to a database of the original images
+        /// containing the UIDs, it would be possible to recover the individual's identity."
         /// http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipIdRedaction")]
@@ -13666,17 +13670,17 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class FhirConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true,
-        /// all extensions are preserved during de-identification by default. If false or unspecified, all extensions
-        /// are removed during de-identification by default.
+        /// Optional. The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification.
+        /// If true, all extensions are preserved during de-identification by default. If false or unspecified, all
+        /// extensions are removed during de-identification by default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultKeepExtensions")]
         public virtual System.Nullable<bool> DefaultKeepExtensions { get; set; }
 
         /// <summary>
-        /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is
-        /// passed through to the output dataset unmodified. All extensions will be processed according to
-        /// `default_keep_extensions`.
+        /// Optional. Specifies FHIR paths to match and how to transform them. Any field that is not matched by a
+        /// FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according
+        /// to `default_keep_extensions`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMetadataList")]
         public virtual System.Collections.Generic.IList<FieldMetadata> FieldMetadataList { get; set; }
@@ -13929,17 +13933,17 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Specifies FHIR paths to match, and how to handle de-identification of matching fields.</summary>
     public class FieldMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deidentify action for one field.</summary>
+        /// <summary>Optional. Deidentify action for one field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
         /// <summary>
-        /// List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is
-        /// either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in
-        /// the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is
-        /// matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code,
-        /// Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String,
-        /// UnsignedInt, Uri, Uuid, Xhtml.
+        /// Optional. List of paths to FHIR fields to be redacted. Each path is a period-separated list where each
+        /// component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types
+        /// (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example,
+        /// "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode,
+        /// Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode,
+        /// Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; }
@@ -14492,7 +14496,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Specifies how to handle de-identification of image pixels.</summary>
     public class ImageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Determines how to redact text from image.</summary>
+        /// <summary>Optional. Determines how to redact text from image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRedactionMode")]
         public virtual string TextRedactionMode { get; set; }
 
@@ -14600,8 +14604,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual DateShiftConfig DateShiftConfig { get; set; }
 
         /// <summary>
-        /// InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any
-        /// info_type.
+        /// Optional. InfoTypes to apply this transformation to. If this is not specified, the transformation applies to
+        /// any info_type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<string> InfoTypes { get; set; }
@@ -16244,9 +16248,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class TagFilterList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring
-        /// Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
-        /// They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+        /// Optional. Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory
+        /// Structuring Elements, as defined at:
+        /// http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by
+        /// "Keyword" or "Tag". For example "PatientID", "00100010".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
@@ -16283,16 +16288,19 @@ namespace Google.Apis.CloudHealthcare.v1.Data
 
     public class TextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Transformations to apply to the detected data, overridden by `exclude_info_types`.</summary>
+        /// <summary>
+        /// Optional. Transformations to apply to the detected data, overridden by `exclude_info_types`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalTransformations")]
         public virtual System.Collections.Generic.IList<InfoTypeTransformation> AdditionalTransformations { get; set; }
 
-        /// <summary>InfoTypes to skip transforming, overriding `additional_transformations`.</summary>
+        /// <summary>Optional. InfoTypes to skip transforming, overriding `additional_transformations`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
         public virtual System.Collections.Generic.IList<string> ExcludeInfoTypes { get; set; }
 
         /// <summary>
-        /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+        /// Optional. The transformations to apply to the detected data. Deprecated. Use `additional_transformations`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformations")]
         public virtual System.Collections.Generic.IList<InfoTypeTransformation> Transformations { get; set; }
