@@ -1286,7 +1286,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 this.service = service;
             }
 
-            /// <summary>Gets an existing return policy.</summary>
+            /// <summary>Gets an existing return policy for a given merchant.</summary>
             /// <param name="name">
             /// Required. The name of the return policy to retrieve. Format:
             /// `accounts/{account}/onlineReturnPolicies/{return_policy}`
@@ -1296,7 +1296,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 return new GetRequest(this.service, name);
             }
 
-            /// <summary>Gets an existing return policy.</summary>
+            /// <summary>Gets an existing return policy for a given merchant.</summary>
             public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.OnlineReturnPolicy>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1337,7 +1337,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 }
             }
 
-            /// <summary>Lists all existing return policies.</summary>
+            /// <summary>Lists all existing return policies for a given merchant.</summary>
             /// <param name="parent">
             /// Required. The merchant account for which to list return policies. Format: `accounts/{account}`
             /// </param>
@@ -1346,7 +1346,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>Lists all existing return policies.</summary>
+            /// <summary>Lists all existing return policies for a given merchant.</summary>
             public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListOnlineReturnPoliciesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4300,7 +4300,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Nullable<bool> AcceptExchange { get; set; }
 
         /// <summary>
-        /// The countries of sale where the return policy applies. The values must be a valid 2 letter ISO 3166 code.
+        /// Required. The countries of sale where the return policy applies. The values must be a valid 2 letter ISO
+        /// 3166 code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
         public virtual System.Collections.Generic.IList<string> Countries { get; set; }
@@ -4312,11 +4313,11 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Collections.Generic.IList<string> ItemConditions { get; set; }
 
         /// <summary>
-        /// This field represents the unique user-defined label of the return policy. It is important to note that the
-        /// same label cannot be used in different return policies for the same country. Unless a product specifies a
-        /// specific label attribute, policies will be automatically labeled as 'default'. To assign a custom return
-        /// policy to certain product groups, follow the instructions provided in the [Return policy label]
-        /// (https://support.google.com/merchants/answer/9445425). The label can contain up to 50 characters.
+        /// Required. This field represents the unique user-defined label of the return policy. It is important to note
+        /// that the same label cannot be used in different return policies for the same country. Unless a product
+        /// specifies a specific label attribute, policies will be automatically labeled as 'default'. To assign a
+        /// custom return policy to certain product groups, follow the instructions provided in the [Return policy
+        /// label] (https://support.google.com/merchants/answer/9445425). The label can contain up to 50 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
@@ -4357,7 +4358,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ReturnPolicyId { get; set; }
 
         /// <summary>
-        /// The return policy uri. This can used by Google to do a sanity check for the policy. It must be a valid URL.
+        /// Required. The return policy uri. This can used by Google to do a sanity check for the policy. It must be a
+        /// valid URL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyUri")]
         public virtual string ReturnPolicyUri { get; set; }
@@ -4917,7 +4919,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fixedFee")]
         public virtual Price FixedFee { get; set; }
 
-        /// <summary>Type of return shipping fee.</summary>
+        /// <summary>Required. Type of return shipping fee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -5386,7 +5388,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A fulfillment warehouse, which stores and handles inventory. Next tag: 7</summary>
+    /// <summary>A fulfillment warehouse, which stores and handles inventory.</summary>
     public class Warehouse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Business days of the warehouse. If not set, will be Monday to Friday by default.</summary>
