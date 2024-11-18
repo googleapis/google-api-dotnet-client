@@ -35,6 +35,7 @@ namespace Google.Apis.Drive.v3
         public DriveService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             About = new AboutResource(this);
+            Accessproposals = new AccessproposalsResource(this);
             Apps = new AppsResource(this);
             Changes = new ChangesResource(this);
             Channels = new ChannelsResource(this);
@@ -143,6 +144,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>Gets the About resource.</summary>
         public virtual AboutResource About { get; }
+
+        /// <summary>Gets the Accessproposals resource.</summary>
+        public virtual AccessproposalsResource Accessproposals { get; }
 
         /// <summary>Gets the Apps resource.</summary>
         public virtual AppsResource Apps { get; }
@@ -404,6 +408,222 @@ namespace Google.Apis.Drive.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
+            }
+        }
+    }
+
+    /// <summary>The "accessproposals" collection of methods.</summary>
+    public class AccessproposalsResource
+    {
+        private const string Resource = "accessproposals";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AccessproposalsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves an AccessProposal by ID.</summary>
+        /// <param name="fileId">Required. The id of the item the request is on.</param>
+        /// <param name="proposalId">Required. The id of the access proposal to resolve.</param>
+        public virtual GetRequest Get(string fileId, string proposalId)
+        {
+            return new GetRequest(this.service, fileId, proposalId);
+        }
+
+        /// <summary>Retrieves an AccessProposal by ID.</summary>
+        public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.AccessProposal>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string proposalId) : base(service)
+            {
+                FileId = fileId;
+                ProposalId = proposalId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The id of the item the request is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Required. The id of the access proposal to resolve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProposalId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/accessproposals/{proposalId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "proposalId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// List the AccessProposals on a file. Note: Only approvers are able to list AccessProposals on a file. If the
+        /// user is not an approver, returns a 403.
+        /// </summary>
+        /// <param name="fileId">Required. The id of the item the request is on.</param>
+        public virtual ListRequest List(string fileId)
+        {
+            return new ListRequest(this.service, fileId);
+        }
+
+        /// <summary>
+        /// List the AccessProposals on a file. Note: Only approvers are able to list AccessProposals on a file. If the
+        /// user is not an approver, returns a 403.
+        /// </summary>
+        public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ListAccessProposalsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
+            {
+                FileId = fileId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The id of the item the request is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Optional. The number of results per page</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. The continuation token on the list of access requests.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/accessproposals";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Used to approve or deny an Access Proposal.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="fileId">Required. The id of the item the request is on.</param>
+        /// <param name="proposalId">Required. The id of the access proposal to resolve.</param>
+        public virtual ResolveRequest Resolve(Google.Apis.Drive.v3.Data.ResolveAccessProposalRequest body, string fileId, string proposalId)
+        {
+            return new ResolveRequest(this.service, body, fileId, proposalId);
+        }
+
+        /// <summary>Used to approve or deny an Access Proposal.</summary>
+        public class ResolveRequest : DriveBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Resolve request.</summary>
+            public ResolveRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.ResolveAccessProposalRequest body, string fileId, string proposalId) : base(service)
+            {
+                FileId = fileId;
+                ProposalId = proposalId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The id of the item the request is on.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FileId { get; private set; }
+
+            /// <summary>Required. The id of the access proposal to resolve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProposalId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.ResolveAccessProposalRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "resolve";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "files/{fileId}/accessproposals/{proposalId}:resolve";
+
+            /// <summary>Initializes Resolve parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "proposalId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
@@ -2003,234 +2223,6 @@ namespace Google.Apis.Drive.v3
         public FilesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            Accessproposals = new AccessproposalsResource(service);
-        }
-
-        /// <summary>Gets the Accessproposals resource.</summary>
-        public virtual AccessproposalsResource Accessproposals { get; }
-
-        /// <summary>The "accessproposals" collection of methods.</summary>
-        public class AccessproposalsResource
-        {
-            private const string Resource = "accessproposals";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public AccessproposalsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// List the AccessProposals on a file. Note: Only approvers are able to list AccessProposals on a file. If
-            /// the user is not an approver, returns a 403.
-            /// </summary>
-            /// <param name="fileId">Required. The id of the item the request is on.</param>
-            public virtual ListRequest List(string fileId)
-            {
-                return new ListRequest(this.service, fileId);
-            }
-
-            /// <summary>
-            /// List the AccessProposals on a file. Note: Only approvers are able to list AccessProposals on a file. If
-            /// the user is not an approver, returns a 403.
-            /// </summary>
-            public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ListAccessProposalsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
-                {
-                    FileId = fileId;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The id of the item the request is on.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string FileId { get; private set; }
-
-                /// <summary>Optional. The number of results per page</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. The continuation token on the list of access requests.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "files/{fileId}/accessproposals";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>Used to approve or deny an Access Proposal.</summary>
-            /// <param name="fileId">Required. The id of the item the request is on.</param>
-            /// <param name="proposalId">Required. The id of the access proposal to resolve.</param>
-            public virtual ResolveRequest Resolve(string fileId, string proposalId)
-            {
-                return new ResolveRequest(this.service, fileId, proposalId);
-            }
-
-            /// <summary>Used to approve or deny an Access Proposal.</summary>
-            public class ResolveRequest : DriveBaseServiceRequest<string>
-            {
-                /// <summary>Constructs a new Resolve request.</summary>
-                public ResolveRequest(Google.Apis.Services.IClientService service, string fileId, string proposalId) : base(service)
-                {
-                    FileId = fileId;
-                    ProposalId = proposalId;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The id of the item the request is on.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string FileId { get; private set; }
-
-                /// <summary>Required. The id of the access proposal to resolve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProposalId { get; private set; }
-
-                /// <summary>Required. The action to take on the AccessProposal.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("action", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ActionEnum> Action { get; set; }
-
-                /// <summary>Required. The action to take on the AccessProposal.</summary>
-                public enum ActionEnum
-                {
-                    /// <summary>Unspecified action</summary>
-                    [Google.Apis.Util.StringValueAttribute("ACTION_UNSPECIFIED")]
-                    ACTIONUNSPECIFIED = 0,
-
-                    /// <summary>
-                    /// The user accepts the proposal. Note: If this action is used, the `role` field must have at least
-                    /// one value.
-                    /// </summary>
-                    [Google.Apis.Util.StringValueAttribute("ACCEPT")]
-                    ACCEPT = 1,
-
-                    /// <summary>The user denies the proposal</summary>
-                    [Google.Apis.Util.StringValueAttribute("DENY")]
-                    DENY = 2,
-                }
-
-                /// <summary>
-                /// Optional. The roles the approver has allowed, if any. Note: This field is required for the `ACCEPT`
-                /// action.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("role", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> Role { get; set; }
-
-                /// <summary>
-                /// Optional. Whether to send an email to the requester when the AccessProposal is denied or accepted.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("sendNotification", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> SendNotification { get; set; }
-
-                /// <summary>
-                /// Optional. Indicates the view for this access proposal. This should only be set when the proposal
-                /// belongs to a view. `published` is the only supported value.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string View { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "resolve";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "files/{fileId}/accessproposals/{proposalId}:resolve";
-
-                /// <summary>Initializes Resolve parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "proposalId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("action", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "action",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("role", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "role",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("sendNotification", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotification",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
         }
 
         /// <summary>Creates a copy of a file and applies any requested updates with patch semantics.</summary>
@@ -9109,6 +9101,36 @@ namespace Google.Apis.Drive.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
         public virtual System.Collections.Generic.IList<Reply> Replies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for resolving an AccessProposal on a file.</summary>
+    public class ResolveAccessProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The action to take on the AccessProposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>
+        /// Optional. The roles the approver has allowed, if any. Note: This field is required for the `ACCEPT` action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual System.Collections.Generic.IList<string> Role { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to send an email to the requester when the AccessProposal is denied or accepted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendNotification")]
+        public virtual System.Nullable<bool> SendNotification { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates the view for this access proposal. This should only be set when the proposal belongs to
+        /// a view. `published` is the only supported value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("view")]
+        public virtual string View { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
