@@ -30134,7 +30134,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     /// <summary>
     /// Providing examples in the generator (i.e. building a few-shot generator) helps convey the desired format of the
-    /// LLM response. NEXT_ID: 10
+    /// LLM response. NEXT_ID: 11
     /// </summary>
     public class GoogleCloudDialogflowV2beta1FewShotExample : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30486,7 +30486,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Input of prebuilt Summarization feature.</summary>
+        /// <summary>Input of Summarization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationContext")]
         public virtual GoogleCloudDialogflowV2beta1SummarizationContext SummarizationContext { get; set; }
 
