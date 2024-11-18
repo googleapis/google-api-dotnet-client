@@ -3077,6 +3077,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class ExperimentalFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Enables generation of protobuf code using new types that are more Pythonic which are included in
+        /// `protobuf&amp;gt;=5.29.x`. This feature will be enabled by default 1 month after launching the feature in
+        /// preview packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protobufPythonicTypesEnabled")]
+        public virtual System.Nullable<bool> ProtobufPythonicTypesEnabled { get; set; }
+
+        /// <summary>
         /// Enables generation of asynchronous REST clients if `rest` transport is enabled. By default, asynchronous
         /// REST clients will not be generated. This feature will be enabled by default 1 month after launching the
         /// feature in preview packages.
@@ -4695,10 +4703,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit kinds are
-        /// determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per minute per
-        /// project. Note: the order of unit components is insignificant. The "1" at the beginning is required to follow
-        /// the metric unit syntax.
+        /// Specify the unit of the quota limit. It uses the same syntax as MetricDescriptor.unit. The supported unit
+        /// kinds are determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per
+        /// minute per project. Note: the order of unit components is insignificant. The "1" at the beginning is
+        /// required to follow the metric unit syntax.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
