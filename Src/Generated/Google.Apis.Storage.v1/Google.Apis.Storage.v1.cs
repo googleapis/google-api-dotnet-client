@@ -2213,7 +2213,7 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Restores a soft-deleted bucket.</summary>
-        public class RestoreRequest : StorageBaseServiceRequest<string>
+        public class RestoreRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
         {
             /// <summary>Constructs a new Restore request.</summary>
             public RestoreRequest(Google.Apis.Services.IClientService service, string bucket, long generation) : base(service)
@@ -2230,6 +2230,22 @@ namespace Google.Apis.Storage.v1
             /// <summary>Generation of a bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Generation { get; private set; }
+
+            /// <summary>Set of properties to return. Defaults to full.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
+
+            /// <summary>Set of properties to return. Defaults to full.</summary>
+            public enum ProjectionEnum
+            {
+                /// <summary>Include all properties.</summary>
+                [Google.Apis.Util.StringValueAttribute("full")]
+                Full = 0,
+
+                /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
+                [Google.Apis.Util.StringValueAttribute("noAcl")]
+                NoAcl = 1,
+            }
 
             /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
@@ -2260,6 +2276,14 @@ namespace Google.Apis.Storage.v1
                 {
                     Name = "generation",
                     IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -11560,6 +11584,27 @@ namespace Google.Apis.Storage.v1.Data
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeDeletedRaw);
             set => TimeDeletedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The time when the object was finalized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeFinalized")]
+        public virtual string TimeFinalizedRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeFinalizedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeFinalizedDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeFinalizedRaw);
+            set => TimeFinalizedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeFinalizedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeFinalizedDateTimeOffset instead.")]
+        public virtual System.DateTime? TimeFinalized
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeFinalizedRaw);
+            set => TimeFinalizedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>
