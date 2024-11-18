@@ -2254,7 +2254,7 @@ namespace Google.Apis.Looker.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>User metadata.</summary>
+        /// <summary>Optional. User metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userMetadata")]
         public virtual UserMetadata UserMetadata { get; set; }
 
