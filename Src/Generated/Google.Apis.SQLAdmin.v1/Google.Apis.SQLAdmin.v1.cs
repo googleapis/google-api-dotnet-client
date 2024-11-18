@@ -6430,6 +6430,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         }
     }
 
+    /// <summary>The selected object that Cloud SQL migrates.</summary>
+    public class ExternalSyncSelectedObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the database that Cloud SQL migrates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance failover context.</summary>
     public class FailoverContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7415,9 +7426,19 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
+        /// <summary>
+        /// Optional. A list of objects that the user selects for replication from an external source instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedObjects")]
+        public virtual System.Collections.Generic.IList<SelectedObjects> SelectedObjects { get; set; }
+
         /// <summary>The reference to Cloud SQL instance if the source is Cloud SQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
         public virtual InstanceReference SourceInstance { get; set; }
+
+        /// <summary>Optional. SSL option for replica connection to the on-premises source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslOption")]
+        public virtual string SslOption { get; set; }
 
         /// <summary>The username for connecting to on-premises instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
@@ -8129,6 +8150,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A list of objects that the user selects for replication from an external source instance.</summary>
+    public class SelectedObjects : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the database to migrate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance settings.</summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8522,6 +8554,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Optional. MySQL-specific settings for start external sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlSyncConfig")]
         public virtual MySqlSyncConfig MysqlSyncConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Migrate only the specified objects from the source instance. If this field is empty, then migrate
+        /// all objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedObjects")]
+        public virtual System.Collections.Generic.IList<ExternalSyncSelectedObject> SelectedObjects { get; set; }
 
         /// <summary>External sync mode</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
