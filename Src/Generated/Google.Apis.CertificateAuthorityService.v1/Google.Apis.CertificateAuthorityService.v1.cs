@@ -1640,7 +1640,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// <summary>
                         /// Optional. It must be unique within a location and match the regular expression
                         /// `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the
-                        /// Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+                        /// Enterprise CertificateAuthority.tier, but is optional and its value is ignored otherwise.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("certificateId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string CertificateId { get; set; }
@@ -5322,8 +5322,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IList<CaPool> CaPools { get; set; }
 
         /// <summary>
-        /// A token to retrieve next page of results. Pass this value in
-        /// ListCertificateAuthoritiesRequest.next_page_token to retrieve the next page of results.
+        /// A token to retrieve next page of results. Pass this value in ListCertificateAuthoritiesRequest.page_token to
+        /// retrieve the next page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5344,8 +5344,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IList<CertificateAuthority> CertificateAuthorities { get; set; }
 
         /// <summary>
-        /// A token to retrieve next page of results. Pass this value in
-        /// ListCertificateAuthoritiesRequest.next_page_token to retrieve the next page of results.
+        /// A token to retrieve next page of results. Pass this value in ListCertificateAuthoritiesRequest.page_token to
+        /// retrieve the next page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5367,7 +5367,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
 
         /// <summary>
         /// A token to retrieve next page of results. Pass this value in
-        /// ListCertificateRevocationListsRequest.next_page_token to retrieve the next page of results.
+        /// ListCertificateRevocationListsRequest.page_token to retrieve the next page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5388,8 +5388,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IList<CertificateTemplate> CertificateTemplates { get; set; }
 
         /// <summary>
-        /// A token to retrieve next page of results. Pass this value in ListCertificateTemplatesRequest.next_page_token
-        /// to retrieve the next page of results.
+        /// A token to retrieve next page of results. Pass this value in ListCertificateTemplatesRequest.page_token to
+        /// retrieve the next page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5410,8 +5410,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IList<Certificate> Certificates { get; set; }
 
         /// <summary>
-        /// A token to retrieve next page of results. Pass this value in ListCertificatesRequest.next_page_token to
-        /// retrieve the next page of results.
+        /// A token to retrieve next page of results. Pass this value in ListCertificatesRequest.page_token to retrieve
+        /// the next page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5698,8 +5698,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// 1, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
