@@ -45,6 +45,10 @@
     "full",
     "noAcl"
   ],
+  "Google.Apis.Storage.v1.BucketsResource+RestoreRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
   "Google.Apis.Storage.v1.BucketsResource+UpdateRequest.PredefinedAclEnum": [
     "authenticatedRead",
     "private",
