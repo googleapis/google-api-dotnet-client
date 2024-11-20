@@ -1147,7 +1147,7 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
 
     /// <summary>
     /// Regional inventory information for the product. Represents specific information like price and availability for
-    /// a given product in a specific `region`.For a list of all accepted attribute values, see the [regional product
+    /// a given product in a specific `region`. For a list of all accepted attribute values, see the [regional product
     /// inventory data specification](https://support.google.com/merchants/answer/9698880).
     /// </summary>
     public class RegionalInventory : Google.Apis.Requests.IDirectResponseSchema
