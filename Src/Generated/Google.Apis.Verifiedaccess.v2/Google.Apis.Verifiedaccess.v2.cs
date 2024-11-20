@@ -464,7 +464,8 @@ namespace Google.Apis.Verifiedaccess.v2.Data
 
         /// <summary>
         /// The state of the OS level firewall. On ChromeOS, the value will always be ENABLED on regular devices and
-        /// UNKNOWN on devices in developer mode. The signal is currently not available on MacOS 15 (Sequoia) and later.
+        /// UNKNOWN on devices in developer mode. Support for MacOS 15 (Sequoia) and later has been introduced in Chrome
+        /// M131.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osFirewall")]
         public virtual string OsFirewall { get; set; }
