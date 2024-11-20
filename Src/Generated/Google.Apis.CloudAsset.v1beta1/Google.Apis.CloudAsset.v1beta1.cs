@@ -2537,6 +2537,14 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. An opaque identifier for the current version of the `ServicePerimeter`. Clients should not expect
+        /// this to be in any specific format. If etag is not provided, the operation will be performed as if a valid
+        /// etag is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Identifier. Resource name for the `ServicePerimeter`. Format:
         /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component
         /// must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`,
@@ -2584,9 +2592,6 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
         public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
