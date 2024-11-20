@@ -6055,10 +6055,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
         public virtual string GcsStagingDir { get; set; }
 
-        /// <summary>
-        /// BigQuery time partitioned table's _PARTITIONDATE in YYYY-MM-DD format. Only supported in
-        /// ImportProductsRequest.
-        /// </summary>
+        /// <summary>BigQuery time partitioned table's _PARTITIONDATE in YYYY-MM-DD format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionDate")]
         public virtual GoogleTypeDate PartitionDate { get; set; }
 
@@ -6130,12 +6127,11 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>
         /// Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product
         /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
-        /// pre-loaded by using CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
-        /// CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-loaded CatalogAttributes. Only
-        /// pre-loaded catalog attributes that are neither in use by products nor predefined can be deleted. Catalog
-        /// attributes that are either in use by products or are predefined attributes cannot be deleted; however, their
-        /// configuration properties will reset to default values upon removal request. After catalog changes, it takes
-        /// about 10 minutes for this field to update.
+        /// pre-loaded by using CatalogService.AddCatalogAttribute or CatalogService.UpdateAttributesConfig APIs. This
+        /// field is `False` for pre-loaded CatalogAttributes. Only pre-loaded catalog attributes that are neither in
+        /// use by products nor predefined can be deleted. Catalog attributes that are either in use by products or are
+        /// predefined attributes cannot be deleted; however, their configuration properties will reset to default
+        /// values upon removal request. After catalog changes, it takes about 10 minutes for this field to update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inUse")]
         public virtual System.Nullable<bool> InUse { get; set; }
@@ -6872,7 +6868,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for active A/B testing Experiment.</summary>
+    /// <summary>Metadata for active A/B testing experiment.</summary>
     public class GoogleCloudRetailV2ExperimentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6895,8 +6891,9 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2ExperimentInfoServingConfigExperiment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The fully qualified resource name of the serving config Experiment.VariantArm.serving_config_id responsible
-        /// for generating the search response. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.
+        /// The fully qualified resource name of the serving config `Experiment.VariantArm.serving_config_id`
+        /// responsible for generating the search response. For example:
+        /// `projects/*/locations/*/catalogs/*/servingConfigs/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentServingConfig")]
         public virtual string ExperimentServingConfig { get; set; }
@@ -7655,19 +7652,32 @@ namespace Google.Apis.CloudRetail.v2.Data
     public class GoogleCloudRetailV2LocalInventory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to
-        /// pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are
-        /// allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match
-        /// the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of
-        /// the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length
-        /// limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be
-        /// unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+        /// Optional. Additional local inventory attributes, for example, store name, promotion tags, etc. This field
+        /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes
+        /// are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must
+        /// match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must
+        /// be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the
+        /// length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should
+        /// be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is
+        /// 5MiB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2CustomAttribute> Attributes { get; set; }
 
         /// <summary>
-        /// Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as
+        /// Optional. The availability of the Product at this place_id. Default to Availability.IN_STOCK. For primary
+        /// products with variants set the availability of the primary as Availability.OUT_OF_STOCK and set the true
+        /// availability at the variant level. This way the primary product will be considered "in stock" as long as it
+        /// has at least one variant in stock. For primary products with no variants set the true availability at the
+        /// primary level. Corresponding properties: Google Merchant Center property
+        /// [availability](https://support.google.com/merchants/answer/6324448). Schema.org property
+        /// [Offer.availability](https://schema.org/availability).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availability")]
+        public virtual string Availability { get; set; }
+
+        /// <summary>
+        /// Optional. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as
         /// pickup in store and same day delivery), and custom types. Customers have to map custom types to their
         /// display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" *
         /// "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" *
@@ -7678,12 +7688,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentTypes")]
         public virtual System.Collections.Generic.IList<string> FulfillmentTypes { get; set; }
 
-        /// <summary>The place ID for the current set of inventory information.</summary>
+        /// <summary>Required. The place ID for the current set of inventory information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
         public virtual string PlaceId { get; set; }
 
         /// <summary>
-        /// Product price and cost information. Google Merchant Center property
+        /// Optional. Product price and cost information. Google Merchant Center property
         /// [price](https://support.google.com/merchants/answer/6324371).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceInfo")]
@@ -10331,7 +10341,7 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string CorrectedQuery { get; set; }
 
         /// <summary>
-        /// Metadata related to A/B testing Experiment associated with this response. Only exists when an experiment is
+        /// Metadata related to A/B testing experiment associated with this response. Only exists when an experiment is
         /// triggered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentInfo")]
@@ -11302,10 +11312,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string IpAddress { get; set; }
 
         /// <summary>
-        /// User agent as included in the HTTP header. Required for getting SearchResponse.sponsored_results. The field
-        /// must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error
-        /// is returned. This should not be set when using the client side event reporting with GTM or JavaScript tag in
-        /// UserEventService.CollectUserEvent or if direct_user_request is set.
+        /// User agent as included in the HTTP header. The field must be a UTF-8 encoded string with a length limit of
+        /// 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This should not be set when using the
+        /// client side event reporting with GTM or JavaScript tag in UserEventService.CollectUserEvent or if
+        /// direct_user_request is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; }
