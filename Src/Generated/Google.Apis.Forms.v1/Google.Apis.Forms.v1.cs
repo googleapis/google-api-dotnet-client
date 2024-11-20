@@ -1727,6 +1727,10 @@ namespace Google.Apis.Forms.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("questionId")]
         public virtual string QuestionId { get; set; }
 
+        /// <summary>A respondent can choose a rating from a pre-defined set of icons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratingQuestion")]
+        public virtual RatingQuestion RatingQuestion { get; set; }
+
         /// <summary>Whether the question must be answered in order for a respondent to submit their response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
@@ -1802,6 +1806,21 @@ namespace Google.Apis.Forms.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isQuiz")]
         public virtual System.Nullable<bool> IsQuiz { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A rating question. The user has a range of icons to choose from.</summary>
+    public class RatingQuestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The icon type to use for the rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconType")]
+        public virtual string IconType { get; set; }
+
+        /// <summary>Required. The rating scale level of the rating question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratingScaleLevel")]
+        public virtual System.Nullable<int> RatingScaleLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
