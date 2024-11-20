@@ -1827,12 +1827,23 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Filter for empty values.</summary>
+    public class EmptyFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An expression to filter dimension or metric values.</summary>
     public class Filter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A filter for two values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("betweenFilter")]
         public virtual BetweenFilter BetweenFilter { get; set; }
+
+        /// <summary>A filter for empty values such as "(not set)" and "" values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emptyFilter")]
+        public virtual EmptyFilter EmptyFilter { get; set; }
 
         /// <summary>
         /// The dimension name or metric name. In most methods, dimensions &amp;amp; metrics can be used for the first
