@@ -1759,7 +1759,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
         public virtual System.Nullable<double> Rating { get; set; }
 
-        /// <summary>The regular hours of operation.</summary>
+        /// <summary>
+        /// The regular hours of operation. Note that if a place is always open (24 hours), the `close` field will not
+        /// be set. Clients can rely on always open (24 hours) being represented as an `open` period containing day with
+        /// value `0`, hour with value `0`, and minute with value `0`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regularOpeningHours")]
         public virtual GoogleMapsPlacesV1PlaceOpeningHours RegularOpeningHours { get; set; }
 
@@ -2197,11 +2201,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
-        /// <summary>The hour in 2 digits. Ranges from 00 to 23.</summary>
+        /// <summary>The hour in 24 hour format. Ranges from 0 to 23.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hour")]
         public virtual System.Nullable<int> Hour { get; set; }
 
-        /// <summary>The minute in 2 digits. Ranges from 00 to 59.</summary>
+        /// <summary>The minute. Ranges from 0 to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minute")]
         public virtual System.Nullable<int> Minute { get; set; }
 
