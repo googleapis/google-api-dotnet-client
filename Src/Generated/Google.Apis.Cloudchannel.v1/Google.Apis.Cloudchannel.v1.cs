@@ -5683,7 +5683,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -5698,7 +5698,7 @@ namespace Google.Apis.Cloudchannel.v1
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         public class CancelRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleProtobufEmpty>
         {
@@ -6367,7 +6367,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
         /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order. Yet to be implemented: this field is currently not evaluated in the API if populated in a request.
+        /// order. Not yet implemented: if populated in a request, this field isn't evaluated in the API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
@@ -7311,7 +7311,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
         /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order. Yet to be implemented: this field is currently not evaluated in the API if populated in a request.
+        /// order. Not yet implemented: if this field is populated in a request, it isn't evaluated in the API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
@@ -9607,7 +9607,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Optional. Price reference ID for the offer. Optional field only for offers that require additional price
         /// information. Used to guarantee that the pricing is consistent between quoting the offer and placing the
-        /// order. Yet to be implemented: this field is currently not evaluated in the API if populated in a request.
+        /// order. Not yet implemented: if this field is populated in a request, it isn't evaluated in the API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceReferenceId")]
         public virtual string PriceReferenceId { get; set; }
