@@ -1104,7 +1104,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
                             /// whether the operation completed despite cancellation. On successful cancellation, the
                             /// operation is not deleted; instead, it becomes an operation with an Operation.error value
-                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                             /// </summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -1120,7 +1120,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                             /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
                             /// whether the operation completed despite cancellation. On successful cancellation, the
                             /// operation is not deleted; instead, it becomes an operation with an Operation.error value
-                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                             /// </summary>
                             public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
                             {
@@ -9157,7 +9157,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -9173,7 +9173,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
                         {
@@ -14323,7 +14323,7 @@ namespace Google.Apis.DiscoveryEngine.v1
             /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check
             /// whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-            /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+            /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -14338,7 +14338,7 @@ namespace Google.Apis.DiscoveryEngine.v1
             /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check
             /// whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-            /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+            /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
             /// </summary>
             public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
             {
@@ -21055,10 +21055,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// eligible fields for filtering are: * `eventType`: Double quoted UserEvent.event_type string. * `eventTime`:
         /// in ISO 8601 "zulu" format. * `userPseudoId`: Double quoted string. Specifying this will delete all events
         /// associated with a visitor. * `userId`: Double quoted string. Specifying this will delete all events
-        /// associated with a user. Examples: * Deleting all events in a time range: `eventTime &amp;gt;
-        /// "2012-04-23T18:25:43.511Z" eventTime &amp;lt; "2012-04-23T18:30:43.511Z"` * Deleting specific eventType:
-        /// `eventType = "search"` * Deleting all events for a specific visitor: `userPseudoId = "visitor1024"` *
-        /// Deleting all events inside a DataStore: `*` The filtering fields are assumed to have an implicit AND.
+        /// associated with a user. Note: This API only supports purging a max range of 30 days. Examples: * Deleting
+        /// all events in a time range: `eventTime &amp;gt; "2012-04-23T18:25:43.511Z" eventTime &amp;lt;
+        /// "2012-04-23T18:30:43.511Z"` * Deleting specific eventType in a time range: `eventTime &amp;gt;
+        /// "2012-04-23T18:25:43.511Z" eventTime &amp;lt; "2012-04-23T18:30:43.511Z" eventType = "search"` * Deleting
+        /// all events for a specific visitor in a time range: `eventTime &amp;gt; "2012-04-23T18:25:43.511Z" eventTime
+        /// &amp;lt; "2012-04-23T18:30:43.511Z" userPseudoId = "visitor1024"` * Deleting the past 30 days of events
+        /// inside a DataStore: `*` The filtering fields are assumed to have an implicit AND.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -21191,8 +21194,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// filter expressions on the `filter_tags` attribute is supported. Examples: * `(filter_tags: ANY("Red",
         /// "Blue") OR filter_tags: ANY("Hot", "Cold"))` * `(filter_tags: ANY("Red", "Blue")) AND NOT (filter_tags:
         /// ANY("Green"))` If `attributeFilteringSyntax` is set to true under the `params` field, then attribute-based
-        /// expressions are expected instead of the above described tag-based syntax. Examples: * (launguage: ANY("en",
-        /// "es")) AND NOT (categories: ANY("Movie")) * (available: true) AND (launguage: ANY("en", "es")) OR
+        /// expressions are expected instead of the above described tag-based syntax. Examples: * (language: ANY("en",
+        /// "es")) AND NOT (categories: ANY("Movie")) * (available: true) AND (language: ANY("en", "es")) OR
         /// (categories: ANY("Movie")) If your filter blocks all results, the API returns generic (unfiltered) popular
         /// Documents. If you only want results strictly matching the filters, set `strictFiltering` to `true` in
         /// RecommendRequest.params to receive empty results instead. Note that the API never returns Documents with
@@ -21441,9 +21444,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
         /// <summary>
-        /// Specs defining dataStores to filter on in a search call and configurations for those dataStores. This is
-        /// only considered for engines with multiple dataStores use case. For single dataStore within an engine, they
-        /// should use the specs at the top level.
+        /// Specs defining DataStores to filter on in a search call and configurations for those data stores. This is
+        /// only considered for Engines with multiple data stores. For engines with a single data store, the specs
+        /// directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
@@ -28652,9 +28655,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec CustomFineTuningSpec { get; set; }
 
         /// <summary>
-        /// Specs defining dataStores to filter on in a search call and configurations for those dataStores. This is
-        /// only considered for engines with multiple dataStores use case. For single dataStore within an engine, they
-        /// should use the specs at the top level.
+        /// Specs defining DataStores to filter on in a search call and configurations for those data stores. This is
+        /// only considered for Engines with multiple data stores. For engines with a single data store, the specs
+        /// directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
@@ -34023,9 +34026,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
         /// <summary>
-        /// Specs defining dataStores to filter on in a search call and configurations for those dataStores. This is
-        /// only considered for engines with multiple dataStores use case. For single dataStore within an engine, they
-        /// should use the specs at the top level.
+        /// Specs defining DataStores to filter on in a search call and configurations for those data stores. This is
+        /// only considered for Engines with multiple data stores. For engines with a single data store, the specs
+        /// directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
