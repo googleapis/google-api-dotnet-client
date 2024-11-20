@@ -3566,7 +3566,10 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Collection of information related to a business.</summary>
+    /// <summary>
+    /// The `BusinessInfo` message contains essential information about a merchant's business. This message captures key
+    /// business details such as physical address, customer service contacts, and region-specific identifiers.
+    /// </summary>
     public class BusinessInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4009,7 +4012,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A store's homepage.</summary>
+    /// <summary>
+    /// The `Homepage` message represents a merchant's store homepage within the system. A merchant's homepage is the
+    /// primary domain where customers interact with their store. The homepage can be claimed and verified as a proof of
+    /// ownership and allows the merchant to unlock features that require a verified website. For more information, see
+    /// [Understanding online store URL verification](//support.google.com/merchants/answer/176793).
+    /// </summary>
     public class Homepage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
