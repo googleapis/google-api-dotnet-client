@@ -12314,6 +12314,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingDetails")]
         public virtual ChannelToStoreLinkDetailsBillingDetails BillingDetails { get; set; }
 
+        /// <summary>Information specific to merchant affiliate program (read-only).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantAffiliateProgramDetails")]
+        public virtual ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails MerchantAffiliateProgramDetails { get; set; }
+
         /// <summary>Google Merchant Center id of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; }
@@ -12336,6 +12340,17 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The current billing profile status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingStatus")]
         public virtual string BillingStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to merchant affiliate program.</summary>
+    public class ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current merchant affiliate program status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
