@@ -8170,6 +8170,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlId")]
         public virtual string CloudSqlId { get; set; }
 
+        /// <summary>Optional. The name of the specific database within the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
         /// <summary>Required. The IP or hostname of the source PostgreSQL database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
