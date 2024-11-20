@@ -1384,6 +1384,100 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies the context retrieval config.</summary>
+    public class GoogleCloudAiplatformV1beta1RagRetrievalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Config for filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GoogleCloudAiplatformV1beta1RagRetrievalConfigFilter Filter { get; set; }
+
+        /// <summary>Optional. Config for Hybrid Search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hybridSearch")]
+        public virtual GoogleCloudAiplatformV1beta1RagRetrievalConfigHybridSearch HybridSearch { get; set; }
+
+        /// <summary>Optional. Config for ranking and reranking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ranking")]
+        public virtual GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking Ranking { get; set; }
+
+        /// <summary>Optional. The number of contexts to retrieve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
+        public virtual System.Nullable<int> TopK { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for filters.</summary>
+    public class GoogleCloudAiplatformV1beta1RagRetrievalConfigFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. String for metadata filtering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFilter")]
+        public virtual string MetadataFilter { get; set; }
+
+        /// <summary>Optional. Only returns contexts with vector distance smaller than the threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorDistanceThreshold")]
+        public virtual System.Nullable<double> VectorDistanceThreshold { get; set; }
+
+        /// <summary>Optional. Only returns contexts with vector similarity larger than the threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorSimilarityThreshold")]
+        public virtual System.Nullable<double> VectorSimilarityThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for Hybrid Search.</summary>
+    public class GoogleCloudAiplatformV1beta1RagRetrievalConfigHybridSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Alpha value controls the weight between dense and sparse vector search results. The range is [0,
+        /// 1], while 0 means sparse vector search only and 1 means dense vector search only. The default value is 0.5
+        /// which balances sparse and dense vector search equally.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
+        public virtual System.Nullable<float> Alpha { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for ranking and reranking.</summary>
+    public class GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Config for LlmRanker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("llmRanker")]
+        public virtual GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker LlmRanker { get; set; }
+
+        /// <summary>Optional. Config for Rank Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankService")]
+        public virtual GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService RankService { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for LlmRanker.</summary>
+    public class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The model name used for ranking. Format: `gemini-1.5-pro`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for Rank Service.</summary>
+    public class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The model name of the rank service. Format: `semantic-ranker-512@latest`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
     public class GoogleCloudAiplatformV1beta1Retrieval : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1723,6 +1817,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ragResources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1VertexRagStoreRagResource> RagResources { get; set; }
+
+        /// <summary>Optional. The retrieval config for the Rag query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragRetrievalConfig")]
+        public virtual GoogleCloudAiplatformV1beta1RagRetrievalConfig RagRetrievalConfig { get; set; }
 
         /// <summary>Optional. Number of top k results to return from the selected corpora.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("similarityTopK")]
