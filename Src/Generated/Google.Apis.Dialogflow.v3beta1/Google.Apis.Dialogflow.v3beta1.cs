@@ -11867,8 +11867,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
     /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
-    /// the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript
-    /// following up.
+    /// start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following
+    /// up.
     /// </summary>
     public class GoogleCloudDialogflowCxV3BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14939,8 +14939,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
     /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
-    /// the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript
-    /// following up.
+    /// start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following
+    /// up.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19960,8 +19960,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string CurrentPage { get; set; }
 
         /// <summary>
-        /// Optional. Start the session with the specified playbook. You can only specify the playbook at the beginning
-        /// of the session. Otherwise, an error will be thrown. Format: `projects//locations//agents//playbooks/`.
+        /// Optional. The unique identifier of the playbook to start or continue the session with. If `current_playbook`
+        /// is specified, the previous state of the session will be ignored by Dialogflow. Format:
+        /// `projects//locations//agents//playbooks/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPlaybook")]
         public virtual string CurrentPlaybook { get; set; }
@@ -22751,7 +22752,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for a ConversationProfile.ClearSuggestionFeatureConfig operation.</summary>
+    /// <summary>Metadata for a ConversationProfiles.ClearSuggestionFeatureConfig operation.</summary>
     public class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -22973,7 +22974,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for ConversationDatasets.</summary>
+    /// <summary>Metadata for CreateConversationDataset.</summary>
     public class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -23103,7 +23104,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for ConversationDatasets.</summary>
+    /// <summary>Metadata for DeleteConversationDataset.</summary>
     public class GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -24847,9 +24848,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>
     /// The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing
     /// subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For
-    /// Participants.DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For
-    /// Participants.StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And
-    /// for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
+    /// DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it needs
+    /// to be configured in StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent and
+    /// Participants.StreamingAnalyzeContent, it needs to be configured in
     /// ConversationProfile.human_agent_assistant_config
     /// </summary>
     public class GoogleCloudDialogflowV2SentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
@@ -24896,7 +24897,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for a ConversationProfile.SetSuggestionFeatureConfig operation.</summary>
+    /// <summary>Metadata for a ConversationProfiles.SetSuggestionFeatureConfig operation.</summary>
     public class GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
