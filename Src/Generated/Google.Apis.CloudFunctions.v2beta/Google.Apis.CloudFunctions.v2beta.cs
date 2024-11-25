@@ -1884,9 +1884,8 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         /// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud
         /// Build. If specified by user, it is created and managed by user with a customer managed encryption key.
         /// Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must
-        /// match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project
-        /// repositories are not supported. Cross-location repositories are not supported. Repository format must be
-        /// 'DOCKER'.
+        /// match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Repository format
+        /// must be 'DOCKER'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dockerRepository")]
         public virtual string DockerRepository { get; set; }
