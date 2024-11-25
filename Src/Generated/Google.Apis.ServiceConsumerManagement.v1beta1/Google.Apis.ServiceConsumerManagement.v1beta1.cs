@@ -2653,6 +2653,14 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     public class ExperimentalFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Enables generation of protobuf code using new types that are more Pythonic which are included in
+        /// `protobuf&amp;gt;=5.29.x`. This feature will be enabled by default 1 month after launching the feature in
+        /// preview packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protobufPythonicTypesEnabled")]
+        public virtual System.Nullable<bool> ProtobufPythonicTypesEnabled { get; set; }
+
+        /// <summary>
         /// Enables generation of asynchronous REST clients if `rest` transport is enabled. By default, asynchronous
         /// REST clients will not be generated. This feature will be enabled by default 1 month after launching the
         /// feature in preview packages.
@@ -2757,6 +2765,14 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// <summary>Some settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>
+        /// Map of service names to renamed services. Keys are the package relative service names and values are the
+        /// name to be used for the service client and call options. publishing: go_settings: renamed_services:
+        /// Publisher: TopicAdmin
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renamedServices")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RenamedServices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3892,10 +3908,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit kinds are
-        /// determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per minute per
-        /// project. Note: the order of unit components is insignificant. The "1" at the beginning is required to follow
-        /// the metric unit syntax.
+        /// Specify the unit of the quota limit. It uses the same syntax as MetricDescriptor.unit. The supported unit
+        /// kinds are determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per
+        /// minute per project. Note: the order of unit components is insignificant. The "1" at the beginning is
+        /// required to follow the metric unit syntax.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
@@ -4513,18 +4529,26 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     public class V1Beta1ImportProducerQuotaPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to force the import of the quota policies. If the policy import would decrease the default limit of
-        /// any consumer tier by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally
-        /// decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+        /// Whether quota policy can result in a decrease of effective limit. Don't allow any decreases if force is not
+        /// specified. If force is specified, then don't allow any decreases below 120% of the 7d quota usage, or for
+        /// cases where usage cannot be examined (custom dimensions/ per user/per resource), only allow a 10% decrease.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>
-        /// If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
+        /// If force or force_skip_quota_usage_check option is set to true, force_justification is suggested to be set
+        /// to log the reason in audit logs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forceJustification")]
         public virtual string ForceJustification { get; set; }
+
+        /// <summary>
+        /// If set to true, skip the quota usage check. This field is only used when the effective limit can be
+        /// decreased. If the force field is not set, this field will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forceSkipQuotaUsageCheck")]
+        public virtual System.Nullable<bool> ForceSkipQuotaUsageCheck { get; set; }
 
         /// <summary>The import data is specified in the request message itself</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
