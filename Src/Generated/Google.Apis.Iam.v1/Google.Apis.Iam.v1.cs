@@ -3272,7 +3272,7 @@ namespace Google.Apis.Iam.v1
                     /// <summary>Updates an existing OauthClientCredential.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. The resource name of the OauthClientCredential. Format:
+                    /// Immutable. Identifier. The resource name of the OauthClientCredential. Format:
                     /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.OauthClientCredential body, string name)
@@ -3292,7 +3292,7 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Immutable. The resource name of the OauthClientCredential. Format:
+                        /// Immutable. Identifier. The resource name of the OauthClientCredential. Format:
                         /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3634,7 +3634,7 @@ namespace Google.Apis.Iam.v1
                 /// <summary>Updates an existing OauthClient.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The resource name of the OauthClient.
+                /// Immutable. Identifier. The resource name of the OauthClient.
                 /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.OauthClient body, string name)
@@ -3654,7 +3654,7 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Immutable. The resource name of the OauthClient.
+                    /// Immutable. Identifier. The resource name of the OauthClient.
                     /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -9095,7 +9095,7 @@ namespace Google.Apis.Iam.v1.Data
         }
 
         /// <summary>
-        /// Immutable. The resource name of the OauthClient.
+        /// Immutable. Identifier. The resource name of the OauthClient.
         /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9137,7 +9137,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name of the OauthClientCredential. Format:
+        /// Immutable. Identifier. The resource name of the OauthClientCredential. Format:
         /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9151,11 +9151,11 @@ namespace Google.Apis.Iam.v1.Data
     public class Oidc : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if
-        /// the token audience does not match one of the configured values. Each audience may be at most 256 characters.
-        /// A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to
-        /// the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For
-        /// example:
+        /// Optional. Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are
+        /// rejected if the token audience does not match one of the configured values. Each audience may be at most 256
+        /// characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must
+        /// be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS
+        /// prefix. For example:
         /// ```
         /// //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
         /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
@@ -9234,8 +9234,8 @@ namespace Google.Apis.Iam.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
@@ -10500,18 +10500,18 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class WorkloadIdentityPool : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A description of the pool. Cannot exceed 256 characters.</summary>
+        /// <summary>Optional. A description of the pool. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to
-        /// access resources. If the pool is re-enabled, existing tokens grant access again.
+        /// Optional. Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing
+        /// tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>A display name for the pool. Cannot exceed 32 characters.</summary>
+        /// <summary>Optional. A display name for the pool. Cannot exceed 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -10577,11 +10577,11 @@ namespace Google.Apis.Iam.v1.Data
     public class WorkloadIdentityPoolProvider : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in plain text, to
-        /// restrict what otherwise valid authentication credentials issued by the provider should not be accepted. The
-        /// expression must output a boolean representing whether to allow the federation. The following keywords may be
-        /// referenced in the expressions: * `assertion`: JSON representing the authentication credential issued by the
-        /// provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`. *
+        /// Optional. [A Common Expression Language](https://opensource.google/projects/cel) expression, in plain text,
+        /// to restrict what otherwise valid authentication credentials issued by the provider should not be accepted.
+        /// The expression must output a boolean representing whether to allow the federation. The following keywords
+        /// may be referenced in the expressions: * `assertion`: JSON representing the authentication credential issued
+        /// by the provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`. *
         /// `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`. The maximum length
         /// of the attribute condition expression is 4096 characters. If unspecified, all valid authentication
         /// credential are accepted. The following example shows how to only allow credentials with a mapped
@@ -10594,8 +10594,8 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string AttributeCondition { get; set; }
 
         /// <summary>
-        ///  Maps attributes from authentication credentials issued by an external identity provider to Google Cloud
-        /// attributes, such as `subject` and `segment`. Each key must be a string specifying the Google Cloud IAM
+        /// Optional. Maps attributes from authentication credentials issued by an external identity provider to Google
+        /// Cloud attributes, such as `subject` and `segment`. Each key must be a string specifying the Google Cloud IAM
         /// attribute to map to. The following keys are supported: * `google.subject`: The principal IAM is
         /// authenticating. You can reference this value in IAM bindings. This is also the subject that appears in Cloud
         /// Logging logs. Cannot exceed 127 bytes. * `google.groups`: Groups the external identity belongs to. You can
@@ -10637,18 +10637,18 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aws")]
         public virtual Aws Aws { get; set; }
 
-        /// <summary>A description for the provider. Cannot exceed 256 characters.</summary>
+        /// <summary>Optional. A description for the provider. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing
-        /// tokens still grant access.
+        /// Optional. Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However,
+        /// existing tokens still grant access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>A display name for the provider. Cannot exceed 32 characters.</summary>
+        /// <summary>Optional. A display name for the provider. Cannot exceed 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
