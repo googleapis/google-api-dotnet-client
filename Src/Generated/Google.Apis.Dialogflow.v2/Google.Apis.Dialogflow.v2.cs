@@ -7044,8 +7044,8 @@ namespace Google.Apis.Dialogflow.v2
             }
 
             /// <summary>
-            /// Creates a conversation profile in the specified project. ConversationProfile.CreateTime and
-            /// ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via
+            /// Creates a conversation profile in the specified project. ConversationProfile.create_time and
+            /// ConversationProfile.update_time aren't populated in the response. You can retrieve them via
             /// GetConversationProfile API.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -7058,8 +7058,8 @@ namespace Google.Apis.Dialogflow.v2
             }
 
             /// <summary>
-            /// Creates a conversation profile in the specified project. ConversationProfile.CreateTime and
-            /// ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via
+            /// Creates a conversation profile in the specified project. ConversationProfile.create_time and
+            /// ConversationProfile.update_time aren't populated in the response. You can retrieve them via
             /// GetConversationProfile API.
             /// </summary>
             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile>
@@ -7286,8 +7286,8 @@ namespace Google.Apis.Dialogflow.v2
             }
 
             /// <summary>
-            /// Updates the specified conversation profile. ConversationProfile.CreateTime and
-            /// ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via
+            /// Updates the specified conversation profile. ConversationProfile.create_time and
+            /// ConversationProfile.update_time aren't populated in the response. You can retrieve them via
             /// GetConversationProfile API.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -7301,8 +7301,8 @@ namespace Google.Apis.Dialogflow.v2
             }
 
             /// <summary>
-            /// Updates the specified conversation profile. ConversationProfile.CreateTime and
-            /// ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via
+            /// Updates the specified conversation profile. ConversationProfile.create_time and
+            /// ConversationProfile.update_time aren't populated in the response. You can retrieve them via
             /// GetConversationProfile API.
             /// </summary>
             public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile>
@@ -15975,8 +15975,8 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Creates a conversation profile in the specified project. ConversationProfile.CreateTime and
-                /// ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via
+                /// Creates a conversation profile in the specified project. ConversationProfile.create_time and
+                /// ConversationProfile.update_time aren't populated in the response. You can retrieve them via
                 /// GetConversationProfile API.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -15989,8 +15989,8 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Creates a conversation profile in the specified project. ConversationProfile.CreateTime and
-                /// ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via
+                /// Creates a conversation profile in the specified project. ConversationProfile.create_time and
+                /// ConversationProfile.update_time aren't populated in the response. You can retrieve them via
                 /// GetConversationProfile API.
                 /// </summary>
                 public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile>
@@ -16217,8 +16217,8 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Updates the specified conversation profile. ConversationProfile.CreateTime and
-                /// ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via
+                /// Updates the specified conversation profile. ConversationProfile.create_time and
+                /// ConversationProfile.update_time aren't populated in the response. You can retrieve them via
                 /// GetConversationProfile API.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -16232,8 +16232,8 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Updates the specified conversation profile. ConversationProfile.CreateTime and
-                /// ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via
+                /// Updates the specified conversation profile. ConversationProfile.create_time and
+                /// ConversationProfile.update_time aren't populated in the response. You can retrieve them via
                 /// GetConversationProfile API.
                 /// </summary>
                 public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile>
@@ -20442,8 +20442,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
     /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
-    /// the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript
-    /// following up.
+    /// start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following
+    /// up.
     /// </summary>
     public class GoogleCloudDialogflowCxV3BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23154,8 +23154,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
     /// in terms of the durations of those two phases. The durations are measured in terms of the audio length from the
-    /// the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript
-    /// following up.
+    /// start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following
+    /// up.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26106,9 +26106,9 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2AnalyzeContentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Only set if a Dialogflow automated agent has responded. Note that:
-        /// AutomatedAgentReply.detect_intent_response.output_audio and
-        /// AutomatedAgentReply.detect_intent_response.output_audio_config are always empty, use reply_audio instead.
+        /// Only set if a Dialogflow automated agent has responded. Note that in
+        /// AutomatedAgentReply.DetectIntentResponse, Sessions.DetectIntentResponse.output_audio and
+        /// Sessions.DetectIntentResponse.output_audio_config are always empty, use reply_audio instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automatedAgentReply")]
         public virtual GoogleCloudDialogflowV2AutomatedAgentReply AutomatedAgentReply { get; set; }
@@ -26305,8 +26305,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// the console. Records are created when there's a human agent assistant suggestion generated. A typical workflow
     /// for customers provide feedback to an answer is: 1. For human agent assistant, customers get suggestion via
     /// ListSuggestions API. Together with the answers, AnswerRecord.name are returned to the customers. 2. The customer
-    /// uses the AnswerRecord.name to call the UpdateAnswerRecord method to send feedback about a specific answer that
-    /// they believe is wrong.
+    /// uses the AnswerRecord.name to call the AnswerRecords.UpdateAnswerRecord method to send feedback about a specific
+    /// answer that they believe is wrong.
     /// </summary>
     public class GoogleCloudDialogflowV2AnswerRecord : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26626,7 +26626,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for a ConversationProfile.ClearSuggestionFeatureConfig operation.</summary>
+    /// <summary>Metadata for a ConversationProfiles.ClearSuggestionFeatureConfig operation.</summary>
     public class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -26687,7 +26687,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request message for ConversationProfiles.ClearFeature.</summary>
+    /// <summary>The request message for ConversationProfiles.ClearSuggestionFeatureConfig.</summary>
     public class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -27336,7 +27336,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for ConversationDatasets.</summary>
+    /// <summary>Metadata for CreateConversationDataset.</summary>
     public class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -27477,7 +27477,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for ConversationDatasets.</summary>
+    /// <summary>Metadata for DeleteConversationDataset.</summary>
     public class GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -28310,7 +28310,7 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>
     /// Providing examples in the generator (i.e. building a few-shot generator) helps convey the desired format of the
-    /// LLM response. NEXT_ID: 10
+    /// LLM response.
     /// </summary>
     public class GoogleCloudDialogflowV2FewShotExample : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28547,9 +28547,9 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Number of messages prior to and including last_conversation_message used to compile the suggestion. It may
-        /// be smaller than the GenerateStatelessSummaryRequest.context_size field in the request if there weren't that
-        /// many messages in the conversation.
+        /// Number of messages prior to and including latest_message used to compile the suggestion. It may be smaller
+        /// than the GenerateStatelessSummaryRequest.max_context_size field in the request if there weren't that many
+        /// messages in the conversation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
         public virtual System.Nullable<int> ContextSize { get; set; }
@@ -31649,7 +31649,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>
         /// Optional. Data Stores where the boosting configuration is applied. The full names of the referenced data
         /// stores. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
-        /// `projects/{project}/locations/{location}/dataStores/{data_store}
+        /// `projects/{project}/locations/{location}/dataStores/{data_store}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStores")]
         public virtual System.Collections.Generic.IList<string> DataStores { get; set; }
@@ -31853,9 +31853,9 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>
     /// The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing
     /// subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For
-    /// Participants.DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For
-    /// Participants.StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And
-    /// for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
+    /// DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For StreamingDetectIntent, it needs
+    /// to be configured in StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent and
+    /// Participants.StreamingAnalyzeContent, it needs to be configured in
     /// ConversationProfile.human_agent_assistant_config
     /// </summary>
     public class GoogleCloudDialogflowV2SentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
@@ -31902,7 +31902,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for a ConversationProfile.SetSuggestionFeatureConfig operation.</summary>
+    /// <summary>Metadata for a ConversationProfiles.SetSuggestionFeatureConfig operation.</summary>
     public class GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -31963,7 +31963,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request message for ConversationProfiles.SetSuggestionFeature.</summary>
+    /// <summary>The request message for ConversationProfiles.SetSuggestionFeatureConfig.</summary>
     public class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -32233,8 +32233,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2SuggestConversationSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Number of messages prior to and including last_conversation_message used to compile the suggestion. It may
-        /// be smaller than the SuggestSummaryRequest.context_size field in the request if there weren't that many
+        /// Number of messages prior to and including latest_message used to compile the suggestion. It may be smaller
+        /// than the SuggestConversationSummaryRequest.context_size field in the request if there weren't that many
         /// messages in the conversation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
