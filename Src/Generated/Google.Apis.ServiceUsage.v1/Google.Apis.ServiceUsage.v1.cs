@@ -302,7 +302,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -317,7 +317,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         public class CancelRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Empty>
         {
@@ -2253,6 +2253,14 @@ namespace Google.Apis.ServiceUsage.v1.Data
     public class ExperimentalFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Enables generation of protobuf code using new types that are more Pythonic which are included in
+        /// `protobuf&amp;gt;=5.29.x`. This feature will be enabled by default 1 month after launching the feature in
+        /// preview packages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protobufPythonicTypesEnabled")]
+        public virtual System.Nullable<bool> ProtobufPythonicTypesEnabled { get; set; }
+
+        /// <summary>
         /// Enables generation of asynchronous REST clients if `rest` transport is enabled. By default, asynchronous
         /// REST clients will not be generated. This feature will be enabled by default 1 month after launching the
         /// feature in preview packages.
@@ -2382,6 +2390,14 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// <summary>Some settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>
+        /// Map of service names to renamed services. Keys are the package relative service names and values are the
+        /// name to be used for the service client and call options. publishing: go_settings: renamed_services:
+        /// Publisher: TopicAdmin
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renamedServices")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RenamedServices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4288,10 +4304,10 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit kinds are
-        /// determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per minute per
-        /// project. Note: the order of unit components is insignificant. The "1" at the beginning is required to follow
-        /// the metric unit syntax.
+        /// Specify the unit of the quota limit. It uses the same syntax as MetricDescriptor.unit. The supported unit
+        /// kinds are determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per
+        /// minute per project. Note: the order of unit components is insignificant. The "1" at the beginning is
+        /// required to follow the metric unit syntax.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
