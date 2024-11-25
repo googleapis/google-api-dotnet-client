@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Parallelstore.v1beta.ParallelstoreBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Parallelstore.v1beta.ParallelstoreBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
