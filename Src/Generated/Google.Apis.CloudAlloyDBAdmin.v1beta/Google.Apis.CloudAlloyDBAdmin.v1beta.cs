@@ -2542,6 +2542,59 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta
                     }
                 }
 
+                /// <summary>Exports data from the cluster. Imperative only.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The resource name of the cluster.</param>
+                public virtual ExportRequest Export(Google.Apis.CloudAlloyDBAdmin.v1beta.Data.ExportClusterRequest body, string name)
+                {
+                    return new ExportRequest(this.service, body, name);
+                }
+
+                /// <summary>Exports data from the cluster. Imperative only.</summary>
+                public class ExportRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1beta.Data.Operation>
+                {
+                    /// <summary>Constructs a new Export request.</summary>
+                    public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1beta.Data.ExportClusterRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAlloyDBAdmin.v1beta.Data.ExportClusterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "export";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}:export";
+
+                    /// <summary>Initializes Export parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single Cluster.</summary>
                 /// <param name="name">
                 /// Required. The name of the resource. For the required format, see the comment on the Cluster.name
@@ -4582,6 +4635,41 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
     }
 
     /// <summary>
+    /// Options for exporting data in CSV format. For now, we only support a query to get the data that needs to be
+    /// exported.
+    /// </summary>
+    public class CsvExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the character that should appear before a data character that needs to be escaped. The
+        /// default is the same as quote character. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("escapeCharacter")]
+        public virtual string EscapeCharacter { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the character that separates columns within each row (line) of the file. The default is
+        /// comma. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
+        public virtual string FieldDelimiter { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the quoting character to be used when a data value is quoted. The default is
+        /// double-quote. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quoteCharacter")]
+        public virtual string QuoteCharacter { get; set; }
+
+        /// <summary>Required. The select_query used to extract the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectQuery")]
+        public virtual string SelectQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -4626,6 +4714,32 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Export cluster request.</summary>
+    public class ExportClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Options for exporting data in CSV format. Required field to be set for CSV file type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvExportOptions")]
+        public virtual CsvExportOptions CsvExportOptions { get; set; }
+
+        /// <summary>
+        /// Required. Name of the database where the query will be executed. Note - Value provided should be the same as
+        /// expected from `SELECT current_database();` and NOT as a resource reference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Required. Option to export data to cloud storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GcsDestination GcsDestination { get; set; }
+
+        /// <summary>Options for exporting data in SQL format. Required field to be set for SQL file type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlExportOptions")]
+        public virtual SqlExportOptions SqlExportOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for triggering failover on an Instance</summary>
     public class FailoverInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4647,6 +4761,20 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Destination for Export. Export will be done to cloud storage.</summary>
+    public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The path to the file in Google Cloud Storage where the export will be stored. The URI is in the
+        /// form `gs://bucketName/fileName`. If the file already exists, the request succeeds, but the operation fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5856,6 +5984,35 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryClusterName")]
         public virtual string PrimaryClusterName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for exporting data in SQL format.</summary>
+    public class SqlExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, output commands to DROP all the dumped database objects prior to outputting the commands
+        /// for creating them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanTargetObjects")]
+        public virtual System.Nullable<bool> CleanTargetObjects { get; set; }
+
+        /// <summary>
+        /// Optional. If true, use DROP ... IF EXISTS commands to check for the object's existence before dropping it in
+        /// clean_target_objects mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ifExistTargetObjects")]
+        public virtual System.Nullable<bool> IfExistTargetObjects { get; set; }
+
+        /// <summary>Optional. If true, only export the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaOnly")]
+        public virtual System.Nullable<bool> SchemaOnly { get; set; }
+
+        /// <summary>Optional. Tables to export from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tables")]
+        public virtual System.Collections.Generic.IList<string> Tables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
