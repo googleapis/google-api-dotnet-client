@@ -2311,7 +2311,7 @@ namespace Google.Apis.AccessContextManager.v1
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -2326,7 +2326,7 @@ namespace Google.Apis.AccessContextManager.v1
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         public class CancelRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Empty>
         {
@@ -3643,6 +3643,14 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("egressTo")]
         public virtual EgressTo EgressTo { get; set; }
 
+        /// <summary>
+        /// Optional. Human-readable title for the egress rule. The title must be unique within the perimeter and can
+        /// not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
+        /// 240,000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3913,6 +3921,14 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressTo")]
         public virtual IngressTo IngressTo { get; set; }
+
+        /// <summary>
+        /// Optional. Human-readable title for the ingress rule. The title must be unique within the perimeter and can
+        /// not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
+        /// 240,000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
