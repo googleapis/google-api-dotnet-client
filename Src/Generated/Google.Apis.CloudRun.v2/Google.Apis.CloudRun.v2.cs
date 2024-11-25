@@ -3171,6 +3171,13 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("functionTarget")]
         public virtual string FunctionTarget { get; set; }
 
+        /// <summary>
+        /// Optional. project_descriptor stores the path to the project descriptor file. When empty, it means that there
+        /// is no project descriptor file in the source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectDescriptor")]
+        public virtual string ProjectDescriptor { get; set; }
+
         /// <summary>The runtime name, e.g. 'go113'. Leave blank for generic builds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual string Runtime { get; set; }
@@ -5157,7 +5164,8 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. Sets the maximum number of requests that each serving instance can receive. If not specified or 0,
-        /// defaults to 80 when requested `CPU &amp;gt;= 1` and defaults to 1 when requested `CPU &amp;lt; 1`.
+        /// concurrency defaults to 80 when requested `CPU &amp;gt;= 1` and defaults to 1 when requested `CPU &amp;lt;
+        /// 1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
         public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
@@ -5266,11 +5274,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes *
         /// Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of
         /// the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading
-        /// zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r),
-        /// set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10).
-        /// * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can
-        /// be other mode bits set. This might be in conflict with other options that affect the file mode, like
-        /// fsGroup, and as a result, other mode bits could be set.
+        /// zero. Some examples: for chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755
+        /// (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that
+        /// affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict
+        /// with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMode")]
         public virtual System.Nullable<int> DefaultMode { get; set; }
@@ -6354,10 +6361,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set,
         /// the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero
         /// value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly
-        /// as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal)
-        /// or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755
-        /// (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that
-        /// affect the file mode, like fsGroup, and the result can be other mode bits set.
+        /// as the chmod numeric notation with a leading zero. Some examples: for chmod 640 (u=rw,g=r), set to 0640
+        /// (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This
+        /// might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other
+        /// mode bits set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual System.Nullable<int> Mode { get; set; }
