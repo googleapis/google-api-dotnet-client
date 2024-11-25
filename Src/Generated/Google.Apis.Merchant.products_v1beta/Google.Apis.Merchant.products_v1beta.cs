@@ -1596,6 +1596,13 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string ProgramLabel { get; set; }
 
         /// <summary>
+        /// The label of the shipping benefit. If the field has value, this offer has loyalty shipping benefit. If the
+        /// field value isn't provided, the item is not eligible for loyalty shipping for the given loyalty tier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingLabel")]
+        public virtual string ShippingLabel { get; set; }
+
+        /// <summary>
         /// The label of the tier within the loyalty program. Must match one of the labels within the program.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tierLabel")]
@@ -1775,7 +1782,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
     /// <summary>
     /// This resource represents input data you submit for a product, not the processed product that you see in Merchant
     /// Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are
-    /// combined to create the processed product. Required product input attributes to pass data validation checks are
+    /// combined to create the processed Product. Required product input attributes to pass data validation checks are
     /// primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The
     /// following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or
     /// deleting a product input, it may take several minutes before the processed product can be retrieved. All fields
@@ -2015,7 +2022,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
 
         private object _expirationTime;
 
-        /// <summary>The product expiration time.</summary>
+        /// <summary>
+        /// The product expiration time. This field will not bet set if the notification is sent for a product deletion
+        /// event.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw
         {
