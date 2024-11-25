@@ -11151,6 +11151,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>Optional. If set, overrides the default managed table type configured in the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedTableType")]
+        public virtual string ManagedTableType { get; set; }
+
         /// <summary>Optional. The materialized view definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("materializedView")]
         public virtual MaterializedViewDefinition MaterializedView { get; set; }
