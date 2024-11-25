@@ -2790,7 +2790,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aiInstructions")]
         public virtual GoogleFirebaseAppdistroV1alphaAiInstructions AiInstructions { get; set; }
 
-        /// <summary>Optional. Display name of the test case.</summary>
+        /// <summary>Required. Display name of the test case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
