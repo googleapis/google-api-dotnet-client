@@ -19831,6 +19831,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Promote certain links based on predefined trigger queries. This now only supports basic site search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoteAction")]
+        public virtual GoogleCloudDiscoveryengineV1ControlPromoteAction PromoteAction { get; set; }
+
         /// <summary>Defines a redirect-type control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectAction")]
         public virtual GoogleCloudDiscoveryengineV1ControlRedirectAction RedirectAction { get; set; }
@@ -19904,6 +19910,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Promote certain links based on some trigger queries. Example: Promote shoe store link when searching for `shoe`
+    /// keyword. The link can be outside of associated data store.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ControlPromoteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Data store with which this promotion is attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>Required. Promotion attached to this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchLinkPromotion")]
+        public virtual GoogleCloudDiscoveryengineV1SearchLinkPromotion SearchLinkPromotion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22443,6 +22467,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The structured representation of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structSchema")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Promotion proto includes uri and other helping information to display the promotion.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchLinkPromotion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Promotion description. Maximum length: 200 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The enabled promotion will be returned for any serving configs associated with the parent of the
+        /// control this promotion is attached to. This flag is used for basic site search only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. The promotion thumbnail image url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>Required. The title of the promotion. Maximum length: 160 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Required. The URL for the page the user wants to promote.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25447,6 +25501,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Promote certain links based on predefined trigger queries. This now only supports basic site search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoteAction")]
+        public virtual GoogleCloudDiscoveryengineV1alphaControlPromoteAction PromoteAction { get; set; }
+
         /// <summary>Defines a redirect-type control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectAction")]
         public virtual GoogleCloudDiscoveryengineV1alphaControlRedirectAction RedirectAction { get; set; }
@@ -25520,6 +25580,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Promote certain links based on some trigger queries. Example: Promote shoe store link when searching for `shoe`
+    /// keyword. The link can be outside of associated data store.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaControlPromoteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Data store with which this promotion is attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>Required. Promotion attached to this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchLinkPromotion")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion SearchLinkPromotion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31920,6 +31998,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Promotion proto includes uri and other helping information to display the promotion.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Promotion description. Maximum length: 200 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The enabled promotion will be returned for any serving configs associated with the parent of the
+        /// control this promotion is attached to. This flag is used for basic site search only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. The promotion thumbnail image url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>Required. The title of the promotion. Maximum length: 160 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Required. The URL for the page the user wants to promote.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for SearchService.Search method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -32918,6 +33026,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult> Results { get; set; }
 
+        /// <summary>Promotions for site search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchLinkPromotions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion> SearchLinkPromotions { get; set; }
+
         /// <summary>
         /// Session information. Only set if SearchRequest.session is provided. See its description for more details.
         /// </summary>
@@ -33582,6 +33694,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
+
+        /// <summary>Condition promote specifications. Maximum number of specifications is 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoteControlIds")]
+        public virtual System.Collections.Generic.IList<string> PromoteControlIds { get; set; }
 
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. To leverage this, document
@@ -35381,6 +35497,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Promote certain links based on predefined trigger queries. This now only supports basic site search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoteAction")]
+        public virtual GoogleCloudDiscoveryengineV1betaControlPromoteAction PromoteAction { get; set; }
+
         /// <summary>Defines a redirect-type control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectAction")]
         public virtual GoogleCloudDiscoveryengineV1betaControlRedirectAction RedirectAction { get; set; }
@@ -35454,6 +35576,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Promote certain links based on some trigger queries. Example: Promote shoe store link when searching for `shoe`
+    /// keyword. The link can be outside of associated data store.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaControlPromoteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Data store with which this promotion is attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>Required. Promotion attached to this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchLinkPromotion")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchLinkPromotion SearchLinkPromotion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38635,6 +38775,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The structured representation of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structSchema")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Promotion proto includes uri and other helping information to display the promotion.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchLinkPromotion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Promotion description. Maximum length: 200 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The enabled promotion will be returned for any serving configs associated with the parent of the
+        /// control this promotion is attached to. This flag is used for basic site search only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. The promotion thumbnail image url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>Required. The title of the promotion. Maximum length: 160 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Required. The URL for the page the user wants to promote.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
