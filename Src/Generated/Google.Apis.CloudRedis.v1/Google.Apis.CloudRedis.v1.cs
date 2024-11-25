@@ -294,9 +294,447 @@ namespace Google.Apis.CloudRedis.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                BackupCollections = new BackupCollectionsResource(service);
                 Clusters = new ClustersResource(service);
                 Instances = new InstancesResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the BackupCollections resource.</summary>
+            public virtual BackupCollectionsResource BackupCollections { get; }
+
+            /// <summary>The "backupCollections" collection of methods.</summary>
+            public class BackupCollectionsResource
+            {
+                private const string Resource = "backupCollections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackupCollectionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Backups = new BackupsResource(service);
+                }
+
+                /// <summary>Gets the Backups resource.</summary>
+                public virtual BackupsResource Backups { get; }
+
+                /// <summary>The "backups" collection of methods.</summary>
+                public class BackupsResource
+                {
+                    private const string Resource = "backups";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public BackupsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Deletes a specific backup.</summary>
+                    /// <param name="name">
+                    /// Required. Redis backup resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a specific backup.</summary>
+                    public class DeleteRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Redis backup resource name using the form:
+                        /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Idempotent request UUID.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupCollections/[^/]+/backups/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Exports a specific backup to a customer target Cloud Storage URI.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Redis backup resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.CloudRedis.v1.Data.ExportBackupRequest body, string name)
+                    {
+                        return new ExportRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Exports a specific backup to a customer target Cloud Storage URI.</summary>
+                    public class ExportRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1.Data.ExportBackupRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Redis backup resource name using the form:
+                        /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRedis.v1.Data.ExportBackupRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupCollections/[^/]+/backups/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the details of a specific backup.</summary>
+                    /// <param name="name">
+                    /// Required. Redis backup resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets the details of a specific backup.</summary>
+                    public class GetRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Backup>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Redis backup resource name using the form:
+                        /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupCollections/[^/]+/backups/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all backups owned by a backup collection.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the backupCollection using the form:
+                    /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all backups owned by a backup collection.</summary>
+                    public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.ListBackupsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the backupCollection using the form:
+                        /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return. If not specified, a default value of 1000
+                        /// will be used by the service. Regardless of the page_size value, the response may include a
+                        /// partial list and a caller should only rely on response's `next_page_token` to determine if
+                        /// there are more clusters left to be queried.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The `next_page_token` value returned from a previous [ListBackupCollections]
+                        /// request, if any.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/backups";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupCollections/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Get a backup collection.</summary>
+                /// <param name="name">
+                /// Required. Redis backupCollection resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` where
+                /// `location_id` refers to a GCP region.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a backup collection.</summary>
+                public class GetRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.BackupCollection>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Redis backupCollection resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` where
+                    /// `location_id` refers to a GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupCollections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists all backup collections owned by a consumer project in either the specified location (region)
+                /// or all locations. If `location_id` is specified as `-` (wildcard), then all regions available to the
+                /// project are queried, and the results are aggregated.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of the backupCollection location using the form:
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists all backup collections owned by a consumer project in either the specified location (region)
+                /// or all locations. If `location_id` is specified as `-` (wildcard), then all regions available to the
+                /// project are queried, and the results are aggregated.
+                /// </summary>
+                public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.ListBackupCollectionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the backupCollection location using the form:
+                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If not specified, a default value of 1000 will
+                    /// be used by the service. Regardless of the page_size value, the response may include a partial
+                    /// list and a caller should only rely on response's `next_page_token` to determine if there are
+                    /// more clusters left to be queried.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The `next_page_token` value returned from a previous [ListBackupCollections] request,
+                    /// if any.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupCollections";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Clusters resource.</summary>
@@ -314,6 +752,79 @@ namespace Google.Apis.CloudRedis.v1
                 public ClustersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>
+                /// Backup Redis Cluster. If this is the first time a backup is being created, a backup collection will
+                /// be created at the backend, and this backup belongs to this collection. Both collection and backup
+                /// will have a resource name. Backup will be executed for each shard. A replica (primary if nonHA) will
+                /// be selected to perform the execution. Backup call will be rejected if there is an ongoing backup or
+                /// update operation.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Redis cluster resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to
+                /// a GCP region.
+                /// </param>
+                public virtual BackupRequest Backup(Google.Apis.CloudRedis.v1.Data.BackupClusterRequest body, string name)
+                {
+                    return new BackupRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Backup Redis Cluster. If this is the first time a backup is being created, a backup collection will
+                /// be created at the backend, and this backup belongs to this collection. Both collection and backup
+                /// will have a resource name. Backup will be executed for each shard. A replica (primary if nonHA) will
+                /// be selected to perform the execution. Backup call will be rejected if there is an ongoing backup or
+                /// update operation.
+                /// </summary>
+                public class BackupRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Backup request.</summary>
+                    public BackupRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1.Data.BackupClusterRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Redis cluster resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers
+                    /// to a GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1.Data.BackupClusterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "backup";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:backup";
+
+                    /// <summary>Initializes Backup parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>
@@ -1643,7 +2154,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
@@ -1657,7 +2168,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Empty>
                 {
@@ -2037,6 +2548,30 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The automated backup config for a cluster.</summary>
+    public class AutomatedBackupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The automated backup mode. If the mode is disabled, the other fields will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedBackupMode")]
+        public virtual string AutomatedBackupMode { get; set; }
+
+        /// <summary>Optional. Trigger automated backups at a fixed frequency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedFrequencySchedule")]
+        public virtual FixedFrequencySchedule FixedFrequencySchedule { get; set; }
+
+        /// <summary>
+        /// Optional. How long to keep automated backups before the backups are deleted. If not specified, the default
+        /// value is 100 years which is also the maximum value supported. The minimum value is 1 day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retention")]
+        public virtual object Retention { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for availability of database instance</summary>
     public class AvailabilityConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2071,6 +2606,178 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Backup of a cluster.</summary>
+    public class Backup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of backup files of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupFiles")]
+        public virtual System.Collections.Generic.IList<BackupFile> BackupFiles { get; set; }
+
+        /// <summary>Output only. Type of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
+        public virtual string BackupType { get; set; }
+
+        /// <summary>Output only. Cluster resource path of this backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        /// <summary>Output only. Cluster uid of this backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUid")]
+        public virtual string ClusterUid { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the backup was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. redis-7.2, valkey-7.5</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineVersion")]
+        public virtual string EngineVersion { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Output only. The time when the backup will expire.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. Full resource path of the backup. the last part of the name is the backup id with the following
+        /// format: [YYYYMMDDHHMMSS]_[Shorted Cluster UID] OR customer specified while backup cluster. Example:
+        /// 20240515123000_1234
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Node type of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
+        public virtual string NodeType { get; set; }
+
+        /// <summary>Output only. Number of replicas for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
+        public virtual System.Nullable<int> ReplicaCount { get; set; }
+
+        /// <summary>Output only. Number of shards for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
+        public virtual System.Nullable<int> ShardCount { get; set; }
+
+        /// <summary>Output only. State of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Total size of the backup in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSizeBytes")]
+        public virtual System.Nullable<long> TotalSizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for [BackupCluster].</summary>
+    public class BackupClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The id of the backup to be created. If not specified, the default value
+        /// ([YYYYMMDDHHMMSS]_[Shortened Cluster UID] is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
+        public virtual string BackupId { get; set; }
+
+        /// <summary>
+        /// Optional. TTL for the backup to expire. Value range is 1 day to 100 years. If not specified, the default
+        /// value is 100 years.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BackupCollection of a cluster.</summary>
+    public class BackupCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The full resource path of the cluster the backup collection belongs to. Example:
+        /// projects/{project}/locations/{location}/clusters/{cluster}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        /// <summary>Output only. The cluster uid of the backup collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUid")]
+        public virtual string ClusterUid { get; set; }
+
+        /// <summary>Identifier. Full resource path of the backup collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for automatic backups</summary>
     public class BackupConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2088,6 +2795,58 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTimeRecoveryEnabled")]
         public virtual System.Nullable<bool> PointInTimeRecoveryEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Backup is consisted of multiple backup files.</summary>
+    public class BackupFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the backup file was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. e.g: .rdb</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
+        public virtual string FileName { get; set; }
+
+        /// <summary>Output only. Size of the backup file in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2222,6 +2981,17 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationMode")]
         public virtual string AuthorizationMode { get; set; }
 
+        /// <summary>Optional. The automated backup config for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedBackupConfig")]
+        public virtual AutomatedBackupConfig AutomatedBackupConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. The backup collection full resource name. Example:
+        /// projects/{project}/locations/{location}/backupCollections/{collection}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupCollection")]
+        public virtual string BackupCollection { get; set; }
+
         /// <summary>Optional. A list of cluster enpoints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterEndpoints")]
         public virtual System.Collections.Generic.IList<ClusterEndpoint> ClusterEndpoints { get; set; }
@@ -2278,6 +3048,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryEndpoints")]
         public virtual System.Collections.Generic.IList<DiscoveryEndpoint> DiscoveryEndpoints { get; set; }
 
+        /// <summary>
+        /// Optional. Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as
+        /// the clusters. Read permission is required to import from the provided Cloud Storage objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsBackupSource GcsSource { get; set; }
+
         /// <summary>Optional. ClusterMaintenancePolicy determines when to allow or deny updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
         public virtual ClusterMaintenancePolicy MaintenancePolicy { get; set; }
@@ -2285,6 +3062,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Output only. ClusterMaintenanceSchedule Output only Published maintenance schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual ClusterMaintenanceSchedule MaintenanceSchedule { get; set; }
+
+        /// <summary>Optional. Backups generated and managed by memorystore service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedBackupSource")]
+        public virtual ManagedBackupSource ManagedBackupSource { get; set; }
 
         /// <summary>
         /// Required. Identifier. Unique name of the resource in this scope including project and location using the
@@ -3251,6 +4032,17 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for [ExportBackup].</summary>
+    public class ExportBackupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage bucket, like "my-bucket".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsBucket")]
+        public virtual string GcsBucket { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for Export.</summary>
     public class ExportInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3271,6 +4063,39 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionMode")]
         public virtual string DataProtectionMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This schedule allows the backup to be triggered at a fixed frequency (currently only daily is supported).
+    /// </summary>
+    public class FixedFrequencySchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The start time of every automated backup in UTC. It must be set to the start of an hour. If not
+        /// specified, the default value is the start of the hour when the automated backup config is enabled. For
+        /// example, if the automated backup config is enabled at 10:13 AM UTC without specifying start_time, the
+        /// default start time is 10:00 AM UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+    /// </summary>
+    public class GcsBackupSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
+        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3758,6 +4583,55 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for [ListBackupCollections].</summary>
+    public class ListBackupCollectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of backupCollections in the project. If the `location_id` in the parent field of the request is "-",
+        /// all regions available to the project are queried, and the results aggregated. If in such an aggregated query
+        /// a location is unavailable, a placeholder backupCollection entry is included in the response with the `name`
+        /// field set to a value of the form `projects/{project_id}/locations/{location_id}/backupCollections/`- and the
+        /// `status` field set to ERROR and `status_message` field set to "location not available for
+        /// ListBackupCollections".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupCollections")]
+        public virtual System.Collections.Generic.IList<BackupCollection> BackupCollections { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for [ListBackups].</summary>
+    public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of backups in the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Backups that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListClusters.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3897,6 +4771,12 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Optional. Number of shards (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<int> ShardCount { get; set; }
+
+        /// <summary>
+        /// Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<double> VcpuCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4118,6 +4998,23 @@ namespace Google.Apis.CloudRedis.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Backups that generated and managed by memorystore.</summary>
+    public class ManagedBackupSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Example:
+        /// //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}
+        /// A shorter version (without the prefix) of the backup name is also supported, like
+        /// projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup_id} In this case, it
+        /// assumes the backup is under redis.googleapis.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
