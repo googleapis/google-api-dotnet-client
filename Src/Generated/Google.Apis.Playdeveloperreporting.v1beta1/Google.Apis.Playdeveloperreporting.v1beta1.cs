@@ -1007,11 +1007,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeSeconds { get; set; }
 
-                    /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                    /// <summary>IANA Time Zone Database time zone. For example "America/New_York".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalEndTimeTimeZoneId { get; set; }
 
-                    /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                    /// <summary>Optional. IANA Time Zone Database version number. For example "2019a".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalEndTimeTimeZoneVersion { get; set; }
 
@@ -1065,11 +1065,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeSeconds { get; set; }
 
-                    /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                    /// <summary>IANA Time Zone Database time zone. For example "America/New_York".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalStartTimeTimeZoneId { get; set; }
 
-                    /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                    /// <summary>Optional. IANA Time Zone Database version number. For example "2019a".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalStartTimeTimeZoneVersion { get; set; }
 
@@ -1459,11 +1459,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalEndTimeSeconds { get; set; }
 
-                    /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                    /// <summary>IANA Time Zone Database time zone. For example "America/New_York".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalEndTimeTimeZoneId { get; set; }
 
-                    /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                    /// <summary>Optional. IANA Time Zone Database version number. For example "2019a".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime.timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalEndTimeTimeZoneVersion { get; set; }
 
@@ -1517,11 +1517,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.seconds", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> IntervalStartTimeSeconds { get; set; }
 
-                    /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                    /// <summary>IANA Time Zone Database time zone. For example "America/New_York".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalStartTimeTimeZoneId { get; set; }
 
-                    /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                    /// <summary>Optional. IANA Time Zone Database version number. For example "2019a".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime.timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalStartTimeTimeZoneVersion { get; set; }
 
@@ -4105,11 +4105,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// <summary>Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).</summary>
     public class GoogleTypeTimeZone : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+        /// <summary>IANA Time Zone Database time zone. For example "America/New_York".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+        /// <summary>Optional. IANA Time Zone Database version number. For example "2019a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
