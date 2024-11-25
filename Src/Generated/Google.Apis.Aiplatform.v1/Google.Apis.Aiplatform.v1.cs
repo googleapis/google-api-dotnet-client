@@ -36,6 +36,7 @@ namespace Google.Apis.Aiplatform.v1
         {
             Datasets = new DatasetsResource(this);
             Endpoints = new EndpointsResource(this);
+            Media = new MediaResource(this);
             Projects = new ProjectsResource(this);
             Publishers = new PublishersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://aiplatform.googleapis.com/");
@@ -95,6 +96,9 @@ namespace Google.Apis.Aiplatform.v1
 
         /// <summary>Gets the Endpoints resource.</summary>
         public virtual EndpointsResource Endpoints { get; }
+
+        /// <summary>Gets the Media resource.</summary>
+        public virtual MediaResource Media { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -1319,6 +1323,225 @@ namespace Google.Apis.Aiplatform.v1
         }
     }
 
+    /// <summary>The "media" collection of methods.</summary>
+    public class MediaResource
+    {
+        private const string Resource = "media";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MediaResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Upload a file into a RagCorpus.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The name of the RagCorpus resource into which to upload the file. Format:
+        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+        /// </param>
+        public virtual UploadRequest Upload(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadRagFileRequest body, string parent)
+        {
+            return new UploadRequest(this.service, body, parent);
+        }
+
+        /// <summary>Upload a file into a RagCorpus.</summary>
+        public class UploadRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadRagFileResponse>
+        {
+            /// <summary>Constructs a new Upload request.</summary>
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadRagFileRequest body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the RagCorpus resource into which to upload the file. Format:
+            /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadRagFileRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "upload";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}/ragFiles:upload";
+
+            /// <summary>Initializes Upload parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+/ragCorpora/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Upload a file into a RagCorpus.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The name of the RagCorpus resource into which to upload the file. Format:
+        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+        /// </param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual UploadMediaUpload Upload(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadRagFileRequest body, string parent, System.IO.Stream stream, string contentType)
+        {
+            return new UploadMediaUpload(service, body, parent, stream, contentType);
+        }
+
+        /// <summary>Upload media upload which supports resumable upload.</summary>
+        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadRagFileRequest, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadRagFileResponse>
+        {
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1 = 0,
+
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2 = 1,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json = 0,
+
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
+
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto = 2,
+            }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
+
+            /// <summary>
+            /// Required. The name of the RagCorpus resource into which to upload the file. Format:
+            /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Constructs a new Upload media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1UploadRagFileRequest body, string parent, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/{+parent}/ragFiles:upload"), "POST", stream, contentType)
+            {
+                Parent = parent;
+                Body = body;
+            }
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -1350,6 +1573,7 @@ namespace Google.Apis.Aiplatform.v1
             {
                 this.service = service;
                 BatchPredictionJobs = new BatchPredictionJobsResource(service);
+                CachedContents = new CachedContentsResource(service);
                 CustomJobs = new CustomJobsResource(service);
                 DataLabelingJobs = new DataLabelingJobsResource(service);
                 Datasets = new DatasetsResource(service);
@@ -1373,6 +1597,7 @@ namespace Google.Apis.Aiplatform.v1
                 PersistentResources = new PersistentResourcesResource(service);
                 PipelineJobs = new PipelineJobsResource(service);
                 Publishers = new PublishersResource(service);
+                RagCorpora = new RagCorporaResource(service);
                 ReasoningEngines = new ReasoningEnginesResource(service);
                 Schedules = new SchedulesResource(service);
                 SpecialistPools = new SpecialistPoolsResource(service);
@@ -1753,6 +1978,321 @@ namespace Google.Apis.Aiplatform.v1
                 }
             }
 
+            /// <summary>Gets the CachedContents resource.</summary>
+            public virtual CachedContentsResource CachedContents { get; }
+
+            /// <summary>The "cachedContents" collection of methods.</summary>
+            public class CachedContentsResource
+            {
+                private const string Resource = "cachedContents";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CachedContentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates cached content, this call will initialize the cached content in the data storage, and users
+                /// need to pay for the cache data storage.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource where the cached content will be created</param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates cached content, this call will initialize the cached content in the data storage, and users
+                /// need to pay for the cache data storage.
+                /// </summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource where the cached content will be created</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/cachedContents";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes cached content</summary>
+                /// <param name="name">Required. The resource name referring to the cached content</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes cached content</summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name referring to the cached content</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cachedContents/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets cached content configurations</summary>
+                /// <param name="name">Required. The resource name referring to the cached content</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets cached content configurations</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name referring to the cached content</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cachedContents/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists cached contents in a project</summary>
+                /// <param name="parent">Required. The parent, which owns this collection of cached contents.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists cached contents in a project</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListCachedContentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent, which owns this collection of cached contents.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of cached contents to return. The service may return fewer than
+                    /// this value. If unspecified, some default (under maximum) number of items will be returned. The
+                    /// maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListCachedContents` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListCachedContents` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/cachedContents";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates cached content configurations</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The server-generated resource name of the cached content Format:
+                /// projects/{project}/locations/{location}/cachedContents/{cached_content}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates cached content configurations</summary>
+                public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. Identifier. The server-generated resource name of the cached content Format:
+                    /// projects/{project}/locations/{location}/cachedContents/{cached_content}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CachedContent Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cachedContents/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the CustomJobs resource.</summary>
             public virtual CustomJobsResource CustomJobs { get; }
 
@@ -1794,7 +2334,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -1809,7 +2349,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -2505,7 +3045,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -2520,7 +3060,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -3237,7 +3777,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -3252,7 +3792,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -3685,7 +4225,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
                             /// whether the operation completed despite cancellation. On successful cancellation, the
                             /// operation is not deleted; instead, it becomes an operation with an Operation.error value
-                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                             /// </summary>
                             /// <param name="name">The name of the operation resource to be cancelled.</param>
                             public virtual CancelRequest Cancel(string name)
@@ -3700,7 +4240,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
                             /// whether the operation completed despite cancellation. On successful cancellation, the
                             /// operation is not deleted; instead, it becomes an operation with an Operation.error value
-                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                             /// </summary>
                             public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                             {
@@ -4155,7 +4695,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -4170,7 +4710,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -5040,7 +5580,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -5055,7 +5595,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -5406,7 +5946,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -5421,7 +5961,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -6658,7 +7198,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -6673,7 +7213,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -7497,7 +8037,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -7512,7 +8052,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -13038,7 +13578,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
                             /// whether the operation completed despite cancellation. On successful cancellation, the
                             /// operation is not deleted; instead, it becomes an operation with an Operation.error value
-                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                             /// </summary>
                             /// <param name="name">The name of the operation resource to be cancelled.</param>
                             public virtual CancelRequest Cancel(string name)
@@ -13053,7 +13593,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
                             /// whether the operation completed despite cancellation. On successful cancellation, the
                             /// operation is not deleted; instead, it becomes an operation with an Operation.error value
-                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                             /// </summary>
                             public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                             {
@@ -13888,7 +14428,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -13903,7 +14443,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -15313,7 +15853,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -15328,7 +15868,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -16503,7 +17043,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -16518,7 +17058,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -17217,7 +17757,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -17232,7 +17772,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -18237,7 +18777,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -18252,7 +18792,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -19079,7 +19619,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -19094,7 +19634,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -20011,7 +20551,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -20026,7 +20566,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -21118,7 +21658,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -21133,7 +21673,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -22296,7 +22836,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -22311,7 +22851,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -22940,7 +23480,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -22955,7 +23495,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -23438,7 +23978,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -23453,7 +23993,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -24368,7 +24908,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -24383,7 +24923,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -25160,7 +25700,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -25175,7 +25715,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -27067,7 +27607,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -27082,7 +27622,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -27764,7 +28304,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -27779,7 +28319,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -28727,7 +29267,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -28742,7 +29282,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -29566,7 +30106,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
@@ -29580,7 +30120,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                 {
@@ -29929,7 +30469,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -29944,7 +30484,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -30677,7 +31217,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -30692,7 +31232,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -32173,6 +32713,589 @@ namespace Google.Apis.Aiplatform.v1
                 }
             }
 
+            /// <summary>Gets the RagCorpora resource.</summary>
+            public virtual RagCorporaResource RagCorpora { get; }
+
+            /// <summary>The "ragCorpora" collection of methods.</summary>
+            public class RagCorporaResource
+            {
+                private const string Resource = "ragCorpora";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RagCorporaResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    RagFiles = new RagFilesResource(service);
+                }
+
+                /// <summary>Gets the RagFiles resource.</summary>
+                public virtual RagFilesResource RagFiles { get; }
+
+                /// <summary>The "ragFiles" collection of methods.</summary>
+                public class RagFilesResource
+                {
+                    private const string Resource = "ragFiles";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RagFilesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Deletes a RagFile.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the RagFile resource to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a RagFile.</summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the RagFile resource to be deleted. Format:
+                        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/ragCorpora/[^/]+/ragFiles/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a RagFile.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the RagFile resource. Format:
+                    /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a RagFile.</summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RagFile>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the RagFile resource. Format:
+                        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/ragCorpora/[^/]+/ragFiles/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Import files from Google Cloud Storage or Google Drive into a RagCorpus.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the RagCorpus resource into which to import files. Format:
+                    /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ImportRagFilesRequest body, string parent)
+                    {
+                        return new ImportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Import files from Google Cloud Storage or Google Drive into a RagCorpus.</summary>
+                    public class ImportRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ImportRagFilesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the RagCorpus resource into which to import files. Format:
+                        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ImportRagFilesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/ragFiles:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/ragCorpora/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists RagFiles in a RagCorpus.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the RagCorpus from which to list the RagFiles. Format:
+                    /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists RagFiles in a RagCorpus.</summary>
+                    public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListRagFilesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the RagCorpus from which to list the RagFiles. Format:
+                        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The standard list page token. Typically obtained via
+                        /// ListRagFilesResponse.next_page_token of the previous VertexRagDataService.ListRagFiles call.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/ragFiles";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/ragCorpora/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a RagCorpus.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to create the RagCorpus in. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RagCorpus body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a RagCorpus.</summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RagCorpus body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to create the RagCorpus in. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RagCorpus Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/ragCorpora";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a RagCorpus.</summary>
+                /// <param name="name">
+                /// Required. The name of the RagCorpus resource to be deleted. Format:
+                /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a RagCorpus.</summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the RagCorpus resource to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, any RagFiles in this RagCorpus will also be deleted. Otherwise, the
+                    /// request will only work if the RagCorpus has no RagFiles.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/ragCorpora/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets a RagCorpus.</summary>
+                /// <param name="name">
+                /// Required. The name of the RagCorpus resource. Format:
+                /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a RagCorpus.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RagCorpus>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the RagCorpus resource. Format:
+                    /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/ragCorpora/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists RagCorpora in a Location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the Location from which to list the RagCorpora. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists RagCorpora in a Location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListRagCorporaResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location from which to list the RagCorpora. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The standard list page token. Typically obtained via
+                    /// ListRagCorporaResponse.next_page_token of the previous VertexRagDataService.ListRagCorpora call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/ragCorpora";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a RagCorpus.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. The resource name of the RagCorpus.</param>
+                public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RagCorpus body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a RagCorpus.</summary>
+                public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RagCorpus body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Output only. The resource name of the RagCorpus.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RagCorpus Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/ragCorpora/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the ReasoningEngines resource.</summary>
             public virtual ReasoningEnginesResource ReasoningEngines { get; }
 
@@ -32214,7 +33337,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -32229,7 +33352,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -32852,6 +33975,65 @@ namespace Google.Apis.Aiplatform.v1
                         });
                     }
                 }
+
+                /// <summary>Queries using a reasoning engine.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the ReasoningEngine resource to use. Format:
+                /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+                /// </param>
+                public virtual QueryRequest Query(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1QueryReasoningEngineRequest body, string name)
+                {
+                    return new QueryRequest(this.service, body, name);
+                }
+
+                /// <summary>Queries using a reasoning engine.</summary>
+                public class QueryRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1QueryReasoningEngineResponse>
+                {
+                    /// <summary>Constructs a new Query request.</summary>
+                    public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1QueryReasoningEngineRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ReasoningEngine resource to use. Format:
+                    /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1QueryReasoningEngineRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "query";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:query";
+
+                    /// <summary>Initializes Query parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reasoningEngines/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Schedules resource.</summary>
@@ -32895,7 +34077,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -32910,7 +34092,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -33759,7 +34941,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -33774,7 +34956,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -34457,7 +35639,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -34472,7 +35654,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -34823,7 +36005,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -34838,7 +36020,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -36135,7 +37317,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         /// <param name="name">The name of the operation resource to be cancelled.</param>
                         public virtual CancelRequest Cancel(string name)
@@ -36150,7 +37332,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// or other methods to check whether the cancellation succeeded or whether the operation
                         /// completed despite cancellation. On successful cancellation, the operation is not deleted;
                         /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
-                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// of `1`, corresponding to `Code.CANCELLED`.
                         /// </summary>
                         public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                         {
@@ -36501,7 +37683,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
                             /// whether the operation completed despite cancellation. On successful cancellation, the
                             /// operation is not deleted; instead, it becomes an operation with an Operation.error value
-                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                             /// </summary>
                             /// <param name="name">The name of the operation resource to be cancelled.</param>
                             public virtual CancelRequest Cancel(string name)
@@ -36516,7 +37698,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
                             /// whether the operation completed despite cancellation. On successful cancellation, the
                             /// operation is not deleted; instead, it becomes an operation with an Operation.error value
-                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                             /// </summary>
                             public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
                             {
@@ -36868,7 +38050,7 @@ namespace Google.Apis.Aiplatform.v1
                                 /// use Operations.GetOperation or other methods to check whether the cancellation
                                 /// succeeded or whether the operation completed despite cancellation. On successful
                                 /// cancellation, the operation is not deleted; instead, it becomes an operation with an
-                                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                                 /// `Code.CANCELLED`.
                                 /// </summary>
                                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -36884,7 +38066,7 @@ namespace Google.Apis.Aiplatform.v1
                                 /// use Operations.GetOperation or other methods to check whether the cancellation
                                 /// succeeded or whether the operation completed despite cancellation. On successful
                                 /// cancellation, the operation is not deleted; instead, it becomes an operation with an
-                                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                                 /// `Code.CANCELLED`.
                                 /// </summary>
                                 public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -38827,7 +40009,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -38842,7 +40024,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -39729,7 +40911,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -39744,7 +40926,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -40449,7 +41631,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -40464,7 +41646,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
@@ -41029,6 +42211,136 @@ namespace Google.Apis.Aiplatform.v1
                 }
             }
 
+            /// <summary>
+            /// Given an input prompt, it returns augmented prompt from vertex rag store to guide LLM towards generating
+            /// grounded responses.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the Location from which to augment prompt. The users must have permission
+            /// to make a call in the project. Format: `projects/{project}/locations/{location}`.
+            /// </param>
+            public virtual AugmentPromptRequest AugmentPrompt(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AugmentPromptRequest body, string parent)
+            {
+                return new AugmentPromptRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Given an input prompt, it returns augmented prompt from vertex rag store to guide LLM towards generating
+            /// grounded responses.
+            /// </summary>
+            public class AugmentPromptRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AugmentPromptResponse>
+            {
+                /// <summary>Constructs a new AugmentPrompt request.</summary>
+                public AugmentPromptRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AugmentPromptRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Location from which to augment prompt. The users must have
+                /// permission to make a call in the project. Format: `projects/{project}/locations/{location}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AugmentPromptRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "augmentPrompt";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:augmentPrompt";
+
+                /// <summary>Initializes AugmentPrompt parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Given an input text, it returns a score that evaluates the factuality of the text. It also extracts and
+            /// returns claims from the text and provides supporting facts.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the Location from which to corroborate text. The users must have
+            /// permission to make a call in the project. Format: `projects/{project}/locations/{location}`.
+            /// </param>
+            public virtual CorroborateContentRequest CorroborateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CorroborateContentRequest body, string parent)
+            {
+                return new CorroborateContentRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Given an input text, it returns a score that evaluates the factuality of the text. It also extracts and
+            /// returns claims from the text and provides supporting facts.
+            /// </summary>
+            public class CorroborateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CorroborateContentResponse>
+            {
+                /// <summary>Constructs a new CorroborateContent request.</summary>
+                public CorroborateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CorroborateContentRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Location from which to corroborate text. The users must have
+                /// permission to make a call in the project. Format: `projects/{project}/locations/{location}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CorroborateContentRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "corroborateContent";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:corroborateContent";
+
+                /// <summary>Initializes CorroborateContent parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Evaluates instances based on a given metric.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="location">
@@ -41218,6 +42530,65 @@ namespace Google.Apis.Aiplatform.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Retrieves relevant contexts for a query.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the Location from which to retrieve RagContexts. The users must have
+            /// permission to make a call in the project. Format: `projects/{project}/locations/{location}`.
+            /// </param>
+            public virtual RetrieveContextsRequest RetrieveContexts(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RetrieveContextsRequest body, string parent)
+            {
+                return new RetrieveContextsRequest(this.service, body, parent);
+            }
+
+            /// <summary>Retrieves relevant contexts for a query.</summary>
+            public class RetrieveContextsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RetrieveContextsResponse>
+            {
+                /// <summary>Constructs a new RetrieveContexts request.</summary>
+                public RetrieveContextsRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RetrieveContextsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Location from which to retrieve RagContexts. The users must have
+                /// permission to make a call in the project. Format: `projects/{project}/locations/{location}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1RetrieveContextsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrieveContexts";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:retrieveContexts";
+
+                /// <summary>Initializes RetrieveContexts parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
                     });
                 }
             }
@@ -42368,6 +43739,31 @@ namespace Google.Apis.Aiplatform.v1.Data
         }
     }
 
+    /// <summary>The generic reusable api auth config.</summary>
+    public class GoogleCloudAiplatformV1ApiAuth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyConfig")]
+        public virtual GoogleCloudAiplatformV1ApiAuthApiKeyConfig ApiKeyConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The API secret.</summary>
+    public class GoogleCloudAiplatformV1ApiAuthApiKeyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The SecretManager secret version resource name storing API key. e.g.
+        /// projects/{project}/secrets/{secret}/versions/{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeySecretVersion")]
+        public virtual string ApiKeySecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Instance of a general artifact.</summary>
     public class GoogleCloudAiplatformV1Artifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -42620,6 +44016,55 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputName")]
         public virtual string OutputName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AugmentPrompt.</summary>
+    public class GoogleCloudAiplatformV1AugmentPromptRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Input content to augment, only text format is supported for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> Contents { get; set; }
+
+        /// <summary>Optional. Metadata of the backend deployed model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual GoogleCloudAiplatformV1AugmentPromptRequestModel Model { get; set; }
+
+        /// <summary>Optional. Retrieves contexts from the Vertex RagStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexRagStore")]
+        public virtual GoogleCloudAiplatformV1VertexRagStore VertexRagStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of the backend deployed model.</summary>
+    public class GoogleCloudAiplatformV1AugmentPromptRequestModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The model that the user will send the augmented prompt for content generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>Optional. The model version of the backend deployed model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AugmentPrompt.</summary>
+    public class GoogleCloudAiplatformV1AugmentPromptResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Augmented prompt, only text format is supported for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("augmentedPrompt")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> AugmentedPrompt { get; set; }
+
+        /// <summary>Retrieved facts from RAG data sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Fact> Facts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43747,6 +45192,200 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A resource used in LLM queries for users to explicitly specify what to cache and how to cache.
+    /// </summary>
+    public class GoogleCloudAiplatformV1CachedContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Input only. Immutable. The content to cache</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> Contents { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creatation time of the cache entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Immutable. The user-generated meaningful display name of the cached content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Timestamp of when this resource is considered expired. This is *always* provided on output, regardless of
+        /// what was sent on input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Immutable. The name of the publisher model to use for cached content. Format:
+        /// projects/{project}/locations/{location}/publishers/{publisher}/models/{model}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The server-generated resource name of the cached content Format:
+        /// projects/{project}/locations/{location}/cachedContents/{cached_content}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Input only. Immutable. Developer set system instruction. Currently, text only</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual GoogleCloudAiplatformV1Content SystemInstruction { get; set; }
+
+        /// <summary>Optional. Input only. Immutable. Tool config. This config is shared for all tools</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolConfig")]
+        public virtual GoogleCloudAiplatformV1ToolConfig ToolConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Tool> Tools { get; set; }
+
+        /// <summary>Input only. The TTL for this resource. The expiration time is computed: now + TTL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. When the cache entry was last updated in UTC time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Metadata on the usage of the cached content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageMetadata")]
+        public virtual GoogleCloudAiplatformV1CachedContentUsageMetadata UsageMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata on the usage of the cached content.</summary>
+    public class GoogleCloudAiplatformV1CachedContentUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration of audio in seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioDurationSeconds")]
+        public virtual System.Nullable<int> AudioDurationSeconds { get; set; }
+
+        /// <summary>Number of images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageCount")]
+        public virtual System.Nullable<int> ImageCount { get; set; }
+
+        /// <summary>Number of text characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textCount")]
+        public virtual System.Nullable<int> TextCount { get; set; }
+
+        /// <summary>Total number of tokens that the cached content consumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<int> TotalTokenCount { get; set; }
+
+        /// <summary>Duration of video in seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoDurationSeconds")]
+        public virtual System.Nullable<int> VideoDurationSeconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for JobService.CancelBatchPredictionJob.</summary>
     public class GoogleCloudAiplatformV1CancelBatchPredictionJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -43932,6 +45571,29 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. List of citations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Citation> Citations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Claim that is extracted from the input text and facts that support it.</summary>
+    public class GoogleCloudAiplatformV1Claim : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Index in the input text where the claim ends (exclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Indexes of the facts supporting this claim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("factIndexes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> FactIndexes { get; set; }
+
+        /// <summary>Confidence score of this corroboration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>Index in the input text where the claim starts (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -44435,6 +46097,66 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. The version ID of the model that is copied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelVersionId")]
         public virtual string ModelVersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RagCorpus status.</summary>
+    public class GoogleCloudAiplatformV1CorpusStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Only when the `state` field is ERROR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorStatus")]
+        public virtual string ErrorStatus { get; set; }
+
+        /// <summary>Output only. RagCorpus life state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CorroborateContent.</summary>
+    public class GoogleCloudAiplatformV1CorroborateContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Input content to corroborate, only text format is supported for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual GoogleCloudAiplatformV1Content Content { get; set; }
+
+        /// <summary>Optional. Facts used to generate the text can also be used to corroborate the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Fact> Facts { get; set; }
+
+        /// <summary>Optional. Parameters that can be set to override default settings per request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual GoogleCloudAiplatformV1CorroborateContentRequestParameters Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters that can be overrided per request.</summary>
+    public class GoogleCloudAiplatformV1CorroborateContentRequestParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Only return claims with citation score larger than the threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationThreshold")]
+        public virtual System.Nullable<double> CitationThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CorroborateContent.</summary>
+    public class GoogleCloudAiplatformV1CorroborateContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Claims that are extracted from the input content and facts that support the claims.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claims")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Claim> Claims { get; set; }
+
+        /// <summary>Confidence score of corroborating content. Value is [0,1] with 1 is the most confidence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("corroborationScore")]
+        public virtual System.Nullable<float> CorroborationScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45898,6 +47620,15 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Nullable<int> MinReplicaCount { get; set; }
 
         /// <summary>
+        /// Optional. Number of required available replicas for the deployment to succeed. This field is only needed
+        /// when partial model deployment/mutation is desired. If set, the model deploy/mutate operation will succeed
+        /// once available_replica_count reaches required_replica_count, and the rest of the replicas will be retried.
+        /// If not set, the default required_replica_count will be min_replica_count.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredReplicaCount")]
+        public virtual System.Nullable<int> RequiredReplicaCount { get; set; }
+
+        /// <summary>
         /// Optional. If true, schedule the deployment workload on [spot
         /// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
         /// </summary>
@@ -46529,6 +48260,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedResources")]
         public virtual string SharedResources { get; set; }
 
+        /// <summary>Output only. Runtime status of the deployed model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleCloudAiplatformV1DeployedModelStatus Status { get; set; }
+
         /// <summary>
         /// System labels to apply to Model Garden deployments. System labels are managed by Google for internal use
         /// only.
@@ -46550,6 +48285,60 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Immutable. A resource name of an Endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime status of the deployed model.</summary>
+    public class GoogleCloudAiplatformV1DeployedModelStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of available replicas of the deployed model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableReplicaCount")]
+        public virtual System.Nullable<int> AvailableReplicaCount { get; set; }
+
+        private string _lastUpdateTimeRaw;
+
+        private object _lastUpdateTime;
+
+        /// <summary>Output only. The time at which the status was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual string LastUpdateTimeRaw
+        {
+            get => _lastUpdateTimeRaw;
+            set
+            {
+                _lastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUpdateTime
+        {
+            get => _lastUpdateTime;
+            set
+            {
+                _lastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The latest deployed model's status message (if any).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46717,6 +48506,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("output")]
         public virtual string Output { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The input content is encapsulated and uploaded in the request.</summary>
+    public class GoogleCloudAiplatformV1DirectUploadSource : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -48873,6 +50669,43 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The fact used in grounding.</summary>
+    public class GoogleCloudAiplatformV1Fact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Query that is used to retrieve this fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// If present, according to the underlying Vector DB and the selected metric type, the score can be either the
+        /// distance or the similarity between the query and the fact and its range depends on the metric type. For
+        /// example, if the metric type is COSINE_DISTANCE, it represents the distance between the query and the fact.
+        /// The larger the distance, the less relevant the fact is to the query. The range is [0, 2], while 0 means the
+        /// most relevant and 2 means the least relevant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>If present, the summary/snippet of the fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
+
+        /// <summary>If present, it refers to the title of this fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>If present, this uri links to the source of the fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>If present, the distance between the query vector and this fact vector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorDistance")]
+        public virtual System.Nullable<double> VectorDistance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for faster model deployment.</summary>
     public class GoogleCloudAiplatformV1FasterDeploymentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -50646,6 +52479,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RagFile status.</summary>
+    public class GoogleCloudAiplatformV1FileStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Only when the `state` field is ERROR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorStatus")]
+        public virtual string ErrorStatus { get; set; }
+
+        /// <summary>Output only. RagFile state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Assigns input data to training, validation, and test sets based on the given filters, data pieces not matched by
     /// any filter are ignored. Currently only supported for Datasets containing DataItems. If any of the filters in
@@ -51103,6 +52951,14 @@ namespace Google.Apis.Aiplatform.v1.Data
     public class GoogleCloudAiplatformV1GenerateContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The name of the cached content used as context to serve the prediction. Note: only used in
+        /// explicit caching, where users can have control over caching (e.g. what content to cache) and enjoy
+        /// guaranteed cost savings. Format: `projects/{project}/locations/{location}/cachedContents/{cachedContent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cachedContent")]
+        public virtual string CachedContent { get; set; }
+
+        /// <summary>
         /// Required. The content of the current conversation with the model. For single-turn queries, this is a single
         /// instance. For multi-turn queries, this is a repeated field that contains conversation history + latest
         /// request.
@@ -51200,6 +53056,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Usage metadata about response(s).</summary>
     public class GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Number of tokens in the cached part in the input (the cached content).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cachedContentTokenCount")]
+        public virtual System.Nullable<int> CachedContentTokenCount { get; set; }
+
         /// <summary>Number of tokens in the response(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
         public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
@@ -51434,6 +53294,32 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. The public base model URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseModelUri")]
         public virtual string BaseModelUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Google Drive location for the input content.</summary>
+    public class GoogleCloudAiplatformV1GoogleDriveSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Google Drive resource IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceIds")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GoogleDriveSourceResourceId> ResourceIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The type and ID of the Google Drive resource.</summary>
+    public class GoogleCloudAiplatformV1GoogleDriveSourceResourceId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the Google Drive resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>Required. The type of the Google Drive resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52134,6 +54020,77 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config for importing RagFiles.</summary>
+    public class GoogleCloudAiplatformV1ImportRagFilesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google Cloud Storage location. Supports importing individual files as well as entire Google Cloud Storage
+        /// directories. Sample formats: - `gs://bucket_name/my_directory/object_name/my_file.txt` -
+        /// `gs://bucket_name/my_directory`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudAiplatformV1GcsSource GcsSource { get; set; }
+
+        /// <summary>
+        /// Google Drive location. Supports importing individual files as well as Google Drive folders.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDriveSource")]
+        public virtual GoogleCloudAiplatformV1GoogleDriveSource GoogleDriveSource { get; set; }
+
+        /// <summary>Jira queries with their corresponding authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jiraSource")]
+        public virtual GoogleCloudAiplatformV1JiraSource JiraSource { get; set; }
+
+        /// <summary>
+        /// Optional. The max number of queries per minute that this job is allowed to make to the embedding model
+        /// specified on the corpus. This value is specific to this job and not shared across other import jobs. Consult
+        /// the Quotas page on the project to set an appropriate value here. If unspecified, a default value of 1,000
+        /// QPM would be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxEmbeddingRequestsPerMin")]
+        public virtual System.Nullable<int> MaxEmbeddingRequestsPerMin { get; set; }
+
+        /// <summary>
+        /// The BigQuery destination to write partial failures to. It should be a bigquery table resource name (e.g.
+        /// "bq://projectId.bqDatasetId.bqTableId"). The dataset must exist. If the table does not exist, it will be
+        /// created with the expected schema. If the table exists, the schema will be validated and data will be added
+        /// to this existing table. Deprecated. Prefer to use `import_result_bq_sink`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailureBigquerySink")]
+        public virtual GoogleCloudAiplatformV1BigQueryDestination PartialFailureBigquerySink { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage path to write partial failures to. Deprecated. Prefer to use `import_result_gcs_sink`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailureGcsSink")]
+        public virtual GoogleCloudAiplatformV1GcsDestination PartialFailureGcsSink { get; set; }
+
+        /// <summary>Specifies the transformation config for RagFiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFileTransformationConfig")]
+        public virtual GoogleCloudAiplatformV1RagFileTransformationConfig RagFileTransformationConfig { get; set; }
+
+        /// <summary>Slack channels with their corresponding access tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slackSource")]
+        public virtual GoogleCloudAiplatformV1SlackSource SlackSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for VertexRagDataService.ImportRagFiles.</summary>
+    public class GoogleCloudAiplatformV1ImportRagFilesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The config for the RagFiles to be synced and imported into the RagCorpus.
+        /// VertexRagDataService.ImportRagFiles.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importRagFilesConfig")]
+        public virtual GoogleCloudAiplatformV1ImportRagFilesConfig ImportRagFilesConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A representation of a collection of database items organized in a way that allows for approximate nearest
     /// neighbor (a.k.a ANN) algorithms search.
@@ -52799,6 +54756,52 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Jira source for the ImportRagFilesRequest.</summary>
+    public class GoogleCloudAiplatformV1JiraSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Jira queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jiraQueries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1JiraSourceJiraQueries> JiraQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>JiraQueries contains the Jira queries and corresponding authentication.</summary>
+    public class GoogleCloudAiplatformV1JiraSourceJiraQueries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The SecretManager secret version resource name (e.g.
+        /// projects/{project}/secrets/{secret}/versions/{version}) storing the Jira API key. See [Manage API tokens for
+        /// your Atlassian
+        /// account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyConfig")]
+        public virtual GoogleCloudAiplatformV1ApiAuthApiKeyConfig ApiKeyConfig { get; set; }
+
+        /// <summary>
+        /// A list of custom Jira queries to import. For information about JQL (Jira Query Language), see
+        /// https://support.atlassian.com/jira-service-management-cloud/docs/use-advanced-search-with-jira-query-language-jql/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customQueries")]
+        public virtual System.Collections.Generic.IList<string> CustomQueries { get; set; }
+
+        /// <summary>Required. The Jira email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>A list of Jira projects to import in their entirety.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projects")]
+        public virtual System.Collections.Generic.IList<string> Projects { get; set; }
+
+        /// <summary>Required. The Jira server URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverUri")]
+        public virtual string ServerUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains information about the Large Model.</summary>
     public class GoogleCloudAiplatformV1LargeModelReference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -52875,6 +54878,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// A token to retrieve the next page of results. Pass to ListBatchPredictionJobsRequest.page_token to obtain
         /// that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response with a list of CachedContents.</summary>
+    public class GoogleCloudAiplatformV1ListCachedContentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of cached contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cachedContents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1CachedContent> CachedContents { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -53481,6 +55502,40 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>List of PipelineJobs in the requested page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineJobs")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1PipelineJob> PipelineJobs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VertexRagDataService.ListRagCorpora.</summary>
+    public class GoogleCloudAiplatformV1ListRagCorporaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass to ListRagCorporaRequest.page_token to obtain that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of RagCorpora in the requested page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpora")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1RagCorpus> RagCorpora { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VertexRagDataService.ListRagFiles.</summary>
+    public class GoogleCloudAiplatformV1ListRagFilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass to ListRagFilesRequest.page_token to obtain that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of RagFiles in the requested page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFiles")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1RagFile> RagFiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59826,6 +61881,37 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ReasoningEngineExecutionService.Query.</summary>
+    public class GoogleCloudAiplatformV1QueryReasoningEngineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Class method to be used for the query. It is optional and defaults to "query" if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classMethod")]
+        public virtual string ClassMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Input content provided by users in JSON object format. Examples include text query, function
+        /// calling parameters, media bytes, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("input")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Input { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ReasoningEngineExecutionService.Query</summary>
+    public class GoogleCloudAiplatformV1QueryReasoningEngineResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Response provided by users in JSON object format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual object Output { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Input for question answering correctness metric.</summary>
     public class GoogleCloudAiplatformV1QuestionAnsweringCorrectnessInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -60109,6 +62195,462 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Which version to use for evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Relevant contexts for one query.</summary>
+    public class GoogleCloudAiplatformV1RagContexts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All its contexts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1RagContextsContext> Contexts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A context of the query.</summary>
+    public class GoogleCloudAiplatformV1RagContextsContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// According to the underlying Vector DB and the selected metric type, the score can be either the distance or
+        /// the similarity between the query and the context and its range depends on the metric type. For example, if
+        /// the metric type is COSINE_DISTANCE, it represents the distance between the query and the context. The larger
+        /// the distance, the less relevant the context is to the query. The range is [0, 2], while 0 means the most
+        /// relevant and 2 means the least relevant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>The file display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDisplayName")]
+        public virtual string SourceDisplayName { get; set; }
+
+        /// <summary>
+        /// If the file is imported from Cloud Storage or Google Drive, source_uri will be original file URI in Cloud
+        /// Storage or Google Drive; if file is uploaded, source_uri will be file display name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
+        public virtual string SourceUri { get; set; }
+
+        /// <summary>The text chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A RagCorpus is a RagFile container and a project can have multiple RagCorpora.</summary>
+    public class GoogleCloudAiplatformV1RagCorpus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. RagCorpus state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("corpusStatus")]
+        public virtual GoogleCloudAiplatformV1CorpusStatus CorpusStatus { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this RagCorpus was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The description of the RagCorpus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the RagCorpus. The name can be up to 128 characters long and can consist of
+        /// any UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The resource name of the RagCorpus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this RagCorpus was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Immutable. The config for the Vector DBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorDbConfig")]
+        public virtual GoogleCloudAiplatformV1RagVectorDbConfig VectorDbConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for the embedding model to use for RAG.</summary>
+    public class GoogleCloudAiplatformV1RagEmbeddingModelConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Vertex AI Prediction Endpoint that either refers to a publisher model or an endpoint that is hosting a
+        /// 1P fine-tuned text embedding model. Endpoints hosting non-1P fine-tuned text embedding models are currently
+        /// not supported. This is used for dense vector search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexPredictionEndpoint")]
+        public virtual GoogleCloudAiplatformV1RagEmbeddingModelConfigVertexPredictionEndpoint VertexPredictionEndpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config representing a model hosted on Vertex Prediction Endpoint.</summary>
+    public class GoogleCloudAiplatformV1RagEmbeddingModelConfigVertexPredictionEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The endpoint resource name. Format:
+        /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` or
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the model that is deployed on the endpoint. Present only when the endpoint
+        /// is not a publisher model. Pattern: `projects/{project}/locations/{location}/models/{model}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>
+        /// Output only. Version ID of the model that is deployed on the endpoint. Present only when the endpoint is not
+        /// a publisher model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersionId")]
+        public virtual string ModelVersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A RagFile contains user data for chunking, embedding and indexing.</summary>
+    public class GoogleCloudAiplatformV1RagFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this RagFile was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The description of the RagFile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The RagFile is encapsulated and uploaded in the UploadRagFile request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directUploadSource")]
+        public virtual GoogleCloudAiplatformV1DirectUploadSource DirectUploadSource { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the RagFile. The name can be up to 128 characters long and can consist of any
+        /// UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. State of the RagFile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStatus")]
+        public virtual GoogleCloudAiplatformV1FileStatus FileStatus { get; set; }
+
+        /// <summary>
+        /// Output only. Google Cloud Storage location of the RagFile. It does not support wildcards in the Cloud
+        /// Storage uri for now.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudAiplatformV1GcsSource GcsSource { get; set; }
+
+        /// <summary>
+        /// Output only. Google Drive location. Supports importing individual files as well as Google Drive folders.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDriveSource")]
+        public virtual GoogleCloudAiplatformV1GoogleDriveSource GoogleDriveSource { get; set; }
+
+        /// <summary>The RagFile is imported from a Jira query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jiraSource")]
+        public virtual GoogleCloudAiplatformV1JiraSource JiraSource { get; set; }
+
+        /// <summary>Output only. The resource name of the RagFile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The RagFile is imported from a Slack channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slackSource")]
+        public virtual GoogleCloudAiplatformV1SlackSource SlackSource { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this RagFile was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the size and overlap of chunks for RagFiles.</summary>
+    public class GoogleCloudAiplatformV1RagFileChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the fixed length chunking config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedLengthChunking")]
+        public virtual GoogleCloudAiplatformV1RagFileChunkingConfigFixedLengthChunking FixedLengthChunking { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the fixed length chunking config.</summary>
+    public class GoogleCloudAiplatformV1RagFileChunkingConfigFixedLengthChunking : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The overlap between chunks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkOverlap")]
+        public virtual System.Nullable<int> ChunkOverlap { get; set; }
+
+        /// <summary>The size of the chunks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSize")]
+        public virtual System.Nullable<int> ChunkSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the transformation config for RagFiles.</summary>
+    public class GoogleCloudAiplatformV1RagFileTransformationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the chunking config for RagFiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFileChunkingConfig")]
+        public virtual GoogleCloudAiplatformV1RagFileChunkingConfig RagFileChunkingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A query to retrieve relevant contexts.</summary>
+    public class GoogleCloudAiplatformV1RagQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The retrieval config for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragRetrievalConfig")]
+        public virtual GoogleCloudAiplatformV1RagRetrievalConfig RagRetrievalConfig { get; set; }
+
+        /// <summary>Optional. The query in text format to get relevant contexts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the context retrieval config.</summary>
+    public class GoogleCloudAiplatformV1RagRetrievalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Config for filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GoogleCloudAiplatformV1RagRetrievalConfigFilter Filter { get; set; }
+
+        /// <summary>Optional. The number of contexts to retrieve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
+        public virtual System.Nullable<int> TopK { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for filters.</summary>
+    public class GoogleCloudAiplatformV1RagRetrievalConfigFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. String for metadata filtering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFilter")]
+        public virtual string MetadataFilter { get; set; }
+
+        /// <summary>Optional. Only returns contexts with vector distance smaller than the threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorDistanceThreshold")]
+        public virtual System.Nullable<double> VectorDistanceThreshold { get; set; }
+
+        /// <summary>Optional. Only returns contexts with vector similarity larger than the threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorSimilarityThreshold")]
+        public virtual System.Nullable<double> VectorSimilarityThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for the Vector DB to use for RAG.</summary>
+    public class GoogleCloudAiplatformV1RagVectorDbConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authentication config for the chosen Vector DB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiAuth")]
+        public virtual GoogleCloudAiplatformV1ApiAuth ApiAuth { get; set; }
+
+        /// <summary>The config for the Pinecone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinecone")]
+        public virtual GoogleCloudAiplatformV1RagVectorDbConfigPinecone Pinecone { get; set; }
+
+        /// <summary>Optional. Immutable. The embedding model config of the Vector DB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragEmbeddingModelConfig")]
+        public virtual GoogleCloudAiplatformV1RagEmbeddingModelConfig RagEmbeddingModelConfig { get; set; }
+
+        /// <summary>The config for the Vertex Vector Search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexVectorSearch")]
+        public virtual GoogleCloudAiplatformV1RagVectorDbConfigVertexVectorSearch VertexVectorSearch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The config for the Pinecone.</summary>
+    public class GoogleCloudAiplatformV1RagVectorDbConfigPinecone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pinecone index name. This value cannot be changed after it's set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexName")]
+        public virtual string IndexName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The config for the Vertex Vector Search.</summary>
+    public class GoogleCloudAiplatformV1RagVectorDbConfigVertexVectorSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the Index. Format: `projects/{project}/locations/{location}/indexes/{index}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual string Index { get; set; }
+
+        /// <summary>
+        /// The resource name of the Index Endpoint. Format:
+        /// `projects/{project}/locations/{location}/indexEndpoints/{index_endpoint}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexEndpoint")]
+        public virtual string IndexEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60842,6 +63384,71 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchDynamicRetrievalScore")]
         public virtual System.Nullable<float> GoogleSearchDynamicRetrievalScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for VertexRagService.RetrieveContexts.</summary>
+    public class GoogleCloudAiplatformV1RetrieveContextsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Single RAG retrieve query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual GoogleCloudAiplatformV1RagQuery Query { get; set; }
+
+        /// <summary>The data source for Vertex RagStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexRagStore")]
+        public virtual GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore VertexRagStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The data source for Vertex RagStore.</summary>
+    public class GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The representation of the rag source. It can be used to specify corpus only or ragfiles. Currently
+        /// only support one corpus or multiple files from one corpus. In the future we may open up multiple corpora
+        /// support.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragResources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource> RagResources { get; set; }
+
+        /// <summary>Optional. Only return contexts with vector distance smaller than the threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorDistanceThreshold")]
+        public virtual System.Nullable<double> VectorDistanceThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definition of the Rag resource.</summary>
+    public class GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. RagCorpora resource name. Format:
+        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpus")]
+        public virtual string RagCorpus { get; set; }
+
+        /// <summary>
+        /// Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFileIds")]
+        public virtual System.Collections.Generic.IList<string> RagFileIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VertexRagService.RetrieveContexts.</summary>
+    public class GoogleCloudAiplatformV1RetrieveContextsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contexts of the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual GoogleCloudAiplatformV1RagContexts Contexts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66571,6 +69178,121 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Slack source for the ImportRagFilesRequest.</summary>
+    public class GoogleCloudAiplatformV1SlackSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Slack channels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SlackSourceSlackChannels> Channels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SlackChannels contains the Slack channels and corresponding access token.</summary>
+    public class GoogleCloudAiplatformV1SlackSourceSlackChannels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The SecretManager secret version resource name (e.g.
+        /// projects/{project}/secrets/{secret}/versions/{version}) storing the Slack channel access token that has
+        /// access to the slack channel IDs. See: https://api.slack.com/tutorials/tracks/getting-a-token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyConfig")]
+        public virtual GoogleCloudAiplatformV1ApiAuthApiKeyConfig ApiKeyConfig { get; set; }
+
+        /// <summary>Required. The Slack channel IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel> Channels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SlackChannel contains the Slack channel ID and the time range to import.</summary>
+    public class GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Slack channel ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
+        public virtual string ChannelId { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Optional. The ending timestamp for messages to import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. The starting timestamp for messages to import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Config for SmoothGrad approximation of gradients. When enabled, the gradients are approximated by averaging the
     /// gradients from noisy samples in the vicinity of the inputs. Adding noise can help improve the computed
@@ -69711,6 +72433,15 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// The service account that the tuningJob workload runs as. If not specified, the Vertex AI Secure Fine-Tuned
+        /// Service Agent in the project will be used. See
+        /// https://cloud.google.com/iam/docs/service-agents#vertex-ai-secure-fine-tuning-service-agent Users starting
+        /// the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -70169,6 +72900,49 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config for uploading RagFile.</summary>
+    public class GoogleCloudAiplatformV1UploadRagFileConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the transformation config for RagFiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFileTransformationConfig")]
+        public virtual GoogleCloudAiplatformV1RagFileTransformationConfig RagFileTransformationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for VertexRagDataService.UploadRagFile.</summary>
+    public class GoogleCloudAiplatformV1UploadRagFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The RagFile to upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFile")]
+        public virtual GoogleCloudAiplatformV1RagFile RagFile { get; set; }
+
+        /// <summary>
+        /// Required. The config for the RagFiles to be uploaded into the RagCorpus. VertexRagDataService.UploadRagFile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadRagFileConfig")]
+        public virtual GoogleCloudAiplatformV1UploadRagFileConfig UploadRagFileConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VertexRagDataService.UploadRagFile.</summary>
+    public class GoogleCloudAiplatformV1UploadRagFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error that occurred while processing the RagFile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The RagFile that had been uploaded into the RagCorpus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFile")]
+        public virtual GoogleCloudAiplatformV1RagFile RagFile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for IndexService.UpsertDatapoints</summary>
     public class GoogleCloudAiplatformV1UpsertDatapointsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -70264,10 +73038,6 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Retrieve from Vertex RAG Store for grounding.</summary>
     public class GoogleCloudAiplatformV1VertexRagStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Deprecated. Please use rag_resources instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpora")]
-        public virtual System.Collections.Generic.IList<string> RagCorpora { get; set; }
-
         /// <summary>
         /// Optional. The representation of the rag source. It can be used to specify corpus only or ragfiles. Currently
         /// only support one corpus or multiple files from one corpus. In the future we may open up multiple corpora
@@ -70275,6 +73045,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ragResources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1VertexRagStoreRagResource> RagResources { get; set; }
+
+        /// <summary>Optional. The retrieval config for the Rag query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragRetrievalConfig")]
+        public virtual GoogleCloudAiplatformV1RagRetrievalConfig RagRetrievalConfig { get; set; }
 
         /// <summary>Optional. Number of top k results to return from the selected corpora.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("similarityTopK")]
