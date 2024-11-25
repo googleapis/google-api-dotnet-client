@@ -8587,9 +8587,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// BackupSchedule expresses the automated backup creation specification for a Spanner database. Next ID: 10
-    /// </summary>
+    /// <summary>BackupSchedule expresses the automated backup creation specification for a Spanner database.</summary>
     public class BackupSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9576,7 +9574,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request for CreateInstanceConfigRequest.</summary>
+    /// <summary>The request for CreateInstanceConfig.</summary>
     public class CreateInstanceConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -14280,7 +14278,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request for UpdateInstanceConfigRequest.</summary>
+    /// <summary>The request for UpdateInstanceConfig.</summary>
     public class UpdateInstanceConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
