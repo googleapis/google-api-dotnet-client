@@ -974,6 +974,7 @@ namespace Google.Apis.ChecksService.v1alpha
             {
                 this.service = service;
                 Operations = new OperationsResource(service);
+                Scans = new ScansResource(service);
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -1040,6 +1041,231 @@ namespace Google.Apis.ChecksService.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^accounts/[^/]+/repos/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Scans resource.</summary>
+            public virtual ScansResource Scans { get; }
+
+            /// <summary>The "scans" collection of methods.</summary>
+            public class ScansResource
+            {
+                private const string Resource = "scans";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ScansResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Uploads the results of local Code Compliance analysis and generates a scan of privacy issues.
+                /// Returns a google.longrunning.Operation containing analysis and findings.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Resource name of the repo. Example: `accounts/123/repos/456`</param>
+                public virtual GenerateRequest Generate(Google.Apis.ChecksService.v1alpha.Data.GoogleChecksRepoScanV1alphaGenerateScanRequest body, string parent)
+                {
+                    return new GenerateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Uploads the results of local Code Compliance analysis and generates a scan of privacy issues.
+                /// Returns a google.longrunning.Operation containing analysis and findings.
+                /// </summary>
+                public class GenerateRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Generate request.</summary>
+                    public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChecksService.v1alpha.Data.GoogleChecksRepoScanV1alphaGenerateScanRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Resource name of the repo. Example: `accounts/123/repos/456`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChecksService.v1alpha.Data.GoogleChecksRepoScanV1alphaGenerateScanRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/scans:generate";
+
+                    /// <summary>Initializes Generate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/repos/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets a repo scan. By default, only the name and results_uri fields are returned. You can include
+                /// other fields by listing them in the `fields` URL query parameter. For example,
+                /// `?fields=name,sources` will return the name and sources fields.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Resource name of the repo scan. Example: `accounts/123/repos/456/scans/789`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets a repo scan. By default, only the name and results_uri fields are returned. You can include
+                /// other fields by listing them in the `fields` URL query parameter. For example,
+                /// `?fields=name,sources` will return the name and sources fields.
+                /// </summary>
+                public class GetRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.GoogleChecksRepoScanV1alphaRepoScan>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the repo scan. Example: `accounts/123/repos/456/scans/789`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/repos/[^/]+/scans/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists repo scans for the specified repo.</summary>
+                /// <param name="parent">Required. Resource name of the repo. Example: `accounts/123/repos/456`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists repo scans for the specified repo.</summary>
+                public class ListRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.GoogleChecksRepoScanV1alphaListRepoScansResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Resource name of the repo. Example: `accounts/123/repos/456`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter repo scans. Example:
+                    /// `scmMetadata.branch = main`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of repo scans to return. If unspecified, at most 10 repo scans will
+                    /// be returned. The maximum value is 50; values above 50 will be coerced to 50.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token received from a previous `ListRepoScans` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListRepoScans` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/scans";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/repos/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -1523,6 +1749,229 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The results of a Code Compliance CLI analysis.</summary>
+    public class GoogleChecksRepoScanV1alphaCliAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Requested code scans resulting from preliminary CLI analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeScans")]
+        public virtual System.Collections.Generic.IList<GoogleChecksRepoScanV1alphaCodeScan> CodeScans { get; set; }
+
+        /// <summary>Optional. Data sources detected in the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleChecksRepoScanV1alphaSource> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Source code attribution.</summary>
+    public class GoogleChecksRepoScanV1alphaCodeAttribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Code excerpt where the source was detected along with surrounding code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeExcerpt")]
+        public virtual string CodeExcerpt { get; set; }
+
+        /// <summary>Required. Line number (1-based).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<int> LineNumber { get; set; }
+
+        /// <summary>Required. Path of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Optional. Start line number of the code excerpt (1-based).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startLineNumber")]
+        public virtual System.Nullable<int> StartLineNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A requested analysis of source code. Contains the source code and processing state.</summary>
+    public class GoogleChecksRepoScanV1alphaCodeScan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Data type classification requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTypeClassifications")]
+        public virtual System.Collections.Generic.IList<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification> DataTypeClassifications { get; set; }
+
+        /// <summary>Required. Source code to analyze.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCode")]
+        public virtual GoogleChecksRepoScanV1alphaSourceCode SourceCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to classify data types.</summary>
+    public class GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Candidate data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Required. Line number (1-based).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<int> LineNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for RepoScanService.GenerateScan.</summary>
+    public class GoogleChecksRepoScanV1alphaGenerateScanRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. CLI analysis results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cliAnalysis")]
+        public virtual GoogleChecksRepoScanV1alphaCliAnalysis CliAnalysis { get; set; }
+
+        /// <summary>Required. CLI version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cliVersion")]
+        public virtual string CliVersion { get; set; }
+
+        /// <summary>Required. Local scan path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localScanPath")]
+        public virtual string LocalScanPath { get; set; }
+
+        /// <summary>Required. SCM metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scmMetadata")]
+        public virtual GoogleChecksRepoScanV1alphaScmMetadata ScmMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for RepoScanService.ListRepoScans.</summary>
+    public class GoogleChecksRepoScanV1alphaListRepoScansResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The repo scans for the specified app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoScans")]
+        public virtual System.Collections.Generic.IList<GoogleChecksRepoScanV1alphaRepoScan> RepoScans { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pull request info.</summary>
+    public class GoogleChecksRepoScanV1alphaPullRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. For PR analysis, we compare against the most recent scan of the base branch to highlight new
+        /// issues.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseBranch")]
+        public virtual string BaseBranch { get; set; }
+
+        /// <summary>
+        /// Required. This can be supplied by the user or parsed automatically from predefined CI environment variables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prNumber")]
+        public virtual string PrNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Repo scan.</summary>
+    public class GoogleChecksRepoScanV1alphaRepoScan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CLI version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cliVersion")]
+        public virtual string CliVersion { get; set; }
+
+        /// <summary>Local scan path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localScanPath")]
+        public virtual string LocalScanPath { get; set; }
+
+        /// <summary>Identifier. Resource name of the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>A URL to view results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsUri")]
+        public virtual string ResultsUri { get; set; }
+
+        /// <summary>SCM metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scmMetadata")]
+        public virtual GoogleChecksRepoScanV1alphaScmMetadata ScmMetadata { get; set; }
+
+        /// <summary>Data sources detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleChecksRepoScanV1alphaSource> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SCM metadata.</summary>
+    public class GoogleChecksRepoScanV1alphaScmMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Branch name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; }
+
+        /// <summary>
+        /// Optional. Contains info about the associated pull request. This is only populated for pull request scans.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequest")]
+        public virtual GoogleChecksRepoScanV1alphaPullRequest PullRequest { get; set; }
+
+        /// <summary>Required. Git remote URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteUri")]
+        public virtual string RemoteUri { get; set; }
+
+        /// <summary>Required. Revision ID, e.g. Git commit hash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a data source finding.</summary>
+    public class GoogleChecksRepoScanV1alphaSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Source code attribution for the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeAttribution")]
+        public virtual GoogleChecksRepoScanV1alphaCodeAttribution CodeAttribution { get; set; }
+
+        /// <summary>Required. Data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains source code from a repo.</summary>
+    public class GoogleChecksRepoScanV1alphaSourceCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Source code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Required. End line number (1-based).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endLine")]
+        public virtual System.Nullable<int> EndLine { get; set; }
+
+        /// <summary>Required. Path of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Required. Start line number (1-based).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startLine")]
+        public virtual System.Nullable<int> StartLine { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
