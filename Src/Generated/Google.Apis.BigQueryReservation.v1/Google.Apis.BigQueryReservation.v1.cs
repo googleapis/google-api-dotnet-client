@@ -1401,7 +1401,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 }
 
                 /// <summary>
-                /// Failover a reservation to the secondary location. The operation should be done in the current
+                /// Fail over a reservation to the secondary location. The operation should be done in the current
                 /// secondary location, which will be promoted to the new primary location for the reservation.
                 /// Attempting to failover a reservation in the current primary location will fail with the error code
                 /// `google.rpc.Code.FAILED_PRECONDITION`.
@@ -1417,7 +1417,7 @@ namespace Google.Apis.BigQueryReservation.v1
                 }
 
                 /// <summary>
-                /// Failover a reservation to the secondary location. The operation should be done in the current
+                /// Fail over a reservation to the secondary location. The operation should be done in the current
                 /// secondary location, which will be promoted to the new primary location for the reservation.
                 /// Attempting to failover a reservation in the current primary location will fail with the error code
                 /// `google.rpc.Code.FAILED_PRECONDITION`.
@@ -2414,7 +2414,8 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this
         /// reservation. This is a soft target due to asynchronous nature of the system and various optimizations for
         /// small queries. Default value is 0 which means that concurrency target will be automatically computed by the
-        /// system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
+        /// system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BigQuery
+        /// CLI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrency")]
         public virtual System.Nullable<long> Concurrency { get; set; }
@@ -2495,25 +2496,25 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// <summary>
         /// Optional. The original primary location of the reservation which is set only during its creation and remains
         /// unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing.
-        /// The field is output only for customers and should not be specified, however, the google.api.field_behavior
-        /// is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        /// The field is output only for customers and should not be specified, however, the `google.api.field_behavior`
+        /// is not set to `OUTPUT_ONLY` since these fields are set in rerouted requests sent across regions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalPrimaryLocation")]
         public virtual string OriginalPrimaryLocation { get; set; }
 
         /// <summary>
-        /// Optional. The primary location of the reservation. The field is only meaningful for reservation used for
-        /// cross region disaster recovery. The field is output only for customers and should not be specified, however,
-        /// the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent
-        /// across regions.
+        /// Optional. The primary location of the reservation. The field is only meaningful for a failover reservation
+        /// that is used for managed disaster recovery. The field is output only for customers and should not be
+        /// specified. However, the `google.api.field_behavior` is not set to `OUTPUT_ONLY` since these fields are set
+        /// in rerouted requests sent across regions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryLocation")]
         public virtual string PrimaryLocation { get; set; }
 
         /// <summary>
-        /// Optional. The secondary location of the reservation which is used for cross region disaster recovery
-        /// purposes. Customer can set this in create/update reservation calls to create a failover reservation or
-        /// convert a non-failover reservation to a failover reservation.
+        /// Optional. The secondary location of the reservation that is used for managed disaster recovery. Customers
+        /// can set this in create/update reservation calls to create a failover reservation or convert a non-failover
+        /// reservation to a failover reservation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryLocation")]
         public virtual string SecondaryLocation { get; set; }
