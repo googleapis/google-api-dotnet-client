@@ -85,6 +85,18 @@ namespace Google.Apis.CloudIdentity.v1
             public static string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
             /// <summary>
+            /// See and edit all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in
+            /// your Cloud Identity Organization.
+            /// </summary>
+            public static string CloudIdentityInboundsso = "https://www.googleapis.com/auth/cloud-identity.inboundsso";
+
+            /// <summary>
+            /// See all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in your
+            /// Cloud Identity Organization.
+            /// </summary>
+            public static string CloudIdentityInboundssoReadonly = "https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly";
+
+            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
@@ -113,6 +125,18 @@ namespace Google.Apis.CloudIdentity.v1
             /// See any Cloud Identity Groups that you can access, including group members and their emails
             /// </summary>
             public const string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
+
+            /// <summary>
+            /// See and edit all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in
+            /// your Cloud Identity Organization.
+            /// </summary>
+            public const string CloudIdentityInboundsso = "https://www.googleapis.com/auth/cloud-identity.inboundsso";
+
+            /// <summary>
+            /// See all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in your
+            /// Cloud Identity Organization.
+            /// </summary>
+            public const string CloudIdentityInboundssoReadonly = "https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly";
 
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
