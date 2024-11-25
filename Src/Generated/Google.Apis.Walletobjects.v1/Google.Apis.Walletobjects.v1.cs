@@ -7673,6 +7673,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual Image Logo { get; set; }
 
         /// <summary>
+        /// Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
+
+        /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
         /// The maximum number of these fields is 10.
         /// </summary>
@@ -7947,6 +7955,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Note: This field is currently not supported to trigger geo notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
+
+        /// <summary>
+        /// Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
 
         /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
@@ -8419,6 +8435,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
 
         /// <summary>
+        /// Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected by the validator. These locations will trigger a notification when a user enters
+        /// within a Google-set radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
+
+        /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
         /// The maximum number of these fields is 10.
         /// </summary>
@@ -8693,6 +8717,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
 
         /// <summary>
+        /// Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
+
+        /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
         /// The maximum number of these fields is 10.
         /// </summary>
@@ -8876,6 +8908,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; }
+
+        /// <summary>
+        /// Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
 
         /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
@@ -9064,6 +9104,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual Image Logo { get; set; }
+
+        /// <summary>
+        /// Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
 
         /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
@@ -9319,6 +9367,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Note: This field is currently not supported to trigger geo notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
+
+        /// <summary>
+        /// Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
 
         /// <summary>
         /// Merchant name, such as "Adam's Apparel". The app may display an ellipsis after the first 20 characters to
@@ -9578,6 +9634,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Note: This field is currently not supported to trigger geo notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
+
+        /// <summary>
+        /// Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
 
         /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
@@ -10206,6 +10270,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
 
         /// <summary>
+        /// Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
+
+        /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
         /// The maximum number of these fields is 10.
         /// </summary>
@@ -10485,6 +10557,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>The loyalty reward points label, balance, and type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
         public virtual LoyaltyPoints LoyaltyPoints { get; set; }
+
+        /// <summary>
+        /// Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
 
         /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
@@ -10863,6 +10943,31 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Locations of interest for this class or object. Currently, this location is used for geofenced notifications.
+    /// When a user is within a set radius of this lat/long, and dwells there, Google will trigger a notification. When
+    /// a user exits this radius, the notification will be hidden.
+    /// </summary>
+    public class MerchantLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The latitude specified as any value in the range of -90.0 through +90.0, both inclusive. Values outside
+        /// these bounds will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>
+        /// The longitude specified in the range -180.0 through +180.0, both inclusive. Values outside these bounds will
+        /// be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A message that will be displayed with a Valuable</summary>
     public class Message : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11171,6 +11276,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
 
         /// <summary>
+        /// Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
+
+        /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
         /// The maximum number of these fields is 10.
         /// </summary>
@@ -11422,6 +11535,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Note: This field is currently not supported to trigger geo notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
+
+        /// <summary>
+        /// Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
 
         /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
@@ -12456,6 +12577,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual Image Logo { get; set; }
 
         /// <summary>
+        /// Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
+
+        /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
         /// The maximum number of these fields is 10.
         /// </summary>
@@ -12718,6 +12847,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Note: This field is currently not supported to trigger geo notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<LatLongPoint> Locations { get; set; }
+
+        /// <summary>
+        /// Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond
+        /// the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set
+        /// radius of the point. This field replaces the deprecated LatLongPoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantLocations")]
+        public virtual System.Collections.Generic.IList<MerchantLocation> MerchantLocations { get; set; }
 
         /// <summary>
         /// An array of messages displayed in the app. All users of this object will receive its associated messages.
