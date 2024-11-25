@@ -1875,9 +1875,9 @@ namespace Google.Apis.CloudAsset.v1p7beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. An opaque identifier for the current version of the `ServicePerimeter`. Clients should not expect
-        /// this to be in any specific format. If etag is not provided, the operation will be performed as if a valid
-        /// etag is provided.
+        /// Optional. An opaque identifier for the current version of the `ServicePerimeter`. This identifier does not
+        /// follow any specific format. If an etag is not provided, the operation will be performed as if a valid etag
+        /// is provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
