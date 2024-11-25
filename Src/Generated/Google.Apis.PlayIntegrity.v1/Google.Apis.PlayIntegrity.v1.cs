@@ -512,9 +512,30 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains information about the device for which the integrity token was generated, e.g. Android SDK version.
+    /// </summary>
+    public class DeviceAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Android SDK version of the device, as defined in the public Android documentation:
+        /// https://developer.android.com/reference/android/os/Build.VERSION_CODES. It won't be set if a necessary
+        /// requirement was missed. For example DeviceIntegrity did not meet the minimum bar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
+        public virtual System.Nullable<int> SdkVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the device attestation information.</summary>
     public class DeviceIntegrity : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Attributes of the device where the integrity token was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceAttributes")]
+        public virtual DeviceAttributes DeviceAttributes { get; set; }
+
         /// <summary>Details about the device recall bits set by the developer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRecall")]
         public virtual DeviceRecall DeviceRecall { get; set; }
