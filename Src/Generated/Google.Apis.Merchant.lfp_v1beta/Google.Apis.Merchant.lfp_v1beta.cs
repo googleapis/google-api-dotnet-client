@@ -1109,7 +1109,10 @@ namespace Google.Apis.Merchant.lfp_v1beta.Data
 
         private object _expirationTime;
 
-        /// <summary>The product expiration time.</summary>
+        /// <summary>
+        /// The product expiration time. This field will not bet set if the notification is sent for a product deletion
+        /// event.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw
         {
