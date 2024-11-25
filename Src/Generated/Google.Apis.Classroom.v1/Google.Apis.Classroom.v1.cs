@@ -2009,6 +2009,7 @@ namespace Google.Apis.Classroom.v1
             {
                 this.service = service;
                 AddOnAttachments = new AddOnAttachmentsResource(service);
+                Rubrics = new RubricsResource(service);
                 StudentSubmissions = new StudentSubmissionsResource(service);
             }
 
@@ -2857,6 +2858,510 @@ namespace Google.Apis.Classroom.v1
                             Name = "postId",
                             IsRequired = false,
                             ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Rubrics resource.</summary>
+            public virtual RubricsResource Rubrics { get; }
+
+            /// <summary>The "rubrics" collection of methods.</summary>
+            public class RubricsResource
+            {
+                private const string Resource = "rubrics";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RubricsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a rubric. This request must be made by the Google Cloud console of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. For
+                /// further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). This
+                /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't
+                /// permitted to create rubrics for course work in the requested course. * `INTERNAL` if the request has
+                /// insufficient OAuth scopes. * `INVALID_ARGUMENT` if the request is malformed and for the following
+                /// request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course or course work
+                /// don't exist or the user doesn't have access to the course or course work. * `FAILED_PRECONDITION`
+                /// for the following request error: * `AttachmentNotVisible`
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="courseId">Required. Identifier of the course.</param>
+                /// <param name="courseWorkId">Required. Identifier of the course work.</param>
+                public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.Rubric body, string courseId, string courseWorkId)
+                {
+                    return new CreateRequest(this.service, body, courseId, courseWorkId);
+                }
+
+                /// <summary>
+                /// Creates a rubric. This request must be made by the Google Cloud console of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. For
+                /// further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). This
+                /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't
+                /// permitted to create rubrics for course work in the requested course. * `INTERNAL` if the request has
+                /// insufficient OAuth scopes. * `INVALID_ARGUMENT` if the request is malformed and for the following
+                /// request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course or course work
+                /// don't exist or the user doesn't have access to the course or course work. * `FAILED_PRECONDITION`
+                /// for the following request error: * `AttachmentNotVisible`
+                /// </summary>
+                public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Rubric>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Rubric body, string courseId, string courseWorkId) : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Identifier of the course.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Required. Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Classroom.v1.Data.Rubric Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a rubric. This request must be made by the Google Cloud console of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This
+                /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project
+                /// didn't create the corresponding rubric, or if the requesting user isn't permitted to delete the
+                /// requested rubric. * `NOT_FOUND` if no rubric exists with the requested ID or the user does not have
+                /// access to the course, course work, or rubric. * `INVALID_ARGUMENT` if grading has already started on
+                /// the rubric.
+                /// </summary>
+                /// <param name="courseId">Required. Identifier of the course.</param>
+                /// <param name="courseWorkId">Required. Identifier of the course work.</param>
+                /// <param name="id">Required. Identifier of the rubric.</param>
+                public virtual DeleteRequest Delete(string courseId, string courseWorkId, string id)
+                {
+                    return new DeleteRequest(this.service, courseId, courseWorkId, id);
+                }
+
+                /// <summary>
+                /// Deletes a rubric. This request must be made by the Google Cloud console of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This
+                /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project
+                /// didn't create the corresponding rubric, or if the requesting user isn't permitted to delete the
+                /// requested rubric. * `NOT_FOUND` if no rubric exists with the requested ID or the user does not have
+                /// access to the course, course work, or rubric. * `INVALID_ARGUMENT` if grading has already started on
+                /// the rubric.
+                /// </summary>
+                public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId, string id) : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Identifier of the course.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Required. Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Required. Identifier of the rubric.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a rubric. This method returns the following error codes: * `PERMISSION_DENIED` for access
+                /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course,
+                /// course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course
+                /// work.
+                /// </summary>
+                /// <param name="courseId">Required. Identifier of the course.</param>
+                /// <param name="courseWorkId">Required. Identifier of the course work.</param>
+                /// <param name="id">Required. Identifier of the rubric.</param>
+                public virtual GetRequest Get(string courseId, string courseWorkId, string id)
+                {
+                    return new GetRequest(this.service, courseId, courseWorkId, id);
+                }
+
+                /// <summary>
+                /// Returns a rubric. This method returns the following error codes: * `PERMISSION_DENIED` for access
+                /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course,
+                /// course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course
+                /// work.
+                /// </summary>
+                public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Rubric>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId, string id) : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Identifier of the course.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Required. Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Required. Identifier of the rubric.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of rubrics that the requester is permitted to view. This method returns the following
+                /// error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+                /// malformed. * `NOT_FOUND` if the requested course or course work doesn't exist or if the user doesn't
+                /// have access to the corresponding course work.
+                /// </summary>
+                /// <param name="courseId">Required. Identifier of the course.</param>
+                /// <param name="courseWorkId">Required. Identifier of the course work.</param>
+                public virtual ListRequest List(string courseId, string courseWorkId)
+                {
+                    return new ListRequest(this.service, courseId, courseWorkId);
+                }
+
+                /// <summary>
+                /// Returns a list of rubrics that the requester is permitted to view. This method returns the following
+                /// error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is
+                /// malformed. * `NOT_FOUND` if the requested course or course work doesn't exist or if the user doesn't
+                /// have access to the corresponding course work.
+                /// </summary>
+                public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListRubricsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId) : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Identifier of the course.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Required. Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of rubrics to return. If unspecified, at most 1 rubric is returned. The
+                    /// maximum value is 1; values above 1 are coerced to 1.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// nextPageToken value returned from a previous list call, indicating that the subsequent page of
+                    /// results should be returned. The list request must be otherwise identical to the one that
+                    /// resulted in this token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric
+                /// update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. This
+                /// request must be made by the Google Cloud console of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item.
+                /// This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer
+                /// project didn't create the corresponding course work, if the user isn't permitted to make the
+                /// requested modification to the rubric, or for access errors. This error code is also returned if
+                /// grading has already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for
+                /// the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course,
+                /// course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course
+                /// work. * `INTERNAL` if grading has already started on the rubric.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="courseId">Required. Identifier of the course.</param>
+                /// <param name="courseWorkId">Required. Identifier of the course work.</param>
+                /// <param name="id">Optional. Identifier of the rubric.</param>
+                public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.Rubric body, string courseId, string courseWorkId, string id)
+                {
+                    return new PatchRequest(this.service, body, courseId, courseWorkId, id);
+                }
+
+                /// <summary>
+                /// Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric
+                /// update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. This
+                /// request must be made by the Google Cloud console of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item.
+                /// This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer
+                /// project didn't create the corresponding course work, if the user isn't permitted to make the
+                /// requested modification to the rubric, or for access errors. This error code is also returned if
+                /// grading has already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for
+                /// the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course,
+                /// course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course
+                /// work. * `INTERNAL` if grading has already started on the rubric.
+                /// </summary>
+                public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Rubric>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Rubric body, string courseId, string courseWorkId, string id) : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Identifier of the course.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Required. Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Optional. Identifier of the rubric.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Mask that identifies which fields on the rubric to update. This field is required to
+                    /// do an update. The update fails if invalid fields are specified. There are multiple options to
+                    /// define the criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list. Only one
+                    /// of these can be used at a time to define a rubric. The rubric `criteria` list is fully replaced
+                    /// by the rubric criteria specified in the update request. For example, if a criterion or level is
+                    /// missing from the request, it is deleted. New criteria and levels are added and an ID is
+                    /// assigned. Existing criteria and levels retain the previously assigned ID if the ID is specified
+                    /// in the request. The following fields can be specified by teachers: * `criteria` *
+                    /// `source_spreadsheet_id`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Classroom.v1.Data.Rubric Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -4471,6 +4976,130 @@ namespace Google.Apis.Classroom.v1
                         Name = "id",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric
+            /// update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. This request
+            /// must be made by the Google Cloud console of the [OAuth client
+            /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This
+            /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project
+            /// didn't create the corresponding course work, if the user isn't permitted to make the requested
+            /// modification to the rubric, or for access errors. This error code is also returned if grading has
+            /// already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following
+            /// request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course, course work, or
+            /// rubric doesn't exist or if the user doesn't have access to the corresponding course work. * `INTERNAL`
+            /// if grading has already started on the rubric.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="courseId">Required. Identifier of the course.</param>
+            /// <param name="courseWorkId">Required. Identifier of the course work.</param>
+            public virtual UpdateRubricRequest UpdateRubric(Google.Apis.Classroom.v1.Data.Rubric body, string courseId, string courseWorkId)
+            {
+                return new UpdateRubricRequest(this.service, body, courseId, courseWorkId);
+            }
+
+            /// <summary>
+            /// Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric
+            /// update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. This request
+            /// must be made by the Google Cloud console of the [OAuth client
+            /// ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This
+            /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project
+            /// didn't create the corresponding course work, if the user isn't permitted to make the requested
+            /// modification to the rubric, or for access errors. This error code is also returned if grading has
+            /// already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following
+            /// request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course, course work, or
+            /// rubric doesn't exist or if the user doesn't have access to the corresponding course work. * `INTERNAL`
+            /// if grading has already started on the rubric.
+            /// </summary>
+            public class UpdateRubricRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Rubric>
+            {
+                /// <summary>Constructs a new UpdateRubric request.</summary>
+                public UpdateRubricRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Rubric body, string courseId, string courseWorkId) : base(service)
+                {
+                    CourseId = courseId;
+                    CourseWorkId = courseWorkId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Identifier of the course.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Required. Identifier of the course work.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseWorkId { get; private set; }
+
+                /// <summary>Optional. Identifier of the rubric.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Id { get; set; }
+
+                /// <summary>
+                /// Optional. Mask that identifies which fields on the rubric to update. This field is required to do an
+                /// update. The update fails if invalid fields are specified. There are multiple options to define the
+                /// criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list. Only one of these can be
+                /// used at a time to define a rubric. The rubric `criteria` list is fully replaced by the rubric
+                /// criteria specified in the update request. For example, if a criterion or level is missing from the
+                /// request, it is deleted. New criteria and levels are added and an ID is assigned. Existing criteria
+                /// and levels retain the previously assigned ID if the ID is specified in the request. The following
+                /// fields can be specified by teachers: * `criteria` * `source_spreadsheet_id`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Classroom.v1.Data.Rubric Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateRubric";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/rubric";
+
+                /// <summary>Initializes UpdateRubric parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseWorkId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -10793,6 +11422,29 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A rubric criterion. Each criterion is a dimension on which performance is rated.</summary>
+    public class Criterion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The criterion ID. On creation, an ID is assigned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The list of levels within this criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("levels")]
+        public virtual System.Collections.Generic.IList<Level> Levels { get; set; }
+
+        /// <summary>The title of the criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
@@ -11203,6 +11855,32 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A level of the criterion.</summary>
+    public class Level : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The level ID. On creation, an ID is assigned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional points associated with this level. If set, all levels within the rubric must specify points and the
+        /// value must be distinct across all levels within a single criterion. 0 is distinct from no points.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("points")]
+        public virtual System.Nullable<double> Points { get; set; }
+
+        /// <summary>The title of the level. If the level has no points set, title must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>URL item.</summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11373,6 +12051,23 @@ namespace Google.Apis.Classroom.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response when listing rubrics.</summary>
+    public class ListRubricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token identifying the next page of results to return. If empty, no further results are available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Rubrics that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rubrics")]
+        public virtual System.Collections.Generic.IList<Rubric> Rubrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11665,6 +12360,143 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The rubric of the course work. A rubric is a scoring guide used to evaluate student work and give feedback. For
+    /// further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations).
+    /// </summary>
+    public class Rubric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier of the course. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
+        public virtual string CourseId { get; set; }
+
+        /// <summary>Identifier for the course work this corresponds to. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseWorkId")]
+        public virtual string CourseWorkId { get; set; }
+
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
+        /// <summary>Output only. Timestamp when this rubric was created. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>List of criteria. Each criterion is a dimension on which performance is rated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
+        public virtual System.Collections.Generic.IList<Criterion> Criteria { get; set; }
+
+        /// <summary>
+        /// Classroom-assigned identifier for the rubric. This is unique among rubrics for the relevant course work.
+        /// Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Input only. Immutable. Google Sheets ID of the spreadsheet. This spreadsheet must contain formatted rubric
+        /// settings. See [Create or reuse a rubric for an
+        /// assignment](https://support.google.com/edu/classroom/answer/9335069). Use of this field requires the
+        /// `https://www.googleapis.com/auth/spreadsheets.readonly` or `https://www.googleapis.com/auth/spreadsheets`
+        /// scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSpreadsheetId")]
+        public virtual string SourceSpreadsheetId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp of the most recent change to this rubric. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A rubric grade set for the student submission. There is at most one entry per rubric criterion.
+    /// </summary>
+    public class RubricGrade : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Criterion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criterionId")]
+        public virtual string CriterionId { get; set; }
+
+        /// <summary>Optional. Optional level ID of the selected level. If empty, no level was selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("levelId")]
+        public virtual string LevelId { get; set; }
+
+        /// <summary>
+        /// Optional. Optional points assigned for this criterion, typically based on the level. Levels might or might
+        /// not have points. If unset, no points were set for this criterion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("points")]
+        public virtual System.Nullable<double> Points { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Drive file that is used as material for course work.</summary>
     public class SharedDriveFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11808,6 +12640,14 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual System.Nullable<double> AssignedGrade { get; set; }
 
         /// <summary>
+        /// Assigned rubric grades based on the rubric's Criteria. This map is empty if there is no rubric attached to
+        /// this course work or if a rubric is attached, but no grades have been set on any Criteria. Entries are only
+        /// populated for grades that have been set. Key: The rubric's criterion ID. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedRubricGrades")]
+        public virtual System.Collections.Generic.IDictionary<string, RubricGrade> AssignedRubricGrades { get; set; }
+
+        /// <summary>
         /// Submission content when course_work_type is ASSIGNMENT. Students can modify this content using
         /// ModifyAttachments.
         /// </summary>
@@ -11879,6 +12719,14 @@ namespace Google.Apis.Classroom.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("draftGrade")]
         public virtual System.Nullable<double> DraftGrade { get; set; }
+
+        /// <summary>
+        /// Pending rubric grades based on the rubric's criteria. This map is empty if there is no rubric attached to
+        /// this course work or if a rubric is attached, but no grades have been set on any criteria. Entries are only
+        /// populated for grades that have been set. Key: The rubric's criterion ID. Read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftRubricGrades")]
+        public virtual System.Collections.Generic.IDictionary<string, RubricGrade> DraftRubricGrades { get; set; }
 
         /// <summary>
         /// Classroom-assigned Identifier for the student submission. This is unique among submissions for the relevant
