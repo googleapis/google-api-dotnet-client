@@ -6102,6 +6102,31 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The request that is passed to CLH during per-resource events. The request will be sent with update semantics in
+    /// all cases except for data governance purge events. These events will be sent with delete semantics and the CLH
+    /// is expected to delete the resource receiving this event.
+    /// </summary>
+    public class ResourceEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique ID for this per-resource event. CLHs can use this value to dedup repeated calls. required
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        /// <summary>The name of the resource for which this event is. required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The state of the project that led to this event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual ContainerState State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A DNS resource record.</summary>
     public class ResourceRecord : Google.Apis.Requests.IDirectResponseSchema
     {
