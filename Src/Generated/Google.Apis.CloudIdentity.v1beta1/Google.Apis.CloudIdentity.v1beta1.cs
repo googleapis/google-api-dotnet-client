@@ -87,6 +87,24 @@ namespace Google.Apis.CloudIdentity.v1beta1
             public static string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
             /// <summary>
+            /// See and edit all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in
+            /// your Cloud Identity Organization.
+            /// </summary>
+            public static string CloudIdentityInboundsso = "https://www.googleapis.com/auth/cloud-identity.inboundsso";
+
+            /// <summary>
+            /// See all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in your
+            /// Cloud Identity Organization.
+            /// </summary>
+            public static string CloudIdentityInboundssoReadonly = "https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly";
+
+            /// <summary>See and edit policies in your Cloud Identity Organization.</summary>
+            public static string CloudIdentityPolicies = "https://www.googleapis.com/auth/cloud-identity.policies";
+
+            /// <summary>See policies in your Cloud Identity Organization.</summary>
+            public static string CloudIdentityPoliciesReadonly = "https://www.googleapis.com/auth/cloud-identity.policies.readonly";
+
+            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
@@ -115,6 +133,24 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// See any Cloud Identity Groups that you can access, including group members and their emails
             /// </summary>
             public const string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
+
+            /// <summary>
+            /// See and edit all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in
+            /// your Cloud Identity Organization.
+            /// </summary>
+            public const string CloudIdentityInboundsso = "https://www.googleapis.com/auth/cloud-identity.inboundsso";
+
+            /// <summary>
+            /// See all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in your
+            /// Cloud Identity Organization.
+            /// </summary>
+            public const string CloudIdentityInboundssoReadonly = "https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly";
+
+            /// <summary>See and edit policies in your Cloud Identity Organization.</summary>
+            public const string CloudIdentityPolicies = "https://www.googleapis.com/auth/cloud-identity.policies";
+
+            /// <summary>See policies in your Cloud Identity Organization.</summary>
+            public const string CloudIdentityPoliciesReadonly = "https://www.googleapis.com/auth/cloud-identity.policies.readonly";
 
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
@@ -8548,7 +8584,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>
         /// Output only. The decimal sort order of this PolicyQuery. The value is relative to all other policies with
-        /// the same setting type within the whole customer. (there are no duplicates within this set).
+        /// the same setting type within the whole customer. (There are no duplicates within this set.)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
         public virtual System.Nullable<double> SortOrder { get; set; }
