@@ -3708,9 +3708,9 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// If this field is empty, all custom and system-defined metric descriptors are returned. Otherwise,
-                /// the filter (https://cloud.google.com/monitoring/api/v3/filters) specifies which metric descriptors
-                /// are to be returned. For example, the following filter matches all custom metrics
+                /// Optional. If this field is empty, all custom and system-defined metric descriptors are returned.
+                /// Otherwise, the filter (https://cloud.google.com/monitoring/api/v3/filters) specifies which metric
+                /// descriptors are to be returned. For example, the following filter matches all custom metrics
                 /// (https://cloud.google.com/monitoring/custom-metrics): metric.type =
                 /// starts_with("custom.googleapis.com/")
                 /// </summary>
@@ -3718,17 +3718,17 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// A positive number that is the maximum number of results to return. The default and maximum value is
-                /// 10,000. If a page_size &amp;lt;= 0 or &amp;gt; 10,000 is submitted, will instead return a maximum of
-                /// 10,000 results.
+                /// Optional. A positive number that is the maximum number of results to return. The default and maximum
+                /// value is 10,000. If a page_size &amp;lt;= 0 or &amp;gt; 10,000 is submitted, will instead return a
+                /// maximum of 10,000 results.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// If this field is not empty then it must contain the nextPageToken value returned by a previous call
-                /// to this method. Using this field causes the method to return additional results from the previous
-                /// method call.
+                /// Optional. If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return additional results from
+                /// the previous method call.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -10716,6 +10716,15 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertRule")]
         public virtual string AlertRule { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to disable metric existence validation for this condition.This allows alerting policies to
+        /// be defined on metrics that do not yet exist, improving advanced customer workflows such as configuring
+        /// alerting policies using Terraform.Users with the monitoring.alertPolicyViewer role are able to see the name
+        /// of the non-existent metric in the alerting policy condition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableMetricValidation")]
+        public virtual System.Nullable<bool> DisableMetricValidation { get; set; }
 
         /// <summary>
         /// Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this
