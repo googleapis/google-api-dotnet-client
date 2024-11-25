@@ -293,6 +293,7 @@ namespace Google.Apis.Contactcenterinsights.v1
             {
                 this.service = service;
                 AnalysisRules = new AnalysisRulesResource(service);
+                AuthorizedViewSet = new AuthorizedViewSetResource(service);
                 Conversations = new ConversationsResource(service);
                 EncryptionSpec = new EncryptionSpecResource(service);
                 Insightsdata = new InsightsdataResource(service);
@@ -617,6 +618,160 @@ namespace Google.Apis.Contactcenterinsights.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    }
+                }
+            }
+
+            /// <summary>Gets the AuthorizedViewSet resource.</summary>
+            public virtual AuthorizedViewSetResource AuthorizedViewSet { get; }
+
+            /// <summary>The "authorizedViewSet" collection of methods.</summary>
+            public class AuthorizedViewSetResource
+            {
+                private const string Resource = "authorizedViewSet";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuthorizedViewSetResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    AuthorizedView = new AuthorizedViewResource(service);
+                }
+
+                /// <summary>Gets the AuthorizedView resource.</summary>
+                public virtual AuthorizedViewResource AuthorizedView { get; }
+
+                /// <summary>The "authorizedView" collection of methods.</summary>
+                public class AuthorizedViewResource
+                {
+                    private const string Resource = "authorizedView";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AuthorizedViewResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets conversation statistics.</summary>
+                    /// <param name="location">Required. The location of the conversations.</param>
+                    public virtual CalculateStatsRequest CalculateStats(string location)
+                    {
+                        return new CalculateStatsRequest(this.service, location);
+                    }
+
+                    /// <summary>Gets conversation statistics.</summary>
+                    public class CalculateStatsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
+                    {
+                        /// <summary>Constructs a new CalculateStats request.</summary>
+                        public CalculateStatsRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+                        {
+                            Location = location;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The location of the conversations.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Location { get; private set; }
+
+                        /// <summary>
+                        /// A filter to reduce results to a specific subset. This field is useful for getting statistics
+                        /// about conversations with specific properties.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "calculateStats";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+location}:calculateStats";
+
+                        /// <summary>Initializes CalculateStats parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedView/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Query metrics.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="location">
+                    /// Required. The location of the data. "projects/{project}/locations/{location}"
+                    /// </param>
+                    public virtual QueryMetricsRequest QueryMetrics(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest body, string location)
+                    {
+                        return new QueryMetricsRequest(this.service, body, location);
+                    }
+
+                    /// <summary>Query metrics.</summary>
+                    public class QueryMetricsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new QueryMetrics request.</summary>
+                        public QueryMetricsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest body, string location) : base(service)
+                        {
+                            Location = location;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The location of the data. "projects/{project}/locations/{location}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Location { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1QueryMetricsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "queryMetrics";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+location}:queryMetrics";
+
+                        /// <summary>Initializes QueryMetrics parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedView/[^/]+$",
+                            });
+                        }
                     }
                 }
             }
@@ -2904,7 +3059,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
@@ -2918,7 +3073,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleProtobufEmpty>
                 {
