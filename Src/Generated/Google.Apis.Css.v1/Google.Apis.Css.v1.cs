@@ -1310,11 +1310,11 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferMobileLink")]
         public virtual string HeadlineOfferMobileLink { get; set; }
 
-        /// <summary>Headline Price of the aggregate offer.</summary>
+        /// <summary>Headline Price of the CSS Product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferPrice")]
         public virtual Price HeadlineOfferPrice { get; set; }
 
-        /// <summary>Headline Price of the aggregate offer.</summary>
+        /// <summary>Headline Price of the CSS Product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferShippingPrice")]
         public virtual Price HeadlineOfferShippingPrice { get; set; }
 
@@ -1325,7 +1325,7 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headlineOfferSubscriptionCost")]
         public virtual HeadlineOfferSubscriptionCost HeadlineOfferSubscriptionCost { get; set; }
 
-        /// <summary>High Price of the aggregate offer.</summary>
+        /// <summary>High Price of the CSS Product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highPrice")]
         public virtual Price HighPrice { get; set; }
 
@@ -1351,7 +1351,7 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
         public virtual string ItemGroupId { get; set; }
 
-        /// <summary>Low Price of the aggregate offer.</summary>
+        /// <summary>Low Price of the CSS Product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowPrice")]
         public virtual Price LowPrice { get; set; }
 
@@ -1369,7 +1369,7 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipack")]
         public virtual System.Nullable<long> Multipack { get; set; }
 
-        /// <summary>The number of aggregate offers.</summary>
+        /// <summary>The number of CSS Products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfOffers")]
         public virtual System.Nullable<long> NumberOfOffers { get; set; }
 
@@ -1483,7 +1483,7 @@ namespace Google.Apis.Css.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The processed CSS Product(a.k.a Aggregate Offer internally).</summary>
+    /// <summary>The processed CSS Product.</summary>
     public class CssProduct : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A list of product attributes.</summary>
@@ -1797,7 +1797,7 @@ namespace Google.Apis.Css.v1.Data
     /// <summary>The destination status of the product status.</summary>
     public class DestinationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is approved.</summary>
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the CSS Product is approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvedCountries")]
         public virtual System.Collections.Generic.IList<string> ApprovedCountries { get; set; }
 
@@ -1805,11 +1805,11 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
 
-        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is disapproved.</summary>
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the CSS Product is disapproved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountries")]
         public virtual System.Collections.Generic.IList<string> DisapprovedCountries { get; set; }
 
-        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the aggregate offer is pending approval.</summary>
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) where the CSS Product is pending approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingCountries")]
         public virtual System.Collections.Generic.IList<string> PendingCountries { get; set; }
 
@@ -1869,7 +1869,7 @@ namespace Google.Apis.Css.v1.Data
     /// <summary>The ItemLevelIssue of the product status.</summary>
     public class ItemLevelIssue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of country codes (ISO 3166-1 alpha-2) where issue applies to the aggregate offer.</summary>
+        /// <summary>List of country codes (ISO 3166-1 alpha-2) where issue applies to the CSS Product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicableCountries")]
         public virtual System.Collections.Generic.IList<string> ApplicableCountries { get; set; }
 
@@ -1901,7 +1901,7 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
         public virtual string Resolution { get; set; }
 
-        /// <summary>How this issue affects serving of the aggregate offer.</summary>
+        /// <summary>How this issue affects serving of the CSS Product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servability")]
         public virtual string Servability { get; set; }
 
