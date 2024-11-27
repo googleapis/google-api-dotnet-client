@@ -14570,6 +14570,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single use promotion code.</summary>
+    public class OneTimeCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a one-time transaction.</summary>
     public class OneTimeExternalTransaction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15587,6 +15594,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The promotion applied on this item when purchased.</summary>
+    public class SignupPromotion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A one-time code was applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeCode")]
+        public virtual OneTimeCode OneTimeCode { get; set; }
+
+        /// <summary>A vanity code was applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vanityCode")]
+        public virtual VanityCode VanityCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Holds data specific to Split APKs.</summary>
     public class SplitApkMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16259,6 +16281,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The purchased product ID (for example, 'monthly001').</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
+
+        /// <summary>Promotion details about this item. Only set if a promotion was applied during signup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signupPromotion")]
+        public virtual SignupPromotion SignupPromotion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17244,6 +17270,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The name of the permission requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A multiple use, predefined promotion code.</summary>
+    public class VanityCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The promotion code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionCode")]
+        public virtual string PromotionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
