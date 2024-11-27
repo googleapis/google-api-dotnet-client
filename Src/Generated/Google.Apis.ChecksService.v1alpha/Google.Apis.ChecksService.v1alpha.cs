@@ -1950,6 +1950,10 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual string DataType { get; set; }
 
+        /// <summary>Optional. Whether the finding was marked as a false positive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falsePositive")]
+        public virtual System.Nullable<bool> FalsePositive { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
