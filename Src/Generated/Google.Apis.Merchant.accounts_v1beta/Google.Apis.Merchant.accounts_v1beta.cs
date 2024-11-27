@@ -2914,7 +2914,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
         /// `ListAccounts` method. This method will produce the same results as calling `ListsAccounts` with the
         /// following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))`
         /// </summary>
-        /// <param name="provider">Required. The parent account. Format: `accounts/{account}`</param>
+        /// <param name="provider">Required. The aggregation service provider. Format: `providers/{providerId}`</param>
         public virtual ListSubaccountsRequest ListSubaccounts(string provider)
         {
             return new ListSubaccountsRequest(this.service, provider);
@@ -2934,7 +2934,7 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 InitParameters();
             }
 
-            /// <summary>Required. The parent account. Format: `accounts/{account}`</summary>
+            /// <summary>Required. The aggregation service provider. Format: `providers/{providerId}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("provider", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Provider { get; private set; }
 
@@ -4308,8 +4308,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Nullable<bool> AcceptExchange { get; set; }
 
         /// <summary>
-        /// Required. The countries of sale where the return policy applies. The values must be a valid 2 letter ISO
-        /// 3166 code.
+        /// Required. Immutable. The countries of sale where the return policy applies. The values must be a valid 2
+        /// letter ISO 3166 code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
         public virtual System.Collections.Generic.IList<string> Countries { get; set; }
@@ -4321,11 +4321,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Collections.Generic.IList<string> ItemConditions { get; set; }
 
         /// <summary>
-        /// Required. This field represents the unique user-defined label of the return policy. It is important to note
-        /// that the same label cannot be used in different return policies for the same country. Unless a product
-        /// specifies a specific label attribute, policies will be automatically labeled as 'default'. To assign a
-        /// custom return policy to certain product groups, follow the instructions provided in the [Return policy
-        /// label] (https://support.google.com/merchants/answer/9445425). The label can contain up to 50 characters.
+        /// Required. Immutable. This field represents the unique user-defined label of the return policy. It is
+        /// important to note that the same label cannot be used in different return policies for the same country.
+        /// Unless a product specifies a specific label attribute, policies will be automatically labeled as 'default'.
+        /// To assign a custom return policy to certain product groups, follow the instructions provided in the [Return
+        /// policy label] (https://support.google.com/merchants/answer/9445425). The label can contain up to 50
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
