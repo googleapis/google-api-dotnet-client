@@ -544,6 +544,14 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRecognitionVerdict")]
         public virtual System.Collections.Generic.IList<string> DeviceRecognitionVerdict { get; set; }
 
+        /// <summary>
+        /// Contains legacy details about the integrity of the device the app is running on. Only for devices with
+        /// Android version T or higher and only for apps opted in to the new verdicts. Only available during the
+        /// transition period to the new verdicts system and will be removed afterwards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyDeviceRecognitionVerdict")]
+        public virtual System.Collections.Generic.IList<string> LegacyDeviceRecognitionVerdict { get; set; }
+
         /// <summary>Details about the device activity of the device the app is running on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentDeviceActivity")]
         public virtual RecentDeviceActivity RecentDeviceActivity { get; set; }
