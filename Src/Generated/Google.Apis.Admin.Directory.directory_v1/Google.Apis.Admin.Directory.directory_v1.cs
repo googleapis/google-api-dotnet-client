@@ -13461,6 +13461,26 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assigneeType")]
         public virtual string AssigneeType { get; set; }
 
+        /// <summary>
+        /// Optional. Note: Feature is available to Enterprise Standard, Enterprise Plus, Google Workspace for Education
+        /// Plus and Cloud Identity Premium customers. No additional setup is needed to use the feature. The condition
+        /// associated with this role assignment. A `RoleAssignment` with the `condition` field set will only take
+        /// effect when the resource being accessed meets the condition. If `condition` is empty, the role (`role_id`)
+        /// is applied to the actor (`assigned_to`) at the scope (`scope_type`) unconditionally. Currently, only two
+        /// conditions are supported: - To make the `RoleAssignment` only applicable to [Security
+        /// Groups](https://cloud.google.com/identity/docs/groups#group_types):
+        /// `api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['groups.security'])
+        /// &amp;amp;&amp;amp; resource.type == 'cloudidentity.googleapis.com/Group'` - To make the `RoleAssignment` not
+        /// applicable to [Security Groups](https://cloud.google.com/identity/docs/groups#group_types):
+        /// `!api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['groups.security'])
+        /// &amp;amp;&amp;amp; resource.type == 'cloudidentity.googleapis.com/Group'` Currently, the two condition
+        /// strings have to be verbatim and they only work with the following [pre-built administrator
+        /// roles](https://support.google.com/a/answer/2405986): - Groups Editor - Groups Reader The condition follows
+        /// [Cloud IAM condition syntax](https://cloud.google.com/iam/docs/conditions-overview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
