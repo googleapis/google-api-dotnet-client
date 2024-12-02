@@ -2407,10 +2407,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// <param name="parent">
             /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
             /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to
-            /// the Group to which the Membership belongs to. group_id can be a wildcard collection id "-". When a
-            /// group_id is specified, the membership graph will be constrained to paths between the member (defined in
-            /// the query) and the parent. If a wildcard collection is provided, all membership paths connected to the
-            /// member will be returned.
+            /// the Group to which the Membership belongs to. group_id can be a wildcard collection id "-". When
+            /// `group_id` is specified, the membership graph will be constrained to paths between the member (defined
+            /// in the query) and the parent. If a wildcard collection is provided, all membership paths connected to
+            /// the member will be returned.
             /// </param>
             public virtual GetMembershipGraphRequest GetMembershipGraph(string parent)
             {
@@ -2437,7 +2437,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to
                 /// search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID
                 /// assigned to the Group to which the Membership belongs to. group_id can be a wildcard collection id
-                /// "-". When a group_id is specified, the membership graph will be constrained to paths between the
+                /// "-". When `group_id` is specified, the membership graph will be constrained to paths between the
                 /// member (defined in the query) and the parent. If a wildcard collection is provided, all membership
                 /// paths connected to the member will be returned.
                 /// </summary>
@@ -2788,7 +2788,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The next_page_token value returned from a previous list request, if any</summary>
+                /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -2901,7 +2901,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                /// <summary>The `next_page_token` value returned from a previous list request, if any.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -2913,7 +2913,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 /// query: `member_key_id == 'member_key_id_value' &amp;amp;&amp;amp; in labels` Query may optionally
                 /// contain equality operators on the parent of the group restricting the search within a particular
                 /// customer, e.g. `parent == 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for
-                /// example, 'C046psxkn'). This filtering is only supported for Admins with groups read permissons on
+                /// example, 'C046psxkn'). This filtering is only supported for Admins with groups read permissions on
                 /// the input customer. Example query: `member_key_id == 'member_key_id_value' &amp;amp;&amp;amp; in
                 /// labels &amp;amp;&amp;amp; parent == 'customers/C046psxkn'`
                 /// </summary>
@@ -4997,15 +4997,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may use
             /// `customers/my_customer` to specify your own organization. When no customer is mentioned it will be
             /// default to customers/my_customer. A maximum of one customer clause can be used. The above clauses can
-            /// only be combined together in a single filter expression with the AND operator.
+            /// only be combined together in a single filter expression with the `&amp;amp;&amp;amp;` operator.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>
-            /// Optional. The maximum number of results to return. The service may return fewer than this value. If
-            /// omitted (or defaulted to zero) the server will default to 50. The maximum allowed value is 100, though
-            /// requests with page_size greater than that will be interpreted as 100.
+            /// Optional. The maximum number of results to return. The service can return fewer than this number. If
+            /// omitted or set to 0, the default is 50 results per page. The maximum allowed value is 100. `page_size`
+            /// values greater than 100 default to 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -5792,7 +5792,9 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
     /// <summary>
     /// A Device within the Cloud Identity Devices API. Represents a Device known to Google Cloud, independent of the
-    /// device ownership, type, and whether it is assigned or in use by a user.
+    /// device ownership, type, and whether it is assigned or in use by a user. Important: Device API scopes require
+    /// that you use domain-wide delegation to access the API. For more information, see [Set up the Devices
+    /// API](https://cloud.google.com/identity/docs/how-to/setup-devices).
     /// </summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7192,7 +7194,9 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-        /// `devices/{device}`, where device is the unique id assigned to the Device.
+        /// `devices/{device}`, where device is the unique id assigned to the Device. Important: Device API scopes
+        /// require that you use domain-wide delegation to access the API. For more information, see [Set up the Devices
+        /// API](https://cloud.google.com/identity/docs/how-to/setup-devices).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8268,8 +8272,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     {
         /// <summary>
         /// Each edge contains information about the member that belongs to this group. Note: Fields returned here will
-        /// help identify the specific Membership resource (e.g name, preferred_member_key and role), but may not be a
-        /// comprehensive list of all fields.
+        /// help identify the specific Membership resource (e.g `name`, `preferred_member_key` and `role`), but may not
+        /// be a comprehensive list of all fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edges")]
         public virtual System.Collections.Generic.IList<Membership> Edges { get; set; }
@@ -8584,7 +8588,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>
         /// Output only. The decimal sort order of this PolicyQuery. The value is relative to all other policies with
-        /// the same setting type within the whole customer. (There are no duplicates within this set.)
+        /// the same setting type for the customer. (There are no duplicates within this set).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
         public virtual System.Nullable<double> SortOrder { get; set; }
