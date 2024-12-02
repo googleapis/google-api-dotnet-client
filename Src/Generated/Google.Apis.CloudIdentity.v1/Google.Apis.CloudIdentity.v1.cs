@@ -2941,7 +2941,7 @@ namespace Google.Apis.CloudIdentity.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The next_page_token value returned from a previous list request, if any</summary>
+                /// <summary>The `next_page_token` value returned from a previous list request, if any</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -3056,7 +3056,7 @@ namespace Google.Apis.CloudIdentity.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                /// <summary>The `next_page_token` value returned from a previous list request, if any.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -3068,7 +3068,7 @@ namespace Google.Apis.CloudIdentity.v1
                 /// query: `member_key_id == 'member_key_id_value' &amp;amp;&amp;amp; in labels` Query may optionally
                 /// contain equality operators on the parent of the group restricting the search within a particular
                 /// customer, e.g. `parent == 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for
-                /// example, 'C046psxkn'). This filtering is only supported for Admins with groups read permissons on
+                /// example, 'C046psxkn'). This filtering is only supported for Admins with groups read permissions on
                 /// the input customer. Example query: `member_key_id == 'member_key_id_value' &amp;amp;&amp;amp; in
                 /// labels &amp;amp;&amp;amp; parent == 'customers/C046psxkn'`
                 /// </summary>
@@ -3167,7 +3167,7 @@ namespace Google.Apis.CloudIdentity.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                /// <summary>The `next_page_token` value returned from a previous list request, if any.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -5975,7 +5975,9 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format:
-        /// `devices/{device}`, where device is the unique id assigned to the Device.
+        /// `devices/{device}`, where device is the unique id assigned to the Device. Important: Device API scopes
+        /// require that you use domain-wide delegation to access the API. For more information, see [Set up the Devices
+        /// API](https://cloud.google.com/identity/docs/how-to/setup-devices).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7039,8 +7041,8 @@ namespace Google.Apis.CloudIdentity.v1.Data
     {
         /// <summary>
         /// Each edge contains information about the member that belongs to this group. Note: Fields returned here will
-        /// help identify the specific Membership resource (e.g name, preferred_member_key and role), but may not be a
-        /// comprehensive list of all fields.
+        /// help identify the specific Membership resource (e.g `name`, `preferred_member_key` and `role`), but may not
+        /// be a comprehensive list of all fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edges")]
         public virtual System.Collections.Generic.IList<Membership> Edges { get; set; }
