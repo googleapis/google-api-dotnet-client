@@ -2911,12 +2911,11 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a space with no members. Can be used to create a named space, or a group chat in `Import mode`.
-        /// Spaces grouped by topics aren't supported. For an example, see [Create a
-        /// space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message
-        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
-        /// Workspace organization might already use this display name. Supports the following types of
-        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// Creates a space with no members. Can be used to create a named space, or a group chat in `Import mode`. For
+        /// an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). If you receive
+        /// the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space
+        /// within the Google Workspace organization might already use this display name. Supports the following types
+        /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
         /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
         /// Preview](https://developers.google.com/workspace/preview) - [User
@@ -2930,12 +2929,11 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a space with no members. Can be used to create a named space, or a group chat in `Import mode`.
-        /// Spaces grouped by topics aren't supported. For an example, see [Create a
-        /// space](https://developers.google.com/workspace/chat/create-spaces). If you receive the error message
-        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
-        /// Workspace organization might already use this display name. Supports the following types of
-        /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
+        /// Creates a space with no members. Can be used to create a named space, or a group chat in `Import mode`. For
+        /// an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). If you receive
+        /// the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space
+        /// within the Google Workspace organization might already use this display name. Supports the following types
+        /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
         /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
         /// Preview](https://developers.google.com/workspace/preview) - [User
