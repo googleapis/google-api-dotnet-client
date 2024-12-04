@@ -6197,6 +6197,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("personalPlayStoreMode")]
         public virtual string PersonalPlayStoreMode { get; set; }
 
+        /// <summary>Optional. Controls whether a private space is allowed on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateSpacePolicy")]
+        public virtual string PrivateSpacePolicy { get; set; }
+
         /// <summary>If true, screen capture is disabled for all users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenCaptureDisabled")]
         public virtual System.Nullable<bool> ScreenCaptureDisabled { get; set; }
@@ -6423,7 +6427,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>
         /// If true, this disables the Lock Screen
         /// (https://source.android.com/docs/core/display/multi_display/lock-screen) for primary and/or secondary
-        /// displays.
+        /// displays. This policy is supported only in dedicated device management mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyguardDisabled")]
         public virtual System.Nullable<bool> KeyguardDisabled { get; set; }
