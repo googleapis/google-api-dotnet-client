@@ -145,19 +145,27 @@ namespace Google.Apis.Requests.Parameters
             var collection = new ParameterCollection();
             foreach (KeyValuePair<string, object> pair in dictionary)
             {
+                // Here we do a simple cache of the pair key into a local variable
+                // before we go inspecting the pair's value.
+                // If we don't do this and use pair.Key directly when we add the collection items
+                // below instead, it seems the key can end up evaluating to null in certain environments
+                // (e.g. Azure App Service and Azure Function App on .net 9) for unclear reasons.
+                // Ref: https://github.com/googleapis/google-api-dotnet-client/issues/2897
+                var pairKey = pair.Key;
+                
                 // Try parsing the value of the pair as an enumerable.
                 var valueAsEnumerable = pair.Value as IEnumerable;
                 if (!(pair.Value is string) && valueAsEnumerable != null)
                 {
                     foreach (var value in valueAsEnumerable)
                     {
-                        collection.Add(pair.Key, Util.Utilities.ConvertToString(value));
+                        collection.Add(pairKey, Util.Utilities.ConvertToString(value));
                     }
                 }
                 else
                 {
                     // Otherwise just convert it to a string.
-                    collection.Add(pair.Key, pair.Value == null ? null : Util.Utilities.ConvertToString(pair.Value));
+                    collection.Add(pairKey, pair.Value == null ? null : Util.Utilities.ConvertToString(pair.Value));
                 }
             }
             return collection;
