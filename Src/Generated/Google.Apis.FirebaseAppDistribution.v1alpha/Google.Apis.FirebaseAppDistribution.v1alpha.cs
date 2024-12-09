@@ -2033,6 +2033,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An app.</summary>
     public class GoogleFirebaseAppdistroV1alphaApp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>App bundle test certificate generated for the app.</summary>
@@ -2111,6 +2112,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for `CreateReleaseNotes`.</summary>
     public class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The actual release notes body from the user</summary>
@@ -2121,6 +2123,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for `CreateReleaseNotes`.</summary>
     public class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2265,6 +2268,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for `EnableAccessOnRelease`.</summary>
     public class GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2298,6 +2302,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for `EnableAccessOnRelease`.</summary>
     public class GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2326,6 +2331,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for `GetUploadStatus`.</summary>
     public class GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The error code associated with (only set on "FAILURE")</summary>
@@ -2380,8 +2386,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A JWT token.</summary>
     public class GoogleFirebaseAppdistroV1alphaJwt : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The JWT token (three Base64URL-encoded strings joined by dots).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
@@ -2471,6 +2479,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for `ProvisionApp`.</summary>
     public class GoogleFirebaseAppdistroV1alphaProvisionAppResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2629,8 +2638,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Release notes for a release.</summary>
     public class GoogleFirebaseAppdistroV1alphaReleaseNotes : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The actual release notes text from the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseNotes")]
         public virtual string ReleaseNotes { get; set; }
 
@@ -2702,6 +2713,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The test case that was used to generate this release test. Note: The test case may have changed or
+        /// been deleted since the release test was created. Format:
+        /// `projects/{project_number}/apps/{app}/testCases/{test_case}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
+        public virtual string TestCase { get; set; }
 
         /// <summary>Output only. The state of the release test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testState")]
