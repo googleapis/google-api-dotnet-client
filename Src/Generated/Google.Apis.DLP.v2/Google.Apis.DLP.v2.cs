@@ -16925,6 +16925,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>A sample true positive for this infoType.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("example")]
+        public virtual string Example { get; set; }
+
         /// <summary>Internal name of the infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
