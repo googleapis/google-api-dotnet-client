@@ -2833,6 +2833,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// </summary>
     public class Documentation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional information about the IAM configuration. This is typically used to link to documentation about a
+        /// product's IAM roles and permissions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalIamInfo")]
+        public virtual string AdditionalIamInfo { get; set; }
+
         /// <summary>The URL to the root of documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentationRootUrl")]
         public virtual string DocumentationRootUrl { get; set; }
@@ -3329,6 +3336,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>Some settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
         public virtual CommonLanguageSettings Common { get; set; }
+
+        /// <summary>
+        /// Map of service names to renamed services. Keys are the package relative service names and values are the
+        /// name to be used for the service client and call options. publishing: go_settings: renamed_services:
+        /// Publisher: TopicAdmin
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renamedServices")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RenamedServices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
