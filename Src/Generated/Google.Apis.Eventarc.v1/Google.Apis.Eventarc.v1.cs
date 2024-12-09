@@ -1413,7 +1413,7 @@ namespace Google.Apis.Eventarc.v1
 
                     /// <summary>
                     /// Required. The user-provided ID to be assigned to the Enrollment. It should match the format
-                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("enrollmentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string EnrollmentId { get; set; }
@@ -2076,7 +2076,7 @@ namespace Google.Apis.Eventarc.v1
 
                     /// <summary>
                     /// Required. The user-provided ID to be assigned to the GoogleApiSource. It should match the format
-                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
+                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("googleApiSourceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string GoogleApiSourceId { get; set; }
@@ -2739,7 +2739,7 @@ namespace Google.Apis.Eventarc.v1
 
                     /// <summary>
                     /// Required. The user-provided ID to be assigned to the MessageBus. It should match the format
-                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)
+                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("messageBusId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MessageBusId { get; set; }
@@ -3011,7 +3011,7 @@ namespace Google.Apis.Eventarc.v1
                 }
 
                 /// <summary>List message buses.</summary>
-                /// <param name="parent">Required. The parent collection to list triggers on.</param>
+                /// <param name="parent">Required. The parent collection to list message buses on.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -3027,7 +3027,7 @@ namespace Google.Apis.Eventarc.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent collection to list triggers on.</summary>
+                    /// <summary>Required. The parent collection to list message buses on.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -3459,7 +3459,7 @@ namespace Google.Apis.Eventarc.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -3474,7 +3474,7 @@ namespace Google.Apis.Eventarc.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.Empty>
                 {
@@ -3752,7 +3752,10 @@ namespace Google.Apis.Eventarc.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. The user-provided ID to be assigned to the Pipeline.</summary>
+                    /// <summary>
+                    /// Required. The user-provided ID to be assigned to the Pipeline. It should match the format
+                    /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pipelineId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PipelineId { get; set; }
 
@@ -5636,6 +5639,10 @@ namespace Google.Apis.Eventarc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
         public virtual string CryptoKeyName { get; set; }
 
+        /// <summary>Optional. Resource labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// Required. The resource name of the channel. Must be unique within the location on the project and must be in
         /// `projects/{project}/locations/{location}/channels/{channel_id}` format.
@@ -5774,6 +5781,10 @@ namespace Google.Apis.Eventarc.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Resource labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. The name of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6554,73 +6565,74 @@ namespace Google.Apis.Eventarc.v1.Data
         /// <summary>
         /// Optional. The CEL expression used to modify how the destination-bound HTTP request is constructed. If a
         /// binding expression is not specified here, the message is treated as a CloudEvent and is mapped to the HTTP
-        /// request according to the CloudEvent HTTP Protocol Binding Binary Content Mode. In this representation, all
-        /// fields except the `data` and `datacontenttype` field on the message are mapped to HTTP request headers with
-        /// a prefix of `ce-`. To construct the HTTP request payload and the value of the content-type HTTP header, the
-        /// payload format is defined as follows: 1) Use the output_payload_format_type on the Pipeline.Destination if
-        /// it is set, else: 2) Use the input_payload_format_type on the Pipeline if it is set, else: 3) Treat the
-        /// payload as opaque binary data. The `data` field of the message is converted to the payload format or left
-        /// as-is for case 3) and then attached as the payload of the HTTP request. The `content-type` header on the
-        /// HTTP request is set to the payload format type or left empty for case 3). However, if a mediation has
-        /// updated the `datacontenttype` field on the message so that it is not the same as the payload format type but
-        /// it is still a prefix of the payload format type, then the `content-type` header on the HTTP request is set
-        /// to this `datacontenttype` value. For example, if the `datacontenttype` is "application/json" and the payload
-        /// format type is "application/json; charset=utf-8", then the `content-type` header on the HTTP request is set
-        /// to "application/json; charset=utf-8". If a non-empty binding expression is specified then this expression is
-        /// used to modify the default CloudEvent HTTP Protocol Binding Binary Content representation. The result of the
-        /// CEL expression must be a map of key/value pairs which is used as follows: - If a map named `headers` exists
-        /// on the result of the expression, then its key/value pairs are directly mapped to the HTTP request headers.
-        /// The headers values are constructed from the corresponding value type's canonical representation. If the
-        /// `headers` field doesn't exist then the resulting HTTP request will be the headers of the CloudEvent HTTP
-        /// Binding Binary Content Mode representation of the final message. Note: If the specified binding expression,
-        /// has updated the `datacontenttype` field on the message so that it is not the same as the payload format type
-        /// but it is still a prefix of the payload format type, then the `content-type` header in the `headers` map is
-        /// set to this `datacontenttype` value. - If a field named `body` exists on the result of the expression then
-        /// its value is directly mapped to the body of the request. If the value of the `body` field is of type bytes
-        /// or string then it is used for the HTTP request body as-is, with no conversion. If the body field is of any
-        /// other type then it is converted to a JSON string. If the body field does not exist then the resulting
-        /// payload of the HTTP request will be data value of the CloudEvent HTTP Binding Binary Content Mode
-        /// representation of the final message as described earlier. - Any other fields in the resulting expression
-        /// will be ignored. The CEL expression may access the incoming CloudEvent message in its definition, as
-        /// follows: - The `data` field of the incoming CloudEvent message can be accessed using the `message.data`
-        /// value. Subfields of `message.data` may also be accessed if an input_payload_format has been specified on the
-        /// Pipeline. - Each attribute of the incoming CloudEvent message can be accessed using the `message.` value,
-        /// where is replaced with the name of the attribute. - Existing headers can be accessed in the CEL expression
-        /// using the `headers` variable. The `headers` variable defines a map of key/value pairs corresponding to the
-        /// HTTP headers of the CloudEvent HTTP Binding Binary Content Mode representation of the final message as
-        /// described earlier. For example, the following CEL expression can be used to construct an HTTP request by
-        /// adding an additional header to the HTTP headers of the CloudEvent HTTP Binding Binary Content Mode
-        /// representation of the final message and by overwriting the body of the request:
+        /// request according to the CloudEvent HTTP Protocol Binding Binary Content Mode
+        /// (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode).
+        /// In this representation, all fields except the `data` and `datacontenttype` field on the message are mapped
+        /// to HTTP request headers with a prefix of `ce-`. To construct the HTTP request payload and the value of the
+        /// content-type HTTP header, the payload format is defined as follows: 1) Use the output_payload_format_type on
+        /// the Pipeline.Destination if it is set, else: 2) Use the input_payload_format_type on the Pipeline if it is
+        /// set, else: 3) Treat the payload as opaque binary data. The `data` field of the message is converted to the
+        /// payload format or left as-is for case 3) and then attached as the payload of the HTTP request. The
+        /// `content-type` header on the HTTP request is set to the payload format type or left empty for case 3).
+        /// However, if a mediation has updated the `datacontenttype` field on the message so that it is not the same as
+        /// the payload format type but it is still a prefix of the payload format type, then the `content-type` header
+        /// on the HTTP request is set to this `datacontenttype` value. For example, if the `datacontenttype` is
+        /// "application/json" and the payload format type is "application/json; charset=utf-8", then the `content-type`
+        /// header on the HTTP request is set to "application/json; charset=utf-8". If a non-empty binding expression is
+        /// specified then this expression is used to modify the default CloudEvent HTTP Protocol Binding Binary Content
+        /// representation. The result of the CEL expression must be a map of key/value pairs which is used as follows:
+        /// - If a map named `headers` exists on the result of the expression, then its key/value pairs are directly
+        /// mapped to the HTTP request headers. The headers values are constructed from the corresponding value type's
+        /// canonical representation. If the `headers` field doesn't exist then the resulting HTTP request will be the
+        /// headers of the CloudEvent HTTP Binding Binary Content Mode representation of the final message. Note: If the
+        /// specified binding expression, has updated the `datacontenttype` field on the message so that it is not the
+        /// same as the payload format type but it is still a prefix of the payload format type, then the `content-type`
+        /// header in the `headers` map is set to this `datacontenttype` value. - If a field named `body` exists on the
+        /// result of the expression then its value is directly mapped to the body of the request. If the value of the
+        /// `body` field is of type bytes or string then it is used for the HTTP request body as-is, with no conversion.
+        /// If the body field is of any other type then it is converted to a JSON string. If the body field does not
+        /// exist then the resulting payload of the HTTP request will be data value of the CloudEvent HTTP Binding
+        /// Binary Content Mode representation of the final message as described earlier. - Any other fields in the
+        /// resulting expression will be ignored. The CEL expression may access the incoming CloudEvent message in its
+        /// definition, as follows: - The `data` field of the incoming CloudEvent message can be accessed using the
+        /// `message.data` value. Subfields of `message.data` may also be accessed if an input_payload_format has been
+        /// specified on the Pipeline. - Each attribute of the incoming CloudEvent message can be accessed using the
+        /// `message.` value, where is replaced with the name of the attribute. - Existing headers can be accessed in
+        /// the CEL expression using the `headers` variable. The `headers` variable defines a map of key/value pairs
+        /// corresponding to the HTTP headers of the CloudEvent HTTP Binding Binary Content Mode representation of the
+        /// final message as described earlier. For example, the following CEL expression can be used to construct an
+        /// HTTP request by adding an additional header to the HTTP headers of the CloudEvent HTTP Binding Binary
+        /// Content Mode representation of the final message and by overwriting the body of the request:
         /// ```
-        /// { "headers":
-        /// headers.merge({"new-header-key": "new-header-value"}), "body": "new-body" }
+        /// {
+        /// "headers": headers.merge({"new-header-key": "new-header-value"}), "body": "new-body" }
         /// ```
-        /// Additionally, the following
-        /// CEL extension functions are provided for use in this CEL expression: - toBase64Url: map.toBase64Url()
-        /// -&amp;gt; string - Converts a CelValue to a base64url encoded string - toJsonString: map.toJsonString()
-        /// -&amp;gt; string - Converts a CelValue to a JSON string - merge: map1.merge(map2) -&amp;gt; map3 - Merges
-        /// the passed CEL map with the existing CEL map the function is applied to. - If the same key exists in both
-        /// maps, if the key's value is type map both maps are merged else the value from the passed map is used. -
-        /// denormalize: map.denormalize() -&amp;gt; map - Denormalizes a CEL map such that every value of type map or
-        /// key in the map is expanded to return a single level map. - The resulting keys are "." separated indices of
-        /// the map keys. - For example: { "a": 1, "b": { "c": 2, "d": 3 } "e": [4, 5] } .denormalize() -&amp;gt; { "a":
-        /// 1, "b.c": 2, "b.d": 3, "e.0": 4, "e.1": 5 } - setField: map.setField(key, value) -&amp;gt; message - Sets
-        /// the field of the message with the given key to the given value. - If the field is not present it will be
-        /// added. - If the field is present it will be overwritten. - The key can be a dot separated path to set a
-        /// field in a nested message. - Key must be of type string. - Value may be any valid type. - removeFields:
-        /// map.removeFields([key1, key2, ...]) -&amp;gt; message - Removes the fields of the map with the given keys. -
-        /// The keys can be a dot separated path to remove a field in a nested message. - If a key is not found it will
-        /// be ignored. - Keys must be of type string. - toMap: [map1, map2, ...].toMap() -&amp;gt; map - Converts a CEL
-        /// list of CEL maps to a single CEL map - toDestinationPayloadFormat():
-        /// message.data.toDestinationPayloadFormat() -&amp;gt; string or bytes - Converts the message data to the
-        /// destination payload format specified in Pipeline.Destination.output_payload_format - This function is meant
-        /// to be applied to the message.data field. - If the destination payload format is not set, the function will
-        /// return the message data unchanged. - toCloudEventJsonWithPayloadFormat:
-        /// message.toCloudEventJsonWithPayloadFormat() -&amp;gt; map - Converts a message to the corresponding
-        /// structure of JSON format for CloudEvents - This function applies toDestinationPayloadFormat() to the message
-        /// data. It also sets the corresponding datacontenttype of the CloudEvent, as indicated by
-        /// Pipeline.Destination.output_payload_format. If no output_payload_format is set it will use the existing
-        /// datacontenttype on the CloudEvent if present, else leave datacontenttype absent. - This function expects
+        /// - The default
+        /// binding for the message payload can be accessed using the `body` variable. It conatins a string
+        /// representation of the message payload in the format specified by the `output_payload_format` field. If the
+        /// `input_payload_format` field is not set, the `body` variable contains the same message payload bytes that
+        /// were published. Additionally, the following CEL extension functions are provided for use in this CEL
+        /// expression: - toBase64Url: map.toBase64Url() -&amp;gt; string - Converts a CelValue to a base64url encoded
+        /// string - toJsonString: map.toJsonString() -&amp;gt; string - Converts a CelValue to a JSON string - merge:
+        /// map1.merge(map2) -&amp;gt; map3 - Merges the passed CEL map with the existing CEL map the function is
+        /// applied to. - If the same key exists in both maps, if the key's value is type map both maps are merged else
+        /// the value from the passed map is used. - denormalize: map.denormalize() -&amp;gt; map - Denormalizes a CEL
+        /// map such that every value of type map or key in the map is expanded to return a single level map. - The
+        /// resulting keys are "." separated indices of the map keys. - For example: { "a": 1, "b": { "c": 2, "d": 3 }
+        /// "e": [4, 5] } .denormalize() -&amp;gt; { "a": 1, "b.c": 2, "b.d": 3, "e.0": 4, "e.1": 5 } - setField:
+        /// map.setField(key, value) -&amp;gt; message - Sets the field of the message with the given key to the given
+        /// value. - If the field is not present it will be added. - If the field is present it will be overwritten. -
+        /// The key can be a dot separated path to set a field in a nested message. - Key must be of type string. -
+        /// Value may be any valid type. - removeFields: map.removeFields([key1, key2, ...]) -&amp;gt; message - Removes
+        /// the fields of the map with the given keys. - The keys can be a dot separated path to remove a field in a
+        /// nested message. - If a key is not found it will be ignored. - Keys must be of type string. - toMap: [map1,
+        /// map2, ...].toMap() -&amp;gt; map - Converts a CEL list of CEL maps to a single CEL map -
+        /// toCloudEventJsonWithPayloadFormat: message.toCloudEventJsonWithPayloadFormat() -&amp;gt; map - Converts a
+        /// message to the corresponding structure of JSON format for CloudEvents. - It converts `data` to destination
+        /// payload format specified in `output_payload_format`. If `output_payload_format` is not set, the data will
+        /// remain unchanged. - It also sets the corresponding datacontenttype of the CloudEvent, as indicated by
+        /// `output_payload_format`. If no `output_payload_format` is set it will use the value of the "datacontenttype"
+        /// attribute on the CloudEvent if present, else remove "datacontenttype" attribute. - This function expects
         /// that the content of the message will adhere to the standard CloudEvent format. If it doesn't then this
         /// function will fail. - The result is a CEL map that corresponds to the JSON representation of the CloudEvent.
         /// To convert that data to a JSON string it can be chained with the toJsonString function. The Pipeline expects
@@ -7142,7 +7154,7 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The configuration for Platform Telemetry logging for Eventarc Avdvanced resources.</summary>
+    /// <summary>The configuration for Platform Telemetry logging for Eventarc Advanced resources.</summary>
     public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
