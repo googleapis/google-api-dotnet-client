@@ -748,7 +748,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive.
+                /// Required. The maximum number of devices to show in a page of results. Must be between 1 and 100
+                /// inclusive.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> PageSize { get; set; }
@@ -1005,7 +1006,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             }
 
             /// <summary>
-            /// The maximum number of customers to show in a page of results. A number between 1 and 100 (inclusive).
+            /// Required. The maximum number of customers to show in a page of results. A number between 1 and 100
+            /// (inclusive).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
