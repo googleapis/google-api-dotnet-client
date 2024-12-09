@@ -319,7 +319,7 @@ namespace Google.Apis.CloudWorkstations.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -334,7 +334,7 @@ namespace Google.Apis.CloudWorkstations.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1.Data.GoogleProtobufEmpty>
                 {
@@ -782,7 +782,8 @@ namespace Google.Apis.CloudWorkstations.v1
 
                         /// <summary>
                         /// Returns a short-lived credential that can be used to send authenticated and authorized
-                        /// traffic to a workstation.
+                        /// traffic to a workstation. Once generated this token cannot be revoked and is good for the
+                        /// lifetime of the token.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="workstation">
@@ -795,7 +796,8 @@ namespace Google.Apis.CloudWorkstations.v1
 
                         /// <summary>
                         /// Returns a short-lived credential that can be used to send authenticated and authorized
-                        /// traffic to a workstation.
+                        /// traffic to a workstation. Once generated this token cannot be revoked and is good for the
+                        /// lifetime of the token.
                         /// </summary>
                         public class GenerateAccessTokenRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1.Data.GenerateAccessTokenResponse>
                         {
@@ -2799,7 +2801,12 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A configuration that workstations can boost to.</summary>
+    /// <summary>
+    /// A boost configuration is a set of resources that a workstation can use to increase its performance. If a boost
+    /// configuration is specified, when starting a workstation, users can choose to use a VM provisioned under the
+    /// boost config by passing the boost config id in the start request. If no boost config id is provided in the start
+    /// request, the system will choose a VM from the pool provisioned under the default config.
+    /// </summary>
     public class BoostConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2834,7 +2841,7 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
         public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
 
-        /// <summary>Optional. Required. The id to be used for the boost configuration.</summary>
+        /// <summary>Required. The id to be used for the boost configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -3026,7 +3033,8 @@ namespace Google.Apis.CloudWorkstations.v1.Data
 
         /// <summary>
         /// Optional. A list of the boost configurations that workstations created using this workstation configuration
-        /// are allowed to use.
+        /// are allowed to use. If specified, users will have the option to choose from the list of boost configs when
+        /// starting a workstation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostConfigs")]
         public virtual System.Collections.Generic.IList<BoostConfig> BoostConfigs { get; set; }
