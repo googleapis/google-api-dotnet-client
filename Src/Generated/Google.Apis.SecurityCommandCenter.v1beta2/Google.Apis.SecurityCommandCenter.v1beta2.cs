@@ -11017,6 +11017,444 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Security Command Center Issue.</summary>
+    public class GoogleCloudSecuritycenterV2Issue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the issue was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The description of the issue in Markdown format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The finding category or rule name that generated the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detection")]
+        public virtual string Detection { get; set; }
+
+        /// <summary>The domains of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IssueDomain> Domains { get; set; }
+
+        /// <summary>The exposure score of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposureScore")]
+        public virtual System.Nullable<double> ExposureScore { get; set; }
+
+        /// <summary>The type of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueType")]
+        public virtual string IssueType { get; set; }
+
+        private string _lastObservationTimeRaw;
+
+        private object _lastObservationTime;
+
+        /// <summary>The time the issue was last observed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastObservationTime")]
+        public virtual string LastObservationTimeRaw
+        {
+            get => _lastObservationTimeRaw;
+            set
+            {
+                _lastObservationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastObservationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastObservationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastObservationTimeDateTimeOffset instead.")]
+        public virtual object LastObservationTime
+        {
+            get => _lastObservationTime;
+            set
+            {
+                _lastObservationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastObservationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastObservationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastObservationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastObservationTimeRaw);
+            set => LastObservationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The mute information of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mute")]
+        public virtual GoogleCloudSecuritycenterV2IssueMute Mute { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the issue. Format: organizations/{organization}/locations/{location}/issues/{issue}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The primary resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryResource")]
+        public virtual GoogleCloudSecuritycenterV2IssueResource PrimaryResource { get; set; }
+
+        /// <summary>The findings related to the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IssueFinding> RelatedFindings { get; set; }
+
+        /// <summary>Approaches to remediate the issue in Markdown format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediations")]
+        public virtual System.Collections.Generic.IList<string> Remediations { get; set; }
+
+        /// <summary>Additional resources associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryResources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IssueResource> SecondaryResources { get; set; }
+
+        /// <summary>The security context of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityContexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IssueSecurityContext> SecurityContexts { get; set; }
+
+        /// <summary>The severity of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Output only. The state of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the issue was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The domains of an issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueDomain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domain category of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainCategory")]
+        public virtual string DomainCategory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Finding related to an issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CVE of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cve")]
+        public virtual GoogleCloudSecuritycenterV2IssueFindingCve Cve { get; set; }
+
+        /// <summary>The name of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The security bulletin of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityBulletin")]
+        public virtual GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin SecurityBulletin { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The CVE of the finding.</summary>
+    public class GoogleCloudSecuritycenterV2IssueFindingCve : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CVE name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The security bulletin of the finding.</summary>
+    public class GoogleCloudSecuritycenterV2IssueFindingSecurityBulletin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The security bulletin name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The mute information of the issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueMute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email address of the user who last changed the mute state of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteInitiator")]
+        public virtual string MuteInitiator { get; set; }
+
+        /// <summary>The user-provided reason for muting the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteReason")]
+        public virtual string MuteReason { get; set; }
+
+        /// <summary>Output only. The mute state of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteState")]
+        public virtual string MuteState { get; set; }
+
+        private string _muteUpdateTimeRaw;
+
+        private object _muteUpdateTime;
+
+        /// <summary>The time the issue was muted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteUpdateTime")]
+        public virtual string MuteUpdateTimeRaw
+        {
+            get => _muteUpdateTimeRaw;
+            set
+            {
+                _muteUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _muteUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MuteUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MuteUpdateTimeDateTimeOffset instead.")]
+        public virtual object MuteUpdateTime
+        {
+            get => _muteUpdateTime;
+            set
+            {
+                _muteUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _muteUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="MuteUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MuteUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MuteUpdateTimeRaw);
+            set => MuteUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource associated with the an issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The AWS metadata of the resource associated with the issue. Only populated for AWS resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceAwsMetadata AwsMetadata { get; set; }
+
+        /// <summary>
+        /// The Azure metadata of the resource associated with the issue. Only populated for Azure resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureMetadata")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceAzureMetadata AzureMetadata { get; set; }
+
+        /// <summary>The cloud provider of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
+        /// <summary>The resource-type specific display name of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The Google Cloud metadata of the resource associated with the issue. Only populated for Google Cloud
+        /// resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudMetadata")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata GoogleCloudMetadata { get; set; }
+
+        /// <summary>The full resource name of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The type of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The AWS metadata of a resource associated with an issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceAwsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AWS account of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount Account { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The AWS account of the resource associated with the issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceAwsMetadataAwsAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AWS account ID of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The AWS account name of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Azure metadata of a resource associated with an issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceAzureMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Azure subscription of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Azure subscription of the resource associated with the issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceAzureMetadataAzureSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Azure subscription display name of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The Azure subscription ID of the resource associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud metadata of a resource associated with an issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The project ID that the resource associated with the issue belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Security context associated with an issue.</summary>
+    public class GoogleCloudSecuritycenterV2IssueSecurityContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The aggregated count of the security context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregatedCount")]
+        public virtual GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount AggregatedCount { get; set; }
+
+        /// <summary>The context of the security context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual GoogleCloudSecuritycenterV2IssueSecurityContextContext Context { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregated count of a security context.</summary>
+    public class GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Aggregation key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Aggregation value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<int> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Context of a security context.</summary>
+    public class GoogleCloudSecuritycenterV2IssueSecurityContextContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Context type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Context values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Kernel mode rootkit signatures.</summary>
     public class GoogleCloudSecuritycenterV2KernelRootkit : Google.Apis.Requests.IDirectResponseSchema
     {
