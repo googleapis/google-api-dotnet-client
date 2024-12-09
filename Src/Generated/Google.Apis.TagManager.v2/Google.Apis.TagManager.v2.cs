@@ -9350,6 +9350,13 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; }
 
+        /// <summary>
+        /// The developer id of the community gallery template. This value is set whenever the template is created from
+        /// the gallery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateDeveloperId")]
+        public virtual string TemplateDeveloperId { get; set; }
+
         /// <summary>The version of the community gallery template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
