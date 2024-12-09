@@ -2415,6 +2415,136 @@ namespace Google.Apis.Connectors.v1
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Publish request for the CustomConnectorVersion. Once approved, the CustomConnectorVersion will
+                    /// be published as PartnerConnector.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Resource name of the form:
+                    /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                    /// </param>
+                    public virtual PublishRequest Publish(Google.Apis.Connectors.v1.Data.PublishCustomConnectorVersionRequest body, string name)
+                    {
+                        return new PublishRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Publish request for the CustomConnectorVersion. Once approved, the CustomConnectorVersion will
+                    /// be published as PartnerConnector.
+                    /// </summary>
+                    public class PublishRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Publish request.</summary>
+                        public PublishRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.PublishCustomConnectorVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form:
+                        /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v1.Data.PublishCustomConnectorVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "publish";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:publish";
+
+                        /// <summary>Initializes Publish parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Withdraw the publish request for the CustomConnectorVersion. This can only be used before the
+                    /// CustomConnectorVersion is published.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Resource name of the form:
+                    /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                    /// </param>
+                    public virtual WithdrawRequest Withdraw(Google.Apis.Connectors.v1.Data.WithdrawCustomConnectorVersionRequest body, string name)
+                    {
+                        return new WithdrawRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Withdraw the publish request for the CustomConnectorVersion. This can only be used before the
+                    /// CustomConnectorVersion is published.
+                    /// </summary>
+                    public class WithdrawRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Withdraw request.</summary>
+                        public WithdrawRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.WithdrawCustomConnectorVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form:
+                        /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v1.Data.WithdrawCustomConnectorVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "withdraw";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:withdraw";
+
+                        /// <summary>Initializes Withdraw parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Validates a Custom Connector Spec.</summary>
@@ -4011,7 +4141,7 @@ namespace Google.Apis.Connectors.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -4026,7 +4156,7 @@ namespace Google.Apis.Connectors.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Empty>
                 {
@@ -5775,7 +5905,7 @@ namespace Google.Apis.Connectors.v1.Data
     public class AuthorizationCodeLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+        /// Optional. The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
@@ -5786,7 +5916,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual Secret ClientSecret { get; set; }
 
-        /// <summary>Whether to enable PKCE for the auth code flow.</summary>
+        /// <summary>Optional. Whether to enable PKCE for the auth code flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePkce")]
         public virtual System.Nullable<bool> EnablePkce { get; set; }
 
@@ -5795,12 +5925,12 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual System.Nullable<bool> OmitQueryParams { get; set; }
 
         /// <summary>
-        /// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+        /// Optional. The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
-        /// <summary>The base URI the user must click to trigger the authorization code login flow.</summary>
+        /// <summary>Optional. The base URI the user must click to trigger the authorization code login flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -5935,19 +6065,21 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class ConfigVariableTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`</summary>
+        /// <summary>
+        /// Optional. Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationCodeLink")]
         public virtual AuthorizationCodeLink AuthorizationCodeLink { get; set; }
 
-        /// <summary>Description.</summary>
+        /// <summary>Optional. Description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Display name of the parameter.</summary>
+        /// <summary>Optional. Display name of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Enum options. To be populated if `ValueType` is `ENUM`</summary>
+        /// <summary>Optional. Enum options. To be populated if `ValueType` is `ENUM`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumOptions")]
         public virtual System.Collections.Generic.IList<EnumOption> EnumOptions { get; set; }
 
@@ -5955,11 +6087,11 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enumSource")]
         public virtual string EnumSource { get; set; }
 
-        /// <summary>Indicates if current template is part of advanced settings</summary>
+        /// <summary>Optional. Indicates if current template is part of advanced settings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAdvanced")]
         public virtual System.Nullable<bool> IsAdvanced { get; set; }
 
-        /// <summary>Key of the config variable.</summary>
+        /// <summary>Optional. Key of the config variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -5971,31 +6103,34 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipleSelectConfig")]
         public virtual MultipleSelectConfig MultipleSelectConfig { get; set; }
 
-        /// <summary>Flag represents that this `ConfigVariable` must be provided for a connection.</summary>
+        /// <summary>Optional. Flag represents that this `ConfigVariable` must be provided for a connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
 
         /// <summary>
-        /// Condition under which a field would be required. The condition can be represented in the form of a logical
-        /// expression.
+        /// Optional. Condition under which a field would be required. The condition can be represented in the form of a
+        /// logical expression.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredCondition")]
         public virtual LogicalExpression RequiredCondition { get; set; }
 
-        /// <summary>Role grant configuration for the config variable.</summary>
+        /// <summary>Optional. Role grant configuration for the config variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleGrant")]
         public virtual RoleGrant RoleGrant { get; set; }
 
-        /// <summary>State of the config variable.</summary>
+        /// <summary>Output only. State of the config variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.</summary>
+        /// <summary>
+        /// Optional. Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationRegex")]
         public virtual string ValidationRegex { get; set; }
 
         /// <summary>
-        /// Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+        /// Optional. Type of the parameter: string, int, bool etc. consider custom type for the benefit for the
+        /// validation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
@@ -6443,6 +6578,12 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string LaunchStage { get; set; }
 
         /// <summary>
+        /// Output only. Marketplace connector details. Will be null if the connector is not marketplace connector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceConnectorDetails")]
+        public virtual MarketplaceConnectorDetails MarketplaceConnectorDetails { get; set; }
+
+        /// <summary>
         /// Output only. Resource name of the Connector. Format:
         /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector} Only global location is
         /// supported for Connector resource.
@@ -6757,7 +6898,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionRatelimitWindowSeconds")]
         public virtual System.Nullable<long> ConnectionRatelimitWindowSeconds { get; set; }
 
-        /// <summary>Optional. Indicates whether connector is deployed on GKE/CloudRun</summary>
+        /// <summary>Output only. Indicates whether connector is deployed on GKE/CloudRun</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
         public virtual string DeploymentModel { get; set; }
 
@@ -7483,11 +7624,11 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>EnumOption definition</summary>
     public class EnumOption : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Display name of the option.</summary>
+        /// <summary>Optional. Display name of the option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Id of the option.</summary>
+        /// <summary>Optional. Id of the option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -7617,6 +7758,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>OPTION 1: Hit an endpoint when we receive an event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual EndPoint Endpoint { get; set; }
+
+        /// <summary>OPTION 2: Write the event to Cloud Storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gsutil")]
+        public virtual GSUtil Gsutil { get; set; }
 
         /// <summary>Service account needed for runtime plane to trigger IP workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -7762,11 +7907,11 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Eventing Configuration of a connection</summary>
     public class EventingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional eventing related field values</summary>
+        /// <summary>Optional. Additional eventing related field values</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
         public virtual System.Collections.Generic.IList<ConfigVariable> AdditionalVariables { get; set; }
 
-        /// <summary>Auth details for the webhook adapter.</summary>
+        /// <summary>Optional. Auth details for the webhook adapter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
         public virtual AuthConfig AuthConfig { get; set; }
 
@@ -7774,7 +7919,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deadLetterConfig")]
         public virtual DeadLetterConfig DeadLetterConfig { get; set; }
 
-        /// <summary>Enrichment Enabled.</summary>
+        /// <summary>Optional. Enrichment Enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrichmentEnabled")]
         public virtual System.Nullable<bool> EnrichmentEnabled { get; set; }
 
@@ -7796,7 +7941,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("proxyDestinationConfig")]
         public virtual DestinationConfig ProxyDestinationConfig { get; set; }
 
-        /// <summary>Registration endpoint for auto registration.</summary>
+        /// <summary>Optional. Registration endpoint for auto registration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
         public virtual DestinationConfig RegistrationDestinationConfig { get; set; }
 
@@ -8096,7 +8241,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
         public virtual System.Nullable<bool> BoolValue { get; set; }
 
-        /// <summary>Comparator to use for comparing the field value.</summary>
+        /// <summary>Optional. Comparator to use for comparing the field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comparator")]
         public virtual string Comparator { get; set; }
 
@@ -8104,13 +8249,24 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
         public virtual System.Nullable<long> IntValue { get; set; }
 
-        /// <summary>Key of the field.</summary>
+        /// <summary>Optional. Key of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
         /// <summary>String value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GSUtil message includes details of the Destination Cloud Storage bucket.</summary>
+    public class GSUtil : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The URI of the Cloud Storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gsutilUri")]
+        public virtual string GsutilUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8827,15 +8983,15 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Struct for representing boolean expressions.</summary>
     public class LogicalExpression : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of fields to be compared.</summary>
+        /// <summary>Optional. A list of fields to be compared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldComparisons")]
         public virtual System.Collections.Generic.IList<FieldComparison> FieldComparisons { get; set; }
 
-        /// <summary>A list of nested conditions to be compared.</summary>
+        /// <summary>Optional. A list of nested conditions to be compared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicalExpressions")]
         public virtual System.Collections.Generic.IList<LogicalExpression> LogicalExpressions { get; set; }
 
-        /// <summary>The logical operator to use between the fields and conditions.</summary>
+        /// <summary>Optional. The logical operator to use between the fields and conditions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicalOperator")]
         public virtual string LogicalOperator { get; set; }
 
@@ -9248,6 +9404,29 @@ namespace Google.Apis.Connectors.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Marketplace connector details.</summary>
+    public class MarketplaceConnectorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Marketplace product name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceProduct")]
+        public virtual string MarketplaceProduct { get; set; }
+
+        /// <summary>Marketplace product ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceProductId")]
+        public virtual string MarketplaceProductId { get; set; }
+
+        /// <summary>Marketplace product URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplaceProductUri")]
+        public virtual string MarketplaceProductUri { get; set; }
+
+        /// <summary>The name of the partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partner")]
+        public virtual string Partner { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9964,6 +10143,20 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ConnectorsService.PublishCustomConnectorVersion</summary>
+    public class PublishCustomConnectorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Partner metadata details for validating and publishing the custom connector as a partner connector
+        /// version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerMetadata")]
+        public virtual PartnerMetadata PartnerMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Publish status of a custom connector.</summary>
     public class PublishStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10070,13 +10263,13 @@ namespace Google.Apis.Connectors.v1.Data
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can
-        /// have references to other values provided in the config variable template.
+        /// Optional. Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template
+        /// that can have references to other values provided in the config variable template.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathTemplate")]
         public virtual string PathTemplate { get; set; }
 
-        /// <summary>Different types of resource supported.</summary>
+        /// <summary>Optional. Different types of resource supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -10163,19 +10356,19 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class RoleGrant : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Template that UI can use to provide helper text to customers.</summary>
+        /// <summary>Optional. Template that UI can use to provide helper text to customers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helperTextTemplate")]
         public virtual string HelperTextTemplate { get; set; }
 
-        /// <summary>Prinicipal/Identity for whom the role need to assigned.</summary>
+        /// <summary>Optional. Prinicipal/Identity for whom the role need to assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual string Principal { get; set; }
 
-        /// <summary>Resource on which the roles needs to be granted for the principal.</summary>
+        /// <summary>Optional. Resource on which the roles needs to be granted for the principal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual Resource Resource { get; set; }
 
-        /// <summary>List of roles that need to be granted.</summary>
+        /// <summary>Optional. List of roles that need to be granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
         public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
@@ -10534,43 +10727,43 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>SSL Configuration of a connection</summary>
     public class SslConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional SSL related field values</summary>
+        /// <summary>Optional. Additional SSL related field values</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
         public virtual System.Collections.Generic.IList<ConfigVariable> AdditionalVariables { get; set; }
 
-        /// <summary>Type of Client Cert (PEM/JKS/.. etc.)</summary>
+        /// <summary>Optional. Type of Client Cert (PEM/JKS/.. etc.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertType")]
         public virtual string ClientCertType { get; set; }
 
-        /// <summary>Client Certificate</summary>
+        /// <summary>Optional. Client Certificate</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
         public virtual Secret ClientCertificate { get; set; }
 
-        /// <summary>Client Private Key</summary>
+        /// <summary>Optional. Client Private Key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientPrivateKey")]
         public virtual Secret ClientPrivateKey { get; set; }
 
-        /// <summary>Secret containing the passphrase protecting the Client Private Key</summary>
+        /// <summary>Optional. Secret containing the passphrase protecting the Client Private Key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientPrivateKeyPass")]
         public virtual Secret ClientPrivateKeyPass { get; set; }
 
-        /// <summary>Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.</summary>
+        /// <summary>Optional. Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateServerCertificate")]
         public virtual Secret PrivateServerCertificate { get; set; }
 
-        /// <summary>Type of Server Cert (PEM/JKS/.. etc.)</summary>
+        /// <summary>Optional. Type of Server Cert (PEM/JKS/.. etc.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCertType")]
         public virtual string ServerCertType { get; set; }
 
-        /// <summary>Trust Model of the SSL connection</summary>
+        /// <summary>Optional. Trust Model of the SSL connection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustModel")]
         public virtual string TrustModel { get; set; }
 
-        /// <summary>Controls the ssl type for the given connector version.</summary>
+        /// <summary>Optional. Controls the ssl type for the given connector version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>Bool for enabling SSL</summary>
+        /// <summary>Optional. Bool for enabling SSL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useSsl")]
         public virtual System.Nullable<bool> UseSsl { get; set; }
 
@@ -10956,6 +11149,13 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual System.Collections.Generic.IList<Schedule> Schedule { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ConnectorsService.WithdrawCustomConnectorVersion</summary>
+    public class WithdrawCustomConnectorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
