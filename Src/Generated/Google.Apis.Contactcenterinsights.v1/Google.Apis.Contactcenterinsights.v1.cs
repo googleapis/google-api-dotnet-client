@@ -293,7 +293,7 @@ namespace Google.Apis.Contactcenterinsights.v1
             {
                 this.service = service;
                 AnalysisRules = new AnalysisRulesResource(service);
-                AuthorizedViewSet = new AuthorizedViewSetResource(service);
+                AuthorizedViewSets = new AuthorizedViewSetsResource(service);
                 Conversations = new ConversationsResource(service);
                 EncryptionSpec = new EncryptionSpecResource(service);
                 Insightsdata = new InsightsdataResource(service);
@@ -622,37 +622,37 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
-            /// <summary>Gets the AuthorizedViewSet resource.</summary>
-            public virtual AuthorizedViewSetResource AuthorizedViewSet { get; }
+            /// <summary>Gets the AuthorizedViewSets resource.</summary>
+            public virtual AuthorizedViewSetsResource AuthorizedViewSets { get; }
 
-            /// <summary>The "authorizedViewSet" collection of methods.</summary>
-            public class AuthorizedViewSetResource
+            /// <summary>The "authorizedViewSets" collection of methods.</summary>
+            public class AuthorizedViewSetsResource
             {
-                private const string Resource = "authorizedViewSet";
+                private const string Resource = "authorizedViewSets";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public AuthorizedViewSetResource(Google.Apis.Services.IClientService service)
+                public AuthorizedViewSetsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                    AuthorizedView = new AuthorizedViewResource(service);
+                    AuthorizedViews = new AuthorizedViewsResource(service);
                 }
 
-                /// <summary>Gets the AuthorizedView resource.</summary>
-                public virtual AuthorizedViewResource AuthorizedView { get; }
+                /// <summary>Gets the AuthorizedViews resource.</summary>
+                public virtual AuthorizedViewsResource AuthorizedViews { get; }
 
-                /// <summary>The "authorizedView" collection of methods.</summary>
-                public class AuthorizedViewResource
+                /// <summary>The "authorizedViews" collection of methods.</summary>
+                public class AuthorizedViewsResource
                 {
-                    private const string Resource = "authorizedView";
+                    private const string Resource = "authorizedViews";
 
                     /// <summary>The service which this resource belongs to.</summary>
                     private readonly Google.Apis.Services.IClientService service;
 
                     /// <summary>Constructs a new resource.</summary>
-                    public AuthorizedViewResource(Google.Apis.Services.IClientService service)
+                    public AuthorizedViewsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
                     }
@@ -704,7 +704,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedView/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
                             });
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
@@ -769,7 +769,7 @@ namespace Google.Apis.Contactcenterinsights.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSet/[^/]+/authorizedView/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
                             });
                         }
                     }
@@ -7053,9 +7053,19 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dispositionCode")]
         public virtual string DispositionCode { get; set; }
 
-        /// <summary>A user-specified string representing the agent's team.</summary>
+        /// <summary>The agent's location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// A user-specified string representing the agent's team. Deprecated in favor of the `teams` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("team")]
         public virtual string Team { get; set; }
+
+        /// <summary>User-specified strings representing the agent's teams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teams")]
+        public virtual System.Collections.Generic.IList<string> Teams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12346,9 +12356,19 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dispositionCode")]
         public virtual string DispositionCode { get; set; }
 
-        /// <summary>A user-specified string representing the agent's team.</summary>
+        /// <summary>The agent's location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// A user-specified string representing the agent's team. Deprecated in favor of the `teams` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("team")]
         public virtual string Team { get; set; }
+
+        /// <summary>User-specified strings representing the agent's teams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teams")]
+        public virtual System.Collections.Generic.IList<string> Teams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
