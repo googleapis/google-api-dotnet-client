@@ -1071,6 +1071,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
         public virtual System.Nullable<int> MaxOutputTokens { get; set; }
 
+        /// <summary>Optional. If specified, the media resolution specified will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaResolution")]
+        public virtual string MediaResolution { get; set; }
+
         /// <summary>Optional. Positive penalties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
         public virtual System.Nullable<float> PresencePenalty { get; set; }
@@ -1086,6 +1090,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
         public virtual string ResponseMimeType { get; set; }
+
+        /// <summary>Optional. The modalities of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseModalities")]
+        public virtual System.Collections.Generic.IList<string> ResponseModalities { get; set; }
 
         /// <summary>
         /// Optional. The `Schema` object allows the definition of input and output data types. These types can be
@@ -1103,6 +1111,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Seed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seed")]
         public virtual System.Nullable<int> Seed { get; set; }
+
+        /// <summary>Optional. The speech generation config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
+        public virtual GoogleCloudAiplatformV1beta1SpeechConfig SpeechConfig { get; set; }
 
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
@@ -1379,6 +1391,17 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoMetadata")]
         public virtual GoogleCloudAiplatformV1beta1VideoMetadata VideoMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for the prebuilt speaker to use.</summary>
+    public class GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the preset voice to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceName")]
+        public virtual string VoiceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1724,6 +1747,17 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The speech generation config.</summary>
+    public class GoogleCloudAiplatformV1beta1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for the speaker to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceConfig")]
+        public virtual GoogleCloudAiplatformV1beta1VoiceConfig VoiceConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Tool details that the model may use to generate response. A `Tool` is a piece of code that enables the system to
     /// interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the
@@ -1748,6 +1782,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FunctionDeclaration> FunctionDeclarations { get; set; }
+
+        /// <summary>
+        /// Optional. GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearch")]
+        public virtual GoogleCloudAiplatformV1beta1ToolGoogleSearch GoogleSearch { get; set; }
 
         /// <summary>
         /// Optional. GoogleSearchRetrieval tool type. Specialized retrieval tool that is powered by Google search.
@@ -1783,6 +1823,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("functionCallingConfig")]
         public virtual GoogleCloudAiplatformV1beta1FunctionCallingConfig FunctionCallingConfig { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.</summary>
+    public class GoogleCloudAiplatformV1beta1ToolGoogleSearch : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1864,6 +1911,17 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. The start offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
         public virtual object StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for the voice to use.</summary>
+    public class GoogleCloudAiplatformV1beta1VoiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for the prebuilt voice to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prebuiltVoiceConfig")]
+        public virtual GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig PrebuiltVoiceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
