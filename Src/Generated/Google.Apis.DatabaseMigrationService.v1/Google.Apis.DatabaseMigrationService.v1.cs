@@ -2719,6 +2719,51 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         this.service = service;
                     }
 
+                    /// <summary>Use this method to get details about a migration job object.</summary>
+                    /// <param name="name">Required. The name of the migration job object resource to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Use this method to get details about a migration job object.</summary>
+                    public class GetRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.MigrationJobObject>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the migration job object resource to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+/objects/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
                     /// and does not have a policy set.
@@ -2796,6 +2841,143 @@ namespace Google.Apis.DatabaseMigrationService.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Use this method to list the objects of a specific migration job.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent migration job that owns the collection of objects.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Use this method to list the objects of a specific migration job.</summary>
+                    public class ListRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.ListMigrationJobObjectsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent migration job that owns the collection of objects.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Maximum number of objects to return. Default is 50. The maximum value is 1000; values above
+                        /// 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Page token received from a previous `ListMigrationJObObjectsRequest` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListMigrationJobObjectsRequest` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/objects";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Use this method to look up a migration job object by its source object identifier.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent migration job that owns the collection of objects.
+                    /// </param>
+                    public virtual LookupRequest Lookup(Google.Apis.DatabaseMigrationService.v1.Data.LookupMigrationJobObjectRequest body, string parent)
+                    {
+                        return new LookupRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Use this method to look up a migration job object by its source object identifier.
+                    /// </summary>
+                    public class LookupRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.MigrationJobObject>
+                    {
+                        /// <summary>Constructs a new Lookup request.</summary>
+                        public LookupRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1.Data.LookupMigrationJobObjectRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent migration job that owns the collection of objects.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DatabaseMigrationService.v1.Data.LookupMigrationJobObjectRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "lookup";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/objects:lookup";
+
+                        /// <summary>Initializes Lookup parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
                             });
                         }
                     }
@@ -3145,6 +3327,63 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public override string RestPath => "v1/{+name}:demoteDestination";
 
                     /// <summary>Initializes DemoteDestination parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Retrieves objects from the source database that can be selected for data migration. This is
+                /// applicable for the following migrations: 1. PostgreSQL to Cloud SQL for PostgreSQL 2. PostgreSQL to
+                /// AlloyDB for PostgreSQL.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name for the migration job for which source objects should be returned.
+                /// </param>
+                public virtual FetchSourceObjectsRequest FetchSourceObjects(string name)
+                {
+                    return new FetchSourceObjectsRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Retrieves objects from the source database that can be selected for data migration. This is
+                /// applicable for the following migrations: 1. PostgreSQL to Cloud SQL for PostgreSQL 2. PostgreSQL to
+                /// AlloyDB for PostgreSQL.
+                /// </summary>
+                public class FetchSourceObjectsRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new FetchSourceObjects request.</summary>
+                    public FetchSourceObjectsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name for the migration job for which source objects should be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchSourceObjects";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:fetchSourceObjects";
+
+                    /// <summary>Initializes FetchSourceObjects parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -4102,7 +4341,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -4117,7 +4356,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.Empty>
                 {
@@ -6890,8 +7129,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// 1, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -7102,6 +7341,21 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response containing the objects for a migration job.</summary>
+    public class ListMigrationJobObjectsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of migration job objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationJobObjects")]
+        public virtual System.Collections.Generic.IList<MigrationJobObject> MigrationJobObjects { get; set; }
+
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for 'ListMigrationJobs' request.</summary>
     public class ListMigrationJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7211,6 +7465,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Configuration to use LogMiner CDC method.</summary>
     public class LogMiner : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for looking up a specific migration job object by its source object identifier.</summary>
+    public class LookupMigrationJobObjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The source object identifier which maps to the migration job object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceObjectIdentifier")]
+        public virtual SourceObjectIdentifier SourceObjectIdentifier { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7416,6 +7681,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
+        /// <summary>View indices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indices")]
+        public virtual System.Collections.Generic.IList<IndexEntity> Indices { get; set; }
+
         /// <summary>The SQL code which creates the view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlCode")]
         public virtual string SqlCode { get; set; }
@@ -7582,6 +7851,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. The objects that need to be migrated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectsConfig")]
+        public virtual MigrationJobObjectsConfig ObjectsConfig { get; set; }
+
         /// <summary>
         /// Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and **Oracle to AlloyDB for
         /// PostgreSQL** migrations.
@@ -7668,6 +7941,118 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>The details of the VPC network that the source database is located in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcPeeringConnectivity")]
         public virtual VpcPeeringConnectivity VpcPeeringConnectivity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specific Migration Job Object (e.g. a specifc DB Table)</summary>
+    public class MigrationJobObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time of the migration job object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The error details in case of failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>The object's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The phase of the migration job object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        /// <summary>The object identifier in the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceObject")]
+        public virtual SourceObjectIdentifier SourceObject { get; set; }
+
+        /// <summary>The state of the migration job object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last update time of the migration job object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the objects to be migrated.</summary>
+    public class MigrationJobObjectsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of the migration job objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceObjectsConfig")]
+        public virtual SourceObjectsConfig SourceObjectsConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8429,6 +8814,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'PromoteMigrationJob' request.</summary>
     public class PromoteMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The object filter to apply to the migration job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectsFilter")]
+        public virtual MigrationJobObjectsConfig ObjectsFilter { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8436,6 +8825,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'RestartMigrationJob' request.</summary>
     public class RestartMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The object filter to apply to the migration job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectsFilter")]
+        public virtual MigrationJobObjectsConfig ObjectsFilter { get; set; }
+
         /// <summary>
         /// Optional. Restart the migration job without running prior configuration verification. Defaults to `false`.
         /// </summary>
@@ -8808,6 +9201,50 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config for a single migration job object.</summary>
+    public class SourceObjectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectIdentifier")]
+        public virtual SourceObjectIdentifier ObjectIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An identifier for the Migration Job Object.</summary>
+    public class SourceObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The database name. This will be required only if the object uses a database name as part of its unique
+        /// identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Required. The type of the migration job object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of configurations for the source objects to be migrated.</summary>
+    public class SourceObjectsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of the objects to be migrated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectConfigs")]
+        public virtual System.Collections.Generic.IList<SourceObjectConfig> ObjectConfigs { get; set; }
+
+        /// <summary>Optional. The objects selection type of the migration job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectsSelectionType")]
+        public virtual string ObjectsSelectionType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities.
     /// The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
@@ -9043,15 +9480,22 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Encryption settings for the SQL Server database.</summary>
     public class SqlServerEncryptionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Path to certificate.</summary>
+        /// <summary>
+        /// Required. Path to the Certificate (.cer) in Cloud Storage, in the form `gs://bucketName/fileName`. The
+        /// instance must have write permissions to the bucket and read access to the file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certPath")]
         public virtual string CertPath { get; set; }
 
-        /// <summary>Required. Input only. Private key password.</summary>
+        /// <summary>Required. Input only. Password that encrypts the private key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pvkPassword")]
         public virtual string PvkPassword { get; set; }
 
-        /// <summary>Required. Path to certificate private key.</summary>
+        /// <summary>
+        /// Required. Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form
+        /// `gs://bucketName/fileName`. The instance must have write permissions to the bucket and read access to the
+        /// file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pvkPath")]
         public virtual string PvkPath { get; set; }
 
