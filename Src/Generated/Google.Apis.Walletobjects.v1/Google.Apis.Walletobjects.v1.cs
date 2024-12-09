@@ -7241,7 +7241,7 @@ namespace Google.Apis.Walletobjects.v1.Data
     }
 
     /// <summary>
-    /// Information about how a class may be discovered and instantiated from within the Android Pay app. This is done
+    /// Information about how a class may be discovered and instantiated from within the Google Wallet app. This is done
     /// by searching for a loyalty or gift card program and scanning or manually entering.
     /// </summary>
     public class DiscoverableProgram : Google.Apis.Requests.IDirectResponseSchema
