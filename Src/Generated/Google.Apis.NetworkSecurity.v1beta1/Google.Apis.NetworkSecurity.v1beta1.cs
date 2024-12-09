@@ -1399,7 +1399,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -1414,7 +1414,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Empty>
                 {
@@ -2416,6 +2416,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 ClientTlsPolicies = new ClientTlsPoliciesResource(service);
                 FirewallEndpointAssociations = new FirewallEndpointAssociationsResource(service);
                 GatewaySecurityPolicies = new GatewaySecurityPoliciesResource(service);
+                InterceptDeploymentGroups = new InterceptDeploymentGroupsResource(service);
+                InterceptDeployments = new InterceptDeploymentsResource(service);
+                InterceptEndpointGroupAssociations = new InterceptEndpointGroupAssociationsResource(service);
+                InterceptEndpointGroups = new InterceptEndpointGroupsResource(service);
                 MirroringDeploymentGroups = new MirroringDeploymentGroupsResource(service);
                 MirroringDeployments = new MirroringDeploymentsResource(service);
                 MirroringEndpointGroupAssociations = new MirroringEndpointGroupAssociationsResource(service);
@@ -6209,6 +6213,1628 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 }
             }
 
+            /// <summary>Gets the InterceptDeploymentGroups resource.</summary>
+            public virtual InterceptDeploymentGroupsResource InterceptDeploymentGroups { get; }
+
+            /// <summary>The "interceptDeploymentGroups" collection of methods.</summary>
+            public class InterceptDeploymentGroupsResource
+            {
+                private const string Resource = "interceptDeploymentGroups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InterceptDeploymentGroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new InterceptDeploymentGroup in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new InterceptDeploymentGroup in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
+                    /// intercept_deployment_group_id from the method_signature of Create RPC
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interceptDeploymentGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InterceptDeploymentGroupId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/interceptDeploymentGroups";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("interceptDeploymentGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interceptDeploymentGroupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single InterceptDeploymentGroup.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single InterceptDeploymentGroup.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptDeploymentGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single InterceptDeploymentGroup.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single InterceptDeploymentGroup.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptDeploymentGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists InterceptDeploymentGroups in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for ListInterceptDeploymentGroupsRequest</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists InterceptDeploymentGroups in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListInterceptDeploymentGroupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListInterceptDeploymentGroupsRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/interceptDeploymentGroups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a single InterceptDeploymentGroup.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Immutable. Identifier. Then name of the InterceptDeploymentGroup.</param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a single InterceptDeploymentGroup.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Immutable. Identifier. Then name of the InterceptDeploymentGroup.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the
+                    /// InterceptDeploymentGroup resource by the update. The fields specified in the update_mask are
+                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
+                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptDeploymentGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the InterceptDeployments resource.</summary>
+            public virtual InterceptDeploymentsResource InterceptDeployments { get; }
+
+            /// <summary>The "interceptDeployments" collection of methods.</summary>
+            public class InterceptDeploymentsResource
+            {
+                private const string Resource = "interceptDeployments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InterceptDeploymentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new InterceptDeployment in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new InterceptDeployment in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
+                    /// intercept_deployment_id from the method_signature of Create RPC
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interceptDeploymentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InterceptDeploymentId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/interceptDeployments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("interceptDeploymentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interceptDeploymentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single InterceptDeployment.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single InterceptDeployment.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptDeployments/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single InterceptDeployment.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single InterceptDeployment.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptDeployments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists InterceptDeployments in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for ListInterceptDeploymentsRequest</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists InterceptDeployments in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListInterceptDeploymentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListInterceptDeploymentsRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/interceptDeployments";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a single InterceptDeployment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Immutable. Identifier. The name of the InterceptDeployment.</param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a single InterceptDeployment.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Immutable. Identifier. The name of the InterceptDeployment.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the InterceptDeployment
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptDeployments/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the InterceptEndpointGroupAssociations resource.</summary>
+            public virtual InterceptEndpointGroupAssociationsResource InterceptEndpointGroupAssociations { get; }
+
+            /// <summary>The "interceptEndpointGroupAssociations" collection of methods.</summary>
+            public class InterceptEndpointGroupAssociationsResource
+            {
+                private const string Resource = "interceptEndpointGroupAssociations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InterceptEndpointGroupAssociationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new InterceptEndpointGroupAssociation in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new InterceptEndpointGroupAssociation in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Id of the requesting object If auto-generating Id server-side, remove this field and
+                    /// intercept_endpoint_group_association_id from the method_signature of Create RPC
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interceptEndpointGroupAssociationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InterceptEndpointGroupAssociationId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/interceptEndpointGroupAssociations";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("interceptEndpointGroupAssociationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interceptEndpointGroupAssociationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single InterceptEndpointGroupAssociation.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single InterceptEndpointGroupAssociation.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptEndpointGroupAssociations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single InterceptEndpointGroupAssociation.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single InterceptEndpointGroupAssociation.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptEndpointGroupAssociations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists InterceptEndpointGroupAssociations in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListInterceptEndpointGroupAssociationsRequest
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists InterceptEndpointGroupAssociations in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListInterceptEndpointGroupAssociationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListInterceptEndpointGroupAssociationsRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/interceptEndpointGroupAssociations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a single InterceptEndpointGroupAssociation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Immutable. Identifier. The name of the InterceptEndpointGroupAssociation.</param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a single InterceptEndpointGroupAssociation.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Immutable. Identifier. The name of the InterceptEndpointGroupAssociation.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the
+                    /// InterceptEndpointGroupAssociation resource by the update. The fields specified in the
+                    /// update_mask are relative to the resource, not the full request. A field will be overwritten if
+                    /// it is in the mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptEndpointGroupAssociations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the InterceptEndpointGroups resource.</summary>
+            public virtual InterceptEndpointGroupsResource InterceptEndpointGroups { get; }
+
+            /// <summary>The "interceptEndpointGroups" collection of methods.</summary>
+            public class InterceptEndpointGroupsResource
+            {
+                private const string Resource = "interceptEndpointGroups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InterceptEndpointGroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new InterceptEndpointGroup in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new InterceptEndpointGroup in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
+                    /// intercept_endpoint_group_id from the method_signature of Create RPC
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interceptEndpointGroupId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InterceptEndpointGroupId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/interceptEndpointGroups";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("interceptEndpointGroupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interceptEndpointGroupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single InterceptEndpointGroup.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single InterceptEndpointGroup.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptEndpointGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single InterceptEndpointGroup.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single InterceptEndpointGroup.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptEndpointGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists InterceptEndpointGroups in a given project and location.</summary>
+                /// <param name="parent">Required. Parent value for ListInterceptEndpointGroupsRequest</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists InterceptEndpointGroups in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListInterceptEndpointGroupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListInterceptEndpointGroupsRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/interceptEndpointGroups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a single InterceptEndpointGroup.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Immutable. Identifier. The name of the InterceptEndpointGroup.</param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a single InterceptEndpointGroup.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Immutable. Identifier. The name of the InterceptEndpointGroup.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the
+                    /// InterceptEndpointGroup resource by the update. The fields specified in the update_mask are
+                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
+                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/interceptEndpointGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the MirroringDeploymentGroups resource.</summary>
             public virtual MirroringDeploymentGroupsResource MirroringDeploymentGroups { get; }
 
@@ -7856,7 +9482,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -7871,7 +9497,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Empty>
                 {
@@ -9924,11 +11550,11 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>Conditions to match against the incoming request.</summary>
     public class AuthzPolicyAuthzRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Describes properties of one or more sources of a request.</summary>
+        /// <summary>Optional. Describes properties of a source of a request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("from")]
         public virtual AuthzPolicyAuthzRuleFrom From { get; set; }
 
-        /// <summary>Optional. Describes properties of one or more targets of a request.</summary>
+        /// <summary>Optional. Describes properties of a target of a request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("to")]
         public virtual AuthzPolicyAuthzRuleTo To { get; set; }
 
@@ -9956,7 +11582,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         /// <summary>
         /// Optional. Describes the properties of a request's sources. At least one of sources or notSources must be
-        /// specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the
+        /// specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the
         /// request. Within a single source, the match follows AND semantics across fields and OR semantics within a
         /// single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
         /// </summary>
@@ -10101,10 +11727,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         /// <summary>
         /// Optional. Describes properties of one or more targets of a request. At least one of operations or
-        /// notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations
-        /// or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR
-        /// semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method
-        /// matches.
+        /// notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or
+        /// notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics
+        /// within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleToRequestOperation> Operations { get; set; }
@@ -10398,6 +12023,22 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Required. Source address group to clone items from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceAddressGroup")]
         public virtual string SourceAddressGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CustomInterceptProfile defines the Packet Intercept Endpoint Group used to intercept traffic to a third-party
+    /// firewall in a Firewall rule.
+    /// </summary>
+    public class CustomInterceptProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The InterceptEndpointGroup to which traffic associated with the SP should be mirrored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroup")]
+        public virtual string InterceptEndpointGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11300,6 +12941,516 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message describing InterceptDeployment object</summary>
+    public class InterceptDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. [Output only] Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Immutable. The regional load balancer which the intercepted traffic should be forwarded to. Format
+        /// is: projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
+        public virtual string ForwardingRule { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The Intercept Deployment Group that this resource is part of. Format is:
+        /// `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptDeploymentGroup")]
+        public virtual string InterceptDeploymentGroup { get; set; }
+
+        /// <summary>Optional. Labels as key value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Immutable. Identifier. The name of the InterceptDeployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Current state of the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. [Output only] Update time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing InterceptDeploymentGroup object</summary>
+    public class InterceptDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of Intercept Endpoint Groups that are connected to this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedEndpointGroups")]
+        public virtual System.Collections.Generic.IList<InterceptDeploymentGroupConnectedEndpointGroup> ConnectedEndpointGroups { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. [Output only] Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Labels as key value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Immutable. Identifier. Then name of the InterceptDeploymentGroup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The network that is being used for the deployment. Format is:
+        /// projects/{project}/global/networks/{network}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Current state of the deployment group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. [Output only] Update time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An endpoint group connected to this deployment group.</summary>
+    public class InterceptDeploymentGroupConnectedEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A connected intercept endpoint group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing InterceptEndpointGroup object.</summary>
+    public class InterceptEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. List of Intercept Endpoint Group Associations that are associated to this endpoint group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associations")]
+        public virtual System.Collections.Generic.IList<InterceptEndpointGroupAssociationDetails> Associations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. [Output only] Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. User-provided description of the endpoint group. Used as additional context for the endpoint
+        /// group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The Intercept Deployment Group that this resource is connected to. Format is:
+        /// `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptDeploymentGroup")]
+        public virtual string InterceptDeploymentGroup { get; set; }
+
+        /// <summary>Optional. Labels as key value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Immutable. Identifier. The name of the InterceptEndpointGroup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Current state of the endpoint group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. [Output only] Update time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing InterceptEndpointGroupAssociation object</summary>
+    public class InterceptEndpointGroupAssociation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. [Output only] Create time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Immutable. The Intercept Endpoint Group that this resource is connected to. Format is:
+        /// `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroup")]
+        public virtual string InterceptEndpointGroup { get; set; }
+
+        /// <summary>Optional. Labels as key value pairs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The list of locations that this association is in and its details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationsDetails")]
+        public virtual System.Collections.Generic.IList<InterceptEndpointGroupAssociationLocationDetails> LocationsDetails { get; set; }
+
+        /// <summary>Immutable. Identifier. The name of the InterceptEndpointGroupAssociation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The VPC network associated. Format: projects/{project}/global/networks/{network}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Current state of the endpoint group association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. [Output only] Update time stamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This is a subset of the InterceptEndpointGroupAssociation message, containing fields to be used by the consumer.
+    /// </summary>
+    public class InterceptEndpointGroupAssociationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the InterceptEndpointGroupAssociation. Format:
+        /// projects/{project}/locations/{location}/interceptEndpointGroupAssociations/{interceptEndpointGroupAssociation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. Current state of the association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the association status in a specific cloud location.</summary>
+    public class InterceptEndpointGroupAssociationLocationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The cloud location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Output only. The association state in this location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of the ListAddressGroupReferences method.</summary>
     public class ListAddressGroupReferencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11487,6 +13638,70 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing InterceptDeploymentGroups</summary>
+    public class ListInterceptDeploymentGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of InterceptDeploymentGroup</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptDeploymentGroups")]
+        public virtual System.Collections.Generic.IList<InterceptDeploymentGroup> InterceptDeploymentGroups { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing InterceptDeployments</summary>
+    public class ListInterceptDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of InterceptDeployment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptDeployments")]
+        public virtual System.Collections.Generic.IList<InterceptDeployment> InterceptDeployments { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing InterceptEndpointGroupAssociations</summary>
+    public class ListInterceptEndpointGroupAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of InterceptEndpointGroupAssociation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroupAssociations")]
+        public virtual System.Collections.Generic.IList<InterceptEndpointGroupAssociation> InterceptEndpointGroupAssociations { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing InterceptEndpointGroups</summary>
+    public class ListInterceptEndpointGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of InterceptEndpointGroup</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroups")]
+        public virtual System.Collections.Generic.IList<InterceptEndpointGroup> InterceptEndpointGroups { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11859,7 +14074,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringDeploymentGroup object</summary>
+    /// <summary>Message describing MirroringDeploymentGroup object NEXT ID: 10</summary>
     public class MirroringDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The list of Mirroring Endpoint Groups that are connected to this resource.</summary>
@@ -12411,9 +14626,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. Next ID: 12
-    /// </summary>
+    /// <summary>SecurityProfile is a resource that defines the behavior for one of many ProfileTypes.</summary>
     public class SecurityProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -12452,6 +14665,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The custom TPPI configuration for the SecurityProfile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customInterceptProfile")]
+        public virtual CustomInterceptProfile CustomInterceptProfile { get; set; }
 
         /// <summary>The custom Packet Mirroring v2 configuration for the SecurityProfile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
@@ -12525,9 +14742,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         }
     }
 
-    /// <summary>
-    /// SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. Next ID: 11
-    /// </summary>
+    /// <summary>SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes.</summary>
     public class SecurityProfileGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -12566,6 +14781,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Reference to a SecurityProfile with the CustomIntercept configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customInterceptProfile")]
+        public virtual string CustomInterceptProfile { get; set; }
 
         /// <summary>Optional. Reference to a SecurityProfile with the CustomMirroring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
