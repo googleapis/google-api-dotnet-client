@@ -2374,6 +2374,10 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportsDryRun")]
         public virtual System.Nullable<bool> SupportsDryRun { get; set; }
 
+        /// <summary>Shows if simulation is supported for this constraint or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsSimulation")]
+        public virtual System.Nullable<bool> SupportsSimulation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2814,6 +2818,14 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforce")]
         public virtual System.Nullable<bool> Enforce { get; set; }
+
+        /// <summary>
+        /// Optional. Required for GMCs if parameters defined in constraints. Pass parameter values when policy
+        /// enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition.
+        /// For example: { "allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>
         /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
