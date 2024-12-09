@@ -1399,7 +1399,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -1414,7 +1414,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Empty>
                 {
@@ -6228,7 +6228,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -6243,7 +6243,7 @@ namespace Google.Apis.NetworkSecurity.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Empty>
                 {
@@ -8296,11 +8296,11 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     /// <summary>Conditions to match against the incoming request.</summary>
     public class AuthzPolicyAuthzRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Describes properties of one or more sources of a request.</summary>
+        /// <summary>Optional. Describes properties of a source of a request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("from")]
         public virtual AuthzPolicyAuthzRuleFrom From { get; set; }
 
-        /// <summary>Optional. Describes properties of one or more targets of a request.</summary>
+        /// <summary>Optional. Describes properties of a target of a request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("to")]
         public virtual AuthzPolicyAuthzRuleTo To { get; set; }
 
@@ -8328,7 +8328,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         /// <summary>
         /// Optional. Describes the properties of a request's sources. At least one of sources or notSources must be
-        /// specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the
+        /// specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the
         /// request. Within a single source, the match follows AND semantics across fields and OR semantics within a
         /// single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
         /// </summary>
@@ -8473,10 +8473,9 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         /// <summary>
         /// Optional. Describes properties of one or more targets of a request. At least one of operations or
-        /// notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations
-        /// or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR
-        /// semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method
-        /// matches.
+        /// notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or
+        /// notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics
+        /// within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleToRequestOperation> Operations { get; set; }
@@ -8770,6 +8769,22 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// <summary>Required. Source address group to clone items from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceAddressGroup")]
         public virtual string SourceAddressGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CustomInterceptProfile defines the Packet Intercept Endpoint Group used to intercept traffic to a third-party
+    /// firewall in a Firewall rule.
+    /// </summary>
+    public class CustomInterceptProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The InterceptEndpointGroup to which traffic associated with the SP should be mirrored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroup")]
+        public virtual string InterceptEndpointGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10248,9 +10263,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. Next ID: 12
-    /// </summary>
+    /// <summary>SecurityProfile is a resource that defines the behavior for one of many ProfileTypes.</summary>
     public class SecurityProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -10289,6 +10302,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The custom TPPI configuration for the SecurityProfile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customInterceptProfile")]
+        public virtual CustomInterceptProfile CustomInterceptProfile { get; set; }
 
         /// <summary>The custom Packet Mirroring v2 configuration for the SecurityProfile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
@@ -10362,9 +10379,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         }
     }
 
-    /// <summary>
-    /// SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. Next ID: 11
-    /// </summary>
+    /// <summary>SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes.</summary>
     public class SecurityProfileGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -10403,6 +10418,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Reference to a SecurityProfile with the CustomIntercept configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customInterceptProfile")]
+        public virtual string CustomInterceptProfile { get; set; }
 
         /// <summary>Optional. Reference to a SecurityProfile with the CustomMirroring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
