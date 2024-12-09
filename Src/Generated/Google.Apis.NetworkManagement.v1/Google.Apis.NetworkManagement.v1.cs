@@ -1045,7 +1045,7 @@ namespace Google.Apis.NetworkManagement.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -1061,7 +1061,7 @@ namespace Google.Apis.NetworkManagement.v1
                     /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
                     /// methods to check whether the cancellation succeeded or whether the operation completed despite
                     /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to
                     /// `Code.CANCELLED`.
                     /// </summary>
                     public class CancelRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Empty>
@@ -1837,6 +1837,20 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedProjects")]
         public virtual System.Collections.Generic.IList<string> RelatedProjects { get; set; }
+
+        /// <summary>
+        /// Output only. The reachability details of this test from the latest run for the return path. The details are
+        /// updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing
+        /// test.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnReachabilityDetails")]
+        public virtual ReachabilityDetails ReturnReachabilityDetails { get; set; }
+
+        /// <summary>
+        /// Whether run analysis for the return path from destination to source. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roundTrip")]
+        public virtual System.Nullable<bool> RoundTrip { get; set; }
 
         /// <summary>
         /// Required. Source specification of the Connectivity Test. You can use a combination of source IP address,
