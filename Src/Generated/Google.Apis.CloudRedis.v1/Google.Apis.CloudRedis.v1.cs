@@ -759,7 +759,10 @@ namespace Google.Apis.CloudRedis.v1
                 /// be created at the backend, and this backup belongs to this collection. Both collection and backup
                 /// will have a resource name. Backup will be executed for each shard. A replica (primary if nonHA) will
                 /// be selected to perform the execution. Backup call will be rejected if there is an ongoing backup or
-                /// update operation.
+                /// update operation. Be aware that during preview, if the cluster's internal software version is too
+                /// old, critical update will be performed before actual backup. Once the internal software version is
+                /// updated to the minimum version required by the backup feature, subsequent backups will not require
+                /// critical update. After preview, there will be no critical update needed for backup.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -777,7 +780,10 @@ namespace Google.Apis.CloudRedis.v1
                 /// be created at the backend, and this backup belongs to this collection. Both collection and backup
                 /// will have a resource name. Backup will be executed for each shard. A replica (primary if nonHA) will
                 /// be selected to perform the execution. Backup call will be rejected if there is an ongoing backup or
-                /// update operation.
+                /// update operation. Be aware that during preview, if the cluster's internal software version is too
+                /// old, critical update will be performed before actual backup. Once the internal software version is
+                /// updated to the minimum version required by the backup feature, subsequent backups will not require
+                /// critical update. After preview, there will be no critical update needed for backup.
                 /// </summary>
                 public class BackupRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
@@ -2562,8 +2568,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual FixedFrequencySchedule FixedFrequencySchedule { get; set; }
 
         /// <summary>
-        /// Optional. How long to keep automated backups before the backups are deleted. If not specified, the default
-        /// value is 100 years which is also the maximum value supported. The minimum value is 1 day.
+        /// Optional. How long to keep automated backups before the backups are deleted. The value should be between 1
+        /// day and 365 days. If not specified, the default value is 35 days.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retention")]
         public virtual object Retention { get; set; }
@@ -2731,6 +2737,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalSizeBytes")]
         public virtual System.Nullable<long> TotalSizeBytes { get; set; }
 
+        /// <summary>Output only. System assigned unique identifier of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2773,6 +2783,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Identifier. Full resource path of the backup collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. System assigned unique identifier of the backup collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3398,6 +3412,12 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>Detailed information of each PSC connection.</summary>
     public class ConnectionDetail : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Detailed information of a PSC connection that is created through service connectivity automation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnection")]
+        public virtual PscAutoConnection PscAutoConnection { get; set; }
+
         /// <summary>
         /// Detailed information of a PSC connection that is created by the customer who owns the cluster.
         /// </summary>
@@ -4074,10 +4094,8 @@ namespace Google.Apis.CloudRedis.v1.Data
     public class FixedFrequencySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The start time of every automated backup in UTC. It must be set to the start of an hour. If not
-        /// specified, the default value is the start of the hour when the automated backup config is enabled. For
-        /// example, if the automated backup config is enabled at 10:13 AM UTC without specifying start_time, the
-        /// default start time is 10:00 AM UTC.
+        /// Required. The start time of every automated backup in UTC. It must be set to the start of an hour. This
+        /// field is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
@@ -5429,6 +5447,61 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details of consumer resources in a PSC connection that is created through Service Connectivity Automation.
+    /// </summary>
+    public class PscAutoConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The IP allocated on the consumer network for the PSC forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>Output only. Type of the PSC connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>
+        /// Output only. The URI of the consumer side forwarding rule. Example:
+        /// projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
+        public virtual string ForwardingRule { get; set; }
+
+        /// <summary>
+        /// Required. The consumer network where the IP address resides, in the form of
+        /// projects/{project_id}/global/networks/{network_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Required. The consumer project_id where the forwarding rule is created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionId")]
+        public virtual string PscConnectionId { get; set; }
+
+        /// <summary>
+        /// Output only. The status of the PSC connection. Please note that this value is updated periodically. Please
+        /// use Private Service Connect APIs for the latest status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionStatus")]
+        public virtual string PscConnectionStatus { get; set; }
+
+        /// <summary>
+        /// Output only. The service attachment which is the target of the PSC connection, in the form of
+        /// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
+        public virtual string ServiceAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
