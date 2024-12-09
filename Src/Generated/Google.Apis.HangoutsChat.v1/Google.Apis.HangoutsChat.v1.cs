@@ -2911,16 +2911,19 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a space with no members. Can be used to create a named space, or a group chat in `Import mode`. For
-        /// an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). If you receive
-        /// the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space
-        /// within the Google Workspace organization might already use this display name. Supports the following types
+        /// Creates a space. Can be used to create a named space, or a group chat in `Import mode`. For an example, see
+        /// [Create a space](https://developers.google.com/workspace/chat/create-spaces). Supports the following types
         /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
         /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
         /// Preview](https://developers.google.com/workspace/preview) - [User
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
-        /// authenticating as an app, the `space.customer` field must be set in the request.
+        /// authenticating as an app, the `space.customer` field must be set in the request. Space membership upon
+        /// creation depends on whether the space is created in `Import mode`: * **Import mode:** No members are
+        /// created. * **All other modes:** The calling user is added as a member. This is: * The app itself when using
+        /// app authentication. * The human user when using user authentication. If you receive the error message
+        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
+        /// Workspace organization might already use this display name.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Space body)
@@ -2929,16 +2932,19 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a space with no members. Can be used to create a named space, or a group chat in `Import mode`. For
-        /// an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). If you receive
-        /// the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space
-        /// within the Google Workspace organization might already use this display name. Supports the following types
+        /// Creates a space. Can be used to create a named space, or a group chat in `Import mode`. For an example, see
+        /// [Create a space](https://developers.google.com/workspace/chat/create-spaces). Supports the following types
         /// of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
         /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in [Developer
         /// Preview](https://developers.google.com/workspace/preview) - [User
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) When
-        /// authenticating as an app, the `space.customer` field must be set in the request.
+        /// authenticating as an app, the `space.customer` field must be set in the request. Space membership upon
+        /// creation depends on whether the space is created in `Import mode`: * **Import mode:** No members are
+        /// created. * **All other modes:** The calling user is added as a member. This is: * The app itself when using
+        /// app authentication. * The human user when using user authentication. If you receive the error message
+        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
+        /// Workspace organization might already use this display name.
         /// </summary>
         public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
         {
