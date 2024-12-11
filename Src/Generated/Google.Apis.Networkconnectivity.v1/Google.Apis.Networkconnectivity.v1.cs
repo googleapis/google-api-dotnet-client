@@ -7932,7 +7932,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for PolicyBasedRouting.ListPolicyBasedRoutes method.</summary>
+    /// <summary>Response for PolicyBasedRoutingService.ListPolicyBasedRoutes method.</summary>
     public class ListPolicyBasedRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8358,8 +8358,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// 1, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -8810,7 +8810,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>
         /// Optional. The IP Address of the Regional Endpoint. When no address is provided, an IP from the subnetwork is
         /// allocated. Use one of the following formats: * IPv4 address as in `10.0.0.1` * Address resource URI as in
-        /// `projects/{project}/regions/{region}/addresses/{address_name}`
+        /// `projects/{project}/regions/{region}/addresses/{address_name}` for an IPv4 or IPv6 address.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
