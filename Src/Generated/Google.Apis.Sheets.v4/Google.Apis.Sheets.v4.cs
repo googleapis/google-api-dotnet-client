@@ -7369,6 +7369,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// </summary>
     public class SetDataValidationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, the data validation rule will be applied to the filtered rows as well.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteredRowsIncluded")]
+        public virtual System.Nullable<bool> FilteredRowsIncluded { get; set; }
+
         /// <summary>The range the data validation rule should apply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; }
