@@ -7092,6 +7092,233 @@ namespace Google.Apis.Storage.v1
             }
         }
 
+        /// <summary>Moves the source object to the destination object in the same bucket.</summary>
+        /// <param name="bucket">Name of the bucket in which the object resides.</param>
+        /// <param name="sourceObject">
+        /// Name of the source object. For information about how to URL encode object names to be path safe, see
+        /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+        /// </param>
+        /// <param name="destinationObject">
+        /// Name of the destination object. For information about how to URL encode object names to be path safe, see
+        /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+        /// </param>
+        public virtual MoveRequest Move(string bucket, string sourceObject, string destinationObject)
+        {
+            return new MoveRequest(this.service, bucket, sourceObject, destinationObject);
+        }
+
+        /// <summary>Moves the source object to the destination object in the same bucket.</summary>
+        public class MoveRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
+        {
+            /// <summary>Constructs a new Move request.</summary>
+            public MoveRequest(Google.Apis.Services.IClientService service, string bucket, string sourceObject, string destinationObject) : base(service)
+            {
+                Bucket = bucket;
+                SourceObject = sourceObject;
+                DestinationObject = destinationObject;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which the object resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>
+            /// Name of the source object. For information about how to URL encode object names to be path safe, see
+            /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sourceObject", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SourceObject { get; private set; }
+
+            /// <summary>
+            /// Name of the destination object. For information about how to URL encode object names to be path safe,
+            /// see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinationObject", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DestinationObject { get; private set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the destination object's current generation matches the given
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+            /// `ifGenerationMatch` and `ifGenerationNotMatch` conditions are mutually exclusive: it's an error for both
+            /// of them to be set in the request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfGenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the destination object's current generation does not match
+            /// the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation
+            /// succeed only if there is a live version of the object.`ifGenerationMatch` and `ifGenerationNotMatch`
+            /// conditions are mutually exclusive: it's an error for both of them to be set in the request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the destination object's current metageneration matches the
+            /// given value. `ifMetagenerationMatch` and `ifMetagenerationNotMatch` conditions are mutually exclusive:
+            /// it's an error for both of them to be set in the request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the destination object's current metageneration does not
+            /// match the given value. `ifMetagenerationMatch` and `ifMetagenerationNotMatch` conditions are mutually
+            /// exclusive: it's an error for both of them to be set in the request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the source object's current generation matches the given
+            /// value. `ifSourceGenerationMatch` and `ifSourceGenerationNotMatch` conditions are mutually exclusive:
+            /// it's an error for both of them to be set in the request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifSourceGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfSourceGenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the source object's current generation does not match the
+            /// given value. `ifSourceGenerationMatch` and `ifSourceGenerationNotMatch` conditions are mutually
+            /// exclusive: it's an error for both of them to be set in the request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifSourceGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfSourceGenerationNotMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the source object's current metageneration matches the given
+            /// value. `ifSourceMetagenerationMatch` and `ifSourceMetagenerationNotMatch` conditions are mutually
+            /// exclusive: it's an error for both of them to be set in the request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifSourceMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfSourceMetagenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the source object's current metageneration does not match the
+            /// given value. `ifSourceMetagenerationMatch` and `ifSourceMetagenerationNotMatch` conditions are mutually
+            /// exclusive: it's an error for both of them to be set in the request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifSourceMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfSourceMetagenerationNotMatch { get; set; }
+
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "move";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/o/{sourceObject}/moveTo/o/{destinationObject}";
+
+            /// <summary>Initializes Move parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sourceObject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceObject",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationObject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationObject",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifSourceMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifSourceMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Patches an object's metadata.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
