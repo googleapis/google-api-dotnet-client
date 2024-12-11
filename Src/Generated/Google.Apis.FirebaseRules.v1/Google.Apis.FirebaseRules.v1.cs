@@ -512,13 +512,13 @@ namespace Google.Apis.FirebaseRules.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1.
+                /// Optional. The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("executableVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ExecutableVersionEnum> ExecutableVersion { get; set; }
 
                 /// <summary>
-                /// The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1.
+                /// Optional. The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1.
                 /// </summary>
                 public enum ExecutableVersionEnum
                 {
@@ -597,9 +597,9 @@ namespace Google.Apis.FirebaseRules.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// `Release` filter. The list method supports filters with restrictions on the `Release.name`, and
-                /// `Release.ruleset_name`. Example 1: A filter of 'name=prod*' might return `Release`s with names
-                /// within 'projects/foo' prefixed with 'prod': Name -&amp;gt; Ruleset Name: *
+                /// Optional. `Release` filter. The list method supports filters with restrictions on the
+                /// `Release.name`, and `Release.ruleset_name`. Example 1: A filter of 'name=prod*' might return
+                /// `Release`s with names within 'projects/foo' prefixed with 'prod': Name -&amp;gt; Ruleset Name: *
                 /// projects/foo/releases/prod -&amp;gt; projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v1
                 /// -&amp;gt; projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v2 -&amp;gt;
                 /// projects/foo/rulesets/uuid8888 Example 2: A filter of `name=prod* ruleset_name=uuid1234` would
@@ -613,14 +613,15 @@ namespace Google.Apis.FirebaseRules.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service
-                /// may choose to load fewer than `page_size` results due to the size of the output. To traverse all of
-                /// the releases, the caller should iterate until the `page_token` on the response is empty.
+                /// Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and
+                /// the service may choose to load fewer than `page_size` results due to the size of the output. To
+                /// traverse all of the releases, the caller should iterate until the `page_token` on the response is
+                /// empty.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Next page token for the next batch of `Release` instances.</summary>
+                /// <summary>Optional. Next page token for the next batch of `Release` instances.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -952,23 +953,23 @@ namespace Google.Apis.FirebaseRules.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// `Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`. Filters on
-                /// `Ruleset.create_time` should use the `date` function which parses strings that conform to the RFC
-                /// 3339 date/time specifications. Example: `create_time &amp;gt; date("2017-01-01T00:00:00Z") AND
-                /// name=UUID-*`
+                /// Optional. `Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`.
+                /// Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to
+                /// the RFC 3339 date/time specifications. Example: `create_time &amp;gt; date("2017-01-01T00:00:00Z")
+                /// AND name=UUID-*`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service
-                /// may choose to load less than `page_size` due to the size of the output. To traverse all of the
-                /// releases, caller should iterate until the `page_token` is empty.
+                /// Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and
+                /// the service may choose to load less than `page_size` due to the size of the output. To traverse all
+                /// of the releases, caller should iterate until the `page_token` is empty.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Next page token for loading the next batch of `Ruleset` instances.</summary>
+                /// <summary>Optional. Next page token for loading the next batch of `Ruleset` instances.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1721,15 +1722,15 @@ namespace Google.Apis.FirebaseRules.v1.Data
     public class TestRulesetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional `Source` to be checked for correctness. This field must not be set when the resource name refers to
-        /// a `Ruleset`.
+        /// Optional. Optional `Source` to be checked for correctness. This field must not be set when the resource name
+        /// refers to a `Ruleset`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
 
         /// <summary>
-        /// The tests to execute against the `Source`. When `Source` is provided inline, the test cases will only be run
-        /// if the `Source` is syntactically and semantically valid. Inline `TestSuite` to run.
+        /// Required. The tests to execute against the `Source`. When `Source` is provided inline, the test cases will
+        /// only be run if the `Source` is syntactically and semantically valid. Inline `TestSuite` to run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSuite")]
         public virtual TestSuite TestSuite { get; set; }
@@ -1781,7 +1782,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
         public virtual Release Release { get; set; }
 
-        /// <summary>Specifies which fields to update.</summary>
+        /// <summary>Optional. Specifies which fields to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
 
