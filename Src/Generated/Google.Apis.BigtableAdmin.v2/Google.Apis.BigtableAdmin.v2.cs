@@ -4742,7 +4742,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual object Frequency { get; set; }
 
         /// <summary>
-        /// Required. How long the automated backups should be retained. The only supported value at this time is 3
+        /// Required. How long the automated backups should be retained. Values must be at least 3 days and at most 90
         /// days.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionPeriod")]
@@ -7370,7 +7370,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>
         /// If exists, the name of the long-running operation that will be used to track the post-restore optimization
         /// process to optimize the performance of the restored table. The metadata type of the long-running operation
-        /// is OptimizeRestoreTableMetadata. The response type is Empty. This long-running operation may be
+        /// is OptimizeRestoredTableMetadata. The response type is Empty. This long-running operation may be
         /// automatically created by the system if applicable after the RestoreTable long-running operation completes
         /// successfully. This operation may not be created if the table is already optimized or the restore was not
         /// successful.
