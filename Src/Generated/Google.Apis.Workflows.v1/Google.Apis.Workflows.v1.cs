@@ -1627,6 +1627,10 @@ namespace Google.Apis.Workflows.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateError")]
         public virtual StateError StateError { get; set; }
 
+        /// <summary>Optional. Input only. Immutable. Tags associated with this workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
