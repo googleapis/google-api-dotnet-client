@@ -2333,7 +2333,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningErrorMapping")]
         public virtual string EkmProvisioningErrorMapping { get; set; }
 
-        /// <summary>Indicates Ekm enrollment Provisioning of a given workload.</summary>
+        /// <summary>Output only. Indicates Ekm enrollment Provisioning of a given workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmProvisioningState")]
         public virtual string EkmProvisioningState { get; set; }
 
@@ -2408,7 +2408,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assuredWorkloadsMonitoring")]
         public virtual System.Nullable<bool> AssuredWorkloadsMonitoring { get; set; }
 
-        /// <summary>Allow the partner to view inspectability logs and monitoring violations.</summary>
+        /// <summary>Optional. Allow the partner to view inspectability logs and monitoring violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLogsViewer")]
         public virtual System.Nullable<bool> DataLogsViewer { get; set; }
 
@@ -2423,7 +2423,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Represent the resources that are children of this Workload.</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource identifier. For a project this represents project_number.</summary>
+        /// <summary>Output only. Resource identifier. For a project this represents project_number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual System.Nullable<long> ResourceId { get; set; }
 
@@ -2471,7 +2471,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("setupErrors")]
         public virtual System.Collections.Generic.IList<string> SetupErrors { get; set; }
 
-        /// <summary>Indicates SAA enrollment status of a given workload.</summary>
+        /// <summary>Output only. Indicates SAA enrollment status of a given workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setupStatus")]
         public virtual string SetupStatus { get; set; }
 
