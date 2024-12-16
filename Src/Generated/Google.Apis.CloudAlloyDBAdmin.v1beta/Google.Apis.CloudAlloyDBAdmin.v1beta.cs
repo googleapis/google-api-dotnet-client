@@ -3052,6 +3052,65 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta
                     }
                 }
 
+                /// <summary>Restores an AlloyDB cluster from a CloudSQL resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location of the new cluster. For the required format, see the comment on Cluster.name
+                /// field.
+                /// </param>
+                public virtual RestoreFromCloudSQLRequest RestoreFromCloudSQL(Google.Apis.CloudAlloyDBAdmin.v1beta.Data.RestoreFromCloudSQLRequest body, string parent)
+                {
+                    return new RestoreFromCloudSQLRequest(this.service, body, parent);
+                }
+
+                /// <summary>Restores an AlloyDB cluster from a CloudSQL resource.</summary>
+                public class RestoreFromCloudSQLRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1beta.Data.Operation>
+                {
+                    /// <summary>Constructs a new RestoreFromCloudSQL request.</summary>
+                    public RestoreFromCloudSQLRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1beta.Data.RestoreFromCloudSQLRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location of the new cluster. For the required format, see the comment on
+                    /// Cluster.name field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAlloyDBAdmin.v1beta.Data.RestoreFromCloudSQLRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restoreFromCloudSQL";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/clusters:restoreFromCloudSQL";
+
+                    /// <summary>Initializes RestoreFromCloudSQL parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the
                 /// SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly
@@ -3196,7 +3255,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
@@ -3210,7 +3269,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1beta.Data.Empty>
                 {
@@ -4634,10 +4693,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Options for exporting data in CSV format. For now, we only support a query to get the data that needs to be
-    /// exported.
-    /// </summary>
+    /// <summary>Options for exporting data in CSV format.</summary>
     public class CsvExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4661,7 +4717,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quoteCharacter")]
         public virtual string QuoteCharacter { get; set; }
 
-        /// <summary>Required. The select_query used to extract the data.</summary>
+        /// <summary>Required. The SELECT query used to extract the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectQuery")]
         public virtual string SelectQuery { get; set; }
 
@@ -4722,8 +4778,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual CsvExportOptions CsvExportOptions { get; set; }
 
         /// <summary>
-        /// Required. Name of the database where the query will be executed. Note - Value provided should be the same as
-        /// expected from `SELECT current_database();` and NOT as a resource reference.
+        /// Required. Name of the database where the export command will be executed. Note - Value provided should be
+        /// the same as expected from `SELECT current_database();` and NOT as a resource reference.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
@@ -4771,7 +4827,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
     {
         /// <summary>
         /// Required. The path to the file in Google Cloud Storage where the export will be stored. The URI is in the
-        /// form `gs://bucketName/fileName`. If the file already exists, the request succeeds, but the operation fails.
+        /// form `gs://bucketName/fileName`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -5707,8 +5763,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// 1, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -5967,6 +6023,25 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for registering Restoring from CloudSQL resource.</summary>
+    public class RestoreFromCloudSQLRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cluster created from CloudSQL backup run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudsqlBackupRunSource")]
+        public virtual CloudSQLBackupRunSource CloudsqlBackupRunSource { get; set; }
+
+        /// <summary>Required. The resource being created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual Cluster Cluster { get; set; }
+
+        /// <summary>Required. ID of the requesting object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6816,6 +6891,12 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Optional. Number of shards (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<int> ShardCount { get; set; }
+
+        /// <summary>
+        /// Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<double> VcpuCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
