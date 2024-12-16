@@ -773,7 +773,7 @@ namespace Google.Apis.Solar.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageryQuality")]
         public virtual string ImageryQuality { get; set; }
 
-        /// <summary>The resource name for the building, of the format `building/`.</summary>
+        /// <summary>The resource name for the building, of the format `buildings/{place_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
