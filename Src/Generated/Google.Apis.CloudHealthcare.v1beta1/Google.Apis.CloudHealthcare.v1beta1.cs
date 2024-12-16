@@ -18097,6 +18097,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class GoogleCloudHealthcareV1beta1FhirBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Setting this field will enable BigQuery's Change Data Capture (CDC) on the destination tables. Use
+        /// this field if you: - Want to only keep the latest version of each resource. Updates and deletes to an
+        /// existing resource will overwrite the corresponding row. - Have a store with enabled history modifications
+        /// and want to keep the entire history of resource versions but want the history to be mutable. Updates and
+        /// deletes to a specific resource version will overwrite the corresponding row. See
+        /// https://cloud.google.com/bigquery/docs/change-data-capture for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeDataCaptureConfig")]
+        public virtual GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfig ChangeDataCaptureConfig { get; set; }
+
+        /// <summary>
         /// BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetUri")]
@@ -18120,6 +18131,20 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BigQuery Change Data Capture configuration.</summary>
+    public class GoogleCloudHealthcareV1beta1FhirChangeDataCaptureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Configures how historical versions of FHIR resources will be reflected in the destination table
+        /// through updates and deletes. Defaults to `HistoryMode.KEEP_LATEST_VERSION` if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("historyMode")]
+        public virtual string HistoryMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
