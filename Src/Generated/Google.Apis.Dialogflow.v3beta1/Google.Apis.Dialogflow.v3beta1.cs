@@ -6971,6 +6971,71 @@ namespace Google.Apis.Dialogflow.v3beta1
                                 });
                             }
                         }
+
+                        /// <summary>
+                        /// Retrieves the specified version of the Playbook and stores it as the current playbook draft,
+                        /// returning the playbook with resources updated.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The name of the playbook version. Format:
+                        /// `projects//locations//agents//playbooks//versions/`.
+                        /// </param>
+                        public virtual RestoreRequest Restore(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest body, string name)
+                        {
+                            return new RestoreRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Retrieves the specified version of the Playbook and stores it as the current playbook draft,
+                        /// returning the playbook with resources updated.
+                        /// </summary>
+                        public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse>
+                        {
+                            /// <summary>Constructs a new Restore request.</summary>
+                            public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the playbook version. Format:
+                            /// `projects//locations//agents//playbooks//versions/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "restore";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}:restore";
+
+                            /// <summary>Initializes Restore parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/playbooks/[^/]+/versions/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Creates a playbook in a specified agent.</summary>
@@ -7080,6 +7145,70 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Exports the specified playbook to a binary file. Note that resources (e.g. examples, tools) that
+                    /// the playbook references will also be exported.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the playbook to export. Format: `projects//locations//agents//playbooks/`.
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest body, string name)
+                    {
+                        return new ExportRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Exports the specified playbook to a binary file. Note that resources (e.g. examples, tools) that
+                    /// the playbook references will also be exported.
+                    /// </summary>
+                    public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the playbook to export. Format:
+                        /// `projects//locations//agents//playbooks/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+name}:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/playbooks/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Retrieves the specified Playbook.</summary>
                     /// <param name="name">
                     /// Required. The name of the playbook. Format: `projects//locations//agents//playbooks/`.
@@ -7125,6 +7254,63 @@ namespace Google.Apis.Dialogflow.v3beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/playbooks/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Imports the specified playbook to the specified agent from a binary file.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The agent to import the playbook into. Format: `projects//locations//agents/`.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest body, string parent)
+                    {
+                        return new ImportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Imports the specified playbook to the specified agent from a binary file.</summary>
+                    public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to import the playbook into. Format: `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/playbooks:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
                             });
                         }
                     }
@@ -10837,7 +11023,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
@@ -10851,7 +11037,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleProtobufEmpty>
                 {
@@ -11517,7 +11703,7 @@ namespace Google.Apis.Dialogflow.v3beta1
             /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check
             /// whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-            /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+            /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
             /// </summary>
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(string name)
@@ -11531,7 +11717,7 @@ namespace Google.Apis.Dialogflow.v3beta1
             /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check
             /// whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-            /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+            /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
             /// </summary>
             public class CancelRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleProtobufEmpty>
             {
@@ -15498,6 +15684,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1ConversationInteraction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Answer feedback for the final response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerFeedback")]
+        public virtual GoogleCloudDialogflowCxV3beta1AnswerFeedback AnswerFeedback { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -17302,6 +17492,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Playbooks.ExportPlaybook.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The data format of the exported agent. If not specified, `BLOB` is assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
+
+        /// <summary>
+        /// Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the playbook to.
+        /// The format of this URI must be `gs:///`. If left unspecified, the serialized playbook is returned inline.
+        /// Dialogflow performs a write operation for the Cloud Storage object on the caller's behalf, so your request
+        /// authentication must have write permissions for the object. For more information, see [Dialogflow access
+        /// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookUri")]
+        public virtual string PlaybookUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
     /// fields.
@@ -17518,6 +17729,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Stores metadata of the invocation of a CX flow.</summary>
     public class GoogleCloudDialogflowCxV3beta1FlowInvocation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The display name of the flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Required. The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
         /// </summary>
@@ -18324,6 +18539,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Display names of conflicting intents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intentDisplayNames")]
         public virtual System.Collections.Generic.IList<string> IntentDisplayNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Playbooks.ImportPlaybook.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the import strategy used when resolving resource conflicts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importStrategy")]
+        public virtual GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy ImportStrategy { get; set; }
+
+        /// <summary>Uncompressed raw byte content for playbook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookContent")]
+        public virtual string PlaybookContent { get; set; }
+
+        /// <summary>
+        /// [Dialogflow access control] (https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookUri")]
+        public virtual string PlaybookUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19741,6 +19977,37 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The playbook import strategy used for resource conflict resolution associated with an ImportPlaybookRequest.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the import strategy used when resolving conflicts with the main playbook. If not
+        /// specified, 'CREATE_NEW' is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainPlaybookImportStrategy")]
+        public virtual string MainPlaybookImportStrategy { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the import strategy used when resolving referenced playbook/flow conflicts. If not
+        /// specified, 'CREATE_NEW' is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nestedResourceImportStrategy")]
+        public virtual string NestedResourceImportStrategy { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the import strategy used when resolving tool conflicts. If not specified, 'CREATE_NEW'
+        /// is assumed. This will be applied after the main playbook and nested resource import strategies, meaning if
+        /// the playbook that references the tool is skipped, the tool will also be skipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolImportStrategy")]
+        public virtual string ToolImportStrategy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Input of the playbook.</summary>
     public class GoogleCloudDialogflowCxV3beta1PlaybookInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19770,6 +20037,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Stores metadata of the invocation of a child playbook.</summary>
     public class GoogleCloudDialogflowCxV3beta1PlaybookInvocation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The display name of the playbook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Required. The unique identifier of the playbook. Format: `projects//locations//agents//playbooks/`.
         /// </summary>
@@ -20562,6 +20833,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>tracking branch for the git pull</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingBranch")]
         public virtual string TrackingBranch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Playbooks.RestorePlaybookVersion.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Playbooks.RestorePlaybookVersion.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated playbook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbook")]
+        public virtual GoogleCloudDialogflowCxV3beta1Playbook Playbook { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21724,6 +22013,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. Name of the action to be called during the tool use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
+
+        /// <summary>Output only. The display name of the tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. A list of input parameters for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputActionParameters")]
