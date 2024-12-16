@@ -2593,10 +2593,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
             /// <summary>
-            /// Set to true to invoke a replica failover to the designated DR replica. As part of replica failover, the
-            /// promote operation attempts to add the original primary instance as a replica of the promoted DR replica
-            /// when the original primary instance comes back online. If set to false or not specified, then the
-            /// original primary instance becomes an independent Cloud SQL primary instance. Only applicable to MySQL.
+            /// Set to true to invoke a replica failover to the DR replica. As part of replica failover, the promote
+            /// operation attempts to add the original primary instance as a replica of the promoted DR replica when the
+            /// original primary instance comes back online. If set to false or not specified, then the original primary
+            /// instance becomes an independent Cloud SQL primary instance.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("failover", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Failover { get; set; }
@@ -3163,7 +3163,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
         }
 
-        /// <summary>Switches over from the primary instance to the designated DR replica instance.</summary>
+        /// <summary>Switches over from the primary instance to the DR replica instance.</summary>
         /// <param name="project">ID of the project that contains the replica.</param>
         /// <param name="instance">Cloud SQL read replica instance name.</param>
         public virtual SwitchoverRequest Switchover(string project, string instance)
@@ -3171,7 +3171,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new SwitchoverRequest(this.service, project, instance);
         }
 
-        /// <summary>Switches over from the primary instance to the designated DR replica instance.</summary>
+        /// <summary>Switches over from the primary instance to the DR replica instance.</summary>
         public class SwitchoverRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Switchover request.</summary>
@@ -3191,8 +3191,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
             /// <summary>
-            /// Optional. (MySQL only) Cloud SQL instance operations timeout, which is a sum of all database operations.
-            /// Default value is 10 minutes and can be modified to a maximum value of 24 hours.
+            /// Optional. (MySQL and PostgreSQL only) Cloud SQL instance operations timeout, which is a sum of all
+            /// database operations. Default value is 10 minutes and can be modified to a maximum value of 24 hours.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dbTimeout", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object DbTimeout { get; set; }
@@ -5555,6 +5555,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
         public virtual string BackendType { get; set; }
 
+        /// <summary>Custom subject alternative names for the server certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customSubjectAlternativeNames")]
+        public virtual System.Collections.Generic.IList<string> CustomSubjectAlternativeNames { get; set; }
+
         /// <summary>
         /// The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
         /// MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (default), or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`,
@@ -5873,8 +5877,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you
-        /// designate for failover in the event that the primary instance experiences regional failure. Only applicable
-        /// to MySQL.
+        /// designate for failover in the event that the primary instance experiences regional failure. Applicable to
+        /// MySQL and PostgreSQL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationCluster")]
         public virtual ReplicationCluster ReplicationCluster { get; set; }
@@ -5945,6 +5949,18 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("switchTransactionLogsToCloudStorageEnabled")]
         public virtual System.Nullable<bool> SwitchTransactionLogsToCloudStorageEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys and tag values that are bound to this instance. You must represent
+        /// each item in the map as: `"" : ""`. For example, a single resource can have the following tags:
+        /// ```
+        /// "123/environment": "production", "123/costCenter": "marketing",
+        /// ```
+        /// For more information on tag creation and
+        /// management, see https://cloud.google.com/resource-manager/docs/tags/tags-overview.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>Output only. All database versions that are available for upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradableDatabaseVersions")]
@@ -7145,6 +7161,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetworks")]
         public virtual System.Collections.Generic.IList<AclEntry> AuthorizedNetworks { get; set; }
 
+        /// <summary>Optional. Custom Subject Alternative Name(SAN)s for a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customSubjectAlternativeNames")]
+        public virtual System.Collections.Generic.IList<string> CustomSubjectAlternativeNames { get; set; }
+
         /// <summary>Controls connectivity to private IP instances from Google services, such as BigQuery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivatePathForGoogleCloudServices")]
         public virtual System.Nullable<bool> EnablePrivatePathForGoogleCloudServices { get; set; }
@@ -7178,6 +7198,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Specify what type of CA is used for the server certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCaMode")]
         public virtual string ServerCaMode { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the
+        /// `server_ca_mode`. Format: projects//locations//caPools/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCaPool")]
+        public virtual string ServerCaPool { get; set; }
 
         /// <summary>
         /// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward
@@ -7629,6 +7656,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
+        /// <summary>Optional. The sub operation based on the operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subOperationType")]
+        public virtual SqlSubOperationType SubOperationType { get; set; }
+
         /// <summary>Name of the database instance related to this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual string TargetId { get; set; }
@@ -7691,8 +7722,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
@@ -8008,7 +8039,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
     /// <summary>
     /// A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you
-    /// designate for failover in the event that the primary instance has regional failure. Only applicable to MySQL.
+    /// designate for failover in the event that the primary instance has regional failure. Applicable to MySQL and
+    /// PostgreSQL.
     /// </summary>
     public class ReplicationCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8029,11 +8061,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string FailoverDrReplicaName { get; set; }
 
         /// <summary>
-        /// Output only. If set, it indicates this instance has a private service access (PSA) dns endpoint that is
-        /// pointing to the primary instance of the cluster. If this instance is the primary, the dns should be pointing
-        /// to this instance. After Switchover or Replica failover, this DNS endpoint points to the promoted instance.
-        /// This is a read-only field, returned to the user as information. This field can exist even if a standalone
-        /// instance does not yet have a replica, or had a DR replica that was deleted.
+        /// Output only. If set, this field indicates this instance has a private service access (PSA) DNS endpoint that
+        /// is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint
+        /// points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the
+        /// promoted instance. This is a read-only field, returned to the user as information. This field can exist even
+        /// if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("psaWriteEndpoint")]
         public virtual string PsaWriteEndpoint { get; set; }
@@ -8761,6 +8793,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The server roles for this user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverRoles")]
         public virtual System.Collections.Generic.IList<string> ServerRoles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The sub operation type based on the operation type.</summary>
+    public class SqlSubOperationType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of maintenance to be performed on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceType")]
+        public virtual string MaintenanceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
