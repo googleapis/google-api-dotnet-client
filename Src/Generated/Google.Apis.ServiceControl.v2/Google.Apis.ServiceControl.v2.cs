@@ -839,6 +839,13 @@ namespace Google.Apis.ServiceControl.v2.Data
     /// <summary>Response message for the Check method.</summary>
     public class CheckResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional response metadata that will be emitted as dynamic metadata to be consumed by the caller of
+        /// ServiceController. For compatibility with the ext_authz interface.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DynamicMetadata { get; set; }
+
         /// <summary>Returns a set of request contexts generated from the `CheckRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
