@@ -286,7 +286,7 @@ namespace Google.Apis.CloudScheduler.v1
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -301,7 +301,7 @@ namespace Google.Apis.CloudScheduler.v1
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         public class CancelRequest : CloudSchedulerBaseServiceRequest<Google.Apis.CloudScheduler.v1.Data.Empty>
         {
