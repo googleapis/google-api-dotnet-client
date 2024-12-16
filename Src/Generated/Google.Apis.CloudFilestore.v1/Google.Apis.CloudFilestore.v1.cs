@@ -940,6 +940,12 @@ namespace Google.Apis.CloudFilestore.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -988,6 +994,14 @@ namespace Google.Apis.CloudFilestore.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "returnPartialSuccess",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1665,7 +1679,7 @@ namespace Google.Apis.CloudFilestore.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -1680,7 +1694,7 @@ namespace Google.Apis.CloudFilestore.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Empty>
                 {
@@ -2184,8 +2198,11 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual System.Nullable<long> StorageBytes { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example:
-        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// Optional. Input only. Immutable. Tag key-value pairs bound to this resource. Each key must be a namespaced
+        /// name and each value a short name. Example: "123456789012/environment" : "production",
+        /// "123456789013/costCenter" : "marketing" See the documentation for more information: - Namespaced name:
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key - Short
+        /// name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
@@ -2326,12 +2343,6 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// <summary>Required. Maximum IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIops")]
         public virtual System.Nullable<long> MaxIops { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated: `max_iops` should be used instead of this parameter. Maximum read IOPS.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
-        public virtual System.Nullable<long> MaxReadIops { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2846,12 +2857,6 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxIopsPerTb")]
         public virtual System.Nullable<long> MaxIopsPerTb { get; set; }
 
-        /// <summary>
-        /// Optional. Deprecated: `max_iops_per_tb` should be used instead of this parameter. Maximum read IOPS per TiB.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxReadIopsPerTb")]
-        public virtual System.Nullable<long> MaxReadIopsPerTb { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2988,8 +2993,11 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example:
-        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// Optional. Input only. Immutable. Tag key-value pairs bound to this resource. Each key must be a namespaced
+        /// name and each value a short name. Example: "123456789012/environment" : "production",
+        /// "123456789013/costCenter" : "marketing" See the documentation for more information: - Namespaced name:
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key - Short
+        /// name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
@@ -3018,7 +3026,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -3045,7 +3053,7 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -3096,6 +3104,10 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// <summary>A list of snapshots in the project for the specified instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshots")]
         public virtual System.Collections.Generic.IList<Snapshot> Snapshots { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3410,8 +3422,8 @@ namespace Google.Apis.CloudFilestore.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
@@ -3769,8 +3781,11 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. Tag key-value pairs are bound to this resource. For example:
-        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// Optional. Input only. Immutable. Tag key-value pairs bound to this resource. Each key must be a namespaced
+        /// name and each value a short name. Example: "123456789012/environment" : "production",
+        /// "123456789013/costCenter" : "marketing" See the documentation for more information: - Namespaced name:
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key - Short
+        /// name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
