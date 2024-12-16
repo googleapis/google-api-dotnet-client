@@ -2096,7 +2096,7 @@ namespace Google.Apis.SecretManager.v1beta1.Data
 
     /// <summary>
     /// A replication policy that replicates the Secret payload into the locations specified in
-    /// Secret.replication.user_managed.replicas
+    /// Replication.UserManaged.replicas
     /// </summary>
     public class UserManaged : Google.Apis.Requests.IDirectResponseSchema
     {
