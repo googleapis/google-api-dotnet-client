@@ -293,6 +293,7 @@ namespace Google.Apis.NetworkManagement.v1
             {
                 this.service = service;
                 Global = new GlobalResource(service);
+                VpcFlowLogsConfigs = new VpcFlowLogsConfigsResource(service);
             }
 
             /// <summary>Gets the Global resource.</summary>
@@ -1297,6 +1298,399 @@ namespace Google.Apis.NetworkManagement.v1
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+            }
+
+            /// <summary>Gets the VpcFlowLogsConfigs resource.</summary>
+            public virtual VpcFlowLogsConfigsResource VpcFlowLogsConfigs { get; }
+
+            /// <summary>The "vpcFlowLogsConfigs" collection of methods.</summary>
+            public class VpcFlowLogsConfigsResource
+            {
+                private const string Resource = "vpcFlowLogsConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public VpcFlowLogsConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists
+                /// (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with
+                /// state=DISABLED will fail 2. The following fields are not considered as `settings` for the purpose of
+                /// the check mentioned above, therefore - creating another configuration with the same fields but
+                /// different values for the following fields will fail as well: * name * create_time * update_time *
+                /// labels * description
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the VPC Flow Logs configuration to create:
+                /// `projects/{project_id}/locations/global`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists
+                /// (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with
+                /// state=DISABLED will fail 2. The following fields are not considered as `settings` for the purpose of
+                /// the check mentioned above, therefore - creating another configuration with the same fields but
+                /// different values for the following fields will fail as well: * name * create_time * update_time *
+                /// labels * description
+                /// </summary>
+                public class CreateRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the VPC Flow Logs configuration to create:
+                    /// `projects/{project_id}/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. ID of the `VpcFlowLogsConfig`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("vpcFlowLogsConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VpcFlowLogsConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vpcFlowLogsConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("vpcFlowLogsConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "vpcFlowLogsConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a specific `VpcFlowLogsConfig`.</summary>
+                /// <param name="name">
+                /// Required. `VpcFlowLogsConfig` resource name using the form:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a specific `VpcFlowLogsConfig`.</summary>
+                public class DeleteRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. `VpcFlowLogsConfig` resource name using the form:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/vpcFlowLogsConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the details of a specific `VpcFlowLogsConfig`.</summary>
+                /// <param name="name">
+                /// Required. `VpcFlowLogsConfig` resource name using the form:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the details of a specific `VpcFlowLogsConfig`.</summary>
+                public class GetRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. `VpcFlowLogsConfig` resource name using the form:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/vpcFlowLogsConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all `VpcFlowLogsConfigs` in a given project.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource of the VpcFlowLogsConfig: `projects/{project_id}/locations/global`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all `VpcFlowLogsConfigs` in a given project.</summary>
+                public class ListRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.ListVpcFlowLogsConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the VpcFlowLogsConfig: `projects/{project_id}/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A filter expression
+                    /// must use the supported [CEL logic operators]
+                    /// (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Field to use to sort the list.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Optional. Number of `VpcFlowLogsConfigs` to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page token from an earlier query, as returned in `next_page_token`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vpcFlowLogsConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already
+                /// exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with
+                /// state=DISABLED will fail. 2. The following fields are not considered as `settings` for the purpose
+                /// of the check mentioned above, therefore - updating another configuration with the same fields but
+                /// different values for the following fields will fail as well: * name * create_time * update_time *
+                /// labels * description
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Unique name of the configuration using the form:
+                /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already
+                /// exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with
+                /// state=DISABLED will fail. 2. The following fields are not considered as `settings` for the purpose
+                /// of the check mentioned above, therefore - updating another configuration with the same fields but
+                /// different values for the following fields will fail as well: * name * create_time * update_time *
+                /// labels * description
+                /// </summary>
+                public class PatchRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Unique name of the configuration using the form:
+                    /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. Mask of fields to update. At least one path must be supplied in this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkManagement.v1.Data.VpcFlowLogsConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/vpcFlowLogsConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
             }
@@ -2489,6 +2883,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the `ListVpcFlowLogsConfigs` method.</summary>
+    public class ListVpcFlowLogsConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page token to fetch the next set of configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached (when querying all locations with `-`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>List of VPC Flow Log configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcFlowLogsConfigs")]
+        public virtual System.Collections.Generic.IList<VpcFlowLogsConfig> VpcFlowLogsConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with a specific load balancer backend.</summary>
     public class LoadBalancerBackend : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3216,15 +3629,15 @@ namespace Google.Apis.NetworkManagement.v1.Data
     public class RouteInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For advertised routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel,
+        /// For ADVERTISED routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel,
         /// Interconnect attachment, NCC router appliance) the advertised prefix is advertised through, or URI of the
-        /// source peered network.
+        /// source peered network. Deprecated in favor of the next_hop_uri field, not used in new tests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRouteNextHopUri")]
         public virtual string AdvertisedRouteNextHopUri { get; set; }
 
         /// <summary>
-        /// For advertised dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix.
+        /// For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRouteSourceRouterUri")]
         public virtual string AdvertisedRouteSourceRouterUri { get; set; }
@@ -3233,7 +3646,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destIpRange")]
         public virtual string DestIpRange { get; set; }
 
-        /// <summary>Destination port ranges of the route. Policy based routes only.</summary>
+        /// <summary>Destination port ranges of the route. POLICY_BASED routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destPortRanges")]
         public virtual System.Collections.Generic.IList<string> DestPortRanges { get; set; }
 
@@ -3245,39 +3658,82 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTags")]
         public virtual System.Collections.Generic.IList<string> InstanceTags { get; set; }
 
-        /// <summary>URI of a NCC Hub. NCC_HUB routes only.</summary>
+        /// <summary>
+        /// For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub, the URI of the corresponding
+        /// route in NCC Hub's routing table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nccHubRouteUri")]
+        public virtual string NccHubRouteUri { get; set; }
+
+        /// <summary>
+        /// URI of the NCC Hub the route is advertised by. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised
+        /// by NCC Hub only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nccHubUri")]
         public virtual string NccHubUri { get; set; }
 
-        /// <summary>URI of a NCC Spoke. NCC_HUB routes only.</summary>
+        /// <summary>
+        /// URI of the destination NCC Spoke. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub
+        /// only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nccSpokeUri")]
         public virtual string NccSpokeUri { get; set; }
 
-        /// <summary>URI of a Compute Engine network. NETWORK routes only.</summary>
+        /// <summary>URI of a VPC network where route is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
-        /// <summary>Next hop of the route.</summary>
+        /// <summary>
+        /// String type of the next hop of the route (for example, "VPN tunnel"). Deprecated in favor of the
+        /// next_hop_type and next_hop_uri fields, not used in new tests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHop")]
         public virtual string NextHop { get; set; }
+
+        /// <summary>URI of a VPC network where the next hop resource is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopNetworkUri")]
+        public virtual string NextHopNetworkUri { get; set; }
 
         /// <summary>Type of next hop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopType")]
         public virtual string NextHopType { get; set; }
 
+        /// <summary>URI of the next hop resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopUri")]
+        public virtual string NextHopUri { get; set; }
+
+        /// <summary>
+        /// For PEERING_SUBNET, PEERING_STATIC and PEERING_DYNAMIC routes, the name of the originating
+        /// SUBNET/STATIC/DYNAMIC route.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originatingRouteDisplayName")]
+        public virtual string OriginatingRouteDisplayName { get; set; }
+
+        /// <summary>
+        /// For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originatingRouteUri")]
+        public virtual string OriginatingRouteUri { get; set; }
+
         /// <summary>Priority of the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; }
 
-        /// <summary>Protocols of the route. Policy based routes only.</summary>
+        /// <summary>Protocols of the route. POLICY_BASED routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
         public virtual System.Collections.Generic.IList<string> Protocols { get; set; }
 
-        /// <summary>Region of the route (if applicable).</summary>
+        /// <summary>
+        /// Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for
+        /// POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Indicates where route is applicable.</summary>
+        /// <summary>
+        /// Indicates where route is applicable. Deprecated, routes with NCC_HUB scope are not included in the trace in
+        /// new tests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeScope")]
         public virtual string RouteScope { get; set; }
 
@@ -3285,15 +3741,17 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
         public virtual string RouteType { get; set; }
 
-        /// <summary>Source IP address range of the route. Policy based routes only.</summary>
+        /// <summary>Source IP address range of the route. POLICY_BASED routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcIpRange")]
         public virtual string SrcIpRange { get; set; }
 
-        /// <summary>Source port ranges of the route. Policy based routes only.</summary>
+        /// <summary>Source port ranges of the route. POLICY_BASED routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcPortRanges")]
         public virtual System.Collections.Generic.IList<string> SrcPortRanges { get; set; }
 
-        /// <summary>URI of a route (if applicable).</summary>
+        /// <summary>
+        /// URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -3595,6 +4053,161 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>URI of a VPC connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A configuration to generate VPC Flow Logs.</summary>
+    public class VpcFlowLogsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The aggregation interval for the logs. Default value is INTERVAL_5_SEC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationInterval")]
+        public virtual string AggregationInterval { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the config was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum of 512 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Export filter used to define which VPC Flow Logs should be logged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpr")]
+        public virtual string FilterExpr { get; set; }
+
+        /// <summary>
+        /// Optional. The value of the field must be in (0, 1]. The sampling rate of VPC Flow Logs where 1.0 means all
+        /// collected logs are reported. Setting the sampling rate to 0.0 is not allowed. If you want to disable VPC
+        /// Flow Logs, use the state field instead. Default value is 1.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowSampling")]
+        public virtual System.Nullable<float> FlowSampling { get; set; }
+
+        /// <summary>
+        /// Traffic will be logged from the Interconnect Attachment. Format:
+        /// projects/{project_id}/regions/{region}/interconnectAttachments/{name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachment")]
+        public virtual string InterconnectAttachment { get; set; }
+
+        /// <summary>Optional. Resource labels to represent user-provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Configures whether all, none or a subset of metadata fields should be added to the reported VPC
+        /// flow logs. Default value is INCLUDE_ALL_METADATA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual string Metadata { get; set; }
+
+        /// <summary>
+        /// Optional. Custom metadata fields to include in the reported VPC flow logs. Can only be specified if
+        /// "metadata" was set to CUSTOM_METADATA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFields")]
+        public virtual System.Collections.Generic.IList<string> MetadataFields { get; set; }
+
+        /// <summary>
+        /// Identifier. Unique name of the configuration using the form:
+        /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The state of the VPC Flow Log configuration. Default value is ENABLED. When creating a new
+        /// configuration, it must be enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. A diagnostic bit - describes the state of the configured target resource for diagnostic
+        /// purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceState")]
+        public virtual string TargetResourceState { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the config was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnel")]
+        public virtual string VpnTunnel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
