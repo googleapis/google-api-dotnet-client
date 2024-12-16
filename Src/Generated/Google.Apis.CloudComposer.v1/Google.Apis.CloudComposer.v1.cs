@@ -1029,7 +1029,7 @@ namespace Google.Apis.CloudComposer.v1
                     /// <summary>
                     /// Lists workloads in a Cloud Composer environment. Workload is a unit that runs a single Composer
                     /// component. This method is supported for Cloud Composer environments in versions
-                    /// composer-3.*.*-airflow-*.*.* and newer.
+                    /// composer-2.*.*-airflow-*.*.* and newer.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The environment name to get workloads for, in the form:
@@ -1043,7 +1043,7 @@ namespace Google.Apis.CloudComposer.v1
                     /// <summary>
                     /// Lists workloads in a Cloud Composer environment. Workload is a unit that runs a single Composer
                     /// component. This method is supported for Cloud Composer environments in versions
-                    /// composer-3.*.*-airflow-*.*.* and newer.
+                    /// composer-2.*.*-airflow-*.*.* and newer.
                     /// </summary>
                     public class ListRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.ListWorkloadsResponse>
                     {
