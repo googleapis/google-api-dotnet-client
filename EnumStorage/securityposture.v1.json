@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SecurityPosture.v1.SecurityPostureBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SecurityPosture.v1.SecurityPostureBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
