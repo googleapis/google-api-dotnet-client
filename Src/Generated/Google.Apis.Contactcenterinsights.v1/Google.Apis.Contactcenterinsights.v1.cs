@@ -655,65 +655,84 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public AuthorizedViewsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Conversations = new ConversationsResource(service);
                     }
 
-                    /// <summary>Gets conversation statistics.</summary>
-                    /// <param name="location">Required. The location of the conversations.</param>
-                    public virtual CalculateStatsRequest CalculateStats(string location)
-                    {
-                        return new CalculateStatsRequest(this.service, location);
-                    }
+                    /// <summary>Gets the Conversations resource.</summary>
+                    public virtual ConversationsResource Conversations { get; }
 
-                    /// <summary>Gets conversation statistics.</summary>
-                    public class CalculateStatsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
+                    /// <summary>The "conversations" collection of methods.</summary>
+                    public class ConversationsResource
                     {
-                        /// <summary>Constructs a new CalculateStats request.</summary>
-                        public CalculateStatsRequest(Google.Apis.Services.IClientService service, string location) : base(service)
+                        private const string Resource = "conversations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ConversationsResource(Google.Apis.Services.IClientService service)
                         {
-                            Location = location;
-                            InitParameters();
+                            this.service = service;
                         }
 
-                        /// <summary>Required. The location of the conversations.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Location { get; private set; }
-
-                        /// <summary>
-                        /// A filter to reduce results to a specific subset. This field is useful for getting statistics
-                        /// about conversations with specific properties.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "calculateStats";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+location}:calculateStats";
-
-                        /// <summary>Initializes CalculateStats parameter list.</summary>
-                        protected override void InitParameters()
+                        /// <summary>Gets conversation statistics.</summary>
+                        /// <param name="location">Required. The location of the conversations.</param>
+                        public virtual CalculateStatsRequest CalculateStats(string location)
                         {
-                            base.InitParameters();
-                            RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                            return new CalculateStatsRequest(this.service, location);
+                        }
+
+                        /// <summary>Gets conversation statistics.</summary>
+                        public class CalculateStatsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1CalculateStatsResponse>
+                        {
+                            /// <summary>Constructs a new CalculateStats request.</summary>
+                            public CalculateStatsRequest(Google.Apis.Services.IClientService service, string location) : base(service)
                             {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
-                            });
-                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                Location = location;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The location of the conversations.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Location { get; private set; }
+
+                            /// <summary>
+                            /// A filter to reduce results to a specific subset. This field is useful for getting
+                            /// statistics about conversations with specific properties.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "calculateStats";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+location}/conversations:calculateStats";
+
+                            /// <summary>Initializes CalculateStats parameter list.</summary>
+                            protected override void InitParameters()
                             {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                                base.InitParameters();
+                                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "location",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/authorizedViewSets/[^/]+/authorizedViews/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
                         }
                     }
 
@@ -8469,6 +8488,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Response from import issue model</summary>
     public class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The issue model that was imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModel")]
+        public virtual GoogleCloudContactcenterinsightsV1IssueModel IssueModel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13754,6 +13777,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Response from import issue model</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The issue model that was imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueModel")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1IssueModel IssueModel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
