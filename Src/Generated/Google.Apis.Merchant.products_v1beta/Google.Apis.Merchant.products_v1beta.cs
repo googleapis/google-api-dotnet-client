@@ -1153,9 +1153,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionCost")]
         public virtual SubscriptionCost SubscriptionCost { get; set; }
 
-        /// <summary>
-        /// The tax category of the product, used to configure detailed tax nexus in account-level tax settings.
-        /// </summary>
+        /// <summary>The tax category of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxCategory")]
         public virtual string TaxCategory { get; set; }
 
