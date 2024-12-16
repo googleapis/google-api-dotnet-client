@@ -380,13 +380,23 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Gets information about the user, the user's Drive, and system capabilities.</summary>
+        /// <summary>
+        /// Gets information about the user, the user's Drive, and system capabilities. For more information, see
+        /// [Return user info](https://developers.google.com/drive/api/guides/user-info). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         public virtual GetRequest Get()
         {
             return new GetRequest(this.service);
         }
 
-        /// <summary>Gets information about the user, the user's Drive, and system capabilities.</summary>
+        /// <summary>
+        /// Gets information about the user, the user's Drive, and system capabilities. For more information, see
+        /// [Return user info](https://developers.google.com/drive/api/guides/user-info). Required: The `fields`
+        /// parameter must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.About>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -642,14 +652,20 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Gets a specific app.</summary>
+        /// <summary>
+        /// Gets a specific app. For more information, see [Return user
+        /// info](https://developers.google.com/drive/api/guides/user-info).
+        /// </summary>
         /// <param name="appId">The ID of the app.</param>
         public virtual GetRequest Get(string appId)
         {
             return new GetRequest(this.service, appId);
         }
 
-        /// <summary>Gets a specific app.</summary>
+        /// <summary>
+        /// Gets a specific app. For more information, see [Return user
+        /// info](https://developers.google.com/drive/api/guides/user-info).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.App>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -687,13 +703,19 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Lists a user's installed apps.</summary>
+        /// <summary>
+        /// Lists a user's installed apps. For more information, see [Return user
+        /// info](https://developers.google.com/drive/api/guides/user-info).
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>Lists a user's installed apps.</summary>
+        /// <summary>
+        /// Lists a user's installed apps. For more information, see [Return user
+        /// info](https://developers.google.com/drive/api/guides/user-info).
+        /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.AppList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -780,13 +802,19 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Gets the starting pageToken for listing future changes.</summary>
+        /// <summary>
+        /// Gets the starting pageToken for listing future changes. For more information, see [Retrieve
+        /// changes](https://developers.google.com/drive/api/guides/manage-changes).
+        /// </summary>
         public virtual GetStartPageTokenRequest GetStartPageToken()
         {
             return new GetStartPageTokenRequest(this.service);
         }
 
-        /// <summary>Gets the starting pageToken for listing future changes.</summary>
+        /// <summary>
+        /// Gets the starting pageToken for listing future changes. For more information, see [Retrieve
+        /// changes](https://developers.google.com/drive/api/guides/manage-changes).
+        /// </summary>
         public class GetStartPageTokenRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.StartPageToken>
         {
             /// <summary>Constructs a new GetStartPageToken request.</summary>
@@ -862,7 +890,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Lists the changes for a user or shared drive.</summary>
+        /// <summary>
+        /// Lists the changes for a user or shared drive. For more information, see [Retrieve
+        /// changes](https://developers.google.com/drive/api/guides/manage-changes).
+        /// </summary>
         /// <param name="pageToken">
         /// The token for continuing a previous list request on the next page. This should be set to the value of
         /// 'nextPageToken' from the previous response or to the response from the getStartPageToken method.
@@ -872,7 +903,10 @@ namespace Google.Apis.Drive.v3
             return new ListRequest(this.service, pageToken);
         }
 
-        /// <summary>Lists the changes for a user or shared drive.</summary>
+        /// <summary>
+        /// Lists the changes for a user or shared drive. For more information, see [Retrieve
+        /// changes](https://developers.google.com/drive/api/guides/manage-changes).
+        /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ChangeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1089,7 +1123,10 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Subscribes to changes for a user.</summary>
+        /// <summary>
+        /// Subscribes to changes for a user. For more information, see [Notifications for resource
+        /// changes](https://developers.google.com/drive/api/guides/push).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="pageToken">
         /// The token for continuing a previous list request on the next page. This should be set to the value of
@@ -1100,7 +1137,10 @@ namespace Google.Apis.Drive.v3
             return new WatchRequest(this.service, body, pageToken);
         }
 
-        /// <summary>Subscribes to changes for a user.</summary>
+        /// <summary>
+        /// Subscribes to changes for a user. For more information, see [Notifications for resource
+        /// changes](https://developers.google.com/drive/api/guides/push).
+        /// </summary>
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
@@ -1339,14 +1379,20 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Stops watching resources through this channel.</summary>
+        /// <summary>
+        /// Stops watching resources through this channel. For more information, see [Notifications for resource
+        /// changes](https://developers.google.com/drive/api/guides/push).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Drive.v3.Data.Channel body)
         {
             return new StopRequest(this.service, body);
         }
 
-        /// <summary>Stops watching resources through this channel.</summary>
+        /// <summary>
+        /// Stops watching resources through this channel. For more information, see [Notifications for resource
+        /// changes](https://developers.google.com/drive/api/guides/push).
+        /// </summary>
         public class StopRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
@@ -1393,7 +1439,12 @@ namespace Google.Apis.Drive.v3
             this.service = service;
         }
 
-        /// <summary>Creates a comment on a file.</summary>
+        /// <summary>
+        /// Creates a comment on a file. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.Comment body, string fileId)
@@ -1401,7 +1452,12 @@ namespace Google.Apis.Drive.v3
             return new CreateRequest(this.service, body, fileId);
         }
 
-        /// <summary>Creates a comment on a file.</summary>
+        /// <summary>
+        /// Creates a comment on a file. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1446,7 +1502,12 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Deletes a comment.</summary>
+        /// <summary>
+        /// Deletes a comment. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
         public virtual DeleteRequest Delete(string fileId, string commentId)
@@ -1454,7 +1515,12 @@ namespace Google.Apis.Drive.v3
             return new DeleteRequest(this.service, fileId, commentId);
         }
 
-        /// <summary>Deletes a comment.</summary>
+        /// <summary>
+        /// Deletes a comment. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1505,7 +1571,12 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Gets a comment by ID.</summary>
+        /// <summary>
+        /// Gets a comment by ID. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
         public virtual GetRequest Get(string fileId, string commentId)
@@ -1513,7 +1584,12 @@ namespace Google.Apis.Drive.v3
             return new GetRequest(this.service, fileId, commentId);
         }
 
-        /// <summary>Gets a comment by ID.</summary>
+        /// <summary>
+        /// Gets a comment by ID. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1578,14 +1654,24 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Lists a file's comments.</summary>
+        /// <summary>
+        /// Lists a file's comments. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual ListRequest List(string fileId)
         {
             return new ListRequest(this.service, fileId);
         }
 
-        /// <summary>Lists a file's comments.</summary>
+        /// <summary>
+        /// Lists a file's comments. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.CommentList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1676,7 +1762,12 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Updates a comment with patch semantics.</summary>
+        /// <summary>
+        /// Updates a comment with patch semantics. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
@@ -1685,7 +1776,12 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(this.service, body, fileId, commentId);
         }
 
-        /// <summary>Updates a comment with patch semantics.</summary>
+        /// <summary>
+        /// Updates a comment with patch semantics. For more information, see [Manage comments and
+        /// replies](https://developers.google.com/drive/api/guides/manage-comments). Required: The `fields` parameter
+        /// must be set. To return the exact fields you need, see [Return specific
+        /// fields](https://developers.google.com/drive/api/guides/fields-parameter).
+        /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -8782,8 +8878,11 @@ namespace Google.Apis.Drive.v3.Data
 
     /// <summary>
     /// A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder
-    /// hierarchy. Some resource methods (such as `permissions.update`) require a `permissionId`. Use the
-    /// `permissions.list` method to retrieve the ID for a file, folder, or shared drive.
+    /// hierarchy. By default, permissions requests only return a subset of fields. Permission kind, ID, type, and role
+    /// are always returned. To retrieve specific fields, see
+    /// https://developers.google.com/drive/api/guides/fields-parameter. Some resource methods (such as
+    /// `permissions.update`) require a `permissionId`. Use the `permissions.list` method to retrieve the ID for a file,
+    /// folder, or shared drive.
     /// </summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
