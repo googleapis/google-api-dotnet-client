@@ -3824,7 +3824,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scopedAccessSettings")]
         public virtual System.Collections.Generic.IList<ScopedAccessSettings> ScopedAccessSettings { get; set; }
 
-        /// <summary>Optional. GCSL policy for the group key.</summary>
+        /// <summary>Optional. The Google Cloud session length (GCSL) policy for the group key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionSettings")]
         public virtual SessionSettings SessionSettings { get; set; }
 
@@ -4503,14 +4503,14 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class SessionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. How long a user is allowed to take between actions before a new access token must be issued.
-        /// Presently only set for Cloud Apps.
+        /// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only
+        /// set for Google Cloud apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInactivity")]
         public virtual object MaxInactivity { get; set; }
 
         /// <summary>
-        /// Optional. The session length. Setting this field to zero is equal to disabling. Session. Also can set
+        /// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set
         /// infinite session by flipping the enabled bit to false below. If use_oidc_max_age is true, for OIDC apps, the
         /// session length will be the minimum of this field and OIDC max_age param.
         /// </summary>
@@ -4518,13 +4518,13 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual object SessionLength { get; set; }
 
         /// <summary>
-        /// Optional. Big red button to turn off GCSL. When false, all fields set above will be disregarded and the
-        /// session length is basically infinite.
+        /// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will
+        /// be disregarded and the session length is basically infinite.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionLengthEnabled")]
         public virtual System.Nullable<bool> SessionLengthEnabled { get; set; }
 
-        /// <summary>Optional. Session method when users GCP session is up.</summary>
+        /// <summary>Optional. Session method when user's Google Cloud session is up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionReauthMethod")]
         public virtual string SessionReauthMethod { get; set; }
 
