@@ -708,7 +708,7 @@ namespace Google.Apis.Datastream.v1
 
                 /// <summary>Use this method to update the parameters of a connection profile.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The resource's name.</param>
+                /// <param name="name">Output only. Identifier. The resource's name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Datastream.v1.Data.ConnectionProfile body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -725,7 +725,7 @@ namespace Google.Apis.Datastream.v1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The resource's name.</summary>
+                    /// <summary>Output only. Identifier. The resource's name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -848,7 +848,7 @@ namespace Google.Apis.Datastream.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -863,7 +863,7 @@ namespace Google.Apis.Datastream.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.Empty>
                 {
@@ -2432,7 +2432,7 @@ namespace Google.Apis.Datastream.v1
 
                 /// <summary>Use this method to update the configuration of a stream.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The stream's name.</param>
+                /// <param name="name">Output only. Identifier. The stream's name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Datastream.v1.Data.Stream body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -2449,7 +2449,7 @@ namespace Google.Apis.Datastream.v1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The stream's name.</summary>
+                    /// <summary>Output only. Identifier. The stream's name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3118,7 +3118,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlProfile")]
         public virtual MysqlProfile MysqlProfile { get; set; }
 
-        /// <summary>Output only. The resource's name.</summary>
+        /// <summary>Output only. Identifier. The resource's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4063,8 +4063,8 @@ namespace Google.Apis.Datastream.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// 1, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -4089,7 +4089,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for Oracle Automatic Storage Management (ASM) connection.</summary>
+    /// <summary>Configuration for Oracle Automatic Storage Management (ASM) connection. .</summary>
     public class OracleAsmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. ASM service name for the Oracle ASM connection.</summary>
@@ -4108,7 +4108,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleSslConfig")]
         public virtual OracleSslConfig OracleSslConfig { get; set; }
 
-        /// <summary>Required. Password for the Oracle ASM connection.</summary>
+        /// <summary>Optional. Password for the Oracle ASM connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
@@ -4575,7 +4575,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The resource's name.</summary>
+        /// <summary>Output only. Identifier. The resource's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4701,7 +4701,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The resource's name.</summary>
+        /// <summary>Output only. Identifier. The resource's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4854,6 +4854,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleScnPosition")]
         public virtual OracleScnPosition OracleScnPosition { get; set; }
 
+        /// <summary>SqlServer LSN to start replicating from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerLsnPosition")]
+        public virtual SqlServerLsnPosition SqlServerLsnPosition { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4899,6 +4903,17 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Column scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
         public virtual System.Nullable<int> Scale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQL Server LSN position</summary>
+    public class SqlServerLsnPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Log sequence number (LSN) from where Logs will be read</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lsn")]
+        public virtual string Lsn { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5222,7 +5237,7 @@ namespace Google.Apis.Datastream.v1.Data
             set => LastRecoveryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The stream's name.</summary>
+        /// <summary>Output only. Identifier. The stream's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5334,7 +5349,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<Error> Errors { get; set; }
 
-        /// <summary>Output only. The object resource's name.</summary>
+        /// <summary>Output only. Identifier. The object resource's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
