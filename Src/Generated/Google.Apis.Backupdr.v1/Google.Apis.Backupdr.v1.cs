@@ -297,6 +297,7 @@ namespace Google.Apis.Backupdr.v1
                 BackupVaults = new BackupVaultsResource(service);
                 ManagementServers = new ManagementServersResource(service);
                 Operations = new OperationsResource(service);
+                ServiceConfig = new ServiceConfigResource(service);
             }
 
             /// <summary>Gets the BackupPlanAssociations resource.</summary>
@@ -3543,7 +3544,7 @@ namespace Google.Apis.Backupdr.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -3558,7 +3559,7 @@ namespace Google.Apis.Backupdr.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Empty>
                 {
@@ -3791,6 +3792,83 @@ namespace Google.Apis.Backupdr.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ServiceConfig resource.</summary>
+            public virtual ServiceConfigResource ServiceConfig { get; }
+
+            /// <summary>The "serviceConfig" collection of methods.</summary>
+            public class ServiceConfigResource
+            {
+                private const string Resource = "serviceConfig";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ServiceConfigResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Initializes the service related config for a project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the serviceConfig used to initialize the service. Format:
+                /// `projects/{project_id}/locations/{location}/serviceConfig`.
+                /// </param>
+                public virtual InitializeRequest Initialize(Google.Apis.Backupdr.v1.Data.InitializeServiceRequest body, string name)
+                {
+                    return new InitializeRequest(this.service, body, name);
+                }
+
+                /// <summary>Initializes the service related config for a project.</summary>
+                public class InitializeRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Initialize request.</summary>
+                    public InitializeRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.InitializeServiceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the serviceConfig used to initialize the service. Format:
+                    /// `projects/{project_id}/locations/{location}/serviceConfig`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.InitializeServiceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "initialize";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:initialize";
+
+                    /// <summary>Initializes Initialize parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConfig$",
                         });
                     }
                 }
@@ -4427,6 +4505,14 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceSizeBytes")]
         public virtual System.Nullable<long> ResourceSizeBytes { get; set; }
 
+        /// <summary>Optional. Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Optional. Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// Output only. The list of BackupLocks taken by the service to prevent the deletion of the backup.
         /// </summary>
@@ -4899,7 +4985,7 @@ namespace Google.Apis.Backupdr.v1.Data
 
         /// <summary>
         /// Required. The resource type to which the `BackupPlan` will be applied. Examples include,
-        /// "compute.googleapis.com/Instance", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+        /// "compute.googleapis.com/Instance", "sqladmin.googleapis.com/Instance", or "alloydb.googleapis.com/Cluster".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -4997,8 +5083,8 @@ namespace Google.Apis.Backupdr.v1.Data
         }
 
         /// <summary>
-        /// Output only. Output Only. Resource name of data source which will be used as storage location for backups
-        /// taken. Format : projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}
+        /// Output only. Resource name of data source which will be used as storage location for backups taken. Format :
+        /// projects/{project}/locations/{location}/backupVaults/{backupvault}/dataSources/{datasource}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
@@ -5014,7 +5100,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
-        /// <summary>Optional. Required. Resource type of workload on which backupplan is applied</summary>
+        /// <summary>Required. Immutable. Resource type of workload on which backupplan is applied</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
@@ -5075,7 +5161,7 @@ namespace Google.Apis.Backupdr.v1.Data
         /// should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and
         /// maximum value is 90 for hourly backups. Minimum value is 1 and maximum value is 90 for daily backups.
         /// Minimum value is 7 and maximum value is 186 for weekly backups. Minimum value is 30 and maximum value is 732
-        /// for monthly backups. Minimum value is 30 and maximum value is 36159 for yearly backups.
+        /// for monthly backups. Minimum value is 365 and maximum value is 36159 for yearly backups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionDays")]
         public virtual System.Nullable<int> BackupRetentionDays { get; set; }
@@ -5101,8 +5187,8 @@ namespace Google.Apis.Backupdr.v1.Data
     {
         /// <summary>
         /// Optional. Note: This field is added for future use case and will not be supported in the current release.
-        /// Optional. Access restriction for the backup vault. Default value is WITHIN_ORGANIZATION if not provided
-        /// during creation.
+        /// Access restriction for the backup vault. Default value is WITHIN_ORGANIZATION if not provided during
+        /// creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessRestriction")]
         public virtual string AccessRestriction { get; set; }
@@ -5244,7 +5330,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalStoredBytes")]
         public virtual System.Nullable<long> TotalStoredBytes { get; set; }
 
-        /// <summary>Output only. Output only Immutable after resource creation until resource deletion.</summary>
+        /// <summary>Output only. Immutable after resource creation until resource deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
@@ -6347,6 +6433,32 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for initializing the service.</summary>
+    public class InitializeServiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
+        /// make an initial request and t he request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. The resource type to which the default service config will be applied. Examples include,
+        /// "compute.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>request message for InitiateBackup.</summary>
     public class InitiateBackupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7069,8 +7181,8 @@ namespace Google.Apis.Backupdr.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// 'Code.CANCELLED'.
+        /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// 1, corresponding to 'Code.CANCELLED'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -7228,7 +7340,7 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Message for rules config info.</summary>
     public class RuleConfigInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Output Only. google.rpc.Status object to store the last backup error.</summary>
+        /// <summary>Output only. google.rpc.Status object to store the last backup error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastBackupError")]
         public virtual Status LastBackupError { get; set; }
 
@@ -7280,7 +7392,7 @@ namespace Google.Apis.Backupdr.v1.Data
             set => LastSuccessfulBackupConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. Output Only. Backup Rule id fetched from backup plan.</summary>
+        /// <summary>Output only. Backup Rule id fetched from backup plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
         public virtual string RuleId { get; set; }
 
