@@ -1817,7 +1817,7 @@ namespace Google.Apis.Config.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -1832,7 +1832,7 @@ namespace Google.Apis.Config.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Empty>
                 {
@@ -3381,7 +3381,7 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of Previewss.</summary>
+        /// <summary>List of Previews.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previews")]
         public virtual System.Collections.Generic.IList<Preview> Previews { get; set; }
 
@@ -3403,7 +3403,7 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of Resourcess.</summary>
+        /// <summary>List of Resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<Resource> Resources { get; set; }
 
@@ -3696,8 +3696,8 @@ namespace Google.Apis.Config.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// `1`, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -4343,7 +4343,7 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
         public virtual GitSource GitSource { get; set; }
 
-        /// <summary>Input variable values for the Terraform blueprint.</summary>
+        /// <summary>Optional. Input variable values for the Terraform blueprint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputValues")]
         public virtual System.Collections.Generic.IDictionary<string, TerraformVariable> InputValues { get; set; }
 
@@ -4354,7 +4354,7 @@ namespace Google.Apis.Config.v1.Data
     /// <summary>Errors encountered during actuation using Terraform</summary>
     public class TerraformError : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Original error response from underlying Google API, if available.</summary>
+        /// <summary>Output only. Original error response from underlying Google API, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
@@ -4397,7 +4397,7 @@ namespace Google.Apis.Config.v1.Data
     /// <summary>A Terraform input variable.</summary>
     public class TerraformVariable : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input variable value.</summary>
+        /// <summary>Optional. Input variable value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputValue")]
         public virtual object InputValue { get; set; }
 
