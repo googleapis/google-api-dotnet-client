@@ -2822,7 +2822,7 @@ namespace Google.Apis.MigrationCenterAPI.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -2837,7 +2837,7 @@ namespace Google.Apis.MigrationCenterAPI.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1.Data.Empty>
                 {
@@ -7653,6 +7653,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         /// <summary>CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuArchitecture")]
         public virtual string CpuArchitecture { get; set; }
+
+        /// <summary>Optional. CPU manufacturer, e.g., "Intel", "AMD".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuManufacturer")]
+        public virtual string CpuManufacturer { get; set; }
 
         /// <summary>CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuName")]
