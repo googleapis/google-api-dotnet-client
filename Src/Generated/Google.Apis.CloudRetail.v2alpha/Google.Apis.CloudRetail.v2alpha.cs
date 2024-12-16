@@ -9828,9 +9828,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search
-    /// results. However, product images can be returned in results, and are shown in prediction or search previews in
-    /// the console.
+    /// Product image. Recommendations AI and Retail Search use product images to improve prediction and search results.
+    /// Product images can be returned in results, and are shown in prediction or search previews in the console. Please
+    /// try to provide correct product images and avoid using images with size too small.
     /// </summary>
     public class GoogleCloudRetailV2alphaImage : Google.Apis.Requests.IDirectResponseSchema
     {
