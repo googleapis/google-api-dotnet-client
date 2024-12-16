@@ -2531,6 +2531,13 @@ namespace Google.Apis.CloudDataplex.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. If set to true, any child resources of this data scan will also be deleted.
+                    /// (Otherwise, the request will only work if the data scan has no child resources.)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -2551,6 +2558,14 @@ namespace Google.Apis.CloudDataplex.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/dataScans/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2894,7 +2909,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Updates a DataScan resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The relative resource name of the scan, of the form:
+                /// Output only. Identifier. The relative resource name of the scan, of the form:
                 /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a
                 /// project_id or project_number and location_id refers to a GCP region.
                 /// </param>
@@ -2915,14 +2930,14 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Output only. The relative resource name of the scan, of the form:
+                    /// Output only. Identifier. The relative resource name of the scan, of the form:
                     /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a
                     /// project_id or project_number and location_id refers to a GCP region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Required. Mask of fields to update.</summary>
+                    /// <summary>Optional. Mask of fields to update.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -4891,9 +4906,9 @@ namespace Google.Apis.CloudDataplex.v1
                         /// Optional. The map keys of the Aspects which the service should modify. It supports the
                         /// following syntaxes: - matches an aspect of the given type and empty path. @path - matches an
                         /// aspect of the given type and specified path. For example, to attach an aspect to a field
-                        /// that is specified by the schema aspect, the path should have the format Schema.. * - matches
-                        /// aspects of the given type for all paths. *@path - matches aspects of all types on the given
-                        /// path.The service will not remove existing aspects matching the syntax unless
+                        /// that is specified by the schema aspect, the path should have the format Schema.. @* -
+                        /// matches aspects of the given type for all paths. *@path - matches aspects of all types on
+                        /// the given path.The service will not remove existing aspects matching the syntax unless
                         /// delete_missing_aspects is set to true.If this field is left empty, the service treats it as
                         /// specifying exactly those Aspects present in the request.
                         /// </summary>
@@ -14141,7 +14156,10 @@ namespace Google.Apis.CloudDataplex.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Optional. Specifies the ordering of results.</summary>
+                /// <summary>
+                /// Optional. Specifies the ordering of results. Supported values are: * relevance (default) *
+                /// last_modified_timestamp * last_modified_timestamp asc
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
@@ -14159,7 +14177,10 @@ namespace Google.Apis.CloudDataplex.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Required. The query against which entries in scope should be matched.</summary>
+                /// <summary>
+                /// Required. The query against which entries in scope should be matched. The query syntax is defined in
+                /// Search syntax for Dataplex Catalog (https://cloud.google.com/dataplex/docs/search-syntax).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
 
@@ -17171,7 +17192,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The relative resource name of the scan, of the form:
+        /// Output only. Identifier. The relative resource name of the scan, of the form:
         /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a project_id or
         /// project_number and location_id refers to a GCP region.
         /// </summary>
@@ -17594,7 +17615,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _latestJobEndTime;
 
-        /// <summary>The time when the latest DataScanJob ended.</summary>
+        /// <summary>Optional. The time when the latest DataScanJob ended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestJobEndTime")]
         public virtual string LatestJobEndTimeRaw
         {
@@ -17633,7 +17654,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _latestJobStartTime;
 
-        /// <summary>The time when the latest DataScanJob started.</summary>
+        /// <summary>Optional. The time when the latest DataScanJob started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestJobStartTime")]
         public virtual string LatestJobStartTimeRaw
         {
@@ -17778,7 +17799,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Message { get; set; }
 
         /// <summary>
-        /// Output only. The relative resource name of the DataScanJob, of the form:
+        /// Output only. Identifier. The relative resource name of the DataScanJob, of the form:
         /// projects/{project}/locations/{location_id}/dataScans/{datascan_id}/jobs/{job_id}, where project refers to a
         /// project_id or project_number and location_id refers to a GCP region.
         /// </summary>
@@ -19186,11 +19207,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// The aspects to modify. Supports the following syntaxes: {aspect_type_reference}: matches aspects that belong
         /// to the specified aspect type and are attached directly to the entry. {aspect_type_reference}@{path}: matches
-        /// aspects that belong to the specified aspect type and path. {aspect_type_reference}@*: matches aspects that
-        /// belong to the specified aspect type for all paths.Replace {aspect_type_reference} with a reference to the
-        /// aspect type, in the format {project_id_or_number}.{location_id}.{aspect_type_id}.If you leave this field
-        /// empty, it is treated as specifying exactly those aspects that are present within the specified entry.In FULL
-        /// entry sync mode, Dataplex implicitly adds the keys for all of the required aspects of an entry.
+        /// aspects that belong to the specified aspect type and path. @* : matches aspects of the given type for all
+        /// paths. *@path : matches aspects of all types on the given path. Replace {aspect_type_reference} with a
+        /// reference to the aspect type, in the format {project_id_or_number}.{location_id}.{aspect_type_id}.If you
+        /// leave this field empty, it is treated as specifying exactly those aspects that are present within the
+        /// specified entry.In FULL entry sync mode, Dataplex implicitly adds the keys for all of the required aspects
+        /// of an entry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectKeys")]
         public virtual System.Collections.Generic.IList<string> AspectKeys { get; set; }
