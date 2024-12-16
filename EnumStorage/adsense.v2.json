@@ -57,7 +57,8 @@
     "AD_FORMAT_NAME",
     "AD_FORMAT_CODE",
     "HOSTED_AD_CLIENT_ID",
-    "PAGE_URL"
+    "PAGE_URL",
+    "HOSTED_CUSTOM_CHANNEL_ID"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateCsvRequest.MetricsEnum": [
     "METRIC_UNSPECIFIED",
@@ -161,7 +162,8 @@
     "AD_FORMAT_NAME",
     "AD_FORMAT_CODE",
     "HOSTED_AD_CLIENT_ID",
-    "PAGE_URL"
+    "PAGE_URL",
+    "HOSTED_CUSTOM_CHANNEL_ID"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateRequest.MetricsEnum": [
     "METRIC_UNSPECIFIED",

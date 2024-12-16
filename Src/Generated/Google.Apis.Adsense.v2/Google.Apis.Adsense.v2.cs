@@ -2660,6 +2660,10 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("CUSTOM_CHANNEL_ID")]
                     CUSTOMCHANNELID = 13,
 
+                    /// <summary>Unique ID of a hosted client's custom channel.</summary>
+                    [Google.Apis.Util.StringValueAttribute("HOSTED_CUSTOM_CHANNEL_ID")]
+                    HOSTEDCUSTOMCHANNELID = 48,
+
                     /// <summary>
                     /// Domain name of a verified site (e.g. "example.com"). The members of this dimension match the
                     /// values from Site.domain.
@@ -3492,6 +3496,10 @@ namespace Google.Apis.Adsense.v2
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CUSTOM_CHANNEL_ID")]
                     CUSTOMCHANNELID = 13,
+
+                    /// <summary>Unique ID of a hosted client's custom channel.</summary>
+                    [Google.Apis.Util.StringValueAttribute("HOSTED_CUSTOM_CHANNEL_ID")]
+                    HOSTEDCUSTOMCHANNELID = 48,
 
                     /// <summary>
                     /// Domain name of a verified site (e.g. "example.com"). The members of this dimension match the
