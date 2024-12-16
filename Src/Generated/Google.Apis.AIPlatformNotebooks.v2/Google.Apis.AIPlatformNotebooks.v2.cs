@@ -1603,7 +1603,7 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -1618,7 +1618,7 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Empty>
                 {
@@ -2584,6 +2584,12 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// <summary>Optional. If true, the notebook instance will not register with the proxy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableProxyAccess")]
         public virtual System.Nullable<bool> DisableProxyAccess { get; set; }
+
+        /// <summary>
+        /// Optional. Flag that specifies that a notebook can be accessed with third party identity provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableThirdPartyIdentity")]
+        public virtual System.Nullable<bool> EnableThirdPartyIdentity { get; set; }
 
         /// <summary>Optional. Compute Engine setup for the notebook. Uses notebook-defined fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceSetup")]
