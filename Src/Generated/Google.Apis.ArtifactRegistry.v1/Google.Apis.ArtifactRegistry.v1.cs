@@ -8220,6 +8220,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. The repository endpoint, for example: `us-docker.pkg.dev/my-proj/my-repo`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registryUri")]
+        public virtual string RegistryUri { get; set; }
+
         /// <summary>Configuration specific for a Remote Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteRepositoryConfig")]
         public virtual RemoteRepositoryConfig RemoteRepositoryConfig { get; set; }
