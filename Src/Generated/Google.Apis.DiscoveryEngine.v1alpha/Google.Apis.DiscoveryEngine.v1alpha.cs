@@ -21577,8 +21577,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
-        /// linked to the engine.
+        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -28830,8 +28829,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
-        /// linked to the engine.
+        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -37055,117 +37053,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata that describes a custom tuned model.</summary>
-    public class GoogleCloudDiscoveryengineV1betaCustomTuningModel : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Deprecated: Timestamp the Model was created at.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The display name of the model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Currently this is only populated if the model state is `INPUT_VALIDATION_FAILED`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; }
-
-        /// <summary>The metrics of the trained model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
-
-        /// <summary>The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("modelState")]
-        public virtual string ModelState { get; set; }
-
-        /// <summary>The version of the model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
-        public virtual System.Nullable<long> ModelVersion { get; set; }
-
-        /// <summary>
-        /// Required. The fully qualified resource name of the model. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`.
-        /// Model must be an alpha-numerical string with limit of 40 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        private string _trainingStartTimeRaw;
-
-        private object _trainingStartTime;
-
-        /// <summary>Timestamp the model training was initiated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
-        public virtual string TrainingStartTimeRaw
-        {
-            get => _trainingStartTimeRaw;
-            set
-            {
-                _trainingStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _trainingStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TrainingStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TrainingStartTimeDateTimeOffset instead.")]
-        public virtual object TrainingStartTime
-        {
-            get => _trainingStartTime;
-            set
-            {
-                _trainingStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _trainingStartTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TrainingStartTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TrainingStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TrainingStartTimeRaw);
-            set => TrainingStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1betaDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -38251,8 +38138,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
-        /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
-        /// linked to the engine.
+        /// DataStore: Vertical on Engine has to match vertical of the DataStore linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -39232,17 +39118,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for SearchTuningService.ListCustomModels method.</summary>
-    public class GoogleCloudDiscoveryengineV1betaListCustomModelsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of custom tuning models.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("models")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaCustomTuningModel> Models { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
