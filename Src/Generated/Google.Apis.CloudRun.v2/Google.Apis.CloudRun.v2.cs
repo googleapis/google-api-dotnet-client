@@ -5682,6 +5682,13 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2ServiceScaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. total instance count for the service in manual scaling mode. This number of instances is divided
+        /// among all revisions with specified traffic based on the percent of traffic they are receiving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualInstanceCount")]
+        public virtual System.Nullable<int> ManualInstanceCount { get; set; }
+
+        /// <summary>
         /// Optional. total min instances for the service. This number of instances is divided among all revisions with
         /// specified traffic based on the percent of traffic they are receiving.
         /// </summary>
