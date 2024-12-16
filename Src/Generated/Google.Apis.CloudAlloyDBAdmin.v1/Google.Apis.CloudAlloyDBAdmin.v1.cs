@@ -3196,7 +3196,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -3211,7 +3211,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1.Data.Empty>
                 {
@@ -4609,13 +4609,31 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Options for exporting data in CSV format. For now, we only support a query to get the data that needs to be
-    /// exported.
-    /// </summary>
+    /// <summary>Options for exporting data in CSV format.</summary>
     public class CsvExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The select_query used to extract the data.</summary>
+        /// <summary>
+        /// Optional. Specifies the character that should appear before a data character that needs to be escaped. The
+        /// default is the same as quote character. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("escapeCharacter")]
+        public virtual string EscapeCharacter { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the character that separates columns within each row (line) of the file. The default is
+        /// comma. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
+        public virtual string FieldDelimiter { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the quoting character to be used when a data value is quoted. The default is
+        /// double-quote. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quoteCharacter")]
+        public virtual string QuoteCharacter { get; set; }
+
+        /// <summary>Required. The SELECT query used to extract the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectQuery")]
         public virtual string SelectQuery { get; set; }
 
@@ -4676,8 +4694,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual CsvExportOptions CsvExportOptions { get; set; }
 
         /// <summary>
-        /// Required. Name of the database where the query will be executed. Note - Value provided should be the same as
-        /// expected from `SELECT current_database();` and NOT as a resource reference.
+        /// Required. Name of the database where the export command will be executed. Note - Value provided should be
+        /// the same as expected from `SELECT current_database();` and NOT as a resource reference.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
@@ -4685,6 +4703,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Required. Option to export data to cloud storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GcsDestination GcsDestination { get; set; }
+
+        /// <summary>Options for exporting data in SQL format. Required field to be set for SQL file type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlExportOptions")]
+        public virtual SqlExportOptions SqlExportOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4732,7 +4754,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     {
         /// <summary>
         /// Required. The path to the file in Google Cloud Storage where the export will be stored. The URI is in the
-        /// form `gs://bucketName/fileName`. If the file already exists, the request succeeds, but the operation fails.
+        /// form `gs://bucketName/fileName`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -5567,8 +5589,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of
+        /// 1, corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -5844,6 +5866,35 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryClusterName")]
         public virtual string PrimaryClusterName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for exporting data in SQL format.</summary>
+    public class SqlExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, output commands to DROP all the dumped database objects prior to outputting the commands
+        /// for creating them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanTargetObjects")]
+        public virtual System.Nullable<bool> CleanTargetObjects { get; set; }
+
+        /// <summary>
+        /// Optional. If true, use DROP ... IF EXISTS commands to check for the object's existence before dropping it in
+        /// clean_target_objects mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ifExistTargetObjects")]
+        public virtual System.Nullable<bool> IfExistTargetObjects { get; set; }
+
+        /// <summary>Optional. If true, only export the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaOnly")]
+        public virtual System.Nullable<bool> SchemaOnly { get; set; }
+
+        /// <summary>Optional. Tables to export from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tables")]
+        public virtual System.Collections.Generic.IList<string> Tables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6647,6 +6698,12 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Optional. Number of shards (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<int> ShardCount { get; set; }
+
+        /// <summary>
+        /// Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<double> VcpuCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
