@@ -16829,6 +16829,80 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     }
 
     /// <summary>
+    /// Details about data retention deletion violations, in which the data is non-compliant based on their retention or
+    /// deletion time, as defined in the applicable data security policy. The Data Retention Deletion (DRD) control is a
+    /// control of the DSPM (Data Security Posture Management) suite that enables organizations to manage data retention
+    /// and deletion policies in compliance with regulations, such as GDPR and CRPA. DRD supports two primary policy
+    /// types: maximum storage length (max TTL) and minimum storage length (min TTL). Both are aimed at helping
+    /// organizations meet regulatory and data management commitments.
+    /// </summary>
+    public class DataRetentionDeletionEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of objects that violated the policy for this resource. If the number is less than 1,000, then the
+        /// value of this field is the exact number. If the number of objects that violated the policy is greater than
+        /// or equal to 1,000, then the value of this field is 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataObjectCount")]
+        public virtual System.Nullable<long> DataObjectCount { get; set; }
+
+        private string _eventDetectionTimeRaw;
+
+        private object _eventDetectionTime;
+
+        /// <summary>Timestamp indicating when the event was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventDetectionTime")]
+        public virtual string EventDetectionTimeRaw
+        {
+            get => _eventDetectionTimeRaw;
+            set
+            {
+                _eventDetectionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventDetectionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventDetectionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventDetectionTimeDateTimeOffset instead.")]
+        public virtual object EventDetectionTime
+        {
+            get => _eventDetectionTime;
+            set
+            {
+                _eventDetectionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventDetectionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EventDetectionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventDetectionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventDetectionTimeRaw);
+            set => EventDetectionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Type of the DRD event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>
+        /// Maximum duration of retention allowed from the DRD control. This comes from the DRD control where users set
+        /// a max TTL for their data. For example, suppose that a user set the max TTL for a Cloud Storage bucket to 90
+        /// days. However, an object in that bucket is 100 days old. In this case, a DataRetentionDeletionEvent will be
+        /// generated for that Cloud Storage bucket, and the max_retention_allowed is 90 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetentionAllowed")]
+        public virtual object MaxRetentionAllowed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents database access information, such as queries. A database may be a sub-resource of an instance (as in
     /// the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database
     /// resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated
@@ -17414,6 +17488,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>Data flow events associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFlowEvents")]
         public virtual System.Collections.Generic.IList<DataFlowEvent> DataFlowEvents { get; set; }
+
+        /// <summary>Data retention deletion events associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionDeletionEvents")]
+        public virtual System.Collections.Generic.IList<DataRetentionDeletionEvent> DataRetentionDeletionEvents { get; set; }
 
         /// <summary>Database associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
@@ -20480,6 +20558,80 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     }
 
     /// <summary>
+    /// Details about data retention deletion violations, in which the data is non-compliant based on their retention or
+    /// deletion time, as defined in the applicable data security policy. The Data Retention Deletion (DRD) control is a
+    /// control of the DSPM (Data Security Posture Management) suite that enables organizations to manage data retention
+    /// and deletion policies in compliance with regulations, such as GDPR and CRPA. DRD supports two primary policy
+    /// types: maximum storage length (max TTL) and minimum storage length (min TTL). Both are aimed at helping
+    /// organizations meet regulatory and data management commitments.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2DataRetentionDeletionEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of objects that violated the policy for this resource. If the number is less than 1,000, then the
+        /// value of this field is the exact number. If the number of objects that violated the policy is greater than
+        /// or equal to 1,000, then the value of this field is 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataObjectCount")]
+        public virtual System.Nullable<long> DataObjectCount { get; set; }
+
+        private string _eventDetectionTimeRaw;
+
+        private object _eventDetectionTime;
+
+        /// <summary>Timestamp indicating when the event was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventDetectionTime")]
+        public virtual string EventDetectionTimeRaw
+        {
+            get => _eventDetectionTimeRaw;
+            set
+            {
+                _eventDetectionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventDetectionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventDetectionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventDetectionTimeDateTimeOffset instead.")]
+        public virtual object EventDetectionTime
+        {
+            get => _eventDetectionTime;
+            set
+            {
+                _eventDetectionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventDetectionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EventDetectionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventDetectionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventDetectionTimeRaw);
+            set => EventDetectionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Type of the DRD event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>
+        /// Maximum duration of retention allowed from the DRD control. This comes from the DRD control where users set
+        /// a max TTL for their data. For example, suppose that a user set the max TTL for a Cloud Storage bucket to 90
+        /// days. However, an object in that bucket is 100 days old. In this case, a DataRetentionDeletionEvent will be
+        /// generated for that Cloud Storage bucket, and the max_retention_allowed is 90 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetentionAllowed")]
+        public virtual object MaxRetentionAllowed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents database access information, such as queries. A database may be a sub-resource of an instance (as in
     /// the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database
     /// resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated
@@ -21068,6 +21220,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>Data flow events associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFlowEvents")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2DataFlowEvent> DataFlowEvents { get; set; }
+
+        /// <summary>Data retention deletion events associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionDeletionEvents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2DataRetentionDeletionEvent> DataRetentionDeletionEvents { get; set; }
 
         /// <summary>Database associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
