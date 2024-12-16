@@ -3420,7 +3420,10 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountAggregation")]
         public virtual AccountAggregation AccountAggregation { get; set; }
 
-        /// <summary>Required. The provider of the service. Format: `accounts/{account}`</summary>
+        /// <summary>
+        /// Required. The provider of the service. Either the reference to an account such as `providers/123` or a
+        /// well-known service provider (one of `providers/GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
