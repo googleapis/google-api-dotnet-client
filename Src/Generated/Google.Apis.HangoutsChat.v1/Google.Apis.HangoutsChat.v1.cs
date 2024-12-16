@@ -5090,8 +5090,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// builder](https://addons.gsuite.google.com/uikit/builder) To learn how to build cards, see the following
     /// documentation: * For Google Chat apps, see [Design the components of a card or
     /// dialog](https://developers.google.com/workspace/chat/design-components-card-dialog). * For Google Workspace
-    /// Add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards).
-    /// **Example: Card message for a Google Chat app** ![Example contact
+    /// Add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). Note:
+    /// You can add up to 100 widgets per card. Any widgets beyond this limit are ignored. This limit applies to both
+    /// card messages and dialogs in Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card message
+    /// for a Google Chat app** ![Example contact
     /// card](https://developers.google.com/workspace/chat/images/card_api_reference.png) To create the sample card
     /// message in Google Chat, use the following JSON:
     /// ```
@@ -5257,6 +5259,52 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// [Developer Preview](https://developers.google.com/workspace/preview): A carousel, also known as a slider,
+    /// rotates and displays a list of widgets in a slideshow format, with buttons navigating to the previous or next
+    /// widget. For example, this is a JSON representation of a carousel that contains three text paragraph widgets.
+    /// ```
+    /// { "carouselCards": [ { "widgets": [ { "textParagraph": { "text": "First text paragraph in carousel", } } ] }, {
+    /// "widgets": [ { "textParagraph": { "text": "Second text paragraph in carousel", } } ] }, { "widgets": [ {
+    /// "textParagraph": { "text": "Third text paragraph in carousel", } } ] } ] }
+    /// ```
+    /// [Google Chat
+    /// apps](https://developers.google.com/workspace/chat):
+    /// </summary>
+    public class GoogleAppsCardV1Carousel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of cards included in the carousel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carouselCards")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1CarouselCard> CarouselCards { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// [Developer Preview](https://developers.google.com/workspace/preview): A card that can be displayed as a carousel
+    /// item. [Google Chat apps](https://developers.google.com/workspace/chat):
+    /// </summary>
+    public class GoogleAppsCardV1CarouselCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of widgets displayed at the bottom of the carousel card. The widgets are displayed in the order that
+        /// they are specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footerWidgets")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1NestedWidget> FooterWidgets { get; set; }
+
+        /// <summary>
+        /// A list of widgets displayed in the carousel card. The widgets are displayed in the order that they are
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1NestedWidget> Widgets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5820,6 +5868,28 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
+    /// [Developer Preview](https://developers.google.com/workspace/preview): A list of widgets that can be displayed in
+    /// a containing layout, such as a `CarouselCard`. [Google Chat apps](https://developers.google.com/workspace/chat):
+    /// </summary>
+    public class GoogleAppsCardV1NestedWidget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A button list widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
+        public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
+
+        /// <summary>An image widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleAppsCardV1Image Image { get; set; }
+
+        /// <summary>A text paragraph widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
+        public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents how to respond when users click an interactive element on a card, such as a button. [Google Workspace
     /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
@@ -6338,6 +6408,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
         public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
+
+        /// <summary>
+        /// A carousel contains a collection of nested widgets. For example, this is a JSON representation of a carousel
+        /// that contains two text paragraphs.
+        /// ```
+        /// { "widgets": [ { "textParagraph": { "text": "First text paragraph in
+        /// the carousel." } }, { "textParagraph": { "text": "Second text paragraph in the carousel." } } ] }
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carousel")]
+        public virtual GoogleAppsCardV1Carousel Carousel { get; set; }
 
         /// <summary>
         /// A list of chips. For example, the following JSON creates two chips. The first is a text chip and the second
@@ -7724,7 +7805,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// Optional. The Google Chat users or groups to invite to join the space. Omit the calling user, as they are
-        /// added automatically. The set currently allows up to 20 memberships (in addition to the caller). For human
+        /// added automatically. The set currently allows up to 49 memberships (in addition to the caller). For human
         /// membership, the `Membership.member` field must contain a `user` with `name` populated (format:
         /// `users/{user}`) and `type` set to `User.Type.HUMAN`. You can only add human users when setting up a space
         /// (adding Chat apps is only supported for direct message setup with the calling app). You can also add members
@@ -7898,6 +7979,49 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importMode")]
         public virtual System.Nullable<bool> ImportMode { get; set; }
+
+        private string _importModeExpireTimeRaw;
+
+        private object _importModeExpireTime;
+
+        /// <summary>
+        /// Output only. The time when the space will be automatically deleted by the system if it remains in import
+        /// mode. Each space created in import mode must exit this mode before this expire time using
+        /// `spaces.completeImport`. This field is only populated for spaces that were created with import mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importModeExpireTime")]
+        public virtual string ImportModeExpireTimeRaw
+        {
+            get => _importModeExpireTimeRaw;
+            set
+            {
+                _importModeExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _importModeExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ImportModeExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ImportModeExpireTimeDateTimeOffset instead.")]
+        public virtual object ImportModeExpireTime
+        {
+            get => _importModeExpireTime;
+            set
+            {
+                _importModeExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _importModeExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ImportModeExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ImportModeExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ImportModeExpireTimeRaw);
+            set => ImportModeExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         private string _lastActiveTimeRaw;
 
