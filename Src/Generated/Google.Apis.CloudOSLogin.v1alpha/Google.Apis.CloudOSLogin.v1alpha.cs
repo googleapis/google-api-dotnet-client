@@ -969,8 +969,9 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             public virtual string ProjectId { get; set; }
 
             /// <summary>
-            /// Optional. The regions to which to assert that the key was written. If unspecified, defaults to all
-            /// regions. Regions are listed at https://cloud.google.com/about/locations#region.
+            /// Optional. The regions to wait for a POSIX account to be written to before returning a response. If
+            /// unspecified, defaults to all regions. Regions are listed at
+            /// https://cloud.google.com/about/locations#region.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("regions", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Regions { get; set; }
