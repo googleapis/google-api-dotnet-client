@@ -5891,6 +5891,54 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The gauge value of a metric.</summary>
+    public class DataflowGaugeValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _measuredTimeRaw;
+
+        private object _measuredTime;
+
+        /// <summary>The timestamp when the gauge was recorded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measuredTime")]
+        public virtual string MeasuredTimeRaw
+        {
+            get => _measuredTimeRaw;
+            set
+            {
+                _measuredTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _measuredTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MeasuredTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MeasuredTimeDateTimeOffset instead.")]
+        public virtual object MeasuredTime
+        {
+            get => _measuredTime;
+            set
+            {
+                _measuredTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _measuredTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="MeasuredTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MeasuredTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MeasuredTimeRaw);
+            set => MeasuredTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The value of the gauge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Summary statistics for a population of values. HistogramValue contains a sequence of buckets and gives a count
     /// of values that fall into each bucket. Bucket boundares are defined by a formula and bucket widths are either
@@ -8071,6 +8119,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Optional. Set of metric labels for this metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> MetricLabels { get; set; }
+
+        /// <summary>Non-cumulative int64 value of this metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueGauge64")]
+        public virtual DataflowGaugeValue ValueGauge64 { get; set; }
 
         /// <summary>Histogram value of this metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueHistogram")]
