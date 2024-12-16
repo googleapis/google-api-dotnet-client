@@ -774,7 +774,7 @@ namespace Google.Apis.GKEHub.v2beta
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -789,7 +789,7 @@ namespace Google.Apis.GKEHub.v2beta
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v2beta.Data.Empty>
                 {
@@ -2167,63 +2167,6 @@ namespace Google.Apis.GKEHub.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information of the FeatureConfig applied on the MembershipFeature.</summary>
-    public class FeatureConfigRef : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Input only. Resource name of FeatureConfig, in the format:
-        /// `projects/{project}/locations/global/featureConfigs/{feature_config}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual string Config { get; set; }
-
-        private string _configUpdateTimeRaw;
-
-        private object _configUpdateTime;
-
-        /// <summary>Output only. When the FeatureConfig was last applied and copied to FeatureSpec.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configUpdateTime")]
-        public virtual string ConfigUpdateTimeRaw
-        {
-            get => _configUpdateTimeRaw;
-            set
-            {
-                _configUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _configUpdateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ConfigUpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConfigUpdateTimeDateTimeOffset instead.")]
-        public virtual object ConfigUpdateTime
-        {
-            get => _configUpdateTime;
-            set
-            {
-                _configUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _configUpdateTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ConfigUpdateTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ConfigUpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConfigUpdateTimeRaw);
-            set => ConfigUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Output only. An id that uniquely identify a FeatureConfig object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
-        public virtual string Uuid { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>FeatureSpec contains user input per-feature spec information.</summary>
     public class FeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2983,10 +2926,6 @@ namespace Google.Apis.GKEHub.v2beta.Data
             set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Reference information for a FeatureConfig applied on the MembershipFeature.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("featureConfigRef")]
-        public virtual FeatureConfigRef FeatureConfigRef { get; set; }
-
         /// <summary>GCP labels for this MembershipFeature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3004,7 +2943,7 @@ namespace Google.Apis.GKEHub.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Spec of this membershipFeature.</summary>
+        /// <summary>Optional. Spec of this membershipFeature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual FeatureSpec Spec { get; set; }
 
