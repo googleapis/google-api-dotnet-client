@@ -39,6 +39,7 @@ namespace Google.Apis.CloudIdentity.v1
             Groups = new GroupsResource(this);
             InboundSamlSsoProfiles = new InboundSamlSsoProfilesResource(this);
             InboundSsoAssignments = new InboundSsoAssignmentsResource(this);
+            Policies = new PoliciesResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudidentity.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://cloudidentity.googleapis.com/batch");
         }
@@ -96,6 +97,12 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             public static string CloudIdentityInboundssoReadonly = "https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly";
 
+            /// <summary>See and edit policies in your Cloud Identity Organization.</summary>
+            public static string CloudIdentityPolicies = "https://www.googleapis.com/auth/cloud-identity.policies";
+
+            /// <summary>See policies in your Cloud Identity Organization.</summary>
+            public static string CloudIdentityPoliciesReadonly = "https://www.googleapis.com/auth/cloud-identity.policies.readonly";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
@@ -138,6 +145,12 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             public const string CloudIdentityInboundssoReadonly = "https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly";
 
+            /// <summary>See and edit policies in your Cloud Identity Organization.</summary>
+            public const string CloudIdentityPolicies = "https://www.googleapis.com/auth/cloud-identity.policies";
+
+            /// <summary>See policies in your Cloud Identity Organization.</summary>
+            public const string CloudIdentityPoliciesReadonly = "https://www.googleapis.com/auth/cloud-identity.policies.readonly";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
@@ -159,6 +172,9 @@ namespace Google.Apis.CloudIdentity.v1
 
         /// <summary>Gets the InboundSsoAssignments resource.</summary>
         public virtual InboundSsoAssignmentsResource InboundSsoAssignments { get; }
+
+        /// <summary>Gets the Policies resource.</summary>
+        public virtual PoliciesResource Policies { get; }
     }
 
     /// <summary>A base abstract class for CloudIdentity requests.</summary>
@@ -4814,6 +4830,151 @@ namespace Google.Apis.CloudIdentity.v1
             }
         }
     }
+
+    /// <summary>The "policies" collection of methods.</summary>
+    public class PoliciesResource
+    {
+        private const string Resource = "policies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Get a Policy</summary>
+        /// <param name="name">Required. The name of the policy to retrieve. Format: "policies/{policy}".</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>Get a Policy</summary>
+        public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the policy to retrieve. Format: "policies/{policy}".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^policies/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>List Policies</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>List Policies</summary>
+        public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.ListPoliciesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. A CEL expression for filtering the results. Policies can be filtered by application with this
+            /// expression: setting.name = 'settings/gmail.*' Policies can be filtered by setting type with this
+            /// expression: setting.name = '*.service_status' A maximum of one of the above setting.name clauses can be
+            /// used. Policies can be filtered by customer with this expression: customer = "customers/{customer}" Where
+            /// `customer` is the `id` from the [Admin SDK `Customer`
+            /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may use
+            /// `customers/my_customer` to specify your own organization. When no customer is mentioned it will be
+            /// default to customers/my_customer. A maximum of one customer clause can be used. The above clauses can
+            /// only be combined together in a single filter expression with the `&amp;amp;&amp;amp;` operator.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Optional. The maximum number of results to return. The service can return fewer than this number. If
+            /// omitted or set to 0, the default is 50 results per page. The maximum allowed value is 100. `page_size`
+            /// values greater than 100 default to 100.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. The pagination token received from a prior call to PoliciesService.ListPolicies to retrieve
+            /// the next page of results. When paginating, all other parameters provided to `ListPoliciesRequest` must
+            /// match the call that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/policies";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.CloudIdentity.v1.Data
 {
@@ -6830,6 +6991,24 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for PoliciesService.ListPolicies.</summary>
+    public class ListPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The pagination token to retrieve the next page of results. If this field is empty, there are no subsequent
+        /// pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The results</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<Policy> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for UserInvitation listing request.</summary>
     public class ListUserInvitationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7219,6 +7398,85 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A Policy resource binds an instance of a single Setting with the scope of a PolicyQuery. The Setting instance
+    /// will be applied to all entities that satisfy the query.
+    /// </summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Customer that the Policy belongs to. The value is in the format 'customers/{customerId}'. The
+        /// `customerId` must begin with "C" To find your customer ID in Admin Console see
+        /// https://support.google.com/a/answer/10070793.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// Policy. Format: policies/{policy}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The PolicyQuery the Setting applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyQuery")]
+        public virtual PolicyQuery PolicyQuery { get; set; }
+
+        /// <summary>Required. The Setting configured by this Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setting")]
+        public virtual Setting Setting { get; set; }
+
+        /// <summary>Output only. The type of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PolicyQuery</summary>
+    public class PolicyQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. The group that the query applies to. This field is only set if there is a single value for group
+        /// that satisfies all clauses of the query. If no group applies, this will be the empty string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Non-empty default. The OrgUnit the query applies to. This field is only set if there is
+        /// a single value for org_unit that satisfies all clauses of the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnit")]
+        public virtual string OrgUnit { get; set; }
+
+        /// <summary>
+        /// Immutable. The CEL query that defines which entities the Policy applies to (ex. a User entity). For details
+        /// about CEL see https://opensource.google.com/projects/cel. The OrgUnits the Policy applies to are represented
+        /// by a clause like so: entity.org_units.exists(org_unit, org_unit.org_unit_id == orgUnitId('{orgUnitId}')) The
+        /// Group the Policy applies to are represented by a clause like so: entity.groups.exists(group, group.group_id
+        /// == groupId('{groupId}')) The Licenses the Policy applies to are represented by a clause like so:
+        /// entity.licenses.exists(license, license in ['/product/{productId}/sku/{skuId}']) The above clauses can be
+        /// present in any combination, and used in conjunction with the &amp;amp;&amp;amp;, || and ! operators. The
+        /// org_unit and group fields below are helper fields that contain the corresponding value(s) as the query to
+        /// make the query easier to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// Output only. The decimal sort order of this PolicyQuery. The value is relative to all other policies with
+        /// the same setting type for the customer. (There are no duplicates within this set).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
+        public virtual System.Nullable<double> SortOrder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The evaluated state of this restriction.</summary>
     public class RestrictionEvaluation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7409,6 +7667,21 @@ namespace Google.Apis.CloudIdentity.v1.Data
     /// <summary>A request to send email for inviting target user corresponding to the UserInvitation.</summary>
     public class SendUserInvitationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Setting</summary>
+    public class Setting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. The type of the Setting. .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Required. The value of the Setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
