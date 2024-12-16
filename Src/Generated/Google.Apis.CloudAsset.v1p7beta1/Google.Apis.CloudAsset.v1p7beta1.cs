@@ -1639,6 +1639,14 @@ namespace Google.Apis.CloudAsset.v1p7beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("egressTo")]
         public virtual GoogleIdentityAccesscontextmanagerV1EgressTo EgressTo { get; set; }
 
+        /// <summary>
+        /// Optional. Human-readable title for the egress rule. The title must be unique within the perimeter and can
+        /// not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
+        /// 240,000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1755,6 +1763,14 @@ namespace Google.Apis.CloudAsset.v1p7beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressTo")]
         public virtual GoogleIdentityAccesscontextmanagerV1IngressTo IngressTo { get; set; }
+
+        /// <summary>
+        /// Optional. Human-readable title for the ingress rule. The title must be unique within the perimeter and can
+        /// not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
+        /// 240,000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
