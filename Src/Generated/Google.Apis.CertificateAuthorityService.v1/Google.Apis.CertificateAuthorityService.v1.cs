@@ -590,7 +590,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         /// <summary>Update a CertificateRevocationList.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Output only. The resource name for this CertificateRevocationList in the format
+                        /// Identifier. The resource name for this CertificateRevocationList in the format
                         /// `projects/*/locations/*/caPools/*certificateAuthorities/*/ certificateRevocationLists/*`.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CertificateRevocationList body, string name)
@@ -610,7 +610,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                             }
 
                             /// <summary>
-                            /// Output only. The resource name for this CertificateRevocationList in the format
+                            /// Identifier. The resource name for this CertificateRevocationList in the format
                             /// `projects/*/locations/*/caPools/*certificateAuthorities/*/
                             /// certificateRevocationLists/*`.
                             /// </summary>
@@ -1437,7 +1437,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// <summary>Update a CertificateAuthority.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. Identifier. The resource name for this CertificateAuthority in the format
+                    /// Identifier. The resource name for this CertificateAuthority in the format
                     /// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CertificateAuthority body, string name)
@@ -1457,7 +1457,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         }
 
                         /// <summary>
-                        /// Output only. Identifier. The resource name for this CertificateAuthority in the format
+                        /// Identifier. The resource name for this CertificateAuthority in the format
                         /// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1906,7 +1906,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. The resource name for this Certificate in the format
+                    /// Identifier. The resource name for this Certificate in the format
                     /// `projects/*/locations/*/caPools/*/certificates/*`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.Certificate body, string name)
@@ -1928,7 +1928,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         }
 
                         /// <summary>
-                        /// Output only. The resource name for this Certificate in the format
+                        /// Identifier. The resource name for this Certificate in the format
                         /// `projects/*/locations/*/caPools/*/certificates/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2535,8 +2535,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <summary>Update a CaPool.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. Identifier. The resource name for this CaPool in the format
-                /// `projects/*/locations/*/caPools/*`.
+                /// Identifier. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CaPool body, string name)
                 {
@@ -2555,8 +2554,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     }
 
                     /// <summary>
-                    /// Output only. Identifier. The resource name for this CaPool in the format
-                    /// `projects/*/locations/*/caPools/*`.
+                    /// Identifier. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3182,7 +3180,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// <summary>Update a CertificateTemplate.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name for this CertificateTemplate in the format
+                /// Identifier. The resource name for this CertificateTemplate in the format
                 /// `projects/*/locations/*/certificateTemplates/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CertificateAuthorityService.v1.Data.CertificateTemplate body, string name)
@@ -3202,7 +3200,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     }
 
                     /// <summary>
-                    /// Output only. The resource name for this CertificateTemplate in the format
+                    /// Identifier. The resource name for this CertificateTemplate in the format
                     /// `projects/*/locations/*/certificateTemplates/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3433,7 +3431,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -3448,7 +3446,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : CertificateAuthorityServiceBaseServiceRequest<Google.Apis.CertificateAuthorityService.v1.Data.Empty>
                 {
@@ -4062,7 +4060,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. Identifier. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
+        /// Identifier. The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4176,7 +4174,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual object Lifetime { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for this Certificate in the format
+        /// Identifier. The resource name for this Certificate in the format
         /// `projects/*/locations/*/caPools/*/certificates/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4420,7 +4418,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual object Lifetime { get; set; }
 
         /// <summary>
-        /// Output only. Identifier. The resource name for this CertificateAuthority in the format
+        /// Identifier. The resource name for this CertificateAuthority in the format
         /// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4728,7 +4726,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for this CertificateRevocationList in the format
+        /// Identifier. The resource name for this CertificateRevocationList in the format
         /// `projects/*/locations/*/caPools/*certificateAuthorities/*/ certificateRevocationLists/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4863,7 +4861,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual object MaximumLifetime { get; set; }
 
         /// <summary>
-        /// Output only. The resource name for this CertificateTemplate in the format
+        /// Identifier. The resource name for this CertificateTemplate in the format
         /// `projects/*/locations/*/certificateTemplates/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
