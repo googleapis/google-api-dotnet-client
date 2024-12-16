@@ -2153,6 +2153,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem> LineItems { get; set; }
 
         /// <summary>
+        /// Output only. Describes the details of the migrated subscription. Only populated if this subscription is
+        /// migrated from another system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails MigrationDetails { get; set; }
+
+        /// <summary>
         /// Identifier. Resource name of the subscription. It will have the format of
         /// "partners/{partner_id}/subscriptions/{subscription_id}". This is available for authorizeAddon, but otherwise
         /// is response only.
@@ -2528,6 +2535,17 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Output only. The service period of the ONE_TIME line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePeriod")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod ServicePeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the details of the migrated subscription.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The migrated subscription id in the legacy system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migratedSubscriptionId")]
+        public virtual string MigratedSubscriptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
