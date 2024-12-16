@@ -6650,6 +6650,161 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
+                        /// Returns the consent enforcement status of a single consent resource. On success, the
+                        /// response body contains a JSON-encoded representation of a `Parameters`
+                        /// (http://hl7.org/fhir/parameters.html) FHIR resource, containing the current enforcement
+                        /// status. Does not support DSTU2.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the consent resource to find enforcement status, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{consent_id}`
+                        /// </param>
+                        public virtual ConsentEnforcementStatusRequest ConsentEnforcementStatus(string name)
+                        {
+                            return new ConsentEnforcementStatusRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Returns the consent enforcement status of a single consent resource. On success, the
+                        /// response body contains a JSON-encoded representation of a `Parameters`
+                        /// (http://hl7.org/fhir/parameters.html) FHIR resource, containing the current enforcement
+                        /// status. Does not support DSTU2.
+                        /// </summary>
+                        public class ConsentEnforcementStatusRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new ConsentEnforcementStatus request.</summary>
+                            public ConsentEnforcementStatusRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the consent resource to find enforcement status, in the format
+                            /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{consent_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Consent-enforcement-status";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}/$consent-enforcement-status";
+
+                            /// <summary>Initializes ConsentEnforcementStatus parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Consent/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Returns the consent enforcement status of all consent resources for a patient. On success,
+                        /// the response body contains a JSON-encoded representation of a bundle of `Parameters`
+                        /// (http://hl7.org/fhir/parameters.html) FHIR resources, containing the current enforcement
+                        /// status for each consent resource of the patient. Does not support DSTU2.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the patient to find enforcement statuses, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Patient/{patient_id}`
+                        /// </param>
+                        public virtual PatientConsentEnforcementStatusRequest PatientConsentEnforcementStatus(string name)
+                        {
+                            return new PatientConsentEnforcementStatusRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Returns the consent enforcement status of all consent resources for a patient. On success,
+                        /// the response body contains a JSON-encoded representation of a bundle of `Parameters`
+                        /// (http://hl7.org/fhir/parameters.html) FHIR resources, containing the current enforcement
+                        /// status for each consent resource of the patient. Does not support DSTU2.
+                        /// </summary>
+                        public class PatientConsentEnforcementStatusRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new PatientConsentEnforcementStatus request.</summary>
+                            public PatientConsentEnforcementStatusRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the patient to find enforcement statuses, in the format
+                            /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Patient/{patient_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of results on a page. If not specified, 100 is used. May
+                            /// not be larger than 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("_count", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> Count { get; set; }
+
+                            /// <summary>
+                            /// Optional. Used to retrieve the first, previous, next, or last page of consent
+                            /// enforcement statuses when using pagination. Value should be set to the value of
+                            /// `_page_token` set in next or previous page links' URLs. Next and previous page are
+                            /// returned in the response bundle's links field, where `link.relation` is "previous" or
+                            /// "next". Omit `_page_token` if no previous request has been made.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("_page_token", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "Patient-consent-enforcement-status";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}/$consent-enforcement-status";
+
+                            /// <summary>Initializes PatientConsentEnforcementStatus parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Patient/[^/]+$",
+                                });
+                                RequestParameters.Add("_count", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_count",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_page_token", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_page_token",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Retrieves a Patient resource and resources related to that patient. Implements the FHIR
                         /// extended operation Patient-everything
                         /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/patient-operations.html#everything),
@@ -8551,6 +8706,172 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Applies the admin Consent resources for the FHIR store and reindexes the underlying resources in
+                    /// the FHIR store according to the aggregate consents. This method also updates the
+                    /// `consent_config.enforced_admin_consents` field of the FhirStore unless `validate_only=true` in
+                    /// ApplyAdminConsentsRequest. Any admin Consent resource change after this operation execution
+                    /// (including deletion) requires you to call ApplyAdminConsents again for the change to take
+                    /// effect. This method returns an Operation that can be used to track the progress of the resources
+                    /// that were reindexed, by calling GetOperation. Upon completion, the ApplyAdminConsentsResponse
+                    /// additionally contains the number of resources that were reindexed. If at least one Consent
+                    /// resource contains an error or fails be be enforced for any reason, the method returns an error
+                    /// instead of an Operation. No resources will be reindexed and the
+                    /// `consent_config.enforced_admin_consents` field will be unchanged. To enforce a consent check for
+                    /// data access, `consent_config.access_enforced` must be set to true for the FhirStore.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to enforce, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual ApplyAdminConsentsRequest ApplyAdminConsents(Google.Apis.CloudHealthcare.v1.Data.ApplyAdminConsentsRequest body, string name)
+                    {
+                        return new ApplyAdminConsentsRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Applies the admin Consent resources for the FHIR store and reindexes the underlying resources in
+                    /// the FHIR store according to the aggregate consents. This method also updates the
+                    /// `consent_config.enforced_admin_consents` field of the FhirStore unless `validate_only=true` in
+                    /// ApplyAdminConsentsRequest. Any admin Consent resource change after this operation execution
+                    /// (including deletion) requires you to call ApplyAdminConsents again for the change to take
+                    /// effect. This method returns an Operation that can be used to track the progress of the resources
+                    /// that were reindexed, by calling GetOperation. Upon completion, the ApplyAdminConsentsResponse
+                    /// additionally contains the number of resources that were reindexed. If at least one Consent
+                    /// resource contains an error or fails be be enforced for any reason, the method returns an error
+                    /// instead of an Operation. No resources will be reindexed and the
+                    /// `consent_config.enforced_admin_consents` field will be unchanged. To enforce a consent check for
+                    /// data access, `consent_config.access_enforced` must be set to true for the FhirStore.
+                    /// </summary>
+                    public class ApplyAdminConsentsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new ApplyAdminConsents request.</summary>
+                        public ApplyAdminConsentsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ApplyAdminConsentsRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to enforce, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.ApplyAdminConsentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "applyAdminConsents";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:applyAdminConsents";
+
+                        /// <summary>Initializes ApplyAdminConsents parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Apply the Consent resources for the FHIR store and reindex the underlying resources in the FHIR
+                    /// store according to the aggregate consent. The aggregate consent of the patient in scope in this
+                    /// request replaces any previous call of this method. Any Consent resource change after this
+                    /// operation execution (including deletion) requires you to call ApplyConsents again to have
+                    /// effect. This method returns an Operation that can be used to track the progress of the consent
+                    /// resources that were processed by calling GetOperation. Upon completion, the
+                    /// ApplyConsentsResponse additionally contains the number of resources that was reindexed. Errors
+                    /// are logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). To enforce consent check
+                    /// for data access, `consent_config.access_enforced` must be set to true for the FhirStore.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to enforce, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual ApplyConsentsRequest ApplyConsents(Google.Apis.CloudHealthcare.v1.Data.ApplyConsentsRequest body, string name)
+                    {
+                        return new ApplyConsentsRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Apply the Consent resources for the FHIR store and reindex the underlying resources in the FHIR
+                    /// store according to the aggregate consent. The aggregate consent of the patient in scope in this
+                    /// request replaces any previous call of this method. Any Consent resource change after this
+                    /// operation execution (including deletion) requires you to call ApplyConsents again to have
+                    /// effect. This method returns an Operation that can be used to track the progress of the consent
+                    /// resources that were processed by calling GetOperation. Upon completion, the
+                    /// ApplyConsentsResponse additionally contains the number of resources that was reindexed. Errors
+                    /// are logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). To enforce consent check
+                    /// for data access, `consent_config.access_enforced` must be set to true for the FhirStore.
+                    /// </summary>
+                    public class ApplyConsentsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new ApplyConsents request.</summary>
+                        public ApplyConsentsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ApplyConsentsRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to enforce, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.ApplyConsentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "applyConsents";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:applyConsents";
+
+                        /// <summary>Initializes ApplyConsents parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a new FHIR store within the parent dataset.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the dataset this FHIR store belongs to.</param>
@@ -8731,6 +9052,75 @@ namespace Google.Apis.CloudHealthcare.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Explains all the permitted/denied actor, purpose and environment for a given resource.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to enforce, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual ExplainDataAccessRequest ExplainDataAccess(string name)
+                    {
+                        return new ExplainDataAccessRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Explains all the permitted/denied actor, purpose and environment for a given resource.
+                    /// </summary>
+                    public class ExplainDataAccessRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ExplainDataAccessResponse>
+                    {
+                        /// <summary>Constructs a new ExplainDataAccess request.</summary>
+                        public ExplainDataAccessRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to enforce, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID (`{resourceType}/{id}`) of the resource to explain data access on.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ResourceId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "explainDataAccess";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:explainDataAccess";
+
+                        /// <summary>Initializes ExplainDataAccess parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                            RequestParameters.Add("resourceId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resourceId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -12079,6 +12469,22 @@ namespace Google.Apis.CloudHealthcare.v1
 namespace Google.Apis.CloudHealthcare.v1.Data
 {
     /// <summary>
+    /// Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log
+    /// for healthcare API must be
+    /// [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The
+    /// consent-related logs are included as part of `protoPayload.metadata`.
+    /// </summary>
+    public class AccessDeterminationLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Controls the amount of detail to include as part of the audit logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logLevel")]
+        public virtual string LogLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Activates the latest revision of the specified Consent by committing a new revision with `state` updated to
     /// `ACTIVE`. If the latest revision of the given Consent is in the `ACTIVE` state, no new revision is committed. A
     /// FAILED_PRECONDITION error occurs if the latest revision of the given consent is in the `REJECTED` or `REVOKED`
@@ -12140,6 +12546,22 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List of admin Consent resources to be applied.</summary>
+    public class AdminConsents : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The versioned names of the admin Consent resource(s), in the format
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`.
+        /// For FHIR stores with `disable_resource_versioning=true`, the format is
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to analyze healthcare entities in a document.</summary>
     public class AnalyzeEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12191,6 +12613,156 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationships")]
         public virtual System.Collections.Generic.IList<EntityMentionRelationship> Relationships { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains the error details of the unsupported admin Consent resources for when the ApplyAdminConsents method
+    /// fails to apply one or more Consent resources.
+    /// </summary>
+    public class ApplyAdminConsentsErrorDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of Consent resources that are unsupported or cannot be applied and the error associated with each
+        /// of them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentErrors")]
+        public virtual System.Collections.Generic.IList<ConsentErrors> ConsentErrors { get; set; }
+
+        /// <summary>The currently in progress non-validate-only ApplyAdminConsents operation ID if exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("existingOperationId")]
+        public virtual System.Nullable<ulong> ExistingOperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to apply the admin Consent resources for the specified FHIR store.</summary>
+    public class ApplyAdminConsentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A new list of admin Consent resources to be applied. Any existing enforced Consents, which are specified in
+        /// `consent_config.enforced_admin_consents` of the FhirStore, that are not part of this list will be disabled.
+        /// An empty list is equivalent to clearing or disabling all Consents enforced on the FHIR store. When a FHIR
+        /// store has `disable_resource_versioning=true` and this list contains a Consent resource that exists in
+        /// `consent_config.enforced_admin_consents`, the method enforces any updates to the existing resource since the
+        /// last enforcement. If the existing resource hasn't been updated since the last enforcement, the resource is
+        /// unaffected. After the method finishes, the resulting consent enforcement model is determined by the contents
+        /// of the Consent resource(s) when the method was called: * When `disable_resource_versioning=true`, the result
+        /// is identical to the current resource(s) in the FHIR store. * When `disable_resource_versioning=false`, the
+        /// result is based on the historical version(s) of the Consent resource(s) at the point in time when the method
+        /// was called. At most 200 Consents can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newConsentsList")]
+        public virtual AdminConsents NewConsentsList { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the method only validates Consent resources to make sure they are supported. Otherwise,
+        /// the method applies the aggregate consent information to update the enforcement model and reindex the FHIR
+        /// resources. If all Consent resources can be applied successfully, the ApplyAdminConsentsResponse is returned
+        /// containing the following fields: * `consent_apply_success` to indicate the number of Consent resources
+        /// applied. * `affected_resources` to indicate the number of resources that might have had their consent access
+        /// changed. If, however, one or more Consent resources are unsupported or cannot be applied, the method fails
+        /// and ApplyAdminConsentsErrorDetail is is returned with details about the unsupported Consent resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response when all admin Consent resources in scope were processed and all affected resources were reindexed
+    /// successfully. This structure will be included in the response when the operation finishes successfully.
+    /// </summary>
+    public class ApplyAdminConsentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of resources (including the Consent resources) that may have consent access change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
+        public virtual System.Nullable<long> AffectedResources { get; set; }
+
+        /// <summary>
+        /// If `validate_only=false` in ApplyAdminConsentsRequest, this counter contains the number of Consent resources
+        /// that were successfully applied. Otherwise, it is the number of Consent resources that are supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentApplySuccess")]
+        public virtual System.Nullable<long> ConsentApplySuccess { get; set; }
+
+        /// <summary>
+        /// The number of resources (including the Consent resources) that ApplyAdminConsents failed to re-index.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedResources")]
+        public virtual System.Nullable<long> FailedResources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to apply the Consent resources for the specified FHIR store.</summary>
+    public class ApplyConsentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Scope down to a list of patients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patientScope")]
+        public virtual PatientScope PatientScope { get; set; }
+
+        /// <summary>
+        /// Optional. Scope down to patients whose most recent consent changes are in the time range. Can only be used
+        /// with a versioning store (i.e. when disable_resource_versioning is set to false).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
+        public virtual TimeRange TimeRange { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the method only validates Consent resources to make sure they are supported. When the
+        /// operation completes, ApplyConsentsResponse is returned where `consent_apply_success` and
+        /// `consent_apply_failure` indicate supported and unsupported (or invalid) Consent resources, respectively.
+        /// Otherwise, the method propagates the aggregate consensual information to the patient's resources. Upon
+        /// success, `affected_resources` in the ApplyConsentsResponse indicates the number of resources that may have
+        /// consensual access changed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response when all Consent resources in scope were processed and all affected resources were reindexed
+    /// successfully. This structure is included in the response when the operation finishes successfully.
+    /// </summary>
+    public class ApplyConsentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of resources (including the Consent resources) that may have consensual access change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
+        public virtual System.Nullable<long> AffectedResources { get; set; }
+
+        /// <summary>
+        /// If `validate_only = false` in ApplyConsentsRequest, this counter is the number of Consent resources that
+        /// were failed to apply. Otherwise, it is the number of Consent resources that are not supported or invalid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentApplyFailure")]
+        public virtual System.Nullable<long> ConsentApplyFailure { get; set; }
+
+        /// <summary>
+        /// If `validate_only = false` in ApplyConsentsRequest, this counter is the number of Consent resources that
+        /// were successfully applied. Otherwise, it is the number of Consent resources that are supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentApplySuccess")]
+        public virtual System.Nullable<long> ConsentApplySuccess { get; set; }
+
+        /// <summary>
+        /// The number of resources (including the Consent resources) that ApplyConsents failed to re-index.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedResources")]
+        public virtual System.Nullable<long> FailedResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12682,6 +13254,31 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The accessor scope that describes who can access, for what purpose, in which environment.</summary>
+    public class ConsentAccessorScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An individual, group, or access role that identifies the accessor or a characteristic of the accessor. This
+        /// can be a resource ID (such as `{resourceType}/{id}`) or an external URI. This value must be present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+        public virtual string Actor { get; set; }
+
+        /// <summary>
+        /// An abstract identifier that describes the environment or conditions under which the accessor is acting. Can
+        /// be "*" if it applies to all environments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The intent of data use. Can be "*" if it applies to all purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Documentation of a user's consent.</summary>
     public class ConsentArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12728,12 +13325,95 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configures whether to enforce consent for the FHIR store and which consent enforcement version is being used.
+    /// </summary>
+    public class ConsentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies how the server logs the consent-aware requests. If not specified, the
+        /// `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessDeterminationLogConfig")]
+        public virtual AccessDeterminationLogConfig AccessDeterminationLogConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The default value is false. If set to true, when accessing FHIR resources, the consent headers
+        /// will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported
+        /// consent headers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessEnforced")]
+        public virtual System.Nullable<bool> AccessEnforced { get; set; }
+
+        /// <summary>
+        /// Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope`
+        /// header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentHeaderHandling")]
+        public virtual ConsentHeaderHandling ConsentHeaderHandling { get; set; }
+
+        /// <summary>
+        /// Output only. The versioned names of the enforced admin Consent resource(s), in the format
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`.
+        /// For FHIR stores with `disable_resource_versioning=true`, the format is
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
+        /// This field can only be updated using ApplyAdminConsents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcedAdminConsents")]
+        public virtual System.Collections.Generic.IList<string> EnforcedAdminConsents { get; set; }
+
+        /// <summary>
+        /// Required. Specifies which consent enforcement version is being used for this FHIR store. This field can only
+        /// be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change
+        /// the version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Consent resource name and error.</summary>
+    public class ConsentErrors : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error code and message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// The versioned name of the admin Consent resource, in the format
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`.
+        /// For FHIR stores with `disable_resource_versioning=true`, the format is
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The detailed evaluation of a particular Consent.</summary>
     public class ConsentEvaluation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The evaluation result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationResult")]
         public virtual string EvaluationResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>How the server handles the consent header.</summary>
+    public class ConsentHeaderHandling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the default server behavior when the header is empty. If not specified, the
+        /// `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profile")]
+        public virtual string Profile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13380,6 +14060,136 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The enforcing consent's metadata.</summary>
+    public class ExplainDataAccessConsentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The compartment base resources that matched a cascading policy. Each resource has the following format:
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/{resource_type}/{resource_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cascadeOrigins")]
+        public virtual System.Collections.Generic.IList<string> CascadeOrigins { get; set; }
+
+        /// <summary>
+        /// The resource name of this consent resource, in the format:
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentResource")]
+        public virtual string ConsentResource { get; set; }
+
+        private string _enforcementTimeRaw;
+
+        private object _enforcementTime;
+
+        /// <summary>Last enforcement timestamp of this consent resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
+        public virtual string EnforcementTimeRaw
+        {
+            get => _enforcementTimeRaw;
+            set
+            {
+                _enforcementTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _enforcementTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EnforcementTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnforcementTimeDateTimeOffset instead.")]
+        public virtual object EnforcementTime
+        {
+            get => _enforcementTime;
+            set
+            {
+                _enforcementTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _enforcementTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EnforcementTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EnforcementTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnforcementTimeRaw);
+            set => EnforcementTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// A list of all the matching accessor scopes of this consent policy that enforced
+        /// ExplainDataAccessConsentScope.accessor_scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingAccessorScopes")]
+        public virtual System.Collections.Generic.IList<ConsentAccessorScope> MatchingAccessorScopes { get; set; }
+
+        /// <summary>
+        /// The patient owning the consent (only applicable for patient consents), in the format:
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Patient/{patient_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patientConsentOwner")]
+        public virtual string PatientConsentOwner { get; set; }
+
+        /// <summary>The policy type of consent resource (e.g. PATIENT, ADMIN).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The consent's variant combinations. A single consent may have multiple variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variants")]
+        public virtual System.Collections.Generic.IList<string> Variants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single consent scope that provides info on who has access to the requested resource scope for a particular
+    /// purpose and environment, enforced by which consent.
+    /// </summary>
+    public class ExplainDataAccessConsentScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The accessor scope that describes who can access, for what purpose, and in which environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessorScope")]
+        public virtual ConsentAccessorScope AccessorScope { get; set; }
+
+        /// <summary>
+        /// Whether the current consent scope is permitted or denied access on the requested resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decision")]
+        public virtual string Decision { get; set; }
+
+        /// <summary>Metadata of the consent resources that enforce the consent scope's access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcingConsents")]
+        public virtual System.Collections.Generic.IList<ExplainDataAccessConsentInfo> EnforcingConsents { get; set; }
+
+        /// <summary>Other consent scopes that created exceptions within this scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exceptions")]
+        public virtual System.Collections.Generic.IList<ExplainDataAccessConsentScope> Exceptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of consent scopes that are applicable to the explained access on a given resource.</summary>
+    public class ExplainDataAccessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of applicable consent scopes. Sorted in order of actor such that scopes belonging to the same actor
+        /// will be adjacent to each other in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentScopes")]
+        public virtual System.Collections.Generic.IList<ExplainDataAccessConsentScope> ConsentScopes { get; set; }
+
+        /// <summary>Warnings associated with this response. It inform user with exceeded scope limit errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual string Warning { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Exports data from the specified DICOM store. If a given resource, such as a DICOM object with the same
     /// SOPInstance UID, already exists in the output, it is overwritten with the version in the source dataset.
@@ -13756,6 +14566,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complexDataTypeReferenceParsing")]
         public virtual string ComplexDataTypeReferenceParsing { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to
+        /// absence of Consent resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentConfig")]
+        public virtual ConsentConfig ConsentConfig { get; set; }
 
         /// <summary>
         /// Optional. If true, overrides the default search behavior for this FHIR store to `handling=strict` which
@@ -15320,6 +16137,20 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Apply consents given by a list of patients.</summary>
+    public class PatientScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The list of patient IDs whose Consent resources will be enforced. At most 10,000 patients can be
+        /// specified. An empty list is equivalent to all patients (meaning the entire FHIR store).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patientIds")]
+        public virtual System.Collections.Generic.IList<string> PatientIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
@@ -16334,6 +17165,31 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>Type of partitioning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Apply consents given by patients whose most recent consent changes are in the time range. Note that after
+    /// identifying these patients, the server applies all Consent resources given by those patients, not just the
+    /// Consent resources within the timestamp in the range.
+    /// </summary>
+    public class TimeRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The latest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:zz If not specified, the
+        /// system uses the time when ApplyConsents was called.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual string End { get; set; }
+
+        /// <summary>
+        /// Optional. The earliest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:zz If not specified, the
+        /// system uses the FHIR store creation time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual string Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
