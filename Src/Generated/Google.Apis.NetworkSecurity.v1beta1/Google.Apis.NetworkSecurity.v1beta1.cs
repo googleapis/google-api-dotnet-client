@@ -13961,7 +13961,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringDeployment object</summary>
+    /// <summary>Message describing MirroringDeployment object NEXT ID: 10</summary>
     public class MirroringDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
