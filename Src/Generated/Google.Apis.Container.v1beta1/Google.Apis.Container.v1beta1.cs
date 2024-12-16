@@ -6822,7 +6822,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>Workload policy configuration for Autopilot.</summary>
+        /// <summary>WorkloadPolicyConfig is the configuration related to GCW workload policy</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadPolicyConfig")]
         public virtual WorkloadPolicyConfig WorkloadPolicyConfig { get; set; }
 
@@ -7821,7 +7821,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAuthenticatorGroupsConfig")]
         public virtual AuthenticatorGroupsConfig DesiredAuthenticatorGroupsConfig { get; set; }
 
-        /// <summary>The desired workload policy configuration for the autopilot cluster.</summary>
+        /// <summary>WorkloadPolicyConfig is the configuration related to GCW workload policy</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilotWorkloadPolicyConfig")]
         public virtual WorkloadPolicyConfig DesiredAutopilotWorkloadPolicyConfig { get; set; }
 
@@ -10113,6 +10113,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// The maximum duration for the nodes to exist. If unspecified, the nodes can exist indefinitely.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRunDuration")]
+        public virtual object MaxRunDuration { get; set; }
 
         /// <summary>
         /// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp
@@ -12735,6 +12741,12 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string MachineType { get; set; }
 
         /// <summary>
+        /// The maximum duration for the nodes to exist. If unspecified, the nodes can exist indefinitely.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRunDuration")]
+        public virtual object MaxRunDuration { get; set; }
+
+        /// <summary>
         /// The name (project, location, cluster, node pool) of the node pool to update. Specified in the format
         /// `projects/*/locations/*/clusters/*/nodePools/*`.
         /// </summary>
@@ -13446,7 +13458,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.</summary>
+    /// <summary>WorkloadPolicyConfig is the configuration related to GCW workload policy</summary>
     public class WorkloadPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, workloads can use NET_ADMIN capability.</summary>
