@@ -401,7 +401,7 @@ namespace Google.Apis.Css.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Required. The primary or supplemental feed id. If CSS Product already exists and feed id provided is
+                /// Optional. The primary or supplemental feed id. If CSS Product already exists and feed id provided is
                 /// different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to
                 /// provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS
                 /// Products yet.
@@ -959,8 +959,8 @@ namespace Google.Apis.Css.v1
 
             /// <summary>
             /// Optional. The maximum number of accounts to return. The service may return fewer than this value. If
-            /// unspecified, at most 50 accounts will be returned. The maximum value is 1000; values above 1000 will be
-            /// coerced to 1000.
+            /// unspecified, at most 50 accounts will be returned. The maximum value is 100; values above 100 will be
+            /// coerced to 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
