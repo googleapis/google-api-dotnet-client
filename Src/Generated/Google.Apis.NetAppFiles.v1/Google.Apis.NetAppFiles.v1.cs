@@ -4790,6 +4790,14 @@ namespace Google.Apis.NetAppFiles.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// If specified, backup will be created from the given snapshot. If not specified, there will be a new snapshot
         /// taken to initiate the backup creation. Format:
@@ -6281,6 +6289,14 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// <summary>Optional. Specifies the replica zone for regional storagePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaZone")]
         public virtual string ReplicaZone { get; set; }
+
+        /// <summary>Output only. Reserved for future use</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Required. Service level of the storage pool</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLevel")]
