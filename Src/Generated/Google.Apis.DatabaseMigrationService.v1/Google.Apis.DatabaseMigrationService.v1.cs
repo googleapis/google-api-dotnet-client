@@ -8829,6 +8829,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFilter")]
         public virtual MigrationJobObjectsConfig ObjectsFilter { get; set; }
 
+        /// <summary>Optional. If true, only failed objects will be restarted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restartFailedObjects")]
+        public virtual System.Nullable<bool> RestartFailedObjects { get; set; }
+
         /// <summary>
         /// Optional. Restart the migration job without running prior configuration verification. Defaults to `false`.
         /// </summary>
