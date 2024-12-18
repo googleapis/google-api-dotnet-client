@@ -12383,6 +12383,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceChangeDetails")]
         public virtual SubscriptionItemPriceChangeDetails PriceChangeDetails { get; set; }
 
+        /// <summary>The current recurring price of the auto renewing plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurringPrice")]
+        public virtual Money RecurringPrice { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
