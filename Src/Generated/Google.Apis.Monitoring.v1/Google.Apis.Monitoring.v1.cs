@@ -2031,6 +2031,24 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Data structure to storing column's sort strategy</summary>
+    public class ColumnSortingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Column name to sort data by</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>
+        /// Optional. A sorting direction that determines ascending or descending order. This is a legacy field kept for
+        /// backwards compatibility with table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Google Stackdriver dashboard. Dashboards define the content and layout of pages in the Stackdriver web
     /// application.
@@ -2204,6 +2222,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>How this data should be plotted on the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plotType")]
         public virtual string PlotType { get; set; }
+
+        /// <summary>Optional. A collection of sort options, affects the order of the data and legend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sort")]
+        public virtual System.Collections.Generic.IList<ColumnSortingOptions> Sort { get; set; }
 
         /// <summary>Optional. The target axis to use for plotting the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetAxis")]
