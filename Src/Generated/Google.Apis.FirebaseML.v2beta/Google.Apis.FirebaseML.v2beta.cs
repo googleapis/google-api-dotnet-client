@@ -1385,6 +1385,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
+        /// <summary>Optional. Indicates if the part is thought from the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thought")]
+        public virtual System.Nullable<bool> Thought { get; set; }
+
         /// <summary>
         /// Optional. Video metadata. The metadata should only be specified while the video data is presented in
         /// inline_data or file_data.
