@@ -1005,7 +1005,10 @@ namespace Google.Apis.Aiplatform.v1
 
         /// <summary>Updates a Dataset.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Output only. Identifier. The resource name of the Dataset.</param>
+        /// <param name="name">
+        /// Output only. Identifier. The resource name of the Dataset. Format:
+        /// `projects/{project}/locations/{location}/datasets/{dataset}`
+        /// </param>
         public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body, string name)
         {
             return new PatchRequest(this.service, body, name);
@@ -1022,7 +1025,10 @@ namespace Google.Apis.Aiplatform.v1
                 InitParameters();
             }
 
-            /// <summary>Output only. Identifier. The resource name of the Dataset.</summary>
+            /// <summary>
+            /// Output only. Identifier. The resource name of the Dataset. Format:
+            /// `projects/{project}/locations/{location}/datasets/{dataset}`
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -6842,7 +6848,10 @@ namespace Google.Apis.Aiplatform.v1
 
                 /// <summary>Updates a Dataset.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. Identifier. The resource name of the Dataset.</param>
+                /// <param name="name">
+                /// Output only. Identifier. The resource name of the Dataset. Format:
+                /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -6859,7 +6868,10 @@ namespace Google.Apis.Aiplatform.v1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. Identifier. The resource name of the Dataset.</summary>
+                    /// <summary>
+                    /// Output only. Identifier. The resource name of the Dataset. Format:
+                    /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -34734,6 +34746,65 @@ namespace Google.Apis.Aiplatform.v1
                         });
                     }
                 }
+
+                /// <summary>Streams queries using a reasoning engine.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the ReasoningEngine resource to use. Format:
+                /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+                /// </param>
+                public virtual StreamQueryRequest StreamQuery(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest body, string name)
+                {
+                    return new StreamQueryRequest(this.service, body, name);
+                }
+
+                /// <summary>Streams queries using a reasoning engine.</summary>
+                public class StreamQueryRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleApiHttpBody>
+                {
+                    /// <summary>Constructs a new StreamQuery request.</summary>
+                    public StreamQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the ReasoningEngine resource to use. Format:
+                    /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "streamQuery";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:streamQuery";
+
+                    /// <summary>Initializes StreamQuery parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reasoningEngines/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Schedules resource.</summary>
@@ -48096,7 +48167,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelReference")]
         public virtual string ModelReference { get; set; }
 
-        /// <summary>Output only. Identifier. The resource name of the Dataset.</summary>
+        /// <summary>
+        /// Output only. Identifier. The resource name of the Dataset. Format:
+        /// `projects/{project}/locations/{location}/datasets/{dataset}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -53850,6 +53924,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
         public virtual System.Nullable<int> MaxOutputTokens { get; set; }
 
+        /// <summary>Optional. If specified, the media resolution specified will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaResolution")]
+        public virtual string MediaResolution { get; set; }
+
         /// <summary>Optional. Positive penalties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
         public virtual System.Nullable<float> PresencePenalty { get; set; }
@@ -53898,10 +53976,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Controls the randomness of predictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
         public virtual System.Nullable<float> Temperature { get; set; }
-
-        /// <summary>Optional. If specified, the token resolution specified will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenResolution")]
-        public virtual string TokenResolution { get; set; }
 
         /// <summary>Optional. If specified, top-k sampling will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topK")]
@@ -57839,6 +57913,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; }
+
+        /// <summary>Immutable. Specification for Kubernetes liveness probe.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
+        public virtual GoogleCloudAiplatformV1Probe LivenessProbe { get; set; }
 
         /// <summary>
         /// Immutable. List of ports to expose from the container. Vertex AI sends any prediction requests that it
@@ -62082,12 +62160,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exec")]
         public virtual GoogleCloudAiplatformV1ProbeExecAction Exec { get; set; }
 
+        /// <summary>GrpcAction probes the health of a container by sending a gRPC request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grpc")]
+        public virtual GoogleCloudAiplatformV1ProbeGrpcAction Grpc { get; set; }
+
+        /// <summary>HttpGetAction probes the health of a container by sending an HTTP GET request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
+        public virtual GoogleCloudAiplatformV1ProbeHttpGetAction HttpGet { get; set; }
+
         /// <summary>
         /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Must be less than
         /// timeout_seconds. Maps to Kubernetes probe argument 'periodSeconds'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
         public virtual System.Nullable<int> PeriodSeconds { get; set; }
+
+        /// <summary>TcpSocketAction probes the health of a container by opening a TCP socket connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
+        public virtual GoogleCloudAiplatformV1ProbeTcpSocketAction TcpSocket { get; set; }
 
         /// <summary>
         /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Must be greater
@@ -62111,6 +62201,90 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GrpcAction checks the health of a container using a gRPC service.</summary>
+    public class GoogleCloudAiplatformV1ProbeGrpcAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Port number of the gRPC service. Number must be in the range 1 to 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
+        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default
+        /// behavior is defined by gRPC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HttpGetAction describes an action based on HTTP Get requests.</summary>
+    public class GoogleCloudAiplatformV1ProbeHttpGetAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Host name to connect to, defaults to the model serving container's IP. You probably want to set "Host" in
+        /// httpHeaders instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Custom headers to set in the request. HTTP allows repeated headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1ProbeHttpHeader> HttpHeaders { get; set; }
+
+        /// <summary>Path to access on the HTTP server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Number of the port to access on the container. Number must be in the range 1 to 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Scheme to use for connecting to the host. Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
+        public virtual string Scheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HttpHeader describes a custom header to be used in HTTP probes</summary>
+    public class GoogleCloudAiplatformV1ProbeHttpHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The header field name. This will be canonicalized upon output, so case-variant names will be understood as
+        /// the same header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The header field value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TcpSocketAction probes the health of a container by opening a TCP socket connection.</summary>
+    public class GoogleCloudAiplatformV1ProbeTcpSocketAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional: Host name to connect to, defaults to the model serving container's IP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Number of the port to access on the container. Number must be in the range 1 to 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -70332,6 +70506,27 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The fraction of the input data that is to be used to validate the Model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationFraction")]
         public virtual System.Nullable<double> ValidationFraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ReasoningEngineExecutionService.StreamQuery.</summary>
+    public class GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Class method to be used for the stream query. It is optional and defaults to "stream_query" if
+        /// unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classMethod")]
+        public virtual string ClassMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Input content provided by users in JSON object format. Examples include text query, function
+        /// calling parameters, media bytes, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("input")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Input { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
