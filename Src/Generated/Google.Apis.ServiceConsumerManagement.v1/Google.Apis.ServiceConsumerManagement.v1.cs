@@ -2032,6 +2032,13 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// </summary>
     public class Documentation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional information about the IAM configuration. This is typically used to link to documentation about a
+        /// product's IAM roles and permissions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalIamInfo")]
+        public virtual string AdditionalIamInfo { get; set; }
+
         /// <summary>The URL to the root of documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentationRootUrl")]
         public virtual string DocumentationRootUrl { get; set; }
