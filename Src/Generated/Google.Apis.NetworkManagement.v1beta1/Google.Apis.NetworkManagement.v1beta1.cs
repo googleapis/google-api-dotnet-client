@@ -3629,15 +3629,15 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     public class RouteInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For advertised routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel,
+        /// For ADVERTISED routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel,
         /// Interconnect attachment, NCC router appliance) the advertised prefix is advertised through, or URI of the
-        /// source peered network.
+        /// source peered network. Deprecated in favor of the next_hop_uri field, not used in new tests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRouteNextHopUri")]
         public virtual string AdvertisedRouteNextHopUri { get; set; }
 
         /// <summary>
-        /// For advertised dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix.
+        /// For ADVERTISED dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRouteSourceRouterUri")]
         public virtual string AdvertisedRouteSourceRouterUri { get; set; }
@@ -3646,7 +3646,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destIpRange")]
         public virtual string DestIpRange { get; set; }
 
-        /// <summary>Destination port ranges of the route. Policy based routes only.</summary>
+        /// <summary>Destination port ranges of the route. POLICY_BASED routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destPortRanges")]
         public virtual System.Collections.Generic.IList<string> DestPortRanges { get; set; }
 
@@ -3658,39 +3658,82 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTags")]
         public virtual System.Collections.Generic.IList<string> InstanceTags { get; set; }
 
-        /// <summary>URI of a NCC Hub. NCC_HUB routes only.</summary>
+        /// <summary>
+        /// For PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub, the URI of the corresponding
+        /// route in NCC Hub's routing table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nccHubRouteUri")]
+        public virtual string NccHubRouteUri { get; set; }
+
+        /// <summary>
+        /// URI of the NCC Hub the route is advertised by. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised
+        /// by NCC Hub only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nccHubUri")]
         public virtual string NccHubUri { get; set; }
 
-        /// <summary>URI of a NCC Spoke. NCC_HUB routes only.</summary>
+        /// <summary>
+        /// URI of the destination NCC Spoke. PEERING_SUBNET and PEERING_DYNAMIC routes that are advertised by NCC Hub
+        /// only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nccSpokeUri")]
         public virtual string NccSpokeUri { get; set; }
 
-        /// <summary>URI of a Compute Engine network. NETWORK routes only.</summary>
+        /// <summary>URI of a VPC network where route is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
-        /// <summary>Next hop of the route.</summary>
+        /// <summary>
+        /// String type of the next hop of the route (for example, "VPN tunnel"). Deprecated in favor of the
+        /// next_hop_type and next_hop_uri fields, not used in new tests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHop")]
         public virtual string NextHop { get; set; }
+
+        /// <summary>URI of a VPC network where the next hop resource is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopNetworkUri")]
+        public virtual string NextHopNetworkUri { get; set; }
 
         /// <summary>Type of next hop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopType")]
         public virtual string NextHopType { get; set; }
 
+        /// <summary>URI of the next hop resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopUri")]
+        public virtual string NextHopUri { get; set; }
+
+        /// <summary>
+        /// For PEERING_SUBNET, PEERING_STATIC and PEERING_DYNAMIC routes, the name of the originating
+        /// SUBNET/STATIC/DYNAMIC route.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originatingRouteDisplayName")]
+        public virtual string OriginatingRouteDisplayName { get; set; }
+
+        /// <summary>
+        /// For PEERING_SUBNET and PEERING_STATIC routes, the URI of the originating SUBNET/STATIC route.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originatingRouteUri")]
+        public virtual string OriginatingRouteUri { get; set; }
+
         /// <summary>Priority of the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; }
 
-        /// <summary>Protocols of the route. Policy based routes only.</summary>
+        /// <summary>Protocols of the route. POLICY_BASED routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
         public virtual System.Collections.Generic.IList<string> Protocols { get; set; }
 
-        /// <summary>Region of the route (if applicable).</summary>
+        /// <summary>
+        /// Region of the route. DYNAMIC, PEERING_DYNAMIC, POLICY_BASED and ADVERTISED routes only. If set for
+        /// POLICY_BASED route, this is a region of VLAN attachments for Cloud Interconnect the route applies to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Indicates where route is applicable.</summary>
+        /// <summary>
+        /// Indicates where route is applicable. Deprecated, routes with NCC_HUB scope are not included in the trace in
+        /// new tests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeScope")]
         public virtual string RouteScope { get; set; }
 
@@ -3698,15 +3741,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
         public virtual string RouteType { get; set; }
 
-        /// <summary>Source IP address range of the route. Policy based routes only.</summary>
+        /// <summary>Source IP address range of the route. POLICY_BASED routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcIpRange")]
         public virtual string SrcIpRange { get; set; }
 
-        /// <summary>Source port ranges of the route. Policy based routes only.</summary>
+        /// <summary>Source port ranges of the route. POLICY_BASED routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcPortRanges")]
         public virtual System.Collections.Generic.IList<string> SrcPortRanges { get; set; }
 
-        /// <summary>URI of a route (if applicable).</summary>
+        /// <summary>
+        /// URI of a route. SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
