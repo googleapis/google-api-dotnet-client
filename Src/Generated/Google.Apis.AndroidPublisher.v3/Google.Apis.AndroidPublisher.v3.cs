@@ -12310,8 +12310,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>
         /// Optional. Account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be
-        /// in DAYS and in the range P0D (zero days) to P30D (30 days). If not specified, the default value is P30D (30
-        /// days).
+        /// in days and between P0D and P60D. If not specified, the default value is P30D. The sum of
+        /// gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountHoldDuration")]
         public virtual string AccountHoldDuration { get; set; }
@@ -12324,9 +12324,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string BillingPeriodDuration { get; set; }
 
         /// <summary>
-        /// Grace period of the subscription, specified in ISO 8601 format. Acceptable values are P0D (zero days), P3D
-        /// (3 days), P7D (7 days), P14D (14 days), and P30D (30 days). If not specified, a default value will be used
-        /// based on the recurring period duration.
+        /// Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and
+        /// between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be
+        /// used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between
+        /// P30D and P60D days, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracePeriodDuration")]
         public virtual string GracePeriodDuration { get; set; }
@@ -14083,9 +14084,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class InstallmentsBasePlanType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Account hold period of the subscription, specified exclusively in days and in ISO 8601 format.
-        /// Acceptable values are P0D (zero days) to P30D (30days). If not specified, the default value is P30D (30
-        /// days).
+        /// Optional. Account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be
+        /// in days and between P0D and P60D. If not specified, the default value is P30D. The sum of
+        /// gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountHoldDuration")]
         public virtual string AccountHoldDuration { get; set; }
@@ -14105,9 +14106,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual System.Nullable<int> CommittedPaymentsCount { get; set; }
 
         /// <summary>
-        /// Grace period of the subscription, specified in ISO 8601 format. Acceptable values are P0D (zero days), P3D
-        /// (3 days), P7D (7 days), P14D (14 days), and P30D (30 days). If not specified, a default value will be used
-        /// based on the recurring period duration.
+        /// Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and
+        /// between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be
+        /// used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between
+        /// P30D and P60D days, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracePeriodDuration")]
         public virtual string GracePeriodDuration { get; set; }
