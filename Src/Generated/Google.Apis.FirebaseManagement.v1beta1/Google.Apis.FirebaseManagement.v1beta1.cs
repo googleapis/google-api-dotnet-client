@@ -4412,11 +4412,16 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>Detail message</summary>
+        /// <summary>
+        /// Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3;
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>message_set associates an arbitrary proto message with the status.</summary>
+        /// <summary>
+        /// message_set associates an arbitrary proto message with the status. copybara:strip_begin(b/383363683)
+        /// copybara:strip_end_and_replace optional proto2.bridge.MessageSet message_set = 5;
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
         public virtual MessageSet MessageSet { get; set; }
 
