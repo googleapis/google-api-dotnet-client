@@ -446,6 +446,90 @@ namespace Google.Apis.Css.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Updates the existing Css Product input in your CSS Center account. After inserting, updating, or
+            /// deleting a CSS Product input, it may take several minutes before the processed Css Product can be
+            /// retrieved.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Css.v1.Data.CssProductInput body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the existing Css Product input in your CSS Center account. After inserting, updating, or
+            /// deleting a CSS Product input, it may take several minutes before the processed Css Product can be
+            /// retrieved.
+            /// </summary>
+            public class PatchRequest : CssBaseServiceRequest<Google.Apis.Css.v1.Data.CssProductInput>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Css.v1.Data.CssProductInput body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// The list of CSS product attributes to be updated. If the update mask is omitted, then it is treated
+                /// as implied field mask equivalent to all fields that are populated (have a non-empty value).
+                /// Attributes specified in the update mask without a value specified in the body will be deleted from
+                /// the CSS product. Update mask can only be specified for top level fields in attributes and custom
+                /// attributes. To specify the update mask for custom attributes you need to add the `custom_attribute.`
+                /// prefix. Providing special "*" value for full CSS product replacement is not supported.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Css.v1.Data.CssProductInput Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/cssProductInputs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the CssProducts resource.</summary>
