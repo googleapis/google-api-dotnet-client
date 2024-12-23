@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ChromeManagement.v1 Client Library</Title>
-    <Version>1.68.0.3636</Version>
+    <Version>1.68.0.3637</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Chromemanagement v1.
 
       Product documentation is available at:
-      http://developers.google.com/chrome/management/
+      https://developers.google.com/chrome/management/
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.ChromeManagement.v1/latest/api/Google.Apis.ChromeManagement.v1.html
