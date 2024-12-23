@@ -5689,6 +5689,13 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<int> ManualInstanceCount { get; set; }
 
         /// <summary>
+        /// Optional. total max instances for the service. This number of instances is divided among all revisions with
+        /// specified traffic based on the percent of traffic they are receiving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
+        public virtual System.Nullable<int> MaxInstanceCount { get; set; }
+
+        /// <summary>
         /// Optional. total min instances for the service. This number of instances is divided among all revisions with
         /// specified traffic based on the percent of traffic they are receiving.
         /// </summary>
