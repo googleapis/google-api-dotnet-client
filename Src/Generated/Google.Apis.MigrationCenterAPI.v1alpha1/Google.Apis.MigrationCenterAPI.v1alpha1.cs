@@ -9594,6 +9594,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileSizeBytes")]
         public virtual System.Nullable<int> FileSizeBytes { get; set; }
 
+        /// <summary>Output only. XLSX output file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xlsxOutputFile")]
+        public virtual XlsxOutputFile XlsxOutputFile { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10967,6 +10971,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Signed URI destination configuration.</summary>
     public class SignedUriDestination : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The file format to export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
+        public virtual string FileFormat { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11847,6 +11855,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>vCenter version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenterVersion")]
         public virtual string VcenterVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a single output file of type XLSX.</summary>
+    public class XlsxOutputFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Signed URI destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUri")]
+        public virtual SignedUri SignedUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
