@@ -600,7 +600,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -615,7 +615,7 @@ namespace Google.Apis.Translate.v3beta1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3beta1.Data.Empty>
                 {
@@ -2665,11 +2665,15 @@ namespace Google.Apis.Translate.v3beta1.Data
     }
 
     /// <summary>
-    /// Configures which glossary should be used for a specific target language, and defines options for applying that
-    /// glossary.
+    /// ----------------------------------------------------------------------------- Configures which glossary should
+    /// be used for a specific target language, and defines options for applying that glossary.
     /// </summary>
     public class TranslateTextGlossaryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If set to true, the glossary will be used for contextual translation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextualTranslationEnabled")]
+        public virtual System.Nullable<bool> ContextualTranslationEnabled { get; set; }
+
         /// <summary>
         /// Required. Specifies the glossary used for this translation. Use this format:
         /// projects/*/locations/*/glossaries/*
