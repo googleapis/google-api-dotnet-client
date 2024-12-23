@@ -3788,30 +3788,34 @@ namespace Google.Apis.CloudRetail.v2
                     }
 
                     /// <summary>
-                    /// Writes a single user event from the browser. This uses a GET request to due to browser
-                    /// restriction of POST-ing to a 3rd party domain. This method is used only by the Retail API
-                    /// JavaScript pixel and Google Tag Manager. Users should not call this method directly.
+                    /// Writes a single user event from the browser. For larger user event payload over 16 KB, the POST
+                    /// method should be used instead, otherwise a 400 Bad Request error is returned. This method is
+                    /// used only by the Retail API JavaScript pixel and Google Tag Manager. Users should not call this
+                    /// method directly.
                     /// </summary>
+                    /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent catalog name, such as
                     /// `projects/1234/locations/global/catalogs/default_catalog`.
                     /// </param>
-                    public virtual CollectRequest Collect(string parent)
+                    public virtual CollectRequest Collect(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2CollectUserEventRequest body, string parent)
                     {
-                        return new CollectRequest(this.service, parent);
+                        return new CollectRequest(this.service, body, parent);
                     }
 
                     /// <summary>
-                    /// Writes a single user event from the browser. This uses a GET request to due to browser
-                    /// restriction of POST-ing to a 3rd party domain. This method is used only by the Retail API
-                    /// JavaScript pixel and Google Tag Manager. Users should not call this method directly.
+                    /// Writes a single user event from the browser. For larger user event payload over 16 KB, the POST
+                    /// method should be used instead, otherwise a 400 Bad Request error is returned. This method is
+                    /// used only by the Retail API JavaScript pixel and Google Tag Manager. Users should not call this
+                    /// method directly.
                     /// </summary>
                     public class CollectRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleApiHttpBody>
                     {
                         /// <summary>Constructs a new Collect request.</summary>
-                        public CollectRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        public CollectRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2CollectUserEventRequest body, string parent) : base(service)
                         {
                             Parent = parent;
+                            Body = body;
                             InitParameters();
                         }
 
@@ -3822,47 +3826,17 @@ namespace Google.Apis.CloudRetail.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>
-                        /// The event timestamp in milliseconds. This prevents browser caching of otherwise identical
-                        /// get requests. The name is abbreviated to reduce the payload bytes.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("ets", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> Ets { get; set; }
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2CollectUserEventRequest Body { get; set; }
 
-                        /// <summary>
-                        /// The prebuilt rule name that can convert a specific type of raw_json. For example: "ga4_bq"
-                        /// rule for the GA4 user event schema.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("prebuiltRule", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PrebuiltRule { get; set; }
-
-                        /// <summary>
-                        /// An arbitrary serialized JSON string that contains necessary information that can comprise a
-                        /// user event. When this field is specified, the user_event field will be ignored. Note:
-                        /// line-delimited JSON is not supported, a single JSON only.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("rawJson", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string RawJson { get; set; }
-
-                        /// <summary>
-                        /// The URL including cgi-parameters but excluding the hash fragment with a length limit of
-                        /// 5,000 characters. This is often more useful than the referer URL, because many browsers only
-                        /// send the domain for 3rd party requests.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("uri", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Uri { get; set; }
-
-                        /// <summary>
-                        /// Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("userEvent", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string UserEvent { get; set; }
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "collect";
 
                         /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
+                        public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2/{+parent}/userEvents:collect";
@@ -3878,46 +3852,6 @@ namespace Google.Apis.CloudRetail.v2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
-                            });
-                            RequestParameters.Add("ets", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "ets",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("prebuiltRule", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "prebuiltRule",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("rawJson", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "rawJson",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("uri", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "uri",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("userEvent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userEvent",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
                             });
                         }
                     }
@@ -6396,6 +6330,47 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rerankFacet")]
         public virtual System.Nullable<bool> RerankFacet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CollectUserEvent method.</summary>
+    public class GoogleCloudRetailV2CollectUserEventRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The
+        /// name is abbreviated to reduce the payload bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ets")]
+        public virtual System.Nullable<long> Ets { get; set; }
+
+        /// <summary>
+        /// The prebuilt rule name that can convert a specific type of raw_json. For example: "ga4_bq" rule for the GA4
+        /// user event schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prebuiltRule")]
+        public virtual string PrebuiltRule { get; set; }
+
+        /// <summary>
+        /// An arbitrary serialized JSON string that contains necessary information that can comprise a user event. When
+        /// this field is specified, the user_event field will be ignored. Note: line-delimited JSON is not supported, a
+        /// single JSON only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawJson")]
+        public virtual string RawJson { get; set; }
+
+        /// <summary>
+        /// The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000 characters.
+        /// This is often more useful than the referer URL, because many browsers only send the domain for 3rd party
+        /// requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEvent")]
+        public virtual string UserEvent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
