@@ -25456,6 +25456,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newMessagePayload")]
         public virtual GoogleCloudDialogflowV2Message NewMessagePayload { get; set; }
 
+        /// <summary>Payload of NEW_RECOGNITION_RESULT event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newRecognitionResultPayload")]
+        public virtual GoogleCloudDialogflowV2StreamingRecognitionResult NewRecognitionResultPayload { get; set; }
+
         /// <summary>The type of the event that this notification refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -27567,6 +27571,115 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information for a word recognized by the speech recognizer.</summary>
+    public class GoogleCloudDialogflowV2SpeechWordInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Speech confidence between 0.0 and 1.0 for this word. A higher number indicates an estimated greater
+        /// likelihood that the recognized word is correct. The default of 0.0 is a sentinel value indicating that
+        /// confidence was not set. This field is not guaranteed to be fully stable over time for the same audio input.
+        /// Users should also not rely on it to always be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// Time offset relative to the beginning of the audio that corresponds to the end of the spoken word. This is
+        /// an experimental feature and the accuracy of the time offset can vary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>
+        /// Time offset relative to the beginning of the audio that corresponds to the start of the spoken word. This is
+        /// an experimental feature and the accuracy of the time offset can vary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
+
+        /// <summary>The word this info is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains a speech recognition result corresponding to a portion of the audio that is currently being processed
+    /// or an indication that this is the end of the single requested utterance. While end-user audio is being
+    /// processed, Dialogflow sends a series of results. Each result may contain a `transcript` value. A transcript
+    /// represents a portion of the utterance. While the recognizer is processing audio, transcript values may be
+    /// interim values or finalized values. Once a transcript is finalized, the `is_final` value is set to true and
+    /// processing continues for the next transcript. If
+    /// `StreamingDetectIntentRequest.query_input.audio_config.single_utterance` was true, and the recognizer has
+    /// completed processing audio, the `message_type` value is set to `END_OF_SINGLE_UTTERANCE and the following (last)
+    /// result contains the last finalized transcript. The complete end-user utterance is determined by concatenating
+    /// the finalized transcript values received for the series of results. In the following example, single utterance
+    /// is enabled. In the case where single utterance is not enabled, result 7 would not occur.
+    /// ```
+    /// Num | transcript |
+    /// message_type | is_final --- | ----------------------- | ----------------------- | -------- 1 | "tube" |
+    /// TRANSCRIPT | false 2 | "to be a" | TRANSCRIPT | false 3 | "to be" | TRANSCRIPT | false 4 | "to be or not to be"
+    /// | TRANSCRIPT | true 5 | "that's" | TRANSCRIPT | false 6 | "that is | TRANSCRIPT | false 7 | unset |
+    /// END_OF_SINGLE_UTTERANCE | unset 8 | " that is the question" | TRANSCRIPT | true
+    /// ```
+    /// Concatenating the finalized
+    /// transcripts with `is_final` set to true, the complete utterance becomes "to be or not to be that is the
+    /// question".
+    /// </summary>
+    public class GoogleCloudDialogflowV2StreamingRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Speech confidence between 0.0 and 1.0 for the current portion of audio. A higher number indicates an
+        /// estimated greater likelihood that the recognized words are correct. The default of 0.0 is a sentinel value
+        /// indicating that confidence was not set. This field is typically only provided if `is_final` is true and you
+        /// should not rely on it being accurate or even set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// If `false`, the `StreamingRecognitionResult` represents an interim result that may change. If `true`, the
+        /// recognizer will not return any further hypotheses about this piece of the audio. May only be populated for
+        /// `message_type` = `TRANSCRIPT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFinal")]
+        public virtual System.Nullable<bool> IsFinal { get; set; }
+
+        /// <summary>Detected language code for the transcript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Type of the result message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual string MessageType { get; set; }
+
+        /// <summary>
+        /// Time offset of the end of this Speech recognition result relative to the beginning of the audio. Only
+        /// populated for `message_type` = `TRANSCRIPT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechEndOffset")]
+        public virtual object SpeechEndOffset { get; set; }
+
+        /// <summary>
+        /// Word-specific information for the words recognized by Speech in transcript. Populated if and only if
+        /// `message_type` = `TRANSCRIPT` and [InputAudioConfig.enable_word_info] is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechWordInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SpeechWordInfo> SpeechWordInfo { get; set; }
+
+        /// <summary>
+        /// Transcript text representing the words that the user spoke. Populated if and only if `message_type` =
+        /// `TRANSCRIPT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Participants.SuggestArticles.</summary>
     public class GoogleCloudDialogflowV2SuggestArticlesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28187,12 +28300,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         /// <summary>
         /// Optional. The send time of the message from end user or human agent's perspective. It is used for
-        /// identifying the same message under one participant. Given two messages under the same participant: * If send
-        /// time are different regardless of whether the content of the messages are exactly the same, the conversation
-        /// will regard them as two distinct messages sent by the participant. * If send time is the same regardless of
-        /// whether the content of the messages are exactly the same, the conversation will regard them as same message,
-        /// and ignore the message received later. If the value is not provided, a new request will always be regarded
-        /// as a new message without any de-duplication.
+        /// identifying the same message under one participant. For BatchCreateMessages API only: Given two messages
+        /// under the same participant: * If send time are different regardless of whether the content of the messages
+        /// are exactly the same, the conversation will regard them as two distinct messages sent by the participant. *
+        /// If send time is the same regardless of whether the content of the messages are exactly the same, the
+        /// conversation will regard them as same message, and ignore the message received later. If the value is not
+        /// provided, a new request will always be regarded as a new message without any de-duplication.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageSendTime")]
         public virtual string MessageSendTimeRaw
@@ -29287,6 +29400,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newMessagePayload")]
         public virtual GoogleCloudDialogflowV2beta1Message NewMessagePayload { get; set; }
 
+        /// <summary>Payload of NEW_RECOGNITION_RESULT event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newRecognitionResultPayload")]
+        public virtual GoogleCloudDialogflowV2beta1StreamingRecognitionResult NewRecognitionResultPayload { get; set; }
+
         /// <summary>Required. The type of the event that this notification refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -29391,6 +29508,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newMessageEventNotificationConfig")]
         public virtual GoogleCloudDialogflowV2beta1NotificationConfig NewMessageEventNotificationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of
+        /// ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub
+        /// message attributes: - "participant_id" - "participant_role" - "message_id"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newRecognitionResultNotificationConfig")]
+        public virtual GoogleCloudDialogflowV2beta1NotificationConfig NewRecognitionResultNotificationConfig { get; set; }
 
         /// <summary>Configuration for publishing conversation lifecycle events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
@@ -34405,6 +34530,128 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
         public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information for a word recognized by the speech recognizer.</summary>
+    public class GoogleCloudDialogflowV2beta1SpeechWordInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Speech confidence between 0.0 and 1.0 for this word. A higher number indicates an estimated greater
+        /// likelihood that the recognized word is correct. The default of 0.0 is a sentinel value indicating that
+        /// confidence was not set. This field is not guaranteed to be fully stable over time for the same audio input.
+        /// Users should also not rely on it to always be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// Time offset relative to the beginning of the audio that corresponds to the end of the spoken word. This is
+        /// an experimental feature and the accuracy of the time offset can vary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>
+        /// Time offset relative to the beginning of the audio that corresponds to the start of the spoken word. This is
+        /// an experimental feature and the accuracy of the time offset can vary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
+
+        /// <summary>The word this info is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains a speech recognition result corresponding to a portion of the audio that is currently being processed
+    /// or an indication that this is the end of the single requested utterance. While end-user audio is being
+    /// processed, Dialogflow sends a series of results. Each result may contain a `transcript` value. A transcript
+    /// represents a portion of the utterance. While the recognizer is processing audio, transcript values may be
+    /// interim values or finalized values. Once a transcript is finalized, the `is_final` value is set to true and
+    /// processing continues for the next transcript. If
+    /// `StreamingDetectIntentRequest.query_input.audio_config.single_utterance` was true, and the recognizer has
+    /// completed processing audio, the `message_type` value is set to `END_OF_SINGLE_UTTERANCE and the following (last)
+    /// result contains the last finalized transcript. The complete end-user utterance is determined by concatenating
+    /// the finalized transcript values received for the series of results. In the following example, single utterance
+    /// is enabled. In the case where single utterance is not enabled, result 7 would not occur.
+    /// ```
+    /// Num | transcript |
+    /// message_type | is_final --- | ----------------------- | ----------------------- | -------- 1 | "tube" |
+    /// TRANSCRIPT | false 2 | "to be a" | TRANSCRIPT | false 3 | "to be" | TRANSCRIPT | false 4 | "to be or not to be"
+    /// | TRANSCRIPT | true 5 | "that's" | TRANSCRIPT | false 6 | "that is | TRANSCRIPT | false 7 | unset |
+    /// END_OF_SINGLE_UTTERANCE | unset 8 | " that is the question" | TRANSCRIPT | true
+    /// ```
+    /// Concatenating the finalized
+    /// transcripts with `is_final` set to true, the complete utterance becomes "to be or not to be that is the
+    /// question".
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1StreamingRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Speech confidence between 0.0 and 1.0 for the current portion of audio. A higher number indicates an
+        /// estimated greater likelihood that the recognized words are correct. The default of 0.0 is a sentinel value
+        /// indicating that confidence was not set. This field is typically only provided if `is_final` is true and you
+        /// should not rely on it being accurate or even set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>DTMF digits. Populated if and only if `message_type` = `DTMF_DIGITS`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfDigits")]
+        public virtual GoogleCloudDialogflowV2beta1TelephonyDtmfEvents DtmfDigits { get; set; }
+
+        /// <summary>
+        /// If `false`, the `StreamingRecognitionResult` represents an interim result that may change. If `true`, the
+        /// recognizer will not return any further hypotheses about this piece of the audio. May only be populated for
+        /// `message_type` = `TRANSCRIPT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFinal")]
+        public virtual System.Nullable<bool> IsFinal { get; set; }
+
+        /// <summary>Detected language code for the transcript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Type of the result message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual string MessageType { get; set; }
+
+        /// <summary>
+        /// Time offset of the end of this Speech recognition result relative to the beginning of the audio. Only
+        /// populated for `message_type` = `TRANSCRIPT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechEndOffset")]
+        public virtual object SpeechEndOffset { get; set; }
+
+        /// <summary>
+        /// Word-specific information for the words recognized by Speech in transcript. Populated if and only if
+        /// `message_type` = `TRANSCRIPT` and [InputAudioConfig.enable_word_info] is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechWordInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SpeechWordInfo> SpeechWordInfo { get; set; }
+
+        /// <summary>
+        /// An estimate of the likelihood that the speech recognizer will not change its guess about this interim
+        /// recognition result: * If the value is unspecified or 0.0, Dialogflow didn't compute the stability. In
+        /// particular, Dialogflow will only provide stability for `TRANSCRIPT` results with `is_final = false`. *
+        /// Otherwise, the value is in (0.0, 1.0] where 0.0 means completely unstable and 1.0 means completely stable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stability")]
+        public virtual System.Nullable<float> Stability { get; set; }
+
+        /// <summary>
+        /// Transcript text representing the words that the user spoke. Populated if and only if `message_type` =
+        /// `TRANSCRIPT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
