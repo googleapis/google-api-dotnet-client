@@ -3623,8 +3623,8 @@ namespace Google.Apis.Pubsub.v1.Data
     }
 
     /// <summary>
-    /// Information about an associated Analytics Hub subscription
-    /// (https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+    /// Information about an associated [Analytics Hub
+    /// subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
     /// </summary>
     public class AnalyticsHubSubscriptionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
