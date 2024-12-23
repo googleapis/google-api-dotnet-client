@@ -16038,7 +16038,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileStoreInfoTypeSummary> FileStoreInfoTypeSummaries { get; set; }
 
         /// <summary>
-        /// True if no files exist in this cluster. If the bucket had more files than could be listed, this will be
+        /// True if no files exist in this cluster. If the file store had more files than could be listed, this will be
         /// false even if no files for this cluster were seen and file_extensions_seen is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noFilesExist")]
@@ -16246,7 +16246,7 @@ namespace Google.Apis.DLP.v2.Data
         }
 
         /// <summary>
-        /// The location type of the bucket (region, dual-region, multi-region, etc). If dual-region, expect
+        /// The location type of the file store (region, dual-region, multi-region, etc). If dual-region, expect
         /// data_storage_locations to be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
