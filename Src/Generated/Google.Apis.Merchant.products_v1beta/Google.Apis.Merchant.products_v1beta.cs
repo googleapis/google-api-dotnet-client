@@ -1153,6 +1153,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionCost")]
         public virtual SubscriptionCost SubscriptionCost { get; set; }
 
+        /// <summary>The list of sustainability incentive programs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sustainabilityIncentives")]
+        public virtual System.Collections.Generic.IList<ProductSustainabilityIncentive> SustainabilityIncentives { get; set; }
+
         /// <summary>The tax category of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxCategory")]
         public virtual string TaxCategory { get; set; }
@@ -2112,6 +2116,27 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalSourceType")]
         public virtual string DigitalSourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information regarding sustainability-related incentive programs such as rebates or tax relief.
+    /// </summary>
+    public class ProductSustainabilityIncentive : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fixed amount of the incentive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Price Amount { get; set; }
+
+        /// <summary>The percentage of the sale price that the incentive is applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<double> Percentage { get; set; }
+
+        /// <summary>Sustainability incentive program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
