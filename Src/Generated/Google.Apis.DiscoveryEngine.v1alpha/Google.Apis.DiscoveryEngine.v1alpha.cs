@@ -550,7 +550,114 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     public DataConnectorResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        ConnectorRuns = new ConnectorRunsResource(service);
                         Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the ConnectorRuns resource.</summary>
+                    public virtual ConnectorRunsResource ConnectorRuns { get; }
+
+                    /// <summary>The "connectorRuns" collection of methods.</summary>
+                    public class ConnectorRunsResource
+                    {
+                        private const string Resource = "connectorRuns";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ConnectorRunsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Lists the ConnectorRuns of a DataConnector.</summary>
+                        /// <param name="parent">
+                        /// Required. The parent DataConnector resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataConnector`. If the
+                        /// caller does not have permission to list ConnectorRuns under this DataConnector, regardless
+                        /// of whether or not this DataConnector exists, a PERMISSION_DENIED error is returned.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists the ConnectorRuns of a DataConnector.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent DataConnector resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataConnector`. If
+                            /// the caller does not have permission to list ConnectorRuns under this DataConnector,
+                            /// regardless of whether or not this DataConnector exists, a PERMISSION_DENIED error is
+                            /// returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Requested page size. Server may return fewer items than requested. If unspecified,
+                            /// defaults to 10. The maximum value is 50; values above 50 will be coerced to 50. If this
+                            /// field is negative, an INVALID_ARGUMENT error is returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous `ListConnectorRuns` call. Provide this to
+                            /// retrieve the subsequent page. When paginating, all other parameters provided to
+                            /// `ListConnectorRuns` must match the call that provided the page token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/connectorRuns";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Operations resource.</summary>
@@ -706,6 +813,73 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     Pattern = null,
                                 });
                             }
+                        }
+                    }
+
+                    /// <summary>
+                    /// Starts an immediate synchronization process for a DataConnector. Third Party Connector Users
+                    /// must specify which entities should be synced. FHIR Connectors must provide a timestamp to
+                    /// indicate the point in time from which data should be synced.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Connector name of the form projects/{project}/locations/{location}/collections/
+                    /// {collection_id}/dataConnector
+                    /// </param>
+                    public virtual StartConnectorRunRequest StartConnectorRun(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest body, string parent)
+                    {
+                        return new StartConnectorRunRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Starts an immediate synchronization process for a DataConnector. Third Party Connector Users
+                    /// must specify which entities should be synced. FHIR Connectors must provide a timestamp to
+                    /// indicate the point in time from which data should be synced.
+                    /// </summary>
+                    public class StartConnectorRunRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaConnectorRun>
+                    {
+                        /// <summary>Constructs a new StartConnectorRun request.</summary>
+                        public StartConnectorRunRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Connector name of the form projects/{project}/locations/{location}/collections/
+                        /// {collection_id}/dataConnector
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "startConnectorRun";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}:startConnectorRun";
+
+                        /// <summary>Initializes StartConnectorRun parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                            });
                         }
                     }
                 }
@@ -10409,6 +10583,418 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
                 }
+
+                /// <summary>Deletes a Collection.</summary>
+                /// <param name="name">
+                /// Required. The full resource name of the Collection, in the format of
+                /// `projects/{project}/locations/{location}/collections/{collection}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a Collection.</summary>
+                public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the Collection, in the format of
+                    /// `projects/{project}/locations/{location}/collections/{collection}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a Collection.</summary>
+                /// <param name="name">
+                /// Required. The full resource name, in the format of
+                /// `projects/{project}/locations/{location}/collections/{collection}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a Collection.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCollection>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name, in the format of
+                    /// `projects/{project}/locations/{location}/collections/{collection}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the DataConnector. DataConnector is a singleton resource for each Collection.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Full resource name of DataConnector, such as
+                /// `projects/{project}/locations/{location}/collections/{collection_id}/dataConnector`. If the caller
+                /// does not have permission to access the DataConnector, regardless of whether or not it exists, a
+                /// PERMISSION_DENIED error is returned. If the requested DataConnector does not exist, a NOT_FOUND
+                /// error is returned.
+                /// </param>
+                public virtual GetDataConnectorRequest GetDataConnector(string name)
+                {
+                    return new GetDataConnectorRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets the DataConnector. DataConnector is a singleton resource for each Collection.
+                /// </summary>
+                public class GetDataConnectorRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataConnector>
+                {
+                    /// <summary>Constructs a new GetDataConnector request.</summary>
+                    public GetDataConnectorRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of DataConnector, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataConnector`. If the
+                    /// caller does not have permission to access the DataConnector, regardless of whether or not it
+                    /// exists, a PERMISSION_DENIED error is returned. If the requested DataConnector does not exist, a
+                    /// NOT_FOUND error is returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getDataConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes GetDataConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a list of Collections.</summary>
+                /// <param name="parent">
+                /// Required. The parent data store resource name, in the format of
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Gets a list of Collections.</summary>
+                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListCollectionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent data store resource name, in the format of
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Filter returned collections by associated data connector data sources. For example: `filter =
+                    /// 'data_source:jira confluence'`. If the filter is empty, we return all collections under a
+                    /// project and location.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of Collections to return. The service may return fewer than this value. If
+                    /// unspecified, at most 100 Collections will be returned. The maximum value is 1000; values above
+                    /// 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous CollectionService.ListCollections call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// CollectionService.ListCollections must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/collections";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a Collection.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The full resource name of the Collection. Format:
+                /// `projects/{project}/locations/{location}/collections/{collection_id}`. This field must be a UTF-8
+                /// encoded string with a length limit of 1024 characters.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCollection body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a Collection.</summary>
+                public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCollection body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The full resource name of the Collection. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}`. This field must be a
+                    /// UTF-8 encoded string with a length limit of 1024 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCollection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a DataConnector.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The full resource name of the Data Connector. Format:
+                /// `projects/*/locations/*/collections/*/dataConnector`.
+                /// </param>
+                public virtual UpdateDataConnectorRequest UpdateDataConnector(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataConnector body, string name)
+                {
+                    return new UpdateDataConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a DataConnector.</summary>
+                public class UpdateDataConnectorRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataConnector>
+                {
+                    /// <summary>Constructs a new UpdateDataConnector request.</summary>
+                    public UpdateDataConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataConnector body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The full resource name of the Data Connector. Format:
+                    /// `projects/*/locations/*/collections/*/dataConnector`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Indicates which fields in the provided DataConnector to update. Supported field paths include: -
+                    /// refresh_interval - params - auto_run_disabled - action_config - destination_configs -
+                    /// blocking_reasons Note: Support for these fields may vary depending on the connector type. For
+                    /// example, not all connectors support `destination_configs`. If an unsupported or unknown field
+                    /// path is provided, the request will return an INVALID_ARGUMENT error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataConnector Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateDataConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes UpdateDataConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the DataStores resource.</summary>
@@ -18740,6 +19326,61 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
+            /// <summary>Generates grounded content.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. Location resource. Format: `projects/{project}/locations/{location}`.
+            /// </param>
+            public virtual GenerateGroundedContentRequest GenerateGroundedContent(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequest body, string location)
+            {
+                return new GenerateGroundedContentRequest(this.service, body, location);
+            }
+
+            /// <summary>Generates grounded content.</summary>
+            public class GenerateGroundedContentRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponse>
+            {
+                /// <summary>Constructs a new GenerateGroundedContent request.</summary>
+                public GenerateGroundedContentRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Location resource. Format: `projects/{project}/locations/{location}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateGroundedContent";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+location}:generateGroundedContent";
+
+                /// <summary>Initializes GenerateGroundedContent parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets the AclConfig.</summary>
             /// <param name="name">
             /// Required. Resource name of AclConfig, such as `projects/*/locations/*/aclConfig`. If the caller does not
@@ -18842,6 +19483,69 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Creates a Collection and sets up the DataConnector for it. To stop a DataConnector after setup, use the
+            /// CollectionService.DeleteCollection method.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent of Collection, in the format of `projects/{project}/locations/{location}`.
+            /// </param>
+            public virtual SetUpDataConnectorRequest SetUpDataConnector(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest body, string parent)
+            {
+                return new SetUpDataConnectorRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a Collection and sets up the DataConnector for it. To stop a DataConnector after setup, use the
+            /// CollectionService.DeleteCollection method.
+            /// </summary>
+            public class SetUpDataConnectorRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new SetUpDataConnector request.</summary>
+                public SetUpDataConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent of Collection, in the format of `projects/{project}/locations/{location}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "setUpDataConnector";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}:setUpDataConnector";
+
+                /// <summary>Initializes SetUpDataConnector parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
                     });
                 }
             }
@@ -19947,6 +20651,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Single-regional CMEKs that are required for some VAIS features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SingleRegionKey> SingleRegionKeys { get; set; }
+
         /// <summary>Output only. State of the CmekConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -20661,6 +21369,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>Optional. If set, this DataStore is an Infobot FAQ DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInfobotFaqDataStore")]
+        public virtual System.Nullable<bool> IsInfobotFaqDataStore { get; set; }
 
         /// <summary>
         /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
@@ -23318,6 +24030,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for single-regional CMEKs.</summary>
+    public class GoogleCloudDiscoveryengineV1SingleRegionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Single-regional kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Verification information for target sites in advanced site search.</summary>
     public class GoogleCloudDiscoveryengineV1SiteVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23893,6 +24619,29 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Informations to support actions on the connector.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaActionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Params needed to support actions in the format of (Key, Value) pairs. Required parameters for
+        /// sources that support OAUTH, i.e. `gmail`, `google_calendar`, `jira`, `workday`, `salesforce`, `confluence`:
+        /// * Key: `client_id` * Value: type STRING. The client id for the service provider to identify your
+        /// application. * Key: `client_secret` * Value:type STRING. The client secret generated by the application's
+        /// authorization server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionParams")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ActionParams { get; set; }
+
+        /// <summary>
+        /// Output only. The connector contains the necessary parameters and is configured to support actions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isActionConfigured")]
+        public virtual System.Nullable<bool> IsActionConfigured { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26110,9 +26859,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Single-regional CMEKs that are required for some VAIS features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSingleRegionKey> SingleRegionKeys { get; set; }
+
         /// <summary>Output only. State of the CmekConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection is a container for configuring resources and access to a set of DataStores.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the Collection was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The data connector, if present, manages the connection for data stores in the Collection. To
+        /// set up the connector, use DataConnectorService.SetUpDataConnector method, which creates a new Collection
+        /// while setting up the DataConnector singleton resource. Setting up connector on an existing Collection is not
+        /// supported. This output only field contains a subset of the DataConnector fields, including `name`,
+        /// `data_source`, `entities.entity_name` and `entities.data_store`. To get more details about a data connector,
+        /// use the DataConnector.GetDataConnector method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataConnector")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnector DataConnector { get; set; }
+
+        /// <summary>
+        /// Required. The Collection display name. This field must be a UTF-8 encoded string with a length limit of 128
+        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the Collection. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection_id}`. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26336,6 +27159,322 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A data sync run of DataConnector. After DataConnector is successfully initialized, data syncs are scheduled at
+    /// DataConnector.refresh_interval. A ConnectorRun represents a data sync either in the past or onging that the
+    /// moment. //
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaConnectorRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time when the connector run ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The details of the entities synced at the ConnectorRun. Each ConnectorRun consists of syncing
+        /// one or more entities.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityRuns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun> EntityRuns { get; set; }
+
+        /// <summary>
+        /// Contains info about errors incurred during the sync. Only exist if running into an error state. Contains
+        /// error code and error message. Use with the `state` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
+
+        private string _latestPauseTimeRaw;
+
+        private object _latestPauseTime;
+
+        /// <summary>Output only. The time when the connector run was most recently paused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestPauseTime")]
+        public virtual string LatestPauseTimeRaw
+        {
+            get => _latestPauseTimeRaw;
+            set
+            {
+                _latestPauseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestPauseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestPauseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestPauseTimeDateTimeOffset instead.")]
+        public virtual object LatestPauseTime
+        {
+            get => _latestPauseTime;
+            set
+            {
+                _latestPauseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestPauseTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestPauseTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestPauseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestPauseTimeRaw);
+            set => LatestPauseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The full resource name of the Connector Run. Format:
+        /// `projects/*/locations/*/collections/*/dataConnector/connectorRuns/*`. The `connector_run_id` is
+        /// system-generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The time when the connector run started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The state of the sync run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _stateUpdateTimeRaw;
+
+        private object _stateUpdateTime;
+
+        /// <summary>Timestamp at which the connector run sync state was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateUpdateTime")]
+        public virtual string StateUpdateTimeRaw
+        {
+            get => _stateUpdateTimeRaw;
+            set
+            {
+                _stateUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _stateUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StateUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StateUpdateTimeDateTimeOffset instead.")]
+        public virtual object StateUpdateTime
+        {
+            get => _stateUpdateTime;
+            set
+            {
+                _stateUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _stateUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StateUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StateUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateUpdateTimeRaw);
+            set => StateUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The trigger for this ConnectorRun.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual string Trigger { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an entity that was synced in this ConnectorRun.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the source entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
+        public virtual string EntityName { get; set; }
+
+        /// <summary>The total number of documents failed at sync at any stage (extraction, indexing, etc).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorRecordCount")]
+        public virtual System.Nullable<long> ErrorRecordCount { get; set; }
+
+        /// <summary>
+        /// The errors from the entity's sync run. Only exist if running into an error state. Contains error code and
+        /// error message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
+
+        /// <summary>The number of documents extracted from connector source, ready to be ingested to UCS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractedRecordCount")]
+        public virtual System.Nullable<long> ExtractedRecordCount { get; set; }
+
+        /// <summary>The number of documents indexed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexedRecordCount")]
+        public virtual System.Nullable<long> IndexedRecordCount { get; set; }
+
+        /// <summary>The number of requests sent to 3p API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceApiRequestCount")]
+        public virtual System.Nullable<long> SourceApiRequestCount { get; set; }
+
+        /// <summary>The state of the entity's sync run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _stateUpdateTimeRaw;
+
+        private object _stateUpdateTime;
+
+        /// <summary>Timestamp at which the entity sync state was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateUpdateTime")]
+        public virtual string StateUpdateTimeRaw
+        {
+            get => _stateUpdateTimeRaw;
+            set
+            {
+                _stateUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _stateUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StateUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StateUpdateTimeDateTimeOffset instead.")]
+        public virtual object StateUpdateTime
+        {
+            get => _stateUpdateTime;
+            set
+            {
+                _stateUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _stateUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StateUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StateUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StateUpdateTimeRaw);
+            set => StateUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _statsUpdateTimeRaw;
+
+        private object _statsUpdateTime;
+
+        /// <summary>
+        /// The timestamp for either extracted_documents_count, indexed_documents_count and error_documents_count was
+        /// last updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statsUpdateTime")]
+        public virtual string StatsUpdateTimeRaw
+        {
+            get => _statsUpdateTimeRaw;
+            set
+            {
+                _statsUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _statsUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StatsUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StatsUpdateTimeDateTimeOffset instead.")]
+        public virtual object StatsUpdateTime
+        {
+            get => _statsUpdateTime;
+            set
+            {
+                _statsUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _statsUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StatsUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StatsUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StatsUpdateTimeRaw);
+            set => StatsUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Sync type of this run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncType")]
+        public virtual string SyncType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27373,6 +28512,336 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Manages the connection to external data sources for all data stores grouped under a Collection. It's a singleton
+    /// resource of Collection. The initialization is only supported through SetUpDataConnector method, which will
+    /// create a new Collection and initialize its DataConnector. //
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Action configurations to make the connector support actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaActionConfig ActionConfig { get; set; }
+
+        /// <summary>
+        /// Indicates whether the connector is disabled for auto run. It can be used to pause periodical and real time
+        /// sync.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRunDisabled")]
+        public virtual System.Nullable<bool> AutoRunDisabled { get; set; }
+
+        /// <summary>
+        /// Output only. User actions that must be completed before the connector can start syncing data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockingReasons")]
+        public virtual System.Collections.Generic.IList<string> BlockingReasons { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the DataConnector was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The name of the data source. Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>Optional. Any target destinations used to connect to third-party services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDestinationConfig> DestinationConfigs { get; set; }
+
+        /// <summary>List of entities from the connected data source to ingest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity> Entities { get; set; }
+
+        /// <summary>Output only. The errors from initialization or from the latest connector run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Errors { get; set; }
+
+        /// <summary>
+        /// The refresh interval to sync the Access Control List information for the documents ingested by this
+        /// connector. If not set, the access control list will be refreshed at the default interval of 30 minutes. The
+        /// identity refresh interval can be at least 30 minutes and at most 7 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityRefreshInterval")]
+        public virtual object IdentityRefreshInterval { get; set; }
+
+        /// <summary>
+        /// The configuration for the identity data synchronization runs. This contains the refresh interval to sync the
+        /// Access Control List information for the documents ingested by this connector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityScheduleConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig IdentityScheduleConfig { get; set; }
+
+        /// <summary>
+        /// Input only. The KMS key to be used to protect the DataStores managed by this connector. Must be set for
+        /// requests that need to comply with CMEK Org Policy protections. If this field is set and processed
+        /// successfully, the DataStores created by this connector will be protected by the KMS key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        private string _lastSyncTimeRaw;
+
+        private object _lastSyncTime;
+
+        /// <summary>Output only. For periodic connectors only, the last time a data sync was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual string LastSyncTimeRaw
+        {
+            get => _lastSyncTimeRaw;
+            set
+            {
+                _lastSyncTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSyncTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSyncTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSyncTimeDateTimeOffset instead.")]
+        public virtual object LastSyncTime
+        {
+            get => _lastSyncTime;
+            set
+            {
+                _lastSyncTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSyncTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSyncTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSyncTimeRaw);
+            set => LastSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _latestPauseTimeRaw;
+
+        private object _latestPauseTime;
+
+        /// <summary>
+        /// Output only. The most recent timestamp when this DataConnector was paused, affecting all functionalities
+        /// such as data synchronization. Pausing a connector has the following effects: - All functionalities,
+        /// including data synchronization, are halted. - Any ongoing data synchronization job will be canceled. - No
+        /// future data synchronization runs will be scheduled nor can be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestPauseTime")]
+        public virtual string LatestPauseTimeRaw
+        {
+            get => _latestPauseTimeRaw;
+            set
+            {
+                _latestPauseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestPauseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestPauseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestPauseTimeDateTimeOffset instead.")]
+        public virtual object LatestPauseTime
+        {
+            get => _latestPauseTime;
+            set
+            {
+                _latestPauseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestPauseTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestPauseTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestPauseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestPauseTimeRaw);
+            set => LatestPauseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The full resource name of the Data Connector. Format:
+        /// `projects/*/locations/*/collections/*/dataConnector`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The UTC time when the next data sync is expected to start for the Data Connector. Customers are only able to
+        /// specify the hour and minute to schedule the data sync. This is utilized when the data connector has a
+        /// refresh interval greater than 1 day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextSyncTime")]
+        public virtual GoogleTypeDateTime NextSyncTime { get; set; }
+
+        /// <summary>
+        /// Required. Params needed to access the source in the format of (Key, Value) pairs. Required parameters for
+        /// all data sources: * Key: `instance_uri` * Value: type STRING. The uri to access the data source. Required
+        /// parameters for sources that support OAUTH, i.e. `salesforce`: * Key: `client_id` * Value: type STRING. The
+        /// client id for the third party service provider to identify your application. * Key: `client_secret` *
+        /// Value:type STRING. The client secret generated by the third party authorization server. * Key:
+        /// `access_token` * Value: type STRING. OAuth token for UCS to access to the protected resource. * Key:
+        /// `refresh_token` * Value: type STRING. OAuth refresh token for UCS to obtain a new access token without user
+        /// interaction. Required parameters for sources that support basic API token auth, i.e. `jira`, `confluence`: *
+        /// Key: `user_account` * Value: type STRING. The username or email with the source. * Key: `api_token` * Value:
+        /// type STRING. The API token generated for the source account, that is used for authenticating anywhere where
+        /// you would have used a password. Example:
+        /// ```
+        /// json { "instance_uri": "https://xxx.atlassian.net",
+        /// "user_account": "xxxx.xxx@xxx.com", "api_token": "test-token" }
+        /// ```
+        /// Optional parameter to specify the
+        /// authorization type to use for multiple authorization types support: * Key: `auth_type` * Value: type STRING.
+        /// The authorization type for the data source. Supported values: `BASIC_AUTH`, `OAUTH`, `OAUTH_ACCESS_TOKEN`,
+        /// `OAUTH_TWO_LEGGED`, `OAUTH_JWT_BEARER`, `OAUTH_PASSWORD_GRANT`, `JWT`, `API_TOKEN`, `FEDERATED_CREDENTIAL`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>
+        /// Output only. The tenant project ID associated with private connectivity connectors. This project must be
+        /// allowlisted by in order for the connector to function.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivityProjectId")]
+        public virtual string PrivateConnectivityProjectId { get; set; }
+
+        /// <summary>
+        /// Required. The refresh interval for data sync. If duration is set to 0, the data will be synced in real time.
+        /// The streaming feature is not supported yet. The minimum is 30 minutes and maximum is 7 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshInterval")]
+        public virtual object RefreshInterval { get; set; }
+
+        /// <summary>Output only. State of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The static IP addresses used by this connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> StaticIpAddresses { get; set; }
+
+        /// <summary>Optional. Whether customer has enabled static IP addresses for this connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticIpEnabled")]
+        public virtual System.Nullable<bool> StaticIpEnabled { get; set; }
+
+        /// <summary>The data synchronization mode supported by the data connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
+        public virtual string SyncMode { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp the DataConnector was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an entity in the data source. For example, the `Account` object in Salesforce.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The full resource name of the associated data store for the source entity. Format:
+        /// `projects/*/locations/*/collections/*/dataStores/*`. When the connector is initialized by the
+        /// DataConnectorService.SetUpDataConnector method, a DataStore is automatically created for each source entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>
+        /// The name of the entity. Supported values by data source: * Salesforce: `Lead`, `Opportunity`, `Contact`,
+        /// `Account`, `Case`, `Contract`, `Campaign` * Jira: `Issue` * Confluence: `Content`, `Space`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
+        public virtual string EntityName { get; set; }
+
+        /// <summary>
+        /// Attributes for indexing. Key: Field name. Value: The key property to map a field to, such as `title`, and
+        /// `description`. Supported key properties: * `title`: The title for data record. This would be displayed on
+        /// search results. * `description`: The description for data record. This would be displayed on search results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyPropertyMappings")]
+        public virtual System.Collections.Generic.IDictionary<string, string> KeyPropertyMappings { get; set; }
+
+        /// <summary>
+        /// The parameters for the entity to facilitate data ingestion. E.g. for BQ connectors: * Key:
+        /// `document_id_column` * Value: type STRING. The value of the column id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -27464,6 +28933,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>Optional. If set, this DataStore is an Infobot FAQ DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInfobotFaqDataStore")]
+        public virtual System.Nullable<bool> IsInfobotFaqDataStore { get; set; }
 
         /// <summary>
         /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
@@ -27691,6 +29164,90 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userTriggeredCrawlRate")]
         public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries UserTriggeredCrawlRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CollectionService.UpdateCollection operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteCollectionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28127,6 +29684,40 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines target endpoints used to connect to third-party sources.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The destinations for the corresponding key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination> Destinations { get; set; }
+
+        /// <summary>Optional. Unique destination identifier that is supported by the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Additional parameters for this destination config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a target endpoint</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Publicly routable host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>Optional. Target port number accepted by the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -28256,7 +29847,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// Output only. The index status of the document. * If document is indexed successfully, the index_time field
         /// is populated. * Otherwise, if document is not indexed due to errors, the error_samples field is populated. *
-        /// Otherwise, index_status is unset.
+        /// Otherwise, if document's index is in progress, the pending_message field is populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexStatus")]
         public virtual GoogleCloudDiscoveryengineV1alphaDocumentIndexStatus IndexStatus { get; set; }
@@ -28453,6 +30044,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
             set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Immutable. The message indicates the document index is in progress. If this field is populated, the document
+        /// index is pending.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingMessage")]
+        public virtual string PendingMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29739,6 +31337,370 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Top-level message sent by the client for the `GenerateGroundedContent` method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Content of the current conversation with the model. For single-turn queries, this is a single instance. For
+        /// multi-turn queries, this is a repeated field that contains conversation history + latest request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaGroundedGenerationContent> Contents { get; set; }
+
+        /// <summary>Content generation specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGenerationSpec GenerationSpec { get; set; }
+
+        /// <summary>Grounding specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSpec GroundingSpec { get; set; }
+
+        /// <summary>
+        /// Content of the system instruction for the current API. These instructions will take priority over any other
+        /// prompt instructions if the selected model is supporting them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGroundedGenerationContent SystemInstruction { get; set; }
+
+        /// <summary>
+        /// The user labels applied to a resource must meet the following requirements: * Each resource can have
+        /// multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length
+        /// of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a
+        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
+        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
+        /// must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the options to customize dynamic retrieval.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestDynamicRetrievalConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specification for the predictor for dynamic retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictor")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestDynamicRetrievalConfigurationDynamicRetrievalPredictor Predictor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the predictor settings for dynamic retrieval.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestDynamicRetrievalConfigurationDynamicRetrievalPredictor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The value of the threshold. If the predictor will predict a value smaller than this, it would suppress
+        /// grounding in the source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<float> Threshold { get; set; }
+
+        /// <summary>The version of the predictor to be used in dynamic retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Content generation specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If specified, custom value for frequency penalty will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencyPenalty")]
+        public virtual System.Nullable<float> FrequencyPenalty { get; set; }
+
+        /// <summary>
+        /// Language code for content. Use language tags defined by
+        /// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>If specified, custom value for max output tokens will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
+        public virtual System.Nullable<int> MaxOutputTokens { get; set; }
+
+        /// <summary>Specifies which Vertex model id to use for generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>If specified, custom value for presence penalty will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
+        public virtual System.Nullable<float> PresencePenalty { get; set; }
+
+        /// <summary>If specified, custom value for the seed will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
+        public virtual System.Nullable<int> Seed { get; set; }
+
+        /// <summary>If specified, custom value for the temperature will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+        public virtual System.Nullable<float> Temperature { get; set; }
+
+        /// <summary>If specified, custom value for top-k sampling will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
+        public virtual System.Nullable<int> TopK { get; set; }
+
+        /// <summary>If specified, custom value for nucleus sampling will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topP")]
+        public virtual System.Nullable<float> TopP { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding source.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, grounding is performed with Google Search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceGoogleSearchSource GoogleSearchSource { get; set; }
+
+        /// <summary>If set, grounding is performed with inline content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceInlineSource InlineSource { get; set; }
+
+        /// <summary>If set, grounding is performed with Vertex AI Search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceSearchSource SearchSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Search config parameters.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceGoogleSearchSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the dynamic retrieval configuration for the given source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicRetrievalConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestDynamicRetrievalConfiguration DynamicRetrievalConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message to be used for grounding based on inline content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Attributes associated with the content. Common attributes include `source` (indicating where the content was
+        /// sourced from) and `author` (indicating the author of the content).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
+
+        /// <summary>List of facts to be used for grounding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingFacts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaGroundingFact> GroundingFacts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message to be used for grounding with Vertex AI Search.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceSearchSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Filter expression to be applied to the search. The syntax is the same as SearchRequest.filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Number of search results to return. The default value is 10. The maximumm allowed value is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxResultCount")]
+        public virtual System.Nullable<int> MaxResultCount { get; set; }
+
+        /// <summary>If set, safe search is enabled in Vertex AI Search requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
+        public virtual System.Nullable<bool> SafeSearch { get; set; }
+
+        /// <summary>
+        /// The resource name of the Engine to use. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
+        public virtual string ServingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Grounding sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSource> GroundingSources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `GenerateGroundedContent` method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Generated candidates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidate> Candidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response candidate generated from the model.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Content of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGroundedGenerationContent Content { get; set; }
+
+        /// <summary>Grounding metadata for the generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadata GroundingMetadata { get; set; }
+
+        /// <summary>The overall grounding score for the candidate, in the range of [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingScore")]
+        public virtual System.Nullable<float> GroundingScore { get; set; }
+
+        /// <summary>Index of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Citation for the generated content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// GroundingSupport across all claims in the answer candidate. An support to a fact indicates that the claim is
+        /// supported by the fact.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSupport")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataGroundingSupport> GroundingSupport { get; set; }
+
+        /// <summary>
+        /// Retrieval metadata to provide an understanding in the retrieval steps performed by the model. There can be
+        /// multiple such messages which can correspond to different parts of the retrieval. This is a mechanism used to
+        /// ensure transparency to our users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalMetadata")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataRetrievalMetadata> RetrievalMetadata { get; set; }
+
+        /// <summary>Google search entry for the following-up web searches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataSearchEntryPoint SearchEntryPoint { get; set; }
+
+        /// <summary>
+        /// List of chunks to be attributed across all claims in the candidate. These are derived from the grounding
+        /// sources supplied in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaFactChunk> SupportChunks { get; set; }
+
+        /// <summary>Web search queries for the following-up web search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
+        public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the metadata about dynamic retrieval.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata for the dynamic retrieval predictor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictorMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalPredictorMetadata PredictorMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the metadata about the dynamic retrieval predictor.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalPredictorMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The value of the predictor. This should be between [0, 1] where a value of 0 means that the query would not
+        /// benefit from grounding, while a value of 1.0 means that the query would benefit the most. In between values
+        /// allow to differentiate between different usefulness scores for grounding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prediction")]
+        public virtual System.Nullable<float> Prediction { get; set; }
+
+        /// <summary>The version of the predictor which was used in dynamic retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding info for a claim in the candidate and its support.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataGroundingSupport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text for the claim in the candidate. Always provided when a support is found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claimText")]
+        public virtual string ClaimText { get; set; }
+
+        /// <summary>
+        /// A list of indices (into 'support_chunks') specifying the citations associated with the claim. For instance
+        /// [1,3,4] means that support_chunks[1], support_chunks[3], support_chunks[4] are the chunks attributed to the
+        /// claim.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportChunkIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> SupportChunkIndices { get; set; }
+
+        /// <summary>
+        /// A score in the range of [0, 1] describing how grounded is a specific claim in the support chunks indicated.
+        /// Higher value means that the claim is better supported by the chunks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportScore")]
+        public virtual System.Nullable<float> SupportScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the metadata associated with a retrieval step.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataRetrievalMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata for dynamic retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicRetrievalMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalMetadata DynamicRetrievalMetadata { get; set; }
+
+        /// <summary>Describes the source to which the metadata is referring to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google search entry point.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentResponseCandidateGroundingMetadataSearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Web content snippet that can be embedded in a web page or an app webview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderedContent")]
+        public virtual string RenderedContent { get; set; }
+
+        /// <summary>Base64 encoded JSON representing array of tuple.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkBlob")]
+        public virtual string SdkBlob { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for GetSession method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaGetSessionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29766,6 +31728,35 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentDataMap")]
         public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> DocumentDataMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Base structured datatype containing multi-part content of a message.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGroundedGenerationContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ordered `Parts` that constitute a single message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaGroundedGenerationContentPart> Parts { get; set; }
+
+        /// <summary>
+        /// Producer of the content. Must be either `user` or `model`. Intended to be used for multi-turn conversations.
+        /// Otherwise, it can be left unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Single part of content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGroundedGenerationContentPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inline text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29806,6 +31797,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRelatedQuestions")]
         public virtual System.Nullable<int> MaxRelatedQuestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for the identity data synchronization runs.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The refresh interval to sync the Access Control List information for the documents ingested by
+        /// this connector. If not set, the access control list will be refreshed at the default interval of 30 minutes.
+        /// The identity refresh interval can be at least 30 minutes and at most 7 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshInterval")]
+        public virtual object RefreshInterval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30732,6 +32738,42 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>All the customer's CmekConfigs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmekConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCmekConfig> CmekConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CollectionService.ListCollections method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListCollectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Collections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCollection> Collections { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListCollectionsRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for DataConnectorService.ListConnectorRuns method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListConnectorRunsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of ConnectorRuns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorRuns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaConnectorRun> ConnectorRuns { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34956,6 +36998,41 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for DataConnectorService.SetUpDataConnector method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for DataConnectorService.SetUpDataConnector method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The display name of the Collection. Should be human readable, used to display collections in the
+        /// Console Dashboard. UTF-8 encoded string with limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionDisplayName")]
+        public virtual string CollectionDisplayName { get; set; }
+
+        /// <summary>
+        /// Required. The ID to use for the Collection, which will become the final component of the Collection's
+        /// resource name. A new Collection is created as part of the DataConnector setup. DataConnector is a singleton
+        /// resource under Collection, managing all DataStores of the Collection. This field must conform to
+        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an
+        /// INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionId")]
+        public virtual string CollectionId { get; set; }
+
+        /// <summary>Required. The DataConnector to initialize in the newly created Collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataConnector")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnector DataConnector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.SetUriPatternDocumentData operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -35073,6 +37150,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Response message for SiteSearchEngineService.SetUriPatternDocumentData method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for single-regional CMEKs.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSingleRegionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Single-regional kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -35226,6 +37317,73 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The table name of the Spanner database that needs to be imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for DataConnectorService.StartConnectorRun method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies which Third Party Connector entities should be synced. If not specified, all entities will be
+        /// synced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<string> Entities { get; set; }
+
+        /// <summary>
+        /// The FHIR resource types to import. The resource types should be a subset of all supported FHIR resource
+        /// types http://shortn/_J8ymdyOokT. Default to all supported FHIR resource types if empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirResourceTypes")]
+        public virtual System.Collections.Generic.IList<string> HealthcareFhirResourceTypes { get; set; }
+
+        /// <summary>If true, trigger Identity sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncIdentity")]
+        public virtual System.Nullable<bool> SyncIdentity { get; set; }
+
+        private string _syncSinceTimestampRaw;
+
+        private object _syncSinceTimestamp;
+
+        /// <summary>
+        /// Timestamp to indicate the point in time from which data should be synced for Streaming/Batch Data
+        /// Connectors. This field is only utilized for Healthcare Connectors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncSinceTimestamp")]
+        public virtual string SyncSinceTimestampRaw
+        {
+            get => _syncSinceTimestampRaw;
+            set
+            {
+                _syncSinceTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _syncSinceTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SyncSinceTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SyncSinceTimestampDateTimeOffset instead.")]
+        public virtual object SyncSinceTimestamp
+        {
+            get => _syncSinceTimestamp;
+            set
+            {
+                _syncSinceTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _syncSinceTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SyncSinceTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SyncSinceTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SyncSinceTimestampRaw);
+            set => SyncSinceTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35646,6 +37804,90 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// the google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaUpdateCmekConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CollectionService.UpdateCollection operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaUpdateCollectionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
@@ -36324,6 +38566,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Single-regional CMEKs that are required for some VAIS features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSingleRegionKey> SingleRegionKeys { get; set; }
 
         /// <summary>Output only. State of the CmekConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -37130,6 +39376,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
+
+        /// <summary>Optional. If set, this DataStore is an Infobot FAQ DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInfobotFaqDataStore")]
+        public virtual System.Nullable<bool> IsInfobotFaqDataStore { get; set; }
 
         /// <summary>
         /// Input only. The KMS key to be used to protect this DataStore at creation time. Must be set for requests that
@@ -40621,6 +42871,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for single-regional CMEKs.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSingleRegionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Single-regional kms key resource name which will be used to encrypt resources
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Verification information for target sites in advanced site search.</summary>
     public class GoogleCloudDiscoveryengineV1betaSiteVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -41550,6 +43814,78 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few
+    /// possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular
+    /// offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular
+    /// time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The
+    /// date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered
+    /// not to have a specific year, month, or day respectively. This type may also be used to represent a physical time
+    /// if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using
+    /// `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone,
+    /// that can be done in another field. This type is more flexible than some applications may want. Make sure to
+    /// document and validate your application's limitations.
+    /// </summary>
+    public class GoogleTypeDateTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime
+        /// without a day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>
+        /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may
+        /// choose to allow the value "24:00:00" for scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>
+        /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>
+        /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the
+        /// value 60 if it allows leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>Time zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual GoogleTypeTimeZone TimeZone { get; set; }
+
+        /// <summary>
+        /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would
+        /// be represented as { seconds: -14400 }.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utcOffset")]
+        public virtual object UtcOffset { get; set; }
+
+        /// <summary>
+        /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -41588,6 +43924,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).</summary>
+    public class GoogleTypeTimeZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IANA Time Zone Database time zone. For example "America/New_York".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. IANA Time Zone Database version number. For example "2019a".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
