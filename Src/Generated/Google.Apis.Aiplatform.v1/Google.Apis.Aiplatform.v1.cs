@@ -45903,7 +45903,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Content blob. It's preferred to send as text directly rather than raw bytes.</summary>
+    /// <summary>Content blob.</summary>
     public class GoogleCloudAiplatformV1Blob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Raw bytes.</summary>
