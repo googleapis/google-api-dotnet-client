@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AreaInsights.v1.AreaInsightsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AreaInsights.v1.AreaInsightsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
