@@ -16437,6 +16437,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionCost")]
         public virtual ProductSubscriptionCost SubscriptionCost { get; set; }
 
+        /// <summary>Optional. The list of sustainability incentive programs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sustainabilityIncentives")]
+        public virtual System.Collections.Generic.IList<ProductSustainabilityIncentive> SustainabilityIncentives { get; set; }
+
         /// <summary>Required. The CLDR territory code for the item's country of sale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; }
@@ -17052,6 +17056,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The number of subscription periods the buyer has to pay.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodLength")]
         public virtual System.Nullable<long> PeriodLength { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information regarding sustainability related incentive programs such as rebates or tax relief.
+    /// </summary>
+    public class ProductSustainabilityIncentive : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The fixed amount of the incentive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Price Amount { get; set; }
+
+        /// <summary>Optional. The percentage of the sale price that the incentive is applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<double> Percentage { get; set; }
+
+        /// <summary>Required. Sustainability incentive program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
