@@ -509,9 +509,7 @@ namespace Google.Apis.CloudSupport.v2beta
 
                 /// <summary>
                 /// The maximum number of attachments fetched with each request. If not provided, the default is 10. The
-                /// maximum page size that will be returned is 100. The size of each page can be smaller than the
-                /// requested page size and can include zero. For example, you could request 100 attachments on one
-                /// page, receive 0, and then on the next page, receive 90.
+                /// maximum page size that will be returned is 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
