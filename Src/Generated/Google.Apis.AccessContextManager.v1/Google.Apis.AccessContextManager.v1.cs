@@ -3832,7 +3832,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata of GCP Access Binding Long Running Operations.</summary>
+    /// <summary>Metadata of Google Cloud Access Binding Long Running Operations.</summary>
     public class GcpUserAccessBindingOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
