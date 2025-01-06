@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -958,10 +958,11 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// payload or fetch it before calling the on-device API to authenticate the user. The token can be generated
         /// for each device or reused across multiple devices.
         /// </summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">Required. The ID of the enterprise.</param>
-        public virtual CreateEnrollmentTokenRequest CreateEnrollmentToken(string enterpriseId)
+        public virtual CreateEnrollmentTokenRequest CreateEnrollmentToken(Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken body, string enterpriseId)
         {
-            return new CreateEnrollmentTokenRequest(this.service, enterpriseId);
+            return new CreateEnrollmentTokenRequest(this.service, body, enterpriseId);
         }
 
         /// <summary>
@@ -969,12 +970,13 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// payload or fetch it before calling the on-device API to authenticate the user. The token can be generated
         /// for each device or reused across multiple devices.
         /// </summary>
-        public class CreateEnrollmentTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.CreateEnrollmentTokenResponse>
+        public class CreateEnrollmentTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken>
         {
             /// <summary>Constructs a new CreateEnrollmentToken request.</summary>
-            public CreateEnrollmentTokenRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
+            public CreateEnrollmentTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken body, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
+                Body = body;
                 InitParameters();
             }
 
@@ -982,60 +984,11 @@ namespace Google.Apis.AndroidEnterprise.v1
             [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EnterpriseId { get; private set; }
 
-            /// <summary>Deprecated: Use enrollment_token instead. this field will be removed in the future.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("deviceType", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<DeviceTypeEnum> DeviceType { get; set; }
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken Body { get; set; }
 
-            /// <summary>Deprecated: Use enrollment_token instead. this field will be removed in the future.</summary>
-            public enum DeviceTypeEnum
-            {
-                /// <summary>This value is unused</summary>
-                [Google.Apis.Util.StringValueAttribute("unknown")]
-                Unknown = 0,
-
-                /// <summary>This device is a dedicated device.</summary>
-                [Google.Apis.Util.StringValueAttribute("dedicatedDevice")]
-                DedicatedDevice = 1,
-
-                /// <summary>This device is required to have an authenticated user.</summary>
-                [Google.Apis.Util.StringValueAttribute("knowledgeWorker")]
-                KnowledgeWorker = 2,
-            }
-
-            /// <summary>
-            /// [Optional] The length of time the enrollment token is valid, ranging from 1 minute to
-            /// [`Durations.MAX_VALUE`](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
-            /// approximately 10,000 years. If not specified, the default duration is 1 hour.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("enrollmentToken.duration", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object EnrollmentTokenDuration { get; set; }
-
-            /// <summary>[Required] The type of the enrollment token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enrollmentToken.enrollmentTokenType", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<EnrollmentTokenEnrollmentTokenTypeEnum> EnrollmentTokenEnrollmentTokenType { get; set; }
-
-            /// <summary>[Required] The type of the enrollment token.</summary>
-            public enum EnrollmentTokenEnrollmentTokenTypeEnum
-            {
-                /// <summary>The value is unused.</summary>
-                [Google.Apis.Util.StringValueAttribute("enrollmentTokenTypeUnspecified")]
-                EnrollmentTokenTypeUnspecified = 0,
-
-                /// <summary>The enrollment token is for a userless device.</summary>
-                [Google.Apis.Util.StringValueAttribute("userlessDevice")]
-                UserlessDevice = 1,
-
-                /// <summary>The enrollment token is for a user device.</summary>
-                [Google.Apis.Util.StringValueAttribute("userDevice")]
-                UserDevice = 2,
-            }
-
-            /// <summary>
-            /// The token value that's passed to the device and authorizes the device to enroll. This is a read-only
-            /// field generated by the server.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("enrollmentToken.token", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string EnrollmentTokenToken { get; set; }
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "createEnrollmentToken";
@@ -1055,38 +1008,6 @@ namespace Google.Apis.AndroidEnterprise.v1
                     Name = "enterpriseId",
                     IsRequired = true,
                     ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("deviceType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "deviceType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("enrollmentToken.duration", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "enrollmentToken.duration",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("enrollmentToken.enrollmentTokenType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "enrollmentToken.enrollmentTokenType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("enrollmentToken.token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "enrollmentToken.token",
-                    IsRequired = false,
-                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -6371,21 +6292,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The variable set that is attributed to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableSet")]
         public virtual System.Collections.Generic.IList<VariableSet> VariableSet { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for create enrollment token.</summary>
-    public class CreateEnrollmentTokenResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Deprecated: Use token instead. This field will be removed in the future.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentToken")]
-        public virtual string EnrollmentToken { get; set; }
-
-        /// <summary>[Required] The created enrollment token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual EnrollmentToken Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
