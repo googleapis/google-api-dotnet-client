@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8720,7 +8720,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of
         /// 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property
         /// [color](https://support.google.com/merchants/answer/6324487). Schema.org property
-        /// [Product.color](https://schema.org/color).
+        /// [Product.color](https://schema.org/color). The colorFamilies field as a system attribute is not a required
+        /// field but strongly recommended to be specified. Google Search models treat this field as more important than
+        /// a custom product attribute when specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorFamilies")]
         public virtual System.Collections.Generic.IList<string> ColorFamilies { get; set; }
