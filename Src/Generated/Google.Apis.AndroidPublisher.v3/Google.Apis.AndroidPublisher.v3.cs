@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14562,7 +14562,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a custom tag specified for base plans and subscription offers.</summary>
+    /// <summary>Represents a custom tag specified for a product offer.</summary>
     public class OfferTag : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
