@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1526,6 +1526,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Retrieval config.</summary>
+    public class GoogleCloudAiplatformV1beta1RetrievalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The language code of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The location of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
+        public virtual LatLng LatLng { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata related to retrieval in the grounding flow.</summary>
     public class GoogleCloudAiplatformV1beta1RetrievalMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1827,6 +1842,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("functionCallingConfig")]
         public virtual GoogleCloudAiplatformV1beta1FunctionCallingConfig FunctionCallingConfig { get; set; }
 
+        /// <summary>Optional. Retrieval config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalConfig")]
+        public virtual GoogleCloudAiplatformV1beta1RetrievalConfig RetrievalConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1926,6 +1945,25 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>The configuration for the prebuilt voice to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prebuiltVoiceConfig")]
         public virtual GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig PrebuiltVoiceConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
+    /// latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.
+    /// </summary>
+    public class LatLng : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
