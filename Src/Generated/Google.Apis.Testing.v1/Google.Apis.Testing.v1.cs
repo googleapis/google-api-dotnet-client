@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2264,7 +2264,7 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>
         /// An optional Roboscript to customize the crawl. See
         /// https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about
-        /// Roboscripts.
+        /// Roboscripts. The maximum allowed file size of the roboscript is 10MiB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roboScript")]
         public virtual FileReference RoboScript { get; set; }
