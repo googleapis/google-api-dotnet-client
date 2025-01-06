@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -481,7 +481,9 @@ namespace Google.Apis.CloudSupport.v2
 
                 /// <summary>
                 /// The maximum number of attachments fetched with each request. If not provided, the default is 10. The
-                /// maximum page size that will be returned is 100.
+                /// maximum page size that will be returned is 100. The size of each page can be smaller than the
+                /// requested page size and can include zero. For example, you could request 100 attachments on one
+                /// page, receive 0, and then on the next page, receive 90.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
