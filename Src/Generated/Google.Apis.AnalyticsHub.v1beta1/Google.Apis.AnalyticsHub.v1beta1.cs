@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1714,6 +1714,17 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Commercial info metadata for this subscription.</summary>
+    public class CommercialInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. This is set when the subscription is commercialised via Cloud Marketplace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudMarketplace")]
+        public virtual GoogleCloudMarketplaceInfo CloudMarketplace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A data exchange is a container that lets you share data. Along with the descriptive information about the data
     /// exchange, it contains listings that reference shared datasets.
@@ -1917,6 +1928,17 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         /// <summary>Required. The ID of the project containing this dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud Marketplace commercial metadata for this subscription.</summary>
+    public class GoogleCloudMarketplaceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name of the Marketplace Order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual string Order { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2368,6 +2390,13 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
     /// </summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. This is set if this is a commercial subscription i.e. if this subscription was created from
+        /// subscribing to a commercial listing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commercialInfo")]
+        public virtual CommercialInfo CommercialInfo { get; set; }
+
         private string _creationTimeRaw;
 
         private object _creationTime;
