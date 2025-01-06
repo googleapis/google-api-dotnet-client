@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4894,6 +4894,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1Action : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. If this is true, then all widgets are considered required by this action. [Google Workspace
+        /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allWidgetsAreRequired")]
+        public virtual System.Nullable<bool> AllWidgetsAreRequired { get; set; }
+
+        /// <summary>
         /// A custom function to invoke when the containing element is clicked or otherwise activated. For example
         /// usage, see [Read form data](https://developers.google.com/workspace/chat/read-form-data).
         /// </summary>
@@ -4940,6 +4947,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistValues")]
         public virtual System.Nullable<bool> PersistValues { get; set; }
+
+        /// <summary>
+        /// Optional. Fill this list with the names of widgets that this Action needs for a valid submission. If the
+        /// widgets listed here don't have a value when this Action is invoked, the form submission is aborted. [Google
+        /// Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredWidgets")]
+        public virtual System.Collections.Generic.IList<string> RequiredWidgets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5456,7 +5471,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Lets users input a date, a time, or both a date and a time. For an example in Google Chat apps, see [Let a user
+    /// Lets users input a date, a time, or both a date and a time. Supports form submission validation. When
+    /// `Action.all_widgets_are_required` is set to `true` or this widget is specified in `Action.required_widgets`, the
+    /// submission action is blocked unless a value is selected. For an example in Google Chat apps, see [Let a user
     /// pick a date and
     /// time](https://developers.google.com/workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time).
     /// Users can input text or use the picker to select dates and times. If users input an invalid date or time, the
@@ -6072,12 +6089,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A widget that creates one or more UI items that users can select. For example, a dropdown menu or checkboxes.
-    /// You can use this widget to collect data that can be predicted or enumerated. For an example in Google Chat apps,
-    /// see [Add selectable UI elements](/workspace/chat/design-interactive-card-dialog#add_selectable_ui_elements).
-    /// Chat apps can process the value of items that users select or input. For details about working with form inputs,
-    /// see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). To collect undefined or
-    /// abstract data from users, use the TextInput widget. [Google Workspace Add-ons and Chat
+    /// A widget that creates one or more UI items that users can select. Supports form submission validation for
+    /// `dropdown` and `multiselect` menus only. When `Action.all_widgets_are_required` is set to `true` or this widget
+    /// is specified in `Action.required_widgets`, the submission action is blocked unless a value is selected. For
+    /// example, a dropdown menu or checkboxes. You can use this widget to collect data that can be predicted or
+    /// enumerated. For an example in Google Chat apps, see [Add selectable UI
+    /// elements](/workspace/chat/design-interactive-card-dialog#add_selectable_ui_elements). Chat apps can process the
+    /// value of items that users select or input. For details about working with form inputs, see [Receive form
+    /// data](https://developers.google.com/workspace/chat/read-form-data). To collect undefined or abstract data from
+    /// users, use the TextInput widget. [Google Workspace Add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
@@ -6268,8 +6288,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A field in which users can enter text. Supports suggestions and on-change actions. For an example in Google Chat
-    /// apps, see [Add a field in which a user can enter
+    /// A field in which users can enter text. Supports suggestions and on-change actions. Supports form submission
+    /// validation. When `Action.all_widgets_are_required` is set to `true` or this widget is specified in
+    /// `Action.required_widgets`, the submission action is blocked unless a value is entered. For an example in Google
+    /// Chat apps, see [Add a field in which a user can enter
     /// text](https://developers.google.com/workspace/chat/design-interactive-card-dialog#add_a_field_in_which_a_user_can_enter_text).
     /// Chat apps receive and can process the value of entered text during form input events. For details about working
     /// with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). When you
@@ -6348,6 +6370,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Type { get; set; }
 
         /// <summary>
+        /// Specify the input format validation necessary for this text field. [Google Workspace Add-ons and Chat
+        /// apps](https://developers.google.com/workspace/extend):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validation")]
+        public virtual GoogleAppsCardV1Validation Validation { get; set; }
+
+        /// <summary>
         /// The value entered by a user, returned as part of a form input event. For details about working with form
         /// inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
         /// </summary>
@@ -6381,6 +6410,31 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The text that's shown in the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the necessary data for validating the widget it's attached to. [Google Workspace Add-ons and Chat
+    /// apps](https://developers.google.com/workspace/extend):
+    /// </summary>
+    public class GoogleAppsCardV1Validation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specify the character limit for text input widgets. Note that this is only used for text input and is
+        /// ignored for other widgets. [Google Workspace Add-ons and Chat
+        /// apps](https://developers.google.com/workspace/extend):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("characterLimit")]
+        public virtual System.Nullable<int> CharacterLimit { get; set; }
+
+        /// <summary>
+        /// Specify the type of the input widgets. [Google Workspace Add-ons and Chat
+        /// apps](https://developers.google.com/workspace/extend):
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputType")]
+        public virtual string InputType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8074,7 +8128,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Optional. Space permission settings for existing spaces. Input for updating exact space permission settings,
-        /// where existing permission settings are replaced. Output lists current permission settings.
+        /// where existing permission settings are replaced. Output lists current permission settings. Reading and
+        /// updating permission settings supports: - In [Developer
+        /// Preview](https://developers.google.com/workspace/preview), [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope.
+        /// Only populated and settable when the Chat app created the space. - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionSettings")]
         public virtual PermissionSettings PermissionSettings { get; set; }
@@ -8082,7 +8142,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Optional. Input only. Predefined space permission settings, input only when creating a space. If the field
         /// is not set, a collaboration space is created. After you create the space, settings are populated in the
-        /// `PermissionSettings` field.
+        /// `PermissionSettings` field. Setting predefined permission settings supports: - In [Developer
+        /// Preview](https://developers.google.com/workspace/preview), [App
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with
+        /// [administrator approval](https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` or
+        /// `chat.app.spaces.create` scopes. - [User
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedPermissionSettings")]
         public virtual string PredefinedPermissionSettings { get; set; }
