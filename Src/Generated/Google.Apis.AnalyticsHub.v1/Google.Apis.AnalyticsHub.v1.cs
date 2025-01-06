@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2277,8 +2277,8 @@ namespace Google.Apis.AnalyticsHub.v1
 namespace Google.Apis.AnalyticsHub.v1.Data
 {
     /// <summary>
-    /// Information about an associated Analytics Hub subscription
-    /// (https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+    /// Information about an associated [Analytics Hub
+    /// subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
     /// </summary>
     public class AnalyticsHubSubscriptionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2934,6 +2934,59 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     }
 
     /// <summary>
+    /// Commercial info contains the information about the commercial data products associated with the listing.
+    /// </summary>
+    public class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Details of the Marketplace Data Product associated with the Listing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudMarketplace")]
+        public virtual GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo CloudMarketplace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the details of the Marketplace Data Product associated with the Listing.</summary>
+    public class GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Commercial state of the Marketplace Data Product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commercialState")]
+        public virtual string CommercialState { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the commercial service associated with the Marketplace Data Product. e.g.
+        /// example.com
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Commercial info metadata for this subscription.</summary>
+    public class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. This is set when the subscription is commercialised via Cloud Marketplace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudMarketplace")]
+        public virtual GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo CloudMarketplace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud Marketplace commercial metadata for this subscription.</summary>
+    public class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name of the Marketplace Order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual string Order { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A subscription resource. If none of `push_config`, `bigquery_config`, or `cloud_storage_config` is set, then the
     /// subscriber will pull and ack messages using API methods. At most one of these fields may be set.
     /// </summary>
@@ -3208,6 +3261,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>Optional. Categories of the listing. Up to two categories are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; }
+
+        /// <summary>
+        /// Output only. Commercial info contains the information about the commercial data products associated with the
+        /// listing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commercialInfo")]
+        public virtual GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo CommercialInfo { get; set; }
 
         /// <summary>Optional. Details of the data provider who owns the source data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProvider")]
@@ -3909,6 +3969,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// </summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. This is set if this is a commercial subscription i.e. if this subscription was created from
+        /// subscribing to a commercial listing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commercialInfo")]
+        public virtual GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo CommercialInfo { get; set; }
+
         private string _creationTimeRaw;
 
         private object _creationTime;
