@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1761,8 +1761,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
 
         /// <summary>
         /// The regular hours of operation. Note that if a place is always open (24 hours), the `close` field will not
-        /// be set. Clients can rely on always open (24 hours) being represented as an `open` period containing day with
-        /// value `0`, hour with value `0`, and minute with value `0`.
+        /// be set. Clients can rely on always open (24 hours) being represented as an `open` period containing `day`
+        /// with value `0`, `hour` with value `0`, and `minute` with value `0`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regularOpeningHours")]
         public virtual GoogleMapsPlacesV1PlaceOpeningHours RegularOpeningHours { get; set; }
