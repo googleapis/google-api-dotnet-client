@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1054,10 +1054,10 @@ namespace Google.Apis.Bigquery.v2
             public virtual string JobId { get; private set; }
 
             /// <summary>
-            /// The geographic location of the job. You must specify the location to run the job for the following
-            /// scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If
-            /// the job's location is in a single region (for example, `us-central1`) For more information, see
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+            /// The geographic location of the job. You must [specify the
+            /// location](https://cloud.google.com/bigquery/docs/locations#specify_locations) to run the job for the
+            /// following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional
+            /// location * If the job's location is in a single region (for example, `us-central1`)
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
@@ -1142,8 +1142,8 @@ namespace Google.Apis.Bigquery.v2
             public virtual string JobId { get; private set; }
 
             /// <summary>
-            /// The geographic location of the job. Required. See details at:
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+            /// The geographic location of the job. Required. For more information, see how to [specify
+            /// locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
@@ -1224,8 +1224,8 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>
             /// The geographic location of the job. You must specify the location to run the job for the following
             /// scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If
-            /// the job's location is in a single region (for example, `us-central1`) For more information, see
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+            /// the job's location is in a single region (for example, `us-central1`) For more information, see how to
+            /// [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
@@ -1304,8 +1304,8 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>
             /// The geographic location of the job. You must specify the location to run the job for the following
             /// scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If
-            /// the job's location is in a single region (for example, `us-central1`) For more information, see
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+            /// the job's location is in a single region (for example, `us-central1`) For more information, see how to
+            /// [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
@@ -5158,8 +5158,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are
         /// supported. The ordering of the clustering fields should be prioritized from most to least important for
-        /// filtering purposes. Additional information on limitations can be found here:
-        /// https://cloud.google.com/bigquery/docs/creating-clustered-tables#limitations
+        /// filtering purposes. For additional information, see [Introduction to clustered
+        /// tables](https://cloud.google.com/bigquery/docs/clustered-tables#limitations).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<string> Fields { get; set; }
@@ -6347,7 +6347,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
     /// <summary>
     /// Options defining open source compatible datasets living in the BigQuery catalog. Contains metadata of open
-    /// source database, schema or namespace represented by the current dataset.
+    /// source database, schema, or namespace represented by the current dataset.
     /// </summary>
     public class ExternalCatalogDatasetOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6360,7 +6360,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Optional. A map of key value pairs defining the parameters and properties of the open source schema. Maximum
-        /// size of 2Mib.
+        /// size of 2MiB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
@@ -6370,22 +6370,22 @@ namespace Google.Apis.Bigquery.v2.Data
     }
 
     /// <summary>
-    /// Metadata about open source compatible table. The fields contained in these options correspond to hive
-    /// metastore's table level properties.
+    /// Metadata about open source compatible table. The fields contained in these options correspond to Hive
+    /// metastore's table-level properties.
     /// </summary>
     public class ExternalCatalogTableOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The connection specifying the credentials to be used to read external storage, such as Azure Blob,
-        /// Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The
-        /// connection_id can have the form `..` or `projects//locations//connections/`.
+        /// Optional. A connection ID that specifies the credentials to be used to read external storage, such as Azure
+        /// Blob, Cloud Storage, or Amazon S3. This connection is needed to read the open source table from BigQuery.
+        /// The connection_id format must be either `..` or `projects//locations//connections/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionId")]
         public virtual string ConnectionId { get; set; }
 
         /// <summary>
-        /// Optional. A map of key value pairs defining the parameters and properties of the open source table.
-        /// Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+        /// Optional. A map of the key-value pairs defining the parameters and properties of the open source table.
+        /// Corresponds with Hive metastore table parameters. Maximum size of 4MiB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
@@ -8456,7 +8456,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// statement. * `INSERT`:
         /// [`INSERT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement)
         /// statement. * `UPDATE`:
-        /// [`UPDATE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#update_statement)
+        /// [`UPDATE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#update_statement)
         /// statement. * `DELETE`:
         /// [`DELETE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
         /// statement. * `MERGE`:
@@ -8464,7 +8464,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// statement. * `CREATE_TABLE`: [`CREATE
         /// TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
         /// statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: [`CREATE TABLE AS
-        /// SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#query_statement)
+        /// SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
         /// statement. * `CREATE_VIEW`: [`CREATE
         /// VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement)
         /// statement. * `CREATE_MODEL`: [`CREATE
@@ -8516,7 +8516,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// statement. * `ALTER_MATERIALIZED_VIEW`: [`ALTER MATERIALIZED
         /// VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement)
         /// statement. * `ALTER_SCHEMA`: [`ALTER
-        /// SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#aalter_schema_set_options_statement)
+        /// SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_schema_set_options_statement)
         /// statement. * `SCRIPT`:
         /// [`SCRIPT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language). *
         /// `TRUNCATE_TABLE`: [`TRUNCATE
@@ -9745,8 +9745,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The geographic location where the job should run. See details at
-        /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+        /// The geographic location where the job should run. For more information, see how to [specify
+        /// locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -12070,7 +12070,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// training data. 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from smallest to
         /// largest) in the corresponding column are used as training data, and the rest are eval data. It respects the
         /// order in Orderable data types:
-        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties
+        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data_type_properties
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitColumn")]
         public virtual string DataSplitColumn { get; set; }
