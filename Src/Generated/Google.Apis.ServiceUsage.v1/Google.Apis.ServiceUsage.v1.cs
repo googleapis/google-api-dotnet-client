@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3251,6 +3251,17 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// <summary>Output only. The type of impact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impactType")]
         public virtual string ImpactType { get; set; }
+
+        /// <summary>
+        /// The parent resource that the analysis is based on and the service name that the analysis is for. Example:
+        /// `projects/100/services/compute.googleapis.com`, folders/101/services/compute.googleapis.com` and
+        /// `organizations/102/services/compute.googleapis.com`. Usually, the parent resource here is same as the parent
+        /// resource of the analyzed policy. However, for some analysis types, the parent can be different. For example,
+        /// for resource existence analysis, if the parent resource of the analyzed policy is a folder or an
+        /// organization, the parent resource here can still be the project that contains the resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
