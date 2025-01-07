@@ -1,7 +1,31 @@
 #!/bin/bash
 
-set -e
+# This script:
+# - Builds generated packages
+# - Builds support packages
+# - Runs unit tests for support packages
 
-dotnet build Src/Support/GoogleApisClient.sln
-dotnet test --no-restore Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj
-dotnet test --no-restore Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj
+set -ex
+
+# To avoid printing the dotnet CLI welcome message
+export DOTNET_NOLOGO=true
+
+cd Src/Generated
+
+PROJECTS=$(dir)
+echo "Building generated packages"
+for project in $PROJECTS
+do
+    dotnet build $project
+done
+
+cd ../Support
+
+echo "Building support packages"
+dotnet build GoogleApisClient.sln
+
+echo "Unit testing support packages"
+dotnet test --no-restore Google.Apis.Auth.Tests
+dotnet test --no-restore Google.Apis.Tests
+
+echo "Build and unit testing completed"
