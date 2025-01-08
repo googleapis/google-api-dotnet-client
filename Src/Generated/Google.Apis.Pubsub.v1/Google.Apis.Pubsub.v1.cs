@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3720,6 +3720,87 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Ingestion settings for Amazon MSK.</summary>
+    public class AwsMsk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. AWS role ARN to be used for Federated Identity authentication with Amazon MSK. Check the Pub/Sub
+        /// docs for how to set up this role and the required permissions that need to be attached to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRoleArn")]
+        public virtual string AwsRoleArn { get; set; }
+
+        /// <summary>Required. The Amazon Resource Name (ARN) that uniquely identifies the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterArn")]
+        public virtual string ClusterArn { get; set; }
+
+        /// <summary>
+        /// Required. The GCP service account to be used for Federated Identity authentication with Amazon MSK (via a
+        /// `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with
+        /// `accounts.google.com:sub` equals to this service account number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccount")]
+        public virtual string GcpServiceAccount { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field that indicates the state of the Amazon MSK ingestion source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. The name of the topic in the Amazon MSK cluster that Pub/Sub will import from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ingestion settings for Azure Event Hubs.</summary>
+    public class AzureEventHubs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The client id of the Azure application that is being used to authenticate Pub/Sub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Optional. The name of the Event Hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventHub")]
+        public virtual string EventHub { get; set; }
+
+        /// <summary>Optional. The GCP service account to be used for Federated Identity authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccount")]
+        public virtual string GcpServiceAccount { get; set; }
+
+        /// <summary>Optional. The name of the Event Hubs namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>Optional. Name of the resource group within the azure subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroup")]
+        public virtual string ResourceGroup { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field that indicates the state of the Event Hubs ingestion source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. The Azure subscription id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionId")]
+        public virtual string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Optional. The tenant id of the Azure application that is being used to authenticate Pub/Sub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for a BigQuery subscription.</summary>
     public class BigQueryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4026,6 +4107,47 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Ingestion settings for Confluent Cloud.</summary>
+    public class ConfluentCloud : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The address of the bootstrap server. The format is url:port.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootstrapServer")]
+        public virtual string BootstrapServer { get; set; }
+
+        /// <summary>Required. The id of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
+
+        /// <summary>
+        /// Required. The GCP service account to be used for Federated Identity authentication with `identity_pool_id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccount")]
+        public virtual string GcpServiceAccount { get; set; }
+
+        /// <summary>
+        /// Required. The id of the identity pool to be used for Federated Identity authentication with Confluent Cloud.
+        /// See
+        /// https://docs.confluent.io/cloud/current/security/authenticate/workload-identities/identity-providers/oauth/identity-pools.html#add-oauth-identity-pools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityPoolId")]
+        public virtual string IdentityPoolId { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field that indicates the state of the Confluent Cloud ingestion source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Required. The name of the topic in the Confluent Cloud cluster that Pub/Sub will import from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the `CreateSnapshot` method.</summary>
     public class CreateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4168,9 +4290,21 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsKinesis")]
         public virtual AwsKinesis AwsKinesis { get; set; }
 
+        /// <summary>Optional. Amazon MSK.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsMsk")]
+        public virtual AwsMsk AwsMsk { get; set; }
+
+        /// <summary>Optional. Azure Event Hubs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureEventHubs")]
+        public virtual AzureEventHubs AzureEventHubs { get; set; }
+
         /// <summary>Optional. Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorage")]
         public virtual CloudStorage CloudStorage { get; set; }
+
+        /// <summary>Optional. Confluent Cloud.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confluentCloud")]
+        public virtual ConfluentCloud ConfluentCloud { get; set; }
 
         /// <summary>Optional. Platform Logs settings. If unset, no Platform Logs will be generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformLogsSettings")]
