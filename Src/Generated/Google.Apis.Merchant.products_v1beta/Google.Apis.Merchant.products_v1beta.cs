@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1798,7 +1798,7 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual Attributes Attributes { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The [channel](https://support.google.com/merchants/answer/7361332) of the product.
+        /// Immutable. The [channel](https://support.google.com/merchants/answer/7361332) of the product.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; }
