@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ namespace Google.Apis.AdSensePlatform.v1alpha
         /// <param name="initializer">The service initializer.</param>
         public AdSensePlatformService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Accounts = new AccountsResource(this);
             Platforms = new PlatformsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://adsenseplatform.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://adsenseplatform.googleapis.com/batch");
@@ -76,6 +77,9 @@ namespace Google.Apis.AdSensePlatform.v1alpha
             /// <summary>View your AdSense data</summary>
             public const string AdsenseReadonly = "https://www.googleapis.com/auth/adsense.readonly";
         }
+
+        /// <summary>Gets the Accounts resource.</summary>
+        public virtual AccountsResource Accounts { get; }
 
         /// <summary>Gets the Platforms resource.</summary>
         public virtual PlatformsResource Platforms { get; }
@@ -259,6 +263,89 @@ namespace Google.Apis.AdSensePlatform.v1alpha
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "accounts" collection of methods.</summary>
+    public class AccountsResource
+    {
+        private const string Resource = "accounts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AccountsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Platforms = new PlatformsResource(service);
+        }
+
+        /// <summary>Gets the Platforms resource.</summary>
+        public virtual PlatformsResource Platforms { get; }
+
+        /// <summary>The "platforms" collection of methods.</summary>
+        public class PlatformsResource
+        {
+            private const string Resource = "platforms";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PlatformsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets a platform.</summary>
+            /// <param name="name">
+            /// Required. The name of the platform to retrieve. Format: accounts/{account}/platforms/{platform}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets a platform.</summary>
+            public class GetRequest : AdSensePlatformBaseServiceRequest<Google.Apis.AdSensePlatform.v1alpha.Data.Platform>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the platform to retrieve. Format: accounts/{account}/platforms/{platform}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/platforms/[^/]+$",
+                    });
+                }
+            }
         }
     }
 
@@ -1257,6 +1344,25 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
     public class LookupAccountResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the Account Format: platforms/{platform}/accounts/{account_id}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a Transparent Platform.</summary>
+    public class Platform : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Default platform group for the platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultPlatformGroup")]
+        public virtual string DefaultPlatformGroup { get; set; }
+
+        /// <summary>Output only. Description of the platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Identifier. Resource name of a platform. Format: accounts/{account}/platforms/{platform}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
