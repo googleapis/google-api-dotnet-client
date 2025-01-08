@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -605,7 +605,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>
         /// The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256
         /// bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example: "/instance_id":
-        /// "my-instance" "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute": true
+        /// "my-instance" "/http/user_agent": "" "/http/request_bytes": 300 "example.com/myattribute": true
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
         public virtual System.Collections.Generic.IDictionary<string, AttributeValue> AttributeMap { get; set; }
@@ -761,14 +761,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
         public virtual System.Collections.Generic.IDictionary<string, object> Claims { get; set; }
-
-        /// <summary>
-        /// Identifies the client credential id used for authentication. credential_id is in the format of
-        /// AUTH_METHOD:IDENTIFIER, e.g. "serviceaccount:XXXXX, apikey:XXXXX" where the format of the IDENTIFIER can
-        /// vary for different AUTH_METHODs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("credentialId")]
-        public virtual string CredentialId { get; set; }
 
         /// <summary>
         /// The authorized presenter of the credential. Reflects the optional Authorized Presenter (`azp`) claim within
@@ -1261,7 +1253,7 @@ namespace Google.Apis.ServiceControl.v1.Data
 
         /// <summary>
         /// The referer URL of the request, as defined in [HTTP/1.1 Header Field
-        /// Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+        /// Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referer")]
         public virtual string Referer { get; set; }
@@ -2871,7 +2863,7 @@ namespace Google.Apis.ServiceControl.v1.Data
 
         /// <summary>
         /// The referer URL of the request, as defined in [HTTP/1.1 Header Field
-        /// Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+        /// Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referer")]
         public virtual string Referer { get; set; }
