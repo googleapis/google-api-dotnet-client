@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6148,6 +6148,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
+        /// <summary>Output only. Zone Isolation compliance state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Zone Separation compliance state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Connection profile for a SQL Server data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlserver")]
         public virtual SqlServerConnectionProfile Sqlserver { get; set; }
@@ -7874,6 +7882,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reverseSshConnectivity")]
         public virtual ReverseSshConnectivity ReverseSshConnectivity { get; set; }
 
+        /// <summary>Output only. Zone Isolation compliance state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Zone Separation compliance state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Required. The resource name (URI) of the source connection profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
@@ -8734,6 +8750,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Zone Isolation compliance state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Zone Separation compliance state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. The state of the private connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -9208,7 +9232,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Config for a single migration job object.</summary>
     public class SourceObjectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The object identifier.</summary>
+        /// <summary>Optional. The object identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectIdentifier")]
         public virtual SourceObjectIdentifier ObjectIdentifier { get; set; }
 
@@ -9220,8 +9244,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     public class SourceObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The database name. This will be required only if the object uses a database name as part of its unique
-        /// identifier.
+        /// Optional. The database name. This will be required only if the object uses a database name as part of its
+        /// unique identifier.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
@@ -9237,7 +9261,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>List of configurations for the source objects to be migrated.</summary>
     public class SourceObjectsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of the objects to be migrated.</summary>
+        /// <summary>Optional. The list of the objects to be migrated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectConfigs")]
         public virtual System.Collections.Generic.IList<SourceObjectConfig> ObjectConfigs { get; set; }
 
