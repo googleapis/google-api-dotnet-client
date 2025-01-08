@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1133,16 +1133,17 @@ namespace Google.Apis.Tasks.v1
             public virtual string DestinationTasklist { get; set; }
 
             /// <summary>
-            /// New parent task identifier. If the task is moved to the top level, this parameter is omitted. Assigned
-            /// tasks can not be set as parent task (have subtasks) or be moved under a parent task (become subtasks).
-            /// Optional.
+            /// New parent task identifier. If the task is moved to the top level, this parameter is omitted. The task
+            /// set as parent must exist in the task list and can not be hidden. Assigned tasks can not be set as parent
+            /// task (have subtasks) or be moved under a parent task (become subtasks). Optional.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
             /// <summary>
             /// New previous sibling task identifier. If the task is moved to the first position among its siblings,
-            /// this parameter is omitted. Optional.
+            /// this parameter is omitted. The task set as previous must exist in the task list and can not be hidden.
+            /// Optional.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("previous", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Previous { get; set; }
