@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -401,10 +401,10 @@ namespace Google.Apis.Css.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. The primary or supplemental feed id. If CSS Product already exists and feed id provided is
-                /// different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to
-                /// provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS
-                /// Products yet.
+                /// Optional. DEPRECATED. Feed id is not required for CSS Products. The primary or supplemental feed id.
+                /// If CSS Product already exists and feed id provided is different, then the CSS Product will be moved
+                /// to a new feed. Note: For now, CSSs do not need to provide feed ids as we create feeds on the fly. We
+                /// do not have supplemental feed support for CSS Products yet.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("feedId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> FeedId { get; set; }
@@ -1658,13 +1658,13 @@ namespace Google.Apis.Css.v1.Data
         private object _freshnessTime;
 
         /// <summary>
-        /// Represents the existing version (freshness) of the CSS Product, which can be used to preserve the right
-        /// order when multiple updates are done at the same time. This field must not be set to the future time. If
-        /// set, the update is prevented if a newer version of the item already exists in our system (that is the last
-        /// update time of the existing CSS products is later than the freshness time set in the update). If the update
-        /// happens, the last update time is then set to this freshness time. If not set, the update will not be
-        /// prevented and the last update time will default to when this request was received by the CSS API. If the
-        /// operation is prevented, the aborted exception will be thrown.
+        /// DEPRECATED. Use expiration_date instead. Represents the existing version (freshness) of the CSS Product,
+        /// which can be used to preserve the right order when multiple updates are done at the same time. This field
+        /// must not be set to the future time. If set, the update is prevented if a newer version of the item already
+        /// exists in our system (that is the last update time of the existing CSS products is later than the freshness
+        /// time set in the update). If the update happens, the last update time is then set to this freshness time. If
+        /// not set, the update will not be prevented and the last update time will default to when this request was
+        /// received by the CSS API. If the operation is prevented, the aborted exception will be thrown.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessTime")]
         public virtual string FreshnessTimeRaw
