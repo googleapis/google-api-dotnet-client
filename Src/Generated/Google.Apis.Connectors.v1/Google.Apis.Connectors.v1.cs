@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7759,10 +7759,6 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual EndPoint Endpoint { get; set; }
 
-        /// <summary>OPTION 2: Write the event to Cloud Storage bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gsutil")]
-        public virtual GSUtil Gsutil { get; set; }
-
         /// <summary>Service account needed for runtime plane to trigger IP workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -8256,17 +8252,6 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>String value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>GSUtil message includes details of the Destination Cloud Storage bucket.</summary>
-    public class GSUtil : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The URI of the Cloud Storage bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gsutilUri")]
-        public virtual string GsutilUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
