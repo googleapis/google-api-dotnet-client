@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1393,7 +1393,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>
-        /// Searches through all changes to an account or its children given the specified set of filters.
+        /// Searches through all changes to an account or its children given the specified set of filters. Only returns
+        /// the subset of changes supported by the API. The UI may return additional changes.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="account">
@@ -1406,7 +1407,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>
-        /// Searches through all changes to an account or its children given the specified set of filters.
+        /// Searches through all changes to an account or its children given the specified set of filters. Only returns
+        /// the subset of changes supported by the API. The UI may return additional changes.
         /// </summary>
         public class SearchChangeHistoryEventsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse>
         {
@@ -12708,7 +12710,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>Settings values for data retention. This is a singleton resource.</summary>
     public class GoogleAnalyticsAdminV1alphaDataRetentionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The length of time that event-level data is retained.</summary>
+        /// <summary>Required. The length of time that event-level data is retained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventDataRetention")]
         public virtual string EventDataRetention { get; set; }
 
@@ -15175,9 +15177,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         }
 
         /// <summary>
-        /// Optional. The maximum number of ChangeHistoryEvent items to return. The service may return fewer than this
-        /// value, even if there are additional pages. If unspecified, at most 50 items will be returned. The maximum
-        /// value is 200 (higher values will be coerced to the maximum).
+        /// Optional. The maximum number of ChangeHistoryEvent items to return. If unspecified, at most 50 items will be
+        /// returned. The maximum value is 200 (higher values will be coerced to the maximum). Note that the service may
+        /// return a page with fewer items than this value specifies (potentially even zero), and that there still may
+        /// be additional pages. If you want a particular number of items, you'll need to continue requesting additional
+        /// pages using `page_token` until you get the needed number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
