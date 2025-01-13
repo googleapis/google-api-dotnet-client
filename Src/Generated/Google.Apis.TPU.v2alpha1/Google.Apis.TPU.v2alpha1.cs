@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2855,11 +2855,18 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Network configurations for the TPU node.</summary>
+        /// <summary>
+        /// Network configurations for the TPU node. network_config and network_configs are mutually exclusive, you can
+        /// only specify one of them. If both are specified, an error will be returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
 
-        /// <summary>Optional. Repeated network configurations for the TPU node.</summary>
+        /// <summary>
+        /// Optional. Repeated network configurations for the TPU node. This field is used to specify multiple networks
+        /// configs for the TPU node. network_config and network_configs are mutually exclusive, you can only specify
+        /// one of them. If both are specified, an error will be returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfigs")]
         public virtual System.Collections.Generic.IList<NetworkConfig> NetworkConfigs { get; set; }
 
