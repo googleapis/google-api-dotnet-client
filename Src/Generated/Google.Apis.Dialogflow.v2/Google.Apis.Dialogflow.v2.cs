@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26873,6 +26873,10 @@ namespace Google.Apis.Dialogflow.v2.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The telephony connection information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telephonyConnectionInfo")]
+        public virtual GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo TelephonyConnectionInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27180,6 +27184,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowV2ConversationPhoneNumber : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Desired country code for the phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual System.Nullable<int> CountryCode { get; set; }
+
         /// <summary>Output only. The phone number to connect to this conversation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
@@ -27343,6 +27351,62 @@ namespace Google.Apis.Dialogflow.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The information about phone calls connected via phone gateway to the conversation.</summary>
+    public class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number dialed to connect this call in E.164 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialedNumber")]
+        public virtual string DialedNumber { get; set; }
+
+        /// <summary>Output only. The mime content from the initial SIP INVITE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraMimeContents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent> ExtraMimeContents { get; set; }
+
+        /// <summary>
+        /// Optional. SDP of the call. It's initially the SDP answer to the endpoint, but maybe later updated for the
+        /// purpose of making the link active, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdp")]
+        public virtual string Sdp { get; set; }
+
+        /// <summary>Output only. The SIP headers from the initial SIP INVITE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sipHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader> SipHeaders { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The mime content from the initial SIP INVITE.</summary>
+    public class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The content payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Optional. The mime type of the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The SIP headers from the initial SIP INVITE.</summary>
+    public class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The name of the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The value of the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
