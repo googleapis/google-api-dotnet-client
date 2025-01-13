@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4433,6 +4433,14 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
+        /// <summary>
+        /// Optional. SSL configuration for the PostgreSQL connection. In case PostgresqlSslConfig is not set, the
+        /// connection will use the default SSL mode, which is `prefer` (i.e. this mode will only use encryption if
+        /// enabled from database side, otherwise will use unencrypted communication)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
+        public virtual PostgresqlSslConfig SslConfig { get; set; }
+
         /// <summary>Required. Username for the PostgreSQL connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
@@ -4497,6 +4505,27 @@ namespace Google.Apis.Datastream.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationSlot")]
         public virtual string ReplicationSlot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSQL SSL configuration information.</summary>
+    public class PostgresqlSslConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If this field is set, the communication will be encrypted with TLS encryption and both the server identity
+        /// and the client identity will be authenticated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverAndClientVerification")]
+        public virtual ServerAndClientVerification ServerAndClientVerification { get; set; }
+
+        /// <summary>
+        ///  If this field is set, the communication will be encrypted with TLS encryption and the server identity will
+        /// be authenticated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverVerification")]
+        public virtual ServerVerification ServerVerification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4758,6 +4787,52 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Optional. Update the stream without validating it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message represents the option where Datastream will enforce the encryption and authenticate the server identity
+    /// as well as the client identity. ca_certificate, client_certificate and client_key must be set if user selects
+    /// this option.
+    /// </summary>
+    public class ServerAndClientVerification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. PEM-encoded server root CA certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
+        public virtual string CaCertificate { get; set; }
+
+        /// <summary>
+        /// Required. Input only. PEM-encoded certificate used by the source database to authenticate the client
+        /// identity (i.e., the Datastream's identity). This certificate is signed by either a root certificate trusted
+        /// by the server or one or more intermediate certificates (which is stored with the leaf certificate) to link
+        /// the this certificate to the trusted root certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
+        public virtual string ClientCertificate { get; set; }
+
+        /// <summary>
+        /// Required. Input only. PEM-encoded private key associated with the client certificate. This value will be
+        /// used during the SSL/TLS handshake, allowing the PostgreSQL server to authenticate the client's identity,
+        /// i.e. identity of the Datastream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
+        public virtual string ClientKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message represents the option where Datastream will enforce the encryption and authenticate the server identity.
+    /// ca_certificate must be set if user selects this option.
+    /// </summary>
+    public class ServerVerification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input only. PEM-encoded server root CA certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
+        public virtual string CaCertificate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
