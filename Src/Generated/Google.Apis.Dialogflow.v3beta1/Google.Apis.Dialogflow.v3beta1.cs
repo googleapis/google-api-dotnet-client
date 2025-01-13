@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14862,6 +14862,18 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings PersonalizationSettings { get; set; }
 
         /// <summary>
+        /// Optional. Output only. A read only boolean field reflecting Zone Isolation status of the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. A read only boolean field reflecting Zone Separation status of the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securitySettings")]
@@ -19953,6 +19965,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedTools")]
         public virtual System.Collections.Generic.IList<string> ReferencedTools { get; set; }
+
+        /// <summary>Optional. Playbook level Settings for speech to text detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings SpeechSettings { get; set; }
 
         /// <summary>Output only. Estimated number of tokes current playbook takes when sent to the LLM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenCount")]
