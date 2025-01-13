@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7412,6 +7412,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultSnatStatus")]
         public virtual DefaultSnatStatus DesiredDefaultSnatStatus { get; set; }
 
+        /// <summary>Enable/Disable L4 LB VPC firewall reconciliation for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredDisableL4LbFirewallReconciliation")]
+        public virtual System.Nullable<bool> DesiredDisableL4LbFirewallReconciliation { get; set; }
+
         /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
@@ -9110,6 +9114,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSnatStatus")]
         public virtual DefaultSnatStatus DefaultSnatStatus { get; set; }
+
+        /// <summary>Disable L4 load balancer VPC firewalls to enable firewall policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableL4LbFirewallReconciliation")]
+        public virtual System.Nullable<bool> DisableL4LbFirewallReconciliation { get; set; }
 
         /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsConfig")]
@@ -12118,6 +12126,49 @@ namespace Google.Apis.Container.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The type of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        private string _extendedSupportEndTimeRaw;
+
+        private object _extendedSupportEndTime;
+
+        /// <summary>The end of extended support timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedSupportEndTime")]
+        public virtual string ExtendedSupportEndTimeRaw
+        {
+            get => _extendedSupportEndTimeRaw;
+            set
+            {
+                _extendedSupportEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _extendedSupportEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExtendedSupportEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExtendedSupportEndTimeDateTimeOffset instead.")]
+        public virtual object ExtendedSupportEndTime
+        {
+            get => _extendedSupportEndTime;
+            set
+            {
+                _extendedSupportEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _extendedSupportEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExtendedSupportEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExtendedSupportEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExtendedSupportEndTimeRaw);
+            set => ExtendedSupportEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The operation associated with this upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual string Operation { get; set; }
@@ -12132,6 +12183,45 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The resource type associated with the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
+
+        private string _standardSupportEndTimeRaw;
+
+        private object _standardSupportEndTime;
+
+        /// <summary>The end of standard support timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardSupportEndTime")]
+        public virtual string StandardSupportEndTimeRaw
+        {
+            get => _standardSupportEndTimeRaw;
+            set
+            {
+                _standardSupportEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _standardSupportEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StandardSupportEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StandardSupportEndTimeDateTimeOffset instead.")]
+        public virtual object StandardSupportEndTime
+        {
+            get => _standardSupportEndTime;
+            set
+            {
+                _standardSupportEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _standardSupportEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StandardSupportEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StandardSupportEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StandardSupportEndTimeRaw);
+            set => StandardSupportEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         private string _startTimeRaw;
 
