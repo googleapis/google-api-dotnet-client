@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4263,14 +4263,14 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         public virtual string Domain { get; set; }
 
         /// <summary>
-        /// Additional structured details about this error. Keys must match /a-z+/ but should ideally be lowerCamelCase.
-        /// Also they must be limited to 64 characters in length. When identifying the current value of an exceeded
-        /// limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit":
-        /// "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number
-        /// of instances that can be created in a single (batch) request.
+        /// Additional structured details about this error. Keys must match a regular expression of `a-z+` but should
+        /// ideally be lowerCamelCase. Also, they must be limited to 64 characters in length. When identifying the
+        /// current value of an exceeded limit, the units should be contained in the key, not the value. For example,
+        /// rather than `{"instanceLimit": "100/request"}`, should be returned as, `{"instanceLimitPerRequest": "100"}`,
+        /// if the client exceeds the number of instances that can be created in a single (batch) request.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("metadatas")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadatas { get; set; }
 
         /// <summary>
         /// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error
