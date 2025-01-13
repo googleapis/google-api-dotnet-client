@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1813,14 +1813,18 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Query PSC propagation status the status of a Network Connectivity Center hub.</summary>
+                    /// <summary>
+                    /// Query the Private Service Connect propagation status of a Network Connectivity Center hub.
+                    /// </summary>
                     /// <param name="name">Required. The name of the hub.</param>
                     public virtual QueryStatusRequest QueryStatus(string name)
                     {
                         return new QueryStatusRequest(this.service, name);
                     }
 
-                    /// <summary>Query PSC propagation status the status of a Network Connectivity Center hub.</summary>
+                    /// <summary>
+                    /// Query the Private Service Connect propagation status of a Network Connectivity Center hub.
+                    /// </summary>
                     public class QueryStatusRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.QueryHubStatusResponse>
                     {
                         /// <summary>Constructs a new QueryStatus request.</summary>
@@ -1836,30 +1840,31 @@ namespace Google.Apis.Networkconnectivity.v1
 
                         /// <summary>
                         /// Optional. An expression that filters the list of results. The filter can be used to filter
-                        /// the results by the following fields: * psc_propagation_status.source_spoke *
-                        /// psc_propagation_status.source_group * psc_propagation_status.source_forwarding_rule *
-                        /// psc_propagation_status.target_spoke * psc_propagation_status.target_group *
-                        /// psc_propagation_status.code * psc_propagation_status.message
+                        /// the results by the following fields: * `psc_propagation_status.source_spoke` *
+                        /// `psc_propagation_status.source_group` * `psc_propagation_status.source_forwarding_rule` *
+                        /// `psc_propagation_status.target_spoke` * `psc_propagation_status.target_group` *
+                        /// `psc_propagation_status.code` * `psc_propagation_status.message`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. A field that counts are grouped by. A comma-separated list of any of these fields:
-                        /// * psc_propagation_status.source_spoke * psc_propagation_status.source_group *
-                        /// psc_propagation_status.source_forwarding_rule * psc_propagation_status.target_spoke *
-                        /// psc_propagation_status.target_group * psc_propagation_status.code
+                        /// Optional. Aggregate the results by the specified fields. A comma-separated list of any of
+                        /// these fields: * `psc_propagation_status.source_spoke` *
+                        /// `psc_propagation_status.source_group` * `psc_propagation_status.source_forwarding_rule` *
+                        /// `psc_propagation_status.target_spoke` * `psc_propagation_status.target_group` *
+                        /// `psc_propagation_status.code`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("groupBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string GroupBy { get; set; }
 
                         /// <summary>
-                        /// Optional. Sort the results in the ascending order by specific fields returned in the
-                        /// response. A comma-separated list of any of these fields: *
-                        /// psc_propagation_status.source_spoke * psc_propagation_status.source_group *
-                        /// psc_propagation_status.source_forwarding_rule * psc_propagation_status.target_spoke *
-                        /// psc_propagation_status.target_group * psc_propagation_status.code If `group_by` is set, the
-                        /// value of the `order_by` field must be the same as or a subset of the `group_by` field.
+                        /// Optional. Sort the results in ascending order by the specified fields. A comma-separated
+                        /// list of any of these fields: * `psc_propagation_status.source_spoke` *
+                        /// `psc_propagation_status.source_group` * `psc_propagation_status.source_forwarding_rule` *
+                        /// `psc_propagation_status.target_spoke` * `psc_propagation_status.target_group` *
+                        /// `psc_propagation_status.code` If `group_by` is set, the value of the `order_by` field must
+                        /// be the same as or a subset of the `group_by` field.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
@@ -3099,7 +3104,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
@@ -3114,7 +3119,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
                 /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
-                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
                 /// </summary>
                 public class CancelRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Empty>
                 {
@@ -6726,8 +6731,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class AutoAccept : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting
-        /// is applied to spokes being created or updated in these projects.
+        /// Optional. A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept
+        /// setting is applied to spokes being created or updated in these projects.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoAcceptProjects")]
         public virtual System.Collections.Generic.IList<string> AutoAcceptProjects { get; set; }
@@ -7134,11 +7139,11 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Domain { get; set; }
 
         /// <summary>
-        /// Additional structured details about this error. Keys must match /a-z+/ but should ideally be lowerCamelCase.
-        /// Also they must be limited to 64 characters in length. When identifying the current value of an exceeded
-        /// limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit":
-        /// "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number
-        /// of instances that can be created in a single (batch) request.
+        /// Additional structured details about this error. Keys must match a regular expression of `a-z+` but should
+        /// ideally be lowerCamelCase. Also, they must be limited to 64 characters in length. When identifying the
+        /// current value of an exceeded limit, the units should be contained in the key, not the value. For example,
+        /// rather than `{"instanceLimit": "100/request"}`, should be returned as, `{"instanceLimitPerRequest": "100"}`,
+        /// if the client exceeds the number of instances that can be created in a single (batch) request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
@@ -7351,7 +7356,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>An optional description of the hub.</summary>
+        /// <summary>Optional. An optional description of the hub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -7469,18 +7474,27 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The hub status entry.</summary>
+    /// <summary>
+    /// A hub status entry represents the status of a set of propagated Private Service Connect connections grouped by
+    /// certain fields.
+    /// </summary>
     public class HubStatusEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of status. If group_by is not set in the request, the default is 1.</summary>
+        /// <summary>
+        /// The number of propagated Private Service Connect connections with this status. If the `group_by` field was
+        /// not set in the request message, the value of this field is 1.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<int> Count { get; set; }
 
-        /// <summary>The same group_by field from the request.</summary>
+        /// <summary>
+        /// The fields that this entry is grouped by. This has the same value as the `group_by` field in the request
+        /// message.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupBy")]
         public virtual string GroupBy { get; set; }
 
-        /// <summary>The PSC propagation status.</summary>
+        /// <summary>The Private Service Connect propagation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscPropagationStatus")]
         public virtual PscPropagationStatus PscPropagationStatus { get; set; }
 
@@ -7504,7 +7518,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
     /// <summary>
     /// The internal range resource for IPAM operations within a VPC network. Used to represent a private address range
-    /// along with behavioral characterstics of that range (its usage and peering behavior). Networking resources can
+    /// along with behavioral characteristics of that range (its usage and peering behavior). Networking resources can
     /// link to this range if they are created as belonging to it.
     /// </summary>
     public class InternalRange : Google.Apis.Requests.IDirectResponseSchema
@@ -8744,14 +8758,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The PSC propagation status in a hub.</summary>
+    /// <summary>The status of one or more propagated Private Service Connect connections in a hub.</summary>
     public class PscPropagationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The propagation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>The human-readable summary of the PSC connection propagation status.</summary>
+        /// <summary>The human-readable summary of the Private Service Connect connection propagation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
@@ -9493,8 +9507,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ServiceClassUri { get; set; }
 
         /// <summary>
-        /// The token provided by the consumer. This token authenticates that the consumer can create a connecton within
-        /// the specified project and network.
+        /// The token provided by the consumer. This token authenticates that the consumer can create a connection
+        /// within the specified project and network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
@@ -9883,7 +9897,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>An optional description of the spoke.</summary>
+        /// <summary>Optional. An optional description of the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -9902,7 +9916,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>VLAN attachments that are associated with the spoke.</summary>
+        /// <summary>Optional. VLAN attachments that are associated with the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedInterconnectAttachments")]
         public virtual LinkedInterconnectAttachments LinkedInterconnectAttachments { get; set; }
 
@@ -9910,7 +9924,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedProducerVpcNetwork")]
         public virtual LinkedProducerVpcNetwork LinkedProducerVpcNetwork { get; set; }
 
-        /// <summary>Router appliance instances that are associated with the spoke.</summary>
+        /// <summary>Optional. Router appliance instances that are associated with the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedRouterApplianceInstances")]
         public virtual LinkedRouterApplianceInstances LinkedRouterApplianceInstances { get; set; }
 
@@ -9918,7 +9932,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedVpcNetwork")]
         public virtual LinkedVpcNetwork LinkedVpcNetwork { get; set; }
 
-        /// <summary>VPN tunnels that are associated with the spoke.</summary>
+        /// <summary>Optional. VPN tunnels that are associated with the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnels")]
         public virtual LinkedVpnTunnels LinkedVpnTunnels { get; set; }
 
