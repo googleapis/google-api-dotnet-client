@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3364,9 +3364,11 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
-        /// <summary>
-        /// Optional. Configure how much Postgresql schema validation to perform. Default to `STRICT` if not specified.
-        /// </summary>
+        /// <summary>Optional. Configure how to perform Postgresql schema migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaMigration")]
+        public virtual string SchemaMigration { get; set; }
+
+        /// <summary>Optional. Configure how much Postgresql schema validation to perform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaValidation")]
         public virtual string SchemaValidation { get; set; }
 
