@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -786,7 +786,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Updates a single CustomTargetType.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Optional. Name of the `CustomTargetType`. Format is
+                /// Identifier. Name of the `CustomTargetType`. Format is
                 /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The
                 /// `customTargetType` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                 /// </param>
@@ -807,7 +807,7 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Optional. Name of the `CustomTargetType`. Format is
+                    /// Identifier. Name of the `CustomTargetType`. Format is
                     /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The
                     /// `customTargetType` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                     /// </summary>
@@ -3472,7 +3472,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Updates the parameters of a single DeliveryPipeline.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Optional. Name of the `DeliveryPipeline`. Format is
+                /// Identifier. Name of the `DeliveryPipeline`. Format is
                 /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`. The
                 /// `deliveryPipeline` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                 /// </param>
@@ -3493,7 +3493,7 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Optional. Name of the `DeliveryPipeline`. Format is
+                    /// Identifier. Name of the `DeliveryPipeline`. Format is
                     /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`. The
                     /// `deliveryPipeline` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                     /// </summary>
@@ -4088,6 +4088,86 @@ namespace Google.Apis.CloudDeploy.v1
                     }
                 }
 
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deployPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Lists DeployPolicies in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of deploy policies. Format must be
@@ -4323,6 +4403,73 @@ namespace Google.Apis.CloudDeploy.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDeploy.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDeploy.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deployPolicies/[^/]+$",
                         });
                     }
                 }
@@ -5090,7 +5237,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Updates the parameters of a single Target.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Optional. Name of the `Target`. Format is
+                /// Identifier. Name of the `Target`. Format is
                 /// `projects/{project}/locations/{location}/targets/{target}`. The `target` component must match
                 /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                 /// </param>
@@ -5111,7 +5258,7 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Optional. Name of the `Target`. Format is
+                    /// Identifier. Name of the `Target`. Format is
                     /// `projects/{project}/locations/{location}/targets/{target}`. The `target` component must match
                     /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                     /// </summary>
@@ -5951,7 +6098,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// </summary>
     public class AutomationResourceSelector : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Contains attributes about a target.</summary>
+        /// <summary>Optional. Contains attributes about a target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targets")]
         public virtual System.Collections.Generic.IList<TargetAttribute> Targets { get; set; }
 
@@ -6380,12 +6527,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Description of an a image to use during Skaffold rendering.</summary>
     public class BuildArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Image name in Skaffold configuration.</summary>
+        /// <summary>Optional. Image name in Skaffold configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
         /// <summary>
-        /// Image tag to use. This will generally be the full path to an image, such as
+        /// Optional. Image tag to use. This will generally be the full path to an image, such as
         /// "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
@@ -6398,13 +6545,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Canary represents the canary deployment strategy.</summary>
     public class Canary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Configures the progressive based deployment for a Target.</summary>
+        /// <summary>Optional. Configures the progressive based deployment for a Target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canaryDeployment")]
         public virtual CanaryDeployment CanaryDeployment { get; set; }
 
         /// <summary>
-        /// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a
-        /// phase represents each of the percentage deployments.
+        /// Optional. Configures the progressive based deployment for a Target, but allows customizing at the phase
+        /// level where a phase represents each of the percentage deployments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customCanaryDeployment")]
         public virtual CustomCanaryDeployment CustomCanaryDeployment { get; set; }
@@ -6445,7 +6592,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
         public virtual Predeploy Predeploy { get; set; }
 
-        /// <summary>Whether to run verify tests after each percentage deployment.</summary>
+        /// <summary>Optional. Whether to run verify tests after each percentage deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
 
@@ -6514,8 +6661,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class CloudRunConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to
-        /// facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for
+        /// Optional. Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf
+        /// to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for
         /// CustomCanaryDeployments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticTrafficControl")]
@@ -6770,7 +6917,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.</summary>
+        /// <summary>
+        /// Optional. Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customActions")]
         public virtual CustomTargetSkaffoldActions CustomActions { get; set; }
 
@@ -6800,7 +6949,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `CustomTargetType`. Format is
+        /// Identifier. Name of the `CustomTargetType`. Format is
         /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The `customTargetType`
         /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
@@ -6933,7 +7082,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class DeliveryPipeline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -6979,7 +7128,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Description of the `DeliveryPipeline`. Max length is 255 characters.</summary>
+        /// <summary>Optional. Description of the `DeliveryPipeline`. Max length is 255 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -7001,19 +7150,19 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `DeliveryPipeline`. Format is
+        /// Identifier. Name of the `DeliveryPipeline`. Format is
         /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`. The `deliveryPipeline`
         /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.</summary>
+        /// <summary>Optional. SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialPipeline")]
         public virtual SerialPipeline SerialPipeline { get; set; }
 
         /// <summary>
-        /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        /// Optional. When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
         public virtual System.Nullable<bool> Suspended { get; set; }
@@ -7064,8 +7213,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class DeliveryPipelineAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// ID of the `DeliveryPipeline`. The value of this field could be one of the following: * The last segment of a
-        /// pipeline name * "*", all delivery pipelines in a location
+        /// Optional. ID of the `DeliveryPipeline`. The value of this field could be one of the following: * The last
+        /// segment of a pipeline name * "*", all delivery pipelines in a location
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7207,7 +7356,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class DeployPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
         /// Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys
         /// have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required
         /// and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with
@@ -7257,7 +7406,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Description of the `DeployPolicy`. Max length is 255 characters.</summary>
+        /// <summary>Optional. Description of the `DeployPolicy`. Max length is 255 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -7300,7 +7449,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Collections.Generic.IList<DeployPolicyResourceSelector> Selectors { get; set; }
 
         /// <summary>
-        /// When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+        /// Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates
+        /// the policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
         public virtual System.Nullable<bool> Suspended { get; set; }
@@ -7663,11 +7813,19 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string Cluster { get; set; }
 
         /// <summary>
+        /// Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both `dns_endpoint` and
+        /// `internal_ip` cannot be set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsEndpoint")]
+        public virtual System.Nullable<bool> DnsEndpoint { get; set; }
+
+        /// <summary>
         /// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint.
         /// Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the
         /// private IP address for clusters with private control-plane endpoints and the public IP address otherwise.
         /// Only specify this option when `cluster` is a [private GKE
-        /// cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        /// cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept). Note that
+        /// `internal_ip` and `dns_endpoint` cannot both be set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual System.Nullable<bool> InternalIp { get; set; }
@@ -7866,7 +8024,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string JobId { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `JobRun`. Format is
+        /// Identifier. Name of the `JobRun`. Format is
         /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/{rollouts}/jobRuns/{uuid}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7983,11 +8141,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>KubernetesConfig contains the Kubernetes runtime configuration.</summary>
     public class KubernetesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Kubernetes Gateway API service mesh configuration.</summary>
+        /// <summary>Optional. Kubernetes Gateway API service mesh configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayServiceMesh")]
         public virtual GatewayServiceMesh GatewayServiceMesh { get; set; }
 
-        /// <summary>Kubernetes Service networking configuration.</summary>
+        /// <summary>Optional. Kubernetes Service networking configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceNetworking")]
         public virtual ServiceNetworking ServiceNetworking { get; set; }
 
@@ -8541,13 +8699,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual Predeploy Predeploy { get; set; }
 
         /// <summary>
-        /// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles
-        /// list specified in the `DeliveryPipeline` stage.
+        /// Optional. Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the
+        /// profiles list specified in the `DeliveryPipeline` stage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
         public virtual System.Collections.Generic.IList<string> Profiles { get; set; }
 
-        /// <summary>Whether to run verify tests after the deployment.</summary>
+        /// <summary>Optional. Whether to run verify tests after the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
 
@@ -8706,7 +8864,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Deploy Policy rule.</summary>
     public class PolicyRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Rollout restrictions.</summary>
+        /// <summary>Optional. Rollout restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutRestriction")]
         public virtual RolloutRestriction RolloutRestriction { get; set; }
 
@@ -8954,13 +9112,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Nullable<bool> Abandoned { get; set; }
 
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See
-        /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>List of artifacts to pass through to Skaffold command.</summary>
+        /// <summary>Optional. List of artifacts to pass through to Skaffold command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildArtifacts")]
         public virtual System.Collections.Generic.IList<BuildArtifact> BuildArtifacts { get; set; }
 
@@ -9019,7 +9177,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> DeployParameters { get; set; }
 
-        /// <summary>Description of the `Release`. Max length is 255 characters.</summary>
+        /// <summary>Optional. Description of the `Release`. Max length is 255 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -9041,7 +9199,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Release`. Format is
+        /// Identifier. Name of the `Release`. Format is
         /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`. The
         /// `release` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
@@ -9128,11 +9286,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("renderState")]
         public virtual string RenderState { get; set; }
 
-        /// <summary>Filepath of the Skaffold config inside of the config URI.</summary>
+        /// <summary>Optional. Filepath of the Skaffold config inside of the config URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldConfigPath")]
         public virtual string SkaffoldConfigPath { get; set; }
 
-        /// <summary>Cloud Storage URI of tar.gz archive containing Skaffold configuration.</summary>
+        /// <summary>Optional. Cloud Storage URI of tar.gz archive containing Skaffold configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldConfigUri")]
         public virtual string SkaffoldConfigUri { get; set; }
 
@@ -9610,8 +9768,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ActiveRepairAutomationRun { get; set; }
 
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See
-        /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -9791,7 +9949,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployingBuild")]
         public virtual string DeployingBuild { get; set; }
 
-        /// <summary>Description of the `Rollout` for user purposes. Max length is 255 characters.</summary>
+        /// <summary>Optional. Description of the `Rollout` for user purposes. Max length is 255 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -9858,7 +10016,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual Metadata Metadata { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Rollout`. Format is
+        /// Identifier. Name of the `Rollout`. Format is
         /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
         /// The `rollout` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
@@ -10035,11 +10193,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>RuntimeConfig contains the runtime specific configurations for a deployment strategy.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run runtime configuration.</summary>
+        /// <summary>Optional. Cloud Run runtime configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRunConfig CloudRun { get; set; }
 
-        /// <summary>Kubernetes runtime configuration.</summary>
+        /// <summary>Optional. Kubernetes runtime configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
         public virtual KubernetesConfig Kubernetes { get; set; }
 
@@ -10051,7 +10209,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class SerialPipeline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
+        /// Optional. Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion
+        /// flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
         public virtual System.Collections.Generic.IList<Stage> Stages { get; set; }
@@ -10181,15 +10340,15 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configs")]
         public virtual System.Collections.Generic.IList<string> Configs { get; set; }
 
-        /// <summary>Remote git repository containing the Skaffold Config modules.</summary>
+        /// <summary>Optional. Remote git repository containing the Skaffold Config modules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual SkaffoldGitSource Git { get; set; }
 
-        /// <summary>Cloud Build V2 repository containing the Skaffold Config modules.</summary>
+        /// <summary>Optional. Cloud Build V2 repository containing the Skaffold Config modules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleCloudBuildRepo")]
         public virtual SkaffoldGCBRepoSource GoogleCloudBuildRepo { get; set; }
 
-        /// <summary>Cloud Storage bucket containing the Skaffold Config modules.</summary>
+        /// <summary>Optional. Cloud Storage bucket containing the Skaffold Config modules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStorage")]
         public virtual SkaffoldGCSSource GoogleCloudStorage { get; set; }
 
@@ -10392,7 +10551,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployParameters")]
         public virtual System.Collections.Generic.IList<DeployParameters> DeployParameters { get; set; }
 
-        /// <summary>Skaffold profiles to use when rendering the manifest for this stage's `Target`.</summary>
+        /// <summary>Optional. Skaffold profiles to use when rendering the manifest for this stage's `Target`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
         public virtual System.Collections.Generic.IList<string> Profiles { get; set; }
 
@@ -10401,8 +10560,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual Strategy Strategy { get; set; }
 
         /// <summary>
-        /// The target_id to which this stage points. This field refers exclusively to the last segment of a target
-        /// name. For example, this field would just be `my-target` (rather than
+        /// Optional. The target_id to which this stage points. This field refers exclusively to the last segment of a
+        /// target name. For example, this field would just be `my-target` (rather than
         /// `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the
         /// same as the location of the `DeliveryPipeline` that contains this `Stage`.
         /// </summary>
@@ -10429,7 +10588,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
         public virtual Predeploy Predeploy { get; set; }
 
-        /// <summary>Whether to verify a deployment.</summary>
+        /// <summary>Optional. Whether to verify a deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
 
@@ -10469,12 +10628,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Strategy contains deployment strategy information.</summary>
     public class Strategy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Canary deployment strategy provides progressive percentage based deployments to a Target.</summary>
+        /// <summary>
+        /// Optional. Canary deployment strategy provides progressive percentage based deployments to a Target.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canary")]
         public virtual Canary Canary { get; set; }
 
         /// <summary>
-        /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        /// Optional. Standard deployment strategy executes a single deploy and allows verifying the deployment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standard")]
         public virtual Standard Standard { get; set; }
@@ -10568,10 +10729,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may
-        /// only be used in a single configuration; using the same value multiple times is an error. When one or more
-        /// configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage`
-        /// values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
+        /// Optional. Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage`
+        /// value may only be used in a single configuration; using the same value multiple times is an error. When one
+        /// or more configurations are specified, they must include the `RENDER` and `DEPLOY`
+        /// `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default
+        /// specified in `DefaultPool`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionConfigs")]
         public virtual System.Collections.Generic.IList<ExecutionConfig> ExecutionConfigs { get; set; }
@@ -10595,7 +10757,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual MultiTarget MultiTarget { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/{target}`. The
+        /// Identifier. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/{target}`. The
         /// `target` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -10688,8 +10850,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class TargetAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target
-        /// name * "*", all targets in a location
+        /// Optional. ID of the `Target`. The value of this field could be one of the following: * The last segment of a
+        /// target name * "*", all targets in a location
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
