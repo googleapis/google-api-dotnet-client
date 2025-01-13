@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -10412,6 +10412,18 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Optional. Settings for end user personalization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personalizationSettings")]
         public virtual GoogleCloudDialogflowCxV3AgentPersonalizationSettings PersonalizationSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. A read only boolean field reflecting Zone Isolation status of the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. A read only boolean field reflecting Zone Separation status of the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>
         /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
