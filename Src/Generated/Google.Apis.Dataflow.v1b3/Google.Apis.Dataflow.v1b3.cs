@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5406,6 +5406,43 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The message type used for encoding metrics of type bounded trie.</summary>
+    public class BoundedTrie : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of elements to store before truncation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bound")]
+        public virtual System.Nullable<int> Bound { get; set; }
+
+        /// <summary>A compact representation of all the elements in this trie.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("root")]
+        public virtual BoundedTrieNode Root { get; set; }
+
+        /// <summary>A more efficient representation for metrics consisting of a single value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleton")]
+        public virtual System.Collections.Generic.IList<string> Singleton { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single node in a BoundedTrie.</summary>
+    public class BoundedTrieNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Children of this node. Must be empty if truncated is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("children")]
+        public virtual System.Collections.Generic.IDictionary<string, BoundedTrieNode> Children { get; set; }
+
+        /// <summary>
+        /// Whether this node has been truncated. A truncated leaf represents possibly many children with the same
+        /// prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truncated")]
+        public virtual System.Nullable<bool> Truncated { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`BucketOptions` describes the bucket boundaries used in the histogram.</summary>
     public class BucketOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5697,12 +5734,16 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An update to a Counter sent from a worker.</summary>
+    /// <summary>An update to a Counter sent from a worker. Next ID: 17</summary>
     public class CounterUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Boolean value for And, Or.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolean")]
         public virtual System.Nullable<bool> Boolean { get; set; }
+
+        /// <summary>Bounded trie data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundedTrie")]
+        public virtual BoundedTrie BoundedTrie { get; set; }
 
         /// <summary>
         /// True if this counter is reported as the total cumulative aggregate value accumulated since the worker
@@ -7996,7 +8037,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes the state of a metric.</summary>
+    /// <summary>Describes the state of a metric. Next ID: 14</summary>
     public class MetricUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8059,11 +8100,18 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>
         /// Worker-computed aggregate value for the "Set" aggregation kind. The only possible value type is a list of
-        /// Values whose type can be Long, Double, or String, according to the metric's type. All Values in the list
-        /// must be of the same type.
+        /// Values whose type can be Long, Double, String, or BoundedTrie according to the metric's type. All Values in
+        /// the list must be of the same type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("set")]
         public virtual object Set { get; set; }
+
+        /// <summary>
+        /// Worker-computed aggregate value for the "Trie" aggregation kind. The only possible value type is a
+        /// BoundedTrieNode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trie")]
+        public virtual object Trie { get; set; }
 
         private string _updateTimeRaw;
 
