@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3408,6 +3408,13 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual string Creator { get; set; }
 
+        /// <summary>
+        /// Output only. If set, this field contains the DSP specific seat id set by the media planner account that is
+        /// considered the owner of this deal. The seat ID is in the calling DSP's namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealOwnerSeatId")]
+        public virtual string DealOwnerSeatId { get; set; }
+
         /// <summary>Output only. A description of the auction package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -3417,8 +3424,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. If set, this field contains the list of DSP specific seat ids set by media planners that are
-        /// eligible to transact on this deal. The seat ID is in the calling DSP's namespace.
+        /// Output only. If set, this field identifies a seat that the media planner selected as the owner of this
+        /// auction package. This is a seat ID in the DSP's namespace that was provided to the media planner.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibleSeatIds")]
         public virtual System.Collections.Generic.IList<string> EligibleSeatIds { get; set; }
