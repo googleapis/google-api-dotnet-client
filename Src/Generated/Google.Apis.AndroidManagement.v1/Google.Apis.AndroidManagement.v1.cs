@@ -2563,7 +2563,8 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>
             /// Optional. Email address used to prefill the admin field of the enterprise signup form. This value is a
-            /// hint only and can be altered by the user.
+            /// hint only and can be altered by the user. If allowedDomains is non-empty then this must belong to one of
+            /// the allowedDomains.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("adminEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string AdminEmail { get; set; }
