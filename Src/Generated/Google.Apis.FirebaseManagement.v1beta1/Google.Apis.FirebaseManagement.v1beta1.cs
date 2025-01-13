@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4401,13 +4401,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>
         /// The canonical error code (see codes.proto) that most closely corresponds to this status. This may be
         /// missing, and in the common case of the generic space, it definitely will be.
+        /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 canonical_code = 6;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
         public virtual System.Nullable<int> CanonicalCode { get; set; }
 
         /// <summary>
         /// Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is
-        /// drawn from google3/util/task/codes.proto
+        /// drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace
+        /// optional int32 code = 1;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
