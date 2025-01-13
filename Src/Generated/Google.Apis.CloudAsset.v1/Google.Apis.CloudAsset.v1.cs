@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5597,6 +5597,15 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
         public virtual string AccessLevel { get; set; }
+
+        /// <summary>
+        /// A Google Cloud resource that you want to allow to egress the perimeter. These resources can access data
+        /// outside the perimeter. This field only supports projects. The project format is `projects/{project_number}`.
+        /// The resource can be in any Google Cloud organization, not just the organization where the perimeter is
+        /// defined. You can't use `*` in this field to allow all Google Cloud resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
