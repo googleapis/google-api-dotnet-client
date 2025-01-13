@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2066,7 +2066,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notices")]
         public virtual System.Collections.Generic.IList<Notice> Notices { get; set; }
 
-        /// <summary>Output only. [Output only] Result summary</summary>
+        /// <summary>Output only. [Output only] Result summary for the execution</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSummary")]
         public virtual Summary ResultSummary { get; set; }
 
@@ -2842,9 +2842,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostProject")]
         public virtual string HostProject { get; set; }
 
+        /// <summary>Optional. The region this component's resources are primarily located in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
         /// <summary>Optional. A list of replication sites used in Disaster Recovery (DR) configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationSites")]
-        public virtual System.Collections.Generic.IList<SapDiscoveryComponent> ReplicationSites { get; set; }
+        public virtual System.Collections.Generic.IList<SapDiscoveryComponentReplicationSite> ReplicationSites { get; set; }
 
         /// <summary>Optional. The resources in a component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
@@ -2935,6 +2939,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedNfsUri")]
         public virtual string SharedNfsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A replication site used in Disaster Recovery (DR) configurations.</summary>
+    public class SapDiscoveryComponentReplicationSite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The system component for the site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("component")]
+        public virtual SapDiscoveryComponent Component { get; set; }
+
+        /// <summary>Optional. The name of the source site from which this one replicates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSite")]
+        public virtual string SourceSite { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
