@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4830,7 +4830,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Deletes the dimensions from the sheet.</summary>
+    /// <summary> Deletes the dimensions from the sheet.</summary>
     public class DeleteDimensionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The dimensions to delete from the sheet.</summary>
