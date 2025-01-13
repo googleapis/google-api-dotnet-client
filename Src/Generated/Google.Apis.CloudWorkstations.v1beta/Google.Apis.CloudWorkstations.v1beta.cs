@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2668,10 +2668,11 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     }
 
     /// <summary>
-    /// A boost configuration is a set of resources that a workstation can use to increase its performance. If a boost
-    /// configuration is specified, when starting a workstation, users can choose to use a VM provisioned under the
-    /// boost config by passing the boost config id in the start request. If no boost config id is provided in the start
-    /// request, the system will choose a VM from the pool provisioned under the default config.
+    /// A boost configuration is a set of resources that a workstation can use to increase its performance. If you
+    /// specify a boost configuration, upon startup, workstation users can choose to use a VM provisioned under the
+    /// boost config by passing the boost config ID in the start request. If the workstation user does not provide a
+    /// boost config ID in the start request, the system will choose a VM from the pool provisioned under the default
+    /// config.
     /// </summary>
     public class BoostConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2707,7 +2708,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
         public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
 
-        /// <summary>Required. The id to be used for the boost configuration.</summary>
+        /// <summary>Required. The ID to be used for the boost configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -3016,6 +3017,25 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Compute Engine instance host.</summary>
+    public class GceInstanceHost : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Output only. The ID of the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Output only. The name of the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Output only. The zone of the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An EphemeralDirectory is backed by a Compute Engine persistent disk.</summary>
     public class GcePersistentDisk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3264,6 +3284,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedUnauthenticatedCorsPreflightRequests")]
         public virtual System.Nullable<bool> AllowedUnauthenticatedCorsPreflightRequests { get; set; }
+
+        /// <summary>
+        /// Optional. By default, the workstations service replaces references to localhost, 127.0.0.1, and 0.0.0.0 with
+        /// the workstation's hostname in http responses from the workstation so that applications under development run
+        /// properly on the workstation. This may intefere with some applications, and so this option allows that
+        /// behavior to be disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableLocalhostReplacement")]
+        public virtual System.Nullable<bool> DisableLocalhostReplacement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3533,7 +3562,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A directory to persist across workstation sessions.</summary>
+    /// <summary>
+    /// A directory to persist across workstation sessions. Updates to this field will not update existing workstations
+    /// and will only take effect on new workstations.
+    /// </summary>
     public class PersistentDirectory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A PersistentDirectory backed by a Compute Engine persistent disk.</summary>
@@ -3694,6 +3726,17 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>Optional. Port to which the request should be sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime host for the workstation.</summary>
+    public class RuntimeHost : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies a Compute Engine instance as the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gceInstanceHost")]
+        public virtual GceInstanceHost GceInstanceHost { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3950,6 +3993,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Optional. Output only. Runtime host for the workstation when in STATE_RUNNING.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeHost")]
+        public virtual RuntimeHost RuntimeHost { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
