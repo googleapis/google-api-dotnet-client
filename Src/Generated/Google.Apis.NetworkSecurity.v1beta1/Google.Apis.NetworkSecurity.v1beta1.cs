@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12941,7 +12941,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing InterceptDeployment object</summary>
+    /// <summary>Message describing InterceptDeployment object NEXT ID: 10</summary>
     public class InterceptDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -12980,6 +12980,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. User-provided description of the deployment. Used as additional context for the deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>
         /// Required. Immutable. The regional load balancer which the intercepted traffic should be forwarded to. Format
@@ -13054,7 +13060,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing InterceptDeploymentGroup object</summary>
+    /// <summary>Message describing InterceptDeploymentGroup object NEXT ID: 10</summary>
     public class InterceptDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The list of Intercept Endpoint Groups that are connected to this resource.</summary>
@@ -13097,6 +13103,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. User-provided description of the deployment group. Used as additional context for the deployment
+        /// group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
