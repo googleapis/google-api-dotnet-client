@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11222,9 +11222,9 @@ namespace Google.Apis.Monitoring.v3.Data
         /// Required. The Log Analytics SQL query to run, as a string. The query must conform to the required shape.
         /// Specifically, the query must not try to filter the input by time. A filter will automatically be applied to
         /// filter the input so that the query receives all rows received since the last time the query was run.For
-        /// example, the following query extracts all log entries containing an HTTP request:SELECT timestamp, log_name,
-        /// severity, http_request, resource, labels FROM my-project.global._Default._AllLogs WHERE http_request IS NOT
-        /// NULL
+        /// example, the following query extracts all log entries containing an HTTP request: SELECT timestamp,
+        /// log_name, severity, http_request, resource, labels FROM my-project.global._Default._AllLogs WHERE
+        /// http_request IS NOT NULL
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
