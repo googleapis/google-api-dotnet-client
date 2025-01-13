@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2668,6 +2668,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Encryption information of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
+
         /// <summary>Output only. redis-7.2, valkey-7.5</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engineVersion")]
         public virtual string EngineVersion { get; set; }
@@ -2779,6 +2783,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Output only. The cluster uid of the backup collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUid")]
         public virtual string ClusterUid { get; set; }
+
+        /// <summary>Output only. The KMS key used to encrypt the backups under this backup collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
 
         /// <summary>Identifier. Full resource path of the backup collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3062,12 +3070,20 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryEndpoints")]
         public virtual System.Collections.Generic.IList<DiscoveryEndpoint> DiscoveryEndpoints { get; set; }
 
+        /// <summary>Output only. Encryption information of the data at rest of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
+
         /// <summary>
         /// Optional. Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as
         /// the clusters. Read permission is required to import from the provided Cloud Storage objects.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GcsBackupSource GcsSource { get; set; }
+
+        /// <summary>Optional. The KMS key used to encrypt the at-rest data of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
 
         /// <summary>Optional. ClusterMaintenancePolicy determines when to allow or deny updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
@@ -4037,6 +4053,67 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>EncryptionInfo describes the encryption information of a cluster or a backup.</summary>
+    public class EncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Type of encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
+        public virtual string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Output only. The state of the primary version of the KMS key perceived by the system. This field is not
+        /// populated in backups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyPrimaryState")]
+        public virtual string KmsKeyPrimaryState { get; set; }
+
+        /// <summary>Output only. KMS key versions that are being used to protect the data at-rest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersions")]
+        public virtual System.Collections.Generic.IList<string> KmsKeyVersions { get; set; }
+
+        private string _lastUpdateTimeRaw;
+
+        private object _lastUpdateTime;
+
+        /// <summary>Output only. The most recent time when the encryption info was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual string LastUpdateTimeRaw
+        {
+            get => _lastUpdateTimeRaw;
+            set
+            {
+                _lastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUpdateTime
+        {
+            get => _lastUpdateTime;
+            set
+            {
+                _lastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Proto representing the access that a user has to a specific feature/service. NextId: 3.</summary>
     public class Entitlement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4779,7 +4856,8 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     public class MachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of CPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/342346271) add proto validations
+        /// again after bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
