@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5736,7 +5736,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// Filter for the conversations that should apply this analysis rule. An empty filter means this analysis rule
-        /// applies to all conversations.
+        /// applies to all conversations. Refer to https://cloud.google.com/contact-center/insights/docs/filtering for
+        /// details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationFilter")]
         public virtual string ConversationFilter { get; set; }
@@ -9304,7 +9305,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configs for the input data used to create the issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A filter to reduce the conversations used for training the model to a specific subset.</summary>
+        /// <summary>
+        /// A filter to reduce the conversations used for training the model to a specific subset. Refer to
+        /// https://cloud.google.com/contact-center/insights/docs/filtering for details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
@@ -10440,6 +10444,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The metadata from querying metrics.</summary>
     public class GoogleCloudContactcenterinsightsV1QueryMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether the result rows were truncated because the result row size is too large to materialize.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultIsTruncated")]
+        public virtual System.Nullable<bool> ResultIsTruncated { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11429,7 +11439,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>String with specific view properties, must be non-empty.</summary>
+        /// <summary>
+        /// A filter to reduce conversation results to a specific subset. Refer to
+        /// https://cloud.google.com/contact-center/insights/docs/filtering for details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -14693,7 +14706,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Configs for the input data used to create the issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A filter to reduce the conversations used for training the model to a specific subset.</summary>
+        /// <summary>
+        /// A filter to reduce the conversations used for training the model to a specific subset. Refer to
+        /// https://cloud.google.com/contact-center/insights/docs/filtering for details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
@@ -15071,6 +15087,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The metadata from querying metrics.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether the result rows were truncated because the result row size is too large to materialize.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultIsTruncated")]
+        public virtual System.Nullable<bool> ResultIsTruncated { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
