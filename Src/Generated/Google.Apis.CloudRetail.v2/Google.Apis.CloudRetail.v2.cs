@@ -9479,6 +9479,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onewaySynonymsAction")]
         public virtual GoogleCloudRetailV2RuleOnewaySynonymsAction OnewaySynonymsAction { get; set; }
 
+        /// <summary>Pins one or more specified products to a specific position in the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinAction")]
+        public virtual GoogleCloudRetailV2RulePinAction PinAction { get; set; }
+
         /// <summary>Redirects a shopper to a specific page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectAction")]
         public virtual GoogleCloudRetailV2RuleRedirectAction RedirectAction { get; set; }
@@ -9654,6 +9658,33 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
         public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Pins one or more specified products to a specific position in the results. * Rule Condition: Must specify
+    /// non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't
+    /// specify both. * Action Input: mapping of `[pin_position, product_id]` pairs (pin position uses 1-based
+    /// indexing). * Action Result: Will pin products with matching ids to the position specified in the final result
+    /// order. Example: Suppose the query is `shoes`, the Condition.query_terms is `shoes` and the pin_map has `{1,
+    /// "pid1"}`, then product with `pid1` will be pinned to the top position in the final results. If multiple
+    /// PinActions are matched to a single request the actions will be processed from most to least recently updated.
+    /// Pins to positions larger than the max allowed page size of 120 are not allowed.
+    /// </summary>
+    public class GoogleCloudRetailV2RulePinAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A map of positions to product_ids. Partial matches per action are allowed, if a certain position
+        /// in the map is already filled that `[position, product_id]` pair will be ignored but the rest may still be
+        /// applied. This case will only occur if multiple pin actions are matched to a single request, as the map
+        /// guarantees that pin positions are unique within the same action. Duplicate product_ids are not permitted
+        /// within a single pin map. The max size of this map is 120, equivalent to the max [request page
+        /// size](https://cloud.google.com/retail/docs/reference/rest/v2/projects.locations.catalogs.placements/search#request-body).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinMap")]
+        public virtual System.Collections.Generic.IDictionary<string, string> PinMap { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
