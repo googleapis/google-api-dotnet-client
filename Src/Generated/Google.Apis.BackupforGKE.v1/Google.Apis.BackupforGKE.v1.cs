@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4387,7 +4387,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. Human-readable description of why the backup is in the current `state`.</summary>
+        /// <summary>
+        /// Output only. Human-readable description of why the backup is in the current `state`. This field is only
+        /// meant for human readability and should not be used programmatically as this field is not guaranteed to be
+        /// consistent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateReason")]
         public virtual string StateReason { get; set; }
 
@@ -4609,7 +4613,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. Human-readable description of why BackupPlan is in the current `state`</summary>
+        /// <summary>
+        /// Output only. Human-readable description of why BackupPlan is in the current `state`. This field is only
+        /// meant for human readability and should not be used programmatically as this field is not guaranteed to be
+        /// consistent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateReason")]
         public virtual string StateReason { get; set; }
 
@@ -5742,7 +5750,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. Human-readable description of why the Restore is in its current state.</summary>
+        /// <summary>
+        /// Output only. Human-readable description of why the Restore is in its current state. This field is only meant
+        /// for human readability and should not be used programmatically as this field is not guaranteed to be
+        /// consistent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateReason")]
         public virtual string StateReason { get; set; }
 
@@ -6011,7 +6023,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. Human-readable description of why RestorePlan is in the current `state`</summary>
+        /// <summary>
+        /// Output only. Human-readable description of why RestorePlan is in the current `state`. This field is only
+        /// meant for human readability and should not be used programmatically as this field is not guaranteed to be
+        /// consistent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateReason")]
         public virtual string StateReason { get; set; }
 
@@ -6518,7 +6534,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Output only. A human readable message explaining why the VolumeBackup is in its current state.
+        /// Output only. A human readable message explaining why the VolumeBackup is in its current state. This field is
+        /// only meant for human consumption and should not be used programmatically as this field is not guaranteed to
+        /// be consistent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
