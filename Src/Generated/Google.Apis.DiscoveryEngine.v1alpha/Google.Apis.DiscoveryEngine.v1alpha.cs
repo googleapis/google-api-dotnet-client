@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1153,7 +1153,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 /// regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned.
                                 /// This field must be unique among all Documents with the same parent. Otherwise, an
                                 /// `ALREADY_EXISTS` error is returned. This field must conform to
-                                /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
+                                /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 128
                                 /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
@@ -11264,8 +11264,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be
                             /// unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is
                             /// returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034)
-                            /// standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is
-                            /// returned.
+                            /// standard with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error
+                            /// is returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string DocumentId { get; set; }
@@ -17284,8 +17284,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// <param name="evaluation">
                 /// Required. The evaluation resource name, such as
                 /// `projects/{project}/locations/{location}/evaluations/{evaluation}`. If the caller does not have
-                /// permission to list EvaluationResult under this evaluation, regardless of whether or not this
-                /// evaluation set exists, a `PERMISSION_DENIED` error is returned.
+                /// permission to list ListEvaluationResultsResponse.EvaluationResult under this evaluation, regardless
+                /// of whether or not this evaluation set exists, a `PERMISSION_DENIED` error is returned.
                 /// </param>
                 public virtual ListResultsRequest ListResults(string evaluation)
                 {
@@ -17305,16 +17305,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <summary>
                     /// Required. The evaluation resource name, such as
                     /// `projects/{project}/locations/{location}/evaluations/{evaluation}`. If the caller does not have
-                    /// permission to list EvaluationResult under this evaluation, regardless of whether or not this
-                    /// evaluation set exists, a `PERMISSION_DENIED` error is returned.
+                    /// permission to list ListEvaluationResultsResponse.EvaluationResult under this evaluation,
+                    /// regardless of whether or not this evaluation set exists, a `PERMISSION_DENIED` error is
+                    /// returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("evaluation", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Evaluation { get; private set; }
 
                     /// <summary>
-                    /// Maximum number of EvaluationResult to return. If unspecified, defaults to 100. The maximum
-                    /// allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an
-                    /// `INVALID_ARGUMENT` error is returned.
+                    /// Maximum number of ListEvaluationResultsResponse.EvaluationResult to return. If unspecified,
+                    /// defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000.
+                    /// If this field is negative, an `INVALID_ARGUMENT` error is returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -19488,6 +19489,211 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
             }
 
             /// <summary>
+            /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
+            /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
+            /// automatically crawl the internet at its own convenience. When dedicated crawl rate is set, it will
+            /// return vertex AI's dedicated crawl rate time series.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The location resource where crawl rate management will be performed. Format:
+            /// `projects/{project}/locations/{location}`
+            /// </param>
+            public virtual ObtainCrawlRateRequest ObtainCrawlRate(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest body, string location)
+            {
+                return new ObtainCrawlRateRequest(this.service, body, location);
+            }
+
+            /// <summary>
+            /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
+            /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
+            /// automatically crawl the internet at its own convenience. When dedicated crawl rate is set, it will
+            /// return vertex AI's dedicated crawl rate time series.
+            /// </summary>
+            public class ObtainCrawlRateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse>
+            {
+                /// <summary>Constructs a new ObtainCrawlRate request.</summary>
+                public ObtainCrawlRateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The location resource where crawl rate management will be performed. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "obtainCrawlRate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+location}:obtainCrawlRate";
+
+                /// <summary>Initializes ObtainCrawlRate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Removes the dedicated crawl rate for a craw_rate_scope. If the dedicated crawl rate was set, this will
+            /// disable vertex AI's crawl bot from using the dedicated crawl rate for crawling. If the dedicated crawl
+            /// rate was not set, this is a no-op.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The location resource where crawl rate management will be performed. Format:
+            /// `projects/{project}/locations/{location}`
+            /// </param>
+            public virtual RemoveDedicatedCrawlRateRequest RemoveDedicatedCrawlRate(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest body, string location)
+            {
+                return new RemoveDedicatedCrawlRateRequest(this.service, body, location);
+            }
+
+            /// <summary>
+            /// Removes the dedicated crawl rate for a craw_rate_scope. If the dedicated crawl rate was set, this will
+            /// disable vertex AI's crawl bot from using the dedicated crawl rate for crawling. If the dedicated crawl
+            /// rate was not set, this is a no-op.
+            /// </summary>
+            public class RemoveDedicatedCrawlRateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new RemoveDedicatedCrawlRate request.</summary>
+                public RemoveDedicatedCrawlRateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The location resource where crawl rate management will be performed. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "removeDedicatedCrawlRate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+location}:removeDedicatedCrawlRate";
+
+                /// <summary>Initializes RemoveDedicatedCrawlRate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Sets the dedicated crawl rate for a crawl_rate_scope. If the dedicated crawl rate was not set, this will
+            /// enable vertex AI's crawl bot to use the new dedicated crawl rate for crawling. If the dedicated crawl
+            /// rate was set, vertex AI's crawl bot will try to update the rate to the new value. If the new value is
+            /// too high, the crawl bot may crawl at a lower rate to avoid overloading the user's website.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="location">
+            /// Required. The location resource where crawl rate management will be performed. Format:
+            /// `projects/{project}/locations/{location}`
+            /// </param>
+            public virtual SetDedicatedCrawlRateRequest SetDedicatedCrawlRate(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest body, string location)
+            {
+                return new SetDedicatedCrawlRateRequest(this.service, body, location);
+            }
+
+            /// <summary>
+            /// Sets the dedicated crawl rate for a crawl_rate_scope. If the dedicated crawl rate was not set, this will
+            /// enable vertex AI's crawl bot to use the new dedicated crawl rate for crawling. If the dedicated crawl
+            /// rate was set, vertex AI's crawl bot will try to update the rate to the new value. If the new value is
+            /// too high, the crawl bot may crawl at a lower rate to avoid overloading the user's website.
+            /// </summary>
+            public class SetDedicatedCrawlRateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new SetDedicatedCrawlRate request.</summary>
+                public SetDedicatedCrawlRateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest body, string location) : base(service)
+                {
+                    Location = location;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The location resource where crawl rate management will be performed. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Location { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "setDedicatedCrawlRate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+location}:setDedicatedCrawlRate";
+
+                /// <summary>Initializes SetDedicatedCrawlRate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Creates a Collection and sets up the DataConnector for it. To stop a DataConnector after setup, use the
             /// CollectionService.DeleteCollection method.
             /// </summary>
@@ -20521,6 +20727,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Configuration data for advance site search.</summary>
     public class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set true, automatic refresh is disabled for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAutomaticRefresh")]
+        public virtual System.Nullable<bool> DisableAutomaticRefresh { get; set; }
+
+        /// <summary>If set true, initial indexing is disabled for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableInitialIndex")]
+        public virtual System.Nullable<bool> DisableInitialIndex { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -20863,8 +21077,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1ControlBoostAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0
-        /// (No-op).
+        /// Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0 (No-op).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; }
@@ -20883,6 +21096,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0
+        /// (No-op).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedBoost")]
+        public virtual System.Nullable<float> FixedBoost { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21660,6 +21880,90 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1DeleteEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the IdentityMappingStoreService.DeleteIdentityMappingStore operation. This
+    /// will be returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DeleteIdentityMappingStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
@@ -23882,7 +24186,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. To leverage this, document
         /// embedding is required. The ranking expression setting in ServingConfig applies to all search requests served
-        /// by the serving config. However, if SearchRequest.ranking_expression is specified, it overrides the
+        /// by the serving config. However, if `SearchRequest.ranking_expression` is specified, it overrides the
         /// ServingConfig ranking expression. The ranking expression is a single function or multiple functions that are
         /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
         /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
@@ -24096,7 +24400,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1TargetSite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. If set to false, a uri_pattern is generated to include all pages whose address contains the
+        /// Immutable. If set to false, a uri_pattern is generated to include all pages whose address contains the
         /// provided_uri_pattern. If set to true, an uri_pattern is generated to try to be an exact match of the
         /// provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one.
         /// provided_uri_pattern is always normalized to generate the URI pattern to be used by the search engine.
@@ -25095,6 +25399,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relatedQuestions")]
         public virtual System.Collections.Generic.IList<string> RelatedQuestions { get; set; }
 
+        /// <summary>Optional. Safety ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSafetyRating> SafetyRatings { get; set; }
+
         /// <summary>The state of the answer generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -25438,6 +25746,27 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Enable the safety filtering on the answer response. It is false by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enable")]
         public virtual System.Nullable<bool> Enable { get; set; }
+
+        /// <summary>
+        /// Optional. Safety settings. This settings are effective only when the safety_spec.enable is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpecSafetySetting> SafetySettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety settings.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpecSafetySetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Harm category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Required. The harm block threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual string Threshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26917,7 +27246,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// while setting up the DataConnector singleton resource. Setting up connector on an existing Collection is not
         /// supported. This output only field contains a subset of the DataConnector fields, including `name`,
         /// `data_source`, `entities.entity_name` and `entities.data_store`. To get more details about a data connector,
-        /// use the DataConnector.GetDataConnector method.
+        /// use the DataConnectorService.GetDataConnector method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataConnector")]
         public virtual GoogleCloudDiscoveryengineV1alphaDataConnector DataConnector { get; set; }
@@ -27556,8 +27885,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaControlBoostAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0
-        /// (No-op).
+        /// Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0 (No-op).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; }
@@ -27576,6 +27904,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0
+        /// (No-op).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedBoost")]
+        public virtual System.Nullable<float> FixedBoost { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28514,8 +28849,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
     /// <summary>
     /// Manages the connection to external data sources for all data stores grouped under a Collection. It's a singleton
-    /// resource of Collection. The initialization is only supported through SetUpDataConnector method, which will
-    /// create a new Collection and initialize its DataConnector. //
+    /// resource of Collection. The initialization is only supported through DataConnectorService.SetUpDataConnector
+    /// method, which will create a new Collection and initialize its DataConnector.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDataConnector : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29421,6 +29756,90 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the IdentityMappingStoreService.DeleteIdentityMappingStore operation. This
+    /// will be returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteIdentityMappingStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for DeleteSchema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29839,7 +30258,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Immutable. The identifier of the document. Id should conform to
-        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
+        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 128 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -31806,6 +32225,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The UTC time when the next data sync is expected to start for the Data Connector. Customers are
+        /// only able to specify the hour and minute to schedule the data sync. This is utilized when the data connector
+        /// has a refresh interval greater than 1 day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextSyncTime")]
+        public virtual GoogleTypeDateTime NextSyncTime { get; set; }
+
+        /// <summary>
         /// Optional. The refresh interval to sync the Access Control List information for the documents ingested by
         /// this connector. If not set, the access control list will be refreshed at the default interval of 30 minutes.
         /// The identity refresh interval can be at least 30 minutes and at most 7 days.
@@ -32874,7 +33301,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Response message for EvaluationService.ListEvaluationResults method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The EvaluationResults.</summary>
+        /// <summary>The evaluation results for the SampleQuerys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaListEvaluationResultsResponseEvaluationResult> EvaluationResults { get; set; }
 
@@ -33103,6 +33530,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CrawlRateManagementService.ObtainCrawlRate method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The scope of the crawl rate that the user wants to monitor. Currently, only domain and host name
+        /// are supported. A domain name example: `abc.com`. A host name example: `www.abc.com`. Please do not include
+        /// `/` in the domain or host name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crawlRateScope")]
+        public virtual string CrawlRateScope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34482,7 +34924,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Full resource name of the SiteCredential, such as
+        /// Optional. Full resource name of the `SiteCredential`, such as
         /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine/siteCredentials/*`. Only set to crawl
         /// private URIs.
         /// </summary>
@@ -34546,6 +34988,127 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Reason why the URI was not crawled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CrawlRateManagementService.RemoveDedicatedCrawlRate operation. This will
+    /// be returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request message for CrawlRateManagementService.RemoveDedicatedCrawlRate method. The user can remove the
+    /// dedicated crawl rate for a crawl_rate_scope they own, and Google will fall back to organic crawl, and the crawl
+    /// rate will be determined by Google.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The scope of the crawl rate change. Currently, only domain and host name are supported. A domain
+        /// name example: `abc.com`. A host name example: `www.abc.com`. Please do not include `/` in the domain or host
+        /// name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crawlRateScope")]
+        public virtual string CrawlRateScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for CrawlRateManagementService.RemoveDedicatedCrawlRate method. It simply returns the state of
+    /// the response, and an error message if the state is FAILED.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors from service when handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Output only. The state of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34777,6 +35340,37 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request for resuming training of an engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaResumeEngineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety rating corresponding to the generated content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSafetyRating : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Indicates whether the content was filtered out because of this rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocked")]
+        public virtual System.Nullable<bool> Blocked { get; set; }
+
+        /// <summary>Output only. Harm category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Output only. Harm probability levels in the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probability")]
+        public virtual string Probability { get; set; }
+
+        /// <summary>Output only. Harm probability score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probabilityScore")]
+        public virtual System.Nullable<float> ProbabilityScore { get; set; }
+
+        /// <summary>Output only. Harm severity levels in the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Output only. Harm severity score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severityScore")]
+        public virtual System.Nullable<float> SeverityScore { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -35872,7 +36466,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Specification to enable natural language understanding capabilities for search requests.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition under which filter extraction should occur. Default to Condition.DISABLED.</summary>
+        /// <summary>
+        /// The condition under which filter extraction should occur. Server behavior defaults to `DISABLED`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterExtractionCondition")]
         public virtual string FilterExtractionCondition { get; set; }
 
@@ -36712,7 +37308,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. To leverage this, document
         /// embedding is required. The ranking expression setting in ServingConfig applies to all search requests served
-        /// by the serving config. However, if SearchRequest.ranking_expression is specified, it overrides the
+        /// by the serving config. However, if `SearchRequest.ranking_expression` is specified, it overrides the
         /// ServingConfig ranking expression. The ranking expression is a single function or multiple functions that are
         /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
         /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
@@ -36993,6 +37589,144 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The user query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CrawlRateManagementService.SetDedicatedCrawlRate operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request message for CrawlRateManagementService.SetDedicatedCrawlRate method. The user can set the crawl rate for
+    /// a crawl_rate_scope they own. They can set up an overall crawl rate, or set up a user-triggered crawl rate and a
+    /// auto-refresh crawl rate separately. If an overall crawl rate is set, Vertex AI will automatically splits
+    /// crawl_rate into user-triggered and auto-refresh.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The crawl QPS set by the user. It is not guaranteed that Vertex crawl bot will crawl at this QPS.
+        /// If the crawl rate is too high, the real QPS may be lower than the value set by the user to avoid overloading
+        /// the user's website.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crawlRate")]
+        public virtual System.Nullable<int> CrawlRate { get; set; }
+
+        /// <summary>
+        /// Required. The scope of the crawl rate that the user wants to config. Currently, only domain and host name
+        /// are supported. A domain name example: `abc.com`. A host name example: `www.abc.com`. Please do not include
+        /// `/` in the domain or host name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crawlRateScope")]
+        public virtual string CrawlRateScope { get; set; }
+
+        /// <summary>Optional. Whether it’s the crawl rate of user-triggered or auto-refresh.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crawlType")]
+        public virtual string CrawlType { get; set; }
+
+        /// <summary>Optional. Whether the rate is explicitly set by users, or set by vertex AI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for CrawlRateManagementService.SetDedicatedCrawlRate method. It simply returns the state of the
+    /// response, and an error message if the state is FAILED.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors from service when handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Output only. The state of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37333,8 +38067,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IList<string> Entities { get; set; }
 
         /// <summary>
-        /// The FHIR resource types to import. The resource types should be a subset of all supported FHIR resource
-        /// types http://shortn/_J8ymdyOokT. Default to all supported FHIR resource types if empty.
+        /// The FHIR resource types to import. The resource types should be a subset of all [supported FHIR resource
+        /// types](https://cloud.google.com/generative-ai-app-builder/docs/fhir-schema-reference#resource-level-specification).
+        /// Default to all supported FHIR resource types if empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirResourceTypes")]
         public virtual System.Collections.Generic.IList<string> HealthcareFhirResourceTypes { get; set; }
@@ -37414,7 +38149,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaTargetSite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. If set to false, a uri_pattern is generated to include all pages whose address contains the
+        /// Immutable. If set to false, a uri_pattern is generated to include all pages whose address contains the
         /// provided_uri_pattern. If set to true, an uri_pattern is generated to try to be an exact match of the
         /// provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one.
         /// provided_uri_pattern is always normalized to generate the URI pattern to be used by the search engine.
@@ -38437,6 +39172,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Configuration data for advance site search.</summary>
     public class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set true, automatic refresh is disabled for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAutomaticRefresh")]
+        public virtual System.Nullable<bool> DisableAutomaticRefresh { get; set; }
+
+        /// <summary>If set true, initial indexing is disabled for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableInitialIndex")]
+        public virtual System.Nullable<bool> DisableInitialIndex { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -38779,8 +39522,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1betaControlBoostAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0
-        /// (No-op).
+        /// Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0 (No-op).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; }
@@ -38799,6 +39541,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0
+        /// (No-op).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedBoost")]
+        public virtual System.Nullable<float> FixedBoost { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39675,6 +40424,90 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaDeleteEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the IdentityMappingStoreService.DeleteIdentityMappingStore operation. This
+    /// will be returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDeleteIdentityMappingStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
@@ -42770,7 +43603,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Specification to enable natural language understanding capabilities for search requests.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition under which filter extraction should occur. Default to Condition.DISABLED.</summary>
+        /// <summary>
+        /// The condition under which filter extraction should occur. Server behavior defaults to `DISABLED`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterExtractionCondition")]
         public virtual string FilterExtractionCondition { get; set; }
 
@@ -42993,7 +43828,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1betaTargetSite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. If set to false, a uri_pattern is generated to include all pages whose address contains the
+        /// Immutable. If set to false, a uri_pattern is generated to include all pages whose address contains the
         /// provided_uri_pattern. If set to true, an uri_pattern is generated to try to be an exact match of the
         /// provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one.
         /// provided_uri_pattern is always normalized to generate the URI pattern to be used by the search engine.
