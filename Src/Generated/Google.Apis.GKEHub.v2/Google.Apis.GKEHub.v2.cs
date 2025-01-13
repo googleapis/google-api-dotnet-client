@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1352,52 +1352,55 @@ namespace Google.Apis.GKEHub.v2.Data
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is
-        /// deprecated.
+        /// Optional. Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling.
+        /// This field is deprecated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowVerticalScale")]
         public virtual System.Nullable<bool> AllowVerticalScale { get; set; }
 
         /// <summary>
-        /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other
-        /// ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored,
-        /// ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the
-        /// presence of the git or oci field.
+        /// Optional. Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and
+        /// the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be
+        /// ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on
+        /// the presence of the git or oci field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>Git repo configuration for the cluster.</summary>
+        /// <summary>Optional. Git repo configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual ConfigManagementGitConfig Git { get; set; }
 
         /// <summary>
-        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud
-        /// Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric
-        /// Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
-        /// `config-management-monitoring` should be bound to the GSA. Deprecated: If Workload Identity Federation for
-        /// GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics:
+        /// Optional. The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to
+        /// Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring
+        /// Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the
+        /// namespace `config-management-monitoring` should be bound to the GSA. Deprecated: If Workload Identity
+        /// Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync
+        /// metrics:
         /// https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricsGcpServiceAccountEmail")]
         public virtual string MetricsGcpServiceAccountEmail { get; set; }
 
-        /// <summary>OCI repo configuration for the cluster.</summary>
+        /// <summary>Optional. OCI repo configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oci")]
         public virtual ConfigManagementOciConfig Oci { get; set; }
 
         /// <summary>
-        /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the
-        /// Config Sync admission webhook and does not prevent drifts.
+        /// Optional. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`,
+        /// disables the Config Sync admission webhook and does not prevent drifts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preventDrift")]
         public virtual System.Nullable<bool> PreventDrift { get; set; }
 
-        /// <summary>Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.</summary>
+        /// <summary>
+        /// Optional. Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
 
-        /// <summary>Set to true to stop syncing configs for a single cluster. Default to false.</summary>
+        /// <summary>Optional. Set to true to stop syncing configs for a single cluster. Default to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
         public virtual System.Nullable<bool> StopSyncing { get; set; }
 
@@ -1462,7 +1465,7 @@ namespace Google.Apis.GKEHub.v2.Data
     /// <summary>State information for ConfigSync.</summary>
     public class ConfigManagementConfigSyncState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether syncing resources to the cluster is stopped at the cluster level.</summary>
+        /// <summary>Output only. Whether syncing resources to the cluster is stopped at the cluster level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterLevelStopSyncingState")]
         public virtual string ClusterLevelStopSyncingState { get; set; }
 
@@ -1471,32 +1474,33 @@ namespace Google.Apis.GKEHub.v2.Data
         public virtual System.Nullable<int> CrCount { get; set; }
 
         /// <summary>
-        /// Information about the deployment of ConfigSync, including the version. of the various Pods deployed
+        /// Output only. Information about the deployment of ConfigSync, including the version. of the various Pods
+        /// deployed
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentState")]
         public virtual ConfigManagementConfigSyncDeploymentState DeploymentState { get; set; }
 
-        /// <summary>Errors pertaining to the installation of Config Sync.</summary>
+        /// <summary>Output only. Errors pertaining to the installation of Config Sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ConfigManagementConfigSyncError> Errors { get; set; }
 
-        /// <summary>The state of the Reposync CRD</summary>
+        /// <summary>Output only. The state of the Reposync CRD</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reposyncCrd")]
         public virtual string ReposyncCrd { get; set; }
 
-        /// <summary>The state of the RootSync CRD</summary>
+        /// <summary>Output only. The state of the RootSync CRD</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootsyncCrd")]
         public virtual string RootsyncCrd { get; set; }
 
-        /// <summary>The state of CS This field summarizes the other fields in this message.</summary>
+        /// <summary>Output only. The state of CS This field summarizes the other fields in this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>The state of ConfigSync's process to sync configs to a cluster.</summary>
+        /// <summary>Output only. The state of ConfigSync's process to sync configs to a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncState")]
         public virtual ConfigManagementSyncState SyncState { get; set; }
 
-        /// <summary>The version of ConfigSync deployed.</summary>
+        /// <summary>Output only. The version of ConfigSync deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual ConfigManagementConfigSyncVersion Version { get; set; }
 
@@ -1593,42 +1597,42 @@ namespace Google.Apis.GKEHub.v2.Data
     public class ConfigManagementGitConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        /// Optional. The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
 
-        /// <summary>URL for the HTTPS proxy to be used when communicating with the Git repo.</summary>
+        /// <summary>Optional. URL for the HTTPS proxy to be used when communicating with the Git repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpsProxy")]
         public virtual string HttpsProxy { get; set; }
 
         /// <summary>
-        /// The path within the Git repository that represents the top level of the repo to sync. Default: the root
-        /// directory of the repository.
+        /// Optional. The path within the Git repository that represents the top level of the repo to sync. Default: the
+        /// root directory of the repository.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDir")]
         public virtual string PolicyDir { get; set; }
 
         /// <summary>
-        /// Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode, token,
-        /// gcpserviceaccount or none. The validation of this is case-sensitive. Required.
+        /// Required. Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode,
+        /// token, gcpserviceaccount or none. The validation of this is case-sensitive. Required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
         public virtual string SecretType { get; set; }
 
-        /// <summary>The branch of the repository to sync from. Default: master.</summary>
+        /// <summary>Optional. The branch of the repository to sync from. Default: master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncBranch")]
         public virtual string SyncBranch { get; set; }
 
-        /// <summary>The URL of the Git repository to use as the source of truth.</summary>
+        /// <summary>Optional. The URL of the Git repository to use as the source of truth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
         public virtual string SyncRepo { get; set; }
 
-        /// <summary>Git revision (tag or hash) to check out. Default HEAD.</summary>
+        /// <summary>Optional. Git revision (tag or hash) to check out. Default HEAD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncRev")]
         public virtual string SyncRev { get; set; }
 
-        /// <summary>Period in seconds between consecutive syncs. Default: 15.</summary>
+        /// <summary>Optional. Period in seconds between consecutive syncs. Default: 15.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncWaitSecs")]
         public virtual System.Nullable<long> SyncWaitSecs { get; set; }
 
@@ -1734,30 +1738,30 @@ namespace Google.Apis.GKEHub.v2.Data
     public class ConfigManagementOciConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        /// Optional. The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// The absolute path of the directory that contains the local resources. Default: the root directory of the
-        /// image.
+        /// Optional. The absolute path of the directory that contains the local resources. Default: the root directory
+        /// of the image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDir")]
         public virtual string PolicyDir { get; set; }
 
-        /// <summary>Type of secret configured for access to the Git repo.</summary>
+        /// <summary>Optional. Type of secret configured for access to the Git repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
         public virtual string SecretType { get; set; }
 
         /// <summary>
-        /// The OCI image repository URL for the package to sync from. e.g.
+        /// Optional. The OCI image repository URL for the package to sync from. e.g.
         /// `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
         public virtual string SyncRepo { get; set; }
 
-        /// <summary>Period in seconds between consecutive syncs. Default: 15.</summary>
+        /// <summary>Optional. Period in seconds between consecutive syncs. Default: 15.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncWaitSecs")]
         public virtual System.Nullable<long> SyncWaitSecs { get; set; }
 
@@ -1976,45 +1980,46 @@ namespace Google.Apis.GKEHub.v2.Data
     public class ConfigManagementSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.
+        /// Optional. Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be
+        /// set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binauthz")]
         public virtual ConfigManagementBinauthzConfig Binauthz { get; set; }
 
         /// <summary>
-        /// The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for
-        /// applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is
-        /// used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different
-        /// from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or
-        /// ClusterSelector.
+        /// Optional. The user-specified cluster name used by Config Sync cluster-name-selector annotation or
+        /// ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet
+        /// membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field
+        /// if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector
+        /// annotation or ClusterSelector.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
-        /// <summary>Config Sync configuration for the cluster.</summary>
+        /// <summary>Optional. Config Sync configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configSync")]
         public virtual ConfigManagementConfigSync ConfigSync { get; set; }
 
         /// <summary>
-        /// Hierarchy Controller configuration for the cluster. Deprecated: Configuring Hierarchy Controller through the
-        /// configmanagement feature is no longer recommended. Use
+        /// Optional. Hierarchy Controller configuration for the cluster. Deprecated: Configuring Hierarchy Controller
+        /// through the configmanagement feature is no longer recommended. Use
         /// https://github.com/kubernetes-sigs/hierarchical-namespaces instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
         public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
 
-        /// <summary>Enables automatic Feature management.</summary>
+        /// <summary>Optional. Enables automatic Feature management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual string Management { get; set; }
 
         /// <summary>
-        /// Policy Controller configuration for the cluster. Deprecated: Configuring Policy Controller through the
-        /// configmanagement feature is no longer recommended. Use the policycontroller feature instead.
+        /// Optional. Policy Controller configuration for the cluster. Deprecated: Configuring Policy Controller through
+        /// the configmanagement feature is no longer recommended. Use the policycontroller feature instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyController")]
         public virtual ConfigManagementPolicyController PolicyController { get; set; }
 
-        /// <summary>Version of ACM installed.</summary>
+        /// <summary>Optional. Version of ACM installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -2025,37 +2030,37 @@ namespace Google.Apis.GKEHub.v2.Data
     /// <summary>**Anthos Config Management**: State for a single cluster.</summary>
     public class ConfigManagementState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Binauthz status.</summary>
+        /// <summary>Output only. Binauthz status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binauthzState")]
         public virtual ConfigManagementBinauthzState BinauthzState { get; set; }
 
         /// <summary>
-        /// This field is set to the `cluster_name` field of the Membership Spec if it is not empty. Otherwise, it is
-        /// set to the cluster's fleet membership name.
+        /// Output only. This field is set to the `cluster_name` field of the Membership Spec if it is not empty.
+        /// Otherwise, it is set to the cluster's fleet membership name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
 
-        /// <summary>Current sync status.</summary>
+        /// <summary>Output only. Current sync status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configSyncState")]
         public virtual ConfigManagementConfigSyncState ConfigSyncState { get; set; }
 
-        /// <summary>Hierarchy Controller status.</summary>
+        /// <summary>Output only. Hierarchy Controller status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyControllerState")]
         public virtual ConfigManagementHierarchyControllerState HierarchyControllerState { get; set; }
 
         /// <summary>
-        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
-        /// MembershipSpec in the FeatureSpec represents the intended state.
+        /// Output only. Membership configuration in the cluster. This represents the actual state in the cluster, while
+        /// the MembershipSpec in the FeatureSpec represents the intended state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
         public virtual ConfigManagementSpec MembershipSpec { get; set; }
 
-        /// <summary>Current install status of ACM's Operator.</summary>
+        /// <summary>Output only. Current install status of ACM's Operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorState")]
         public virtual ConfigManagementOperatorState OperatorState { get; set; }
 
-        /// <summary>PolicyController status.</summary>
+        /// <summary>Output only. PolicyController status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyControllerState")]
         public virtual ConfigManagementPolicyControllerState PolicyControllerState { get; set; }
 
