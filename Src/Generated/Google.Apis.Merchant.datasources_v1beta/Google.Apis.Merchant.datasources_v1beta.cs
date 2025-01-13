@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -776,15 +776,11 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("input")]
         public virtual string Input { get; set; }
 
-        /// <summary>
-        /// Required. The [local inventory](https://support.google.com/merchants/answer/7023001) data source.
-        /// </summary>
+        /// <summary>The [local inventory](https://support.google.com/merchants/answer/7023001) data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localInventoryDataSource")]
         public virtual LocalInventoryDataSource LocalInventoryDataSource { get; set; }
 
-        /// <summary>
-        /// Required. The [merchant review](https://support.google.com/merchants/answer/7045996) data source.
-        /// </summary>
+        /// <summary>The [merchant review](https://support.google.com/merchants/answer/7045996) data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantReviewDataSource")]
         public virtual MerchantReviewDataSource MerchantReviewDataSource { get; set; }
 
@@ -796,33 +792,29 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The [primary data source](https://support.google.com/merchants/answer/7439058) for local and
-        /// online products.
+        /// The [primary data source](https://support.google.com/merchants/answer/7439058) for local and online
+        /// products.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryProductDataSource")]
         public virtual PrimaryProductDataSource PrimaryProductDataSource { get; set; }
 
-        /// <summary>
-        /// Required. The [product review](https://support.google.com/merchants/answer/7045996) data source.
-        /// </summary>
+        /// <summary>The [product review](https://support.google.com/merchants/answer/7045996) data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productReviewDataSource")]
         public virtual ProductReviewDataSource ProductReviewDataSource { get; set; }
 
-        /// <summary>
-        /// Required. The [promotion](https://support.google.com/merchants/answer/2906014) data source.
-        /// </summary>
+        /// <summary>The [promotion](https://support.google.com/merchants/answer/2906014) data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionDataSource")]
         public virtual PromotionDataSource PromotionDataSource { get; set; }
 
         /// <summary>
-        /// Required. The [regional inventory](https://support.google.com/merchants/answer/7439058) data source.
+        /// The [regional inventory](https://support.google.com/merchants/answer/7439058) data source.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalInventoryDataSource")]
         public virtual RegionalInventoryDataSource RegionalInventoryDataSource { get; set; }
 
         /// <summary>
-        /// Required. The [supplemental data source](https://support.google.com/merchants/answer/7439058) for local and
-        /// online products.
+        /// The [supplemental data source](https://support.google.com/merchants/answer/7439058) for local and online
+        /// products.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supplementalProductDataSource")]
         public virtual SupplementalProductDataSource SupplementalProductDataSource { get; set; }
