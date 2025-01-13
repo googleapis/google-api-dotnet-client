@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1284,7 +1284,7 @@ namespace Google.Apis.Iam.v1
                 /// <summary>Updates an existing WorkforcePoolProvider.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The resource name of the provider. Format:
+                /// Identifier. The resource name of the provider. Format:
                 /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkforcePoolProvider body, string name)
@@ -1304,7 +1304,7 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Output only. The resource name of the provider. Format:
+                    /// Identifier. The resource name of the provider. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2008,7 +2008,7 @@ namespace Google.Apis.Iam.v1
             /// <summary>Updates an existing WorkforcePool.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. The resource name of the pool. Format:
+            /// Identifier. The resource name of the pool. Format:
             /// `locations/{location}/workforcePools/{workforce_pool_id}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.WorkforcePool body, string name)
@@ -2028,7 +2028,7 @@ namespace Google.Apis.Iam.v1
                 }
 
                 /// <summary>
-                /// Output only. The resource name of the pool. Format:
+                /// Identifier. The resource name of the pool. Format:
                 /// `locations/{location}/workforcePools/{workforce_pool_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -10254,8 +10254,7 @@ namespace Google.Apis.Iam.v1.Data
         }
 
         /// <summary>
-        /// Output only. The resource name of the pool. Format:
-        /// `locations/{location}/workforcePools/{workforce_pool_id}`
+        /// Identifier. The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -10405,7 +10404,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client ExtraAttributesOauth2Client { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the provider. Format:
+        /// Identifier. The resource name of the provider. Format:
         /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -10478,7 +10477,10 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyData")]
         public virtual KeyData KeyData { get; set; }
 
-        /// <summary>Output only. The resource name of the key.</summary>
+        /// <summary>
+        /// Identifier. The resource name of the key. Format:
+        /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}/keys/{key_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
