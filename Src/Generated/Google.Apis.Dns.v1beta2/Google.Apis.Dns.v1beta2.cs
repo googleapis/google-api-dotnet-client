@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4989,6 +4989,10 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Configurations related to DNS64 for this Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dns64Config")]
+        public virtual PolicyDns64Config Dns64Config { get; set; }
+
         /// <summary>
         /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
         /// connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to
@@ -5060,6 +5064,33 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
         public virtual string Ipv6Address { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DNS64 policies</summary>
+    public class PolicyDns64Config : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The scope to which DNS64 config will be applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual PolicyDns64ConfigScope Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PolicyDns64ConfigScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Controls whether DNS64 is enabled globally at the network level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allQueries")]
+        public virtual System.Nullable<bool> AllQueries { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
