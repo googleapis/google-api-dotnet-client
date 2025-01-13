@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1533,7 +1533,7 @@ namespace Google.Apis.ServiceNetworking.v1
                         /// </summary>
                         /// <param name="name">
                         /// Required. The network that the consumer is using to connect with services. Must be in the
-                        /// form of services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName}
+                        /// form of services/{service}/projects/{project}/global/networks/{network}/dnsZones/{zoneName}
                         /// Where {service} is the peering service that is managing connectivity for the service
                         /// producer's organization. For Google services that support this {project} is the project
                         /// number, as in '12345' {network} is the network name. {zoneName} is the DNS zone name
@@ -1559,8 +1559,8 @@ namespace Google.Apis.ServiceNetworking.v1
                             /// <summary>
                             /// Required. The network that the consumer is using to connect with services. Must be in
                             /// the form of
-                            /// services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName} Where
-                            /// {service} is the peering service that is managing connectivity for the service
+                            /// services/{service}/projects/{project}/global/networks/{network}/dnsZones/{zoneName}
+                            /// Where {service} is the peering service that is managing connectivity for the service
                             /// producer's organization. For Google services that support this {project} is the project
                             /// number, as in '12345' {network} is the network name. {zoneName} is the DNS zone name
                             /// </summary>
