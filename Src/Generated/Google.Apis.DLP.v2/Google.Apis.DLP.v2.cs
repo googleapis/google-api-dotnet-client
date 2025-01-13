@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13941,7 +13941,7 @@ namespace Google.Apis.DLP.v2.Data
     /// characters long. In the case that the identifier is the empty string, it will be skipped. See
     /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more. Note: We recommend using
     /// CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size,
-    /// plus warrant referential integrity.
+    /// plus warrant referential integrity. FPE incurs significant latency costs.
     /// </summary>
     public class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15926,12 +15926,21 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2Export : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Store all table and column profiles in an existing table or a new table in an existing dataset. Each
-        /// re-generation will result in new rows in BigQuery. Data is inserted using [streaming
+        /// Store all profiles to BigQuery. * The system will create a new dataset and table for you if none are are
+        /// provided. The dataset will be named `sensitive_data_protection_discovery` and table will be named
+        /// `discovery_profiles`. This table will be placed in the same project as the container project running the
+        /// scan. The configuration will be updated with the fields set after the first profile is generated and the
+        /// dataset and table are created. * See [Analyze data profiles stored in
+        /// BigQuery](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles) * See [Sample
+        /// queries for your BigQuery
+        /// table](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#sample_sql_queries). *
+        /// Data is inserted using [streaming
         /// insert](https://cloud.google.com/blog/products/bigquery/life-of-a-bigquery-streaming-insert) and so data may
-        /// be in the buffer for a period of time after the profile has finished. The Pub/Sub notification is sent
+        /// be in the buffer for a period of time after the profile has finished. * The Pub/Sub notification is sent
         /// before the streaming buffer is guaranteed to be written, so data may not be instantly visible to queries by
-        /// the time your topic receives the Pub/Sub notification.
+        /// the time your topic receives the Pub/Sub notification. * The best practice is to use the same table for an
+        /// entire organization so that you can take advantage of the provided Looker reports. If you use VPC Service
+        /// Controls to define security perimeters, then you must use a separate table for each boundary.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileTable")]
         public virtual GooglePrivacyDlpV2BigQueryTable ProfileTable { get; set; }
@@ -18491,7 +18500,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoHashConfig")]
         public virtual GooglePrivacyDlpV2CryptoHashConfig CryptoHashConfig { get; set; }
 
-        /// <summary>Ffx-Fpe</summary>
+        /// <summary>
+        /// Ffx-Fpe. Strongly discouraged, consider using CryptoDeterministicConfig instead. Fpe is computationally
+        /// expensive incurring latency costs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoReplaceFfxFpeConfig")]
         public virtual GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig CryptoReplaceFfxFpeConfig { get; set; }
 
