@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5439,23 +5439,23 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     /// </summary>
     public class Node : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identifier of the VM e.g. "test-read-0601-407e52be-ms3l".</summary>
+        /// <summary>Output only. The identifier of the VM e.g. "test-read-0601-407e52be-ms3l".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The private IP address of the VM e.g. "10.57.0.34".</summary>
+        /// <summary>Output only. The private IP address of the VM e.g. "10.57.0.34".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ip")]
         public virtual string Ip { get; set; }
 
         /// <summary>
-        /// Determined by state of the compute VM and postgres-service health. Compute VM state can have values listed
-        /// in https://cloud.google.com/compute/docs/instances/instance-life-cycle and postgres-service health can have
-        /// values: HEALTHY and UNHEALTHY.
+        /// Output only. Determined by state of the compute VM and postgres-service health. Compute VM state can have
+        /// values listed in https://cloud.google.com/compute/docs/instances/instance-life-cycle and postgres-service
+        /// health can have values: HEALTHY and UNHEALTHY.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>The Compute Engine zone of the VM e.g. "us-central1-b".</summary>
+        /// <summary>Output only. The Compute Engine zone of the VM e.g. "us-central1-b".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
         public virtual string ZoneId { get; set; }
 
@@ -6684,7 +6684,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     public class StorageDatabasecenterPartnerapiV1mainMachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of CPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/342346271) add proto validations
+        /// again after bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
