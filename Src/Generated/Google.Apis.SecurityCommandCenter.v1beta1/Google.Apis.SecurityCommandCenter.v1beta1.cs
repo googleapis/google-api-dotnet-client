@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2511,13 +2511,25 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("classification")]
         public virtual string Classification { get; set; }
 
-        /// <summary>Total BPS (bytes per second) volume of attack.</summary>
+        /// <summary>
+        /// Total BPS (bytes per second) volume of attack. Deprecated - refer to volume_bps_long instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeBps")]
         public virtual System.Nullable<int> VolumeBps { get; set; }
 
-        /// <summary>Total PPS (packets per second) volume of attack.</summary>
+        /// <summary>Total BPS (bytes per second) volume of attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeBpsLong")]
+        public virtual System.Nullable<long> VolumeBpsLong { get; set; }
+
+        /// <summary>
+        /// Total PPS (packets per second) volume of attack. Deprecated - refer to volume_pps_long instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumePps")]
         public virtual System.Nullable<int> VolumePps { get; set; }
+
+        /// <summary>Total PPS (packets per second) volume of attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumePpsLong")]
+        public virtual System.Nullable<long> VolumePpsLong { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6308,13 +6320,25 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("classification")]
         public virtual string Classification { get; set; }
 
-        /// <summary>Total BPS (bytes per second) volume of attack.</summary>
+        /// <summary>
+        /// Total BPS (bytes per second) volume of attack. Deprecated - refer to volume_bps_long instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeBps")]
         public virtual System.Nullable<int> VolumeBps { get; set; }
 
-        /// <summary>Total PPS (packets per second) volume of attack.</summary>
+        /// <summary>Total BPS (bytes per second) volume of attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeBpsLong")]
+        public virtual System.Nullable<long> VolumeBpsLong { get; set; }
+
+        /// <summary>
+        /// Total PPS (packets per second) volume of attack. Deprecated - refer to volume_pps_long instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumePps")]
         public virtual System.Nullable<int> VolumePps { get; set; }
+
+        /// <summary>Total PPS (packets per second) volume of attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumePpsLong")]
+        public virtual System.Nullable<long> VolumePpsLong { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
