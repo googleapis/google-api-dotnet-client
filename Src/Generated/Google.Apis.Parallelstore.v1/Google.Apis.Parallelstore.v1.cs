@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1418,9 +1418,12 @@ namespace Google.Apis.Parallelstore.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The version of DAOS software running in the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("daosVersion")]
-        public virtual string DaosVersion { get; set; }
+        /// <summary>
+        /// Optional. The deployment type of the instance. Allowed values are: * `SCRATCH`: the instance is a scratch
+        /// instance. * `PERSISTENT`: the instance is a persistent instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentType")]
+        public virtual string DeploymentType { get; set; }
 
         /// <summary>Optional. The description of the instance. 2048 characters or less.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
