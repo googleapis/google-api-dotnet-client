@@ -46,6 +46,7 @@ namespace Google.Apis.Services
     public abstract class BaseClientService : IClientService
     {
         private const string DefaultUniverseDomain = "googleapis.com";
+        private const string UniverseDomainEnvironmentVariable = "GOOGLE_CLOUD_UNIVERSE_DOMAIN";
 
         /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<BaseClientService>();
@@ -212,7 +213,8 @@ namespace Google.Apis.Services
         protected string BaseUriOverride { get; }
 
         /// <summary>
-        /// The universe domain to connect to, or null to use the default universe domain <see cref="DefaultUniverseDomain"/>.
+        /// The universe domain to connect to, or null to use the default universe domain,
+        /// which may be configured via the <see cref="UniverseDomainEnvironmentVariable"/> .
         /// </summary>
         /// <remarks>
         /// <para>
@@ -228,6 +230,24 @@ namespace Google.Apis.Services
                 "Build a new Client specifying a new universe domain value instead.")]
             set; 
         }
+
+        /// <summary>
+        /// The configured universe domain, which is:
+        /// <list type="bullet">
+        /// <item>
+        /// <see cref="UniverseDomain"/> if not null.
+        /// </item>
+        /// <item>
+        /// Otherwise, the value of the environment variable with name <see cref="UniverseDomainEnvironmentVariable"/>
+        /// if set to a non empty or blank-only value.
+        /// </item>
+        /// <item>
+        /// Otherwise, null.
+        /// </item>
+        /// </list>
+        /// </summary>
+        private string EffectiveConfiguredUniverseDomain =>
+            UniverseDomain ?? GetNonWhiteSpaceOrNullEnvironmentVariable(UniverseDomainEnvironmentVariable);
 
         /// <summary>
         /// The timeout to set on <see cref="HttpClient"/> instances used by the service.
@@ -251,7 +271,7 @@ namespace Google.Apis.Services
                 GZipEnabled = GZipEnabled,
                 ApplicationName = ApplicationName,
                 GoogleApiClientHeader = versionHeader,
-                UniverseDomain = UniverseDomain ?? DefaultUniverseDomain,
+                UniverseDomain = EffectiveConfiguredUniverseDomain ?? DefaultUniverseDomain,
             };
 
             // Add the user's input initializer.
@@ -301,7 +321,8 @@ namespace Google.Apis.Services
         }
 
         /// <summary>
-        /// Gets the effective URI taking into account the <see cref="UniverseDomain"/>.
+        /// Gets the effective URI taking into account the <see cref="UniverseDomain"/> and the value of
+        /// the <see cref="UniverseDomainEnvironmentVariable"/>.
         /// </summary>
         /// <param name="explicitUri">An explicit URI. May be null.</param>
         /// <param name="defaultUri">A default URI. May be null.</param>
@@ -309,8 +330,8 @@ namespace Google.Apis.Services
         /// <list type="bullet">
         /// <item><paramref name="explicitUri"/> if not null.</item>
         /// <item>
-        /// Otherwise, if <see cref="UniverseDomain"/> is not null, the result of replacing
-        /// <see cref="DefaultUniverseDomain"/> with <see cref="UniverseDomain"/>
+        /// Otherwise, if <see cref="EffectiveConfiguredUniverseDomain"/> is not null, the result of replacing
+        /// <see cref="DefaultUniverseDomain"/> with <see cref="EffectiveConfiguredUniverseDomain"/>
         /// in <paramref name="defaultUri"/>.
         /// </item>
         /// Otherwise <paramref name="defaultUri"/>.
@@ -321,7 +342,8 @@ namespace Google.Apis.Services
             // it for the batch endpoint as well. The batch endpoint does not have an
             // override mechanism, so we pass explicitUri as null in that case.
             explicitUri ??
-            (UniverseDomain is null ? defaultUri : defaultUri?.Replace(DefaultUniverseDomain, UniverseDomain));
+            (EffectiveConfiguredUniverseDomain is string configureUniverseDomain ? defaultUri?.Replace(DefaultUniverseDomain, UniverseDomain) :
+            defaultUri);
 
         #region IClientService Members
 
@@ -454,6 +476,16 @@ namespace Google.Apis.Services
             {
                 HttpClient.Dispose();
             }
+        }
+
+        /// <summary>
+        /// Retrieves the value of the environment variable with <paramref name="name"/>,
+        /// mapping empty or whitespace-only strings to null.
+        /// </summary>
+        private static string GetNonWhiteSpaceOrNullEnvironmentVariable(string name)
+        {
+            var value = Environment.GetEnvironmentVariable(name);
+            return string.IsNullOrWhiteSpace(value) ? null : value;
         }
     }
 }
