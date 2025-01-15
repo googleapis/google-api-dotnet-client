@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21496,7 +21496,9 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>The parameters to CopyLogEntries.</summary>
     public class CopyLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Destination to which to copy log entries.</summary>
+        /// <summary>
+        /// Required. Destination to which to copy log entries. For example: "storage.googleapis.com/GCS_BUCKET"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
 
