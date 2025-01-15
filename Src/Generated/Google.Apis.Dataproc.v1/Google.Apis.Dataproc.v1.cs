@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13144,15 +13144,15 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per
-        /// second that the disk can handle. Note: This field is only supported if boot_disk_type is hyperdisk-balanced.
+        /// second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskProvisionedIops")]
         public virtual System.Nullable<long> BootDiskProvisionedIops { get; set; }
 
         /// <summary>
         /// Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per
-        /// second that the disk can handle. Values must be greater than or equal to 1. Note: This field is only
-        /// supported if boot_disk_type is hyperdisk-balanced.
+        /// second that the disk can handle. Values must be greater than or equal to 1. This field is supported only if
+        /// boot_disk_type is hyperdisk-balanced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskProvisionedThroughput")]
         public virtual System.Nullable<long> BootDiskProvisionedThroughput { get; set; }
