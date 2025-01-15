@@ -296,6 +296,127 @@ namespace Google.Apis.AdSensePlatform.v1alpha
             public PlatformsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                ChildAccounts = new ChildAccountsResource(service);
+            }
+
+            /// <summary>Gets the ChildAccounts resource.</summary>
+            public virtual ChildAccountsResource ChildAccounts { get; }
+
+            /// <summary>The "childAccounts" collection of methods.</summary>
+            public class ChildAccountsResource
+            {
+                private const string Resource = "childAccounts";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ChildAccountsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Sites = new SitesResource(service);
+                }
+
+                /// <summary>Gets the Sites resource.</summary>
+                public virtual SitesResource Sites { get; }
+
+                /// <summary>The "sites" collection of methods.</summary>
+                public class SitesResource
+                {
+                    private const string Resource = "sites";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SitesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists Platform Child Sites for a specified Platform Child Account.</summary>
+                    /// <param name="parent">
+                    /// Required. The name of the platform to retrieve. Format:
+                    /// accounts/{account}/platforms/{platform}/childAccounts/{child_publisher_code}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists Platform Child Sites for a specified Platform Child Account.</summary>
+                    public class ListRequest : AdSensePlatformBaseServiceRequest<Google.Apis.AdSensePlatform.v1alpha.Data.ListPlatformChildSitesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the platform to retrieve. Format:
+                        /// accounts/{account}/platforms/{platform}/childAccounts/{child_publisher_code}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of children to include in the response, used for paging. If
+                        /// unspecified, at most 10000 platforms will be returned. The maximum value is 10000; values
+                        /// above 10000 will be coerced to 10000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListPlatformChildren` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListPlatformChildren` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/sites";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/platforms/[^/]+/childAccounts/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Gets a platform.</summary>
@@ -1399,6 +1520,24 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response definition for the list platform child sites rpc.</summary>
+    public class ListPlatformChildSitesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Continuation token used to page through platforms. To retrieve the next page of the results, set the next
+        /// request's "page_token" value to this.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The platform child sites returned in this list response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformChildSites")]
+        public virtual System.Collections.Generic.IList<PlatformChildSite> PlatformChildSites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response definition for the platform list rpc.</summary>
     public class ListPlatformsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1460,6 +1599,27 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
         /// <summary>Identifier. Resource name of a platform. Format: accounts/{account}/platforms/{platform}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a Transparent Platform Child Site.</summary>
+    public class PlatformChildSite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Domain URL of the Platform Child Site. Part of the PlatformChildSite name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Identifier. Format: accounts/{account}/platforms/{platform}/childAccounts/{child}/sites/{platformChildSite}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Resource name of the Platform Group of the Platform Child Site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformGroup")]
+        public virtual string PlatformGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
