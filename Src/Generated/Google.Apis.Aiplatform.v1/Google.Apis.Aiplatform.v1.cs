@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -609,7 +609,10 @@ namespace Google.Apis.Aiplatform.v1
 
             /// <summary>Updates a DatasetVersion.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Identifier. The resource name of the DatasetVersion.</param>
+            /// <param name="name">
+            /// Output only. Identifier. The resource name of the DatasetVersion. Format:
+            /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion body, string name)
             {
                 return new PatchRequest(this.service, body, name);
@@ -626,7 +629,10 @@ namespace Google.Apis.Aiplatform.v1
                     InitParameters();
                 }
 
-                /// <summary>Output only. Identifier. The resource name of the DatasetVersion.</summary>
+                /// <summary>
+                /// Output only. Identifier. The resource name of the DatasetVersion. Format:
+                /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -5445,7 +5451,10 @@ namespace Google.Apis.Aiplatform.v1
 
                     /// <summary>Updates a DatasetVersion.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. Identifier. The resource name of the DatasetVersion.</param>
+                    /// <param name="name">
+                    /// Output only. Identifier. The resource name of the DatasetVersion. Format:
+                    /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                    /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -5462,7 +5471,10 @@ namespace Google.Apis.Aiplatform.v1
                             InitParameters();
                         }
 
-                        /// <summary>Output only. Identifier. The resource name of the DatasetVersion.</summary>
+                        /// <summary>
+                        /// Output only. Identifier. The resource name of the DatasetVersion. Format:
+                        /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -44136,7 +44148,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Create API error message for Vertex Pipeline. Next Id: 3.</summary>
+    /// <summary>Create API error message for Vertex Pipeline.</summary>
     public class CloudAiPlatformCommonCreatePipelineJobApiErrorDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The error root cause returned by CreatePipelineJob API.</summary>
@@ -44510,7 +44522,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         }
     }
 
-    /// <summary>The generic reusable api auth config.</summary>
+    /// <summary>
+    /// The generic reusable api auth config. Deprecated. Please use AuthConfig
+    /// (google/cloud/aiplatform/master/auth.proto) instead.
+    /// </summary>
     public class GoogleCloudAiplatformV1ApiAuth : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The API secret.</summary>
@@ -48297,7 +48312,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelReference")]
         public virtual string ModelReference { get; set; }
 
-        /// <summary>Output only. Identifier. The resource name of the DatasetVersion.</summary>
+        /// <summary>
+        /// Output only. Identifier. The resource name of the DatasetVersion. Format:
+        /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -60054,7 +60072,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string NotebookRuntimeTemplateResourceName { get; set; }
 
         /// <summary>
-        /// Output only. The Schedule resource name if this job is triggered by one. Format:
+        /// The Schedule resource name if this job is triggered by one. Format:
         /// `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleResourceName")]
@@ -64366,6 +64384,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexRagStore")]
         public virtual GoogleCloudAiplatformV1VertexRagStore VertexRagStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Retrieval config.</summary>
+    public class GoogleCloudAiplatformV1RetrievalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The language code of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The location of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
+        public virtual GoogleTypeLatLng LatLng { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -72715,6 +72748,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("functionCallingConfig")]
         public virtual GoogleCloudAiplatformV1FunctionCallingConfig FunctionCallingConfig { get; set; }
 
+        /// <summary>Optional. Retrieval config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalConfig")]
+        public virtual GoogleCloudAiplatformV1RetrievalConfig RetrievalConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -75297,6 +75334,25 @@ namespace Google.Apis.Aiplatform.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
+    /// latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.
+    /// </summary>
+    public class GoogleTypeLatLng : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
