@@ -4337,7 +4337,8 @@ namespace Google.Apis.Spanner.v1
                     /// fails with a `FAILED_PRECONDITION` error. Operations inside read-write transactions might return
                     /// `ABORTED`. If this occurs, the application should restart the transaction from the beginning.
                     /// See Transaction for more details. Larger result sets can be fetched in streaming fashion by
-                    /// calling ExecuteStreamingSql instead.
+                    /// calling ExecuteStreamingSql instead. The query string can be SQL or [Graph Query Language
+                    /// (GQL)](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="session">Required. The session in which the SQL query should be performed.</param>
@@ -4352,7 +4353,8 @@ namespace Google.Apis.Spanner.v1
                     /// fails with a `FAILED_PRECONDITION` error. Operations inside read-write transactions might return
                     /// `ABORTED`. If this occurs, the application should restart the transaction from the beginning.
                     /// See Transaction for more details. Larger result sets can be fetched in streaming fashion by
-                    /// calling ExecuteStreamingSql instead.
+                    /// calling ExecuteStreamingSql instead. The query string can be SQL or [Graph Query Language
+                    /// (GQL)](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro).
                     /// </summary>
                     public class ExecuteSqlRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ResultSet>
                     {
@@ -4401,7 +4403,8 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>
                     /// Like ExecuteSql, except returns the result set as a stream. Unlike ExecuteSql, there is no limit
                     /// on the size of the returned result set. However, no individual row in the result set can exceed
-                    /// 100 MiB, and no column value can exceed 10 MiB.
+                    /// 100 MiB, and no column value can exceed 10 MiB. The query string can be SQL or [Graph Query
+                    /// Language (GQL)](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="session">Required. The session in which the SQL query should be performed.</param>
@@ -4413,7 +4416,8 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>
                     /// Like ExecuteSql, except returns the result set as a stream. Unlike ExecuteSql, there is no limit
                     /// on the size of the returned result set. However, no individual row in the result set can exceed
-                    /// 100 MiB, and no column value can exceed 10 MiB.
+                    /// 100 MiB, and no column value can exceed 10 MiB. The query string can be SQL or [Graph Query
+                    /// Language (GQL)](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro).
                     /// </summary>
                     public class ExecuteStreamingSqlRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.PartialResultSet>
                     {
@@ -9925,12 +9929,14 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Required. Textual representation of the crontab. User can customize the backup frequency and the backup
-        /// version time using the cron expression. The version time must be in UTC timzeone. The backup will contain an
-        /// externally consistent copy of the database at the version time. Allowed frequencies are 12 hour, 1 day, 1
-        /// week and 1 month. Examples of valid cron specifications: * `0 2/12 * * * ` : every 12 hours at (2, 14) hours
-        /// past midnight in UTC. * `0 2,14 * * * ` : every 12 hours at (2,14) hours past midnight in UTC. * `0 2 * * *
-        /// ` : once a day at 2 past midnight in UTC. * `0 2 * * 0 ` : once a week every Sunday at 2 past midnight in
-        /// UTC. * `0 2 8 * * ` : once a month on 8th day at 2 past midnight in UTC.
+        /// version time using the cron expression. The version time must be in UTC timezone. The backup will contain an
+        /// externally consistent copy of the database at the version time. Full backups must be scheduled a minimum of
+        /// 12 hours apart and incremental backups must be scheduled a minimum of 4 hours apart. Examples of valid cron
+        /// specifications: * `0 2/12 * * *` : every 12 hours at (2, 14) hours past midnight in UTC. * `0 2,14 * * *` :
+        /// every 12 hours at (2,14) hours past midnight in UTC. * `0 */4 * * *` : (incremental backups only) every 4
+        /// hours at (0, 4, 8, 12, 16, 20) hours past midnight in UTC. * `0 2 * * *` : once a day at 2 past midnight in
+        /// UTC. * `0 2 * * 0` : once a week every Sunday at 2 past midnight in UTC. * `0 2 8 * *` : once a month on 8th
+        /// day at 2 past midnight in UTC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -10336,6 +10342,16 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>The request for ExecuteBatchDml.</summary>
     public class ExecuteBatchDmlRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If set to true, this request marks the end of the transaction. The transaction should be committed
+        /// or aborted after these statements execute, and attempts to execute any other requests against this
+        /// transaction (including reads and queries) will be rejected. Setting this option may cause some error
+        /// reporting to be deferred until commit time (e.g. validation of unique constraints). Given this, successful
+        /// execution of statements should not be assumed until a subsequent Commit call completes successfully.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastStatements")]
+        public virtual System.Nullable<bool> LastStatements { get; set; }
+
         /// <summary>Common options for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
         public virtual RequestOptions RequestOptions { get; set; }
@@ -10427,6 +10443,17 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Directed read options for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directedReadOptions")]
         public virtual DirectedReadOptions DirectedReadOptions { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, this statement marks the end of the transaction. The transaction should be
+        /// committed or aborted after this statement executes, and attempts to execute any other requests against this
+        /// transaction (including reads and queries) will be rejected. For DML statements, setting this option may
+        /// cause some error reporting to be deferred until commit time (e.g. validation of unique constraints). Given
+        /// this, successful execution of a DML statement should not be assumed until a subsequent Commit call completes
+        /// successfully.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastStatement")]
+        public virtual System.Nullable<bool> LastStatement { get; set; }
 
         /// <summary>
         /// It is not always possible for Cloud Spanner to infer the right SQL type from a JSON value. For example,
@@ -10862,10 +10889,12 @@ namespace Google.Apis.Spanner.v1.Data
         }
 
         /// <summary>
-        /// Optional. Controls the default backup behavior for new databases within the instance. Note that `AUTOMATIC`
-        /// is not permitted for free instances, as backups and backup schedules are not allowed for free instances. In
-        /// the `GetInstance` or `ListInstances` response, if the value of default_backup_schedule_type is unset or
-        /// NONE, no default backup schedule will be created for new databases within the instance.
+        /// Optional. Controls the default backup schedule behavior for new databases within the instance. By default, a
+        /// backup schedule is created automatically when a new database is created in a new instance. Note that the
+        /// `AUTOMATIC` value isn't permitted for free instances, as backups and backup schedules aren't supported for
+        /// free instances. In the `GetInstance` or `ListInstances` response, if the value of
+        /// `default_backup_schedule_type` isn't set, or set to `NONE`, Spanner doesn't create a default backup schedule
+        /// for new databases in the instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBackupScheduleType")]
         public virtual string DefaultBackupScheduleType { get; set; }
@@ -14129,7 +14158,7 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements. Contains a protobuf-serialized
-        /// [google.protobufFileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+        /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
         /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports
         /// and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run
         /// ```
