@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14157,8 +14157,8 @@ namespace Google.Apis.CloudDataplex.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Specifies the ordering of results. Supported values are: * relevance (default) *
-                /// last_modified_timestamp * last_modified_timestamp asc
+                /// Optional. Specifies the ordering of results. Supported values are: relevance (default)
+                /// last_modified_timestamp last_modified_timestamp asc
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
