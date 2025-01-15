@@ -1145,10 +1145,22 @@ namespace Google.Apis.AndroidEnterprise.v1
 
             /// <summary>
             /// Optional. Email address used to prefill the admin field of the enterprise signup form. This value is a
-            /// hint only and can be altered by the user.
+            /// hint only and can be altered by the user. If `allowedDomains` is non-empty then this must belong to one
+            /// of the `allowedDomains`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("adminEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string AdminEmail { get; set; }
+
+            /// <summary>
+            /// Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email
+            /// address with a domain name that is not in this list. Subdomains of domains in this list are not allowed
+            /// but can be allowed by adding a second entry which has `*.` prefixed to the domain name (e.g.
+            /// *.example.com). If the field is not present or is an empty list then the IT admin is free to use any
+            /// valid domain name. Personal email domains are always allowed, but will result in the creation of a
+            /// managed Google Play Accounts enterprise.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("allowedDomains", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AllowedDomains { get; set; }
 
             /// <summary>
             /// The callback URL to which the Admin will be redirected after successfully creating an enterprise. Before
@@ -1176,6 +1188,14 @@ namespace Google.Apis.AndroidEnterprise.v1
                 RequestParameters.Add("adminEmail", new Google.Apis.Discovery.Parameter
                 {
                     Name = "adminEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("allowedDomains", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "allowedDomains",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
