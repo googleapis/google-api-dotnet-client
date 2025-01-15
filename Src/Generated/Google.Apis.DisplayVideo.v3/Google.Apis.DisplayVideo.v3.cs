@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27563,8 +27563,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
     public class IntegralAdScience : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The custom segment ID provided by Integral Ad Science. The ID must be between `1000001` and `1999999`,
-        /// inclusive.
+        /// The custom segment ID provided by Integral Ad Science. The ID must be between `1000001` and `1999999` or
+        /// `3000001` and `3999999`, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customSegmentId")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CustomSegmentId { get; set; }
