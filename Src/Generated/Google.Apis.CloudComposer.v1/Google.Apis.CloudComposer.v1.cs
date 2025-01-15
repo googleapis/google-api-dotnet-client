@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -336,7 +336,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -350,7 +350,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class CreateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap>
                     {
@@ -401,7 +401,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="name">
                     /// Required. The ConfigMap to delete, in the form:
@@ -414,7 +414,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class DeleteRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.Empty>
                     {
@@ -458,7 +458,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer
-                    /// environments in versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// environments in versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the ConfigMap to get, in the form:
@@ -471,7 +471,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer
-                    /// environments in versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// environments in versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class GetRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap>
                     {
@@ -515,7 +515,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. List ConfigMaps in the given environment, in the form:
@@ -528,7 +528,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class ListRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.ListUserWorkloadsConfigMapsResponse>
                     {
@@ -598,7 +598,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -612,7 +612,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class UpdateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap>
                     {
@@ -681,7 +681,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Creates a user workloads Secret. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -695,7 +695,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Creates a user workloads Secret. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class CreateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret>
                     {
@@ -746,7 +746,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Deletes a user workloads Secret. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="name">
                     /// Required. The Secret to delete, in the form:
@@ -759,7 +759,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Deletes a user workloads Secret. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class DeleteRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.Empty>
                     {
@@ -804,7 +804,7 @@ namespace Google.Apis.CloudComposer.v1
                     /// <summary>
                     /// Gets an existing user workloads Secret. Values of the "data" field in the response are cleared.
                     /// This method is supported for Cloud Composer environments in versions
-                    /// composer-3.*.*-airflow-*.*.* and newer.
+                    /// composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the Secret to get, in the form:
@@ -818,7 +818,7 @@ namespace Google.Apis.CloudComposer.v1
                     /// <summary>
                     /// Gets an existing user workloads Secret. Values of the "data" field in the response are cleared.
                     /// This method is supported for Cloud Composer environments in versions
-                    /// composer-3.*.*-airflow-*.*.* and newer.
+                    /// composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class GetRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret>
                     {
@@ -862,7 +862,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Lists user workloads Secrets. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. List Secrets in the given environment, in the form:
@@ -875,7 +875,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Lists user workloads Secrets. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class ListRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.ListUserWorkloadsSecretsResponse>
                     {
@@ -945,7 +945,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Updates a user workloads Secret. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -959,7 +959,7 @@ namespace Google.Apis.CloudComposer.v1
 
                     /// <summary>
                     /// Updates a user workloads Secret. This method is supported for Cloud Composer environments in
-                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// versions composer-3-airflow-*.*.*-build.* and newer.
                     /// </summary>
                     public class UpdateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret>
                     {
@@ -2447,7 +2447,7 @@ namespace Google.Apis.CloudComposer.v1.Data
 
     /// <summary>
     /// Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer
-    /// environments in versions composer-3.*.*-airflow-*.*.* and newer.
+    /// environments in versions composer-3-airflow-*.*.*-build.* and newer.
     /// </summary>
     public class DagProcessorResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3302,7 +3302,7 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this
         /// range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default
         /// value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions
-        /// composer-3.*.*-airflow-*.*.* and newer.
+        /// composer-3-airflow-*.*.*-build.* and newer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("composerInternalIpv4CidrBlock")]
         public virtual string ComposerInternalIpv4CidrBlock { get; set; }
@@ -3313,7 +3313,7 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// network and subnetwork are defined during environment, it will be provisioned. If not provided and network
         /// and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must
         /// be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field
-        /// is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("composerNetworkAttachment")]
         public virtual string ComposerNetworkAttachment { get; set; }
@@ -3672,7 +3672,7 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// connectivity to Google services (including Artifact Registry) and VPC network (if either
         /// `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field
         /// are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud
-        /// Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateBuildsOnly")]
         public virtual System.Nullable<bool> EnablePrivateBuildsOnly { get; set; }
@@ -3887,7 +3887,7 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// <summary>
         /// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to
         /// `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions
-        /// composer-3.*.*-airflow-*.*.* and newer.
+        /// composer-3-airflow-*.*.*-build.* and newer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerPluginsMode")]
         public virtual string WebServerPluginsMode { get; set; }
@@ -4142,7 +4142,7 @@ namespace Google.Apis.CloudComposer.v1.Data
     {
         /// <summary>
         /// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments
-        /// in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// in versions composer-3-airflow-*.*.*-build.* and newer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagProcessor")]
         public virtual DagProcessorResource DagProcessor { get; set; }
