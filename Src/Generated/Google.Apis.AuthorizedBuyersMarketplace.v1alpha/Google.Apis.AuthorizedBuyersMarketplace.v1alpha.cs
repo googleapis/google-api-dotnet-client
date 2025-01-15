@@ -3365,7 +3365,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
             /// latest one kept in the server, an error message will be returned. See FieldMask for how to use
             /// FieldMask. Only fields specified in the UpdateProposalRequest.update_mask will be updated; Fields noted
             /// as 'Immutable' or 'Output only' yet specified in the UpdateProposalRequest.update_mask will be ignored
-            /// and left unchanged. Updating a private auction proposal is not allowed and will result in an error.
+            /// and left unchanged. Updating a private auction proposal is only allowed for buyer private data, all
+            /// other fields are immutable.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -3382,7 +3383,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha
             /// latest one kept in the server, an error message will be returned. See FieldMask for how to use
             /// FieldMask. Only fields specified in the UpdateProposalRequest.update_mask will be updated; Fields noted
             /// as 'Immutable' or 'Output only' yet specified in the UpdateProposalRequest.update_mask will be ignored
-            /// and left unchanged. Updating a private auction proposal is not allowed and will result in an error.
+            /// and left unchanged. Updating a private auction proposal is only allowed for buyer private data, all
+            /// other fields are immutable.
             /// </summary>
             public class PatchRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data.Proposal>
             {
@@ -5109,7 +5111,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Buyers are allowed to store certain types of private data in a proposal or deal.</summary>
+    /// <summary>Buyers are allowed to store certain types of private data in a proposal.</summary>
     public class PrivateData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
