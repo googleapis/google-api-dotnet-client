@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -9087,7 +9087,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             public virtual string Type { get; private set; }
 
                             /// <summary>
-                            /// Required. The canonical URL of a profile that this resource should be validated against.
+                            /// Optional. The canonical URL of a profile that this resource should be validated against.
                             /// For example, to validate a Patient resource against the US Core Patient profile this
                             /// parameter would be `http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient`. A
                             /// StructureDefinition with this canonical URL must exist in the FHIR store.
@@ -10409,7 +10409,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Name of the FHIR store to retrieve resources from.</param>
                         /// <param name="resourceType">
-                        /// Required. The FHIR resource type to search, such as Patient or Observation. For a complete
+                        /// Optional. The FHIR resource type to search, such as Patient or Observation. For a complete
                         /// list, see the FHIR Resource Index
                         /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
@@ -10492,7 +10492,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Required. The FHIR resource type to search, such as Patient or Observation. For a
+                            /// Optional. The FHIR resource type to search, such as Patient or Observation. For a
                             /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
@@ -20194,7 +20194,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class SearchResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The FHIR resource type to search, such as Patient or Observation. For a complete list, see the
+        /// Optional. The FHIR resource type to search, such as Patient or Observation. For a complete list, see the
         /// FHIR Resource Index ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
         /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
         /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
