@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using Google.Apis.Http;
-using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -114,6 +113,13 @@ namespace Google.Apis.Auth.OAuth2
         /// Console or a stored user credential using the format supported by the Cloud SDK.
         /// </para>
         /// </summary>
+        /// <remarks>
+        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
+        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
+        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
+        /// systems and data. For more information, refer to
+        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// </remarks>
         public static GoogleCredential FromStream(Stream stream) => defaultCredentialProvider.CreateDefaultCredentialFromStream(stream);
 
         /// <summary>
@@ -123,6 +129,13 @@ namespace Google.Apis.Auth.OAuth2
         /// Console or a stored user credential using the format supported by the Cloud SDK.
         /// </para>
         /// </summary>
+        /// <remarks>
+        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
+        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
+        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
+        /// systems and data. For more information, refer to
+        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// </remarks>
         public static Task<GoogleCredential> FromStreamAsync(Stream stream, CancellationToken cancellationToken) =>
             defaultCredentialProvider.CreateDefaultCredentialFromStreamAsync(stream, cancellationToken);
 
@@ -135,6 +148,13 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         /// <param name="path">The path to the credential file.</param>
         /// <returns>The loaded credentials.</returns>
+        /// <remarks>
+        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
+        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
+        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
+        /// systems and data. For more information, refer to
+        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// </remarks>
         public static GoogleCredential FromFile(string path)
         {
             using (var f = File.OpenRead(path))
@@ -153,6 +173,13 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="path">The path to the credential file.</param>
         /// <param name="cancellationToken">Cancellation token for the operation.</param>
         /// <returns>The loaded credentials.</returns>
+        /// <remarks>
+        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
+        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
+        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
+        /// systems and data. For more information, refer to
+        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// </remarks>
         public static async Task<GoogleCredential> FromFileAsync(string path, CancellationToken cancellationToken)
         {
             using (var f = File.OpenRead(path))
@@ -168,6 +195,13 @@ namespace Google.Apis.Auth.OAuth2
         /// Console or a stored user credential using the format supported by the Cloud SDK.
         /// </para>
         /// </summary>
+        /// <remarks>
+        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
+        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
+        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
+        /// systems and data. For more information, refer to
+        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// </remarks>
         public static GoogleCredential FromJson(string json) => defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
 
         /// <summary>
@@ -175,6 +209,13 @@ namespace Google.Apis.Auth.OAuth2
         /// for all supported types. <see cref="JsonCredentialParameters"/> for more detailed information
         /// about supported types and corresponding fields.
         /// </summary>
+        /// <remarks>
+        /// Important: If you accept a credential configuration (credential JSON/File/Stream) from an external source
+        /// for authentication to Google Cloud, you must validate it before providing it to any Google API or library.
+        /// Providing an unvalidated credential configuration to Google APIs can compromise the security of your
+        /// systems and data. For more information, refer to
+        /// <see href="https://cloud.google.com/docs/authentication/external/externally-sourced-credentials">Validate credential configurations from external sources</see>.
+        /// </remarks>
         public static GoogleCredential FromJsonParameters(JsonCredentialParameters credentialParameters) =>
             defaultCredentialProvider.CreateDefaultCredentialFromParameters(credentialParameters);
 
