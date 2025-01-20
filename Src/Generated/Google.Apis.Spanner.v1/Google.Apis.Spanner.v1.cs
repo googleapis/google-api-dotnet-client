@@ -4945,6 +4945,65 @@ namespace Google.Apis.Spanner.v1
                     }
                 }
 
+                /// <summary>Adds split points to specified tables, indexes of a database.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">
+                /// Required. The database on whose tables/indexes split points are to be added. Values are of the form
+                /// `projects//instances//databases/`.
+                /// </param>
+                public virtual AddSplitPointsRequest AddSplitPoints(Google.Apis.Spanner.v1.Data.AddSplitPointsRequest body, string database)
+                {
+                    return new AddSplitPointsRequest(this.service, body, database);
+                }
+
+                /// <summary>Adds split points to specified tables, indexes of a database.</summary>
+                public class AddSplitPointsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.AddSplitPointsResponse>
+                {
+                    /// <summary>Constructs a new AddSplitPoints request.</summary>
+                    public AddSplitPointsRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.AddSplitPointsRequest body, string database) : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The database on whose tables/indexes split points are to be added. Values are of the
+                    /// form `projects//instances//databases/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.AddSplitPointsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "addSplitPoints";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+database}:addSplitPoints";
+
+                    /// <summary>Initializes AddSplitPoints parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// `ChangeQuorum` is strictly restricted to databases that use dual-region instance configurations.
                 /// Initiates a background operation to change the quorum of a database from dual-region mode to
@@ -8046,6 +8105,32 @@ namespace Google.Apis.Spanner.v1
 }
 namespace Google.Apis.Spanner.v1.Data
 {
+    /// <summary>The request for AddSplitPoints.</summary>
+    public class AddSplitPointsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A user-supplied tag associated with the split points. For example, "intital_data_load",
+        /// "special_event_1". Defaults to "CloudAddSplitPointsAPI" if not specified. The length of the tag must not
+        /// exceed 50 characters,else will be trimmed. Only valid UTF8 characters are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
+        public virtual string Initiator { get; set; }
+
+        /// <summary>Required. The split points to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitPoints")]
+        public virtual System.Collections.Generic.IList<SplitPoints> SplitPoints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for AddSplitPoints.</summary>
+    public class AddSplitPointsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// AsymmetricAutoscalingOption specifies the scaling of replicas identified by the given selection.
     /// </summary>
@@ -11383,6 +11468,17 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A split key.</summary>
+    public class Key : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The column values making up the split key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyParts")]
+        public virtual System.Collections.Generic.IList<object> KeyParts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// KeyRange represents a range of rows in a table or index. A range has a start key and an end key. These keys can
     /// be open or closed, indicating if the range includes rows with that key. Keys are represented by lists, where the
@@ -13672,6 +13768,65 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingLocation")]
         public virtual string ServingLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The split points of a table/index.</summary>
+    public class SplitPoints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Optional. The expiration timestamp of the split points. A timestamp in the past means immediate expiration.
+        /// The maximum value can be 30 days in the future. Defaults to 10 days in the future if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The index to split. If specified, the `table` field must refer to the index's base table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual string Index { get; set; }
+
+        /// <summary>Required. The list of split keys, i.e., the split boundaries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keys")]
+        public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
+
+        /// <summary>The table to split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
