@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11654,7 +11654,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string CommitmentPlan { get; set; }
 
         /// <summary>
-        /// Compute Engine preferences concern insights and recommendations for Compute Engine target.
+        /// Optional. Compute Engine preferences concern insights and recommendations for Compute Engine target.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEnginePreferences")]
         public virtual ComputeEnginePreferences ComputeEnginePreferences { get; set; }
