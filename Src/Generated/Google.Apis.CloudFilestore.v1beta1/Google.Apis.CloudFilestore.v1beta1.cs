@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3257,13 +3257,6 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capacityStepSizeGb")]
         public virtual System.Nullable<long> CapacityStepSizeGb { get; set; }
 
-        /// <summary>
-        /// Output only. Indicates whether this instance's performance is configurable. If enabled, adjust it using the
-        /// 'performance_config' field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configurablePerformanceEnabled")]
-        public virtual System.Nullable<bool> ConfigurablePerformanceEnabled { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
@@ -3300,6 +3293,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. Indicates whether this instance supports configuring its performance. If true, the user can
+        /// configure the instance's performance by using the 'performance_config' field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPerformanceSupported")]
+        public virtual System.Nullable<bool> CustomPerformanceSupported { get; set; }
 
         /// <summary>Optional. Indicates whether the instance is protected against deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionProtectionEnabled")]
@@ -4019,6 +4019,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>The enforced performance limits, calculated from the instance's performance configuration.</summary>
     public class PerformanceLimits : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The max IOPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxIops")]
+        public virtual System.Nullable<long> MaxIops { get; set; }
+
         /// <summary>Output only. The max read IOPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReadIops")]
         public virtual System.Nullable<long> MaxReadIops { get; set; }
