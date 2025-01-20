@@ -4877,6 +4877,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resetUserDataOnNewActivity")]
         public virtual System.Nullable<bool> ResetUserDataOnNewActivity { get; set; }
 
+        /// <summary>Required. The length of time that user-level data is retained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDataRetention")]
+        public virtual string UserDataRetention { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
