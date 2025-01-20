@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -781,7 +781,7 @@ namespace Google.Apis.Texttospeech.v1.Data
     public class AdvancedVoiceOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Only for Journey voices. If false, the synthesis will be context aware and have higher latency.
+        /// Only for Journey voices. If false, the synthesis is context aware and has a higher latency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowLatencyJourneySynthesis")]
         public virtual System.Nullable<bool> LowLatencyJourneySynthesis { get; set; }
@@ -861,8 +861,8 @@ namespace Google.Apis.Texttospeech.v1.Data
         public virtual string PhoneticEncoding { get; set; }
 
         /// <summary>
-        /// The phrase to which the customization will be applied. The phrase can be multiple words (in the case of
-        /// proper nouns etc), but should not span to a whole sentence.
+        /// The phrase to which the customization is applied. The phrase can be multiple words, such as proper nouns,
+        /// but shouldn't span the length of the sentence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrase")]
         public virtual string Phrase { get; set; }
@@ -878,7 +878,7 @@ namespace Google.Apis.Texttospeech.v1.Data
     /// <summary>A collection of pronunciation customizations.</summary>
     public class CustomPronunciations : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The pronunciation customizations to be applied.</summary>
+        /// <summary>The pronunciation customizations are applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pronunciations")]
         public virtual System.Collections.Generic.IList<CustomPronunciationParams> Pronunciations { get; set; }
 
@@ -1115,12 +1115,11 @@ namespace Google.Apis.Texttospeech.v1.Data
     public class SynthesisInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The pronunciation customizations to be applied to the input. If this is set, the input will be
-        /// synthesized using the given pronunciation customizations. The initial support will be for EFIGS (English,
-        /// French, Italian, German, Spanish) languages, as provided in VoiceSelectionParams. Journey and Instant Clone
-        /// voices are not supported yet. In order to customize the pronunciation of a phrase, there must be an exact
-        /// match of the phrase in the input types. If using SSML, the phrase must not be inside a phoneme tag (entirely
-        /// or partially).
+        /// Optional. The pronunciation customizations are applied to the input. If this is set, the input is
+        /// synthesized using the given pronunciation customizations. The initial support is for English, French,
+        /// Italian, German, and Spanish (EFIGS) languages, as provided in VoiceSelectionParams. Journey and Instant
+        /// Clone voices aren't supported. In order to customize the pronunciation of a phrase, there must be an exact
+        /// match of the phrase in the input types. If using SSML, the phrase must not be inside a phoneme tag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customPronunciations")]
         public virtual CustomPronunciations CustomPronunciations { get; set; }
@@ -1296,7 +1295,7 @@ namespace Google.Apis.Texttospeech.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Multi-speaker turn.</summary>
+    /// <summary>A multi-speaker turn.</summary>
     public class Turn : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1391,7 +1390,7 @@ namespace Google.Apis.Texttospeech.v1.Data
 
         /// <summary>
         /// Optional. The configuration for a voice clone. If [VoiceCloneParams.voice_clone_key] is set, the service
-        /// will choose the voice clone matching the specified configuration.
+        /// chooses the voice clone matching the specified configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceClone")]
         public virtual VoiceCloneParams VoiceClone { get; set; }
