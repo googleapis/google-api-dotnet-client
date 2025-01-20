@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -63,6 +63,14 @@ namespace Google.Apis.Classroom.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Classroom API.</summary>
         public class Scope
         {
+            /// <summary>See and update its own attachments to posts in Google Classroom</summary>
+            public static string ClassroomAddonsStudent = "https://www.googleapis.com/auth/classroom.addons.student";
+
+            /// <summary>
+            /// See, create, and update its own attachments to posts in classes you teach in Google Classroom
+            /// </summary>
+            public static string ClassroomAddonsTeacher = "https://www.googleapis.com/auth/classroom.addons.teacher";
+
             /// <summary>View and manage announcements in Google Classroom</summary>
             public static string ClassroomAnnouncements = "https://www.googleapis.com/auth/classroom.announcements";
 
@@ -140,6 +148,14 @@ namespace Google.Apis.Classroom.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Classroom API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>See and update its own attachments to posts in Google Classroom</summary>
+            public const string ClassroomAddonsStudent = "https://www.googleapis.com/auth/classroom.addons.student";
+
+            /// <summary>
+            /// See, create, and update its own attachments to posts in classes you teach in Google Classroom
+            /// </summary>
+            public const string ClassroomAddonsTeacher = "https://www.googleapis.com/auth/classroom.addons.teacher";
+
             /// <summary>View and manage announcements in Google Classroom</summary>
             public const string ClassroomAnnouncements = "https://www.googleapis.com/auth/classroom.announcements";
 
@@ -8110,8 +8126,8 @@ namespace Google.Apis.Classroom.v1
             /// <summary>
             /// Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
             /// user is not permitted to access the requested course, create a topic in the requested course, or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// does not exist.
+            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a
+            /// topic in the course with the same name. * `NOT_FOUND` if the requested course does not exist.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">
@@ -8125,8 +8141,8 @@ namespace Google.Apis.Classroom.v1
             /// <summary>
             /// Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
             /// user is not permitted to access the requested course, create a topic in the requested course, or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// does not exist.
+            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a
+            /// topic in the course with the same name. * `NOT_FOUND` if the requested course does not exist.
             /// </summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
             {
@@ -8412,8 +8428,8 @@ namespace Google.Apis.Classroom.v1
             /// <summary>
             /// Updates one or more fields of a topic. This method returns the following error codes: *
             /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// or topic does not exist
+            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if there exists
+            /// a topic in the course with the same name. * `NOT_FOUND` if the requested course or topic does not exist
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">
@@ -8428,8 +8444,8 @@ namespace Google.Apis.Classroom.v1
             /// <summary>
             /// Updates one or more fields of a topic. This method returns the following error codes: *
             /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for
-            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course
-            /// or topic does not exist
+            /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if there exists
+            /// a topic in the course with the same name. * `NOT_FOUND` if the requested course or topic does not exist
             /// </summary>
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
             {
