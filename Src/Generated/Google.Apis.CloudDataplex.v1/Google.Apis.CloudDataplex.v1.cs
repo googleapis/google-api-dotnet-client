@@ -16758,7 +16758,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated
         /// count can be configured to either include all rows (default) - with null rows automatically failing rule
-        /// evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+        /// evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.This field is not
+        /// set for rule SqlAssertion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatedCount")]
         public virtual System.Nullable<long> EvaluatedCount { get; set; }
@@ -16783,9 +16784,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("passed")]
         public virtual System.Nullable<bool> Passed { get; set; }
 
-        /// <summary>
-        /// The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
-        /// </summary>
+        /// <summary>This field is not set for rule SqlAssertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passedCount")]
         public virtual System.Nullable<long> PassedCount { get; set; }
 
@@ -17097,10 +17096,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// Represents a user-visible job which provides the insights for the related data source.For example: Data Quality:
-    /// generates queries based on the rules and runs against the data to get data quality check results. Data Profile:
-    /// analyzes the data in table(s) and generates insights about the structure, content and relationships (such as
-    /// null percent, cardinality, min/max/mean, etc).
+    /// Represents a user-visible job which provides the insights for the related data source.For example: Data quality:
+    /// generates queries based on the rules and runs against the data to get data quality check results. For more
+    /// information, see Auto data quality overview (https://cloud.google.com/dataplex/docs/auto-data-quality-overview).
+    /// Data profile: analyzes the data in tables and generates insights about the structure, content and relationships
+    /// (such as null percent, cardinality, min/max/mean, etc). For more information, see About data profiling
+    /// (https://cloud.google.com/dataplex/docs/data-profiling-overview). Data discovery: scans data in Cloud Storage
+    /// buckets to extract and then catalog metadata. For more information, see Discover and catalog Cloud Storage data
+    /// (https://cloud.google.com/bigquery/docs/automatic-discovery).
     /// </summary>
     public class GoogleCloudDataplexV1DataScan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18429,7 +18432,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Immutable. The resource name of the parent entry.</summary>
+        /// <summary>
+        /// Optional. Immutable. The resource name of the parent entry, in the format
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentEntry")]
         public virtual string ParentEntry { get; set; }
 
