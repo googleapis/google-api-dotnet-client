@@ -297,6 +297,7 @@ namespace Google.Apis.AdSensePlatform.v1alpha
             {
                 this.service = service;
                 ChildAccounts = new ChildAccountsResource(service);
+                Groups = new GroupsResource(service);
             }
 
             /// <summary>Gets the ChildAccounts resource.</summary>
@@ -415,6 +416,105 @@ namespace Google.Apis.AdSensePlatform.v1alpha
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+            }
+
+            /// <summary>Gets the Groups resource.</summary>
+            public virtual GroupsResource Groups { get; }
+
+            /// <summary>The "groups" collection of methods.</summary>
+            public class GroupsResource
+            {
+                private const string Resource = "groups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists Platform Groups for a specified Platform.</summary>
+                /// <param name="parent">
+                /// Required. The name of the platform to retrieve. Format: accounts/{account}/platforms/{platform}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Platform Groups for a specified Platform.</summary>
+                public class ListRequest : AdSensePlatformBaseServiceRequest<Google.Apis.AdSensePlatform.v1alpha.Data.ListPlatformGroupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the platform to retrieve. Format: accounts/{account}/platforms/{platform}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of groups to include in the response, used for paging. If
+                    /// unspecified, at most 10000 groups will be returned. The maximum value is 10000; values above
+                    /// 10000 will be coerced to 10000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListPlatformGroups` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListPlatformGroups` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/groups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/platforms/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
             }
@@ -1420,6 +1520,49 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
     }
 
     /// <summary>
+    /// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal
+    /// formats, such as Java's
+    /// [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's
+    /// [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
+    /// </summary>
+    public class Decimal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or
+        /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed
+        /// by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The
+        /// fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at
+        /// least one digit in either the integer or the fraction. The number formed by the sign, the integer and the
+        /// fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E`
+        /// (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before
+        /// storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -&amp;gt; `2.5`). - Replacing a
+        /// zero-length integer value with `0` (`.5` -&amp;gt; `0.5`). - Coercing the exponent character to upper-case,
+        /// with explicit sign (`2.5e8` -&amp;gt; `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0`
+        /// -&amp;gt; `2.5`). Services **may** perform additional normalization based on its own needs and the internal
+        /// decimal implementation selected, such as shifting the decimal point and exponent value together (example:
+        /// `2.5E-1` &amp;lt;-&amp;gt; `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction
+        /// to indicate increased precision, but are not required to do so. Note that only the `.` character is
+        /// supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale.
+        /// Additionally, thousand separators **should not** be supported. If a service does support them, values
+        /// **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+'
+        /// | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0'
+        /// | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of
+        /// supported values, the maximum supported precision (total number of digits), and, if applicable, the scale
+        /// (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values.
+        /// Services **may** choose to accept values passed as input even when the value has a higher precision or scale
+        /// than the service supports, and **should** round the value to fit the supported scale. Alternatively, the
+        /// service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost.
+        /// Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a
+        /// value outside of the supported range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -1538,6 +1681,24 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response definition for the platform groups list rpc.</summary>
+    public class ListPlatformGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Continuation token used to page through platforms. To retrieve the next page of the results, set the next
+        /// request's "page_token" value to this.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The platform groups returned in this list response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformGroups")]
+        public virtual System.Collections.Generic.IList<PlatformGroup> PlatformGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response definition for the platform list rpc.</summary>
     public class ListPlatformsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1620,6 +1781,25 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
         /// <summary>Resource name of the Platform Group of the Platform Child Site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformGroup")]
         public virtual string PlatformGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a Transparent Platform Group.</summary>
+    public class PlatformGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Description of the PlatformGroup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Identifier. Format: accounts/{account}/platforms/{platform}/groups/{platform_group}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The revenue share of the PlatformGroup, in millipercent (e.g. 15000 = 15%).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revshareMillipercent")]
+        public virtual Decimal RevshareMillipercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
