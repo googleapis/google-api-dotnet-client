@@ -4427,7 +4427,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
         public virtual MessageSet MessageSet { get; set; }
 
-        /// <summary>The following are usually only present when code != 0 Space to which this status belongs</summary>
+        /// <summary>
+        /// The following are usually only present when code != 0 Space to which this status belongs
+        /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string space = 2;
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual string Space { get; set; }
 
