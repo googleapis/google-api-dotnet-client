@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3701,7 +3701,7 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>Required. The user to create.</summary>
+        /// <summary>Optional. The user to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual User User { get; set; }
 
@@ -4382,6 +4382,12 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("returnShippingFee")]
         public virtual ReturnShippingFee ReturnShippingFee { get; set; }
 
+        /// <summary>
+        /// Optional. Overrides to the general policy for orders placed during a specific set of time intervals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seasonalOverrides")]
+        public virtual System.Collections.Generic.IList<SeasonalOverride> SeasonalOverrides { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4952,6 +4958,32 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cells")]
         public virtual System.Collections.Generic.IList<Value> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Next: 5</summary>
+    public class SeasonalOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Defines the date range when this seasonal override applies. Both begin and end are inclusive and
+        /// should be in date decimal format, example 20250115. The dates of the seasonal overrides should not overlap.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("begin")]
+        public virtual Date Begin { get; set; }
+
+        /// <summary>Required. seasonal override end date (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual Date End { get; set; }
+
+        /// <summary>Required. Display name of this seasonal override in Merchant Center.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Required. The return policy for the given date range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
