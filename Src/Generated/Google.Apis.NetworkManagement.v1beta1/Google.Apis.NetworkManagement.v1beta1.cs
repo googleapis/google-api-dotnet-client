@@ -2383,6 +2383,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Source or destination of the Connectivity Test.</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An [AlloyDB Instance](https://cloud.google.com/alloydb) URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloyDbInstance")]
+        public virtual string AlloyDbInstance { get; set; }
+
         /// <summary>
         /// An [App Engine](https://cloud.google.com/appengine) [service
         /// version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
