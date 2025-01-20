@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -62,422 +62,422 @@ namespace Google.Apis.DataPortability.v1beta
         /// <summary>Available OAuth 2.0 scopes for use with the Data Portability API.</summary>
         public class Scope
         {
-            /// <summary>Move a copy of the Google Alerts subscriptions you created.</summary>
+            /// <summary>Move a copy of the Google Alerts subscriptions you created</summary>
             public static string DataportabilityAlertsSubscriptions = "https://www.googleapis.com/auth/dataportability.alerts.subscriptions";
 
             /// <summary>
             /// Move a copy of messages between you and the businesses you have conversations with across Google
-            /// services.
+            /// services
             /// </summary>
             public static string DataportabilityBusinessmessagingConversations = "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations";
 
-            /// <summary>Move a copy of the information you entered into online forms in Chrome.</summary>
+            /// <summary>Move a copy of the information you entered into online forms in Chrome</summary>
             public static string DataportabilityChromeAutofill = "https://www.googleapis.com/auth/dataportability.chrome.autofill";
 
-            /// <summary>Move a copy of pages you bookmarked in Chrome.</summary>
+            /// <summary>Move a copy of pages you bookmarked in Chrome</summary>
             public static string DataportabilityChromeBookmarks = "https://www.googleapis.com/auth/dataportability.chrome.bookmarks";
 
-            /// <summary>Move a copy of words you added to Chrome's dictionary.</summary>
+            /// <summary>Move a copy of words you added to Chrome's dictionary</summary>
             public static string DataportabilityChromeDictionary = "https://www.googleapis.com/auth/dataportability.chrome.dictionary";
 
-            /// <summary>Move a copy of extensions you installed from the Chrome Web Store.</summary>
+            /// <summary>Move a copy of extensions you installed from the Chrome Web Store</summary>
             public static string DataportabilityChromeExtensions = "https://www.googleapis.com/auth/dataportability.chrome.extensions";
 
-            /// <summary>Move a copy of sites you visited in Chrome.</summary>
+            /// <summary>Move a copy of sites you visited in Chrome</summary>
             public static string DataportabilityChromeHistory = "https://www.googleapis.com/auth/dataportability.chrome.history";
 
-            /// <summary>Move a copy of pages you added to your reading list in Chrome.</summary>
+            /// <summary>Move a copy of pages you added to your reading list in Chrome</summary>
             public static string DataportabilityChromeReadingList = "https://www.googleapis.com/auth/dataportability.chrome.reading_list";
 
-            /// <summary>Move a copy of your settings in Chrome.</summary>
+            /// <summary>Move a copy of your settings in Chrome</summary>
             public static string DataportabilityChromeSettings = "https://www.googleapis.com/auth/dataportability.chrome.settings";
 
-            /// <summary>Move a copy of searches and sites you follow, saved by Discover.</summary>
+            /// <summary>Move a copy of searches and sites you follow, saved by Discover</summary>
             public static string DataportabilityDiscoverFollows = "https://www.googleapis.com/auth/dataportability.discover.follows";
 
-            /// <summary>Move a copy of links to your liked documents, saved by Discover.</summary>
+            /// <summary>Move a copy of links to your liked documents, saved by Discover</summary>
             public static string DataportabilityDiscoverLikes = "https://www.googleapis.com/auth/dataportability.discover.likes";
 
-            /// <summary>Move a copy of content you marked as not interested, saved by Discover.</summary>
+            /// <summary>Move a copy of content you marked as not interested, saved by Discover</summary>
             public static string DataportabilityDiscoverNotInterested = "https://www.googleapis.com/auth/dataportability.discover.not_interested";
 
-            /// <summary>Move a copy of the places you labeled on Maps.</summary>
+            /// <summary>Move a copy of the places you labeled on Maps</summary>
             public static string DataportabilityMapsAliasedPlaces = "https://www.googleapis.com/auth/dataportability.maps.aliased_places";
 
-            /// <summary>Move a copy of your pinned trips on Maps.</summary>
+            /// <summary>Move a copy of your pinned trips on Maps</summary>
             public static string DataportabilityMapsCommuteRoutes = "https://www.googleapis.com/auth/dataportability.maps.commute_routes";
 
-            /// <summary>Move a copy of your commute settings on Maps.</summary>
+            /// <summary>Move a copy of your commute settings on Maps</summary>
             public static string DataportabilityMapsCommuteSettings = "https://www.googleapis.com/auth/dataportability.maps.commute_settings";
 
-            /// <summary>Move a copy of your electric vehicle profile on Maps.</summary>
+            /// <summary>Move a copy of your electric vehicle profile on Maps</summary>
             public static string DataportabilityMapsEvProfile = "https://www.googleapis.com/auth/dataportability.maps.ev_profile";
 
-            /// <summary>Move a copy of the corrections you made to places or map information on Maps.</summary>
+            /// <summary>Move a copy of the corrections you made to places or map information on Maps</summary>
             public static string DataportabilityMapsFactualContributions = "https://www.googleapis.com/auth/dataportability.maps.factual_contributions";
 
-            /// <summary>Move a copy of your updates to places on Maps.</summary>
+            /// <summary>Move a copy of your updates to places on Maps</summary>
             public static string DataportabilityMapsOfferingContributions = "https://www.googleapis.com/auth/dataportability.maps.offering_contributions";
 
-            /// <summary>Move a copy of the photos and videos you posted on Maps.</summary>
+            /// <summary>Move a copy of the photos and videos you posted on Maps</summary>
             public static string DataportabilityMapsPhotosVideos = "https://www.googleapis.com/auth/dataportability.maps.photos_videos";
 
-            /// <summary>Move a copy of the questions and answers you posted on Maps.</summary>
+            /// <summary>Move a copy of the questions and answers you posted on Maps</summary>
             public static string DataportabilityMapsQuestionsAnswers = "https://www.googleapis.com/auth/dataportability.maps.questions_answers";
 
-            /// <summary>Move a copy of your reviews and posts on Maps.</summary>
+            /// <summary>Move a copy of your reviews and posts on Maps</summary>
             public static string DataportabilityMapsReviews = "https://www.googleapis.com/auth/dataportability.maps.reviews";
 
-            /// <summary>Move a copy of your Starred places list on Maps.</summary>
+            /// <summary>Move a copy of your Starred places list on Maps</summary>
             public static string DataportabilityMapsStarredPlaces = "https://www.googleapis.com/auth/dataportability.maps.starred_places";
 
-            /// <summary>Move a copy of your Maps activity.</summary>
+            /// <summary>Move a copy of your Maps activity</summary>
             public static string DataportabilityMyactivityMaps = "https://www.googleapis.com/auth/dataportability.myactivity.maps";
 
-            /// <summary>Move a copy of your My Ad Center activity.</summary>
+            /// <summary>Move a copy of your My Ad Center activity</summary>
             public static string DataportabilityMyactivityMyadcenter = "https://www.googleapis.com/auth/dataportability.myactivity.myadcenter";
 
-            /// <summary>Move a copy of your Google Play activity.</summary>
+            /// <summary>Move a copy of your Google Play activity</summary>
             public static string DataportabilityMyactivityPlay = "https://www.googleapis.com/auth/dataportability.myactivity.play";
 
-            /// <summary>Move a copy of your Google Search activity.</summary>
+            /// <summary>Move a copy of your Google Search activity</summary>
             public static string DataportabilityMyactivitySearch = "https://www.googleapis.com/auth/dataportability.myactivity.search";
 
-            /// <summary>Move a copy of your Shopping activity.</summary>
+            /// <summary>Move a copy of your Shopping activity</summary>
             public static string DataportabilityMyactivityShopping = "https://www.googleapis.com/auth/dataportability.myactivity.shopping";
 
-            /// <summary>Move a copy of your YouTube activity.</summary>
+            /// <summary>Move a copy of your YouTube activity</summary>
             public static string DataportabilityMyactivityYoutube = "https://www.googleapis.com/auth/dataportability.myactivity.youtube";
 
-            /// <summary>Move a copy of the maps you created in My Maps.</summary>
+            /// <summary>Move a copy of the maps you created in My Maps</summary>
             public static string DataportabilityMymapsMaps = "https://www.googleapis.com/auth/dataportability.mymaps.maps";
 
-            /// <summary>Move a copy of your food purchase and reservation activity.</summary>
+            /// <summary>Move a copy of your food purchase and reservation activity</summary>
             public static string DataportabilityOrderReservePurchasesReservations = "https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations";
 
-            /// <summary>Move a copy of information about your devices with Google Play Store installed.</summary>
+            /// <summary>Move a copy of information about your devices with Google Play Store installed</summary>
             public static string DataportabilityPlayDevices = "https://www.googleapis.com/auth/dataportability.play.devices";
 
-            /// <summary>Move a copy of your Google Play Store Grouping tags created by app developers.</summary>
+            /// <summary>Move a copy of your Google Play Store Grouping tags created by app developers</summary>
             public static string DataportabilityPlayGrouping = "https://www.googleapis.com/auth/dataportability.play.grouping";
 
-            /// <summary>Move a copy of your Google Play Store app installations.</summary>
+            /// <summary>Move a copy of your Google Play Store app installations</summary>
             public static string DataportabilityPlayInstalls = "https://www.googleapis.com/auth/dataportability.play.installs";
 
-            /// <summary>Move a copy of your Google Play Store downloads, including books, games, and apps.</summary>
+            /// <summary>Move a copy of your Google Play Store downloads, including books, games, and apps</summary>
             public static string DataportabilityPlayLibrary = "https://www.googleapis.com/auth/dataportability.play.library";
 
-            /// <summary>Move a copy of information about your Google Play Store Points.</summary>
+            /// <summary>Move a copy of information about your Google Play Store Points</summary>
             public static string DataportabilityPlayPlaypoints = "https://www.googleapis.com/auth/dataportability.play.playpoints";
 
-            /// <summary>Move a copy of information about your Google Play Store promotions.</summary>
+            /// <summary>Move a copy of information about your Google Play Store promotions</summary>
             public static string DataportabilityPlayPromotions = "https://www.googleapis.com/auth/dataportability.play.promotions";
 
-            /// <summary>Move a copy of your Google Play Store purchases.</summary>
+            /// <summary>Move a copy of your Google Play Store purchases</summary>
             public static string DataportabilityPlayPurchases = "https://www.googleapis.com/auth/dataportability.play.purchases";
 
-            /// <summary>Move a copy of your Google Play Store redemption activities.</summary>
+            /// <summary>Move a copy of your Google Play Store redemption activities</summary>
             public static string DataportabilityPlayRedemptions = "https://www.googleapis.com/auth/dataportability.play.redemptions";
 
-            /// <summary>Move a copy of your Google Play Store subscriptions.</summary>
+            /// <summary>Move a copy of your Google Play Store subscriptions</summary>
             public static string DataportabilityPlaySubscriptions = "https://www.googleapis.com/auth/dataportability.play.subscriptions";
 
-            /// <summary>Move a copy of your Google Play Store user settings and preferences.</summary>
+            /// <summary>Move a copy of your Google Play Store user settings and preferences</summary>
             public static string DataportabilityPlayUsersettings = "https://www.googleapis.com/auth/dataportability.play.usersettings";
 
             /// <summary>
-            /// Move a copy of your saved links, images, places, and collections from your use of Google services.
+            /// Move a copy of your saved links, images, places, and collections from your use of Google services
             /// </summary>
             public static string DataportabilitySavedCollections = "https://www.googleapis.com/auth/dataportability.saved.collections";
 
-            /// <summary>Move a copy of your media reviews on Google Search.</summary>
+            /// <summary>Move a copy of your media reviews on Google Search</summary>
             public static string DataportabilitySearchUgcMediaReviewsAndStars = "https://www.googleapis.com/auth/dataportability.search_ugc.media.reviews_and_stars";
 
             /// <summary>
-            /// Move a copy of your self-reported video streaming provider preferences from Google Search and Google TV.
+            /// Move a copy of your self-reported video streaming provider preferences from Google Search and Google TV
             /// </summary>
             public static string DataportabilitySearchUgcMediaStreamingVideoProviders = "https://www.googleapis.com/auth/dataportability.search_ugc.media.streaming_video_providers";
 
             /// <summary>
-            /// Move a copy of your indicated thumbs up and thumbs down on media in Google Search and Google TV.
+            /// Move a copy of your indicated thumbs up and thumbs down on media in Google Search and Google TV
             /// </summary>
             public static string DataportabilitySearchUgcMediaThumbs = "https://www.googleapis.com/auth/dataportability.search_ugc.media.thumbs";
 
             /// <summary>
             /// Move a copy of information about the movies and TV shows you marked as watched on Google Search and
-            /// Google TV.
+            /// Google TV
             /// </summary>
             public static string DataportabilitySearchUgcMediaWatched = "https://www.googleapis.com/auth/dataportability.search_ugc.media.watched";
 
-            /// <summary>Move a copy of your notification settings on the Google Search app.</summary>
+            /// <summary>Move a copy of your notification settings on the Google Search app</summary>
             public static string DataportabilitySearchnotificationsSettings = "https://www.googleapis.com/auth/dataportability.searchnotifications.settings";
 
-            /// <summary>Move a copy of your notification subscriptions on Google Search app.</summary>
+            /// <summary>Move a copy of your notification subscriptions on Google Search app</summary>
             public static string DataportabilitySearchnotificationsSubscriptions = "https://www.googleapis.com/auth/dataportability.searchnotifications.subscriptions";
 
-            /// <summary>Move a copy of your shipping information on Shopping.</summary>
+            /// <summary>Move a copy of your shipping information on Shopping</summary>
             public static string DataportabilityShoppingAddresses = "https://www.googleapis.com/auth/dataportability.shopping.addresses";
 
-            /// <summary>Move a copy of reviews you wrote about products or online stores on Google Search.</summary>
+            /// <summary>Move a copy of reviews you wrote about products or online stores on Google Search</summary>
             public static string DataportabilityShoppingReviews = "https://www.googleapis.com/auth/dataportability.shopping.reviews";
 
-            /// <summary>Move a copy of the images and videos you uploaded to Street View.</summary>
+            /// <summary>Move a copy of the images and videos you uploaded to Street View</summary>
             public static string DataportabilityStreetviewImagery = "https://www.googleapis.com/auth/dataportability.streetview.imagery";
 
-            /// <summary>Move a copy of information about your YouTube channel.</summary>
+            /// <summary>Move a copy of information about your YouTube channel</summary>
             public static string DataportabilityYoutubeChannel = "https://www.googleapis.com/auth/dataportability.youtube.channel";
 
-            /// <summary>Move a copy of your YouTube clips metadata.</summary>
+            /// <summary>Move a copy of your YouTube clips metadata</summary>
             public static string DataportabilityYoutubeClips = "https://www.googleapis.com/auth/dataportability.youtube.clips";
 
-            /// <summary>Move a copy of your YouTube comments.</summary>
+            /// <summary>Move a copy of your YouTube comments</summary>
             public static string DataportabilityYoutubeComments = "https://www.googleapis.com/auth/dataportability.youtube.comments";
 
-            /// <summary>Move a copy of your YouTube messages in live chat.</summary>
+            /// <summary>Move a copy of your YouTube messages in live chat</summary>
             public static string DataportabilityYoutubeLiveChat = "https://www.googleapis.com/auth/dataportability.youtube.live_chat";
 
-            /// <summary>Move a copy of your uploaded YouTube music tracks and your YouTube music library.</summary>
+            /// <summary>Move a copy of your uploaded YouTube music tracks and your YouTube music library</summary>
             public static string DataportabilityYoutubeMusic = "https://www.googleapis.com/auth/dataportability.youtube.music";
 
-            /// <summary>Move a copy of your YouTube playables saved game progress files.</summary>
+            /// <summary>Move a copy of your YouTube playables saved game progress files</summary>
             public static string DataportabilityYoutubePlayable = "https://www.googleapis.com/auth/dataportability.youtube.playable";
 
-            /// <summary>Move a copy of your YouTube posts.</summary>
+            /// <summary>Move a copy of your YouTube posts</summary>
             public static string DataportabilityYoutubePosts = "https://www.googleapis.com/auth/dataportability.youtube.posts";
 
-            /// <summary>Move a copy of your YouTube private playlists.</summary>
+            /// <summary>Move a copy of your YouTube private playlists</summary>
             public static string DataportabilityYoutubePrivatePlaylists = "https://www.googleapis.com/auth/dataportability.youtube.private_playlists";
 
-            /// <summary>Move a copy of your private YouTube videos and information about them.</summary>
+            /// <summary>Move a copy of your private YouTube videos and information about them</summary>
             public static string DataportabilityYoutubePrivateVideos = "https://www.googleapis.com/auth/dataportability.youtube.private_videos";
 
-            /// <summary>Move a copy of your public YouTube playlists.</summary>
+            /// <summary>Move a copy of your public YouTube playlists</summary>
             public static string DataportabilityYoutubePublicPlaylists = "https://www.googleapis.com/auth/dataportability.youtube.public_playlists";
 
-            /// <summary>Move a copy of your public YouTube videos and information about them.</summary>
+            /// <summary>Move a copy of your public YouTube videos and information about them</summary>
             public static string DataportabilityYoutubePublicVideos = "https://www.googleapis.com/auth/dataportability.youtube.public_videos";
 
-            /// <summary>Move a copy of your YouTube shopping wishlists, and wishlist items.</summary>
+            /// <summary>Move a copy of your YouTube shopping wishlists, and wishlist items</summary>
             public static string DataportabilityYoutubeShopping = "https://www.googleapis.com/auth/dataportability.youtube.shopping";
 
-            /// <summary>Move a copy of your YouTube channel subscriptions, even if they're private.</summary>
+            /// <summary>Move a copy of your YouTube channel subscriptions, even if they're private</summary>
             public static string DataportabilityYoutubeSubscriptions = "https://www.googleapis.com/auth/dataportability.youtube.subscriptions";
 
-            /// <summary>Move a copy of your unlisted YouTube playlists.</summary>
+            /// <summary>Move a copy of your unlisted YouTube playlists</summary>
             public static string DataportabilityYoutubeUnlistedPlaylists = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_playlists";
 
-            /// <summary>Move a copy of your unlisted YouTube videos and information about them.</summary>
+            /// <summary>Move a copy of your unlisted YouTube videos and information about them</summary>
             public static string DataportabilityYoutubeUnlistedVideos = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_videos";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Data Portability API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Move a copy of the Google Alerts subscriptions you created.</summary>
+            /// <summary>Move a copy of the Google Alerts subscriptions you created</summary>
             public const string DataportabilityAlertsSubscriptions = "https://www.googleapis.com/auth/dataportability.alerts.subscriptions";
 
             /// <summary>
             /// Move a copy of messages between you and the businesses you have conversations with across Google
-            /// services.
+            /// services
             /// </summary>
             public const string DataportabilityBusinessmessagingConversations = "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations";
 
-            /// <summary>Move a copy of the information you entered into online forms in Chrome.</summary>
+            /// <summary>Move a copy of the information you entered into online forms in Chrome</summary>
             public const string DataportabilityChromeAutofill = "https://www.googleapis.com/auth/dataportability.chrome.autofill";
 
-            /// <summary>Move a copy of pages you bookmarked in Chrome.</summary>
+            /// <summary>Move a copy of pages you bookmarked in Chrome</summary>
             public const string DataportabilityChromeBookmarks = "https://www.googleapis.com/auth/dataportability.chrome.bookmarks";
 
-            /// <summary>Move a copy of words you added to Chrome's dictionary.</summary>
+            /// <summary>Move a copy of words you added to Chrome's dictionary</summary>
             public const string DataportabilityChromeDictionary = "https://www.googleapis.com/auth/dataportability.chrome.dictionary";
 
-            /// <summary>Move a copy of extensions you installed from the Chrome Web Store.</summary>
+            /// <summary>Move a copy of extensions you installed from the Chrome Web Store</summary>
             public const string DataportabilityChromeExtensions = "https://www.googleapis.com/auth/dataportability.chrome.extensions";
 
-            /// <summary>Move a copy of sites you visited in Chrome.</summary>
+            /// <summary>Move a copy of sites you visited in Chrome</summary>
             public const string DataportabilityChromeHistory = "https://www.googleapis.com/auth/dataportability.chrome.history";
 
-            /// <summary>Move a copy of pages you added to your reading list in Chrome.</summary>
+            /// <summary>Move a copy of pages you added to your reading list in Chrome</summary>
             public const string DataportabilityChromeReadingList = "https://www.googleapis.com/auth/dataportability.chrome.reading_list";
 
-            /// <summary>Move a copy of your settings in Chrome.</summary>
+            /// <summary>Move a copy of your settings in Chrome</summary>
             public const string DataportabilityChromeSettings = "https://www.googleapis.com/auth/dataportability.chrome.settings";
 
-            /// <summary>Move a copy of searches and sites you follow, saved by Discover.</summary>
+            /// <summary>Move a copy of searches and sites you follow, saved by Discover</summary>
             public const string DataportabilityDiscoverFollows = "https://www.googleapis.com/auth/dataportability.discover.follows";
 
-            /// <summary>Move a copy of links to your liked documents, saved by Discover.</summary>
+            /// <summary>Move a copy of links to your liked documents, saved by Discover</summary>
             public const string DataportabilityDiscoverLikes = "https://www.googleapis.com/auth/dataportability.discover.likes";
 
-            /// <summary>Move a copy of content you marked as not interested, saved by Discover.</summary>
+            /// <summary>Move a copy of content you marked as not interested, saved by Discover</summary>
             public const string DataportabilityDiscoverNotInterested = "https://www.googleapis.com/auth/dataportability.discover.not_interested";
 
-            /// <summary>Move a copy of the places you labeled on Maps.</summary>
+            /// <summary>Move a copy of the places you labeled on Maps</summary>
             public const string DataportabilityMapsAliasedPlaces = "https://www.googleapis.com/auth/dataportability.maps.aliased_places";
 
-            /// <summary>Move a copy of your pinned trips on Maps.</summary>
+            /// <summary>Move a copy of your pinned trips on Maps</summary>
             public const string DataportabilityMapsCommuteRoutes = "https://www.googleapis.com/auth/dataportability.maps.commute_routes";
 
-            /// <summary>Move a copy of your commute settings on Maps.</summary>
+            /// <summary>Move a copy of your commute settings on Maps</summary>
             public const string DataportabilityMapsCommuteSettings = "https://www.googleapis.com/auth/dataportability.maps.commute_settings";
 
-            /// <summary>Move a copy of your electric vehicle profile on Maps.</summary>
+            /// <summary>Move a copy of your electric vehicle profile on Maps</summary>
             public const string DataportabilityMapsEvProfile = "https://www.googleapis.com/auth/dataportability.maps.ev_profile";
 
-            /// <summary>Move a copy of the corrections you made to places or map information on Maps.</summary>
+            /// <summary>Move a copy of the corrections you made to places or map information on Maps</summary>
             public const string DataportabilityMapsFactualContributions = "https://www.googleapis.com/auth/dataportability.maps.factual_contributions";
 
-            /// <summary>Move a copy of your updates to places on Maps.</summary>
+            /// <summary>Move a copy of your updates to places on Maps</summary>
             public const string DataportabilityMapsOfferingContributions = "https://www.googleapis.com/auth/dataportability.maps.offering_contributions";
 
-            /// <summary>Move a copy of the photos and videos you posted on Maps.</summary>
+            /// <summary>Move a copy of the photos and videos you posted on Maps</summary>
             public const string DataportabilityMapsPhotosVideos = "https://www.googleapis.com/auth/dataportability.maps.photos_videos";
 
-            /// <summary>Move a copy of the questions and answers you posted on Maps.</summary>
+            /// <summary>Move a copy of the questions and answers you posted on Maps</summary>
             public const string DataportabilityMapsQuestionsAnswers = "https://www.googleapis.com/auth/dataportability.maps.questions_answers";
 
-            /// <summary>Move a copy of your reviews and posts on Maps.</summary>
+            /// <summary>Move a copy of your reviews and posts on Maps</summary>
             public const string DataportabilityMapsReviews = "https://www.googleapis.com/auth/dataportability.maps.reviews";
 
-            /// <summary>Move a copy of your Starred places list on Maps.</summary>
+            /// <summary>Move a copy of your Starred places list on Maps</summary>
             public const string DataportabilityMapsStarredPlaces = "https://www.googleapis.com/auth/dataportability.maps.starred_places";
 
-            /// <summary>Move a copy of your Maps activity.</summary>
+            /// <summary>Move a copy of your Maps activity</summary>
             public const string DataportabilityMyactivityMaps = "https://www.googleapis.com/auth/dataportability.myactivity.maps";
 
-            /// <summary>Move a copy of your My Ad Center activity.</summary>
+            /// <summary>Move a copy of your My Ad Center activity</summary>
             public const string DataportabilityMyactivityMyadcenter = "https://www.googleapis.com/auth/dataportability.myactivity.myadcenter";
 
-            /// <summary>Move a copy of your Google Play activity.</summary>
+            /// <summary>Move a copy of your Google Play activity</summary>
             public const string DataportabilityMyactivityPlay = "https://www.googleapis.com/auth/dataportability.myactivity.play";
 
-            /// <summary>Move a copy of your Google Search activity.</summary>
+            /// <summary>Move a copy of your Google Search activity</summary>
             public const string DataportabilityMyactivitySearch = "https://www.googleapis.com/auth/dataportability.myactivity.search";
 
-            /// <summary>Move a copy of your Shopping activity.</summary>
+            /// <summary>Move a copy of your Shopping activity</summary>
             public const string DataportabilityMyactivityShopping = "https://www.googleapis.com/auth/dataportability.myactivity.shopping";
 
-            /// <summary>Move a copy of your YouTube activity.</summary>
+            /// <summary>Move a copy of your YouTube activity</summary>
             public const string DataportabilityMyactivityYoutube = "https://www.googleapis.com/auth/dataportability.myactivity.youtube";
 
-            /// <summary>Move a copy of the maps you created in My Maps.</summary>
+            /// <summary>Move a copy of the maps you created in My Maps</summary>
             public const string DataportabilityMymapsMaps = "https://www.googleapis.com/auth/dataportability.mymaps.maps";
 
-            /// <summary>Move a copy of your food purchase and reservation activity.</summary>
+            /// <summary>Move a copy of your food purchase and reservation activity</summary>
             public const string DataportabilityOrderReservePurchasesReservations = "https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations";
 
-            /// <summary>Move a copy of information about your devices with Google Play Store installed.</summary>
+            /// <summary>Move a copy of information about your devices with Google Play Store installed</summary>
             public const string DataportabilityPlayDevices = "https://www.googleapis.com/auth/dataportability.play.devices";
 
-            /// <summary>Move a copy of your Google Play Store Grouping tags created by app developers.</summary>
+            /// <summary>Move a copy of your Google Play Store Grouping tags created by app developers</summary>
             public const string DataportabilityPlayGrouping = "https://www.googleapis.com/auth/dataportability.play.grouping";
 
-            /// <summary>Move a copy of your Google Play Store app installations.</summary>
+            /// <summary>Move a copy of your Google Play Store app installations</summary>
             public const string DataportabilityPlayInstalls = "https://www.googleapis.com/auth/dataportability.play.installs";
 
-            /// <summary>Move a copy of your Google Play Store downloads, including books, games, and apps.</summary>
+            /// <summary>Move a copy of your Google Play Store downloads, including books, games, and apps</summary>
             public const string DataportabilityPlayLibrary = "https://www.googleapis.com/auth/dataportability.play.library";
 
-            /// <summary>Move a copy of information about your Google Play Store Points.</summary>
+            /// <summary>Move a copy of information about your Google Play Store Points</summary>
             public const string DataportabilityPlayPlaypoints = "https://www.googleapis.com/auth/dataportability.play.playpoints";
 
-            /// <summary>Move a copy of information about your Google Play Store promotions.</summary>
+            /// <summary>Move a copy of information about your Google Play Store promotions</summary>
             public const string DataportabilityPlayPromotions = "https://www.googleapis.com/auth/dataportability.play.promotions";
 
-            /// <summary>Move a copy of your Google Play Store purchases.</summary>
+            /// <summary>Move a copy of your Google Play Store purchases</summary>
             public const string DataportabilityPlayPurchases = "https://www.googleapis.com/auth/dataportability.play.purchases";
 
-            /// <summary>Move a copy of your Google Play Store redemption activities.</summary>
+            /// <summary>Move a copy of your Google Play Store redemption activities</summary>
             public const string DataportabilityPlayRedemptions = "https://www.googleapis.com/auth/dataportability.play.redemptions";
 
-            /// <summary>Move a copy of your Google Play Store subscriptions.</summary>
+            /// <summary>Move a copy of your Google Play Store subscriptions</summary>
             public const string DataportabilityPlaySubscriptions = "https://www.googleapis.com/auth/dataportability.play.subscriptions";
 
-            /// <summary>Move a copy of your Google Play Store user settings and preferences.</summary>
+            /// <summary>Move a copy of your Google Play Store user settings and preferences</summary>
             public const string DataportabilityPlayUsersettings = "https://www.googleapis.com/auth/dataportability.play.usersettings";
 
             /// <summary>
-            /// Move a copy of your saved links, images, places, and collections from your use of Google services.
+            /// Move a copy of your saved links, images, places, and collections from your use of Google services
             /// </summary>
             public const string DataportabilitySavedCollections = "https://www.googleapis.com/auth/dataportability.saved.collections";
 
-            /// <summary>Move a copy of your media reviews on Google Search.</summary>
+            /// <summary>Move a copy of your media reviews on Google Search</summary>
             public const string DataportabilitySearchUgcMediaReviewsAndStars = "https://www.googleapis.com/auth/dataportability.search_ugc.media.reviews_and_stars";
 
             /// <summary>
-            /// Move a copy of your self-reported video streaming provider preferences from Google Search and Google TV.
+            /// Move a copy of your self-reported video streaming provider preferences from Google Search and Google TV
             /// </summary>
             public const string DataportabilitySearchUgcMediaStreamingVideoProviders = "https://www.googleapis.com/auth/dataportability.search_ugc.media.streaming_video_providers";
 
             /// <summary>
-            /// Move a copy of your indicated thumbs up and thumbs down on media in Google Search and Google TV.
+            /// Move a copy of your indicated thumbs up and thumbs down on media in Google Search and Google TV
             /// </summary>
             public const string DataportabilitySearchUgcMediaThumbs = "https://www.googleapis.com/auth/dataportability.search_ugc.media.thumbs";
 
             /// <summary>
             /// Move a copy of information about the movies and TV shows you marked as watched on Google Search and
-            /// Google TV.
+            /// Google TV
             /// </summary>
             public const string DataportabilitySearchUgcMediaWatched = "https://www.googleapis.com/auth/dataportability.search_ugc.media.watched";
 
-            /// <summary>Move a copy of your notification settings on the Google Search app.</summary>
+            /// <summary>Move a copy of your notification settings on the Google Search app</summary>
             public const string DataportabilitySearchnotificationsSettings = "https://www.googleapis.com/auth/dataportability.searchnotifications.settings";
 
-            /// <summary>Move a copy of your notification subscriptions on Google Search app.</summary>
+            /// <summary>Move a copy of your notification subscriptions on Google Search app</summary>
             public const string DataportabilitySearchnotificationsSubscriptions = "https://www.googleapis.com/auth/dataportability.searchnotifications.subscriptions";
 
-            /// <summary>Move a copy of your shipping information on Shopping.</summary>
+            /// <summary>Move a copy of your shipping information on Shopping</summary>
             public const string DataportabilityShoppingAddresses = "https://www.googleapis.com/auth/dataportability.shopping.addresses";
 
-            /// <summary>Move a copy of reviews you wrote about products or online stores on Google Search.</summary>
+            /// <summary>Move a copy of reviews you wrote about products or online stores on Google Search</summary>
             public const string DataportabilityShoppingReviews = "https://www.googleapis.com/auth/dataportability.shopping.reviews";
 
-            /// <summary>Move a copy of the images and videos you uploaded to Street View.</summary>
+            /// <summary>Move a copy of the images and videos you uploaded to Street View</summary>
             public const string DataportabilityStreetviewImagery = "https://www.googleapis.com/auth/dataportability.streetview.imagery";
 
-            /// <summary>Move a copy of information about your YouTube channel.</summary>
+            /// <summary>Move a copy of information about your YouTube channel</summary>
             public const string DataportabilityYoutubeChannel = "https://www.googleapis.com/auth/dataportability.youtube.channel";
 
-            /// <summary>Move a copy of your YouTube clips metadata.</summary>
+            /// <summary>Move a copy of your YouTube clips metadata</summary>
             public const string DataportabilityYoutubeClips = "https://www.googleapis.com/auth/dataportability.youtube.clips";
 
-            /// <summary>Move a copy of your YouTube comments.</summary>
+            /// <summary>Move a copy of your YouTube comments</summary>
             public const string DataportabilityYoutubeComments = "https://www.googleapis.com/auth/dataportability.youtube.comments";
 
-            /// <summary>Move a copy of your YouTube messages in live chat.</summary>
+            /// <summary>Move a copy of your YouTube messages in live chat</summary>
             public const string DataportabilityYoutubeLiveChat = "https://www.googleapis.com/auth/dataportability.youtube.live_chat";
 
-            /// <summary>Move a copy of your uploaded YouTube music tracks and your YouTube music library.</summary>
+            /// <summary>Move a copy of your uploaded YouTube music tracks and your YouTube music library</summary>
             public const string DataportabilityYoutubeMusic = "https://www.googleapis.com/auth/dataportability.youtube.music";
 
-            /// <summary>Move a copy of your YouTube playables saved game progress files.</summary>
+            /// <summary>Move a copy of your YouTube playables saved game progress files</summary>
             public const string DataportabilityYoutubePlayable = "https://www.googleapis.com/auth/dataportability.youtube.playable";
 
-            /// <summary>Move a copy of your YouTube posts.</summary>
+            /// <summary>Move a copy of your YouTube posts</summary>
             public const string DataportabilityYoutubePosts = "https://www.googleapis.com/auth/dataportability.youtube.posts";
 
-            /// <summary>Move a copy of your YouTube private playlists.</summary>
+            /// <summary>Move a copy of your YouTube private playlists</summary>
             public const string DataportabilityYoutubePrivatePlaylists = "https://www.googleapis.com/auth/dataportability.youtube.private_playlists";
 
-            /// <summary>Move a copy of your private YouTube videos and information about them.</summary>
+            /// <summary>Move a copy of your private YouTube videos and information about them</summary>
             public const string DataportabilityYoutubePrivateVideos = "https://www.googleapis.com/auth/dataportability.youtube.private_videos";
 
-            /// <summary>Move a copy of your public YouTube playlists.</summary>
+            /// <summary>Move a copy of your public YouTube playlists</summary>
             public const string DataportabilityYoutubePublicPlaylists = "https://www.googleapis.com/auth/dataportability.youtube.public_playlists";
 
-            /// <summary>Move a copy of your public YouTube videos and information about them.</summary>
+            /// <summary>Move a copy of your public YouTube videos and information about them</summary>
             public const string DataportabilityYoutubePublicVideos = "https://www.googleapis.com/auth/dataportability.youtube.public_videos";
 
-            /// <summary>Move a copy of your YouTube shopping wishlists, and wishlist items.</summary>
+            /// <summary>Move a copy of your YouTube shopping wishlists, and wishlist items</summary>
             public const string DataportabilityYoutubeShopping = "https://www.googleapis.com/auth/dataportability.youtube.shopping";
 
-            /// <summary>Move a copy of your YouTube channel subscriptions, even if they're private.</summary>
+            /// <summary>Move a copy of your YouTube channel subscriptions, even if they're private</summary>
             public const string DataportabilityYoutubeSubscriptions = "https://www.googleapis.com/auth/dataportability.youtube.subscriptions";
 
-            /// <summary>Move a copy of your unlisted YouTube playlists.</summary>
+            /// <summary>Move a copy of your unlisted YouTube playlists</summary>
             public const string DataportabilityYoutubeUnlistedPlaylists = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_playlists";
 
-            /// <summary>Move a copy of your unlisted YouTube videos and information about them.</summary>
+            /// <summary>Move a copy of your unlisted YouTube videos and information about them</summary>
             public const string DataportabilityYoutubeUnlistedVideos = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_videos";
         }
 
