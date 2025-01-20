@@ -35,6 +35,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public AndroidEnterpriseService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Devices = new DevicesResource(this);
+            EnrollmentTokens = new EnrollmentTokensResource(this);
             Enterprises = new EnterprisesResource(this);
             Entitlements = new EntitlementsResource(this);
             Grouplicenses = new GrouplicensesResource(this);
@@ -88,6 +89,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Gets the Devices resource.</summary>
         public virtual DevicesResource Devices { get; }
+
+        /// <summary>Gets the EnrollmentTokens resource.</summary>
+        public virtual EnrollmentTokensResource EnrollmentTokens { get; }
 
         /// <summary>Gets the Enterprises resource.</summary>
         public virtual EnterprisesResource Enterprises { get; }
@@ -827,6 +831,82 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
     }
 
+    /// <summary>The "enrollmentTokens" collection of methods.</summary>
+    public class EnrollmentTokensResource
+    {
+        private const string Resource = "enrollmentTokens";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public EnrollmentTokensResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Returns a token for device enrollment. The DPC can encode this token within the QR/NFC/zero-touch enrollment
+        /// payload or fetch it before calling the on-device API to authenticate the user. The token can be generated
+        /// for each device or reused across multiple devices.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">Required. The ID of the enterprise.</param>
+        public virtual CreateRequest Create(Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken body, string enterpriseId)
+        {
+            return new CreateRequest(this.service, body, enterpriseId);
+        }
+
+        /// <summary>
+        /// Returns a token for device enrollment. The DPC can encode this token within the QR/NFC/zero-touch enrollment
+        /// payload or fetch it before calling the on-device API to authenticate the user. The token can be generated
+        /// for each device or reused across multiple devices.
+        /// </summary>
+        public class CreateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken body, string enterpriseId) : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/enrollmentTokens";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "enterprises" collection of methods.</summary>
     public class EnterprisesResource
     {
@@ -947,67 +1027,6 @@ namespace Google.Apis.AndroidEnterprise.v1
                     Name = "enterpriseToken",
                     IsRequired = false,
                     ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
-        /// Returns a token for device enrollment. The DPC can encode this token within the QR/NFC/zero-touch enrollment
-        /// payload or fetch it before calling the on-device API to authenticate the user. The token can be generated
-        /// for each device or reused across multiple devices.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="enterpriseId">Required. The ID of the enterprise.</param>
-        public virtual CreateEnrollmentTokenRequest CreateEnrollmentToken(Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken body, string enterpriseId)
-        {
-            return new CreateEnrollmentTokenRequest(this.service, body, enterpriseId);
-        }
-
-        /// <summary>
-        /// Returns a token for device enrollment. The DPC can encode this token within the QR/NFC/zero-touch enrollment
-        /// payload or fetch it before calling the on-device API to authenticate the user. The token can be generated
-        /// for each device or reused across multiple devices.
-        /// </summary>
-        public class CreateEnrollmentTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken>
-        {
-            /// <summary>Constructs a new CreateEnrollmentToken request.</summary>
-            public CreateEnrollmentTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken body, string enterpriseId) : base(service)
-            {
-                EnterpriseId = enterpriseId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The ID of the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string EnterpriseId { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AndroidEnterprise.v1.Data.EnrollmentToken Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "createEnrollmentToken";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/createEnrollmentToken";
-
-            /// <summary>Initializes CreateEnrollmentToken parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "enterpriseId",
-                    IsRequired = true,
-                    ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
