@@ -1352,13 +1352,6 @@ namespace Google.Apis.GKEHub.v2.Data
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling.
-        /// This field is deprecated.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowVerticalScale")]
-        public virtual System.Nullable<bool> AllowVerticalScale { get; set; }
-
-        /// <summary>
         /// Optional. Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and
         /// the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be
         /// ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on
@@ -1615,7 +1608,7 @@ namespace Google.Apis.GKEHub.v2.Data
 
         /// <summary>
         /// Required. Type of secret configured for access to the Git repo. Must be one of ssh, cookiefile, gcenode,
-        /// token, gcpserviceaccount or none. The validation of this is case-sensitive. Required.
+        /// token, gcpserviceaccount, githubapp or none. The validation of this is case-sensitive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
         public virtual string SecretType { get; set; }
@@ -1624,7 +1617,7 @@ namespace Google.Apis.GKEHub.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syncBranch")]
         public virtual string SyncBranch { get; set; }
 
-        /// <summary>Optional. The URL of the Git repository to use as the source of truth.</summary>
+        /// <summary>Required. The URL of the Git repository to use as the source of truth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
         public virtual string SyncRepo { get; set; }
 
@@ -1750,12 +1743,15 @@ namespace Google.Apis.GKEHub.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyDir")]
         public virtual string PolicyDir { get; set; }
 
-        /// <summary>Optional. Type of secret configured for access to the Git repo.</summary>
+        /// <summary>
+        /// Required. Type of secret configured for access to the OCI repo. Must be one of gcenode, gcpserviceaccount,
+        /// k8sserviceaccount or none. The validation of this is case-sensitive.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
         public virtual string SecretType { get; set; }
 
         /// <summary>
-        /// Optional. The OCI image repository URL for the package to sync from. e.g.
+        /// Required. The OCI image repository URL for the package to sync from. e.g.
         /// `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
