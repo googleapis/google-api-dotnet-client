@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2120,6 +2120,7 @@ namespace Google.Apis.Looker.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Custom domain configuration for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customDomain")]
         public virtual CustomDomain CustomDomain { get; set; }
 
