@@ -3822,6 +3822,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     public class SelectedResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Format: For routine: `projects/{projectId}/datasets/{datasetId}/routines/{routineId}`
+        /// Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routine")]
+        public virtual string Routine { get; set; }
+
+        /// <summary>
         /// Optional. Format: For table: `projects/{projectId}/datasets/{datasetId}/tables/{tableId}`
         /// Example:"projects/test_project/datasets/test_dataset/tables/test_table"
         /// </summary>
