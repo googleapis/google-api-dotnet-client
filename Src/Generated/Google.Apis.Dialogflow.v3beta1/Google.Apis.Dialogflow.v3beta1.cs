@@ -19923,7 +19923,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Required. High level description of the goal the playbook intend to accomplish.</summary>
+        /// <summary>
+        /// Required. High level description of the goal the playbook intend to accomplish. A goal should be concise
+        /// since it's visible to other playbooks that may reference this playbook.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
         public virtual string Goal { get; set; }
 
@@ -20064,6 +20067,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Message of the Instruction of the playbook.</summary>
     public class GoogleCloudDialogflowCxV3beta1PlaybookInstruction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// General guidelines for the playbook. These are unstructured instructions that are not directly part of the
+        /// goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guidelines")]
+        public virtual string Guidelines { get; set; }
+
         /// <summary>Ordered list of step by step execution instructions to accomplish target goal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1PlaybookStep> Steps { get; set; }
