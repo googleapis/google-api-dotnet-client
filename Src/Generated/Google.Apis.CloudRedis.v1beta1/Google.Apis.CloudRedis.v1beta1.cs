@@ -1240,7 +1240,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>
                     /// Required. Mask of fields to update. At least one path must be supplied in this field. The
                     /// elements of the repeated paths field may only include these fields from Cluster: * `size_gb` *
-                    /// `replica_count`
+                    /// `replica_count` * `cluster_endpoints`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2996,6 +2996,14 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     /// <summary>A cluster instance.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, cluster endpoints that are created and registered by customers can be deleted
+        /// asynchronously. That is, such a cluster endpoint can be de-registered before the forwarding rules in the
+        /// cluster endpoint are deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asyncClusterEndpointsDeletionEnabled")]
+        public virtual System.Nullable<bool> AsyncClusterEndpointsDeletionEnabled { get; set; }
+
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the
         /// cluster.
