@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.GoogleAnalyticsAdmin.v1alpha Client Library</Title>
-    <Version>1.68.0.3655</Version>
+    <Version>1.68.0.3666</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
