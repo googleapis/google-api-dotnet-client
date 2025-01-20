@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2588,15 +2588,16 @@ namespace Google.Apis.Config.v1
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. When requesting a page of resources, 'page_size' specifies number of resources to
-                    /// return. If unspecified, at most 500 will be returned. The maximum value is 1000.
+                    /// Optional. When requesting a page of terraform versions, 'page_size' specifies number of
+                    /// terraform versions to return. If unspecified, at most 500 will be returned. The maximum value is
+                    /// 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
                     /// Optional. Token returned by previous call to 'ListTerraformVersions' which specifies the
-                    /// position in the list from where to continue listing the resources.
+                    /// position in the list from where to continue listing the terraform versions.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
