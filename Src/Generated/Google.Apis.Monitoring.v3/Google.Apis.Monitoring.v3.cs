@@ -3708,6 +3708,18 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. If true, only metrics and monitored resource types that have recent data (within roughly
+                /// 25 hours) will be included in the response. - If a metric descriptor enumerates monitored resource
+                /// types, only the monitored resource types for which the metric type has recent data will be included
+                /// in the returned metric descriptor, and if none of them have recent data, the metric descriptor will
+                /// not be returned. - If a metric descriptor does not enumerate the compatible monitored resource
+                /// types, it will be returned only if the metric type has recent data for some monitored resource type.
+                /// The returned descriptor will not enumerate any monitored resource types.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("activeOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ActiveOnly { get; set; }
+
+                /// <summary>
                 /// Optional. If this field is empty, all custom and system-defined metric descriptors are returned.
                 /// Otherwise, the filter (https://cloud.google.com/monitoring/api/v3/filters) specifies which metric
                 /// descriptors are to be returned. For example, the following filter matches all custom metrics
@@ -3753,6 +3765,14 @@ namespace Google.Apis.Monitoring.v3
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("activeOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "activeOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
