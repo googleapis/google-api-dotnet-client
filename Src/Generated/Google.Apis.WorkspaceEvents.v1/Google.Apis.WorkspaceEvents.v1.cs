@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -71,18 +71,20 @@ namespace Google.Apis.WorkspaceEvents.v1
             public static string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// See, compose, send, update, and delete messages and their associated attachments, and add, see, and
-            /// delete reactions to messages.
+            /// See, compose, send, update, and delete messages as well as their message content; add, see, and delete
+            /// reactions to messages.
             /// </summary>
             public static string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
 
-            /// <summary>See, add, and delete reactions to messages in Google Chat</summary>
+            /// <summary>
+            /// See, add, and delete reactions as well as their reaction content to messages in Google Chat
+            /// </summary>
             public static string ChatMessagesReactions = "https://www.googleapis.com/auth/chat.messages.reactions";
 
-            /// <summary>View reactions to messages in Google Chat</summary>
+            /// <summary>View reactions as well as their reaction content to messages in Google Chat</summary>
             public static string ChatMessagesReactionsReadonly = "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
 
-            /// <summary>See messages and their associated reactions and attachments in Google Chat</summary>
+            /// <summary>See messages as well as their reactions and message content in Google Chat</summary>
             public static string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
             /// <summary>
@@ -133,18 +135,20 @@ namespace Google.Apis.WorkspaceEvents.v1
             public const string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// See, compose, send, update, and delete messages and their associated attachments, and add, see, and
-            /// delete reactions to messages.
+            /// See, compose, send, update, and delete messages as well as their message content; add, see, and delete
+            /// reactions to messages.
             /// </summary>
             public const string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
 
-            /// <summary>See, add, and delete reactions to messages in Google Chat</summary>
+            /// <summary>
+            /// See, add, and delete reactions as well as their reaction content to messages in Google Chat
+            /// </summary>
             public const string ChatMessagesReactions = "https://www.googleapis.com/auth/chat.messages.reactions";
 
-            /// <summary>View reactions to messages in Google Chat</summary>
+            /// <summary>View reactions as well as their reaction content to messages in Google Chat</summary>
             public const string ChatMessagesReactionsReadonly = "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
 
-            /// <summary>See messages and their associated reactions and attachments in Google Chat</summary>
+            /// <summary>See messages as well as their reactions and message content in Google Chat</summary>
             public const string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
             /// <summary>
