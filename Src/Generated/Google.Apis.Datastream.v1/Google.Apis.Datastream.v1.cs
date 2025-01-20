@@ -4813,9 +4813,9 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ClientCertificate { get; set; }
 
         /// <summary>
-        /// Required. Input only. PEM-encoded private key associated with the client certificate. This value will be
+        /// Optional. Input only. PEM-encoded private key associated with the client certificate. This value will be
         /// used during the SSL/TLS handshake, allowing the PostgreSQL server to authenticate the client's identity,
-        /// i.e. identity of the Datastream.
+        /// i.e. identity of the Datastream. Mutually exclusive with the `secret_manager_stored_client_key` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; }
