@@ -553,6 +553,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
+        /// <summary>
+        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs. This field is
+        /// only returned in PromptMessage for prompt management. It is not currently used in the Gemini GenerateContent
+        /// calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Required. The IANA standard MIME type of the source data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -795,6 +803,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>URI based data.</summary>
     public class GoogleCloudAiplatformV1beta1FileData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Display name of the file data. Used to provide a label or filename to distinguish file datas. This
+        /// field is only returned in PromptMessage for prompt management. It is not currently used in the Gemini
+        /// GenerateContent calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Required. URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
         public virtual string FileUri { get; set; }
@@ -984,6 +1000,43 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Candidate> Candidates { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when the request is made to the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. The model version used to generate the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
         public virtual string ModelVersion { get; set; }
@@ -994,6 +1047,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptFeedback")]
         public virtual GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback PromptFeedback { get; set; }
+
+        /// <summary>
+        /// Output only. response_id is used to identify each response. It is the encoding of the event_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
+        public virtual string ResponseId { get; set; }
 
         /// <summary>Usage metadata about the response(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageMetadata")]
