@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5641,6 +5641,10 @@ namespace Google.Apis.NetAppFiles.v1.Data
         /// <summary>Instructions for mounting</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instructions")]
         public virtual string Instructions { get; set; }
+
+        /// <summary>Output only. IP Address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
 
         /// <summary>Protocol to mount with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
