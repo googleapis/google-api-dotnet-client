@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -553,6 +553,59 @@ namespace Google.Apis.CloudFunctions.v2alpha
                     public override string RestPath => "v2alpha/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Detaches 2nd Gen function to Cloud Run function.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the function for which should be detached.</param>
+                public virtual DetachFunctionRequest DetachFunction(Google.Apis.CloudFunctions.v2alpha.Data.DetachFunctionRequest body, string name)
+                {
+                    return new DetachFunctionRequest(this.service, body, name);
+                }
+
+                /// <summary>Detaches 2nd Gen function to Cloud Run function.</summary>
+                public class DetachFunctionRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new DetachFunction request.</summary>
+                    public DetachFunctionRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2alpha.Data.DetachFunctionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the function for which should be detached.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2alpha.Data.DetachFunctionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "detachFunction";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha/{+name}:detachFunction";
+
+                    /// <summary>Initializes DetachFunction parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1873,9 +1926,11 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
 
         /// <summary>
         /// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd
-        /// Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If
-        /// `docker_repository` field is specified, this field should either be left unspecified or set to
-        /// `ARTIFACT_REGISTRY`.
+        /// Gen functions can only use Artifact Registry. Deprecated: Container Registry option will no longer be
+        /// available after March 2025: https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr
+        /// Please use Artifact Registry instead, which is the default choice. If unspecified, it defaults to
+        /// `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified
+        /// or set to `ARTIFACT_REGISTRY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dockerRegistry")]
         public virtual string DockerRegistry { get; set; }
@@ -1983,6 +2038,13 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the `DetachFunction` method.</summary>
+    public class DetachFunctionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
