@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2101,7 +2101,9 @@ namespace Google.Apis.DataFusion.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
 
-        /// <summary>Map of additional options used to configure the behavior of Data Fusion instance.</summary>
+        /// <summary>
+        /// Optional. Map of additional options used to configure the behavior of Data Fusion instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual System.Collections.Generic.IDictionary<string, string> Options { get; set; }
 
@@ -2532,8 +2534,8 @@ namespace Google.Apis.DataFusion.v1.Data
 
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
-        /// been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        /// corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
