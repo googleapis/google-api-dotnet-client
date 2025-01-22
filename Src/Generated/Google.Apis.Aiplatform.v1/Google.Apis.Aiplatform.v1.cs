@@ -71634,6 +71634,13 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Tuning data statistics for Supervised Tuning.</summary>
     public class GoogleCloudAiplatformV1SupervisedTuningDataStats : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. For each index in `truncated_example_indices`, the user-facing reason why the example was
+        /// dropped. Must not include example itself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedExampleReasons")]
+        public virtual System.Collections.Generic.IList<string> DroppedExampleReasons { get; set; }
+
         /// <summary>Output only. Number of billable characters in the tuning dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBillableCharacterCount")]
         public virtual System.Nullable<long> TotalBillableCharacterCount { get; set; }
@@ -71642,7 +71649,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBillableTokenCount")]
         public virtual System.Nullable<long> TotalBillableTokenCount { get; set; }
 
-        /// <summary>The number of examples in the dataset that have been truncated by any amount.</summary>
+        /// <summary>
+        /// Output only. The number of examples in the dataset that have been dropped. An example can be dropped for
+        /// reasons including: too many tokens, contains an invalid image, contains too many images, etc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTruncatedExampleCount")]
         public virtual System.Nullable<long> TotalTruncatedExampleCount { get; set; }
 
@@ -71650,7 +71660,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalTuningCharacterCount")]
         public virtual System.Nullable<long> TotalTuningCharacterCount { get; set; }
 
-        /// <summary>A partial sample of the indices (starting from 1) of the truncated examples.</summary>
+        /// <summary>Output only. A partial sample of the indices (starting from 1) of the dropped examples.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truncatedExampleIndices")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> TruncatedExampleIndices { get; set; }
 
