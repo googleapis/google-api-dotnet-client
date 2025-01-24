@@ -15,26 +15,24 @@ limitations under the License.
 */
 
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
     /// <summary>
-    /// Access token request for impersonated credential as specified in https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth.
+    /// OIDC token request for impersonated credential as specified in https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth.
     /// </summary>
-    internal class ImpersonationAccessTokenRequest : ImpersonationRequest
+    internal class IamOIdCTokenRequest : IamRequest
     {
         /// <summary>
-        /// Gets or sets the scopes to request during the authorization grant.
+        /// Gets or sets the audience of the requested OIDC token.
         /// </summary>
-        [JsonProperty("scope")]
-        public IEnumerable<string> Scopes { get; set; }
+        [JsonProperty("audience")]
+        public string Audience { get; set; }
 
         /// <summary>
-        /// Gets or sets how long the delegated credential should be valid. Its format is the number of
-        /// seconds followed by a letter "s", for example "300s".
+        /// Gets or sets whether email address should be included in the requested OIDC token.
         /// </summary>
-        [JsonProperty("lifetime")]
-        public string Lifetime { get; set; }
+        [JsonProperty("includeEmail")]
+        public bool IncludeEmail { get; set; }
     }
 }
