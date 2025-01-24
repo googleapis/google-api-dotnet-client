@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
-    internal abstract class ImpersonationRequest
+    internal abstract class IamRequest
     {
         /// <summary>
         /// Gets or sets the chained list of delegate service accounts.

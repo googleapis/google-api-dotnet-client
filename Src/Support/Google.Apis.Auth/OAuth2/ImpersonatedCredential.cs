@@ -240,7 +240,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
-            var request = new ImpersonationAccessTokenRequest
+            var request = new IamAccessTokenRequest
             {
                 DelegateAccounts = DelegateAccounts,
                 Scopes = Scopes,
@@ -272,7 +272,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             await ThrowIfCustomTokenUrlAsync(cancellationToken).ConfigureAwait(false);
 
-            var request = new ImpersonationOIdCTokenRequest
+            var request = new IamOIdCTokenRequest
             {
                 DelegateAccounts = DelegateAccounts,
                 Audience = oidcTokenOptions.TargetAudience,
