@@ -3134,6 +3134,14 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>SQLServer Connection Profile configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerProfile")]
         public virtual SqlServerProfile SqlServerProfile { get; set; }
@@ -3887,8 +3895,9 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual System.Nullable<bool> CaCertificateSet { get; set; }
 
         /// <summary>
-        /// Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source
-        /// database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.
+        /// Optional. Input only. PEM-encoded certificate that will be used by the replica to authenticate against the
+        /// source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are
+        /// mandatory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
         public virtual string ClientCertificate { get; set; }
@@ -3898,8 +3907,9 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual System.Nullable<bool> ClientCertificateSet { get; set; }
 
         /// <summary>
-        /// Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the
-        /// 'client_certificate' and the 'ca_certificate' fields are mandatory.
+        /// Optional. Input only. PEM-encoded private key associated with the Client Certificate. If this field is used
+        /// then the 'client_certificate' and the 'ca_certificate' fields are mandatory. Mutually exclusive with the
+        /// `secret_manager_stored_client_key` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; }
@@ -4608,6 +4618,14 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. The state of the Private Connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -5315,6 +5333,14 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Output only. Identifier. The stream's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Required. Source connection profile configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConfig")]
