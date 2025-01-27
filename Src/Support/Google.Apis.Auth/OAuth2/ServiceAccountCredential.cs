@@ -170,6 +170,17 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         bool IGoogleCredential.SupportsExplicitScopes => true;
 
+        /// <summary>
+        /// The URL to obtain an id token from when in a universe domain other than the default universe domain.
+        /// </summary>
+        private string IamOidcTokenUrl { get; }
+
+        /// <summary>
+        /// HttpClient used to call the IAM API, authenticated as this credential.
+        /// </summary>
+        /// <remarks>Lazy to build one HtppClient only if it is needed.</remarks>
+        private readonly Lazy<ConfigurableHttpClient> _iamHttpClientCache;
+
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
@@ -184,6 +195,8 @@ namespace Google.Apis.Auth.OAuth2
             Key = initializer.Key.ThrowIfNull("initializer.Key");
             KeyId = initializer.KeyId;
             UseJwtAccessWithScopes = initializer.UseJwtAccessWithScopes;
+            IamOidcTokenUrl = string.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, UniverseDomain, Id);
+            _iamHttpClientCache = new Lazy<ConfigurableHttpClient>(BuildIamHttpClientUncached);
         }
 
         /// <summary>
@@ -323,18 +336,19 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default)
         {
-            GoogleAuthConsts.CheckIsDefaultUniverseDomain(UniverseDomain, $"ID tokens are not currently supported in universes other than {GoogleAuthConsts.DefaultUniverseDomain}.");
-
             options.ThrowIfNull(nameof(options));
+            Func<TokenRefreshManager, OidcTokenOptions, CancellationToken, Task<bool>> effectiveRefresh =
+                UniverseDomain == GoogleAuthConsts.DefaultUniverseDomain ? RefreshDefaultUniverseOidcTokenAsync : RefreshIamOidcTokenAsync;
+
             // If at some point some properties are added to OidcToken that depend on the token having been fetched
             // then initialize the token here.
             TokenRefreshManager tokenRefreshManager = null;
             tokenRefreshManager = new TokenRefreshManager(
-                ct => RefreshOidcTokenAsync(tokenRefreshManager, options, ct), Clock, Logger);
+                ct => effectiveRefresh(tokenRefreshManager, options, ct), Clock, Logger);
             return Task.FromResult(new OidcToken(tokenRefreshManager));
         }
 
-        private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions options, CancellationToken cancellationToken)
+        private async Task<bool> RefreshDefaultUniverseOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions options, CancellationToken cancellationToken)
         {
             var now = Clock.UtcNow;
             var jwtExpiry = now + JwtLifetime;
@@ -348,6 +362,30 @@ namespace Google.Apis.Auth.OAuth2
                 .PostFormAsync(HttpClient, TokenServerUrl, null, Clock, Logger, cancellationToken)
                 .ConfigureAwait(false);
             return true;
+        }
+
+        private async Task<bool> RefreshIamOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions options, CancellationToken cancellationToken)
+        {
+            var request = new IamOIdCTokenRequest
+            {
+                Audience = options.TargetAudience,
+                IncludeEmail = true
+            };
+
+            caller.Token = await request.PostJsonAsync(_iamHttpClientCache.Value, IamOidcTokenUrl, Clock, Logger, cancellationToken)
+                .ConfigureAwait(false);
+
+            return true;
+        }
+
+        private ConfigurableHttpClient BuildIamHttpClientUncached()
+        {
+            // We want to use the same HTTP client configuration used for the standard HTTP client used by this credential.
+            // But we need to copy them because this credential is going to be one of the initializers, as the IAM HTTP client
+            // needs to be authenticated by this credential.
+            var httpClientArgs = BuildCreateHttpClientArgs();
+            httpClientArgs.Initializers.Add(((IGoogleCredential)this).MaybeWithScopes(new string[] { GoogleAuthConsts.IamScope }));
+            return HttpClientFactory.CreateHttpClient(httpClientArgs);
         }
 
         private class JwtCacheEntry
