@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -7119,6 +7119,13 @@ namespace Google.Apis.CloudRun.v1.Data
     public class GoogleDevtoolsCloudbuildV1Artifacts : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build
+        /// steps. If any objects fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goModules")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1GoModule> GoModules { get; set; }
+
+        /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed
         /// using the builder service account's credentials. The digests of the pushed images will be stored in the
         /// Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
@@ -7495,6 +7502,13 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<bool> DynamicSubstitutions { get; set; }
 
         /// <summary>
+        /// Optional. Option to specify whether structured logging is enabled. If true, JSON-formatted logs are parsed
+        /// as structured logs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStructuredLogging")]
+        public virtual System.Nullable<bool> EnableStructuredLogging { get; set; }
+
+        /// <summary>
         /// A list of global environment variable definitions that will exist for all build steps in this build. If a
         /// variable is defined in both globally and in a build step, the variable will use the build step value. The
         /// elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
@@ -7842,6 +7856,52 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Go module to upload to Artifact Registry upon successful completion of all build steps. A module refers to all
+    /// dependencies in a go.mod file.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1GoModule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Go module's "module path". e.g. example.com/foo/v2</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modulePath")]
+        public virtual string ModulePath { get; set; }
+
+        /// <summary>
+        /// Optional. The Go module's semantic version in the form vX.Y.Z. e.g. v0.1.1 Pre-release identifiers can also
+        /// be added by appending a dash and dot separated ASCII alphanumeric characters and hyphens. e.g.
+        /// v0.2.3-alpha.x.12m.5
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleVersion")]
+        public virtual string ModuleVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults to the build’s location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryLocation")]
+        public virtual string RepositoryLocation { get; set; }
+
+        /// <summary>
+        /// Optional. Artifact Registry repository name. Specified Go modules will be zipped and uploaded to Artifact
+        /// Registry with this location as a prefix. e.g. my-go-repo
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryName")]
+        public virtual string RepositoryName { get; set; }
+
+        /// <summary>Optional. Project ID of the Artifact Registry repository. Defaults to the build project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryProjectId")]
+        public virtual string RepositoryProjectId { get; set; }
+
+        /// <summary>
+        /// Optional. Source path of the go.mod file in the build's workspace. If not specified, this will default to
+        /// the current directory. e.g. ~/code/go/mypackage
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePath")]
+        public virtual string SourcePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Container message for hash values.</summary>
     public class GoogleDevtoolsCloudbuildV1Hash : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8072,6 +8132,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
+
+        /// <summary>Optional. Go module artifacts uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goModules")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedGoModule> GoModules { get; set; }
 
         /// <summary>Container images that were built as a part of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
@@ -8375,6 +8439,25 @@ namespace Google.Apis.CloudRun.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Go module artifact uploaded to Artifact Registry using the GoModule directive.</summary>
+    public class GoogleDevtoolsCloudbuildV1UploadedGoModule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the Go Module Artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
