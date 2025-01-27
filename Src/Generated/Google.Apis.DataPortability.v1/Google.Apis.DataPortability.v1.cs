@@ -190,6 +190,9 @@ namespace Google.Apis.DataPortability.v1
             /// </summary>
             public static string DataportabilitySavedCollections = "https://www.googleapis.com/auth/dataportability.saved.collections";
 
+            /// <summary>Move a copy of your comments on Google Search</summary>
+            public static string DataportabilitySearchUgcComments = "https://www.googleapis.com/auth/dataportability.search_ugc.comments";
+
             /// <summary>Move a copy of your media reviews on Google Search</summary>
             public static string DataportabilitySearchUgcMediaReviewsAndStars = "https://www.googleapis.com/auth/dataportability.search_ugc.media.reviews_and_stars";
 
@@ -400,6 +403,9 @@ namespace Google.Apis.DataPortability.v1
             /// Move a copy of your saved links, images, places, and collections from your use of Google services
             /// </summary>
             public const string DataportabilitySavedCollections = "https://www.googleapis.com/auth/dataportability.saved.collections";
+
+            /// <summary>Move a copy of your comments on Google Search</summary>
+            public const string DataportabilitySearchUgcComments = "https://www.googleapis.com/auth/dataportability.search_ugc.comments";
 
             /// <summary>Move a copy of your media reviews on Google Search</summary>
             public const string DataportabilitySearchUgcMediaReviewsAndStars = "https://www.googleapis.com/auth/dataportability.search_ugc.media.reviews_and_stars";
