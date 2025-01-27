@@ -4893,13 +4893,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// An action that describes the behavior when the form is submitted. For example, you can invoke an Apps Script
     /// script to handle the form. If the action is triggered, the form values are sent to the server. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Action : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. If this is true, then all widgets are considered required by this action. [Google Workspace
-        /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+        /// add-ons and Chat apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allWidgetsAreRequired")]
         public virtual System.Nullable<bool> AllWidgetsAreRequired { get; set; }
@@ -4955,7 +4955,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Optional. Fill this list with the names of widgets that this Action needs for a valid submission. If the
         /// widgets listed here don't have a value when this Action is invoked, the form submission is aborted. [Google
-        /// Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+        /// Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredWidgets")]
         public virtual System.Collections.Generic.IList<string> RequiredWidgets { get; set; }
@@ -4969,7 +4969,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// buttons: snooze now, snooze one day, or snooze next week. You might use `action method = snooze()`, passing the
     /// snooze type and snooze time in the list of string parameters. To learn more, see
     /// [`CommonEventObject`](https://developers.google.com/workspace/chat/api/reference/rest/v1/Event#commoneventobject).
-    /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1ActionParameter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4987,7 +4987,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// The style options for the border of a card or widget, including the border type and color. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1BorderStyle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5022,7 +5022,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// A text, icon, or text and icon button that users can click. For an example in Google Chat apps, see [Add a
     /// button](https://developers.google.com/workspace/chat/design-interactive-card-dialog#add_a_button). To make an
     /// image a clickable button, specify an `Image` (not an `ImageComponent`) and set an `onClick` action. [Google
-    /// Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Button : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5089,7 +5089,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// A list of buttons layed out horizontally. For an example in Google Chat apps, see [Add a
     /// button](https://developers.google.com/workspace/chat/design-interactive-card-dialog#add_a_button). [Google
-    /// Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1ButtonList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5102,15 +5102,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A card interface displayed in a Google Chat message or Google Workspace Add-on. Cards support a defined layout,
+    /// A card interface displayed in a Google Chat message or Google Workspace add-on. Cards support a defined layout,
     /// interactive UI elements like buttons, and rich media like images. Use cards to present detailed information,
     /// gather information from users, and guide users to take a next step. [Card
     /// builder](https://addons.gsuite.google.com/uikit/builder) To learn how to build cards, see the following
     /// documentation: * For Google Chat apps, see [Design the components of a card or
     /// dialog](https://developers.google.com/workspace/chat/design-components-card-dialog). * For Google Workspace
-    /// Add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). Note:
+    /// add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). Note:
     /// You can add up to 100 widgets per card. Any widgets beyond this limit are ignored. This limit applies to both
-    /// card messages and dialogs in Google Chat apps, and to cards in Google Workspace Add-ons. **Example: Card message
+    /// card messages and dialogs in Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card message
     /// for a Google Chat app** ![Example contact
     /// card](https://developers.google.com/workspace/chat/images/card_api_reference.png) To create the sample card
     /// message in Google Chat, use the following JSON:
@@ -5131,7 +5131,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// The card's actions. Actions are added to the card's toolbar menu. [Google Workspace
-        /// Add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON constructs a card
+        /// add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON constructs a card
         /// action menu with `Settings` and `Send Feedback` options:
         /// ```
         /// "card_actions": [ { "actionLabel": "Settings",
@@ -5144,8 +5144,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1CardAction> CardActions { get; set; }
 
         /// <summary>
-        /// In Google Workspace Add-ons, sets the display properties of the `peekCardHeader`. [Google Workspace
-        /// Add-ons](https://developers.google.com/workspace/add-ons):
+        /// In Google Workspace add-ons, sets the display properties of the `peekCardHeader`. [Google Workspace
+        /// add-ons](https://developers.google.com/workspace/add-ons):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayStyle")]
         public virtual string DisplayStyle { get; set; }
@@ -5154,7 +5154,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// The fixed footer shown at the bottom of this card. Setting `fixedFooter` without specifying a
         /// `primaryButton` or a `secondaryButton` causes an error. For Chat apps, you can use fixed footers in
         /// [dialogs](https://developers.google.com/workspace/chat/dialogs), but not [card
-        /// messages](https://developers.google.com/workspace/chat/create-messages#create). [Google Workspace Add-ons
+        /// messages](https://developers.google.com/workspace/chat/create-messages#create). [Google Workspace add-ons
         /// and Chat apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedFooter")]
@@ -5169,7 +5169,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Name of the card. Used as a card identifier in card navigation. [Google Workspace
-        /// Add-ons](https://developers.google.com/workspace/add-ons):
+        /// add-ons](https://developers.google.com/workspace/add-ons):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5177,7 +5177,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// When displaying contextual content, the peek card header acts as a placeholder so that the user can navigate
         /// forward between the homepage cards and the contextual cards. [Google Workspace
-        /// Add-ons](https://developers.google.com/workspace/add-ons):
+        /// add-ons](https://developers.google.com/workspace/add-ons):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peekCardHeader")]
         public virtual GoogleAppsCardV1CardHeader PeekCardHeader { get; set; }
@@ -5201,7 +5201,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// A card action is the action associated with the card. For example, an invoice card might include actions such as
     /// delete invoice, email invoice, or open the invoice in a browser. [Google Workspace
-    /// Add-ons](https://developers.google.com/workspace/add-ons):
+    /// add-ons](https://developers.google.com/workspace/add-ons):
     /// </summary>
     public class GoogleAppsCardV1CardAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5224,7 +5224,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// messages](https://developers.google.com/workspace/chat/create-messages#create). For an example in Google Chat
     /// apps, see [Add a persistent
     /// footer](https://developers.google.com/workspace/chat/design-components-card-dialog#add_a_persistent_footer).
-    /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1CardFixedFooter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5248,7 +5248,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// Represents a card header. For an example in Google Chat apps, see [Add a
     /// header](https://developers.google.com/workspace/chat/design-components-card-dialog#add_a_header). [Google
-    /// Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1CardHeader : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5257,7 +5257,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ImageAltText { get; set; }
 
         /// <summary>
-        /// The shape used to crop the image. [Google Workspace Add-ons and Chat
+        /// The shape used to crop the image. [Google Workspace add-ons and Chat
         /// apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
@@ -5329,7 +5329,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A text, icon, or text and icon chip that users can click. [Google Workspace Add-ons and Chat
+    /// A text, icon, or text and icon chip that users can click. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Chip : Google.Apis.Requests.IDirectResponseSchema
@@ -5374,7 +5374,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A list of chips layed out horizontally, which can either scroll horizontally or wrap to the next line. [Google
-    /// Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1ChipList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5391,7 +5391,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Represent an expand and collapse control. [Google Workspace Add-ons and Chat
+    /// Represent an expand and collapse control. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1CollapseControl : Google.Apis.Requests.IDirectResponseSchema
@@ -5421,7 +5421,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A column. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend)
+    /// A column. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend)
     /// </summary>
     public class GoogleAppsCardV1Column : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5460,7 +5460,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// screen width is less than or equal to 480 pixels. * On iOS devices, the second column wraps if the screen width
     /// is less than or equal to 300 pt. * On Android devices, the second column wraps if the screen width is less than
     /// or equal to 320 dp. To include more than two columns, or to use rows, use the `Grid` widget. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend): The add-on UIs that support columns
+    /// add-ons and Chat apps](https://developers.google.com/workspace/extend): The add-on UIs that support columns
     /// include: * The dialog displayed when users open the add-on from an email draft. * The dialog displayed when
     /// users open the add-on from the **Add attachment** menu in a Google Calendar event.
     /// </summary>
@@ -5481,7 +5481,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// pick a date and
     /// time](https://developers.google.com/workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time).
     /// Users can input text or use the picker to select dates and times. If users input an invalid date or time, the
-    /// picker shows an error that prompts users to input the information correctly. [Google Workspace Add-ons and Chat
+    /// picker shows an error that prompts users to input the information correctly. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1DateTimePicker : Google.Apis.Requests.IDirectResponseSchema
@@ -5535,7 +5535,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// of the text, a selection widget, or a button after the text. For an example in Google Chat apps, see [Display
     /// text with decorative
     /// text](https://developers.google.com/workspace/chat/add-text-image-card-dialog#display_text_with_decorative_elements).
-    /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1DecoratedText : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5576,7 +5576,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// [Formatting text in Google Chat
         /// apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in
         /// Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        /// add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -5600,7 +5600,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// Displays a divider between widgets as a horizontal line. For an example in Google Chat apps, see [Add a
     /// horizontal divider between
     /// widgets](https://developers.google.com/workspace/chat/format-structure-card-dialog#add_a_horizontal_divider_between_widgets).
-    /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, the
+    /// [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, the
     /// following JSON creates a divider:
     /// ```
     /// "divider": {}
@@ -5619,7 +5619,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// items](https://developers.google.com/workspace/chat/format-structure-card-dialog#display_a_grid_with_a_collection_of_items).
     /// A grid supports any number of columns and items. The number of rows is determined by items divided by columns. A
     /// grid with 10 items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, the following JSON creates
+    /// add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, the following JSON creates
     /// a 2 column grid with a single item:
     /// ```
     /// "grid": { "title": "A fine collection of items", "columnCount": 2,
@@ -5663,7 +5663,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Represents an item in a grid layout. Items can contain text, an image, or both text and an image. [Google
-    /// Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1GridItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5699,7 +5699,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// icon](https://developers.google.com/workspace/chat/add-text-image-card-dialog#add_an_icon). Supports
     /// [built-in](https://developers.google.com/workspace/chat/format-messages#builtinicons) and
     /// [custom](https://developers.google.com/workspace/chat/format-messages#customicons) icons. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Icon : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5762,7 +5762,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// An image that is specified by a URL and can have an `onClick` action. For an example, see [Add an
     /// image](https://developers.google.com/workspace/chat/add-text-image-card-dialog#add_an_image). [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Image : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5788,7 +5788,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Represents an image. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// Represents an image. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1ImageComponent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5813,7 +5813,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Represents the crop style applied to an image. [Google Workspace Add-ons and Chat
+    /// Represents the crop style applied to an image. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend): For example, here's how to apply a 16:9 aspect ratio:
     /// ```
     /// cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 }
@@ -5912,7 +5912,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Represents how to respond when users click an interactive element on a card, such as a button. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1OnClick : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5922,7 +5922,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// A new card is pushed to the card stack after clicking if specified. [Google Workspace
-        /// Add-ons](https://developers.google.com/workspace/add-ons):
+        /// add-ons](https://developers.google.com/workspace/add-ons):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("card")]
         public virtual GoogleAppsCardV1Card Card { get; set; }
@@ -5931,7 +5931,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// An add-on triggers this action when the action needs to open a link. This differs from the `open_link` above
         /// in that this needs to talk to server to get the link. Thus some preparation work is required for web client
         /// to do before the open link action response comes back. [Google Workspace
-        /// Add-ons](https://developers.google.com/workspace/add-ons):
+        /// add-ons](https://developers.google.com/workspace/add-ons):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openDynamicLinkAction")]
         public virtual GoogleAppsCardV1Action OpenDynamicLinkAction { get; set; }
@@ -5949,20 +5949,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Represents an `onClick` event that opens a hyperlink. [Google Workspace Add-ons and Chat
+    /// Represents an `onClick` event that opens a hyperlink. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1OpenLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Whether the client forgets about a link after opening it, or observes it until the window closes. [Google
-        /// Workspace Add-ons](https://developers.google.com/workspace/add-ons):
+        /// Workspace add-ons](https://developers.google.com/workspace/add-ons):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClose")]
         public virtual string OnClose { get; set; }
 
         /// <summary>
-        /// How to open a link. [Google Workspace Add-ons](https://developers.google.com/workspace/add-ons):
+        /// How to open a link. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openAs")]
         public virtual string OpenAs { get; set; }
@@ -5979,7 +5979,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// A widget that presents a pop-up menu with one or more actions that users can invoke. For example, showing
     /// non-primary actions in a card. You can use this widget when actions don't fit in the available space. To use,
     /// specify this widget in the `OnClick` action of widgets that support it. For example, in a `Button`. [Google
-    /// Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1OverflowMenu : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5992,7 +5992,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// An option that users can invoke in an overflow menu. [Google Workspace Add-ons and Chat
+    /// An option that users can invoke in an overflow menu. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1OverflowMenuItem : Google.Apis.Requests.IDirectResponseSchema
@@ -6046,7 +6046,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A section contains a collection of widgets that are rendered vertically in the order that they're specified.
-    /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Section : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6070,7 +6070,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// formatting text, see [Formatting text in Google Chat
         /// apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in
         /// Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        /// add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual string Header { get; set; }
@@ -6101,7 +6101,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// elements](/workspace/chat/design-interactive-card-dialog#add_selectable_ui_elements). Chat apps can process the
     /// value of items that users select or input. For details about working with form inputs, see [Receive form
     /// data](https://developers.google.com/workspace/chat/read-form-data). To collect undefined or abstract data from
-    /// users, use the TextInput widget. [Google Workspace Add-ons and Chat
+    /// users, use the TextInput widget. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
@@ -6175,7 +6175,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// An item that users can select in a selection input, such as a checkbox or switch. Supports up to 100 items.
-    /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6217,7 +6217,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// One suggested value that users can enter in a text input field. [Google Workspace Add-ons and Chat
+    /// One suggested value that users can enter in a text input field. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1SuggestionItem : Google.Apis.Requests.IDirectResponseSchema
@@ -6240,7 +6240,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// enter values that your app can make sense of. When referring to JavaScript, some users might enter `javascript`
     /// and others `java script`. Suggesting `JavaScript` can standardize how users interact with your app. When
     /// specified, `TextInput.type` is always `SINGLE_LINE`, even if it's set to `MULTIPLE_LINE`. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Suggestions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6253,13 +6253,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Either a toggle-style switch or a checkbox inside a `decoratedText` widget. [Google Workspace Add-ons and Chat
+    /// Either a toggle-style switch or a checkbox inside a `decoratedText` widget. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend): Only supported in the `decoratedText` widget.
     /// </summary>
     public class GoogleAppsCardV1SwitchControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// How the switch appears in the user interface. [Google Workspace Add-ons and Chat
+        /// How the switch appears in the user interface. [Google Workspace add-ons and Chat
         /// apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlType")]
@@ -6300,7 +6300,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// Chat apps receive and can process the value of entered text during form input events. For details about working
     /// with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). When you
     /// need to collect undefined or abstract data from users, use a text input. To collect defined or enumerated data
-    /// from users, use the SelectionInput widget. [Google Workspace Add-ons and Chat
+    /// from users, use the SelectionInput widget. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1TextInput : Google.Apis.Requests.IDirectResponseSchema
@@ -6309,7 +6309,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Optional. Specify what action to take when the text input field provides suggestions to users who interact
         /// with it. If unspecified, the suggestions are set by `initialSuggestions` and are processed by the client. If
         /// specified, the app takes the action specified here, such as running a custom function. [Google Workspace
-        /// Add-ons](https://developers.google.com/workspace/add-ons):
+        /// add-ons](https://developers.google.com/workspace/add-ons):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteAction")]
         public virtual GoogleAppsCardV1Action AutoCompleteAction { get; set; }
@@ -6329,7 +6329,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// guide users to enter values that your app can make sense of. When referring to JavaScript, some users might
         /// enter `javascript` and others `java script`. Suggesting `JavaScript` can standardize how users interact with
         /// your app. When specified, `TextInput.type` is always `SINGLE_LINE`, even if it's set to `MULTIPLE_LINE`.
-        /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+        /// [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialSuggestions")]
         public virtual GoogleAppsCardV1Suggestions InitialSuggestions { get; set; }
@@ -6374,7 +6374,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Specify the input format validation necessary for this text field. [Google Workspace Add-ons and Chat
+        /// Specify the input format validation necessary for this text field. [Google Workspace add-ons and Chat
         /// apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validation")]
@@ -6397,8 +6397,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// text](https://developers.google.com/workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
     /// For more information about formatting text, see [Formatting text in Google Chat
     /// apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in
-    /// Google Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-    /// [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend):
+    /// Google Workspace add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+    /// [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1TextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6420,21 +6420,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Represents the necessary data for validating the widget it's attached to. [Google Workspace Add-ons and Chat
+    /// Represents the necessary data for validating the widget it's attached to. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Validation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Specify the character limit for text input widgets. Note that this is only used for text input and is
-        /// ignored for other widgets. [Google Workspace Add-ons and Chat
+        /// ignored for other widgets. [Google Workspace add-ons and Chat
         /// apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("characterLimit")]
         public virtual System.Nullable<int> CharacterLimit { get; set; }
 
         /// <summary>
-        /// Specify the type of the input widgets. [Google Workspace Add-ons and Chat
+        /// Specify the type of the input widgets. [Google Workspace add-ons and Chat
         /// apps](https://developers.google.com/workspace/extend):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputType")]
@@ -6534,7 +6534,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Displays a grid with a collection of items. A grid supports any number of columns and items. The number of
         /// rows is determined by the upper bounds of the number items divided by the number of columns. A grid with 10
-        /// items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. [Google Workspace Add-ons and
+        /// items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. [Google Workspace add-ons and
         /// Chat apps](https://developers.google.com/workspace/extend): For example, the following JSON creates a 2
         /// column grid with a single item:
         /// ```
@@ -6598,7 +6598,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// see [Formatting text in Google Chat
         /// apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in
         /// Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). For example,
+        /// add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). For example,
         /// the following JSON creates a bolded text:
         /// ```
         /// "textParagraph": { "text": " *bold text*" }
@@ -6612,7 +6612,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// The supported widgets that you can include in a column. [Google Workspace Add-ons and Chat
+    /// The supported widgets that you can include in a column. [Google Workspace add-ons and Chat
     /// apps](https://developers.google.com/workspace/extend)
     /// </summary>
     public class GoogleAppsCardV1Widgets : Google.Apis.Requests.IDirectResponseSchema
