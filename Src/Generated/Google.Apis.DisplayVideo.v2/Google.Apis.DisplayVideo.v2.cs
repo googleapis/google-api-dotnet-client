@@ -18961,10 +18961,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Required. Billing related settings of the advertiser.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
-        public virtual AdvertiserBillingConfig BillingConfig { get; set; }
-
         /// <summary>Required. Creative related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeConfig")]
         public virtual AdvertiserCreativeConfig CreativeConfig { get; set; }
@@ -19073,17 +19069,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>The configuration for advertisers that use third-party ad servers only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOnlyConfig")]
         public virtual ThirdPartyOnlyConfig ThirdPartyOnlyConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Billing related settings of an advertiser.</summary>
-    public class AdvertiserBillingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The ID of a billing profile assigned to the advertiser.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
-        public virtual System.Nullable<long> BillingProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19811,18 +19796,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// Assigned audience group targeting option details. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group
     /// is UNION, except for excluded_first_and_third_party_audience_group and excluded_google_audience_group, of which
-    /// COMPLEMENT is used as an INTERSECTION with other groups.
+    /// COMPLEMENT is used as an INTERSECTION with other groups. NEXT_ID: 9
     /// </summary>
     public class AudienceGroupAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The first and third party audience ids and recencies of the excluded first and third party audience group.
-        /// Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is
-        /// used as an INTERSECTION to any positive audience targeting. All items are logically ‘OR’ of each other.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("excludedFirstAndThirdPartyAudienceGroup")]
-        public virtual FirstAndThirdPartyAudienceGroup ExcludedFirstAndThirdPartyAudienceGroup { get; set; }
-
         /// <summary>
         /// The Google audience ids of the excluded Google audience group. Used for negative targeting. The COMPLEMENT
         /// of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive
@@ -19841,15 +19818,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>The custom list ids of the included custom list group. Contains custom list ids only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedCustomListGroup")]
         public virtual CustomListGroup IncludedCustomListGroup { get; set; }
-
-        /// <summary>
-        /// The first and third party audience ids and recencies of included first and third party audience groups. Each
-        /// first and third party audience group contains first and third party audience ids only. The relation between
-        /// each first and third party audience group is INTERSECTION, and the result is UNION'ed with other audience
-        /// groups. Repeated groups with same settings will be ignored.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("includedFirstAndThirdPartyAudienceGroups")]
-        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudienceGroup> IncludedFirstAndThirdPartyAudienceGroups { get; set; }
 
         /// <summary>
         /// The Google audience ids of the included Google audience group. Contains Google audience ids only.
@@ -22748,46 +22716,6 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Details of first and third party audience group. All first and third party audience targeting settings are
-    /// logically ‘OR’ of each other.
-    /// </summary>
-    public class FirstAndThirdPartyAudienceGroup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. All first and third party audience targeting settings in first and third party audience group.
-        /// Repeated settings with same id are not allowed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudienceTargetingSetting> Settings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details of first and third party audience targeting setting.</summary>
-    public class FirstAndThirdPartyAudienceTargetingSetting : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. First and third party audience id of the first and third party audience targeting setting. This id
-        /// is first_and_third_party_audience_id.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
-        public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; }
-
-        /// <summary>
-        /// The recency of the first and third party audience targeting setting. Only applicable to first party
-        /// audiences, otherwise will be ignored. For more info, refer to
-        /// https://support.google.com/displayvideo/answer/2949947#recency When unspecified, no recency limit will be
-        /// used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recency")]
-        public virtual string Recency { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
