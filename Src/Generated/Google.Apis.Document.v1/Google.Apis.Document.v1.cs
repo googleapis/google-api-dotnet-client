@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -5755,6 +5755,14 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Optional. Config for chunking in layout parser processor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkingConfig")]
         public virtual GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig ChunkingConfig { get; set; }
+
+        /// <summary>Optional. Whether to include bounding boxes in layout parser processor response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnBoundingBoxes")]
+        public virtual System.Nullable<bool> ReturnBoundingBoxes { get; set; }
+
+        /// <summary>Optional. Whether to include images in layout parser processor response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnImages")]
+        public virtual System.Nullable<bool> ReturnImages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
