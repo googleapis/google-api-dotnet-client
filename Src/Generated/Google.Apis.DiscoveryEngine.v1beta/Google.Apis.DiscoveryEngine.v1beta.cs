@@ -24246,9 +24246,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The UTC time when the next data sync is expected to start for the Data Connector. Customers are only able to
-        /// specify the hour and minute to schedule the data sync. This is utilized when the data connector has a
-        /// refresh interval greater than 1 day.
+        /// Defines the scheduled time for the next data synchronization. This field requires hour , minute, and
+        /// time_zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). This is utilized when the
+        /// data connector has a refresh interval greater than 1 day. When the hours or minutes are not specified, we
+        /// will assume a sync time of 0:00. The user must provide a time zone to avoid ambiguity.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncTime")]
         public virtual GoogleTypeDateTime NextSyncTime { get; set; }
@@ -30436,6 +30437,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryModel")]
         public virtual string QueryModel { get; set; }
 
+        /// <summary>Optional. Specification of each suggestion type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionTypeSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec> SuggestionTypeSpecs { get; set; }
+
         /// <summary>
         /// Optional. Suggestion types to return. If empty or unspecified, query suggestions are returned. Only one
         /// suggestion type is supported at the moment.
@@ -30499,6 +30504,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of each suggestion type.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Maximum number of suggestions to return for each suggestion type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSuggestions")]
+        public virtual System.Nullable<int> MaxSuggestions { get; set; }
+
+        /// <summary>Optional. Suggestion type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionType")]
+        public virtual string SuggestionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30942,6 +30962,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("asynchronousMode")]
         public virtual System.Nullable<bool> AsynchronousMode { get; set; }
 
+        /// <summary>Optional. End user specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec EndUserSpec { get; set; }
+
         /// <summary>Optional. Grounding specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec GroundingSpec { get; set; }
@@ -31087,6 +31111,54 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Customized preamble.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
         public virtual string Preamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>End user specification.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. End user metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserMetadata")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData> EndUserMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>End user metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
+        public virtual GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo ChunkInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk information.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk textual content. It is limited to 8000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Metadata of the document from the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata DocumentMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document metadata contains the information of the document of the current chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
