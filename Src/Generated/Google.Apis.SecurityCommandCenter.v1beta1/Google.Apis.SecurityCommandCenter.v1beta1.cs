@@ -2020,7 +2020,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 }
             }
 
-            /// <summary>Returns the permissions that a caller has on the specified source.</summary>
+            /// <summary> Returns the permissions that a caller has on the specified source.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
             /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
@@ -2031,7 +2031,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 return new TestIamPermissionsRequest(this.service, body, resource);
             }
 
-            /// <summary>Returns the permissions that a caller has on the specified source.</summary>
+            /// <summary> Returns the permissions that a caller has on the specified source.</summary>
             public class TestIamPermissionsRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
