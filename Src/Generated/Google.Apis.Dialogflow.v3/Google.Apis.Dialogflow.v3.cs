@@ -11228,6 +11228,13 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
         public virtual string DataStoreType { get; set; }
 
+        /// <summary>
+        /// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and
+        /// UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingMode")]
+        public virtual string DocumentProcessingMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14822,7 +14829,7 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         /// <summary>
         /// Optional. Data store connection feature output signals. Filled only when data stores are involved in serving
-        /// the query and DetectIntentRequest.populate_data_store_connection_signals is set to true in the request.
+        /// the query.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreConnectionSignals")]
         public virtual GoogleCloudDialogflowCxV3DataStoreConnectionSignals DataStoreConnectionSignals { get; set; }
@@ -17312,6 +17319,13 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The type of the connected data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
         public virtual string DataStoreType { get; set; }
+
+        /// <summary>
+        /// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and
+        /// UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingMode")]
+        public virtual string DocumentProcessingMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
