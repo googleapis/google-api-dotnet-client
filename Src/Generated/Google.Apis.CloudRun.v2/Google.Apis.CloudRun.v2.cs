@@ -296,6 +296,7 @@ namespace Google.Apis.CloudRun.v2
                 Jobs = new JobsResource(service);
                 Operations = new OperationsResource(service);
                 Services = new ServicesResource(service);
+                WorkerPools = new WorkerPoolsResource(service);
             }
 
             /// <summary>Gets the Builds resource.</summary>
@@ -2879,6 +2880,274 @@ namespace Google.Apis.CloudRun.v2
                 }
             }
 
+            /// <summary>Gets the WorkerPools resource.</summary>
+            public virtual WorkerPoolsResource WorkerPools { get; }
+
+            /// <summary>The "workerPools" collection of methods.</summary>
+            public class WorkerPoolsResource
+            {
+                private const string Resource = "workerPools";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public WorkerPoolsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Revisions = new RevisionsResource(service);
+                }
+
+                /// <summary>Gets the Revisions resource.</summary>
+                public virtual RevisionsResource Revisions { get; }
+
+                /// <summary>The "revisions" collection of methods.</summary>
+                public class RevisionsResource
+                {
+                    private const string Resource = "revisions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RevisionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Deletes a Revision.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the Revision to delete. Format:
+                    /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a Revision.</summary>
+                    public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Revision to delete. Format:
+                        /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// A system-generated fingerprint for this version of the resource. This may be used to detect
+                        /// modification conflict during updates.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Etag { get; set; }
+
+                        /// <summary>
+                        /// Indicates that the request should be validated without actually deleting any resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+/revisions/[^/]+$",
+                            });
+                            RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "etag",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets information about a Revision.</summary>
+                    /// <param name="name">
+                    /// Required. The full name of the Revision. Format:
+                    /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets information about a Revision.</summary>
+                    public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Revision>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The full name of the Revision. Format:
+                        /// projects/{project}/locations/{location}/services/{service}/revisions/{revision}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists Revisions from a given Service, or from a given location. Results are sorted by creation
+                    /// time, descending.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The Service from which the Revisions should be listed. To list all Revisions across
+                    /// Services, use "-" instead of Service name. Format:
+                    /// projects/{project}/locations/{location}/services/{service}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists Revisions from a given Service, or from a given location. Results are sorted by creation
+                    /// time, descending.
+                    /// </summary>
+                    public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListRevisionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Service from which the Revisions should be listed. To list all Revisions
+                        /// across Services, use "-" instead of Service name. Format:
+                        /// projects/{project}/locations/{location}/services/{service}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Maximum number of revisions to return in this call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token received from a previous call to ListRevisions. All other parameters must
+                        /// match.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// If true, returns deleted (but unexpired) resources along with active ones.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/revisions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showDeleted",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+
             /// <summary>Export image for a given resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -3138,10 +3407,80 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the Build step of the function that builds a container from the given source.</summary>
+    public class GoogleCloudRunV2BuildConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The base image used to build the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseImage")]
+        public virtual string BaseImage { get; set; }
+
+        /// <summary>Optional. Sets whether the function will receive automatic base image updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticUpdates")]
+        public virtual System.Nullable<bool> EnableAutomaticUpdates { get; set; }
+
+        /// <summary>Optional. User-provided build-time environment variables for the function</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the function (as defined in source code) that will be executed. Defaults to the
+        /// resource name suffix, if not specified. For backward compatibility, if function with given name is not
+        /// found, then the system will try to use function named "function".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionTarget")]
+        public virtual string FunctionTarget { get; set; }
+
+        /// <summary>Optional. Artifact Registry URI to store the built image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>Output only. The Cloud Build name of the latest successful deployment of the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Service account to be used for building the container. The format of this field is
+        /// `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The Cloud Storage bucket URI where the function source code is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
+        public virtual string SourceLocation { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function.
+        /// The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project}
+        /// and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is
+        /// the short name of the worker pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Build information of the image.</summary>
+    public class GoogleCloudRunV2BuildInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Entry point of the function when the image is a Cloud Run function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionTarget")]
+        public virtual string FunctionTarget { get; set; }
+
+        /// <summary>Output only. Source code location of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
+        public virtual string SourceLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Build the source using Buildpacks.</summary>
     public class GoogleCloudRunV2BuildpacksBuild : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The base image used to opt into automatic base image updates.</summary>
+        /// <summary>Optional. The base image to use for the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseImage")]
         public virtual string BaseImage { get; set; }
 
@@ -3308,6 +3647,17 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Arguments to the entrypoint. The docker image's CMD is used if this is not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Base image for this container. Only supported for services. If set. it indicates that the service is
+        /// enrolled into automatic base image update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseImageUri")]
+        public virtual string BaseImageUri { get; set; }
+
+        /// <summary>Output only. The build info of the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildInfo")]
+        public virtual GoogleCloudRunV2BuildInfo BuildInfo { get; set; }
 
         /// <summary>
         /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not
@@ -3590,6 +3940,10 @@ namespace Google.Apis.CloudRun.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. Email address of the authenticated creator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual string Creator { get; set; }
 
         private string _deleteTimeRaw;
 
@@ -5324,6 +5678,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
         public virtual GoogleCloudRunV2BinaryAuthorization BinaryAuthorization { get; set; }
 
+        /// <summary>Optional. Configuration for building a Cloud Run function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildConfig")]
+        public virtual GoogleCloudRunV2BuildConfig BuildConfig { get; set; }
+
         /// <summary>Arbitrary identifier for the API client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
         public virtual string Client { get; set; }
@@ -6597,6 +6955,13 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleDevtoolsCloudbuildV1Artifacts : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build
+        /// steps. If any objects fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goModules")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1GoModule> GoModules { get; set; }
+
+        /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed
         /// using the builder service account's credentials. The digests of the pushed images will be stored in the
         /// Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
@@ -6973,6 +7338,13 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<bool> DynamicSubstitutions { get; set; }
 
         /// <summary>
+        /// Optional. Option to specify whether structured logging is enabled. If true, JSON-formatted logs are parsed
+        /// as structured logs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStructuredLogging")]
+        public virtual System.Nullable<bool> EnableStructuredLogging { get; set; }
+
+        /// <summary>
         /// A list of global environment variable definitions that will exist for all build steps in this build. If a
         /// variable is defined in both globally and in a build step, the variable will use the build step value. The
         /// elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
@@ -7320,6 +7692,52 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Go module to upload to Artifact Registry upon successful completion of all build steps. A module refers to all
+    /// dependencies in a go.mod file.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1GoModule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Go module's "module path". e.g. example.com/foo/v2</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modulePath")]
+        public virtual string ModulePath { get; set; }
+
+        /// <summary>
+        /// Optional. The Go module's semantic version in the form vX.Y.Z. e.g. v0.1.1 Pre-release identifiers can also
+        /// be added by appending a dash and dot separated ASCII alphanumeric characters and hyphens. e.g.
+        /// v0.2.3-alpha.x.12m.5
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleVersion")]
+        public virtual string ModuleVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults to the build’s location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryLocation")]
+        public virtual string RepositoryLocation { get; set; }
+
+        /// <summary>
+        /// Optional. Artifact Registry repository name. Specified Go modules will be zipped and uploaded to Artifact
+        /// Registry with this location as a prefix. e.g. my-go-repo
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryName")]
+        public virtual string RepositoryName { get; set; }
+
+        /// <summary>Optional. Project ID of the Artifact Registry repository. Defaults to the build project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryProjectId")]
+        public virtual string RepositoryProjectId { get; set; }
+
+        /// <summary>
+        /// Optional. Source path of the go.mod file in the build's workspace. If not specified, this will default to
+        /// the current directory. e.g. ~/code/go/mypackage
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePath")]
+        public virtual string SourcePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Container message for hash values.</summary>
     public class GoogleDevtoolsCloudbuildV1Hash : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7550,6 +7968,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
+
+        /// <summary>Optional. Go module artifacts uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goModules")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedGoModule> GoModules { get; set; }
 
         /// <summary>Container images that were built as a part of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
@@ -7853,6 +8275,25 @@ namespace Google.Apis.CloudRun.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Go module artifact uploaded to Artifact Registry using the GoModule directive.</summary>
+    public class GoogleDevtoolsCloudbuildV1UploadedGoModule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the Go Module Artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8374,13 +8815,15 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// The canonical error code (see codes.proto) that most closely corresponds to this status. This may be
         /// missing, and in the common case of the generic space, it definitely will be.
+        /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 canonical_code = 6;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
         public virtual System.Nullable<int> CanonicalCode { get; set; }
 
         /// <summary>
         /// Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is
-        /// drawn from google3/util/task/codes.proto
+        /// drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace
+        /// optional int32 code = 1;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
@@ -8398,7 +8841,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
         public virtual Proto2BridgeMessageSet MessageSet { get; set; }
 
-        /// <summary>The following are usually only present when code != 0 Space to which this status belongs</summary>
+        /// <summary>
+        /// The following are usually only present when code != 0 Space to which this status belongs
+        /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string space = 2;
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual string Space { get; set; }
 
