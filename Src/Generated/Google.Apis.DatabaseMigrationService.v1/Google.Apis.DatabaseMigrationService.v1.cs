@@ -5959,6 +5959,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
+        /// <summary>Is the column a computed column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computed")]
+        public virtual System.Nullable<bool> Computed { get; set; }
+
         /// <summary>Custom engine specific features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
         public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
