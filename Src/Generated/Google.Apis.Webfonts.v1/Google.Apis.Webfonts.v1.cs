@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -305,6 +305,13 @@ namespace Google.Apis.Webfonts.v1
                 VF = 2,
             }
 
+            /// <summary>
+            /// Filters by Webfont.category, if category is found in Webfont.categories. If not set, returns all
+            /// families.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Category { get; set; }
+
             /// <summary>Filters by Webfont.family, using literal match. If not set, returns all families</summary>
             [Google.Apis.Util.RequestParameterAttribute("family", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Family { get; set; }
@@ -363,6 +370,14 @@ namespace Google.Apis.Webfonts.v1
                 RequestParameters.Add("capability", new Google.Apis.Discovery.Parameter
                 {
                     Name = "capability",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("category", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "category",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
