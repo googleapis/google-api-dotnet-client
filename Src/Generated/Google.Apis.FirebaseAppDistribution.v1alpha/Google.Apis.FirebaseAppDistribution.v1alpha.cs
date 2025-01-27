@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2359,6 +2359,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>An action taken by the AI agent while attempting to accomplish a goal.</summary>
     public class GoogleFirebaseAppdistroV1alphaGoalAction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Debug information explaining why the agent to the specific action</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
+        public virtual GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo DebugInfo { get; set; }
+
         /// <summary>Output only. A high level action taken by the AI on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceAction")]
         public virtual GoogleFirebaseAppdistroV1alphaDeviceAction DeviceAction { get; set; }
@@ -2370,6 +2374,21 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>Output only. An action taken by the AI to end the goal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminalAction")]
         public virtual GoogleFirebaseAppdistroV1alphaTerminalAction TerminalAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information to help the customer understand why the agent took this action</summary>
+    public class GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. URI of the screenshot with elements labeled which was used by the agent</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatedScreenshotUri")]
+        public virtual string AnnotatedScreenshotUri { get; set; }
+
+        /// <summary>Output only. Structured data explaining the agent's choice</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonUri")]
+        public virtual string JsonUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2808,6 +2827,43 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>Optional. Instructions for AI driven test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiInstructions")]
         public virtual GoogleFirebaseAppdistroV1alphaAiInstructions AiInstructions { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when the test case was created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Required. Display name of the test case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
