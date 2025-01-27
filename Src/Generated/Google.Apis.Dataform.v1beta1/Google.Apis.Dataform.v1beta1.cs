@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -907,10 +907,10 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Updates a single ReleaseConfig. *Note:* This method does not fully implement AIP/134. In
-                    /// particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is
-                    /// omitted, instead of only updating the set fields, the request is treated as a full update on all
-                    /// modifiable fields
+                    /// Updates a single ReleaseConfig. **Note:** *This method does not fully implement*, (see
+                    /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated
+                    /// as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
+                    /// the request is treated as a full update on all modifiable fields
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Identifier. The release config's name.</param>
@@ -920,10 +920,10 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Updates a single ReleaseConfig. *Note:* This method does not fully implement AIP/134. In
-                    /// particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is
-                    /// omitted, instead of only updating the set fields, the request is treated as a full update on all
-                    /// modifiable fields
+                    /// Updates a single ReleaseConfig. **Note:** *This method does not fully implement*, (see
+                    /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated
+                    /// as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
+                    /// the request is treated as a full update on all modifiable fields
                     /// </summary>
                     public class PatchRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.ReleaseConfig>
                     {
@@ -1250,10 +1250,10 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Updates a single WorkflowConfig. *Note:* This method does not fully implement AIP/134. In
-                    /// particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is
-                    /// omitted, instead of only updating the set fields, the request is treated as a full update on all
-                    /// modifiable fields
+                    /// Updates a single WorkflowConfig. **Note:** *This method does not fully implement*, (see
+                    /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated
+                    /// as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
+                    /// the request is treated as a full update on all modifiable fields
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Identifier. The workflow config's name.</param>
@@ -1263,10 +1263,10 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Updates a single WorkflowConfig. *Note:* This method does not fully implement AIP/134. In
-                    /// particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is
-                    /// omitted, instead of only updating the set fields, the request is treated as a full update on all
-                    /// modifiable fields
+                    /// Updates a single WorkflowConfig. **Note:** *This method does not fully implement*, (see
+                    /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated
+                    /// as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
+                    /// the request is treated as a full update on all modifiable fields
                     /// </summary>
                     public class PatchRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.WorkflowConfig>
                     {
@@ -3856,9 +3856,10 @@ namespace Google.Apis.Dataform.v1beta1
                 }
 
                 /// <summary>
-                /// Updates a single Repository. *Note:* This method does not fully implement AIP/134. In particular: 1.
-                /// The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is omitted, instead of
-                /// only updating the set fields, the request is treated as a full update on all modifiable fields
+                /// Updates a single Repository. **Note:** *This method does not fully implement*, (see
+                /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated as a
+                /// bad request - When the **field_mask** is omitted, instead of only updating the set fields, the
+                /// request is treated as a full update on all modifiable fields
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Identifier. The repository's name.</param>
@@ -3868,9 +3869,10 @@ namespace Google.Apis.Dataform.v1beta1
                 }
 
                 /// <summary>
-                /// Updates a single Repository. *Note:* This method does not fully implement AIP/134. In particular: 1.
-                /// The wildcard entry (***) is treated as a bad request 2. When the *field_mask* is omitted, instead of
-                /// only updating the set fields, the request is treated as a full update on all modifiable fields
+                /// Updates a single Repository. **Note:** *This method does not fully implement*, (see
+                /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated as a
+                /// bad request - When the **field_mask** is omitted, instead of only updating the set fields, the
+                /// request is treated as a full update on all modifiable fields
                 /// </summary>
                 public class PatchRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Repository>
                 {
@@ -4440,10 +4442,10 @@ namespace Google.Apis.Dataform.v1beta1
             }
 
             /// <summary>
-            /// Update default config for a given project and location. *Note:* This method does not fully implement
-            /// AIP/134. In particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask*
-            /// is omitted, instead of only updating the set fields, the request is treated as a full update on all
-            /// modifiable fields
+            /// Update default config for a given project and location. **Note:** *This method does not fully
+            /// implement*, (see [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is
+            /// treated as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
+            /// the request is treated as a full update on all modifiable fields
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Identifier. The config name.</param>
@@ -4453,10 +4455,10 @@ namespace Google.Apis.Dataform.v1beta1
             }
 
             /// <summary>
-            /// Update default config for a given project and location. *Note:* This method does not fully implement
-            /// AIP/134. In particular: 1. The wildcard entry (***) is treated as a bad request 2. When the *field_mask*
-            /// is omitted, instead of only updating the set fields, the request is treated as a full update on all
-            /// modifiable fields
+            /// Update default config for a given project and location. **Note:** *This method does not fully
+            /// implement*, (see [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is
+            /// treated as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
+            /// the request is treated as a full update on all modifiable fields
             /// </summary>
             public class UpdateConfigRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Config>
             {
@@ -4952,6 +4954,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gitCommitish")]
         public virtual string GitCommitish { get; set; }
 
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
+
         /// <summary>Output only. The compilation result's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5004,6 +5013,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
         public virtual string FilePath { get; set; }
+
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
 
         /// <summary>The notebook executed by this action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebook")]
@@ -5754,7 +5770,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
 
         /// <summary>
         /// Output only. The ID of the Vertex job that executed the notebook in contents and also the ID used for the
-        /// outputs created in GCS buckets. Only set once the job has started to run.
+        /// outputs created in Google Cloud Storage buckets. Only set once the job has started to run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
@@ -5765,7 +5781,9 @@ namespace Google.Apis.Dataform.v1beta1.Data
 
     public class NotebookRuntimeOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The GCS location to upload the result to. Format: `gs://bucket-name`.</summary>
+        /// <summary>
+        /// Optional. The Google Cloud Storage location to upload the result to. Format: `gs://bucket-name`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsOutputBucket")]
         public virtual string GcsOutputBucket { get; set; }
 
@@ -6230,6 +6248,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gitCommitish")]
         public virtual string GitCommitish { get; set; }
 
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
+
         /// <summary>Identifier. The release config's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6340,6 +6365,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Optional. If set, configures this repository to be linked to a Git remote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitRemoteSettings")]
         public virtual GitRemoteSettings GitRemoteSettings { get; set; }
+
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
 
         /// <summary>
         /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the
@@ -6728,6 +6760,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
 
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
+
         /// <summary>Optional. If left unset, a default InvocationConfig will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invocationConfig")]
         public virtual InvocationConfig InvocationConfig { get; set; }
@@ -6814,6 +6853,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataEncryptionState")]
         public virtual DataEncryptionState DataEncryptionState { get; set; }
 
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
+
         /// <summary>Immutable. If left unset, a default InvocationConfig will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invocationConfig")]
         public virtual InvocationConfig InvocationConfig { get; set; }
@@ -6865,6 +6911,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Output only. If and only if action's state is FAILED a failure reason is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
         public virtual string FailureReason { get; set; }
+
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
 
         /// <summary>
         /// Output only. This action's timing details. `start_time` will be set if the action is in [RUNNING, SUCCEEDED,
@@ -6934,6 +6987,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataEncryptionState")]
         public virtual DataEncryptionState DataEncryptionState { get; set; }
+
+        /// <summary>
+        /// Output only. All the metadata information that is used internally to serve the resource. For example:
+        /// timestamps, flags, status fields, etc. The format of this field is a JSON string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalMetadata")]
+        public virtual string InternalMetadata { get; set; }
 
         /// <summary>Identifier. The workspace's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
