@@ -687,12 +687,12 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         }
 
         [Fact]
-        public async Task FetchesOidcToken()
+        public async Task FetchesOidcToken_DefaultUniverseDomain()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
             var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcTokenResponseSuccessMessageHandler();
-            var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
+            var initializer = new ServiceAccountCredential.Initializer("sa@domain")
             {
                 Clock = clock,
                 ProjectId = "a_project_id",
@@ -706,6 +706,9 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 
             var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
             Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
+            Assert.Equal(GoogleAuthConsts.OidcTokenUrl, messageHandler.LatestRequest.RequestUri.AbsoluteUri);
+            Assert.Null(messageHandler.LatestRequest.Headers.Authorization);
+            Assert.Contains("assertion", messageHandler.LatestRequestContent);
             // Move the clock some but not enough that the token expires.
             clock.UtcNow = clock.UtcNow.AddMinutes(20);
             signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
@@ -715,12 +718,45 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         }
 
         [Fact]
-        public async Task RefreshesOidcToken()
+        public async Task FetchesOidcToken_NonDefaultUniverseDomain()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.
             var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
             var messageHandler = new OidcTokenResponseSuccessMessageHandler();
-            var initializer = new ServiceAccountCredential.Initializer("MyId", "http://will.be.ignored")
+            var initializer = new ServiceAccountCredential.Initializer("sa@domain")
+            {
+                Clock = clock,
+                ProjectId = "a_project_id",
+                HttpClientFactory = new MockHttpClientFactory(messageHandler),
+                UniverseDomain = "fake.domain",
+                UseJwtAccessWithScopes = true
+            };
+            var credential = new ServiceAccountCredential(initializer.FromPrivateKey(PrivateKey));
+
+            // The fake Oidc server returns valid tokens (expired in the real world for safety)
+            // but with a set audience that lets us know if the token was refreshed or not.
+            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("will.be.ignored"));
+
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
+            Assert.Equal("https://iamcredentials.fake.domain/v1/projects/-/serviceAccounts/sa@domain:generateIdToken", messageHandler.LatestRequest.RequestUri.AbsoluteUri);
+            Assert.NotNull(messageHandler.LatestRequest.Headers.Authorization);
+            Assert.Contains("audience", messageHandler.LatestRequestContent);
+            // Move the clock some but not enough that the token expires.
+            clock.UtcNow = clock.UtcNow.AddMinutes(20);
+            signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
+            // Only the first call should have resulted in a request. The second time the token hadn't expired.
+            Assert.Equal(1, messageHandler.Calls);
+        }
+
+        [Fact]
+        public async Task RefreshesOidcToken_DefaultUniverseDomain()
+        {
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
+            var messageHandler = new OidcTokenResponseSuccessMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer("sa@domain")
             {
                 Clock = clock,
                 ProjectId = "a_project_id",
@@ -736,6 +772,40 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             clock.UtcNow = clock.UtcNow.AddHours(2);
             signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
             Assert.Equal("https://subsequent_calls.test", signedToken.Payload.Audience);
+            Assert.Equal(GoogleAuthConsts.OidcTokenUrl, messageHandler.LatestRequest.RequestUri.AbsoluteUri);
+            Assert.Null(messageHandler.LatestRequest.Headers.Authorization);
+            Assert.Contains("assertion", messageHandler.LatestRequestContent);
+            // Two calls, because the second time we tried to get the token, the first one had expired.
+            Assert.Equal(2, messageHandler.Calls);
+        }
+
+        [Fact]
+        public async Task RefreshesOidcToken_NonDefaultUniverseDomain()
+        {
+            // A little bit after the tokens returned from OidcTokenFakes were issued.
+            var clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
+            var messageHandler = new OidcTokenResponseSuccessMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer("sa@domain")
+            {
+                Clock = clock,
+                ProjectId = "a_project_id",
+                HttpClientFactory = new MockHttpClientFactory(messageHandler),
+                UniverseDomain = "fake.domain",
+                UseJwtAccessWithScopes = true
+            };
+            var credential = new ServiceAccountCredential(initializer.FromPrivateKey(PrivateKey));
+
+            var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("audience"));
+
+            var signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://first_call.test", signedToken.Payload.Audience);
+            // Move the clock so that the token expires.
+            clock.UtcNow = clock.UtcNow.AddHours(2);
+            signedToken = SignedToken<Header, Payload>.FromSignedToken(await oidcToken.GetAccessTokenAsync());
+            Assert.Equal("https://subsequent_calls.test", signedToken.Payload.Audience);
+            Assert.Equal("https://iamcredentials.fake.domain/v1/projects/-/serviceAccounts/sa@domain:generateIdToken", messageHandler.LatestRequest.RequestUri.AbsoluteUri);
+            Assert.NotNull(messageHandler.LatestRequest.Headers.Authorization);
+            Assert.Contains("audience", messageHandler.LatestRequestContent);
             // Two calls, because the second time we tried to get the token, the first one had expired.
             Assert.Equal(2, messageHandler.Calls);
         }
