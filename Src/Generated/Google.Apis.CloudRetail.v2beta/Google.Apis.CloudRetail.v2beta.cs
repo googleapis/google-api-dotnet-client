@@ -8995,9 +8995,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource that represents attribute results. The list of suggestions for the attribute.</summary>
+    /// <summary>Resource that represents attribute results.</summary>
     public class GoogleCloudRetailV2betaCompleteQueryResponseAttributeResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of suggestions for the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
         public virtual System.Collections.Generic.IList<string> Suggestions { get; set; }
 
