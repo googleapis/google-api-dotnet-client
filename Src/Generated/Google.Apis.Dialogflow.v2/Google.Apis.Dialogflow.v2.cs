@@ -20669,6 +20669,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
         public virtual string DataStoreType { get; set; }
 
+        /// <summary>
+        /// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and
+        /// UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingMode")]
+        public virtual string DocumentProcessingMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -23381,6 +23388,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
         public virtual string DataStoreType { get; set; }
 
+        /// <summary>
+        /// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and
+        /// UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingMode")]
+        public virtual string DocumentProcessingMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -26059,6 +26073,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
         public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
 
+        /// <summary>The natural language speech audio to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioInput")]
+        public virtual GoogleCloudDialogflowV2AudioInput AudioInput { get; set; }
+
         /// <summary>
         /// Additional parameters to be put into Dialogflow CX session parameters. To remove a parameter from the
         /// session, clients should explicitly set the parameter value to null. Note: this field should only be used if
@@ -26391,6 +26409,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentsMetadataFilters")]
         public virtual System.Collections.Generic.IDictionary<string, string> DocumentsMetadataFilters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the natural language speech audio to be processed.</summary>
+    public class GoogleCloudDialogflowV2AudioInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The natural language speech audio to be processed. A single request can contain up to 2 minutes of
+        /// speech audio data. The transcribed text cannot contain more than 256 bytes for virtual agent interactions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual string Audio { get; set; }
+
+        /// <summary>Required. Instructs the speech recognizer how to process the speech audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudDialogflowV2InputAudioConfig Config { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
