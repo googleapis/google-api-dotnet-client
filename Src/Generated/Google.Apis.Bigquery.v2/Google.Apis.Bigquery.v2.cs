@@ -8926,7 +8926,8 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>
         /// Optional. This option declares the intention to construct a materialized view that isn't refreshed
-        /// incrementally.
+        /// incrementally. Non-incremental materialized views support an expanded range of SQL queries. The
+        /// `allow_non_incremental_definition` option can't be changed after the materialized view is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowNonIncrementalDefinition")]
         public virtual System.Nullable<bool> AllowNonIncrementalDefinition { get; set; }
@@ -9848,10 +9849,24 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<bool> CacheHit { get; set; }
 
         /// <summary>
+        /// Output only. Creation time of this query, in milliseconds since the epoch. This field will be present on all
+        /// queries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual System.Nullable<long> CreationTime { get; set; }
+
+        /// <summary>
         /// Output only. Detailed statistics for DML statements INSERT, UPDATE, DELETE, MERGE or TRUNCATE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dmlStats")]
         public virtual DmlStatistics DmlStats { get; set; }
+
+        /// <summary>
+        /// Output only. End time of this query, in milliseconds since the epoch. This field will be present whenever a
+        /// query job is in the DONE state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual System.Nullable<long> EndTime { get; set; }
 
         /// <summary>
         /// Output only. The first errors or warnings encountered during the running of the job. The final message
@@ -9892,6 +9907,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
+        /// Output only. The geographic location of the query. For more information about BigQuery locations, see:
+        /// https://cloud.google.com/bigquery/docs/locations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
         /// Output only. The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE
         /// or DELETE.
         /// </summary>
@@ -9930,6 +9952,21 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual SessionInfo SessionInfo { get; set; }
 
         /// <summary>
+        /// Output only. Start time of this query, in milliseconds since the epoch. This field will be present when the
+        /// query job transitions from the PENDING state to either RUNNING or DONE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual System.Nullable<long> StartTime { get; set; }
+
+        /// <summary>
+        /// Output only. If the project is configured to use on-demand pricing, then this field contains the total bytes
+        /// billed for the job. If the project is configured to use flat-rate pricing, then you are not billed for bytes
+        /// and this field is informational only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytesBilled")]
+        public virtual System.Nullable<long> TotalBytesBilled { get; set; }
+
+        /// <summary>
         /// The total number of bytes processed for this query. If this query was a dry run, this is the number of bytes
         /// that would be processed if the query were run.
         /// </summary>
@@ -9942,6 +9979,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
         public virtual System.Nullable<ulong> TotalRows { get; set; }
+
+        /// <summary>Output only. Number of slot ms the user is actually billed for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
+        public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
