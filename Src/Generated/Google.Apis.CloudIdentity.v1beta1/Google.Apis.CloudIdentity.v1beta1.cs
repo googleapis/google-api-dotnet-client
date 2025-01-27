@@ -98,6 +98,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </summary>
             public static string CloudIdentityInboundssoReadonly = "https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly";
 
+            /// <summary>List, Move orgmembers of an OrgUnit in your Cloud Identity Organization.</summary>
+            public static string CloudIdentityOrgunits = "https://www.googleapis.com/auth/cloud-identity.orgunits";
+
+            /// <summary>List org members of an OrgUnit in your Cloud Identity Organization.</summary>
+            public static string CloudIdentityOrgunitsReadonly = "https://www.googleapis.com/auth/cloud-identity.orgunits.readonly";
+
             /// <summary>See and edit policies in your Cloud Identity Organization.</summary>
             public static string CloudIdentityPolicies = "https://www.googleapis.com/auth/cloud-identity.policies";
 
@@ -145,6 +151,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// Cloud Identity Organization.
             /// </summary>
             public const string CloudIdentityInboundssoReadonly = "https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly";
+
+            /// <summary>List, Move orgmembers of an OrgUnit in your Cloud Identity Organization.</summary>
+            public const string CloudIdentityOrgunits = "https://www.googleapis.com/auth/cloud-identity.orgunits";
+
+            /// <summary>List org members of an OrgUnit in your Cloud Identity Organization.</summary>
+            public const string CloudIdentityOrgunitsReadonly = "https://www.googleapis.com/auth/cloud-identity.orgunits.readonly";
 
             /// <summary>See and edit policies in your Cloud Identity Organization.</summary>
             public const string CloudIdentityPolicies = "https://www.googleapis.com/auth/cloud-identity.policies";
@@ -4990,10 +5002,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             /// <summary>
             /// Optional. A CEL expression for filtering the results. Policies can be filtered by application with this
-            /// expression: setting.name = 'settings/gmail.*' Policies can be filtered by setting type with this
-            /// expression: setting.name = '*.service_status' A maximum of one of the above setting.name clauses can be
-            /// used. Policies can be filtered by customer with this expression: customer = "customers/{customer}" Where
-            /// `customer` is the `id` from the [Admin SDK `Customer`
+            /// expression: setting.type.matches('^settings/gmail\\..*$') Policies can be filtered by setting type with
+            /// this expression: setting.type.matches('^.*\\.service_status$') A maximum of one of the above
+            /// setting.type clauses can be used. Policies can be filtered by customer with this expression: customer ==
+            /// "customers/{customer}" Where `customer` is the `id` from the [Admin SDK `Customer`
             /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may use
             /// `customers/my_customer` to specify your own organization. When no customer is mentioned it will be
             /// default to customers/my_customer. A maximum of one customer clause can be used. The above clauses can
