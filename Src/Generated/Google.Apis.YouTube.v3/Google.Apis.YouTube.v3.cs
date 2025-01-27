@@ -62,6 +62,7 @@ namespace Google.Apis.YouTube.v3
             Thumbnails = new ThumbnailsResource(this);
             VideoAbuseReportReasons = new VideoAbuseReportReasonsResource(this);
             VideoCategories = new VideoCategoriesResource(this);
+            VideoTrainability = new VideoTrainabilityResource(this);
             Videos = new VideosResource(this);
             Watermarks = new WatermarksResource(this);
             Youtube = new YoutubeResource(this);
@@ -230,6 +231,9 @@ namespace Google.Apis.YouTube.v3
 
         /// <summary>Gets the VideoCategories resource.</summary>
         public virtual VideoCategoriesResource VideoCategories { get; }
+
+        /// <summary>Gets the VideoTrainability resource.</summary>
+        public virtual VideoTrainabilityResource VideoTrainability { get; }
 
         /// <summary>Gets the Videos resource.</summary>
         public virtual VideosResource Videos { get; }
@@ -9436,6 +9440,64 @@ namespace Google.Apis.YouTube.v3
         }
     }
 
+    /// <summary>The "videoTrainability" collection of methods.</summary>
+    public class VideoTrainabilityResource
+    {
+        private const string Resource = "videoTrainability";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public VideoTrainabilityResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Returns the trainability status of a video.</summary>
+        public virtual GetRequest Get()
+        {
+            return new GetRequest(this.service);
+        }
+
+        /// <summary>Returns the trainability status of a video.</summary>
+        public class GetRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.VideoTrainability>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>The ID of the video to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Id { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "youtube/v3/videoTrainability";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "videos" collection of methods.</summary>
     public class VideosResource
     {
@@ -17468,6 +17530,31 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies who is allowed to train on the video.</summary>
+    public class VideoTrainability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "youtube#videoTrainability".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Specifies who is allowed to train on the video. Valid values are: - a single string "all" - a single string
+        /// "none" - a list of allowed parties
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permitted")]
+        public virtual System.Collections.Generic.IList<string> Permitted { get; set; }
+
+        /// <summary>The ID of the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
+        public virtual string VideoId { get; set; }
     }
 
     /// <summary>Branding properties for the watch. All deprecated.</summary>
