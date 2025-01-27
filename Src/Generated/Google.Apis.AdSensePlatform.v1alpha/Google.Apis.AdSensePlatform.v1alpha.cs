@@ -337,8 +337,8 @@ namespace Google.Apis.AdSensePlatform.v1alpha
 
                     /// <summary>Lists Platform Child Sites for a specified Platform Child Account.</summary>
                     /// <param name="parent">
-                    /// Required. The name of the platform to retrieve. Format:
-                    /// accounts/{account}/platforms/{platform}/childAccounts/{child_publisher_code}
+                    /// Required. The name of the child account under the given platform which owns the platform child
+                    /// sites. Format: accounts/{account}/platforms/{platform}/childAccounts/{child_account}
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -356,8 +356,8 @@ namespace Google.Apis.AdSensePlatform.v1alpha
                         }
 
                         /// <summary>
-                        /// Required. The name of the platform to retrieve. Format:
-                        /// accounts/{account}/platforms/{platform}/childAccounts/{child_publisher_code}
+                        /// Required. The name of the child account under the given platform which owns the platform
+                        /// child sites. Format: accounts/{account}/platforms/{platform}/childAccounts/{child_account}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -422,7 +422,7 @@ namespace Google.Apis.AdSensePlatform.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Identifier. Format:
-                    /// accounts/{account}/platforms/{platform}/childAccounts/{child}/sites/{platformChildSite}
+                    /// accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site}
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.AdSensePlatform.v1alpha.Data.PlatformChildSite body, string name)
                     {
@@ -442,7 +442,7 @@ namespace Google.Apis.AdSensePlatform.v1alpha
 
                         /// <summary>
                         /// Identifier. Format:
-                        /// accounts/{account}/platforms/{platform}/childAccounts/{child}/sites/{platformChildSite}
+                        /// accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1847,7 +1847,8 @@ namespace Google.Apis.AdSensePlatform.v1alpha.Data
         public virtual string Domain { get; set; }
 
         /// <summary>
-        /// Identifier. Format: accounts/{account}/platforms/{platform}/childAccounts/{child}/sites/{platformChildSite}
+        /// Identifier. Format:
+        /// accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
