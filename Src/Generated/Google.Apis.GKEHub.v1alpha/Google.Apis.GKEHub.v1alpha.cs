@@ -5326,39 +5326,6 @@ namespace Google.Apis.GKEHub.v1alpha
 }
 namespace Google.Apis.GKEHub.v1alpha.Data
 {
-    /// <summary>**Anthos Observability**: Spec</summary>
-    public class AnthosObservabilityFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Default membership spec for unconfigured memberships</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultMembershipSpec")]
-        public virtual AnthosObservabilityMembershipSpec DefaultMembershipSpec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>**Anthosobservability**: Per-Membership Feature spec.</summary>
-    public class AnthosObservabilityMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Use full of metrics rather than optimized metrics. See
-        /// https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("doNotOptimizeMetrics")]
-        public virtual System.Nullable<bool> DoNotOptimizeMetrics { get; set; }
-
-        /// <summary>Enable collecting and reporting metrics and logs from user apps.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverOnApplications")]
-        public virtual System.Nullable<bool> EnableStackdriverOnApplications { get; set; }
-
-        /// <summary>the version of stackdriver operator used by this feature</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Spec for App Dev Experience Feature.</summary>
     public class AppDevExperienceFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6020,10 +5987,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>CommonFeatureSpec contains Fleet-wide configuration information</summary>
     public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Anthos Observability spec</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("anthosobservability")]
-        public virtual AnthosObservabilityFeatureSpec Anthosobservability { get; set; }
-
         /// <summary>Appdevexperience specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureSpec Appdevexperience { get; set; }
@@ -9082,10 +9045,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>MembershipFeatureSpec contains configuration information for a single Membership.</summary>
     public class MembershipFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Anthos Observability-specific spec</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("anthosobservability")]
-        public virtual AnthosObservabilityMembershipSpec Anthosobservability { get; set; }
-
         /// <summary>Cloud Build-specific spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudbuild")]
         public virtual CloudBuildMembershipSpec Cloudbuild { get; set; }
