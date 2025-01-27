@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1085,11 +1085,11 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom
-            /// constraint does not exist.
+            /// Gets a custom or managed constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if
+            /// the custom or managed constraint does not exist.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the custom constraint. See the custom constraint entry for naming
+            /// Required. Resource name of the custom or managed constraint. See the custom constraint entry for naming
             /// requirements.
             /// </param>
             public virtual GetRequest Get(string name)
@@ -1098,8 +1098,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
             }
 
             /// <summary>
-            /// Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom
-            /// constraint does not exist.
+            /// Gets a custom or managed constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if
+            /// the custom or managed constraint does not exist.
             /// </summary>
             public class GetRequest : OrgPolicyAPIBaseServiceRequest<Google.Apis.OrgPolicyAPI.v2.Data.GoogleCloudOrgpolicyV2CustomConstraint>
             {
@@ -1111,8 +1111,8 @@ namespace Google.Apis.OrgPolicyAPI.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of the custom constraint. See the custom constraint entry for naming
-                /// requirements.
+                /// Required. Resource name of the custom or managed constraint. See the custom constraint entry for
+                /// naming requirements.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2307,7 +2307,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
 {
     /// <summary>
     /// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for
-    /// dry-run/darklaunch.
+    /// dry-run.
     /// </summary>
     public class GoogleCloudOrgpolicyV2AlternatePolicySpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2332,13 +2332,13 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     /// instance can have serial port connections established. Constraints can be configured by the organization policy
     /// administrator to fit the needs of the organization by setting a policy that includes constraints at different
     /// locations in the organization's resource hierarchy. Policies are inherited down the resource hierarchy from
-    /// higher levels, but can also be overridden. For details about the inheritance rules please read about `policies`.
-    /// Constraints have a default behavior determined by the `constraint_default` field, which is the enforcement
-    /// behavior that is used in the absence of a policy being defined or inherited for the resource in question.
+    /// higher levels, but can also be overridden. For details about the inheritance rules, see `Policy`. Constraints
+    /// have a default behavior determined by the `constraint_default` field, which is the enforcement behavior that is
+    /// used in the absence of a policy being defined or inherited for the resource in question.
     /// </summary>
     public class GoogleCloudOrgpolicyV2Constraint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defines this constraint as being a BooleanConstraint.</summary>
+        /// <summary>Defines this constraint as being a boolean constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("booleanConstraint")]
         public virtual GoogleCloudOrgpolicyV2ConstraintBooleanConstraint BooleanConstraint { get; set; }
 
@@ -2356,7 +2356,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Defines this constraint as being a ListConstraint.</summary>
+        /// <summary>Defines this constraint as being a list constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listConstraint")]
         public virtual GoogleCloudOrgpolicyV2ConstraintListConstraint ListConstraint { get; set; }
 
@@ -2383,13 +2383,12 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// A constraint that is either enforced or not. For example, a constraint
-    /// `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance, serial port connections will
-    /// not be opened to that instance.
+    /// A constraint type is enforced or not enforced, which is configured in the `PolicyRule`. If
+    /// `customConstraintDefinition` is defined, this constraint is a managed constraint.
     /// </summary>
     public class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom constraint definition. This is set only for Managed Constraints</summary>
+        /// <summary>Custom constraint definition. Defines this as a managed constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraintDefinition")]
         public virtual GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition CustomConstraintDefinition { get; set; }
 
@@ -2397,10 +2396,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Currently used for Managed Constraints. This represents a subset of fields missing from Constraint proto that
-    /// are required to describe CustomConstraint
-    /// </summary>
+    /// <summary>Custom constraint definition. Defines this as a managed constraint.</summary>
     public class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Allow or deny type.</summary>
@@ -2419,7 +2415,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
 
         /// <summary>
-        /// Stores Structure of parameters used by Constraint condition. Key of map represents name of the parameter.
+        /// Stores the structure of `Parameters` used by the constraint condition. The key of `map` represents the name
+        /// of the parameter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter> Parameters { get; set; }
@@ -2443,8 +2440,8 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual object DefaultValue { get; set; }
 
         /// <summary>
-        /// Determines the parameter’s value structure. For example, LIST can be specified by defining type : LIST, and
-        /// item type as : STRING.
+        /// Determines the parameter's value structure. For example, `LIST` can be specified by defining `type: LIST`,
+        /// and `item: STRING`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual string Item { get; set; }
@@ -2468,7 +2465,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines Medata structure.</summary>
+    /// <summary>Defines Metadata structure.</summary>
     public class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Detailed description of what this `parameter` is and use of it. Mutable.</summary>
@@ -2480,8 +2477,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// A constraint that allows or disallows a list of string values, which are configured by an Organization Policy
-    /// administrator with a policy.
+    /// A constraint type that allows or disallows a list of string values, which are configured in the `PolicyRule`.
     /// </summary>
     public class GoogleCloudOrgpolicyV2ConstraintListConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2516,8 +2512,9 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual string ActionType { get; set; }
 
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
-        /// or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        /// A Common Expression Language (CEL) condition which is used in the evaluation of the constraint. For example:
+        /// `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true`
+        /// The max length of the condition is 1000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
@@ -2560,7 +2557,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
 
         /// <summary>
         /// Output only. The last time this custom constraint was updated. This represents the last time that the
-        /// `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        /// `CreateCustomConstraint` or `UpdateCustomConstraint` methods were called.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
@@ -2614,14 +2611,14 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// The response returned from the ListCustomConstraints method. It will be empty if no custom constraints are set
-    /// on the organization resource.
+    /// The response returned from the ListCustomConstraints method. It will be empty if no custom or managed
+    /// constraints are set on the organization resource.
     /// </summary>
     public class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// All custom constraints that exist on the organization resource. It will be empty if no custom constraints
-        /// are set.
+        /// All custom and managed constraints that exist on the organization resource. It will be empty if no custom
+        /// constraints are set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2CustomConstraint> CustomConstraints { get; set; }
@@ -2694,7 +2691,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Basic information about the Organization Policy.</summary>
+        /// <summary>Basic information about the organization policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual GoogleCloudOrgpolicyV2PolicySpec Spec { get; set; }
     }
@@ -2820,7 +2817,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual System.Nullable<bool> Enforce { get; set; }
 
         /// <summary>
-        /// Optional. Required for GMCs if parameters defined in constraints. Pass parameter values when policy
+        /// Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy
         /// enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition.
         /// For example: { "allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true }
         /// </summary>
