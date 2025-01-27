@@ -753,6 +753,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Response message for PredictionService.CountTokens.</summary>
     public class GoogleCloudAiplatformV1beta1CountTokensResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. List of modalities that were processed in the request input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> PromptTokensDetails { get; set; }
+
         /// <summary>The total number of billable characters counted across all instances from the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBillableCharacters")]
         public virtual System.Nullable<int> TotalBillableCharacters { get; set; }
@@ -1084,6 +1088,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Usage metadata about response(s).</summary>
     public class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. List of modalities of the cached content in the request input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> CacheTokensDetails { get; set; }
+
         /// <summary>Output only. Number of tokens in the cached part in the input (the cached content).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cachedContentTokenCount")]
         public virtual System.Nullable<int> CachedContentTokenCount { get; set; }
@@ -1092,12 +1100,20 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
         public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
 
+        /// <summary>Output only. List of modalities that were returned in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> CandidatesTokensDetails { get; set; }
+
         /// <summary>
         /// Number of tokens in the request. When `cached_content` is set, this is still the total effective prompt size
         /// meaning this includes the number of tokens in the cached content.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        /// <summary>Output only. List of modalities that were processed in the request input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> PromptTokensDetails { get; set; }
 
         /// <summary>Total token count for prompt and response candidates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
@@ -1183,6 +1199,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
         public virtual System.Nullable<float> Temperature { get; set; }
 
+        /// <summary>
+        /// Optional. Config for thinking features. An error will be returned if this field is set for models that don't
+        /// support thinking.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingConfig")]
+        public virtual GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig ThinkingConfig { get; set; }
+
         /// <summary>Optional. If specified, top-k sampling will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topK")]
         public virtual System.Nullable<float> TopK { get; set; }
@@ -1232,6 +1255,20 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for thinking features.</summary>
+    public class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates whether to include thoughts in the response. If true, thoughts are returned only when
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeThoughts")]
+        public virtual System.Nullable<bool> IncludeThoughts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1396,6 +1433,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Sorted by log probability in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1LogprobsResultCandidate> Candidates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents token counting info for a single modality.</summary>
+    public class GoogleCloudAiplatformV1beta1ModalityTokenCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The modality associated with this token count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modality")]
+        public virtual string Modality { get; set; }
+
+        /// <summary>Number of tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenCount")]
+        public virtual System.Nullable<int> TokenCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
