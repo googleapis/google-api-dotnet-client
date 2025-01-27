@@ -1756,7 +1756,9 @@ namespace Google.Apis.TPU.v2alpha1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of items to return.</summary>
+                    /// <summary>
+                    /// The maximum number of items to return. Defaults to 0 if not specified, which means no limit.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3365,6 +3367,7 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>A standard reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standard")]
         public virtual Standard Standard { get; set; }
 
@@ -3481,8 +3484,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a standard reservation.</summary>
     public class Standard : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Capacity units this reservation is measured in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityUnits")]
         public virtual string CapacityUnits { get; set; }
 
@@ -3498,6 +3503,7 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<int> Size { get; set; }
 
+        /// <summary>The current usage of the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
         public virtual Usage Usage { get; set; }
 
@@ -3667,6 +3673,7 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Usage details of a reservation.</summary>
     public class Usage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
