@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -6366,6 +6366,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiScope")]
         public virtual string ApiScope { get; set; }
 
+        /// <summary>Immutable. The density configuration of the index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("density")]
+        public virtual string Density { get; set; }
+
         /// <summary>
         /// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100
         /// fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not
@@ -6376,6 +6380,16 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1IndexField> Fields { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes,
+        /// none of the paths in the index definition reach or traverse an array, except via an explicit array index.
+        /// For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except
+        /// via an explicit array index. Violations will result in errors. Note this field only applies to index with
+        /// IGNITE_API ApiScope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multikey")]
+        public virtual System.Nullable<bool> Multikey { get; set; }
 
         /// <summary>
         /// Output only. A server defined name for this index. The form of this name for composite indexes will be:
