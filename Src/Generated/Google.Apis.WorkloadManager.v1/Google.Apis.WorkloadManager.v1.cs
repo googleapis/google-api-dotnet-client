@@ -2812,6 +2812,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Whether to use DR reconciliation or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useDrReconciliation")]
+        public virtual System.Nullable<bool> UseDrReconciliation { get; set; }
+
         /// <summary>Optional. The properties of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadProperties")]
         public virtual SapDiscoveryWorkloadProperties WorkloadProperties { get; set; }
@@ -2928,6 +2932,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. Instance number of the SAP instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNumber")]
         public virtual string InstanceNumber { get; set; }
+
+        /// <summary>Optional. Landscape ID from the HANA nameserver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("landscapeId")]
+        public virtual string LandscapeId { get; set; }
 
         /// <summary>Required. URI of the recognized primary instance of the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryInstanceUri")]
