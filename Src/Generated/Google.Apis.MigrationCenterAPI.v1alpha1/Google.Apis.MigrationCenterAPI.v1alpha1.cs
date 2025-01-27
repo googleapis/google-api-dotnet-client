@@ -5931,6 +5931,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Output only. Asset information specific for virtual machines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineDetails")]
+        public virtual MachineDetails MachineDetails { get; set; }
+
         /// <summary>Output only. The full name of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6017,6 +6021,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Asset information specific for virtual and physical machines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineDetails")]
+        public virtual MachineDetails MachineDetails { get; set; }
 
         /// <summary>
         /// Asset performance data samples. Samples that are from more than 40 days ago or after tomorrow are ignored.
@@ -8980,6 +8988,178 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the machine architecture.</summary>
+    public class MachineArchitectureDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>BIOS Details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bios")]
+        public virtual BiosDetails Bios { get; set; }
+
+        /// <summary>CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuArchitecture")]
+        public virtual string CpuArchitecture { get; set; }
+
+        /// <summary>CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuName")]
+        public virtual string CpuName { get; set; }
+
+        /// <summary>Number of processor sockets allocated to the machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuSocketCount")]
+        public virtual System.Nullable<int> CpuSocketCount { get; set; }
+
+        /// <summary>Firmware type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firmwareType")]
+        public virtual string FirmwareType { get; set; }
+
+        /// <summary>CPU hyper-threading support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hyperthreading")]
+        public virtual string Hyperthreading { get; set; }
+
+        /// <summary>Hardware vendor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vendor")]
+        public virtual string Vendor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a machine.</summary>
+    public class MachineDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Architecture details (vendor, CPU architecture).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual MachineArchitectureDetails Architecture { get; set; }
+
+        /// <summary>Number of logical CPU cores in the machine. Must be non-negative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
+        public virtual System.Nullable<int> CoreCount { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Machine creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Disk details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual MachineDiskDetails Disks { get; set; }
+
+        /// <summary>Guest OS information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOs")]
+        public virtual GuestOsDetails GuestOs { get; set; }
+
+        /// <summary>Machine name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineName")]
+        public virtual string MachineName { get; set; }
+
+        /// <summary>The amount of memory in the machine. Must be non-negative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Network details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual MachineNetworkDetails Network { get; set; }
+
+        /// <summary>Platform specific information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual PlatformDetails Platform { get; set; }
+
+        /// <summary>Power state of the machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("powerState")]
+        public virtual string PowerState { get; set; }
+
+        /// <summary>Machine unique identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
+        public virtual string Uuid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of machine disks.</summary>
+    public class MachineDiskDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual DiskEntryList Disks { get; set; }
+
+        /// <summary>
+        /// Raw disk scan result. This field is intended for human inspection. The format of this field may be lsblk
+        /// output or any another raw output. The exact format may change without notice and should not be relied upon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawScanResult")]
+        public virtual string RawScanResult { get; set; }
+
+        /// <summary>Disk total Capacity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCapacityBytes")]
+        public virtual System.Nullable<long> TotalCapacityBytes { get; set; }
+
+        /// <summary>Total disk free space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFreeBytes")]
+        public virtual System.Nullable<long> TotalFreeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of network adapters and settings.</summary>
+    public class MachineNetworkDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Default gateway address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultGateway")]
+        public virtual string DefaultGateway { get; set; }
+
+        /// <summary>List of network adapters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAdapters")]
+        public virtual NetworkAdapterList NetworkAdapters { get; set; }
+
+        /// <summary>The primary IP address of the machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryIpAddress")]
+        public virtual string PrimaryIpAddress { get; set; }
+
+        /// <summary>MAC address of the machine. This property is used to uniqly identify the machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryMacAddress")]
+        public virtual string PrimaryMacAddress { get; set; }
+
+        /// <summary>The public IP address of the machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
+        public virtual string PublicIpAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
