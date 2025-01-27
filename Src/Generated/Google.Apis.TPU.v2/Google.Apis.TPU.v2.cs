@@ -2337,7 +2337,7 @@ namespace Google.Apis.TPU.v2.Data
     public class MultisliceParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of
+        /// Required. Number of nodes with this spec. The system will attempt to provision "node_count" nodes as part of
         /// the request. This needs to be &amp;gt; 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
