@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4907,10 +4907,10 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Optional. A CEL expression for filtering the results. Policies can be filtered by application with this
-            /// expression: setting.name = 'settings/gmail.*' Policies can be filtered by setting type with this
-            /// expression: setting.name = '*.service_status' A maximum of one of the above setting.name clauses can be
-            /// used. Policies can be filtered by customer with this expression: customer = "customers/{customer}" Where
-            /// `customer` is the `id` from the [Admin SDK `Customer`
+            /// expression: setting.type.matches('^settings/gmail\\..*$') Policies can be filtered by setting type with
+            /// this expression: setting.type.matches('^.*\\.service_status$') A maximum of one of the above
+            /// setting.type clauses can be used. Policies can be filtered by customer with this expression: customer ==
+            /// "customers/{customer}" Where `customer` is the `id` from the [Admin SDK `Customer`
             /// resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may use
             /// `customers/my_customer` to specify your own organization. When no customer is mentioned it will be
             /// default to customers/my_customer. A maximum of one customer clause can be used. The above clauses can
