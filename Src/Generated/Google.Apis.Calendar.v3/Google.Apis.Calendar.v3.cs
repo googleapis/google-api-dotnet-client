@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -72,11 +72,52 @@ namespace Google.Apis.Calendar.v3
             /// </summary>
             public static string Calendar = "https://www.googleapis.com/auth/calendar";
 
+            /// <summary>See and change the sharing permissions of Google calendars you own</summary>
+            public static string CalendarAcls = "https://www.googleapis.com/auth/calendar.acls";
+
+            /// <summary>See the sharing permissions of Google calendars you own</summary>
+            public static string CalendarAclsReadonly = "https://www.googleapis.com/auth/calendar.acls.readonly";
+
+            /// <summary>Make secondary Google calendars, and see, create, change, and delete events on them</summary>
+            public static string CalendarAppCreated = "https://www.googleapis.com/auth/calendar.app.created";
+
+            /// <summary>See, add, and remove Google calendars you’re subscribed to</summary>
+            public static string CalendarCalendarlist = "https://www.googleapis.com/auth/calendar.calendarlist";
+
+            /// <summary>See the list of Google calendars you’re subscribed to</summary>
+            public static string CalendarCalendarlistReadonly = "https://www.googleapis.com/auth/calendar.calendarlist.readonly";
+
+            /// <summary>
+            /// See and change the properties of Google calendars you have access to, and create secondary calendars
+            /// </summary>
+            public static string CalendarCalendars = "https://www.googleapis.com/auth/calendar.calendars";
+
+            /// <summary>
+            /// See the title, description, default time zone, and other properties of Google calendars you have access
+            /// to
+            /// </summary>
+            public static string CalendarCalendarsReadonly = "https://www.googleapis.com/auth/calendar.calendars.readonly";
+
             /// <summary>View and edit events on all your calendars</summary>
             public static string CalendarEvents = "https://www.googleapis.com/auth/calendar.events";
 
+            /// <summary>See the availability on Google calendars you have access to</summary>
+            public static string CalendarEventsFreebusy = "https://www.googleapis.com/auth/calendar.events.freebusy";
+
+            /// <summary>See, create, change, and delete events on Google calendars you own</summary>
+            public static string CalendarEventsOwned = "https://www.googleapis.com/auth/calendar.events.owned";
+
+            /// <summary>See the events on Google calendars you own</summary>
+            public static string CalendarEventsOwnedReadonly = "https://www.googleapis.com/auth/calendar.events.owned.readonly";
+
+            /// <summary>See the events on public calendars</summary>
+            public static string CalendarEventsPublicReadonly = "https://www.googleapis.com/auth/calendar.events.public.readonly";
+
             /// <summary>View events on all your calendars</summary>
             public static string CalendarEventsReadonly = "https://www.googleapis.com/auth/calendar.events.readonly";
+
+            /// <summary>View your availability in your calendars</summary>
+            public static string CalendarFreebusy = "https://www.googleapis.com/auth/calendar.freebusy";
 
             /// <summary>See and download any calendar you can access using your Google Calendar</summary>
             public static string CalendarReadonly = "https://www.googleapis.com/auth/calendar.readonly";
@@ -93,11 +134,52 @@ namespace Google.Apis.Calendar.v3
             /// </summary>
             public const string Calendar = "https://www.googleapis.com/auth/calendar";
 
+            /// <summary>See and change the sharing permissions of Google calendars you own</summary>
+            public const string CalendarAcls = "https://www.googleapis.com/auth/calendar.acls";
+
+            /// <summary>See the sharing permissions of Google calendars you own</summary>
+            public const string CalendarAclsReadonly = "https://www.googleapis.com/auth/calendar.acls.readonly";
+
+            /// <summary>Make secondary Google calendars, and see, create, change, and delete events on them</summary>
+            public const string CalendarAppCreated = "https://www.googleapis.com/auth/calendar.app.created";
+
+            /// <summary>See, add, and remove Google calendars you’re subscribed to</summary>
+            public const string CalendarCalendarlist = "https://www.googleapis.com/auth/calendar.calendarlist";
+
+            /// <summary>See the list of Google calendars you’re subscribed to</summary>
+            public const string CalendarCalendarlistReadonly = "https://www.googleapis.com/auth/calendar.calendarlist.readonly";
+
+            /// <summary>
+            /// See and change the properties of Google calendars you have access to, and create secondary calendars
+            /// </summary>
+            public const string CalendarCalendars = "https://www.googleapis.com/auth/calendar.calendars";
+
+            /// <summary>
+            /// See the title, description, default time zone, and other properties of Google calendars you have access
+            /// to
+            /// </summary>
+            public const string CalendarCalendarsReadonly = "https://www.googleapis.com/auth/calendar.calendars.readonly";
+
             /// <summary>View and edit events on all your calendars</summary>
             public const string CalendarEvents = "https://www.googleapis.com/auth/calendar.events";
 
+            /// <summary>See the availability on Google calendars you have access to</summary>
+            public const string CalendarEventsFreebusy = "https://www.googleapis.com/auth/calendar.events.freebusy";
+
+            /// <summary>See, create, change, and delete events on Google calendars you own</summary>
+            public const string CalendarEventsOwned = "https://www.googleapis.com/auth/calendar.events.owned";
+
+            /// <summary>See the events on Google calendars you own</summary>
+            public const string CalendarEventsOwnedReadonly = "https://www.googleapis.com/auth/calendar.events.owned.readonly";
+
+            /// <summary>See the events on public calendars</summary>
+            public const string CalendarEventsPublicReadonly = "https://www.googleapis.com/auth/calendar.events.public.readonly";
+
             /// <summary>View events on all your calendars</summary>
             public const string CalendarEventsReadonly = "https://www.googleapis.com/auth/calendar.events.readonly";
+
+            /// <summary>View your availability in your calendars</summary>
+            public const string CalendarFreebusy = "https://www.googleapis.com/auth/calendar.freebusy";
 
             /// <summary>See and download any calendar you can access using your Google Calendar</summary>
             public const string CalendarReadonly = "https://www.googleapis.com/auth/calendar.readonly";
@@ -4514,8 +4596,9 @@ namespace Google.Apis.Calendar.v3.Data
         /// Provides read access to free/busy information.  - "reader" - Provides read access to the calendar. Private
         /// events will appear to users with reader access, but event details will be hidden.  - "writer" - Provides
         /// read and write access to the calendar. Private events will appear to users with writer access, and event
-        /// details will be visible.  - "owner" - Provides ownership of the calendar. This role has all of the
-        /// permissions of the writer role with the additional ability to see and manipulate ACLs.
+        /// details will be visible. Provides read access to the calendar's ACLs.  - "owner" - Provides ownership of the
+        /// calendar. This role has all of the permissions of the writer role with the additional ability to manipulate
+        /// ACLs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
