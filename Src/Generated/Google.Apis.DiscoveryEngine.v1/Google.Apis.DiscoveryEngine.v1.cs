@@ -15931,6 +15931,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("asynchronousMode")]
         public virtual System.Nullable<bool> AsynchronousMode { get; set; }
 
+        /// <summary>Optional. End user specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserSpec")]
+        public virtual GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpec EndUserSpec { get; set; }
+
         /// <summary>Optional. Grounding specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
         public virtual GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec GroundingSpec { get; set; }
@@ -16076,6 +16080,54 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Customized preamble.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
         public virtual string Preamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>End user specification.</summary>
+    public class GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. End user metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserMetadata")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData> EndUserMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>End user metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
+        public virtual GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo ChunkInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk information.</summary>
+    public class GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk textual content. It is limited to 8000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Metadata of the document from the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata DocumentMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document metadata contains the information of the document of the current chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27285,9 +27337,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The UTC time when the next data sync is expected to start for the Data Connector. Customers are only able to
-        /// specify the hour and minute to schedule the data sync. This is utilized when the data connector has a
-        /// refresh interval greater than 1 day.
+        /// Defines the scheduled time for the next data synchronization. This field requires hour , minute, and
+        /// time_zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). This is utilized when the
+        /// data connector has a refresh interval greater than 1 day. When the hours or minutes are not specified, we
+        /// will assume a sync time of 0:00. The user must provide a time zone to avoid ambiguity.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncTime")]
         public virtual GoogleTypeDateTime NextSyncTime { get; set; }
