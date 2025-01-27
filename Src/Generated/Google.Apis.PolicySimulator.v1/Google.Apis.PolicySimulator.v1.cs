@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1985,7 +1985,7 @@ namespace Google.Apis.PolicySimulator.v1.Data
 {
     /// <summary>
     /// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for
-    /// dry-run/darklaunch.
+    /// dry-run.
     /// </summary>
     public class GoogleCloudOrgpolicyV2AlternatePolicySpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2016,8 +2016,9 @@ namespace Google.Apis.PolicySimulator.v1.Data
         public virtual string ActionType { get; set; }
 
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
-        /// or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        /// A Common Expression Language (CEL) condition which is used in the evaluation of the constraint. For example:
+        /// `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true`
+        /// The max length of the condition is 1000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
@@ -2060,7 +2061,7 @@ namespace Google.Apis.PolicySimulator.v1.Data
 
         /// <summary>
         /// Output only. The last time this custom constraint was updated. This represents the last time that the
-        /// `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        /// `CreateCustomConstraint` or `UpdateCustomConstraint` methods were called.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
@@ -2135,7 +2136,7 @@ namespace Google.Apis.PolicySimulator.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Basic information about the Organization Policy.</summary>
+        /// <summary>Basic information about the organization policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual GoogleCloudOrgpolicyV2PolicySpec Spec { get; set; }
     }
@@ -2261,7 +2262,7 @@ namespace Google.Apis.PolicySimulator.v1.Data
         public virtual System.Nullable<bool> Enforce { get; set; }
 
         /// <summary>
-        /// Optional. Required for GMCs if parameters defined in constraints. Pass parameter values when policy
+        /// Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy
         /// enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition.
         /// For example: { "allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true }
         /// </summary>
