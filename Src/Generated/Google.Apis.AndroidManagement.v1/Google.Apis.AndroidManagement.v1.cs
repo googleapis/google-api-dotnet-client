@@ -6246,7 +6246,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addUserDisabled")]
         public virtual System.Nullable<bool> AddUserDisabled { get; set; }
 
-        /// <summary>Whether adjusting the master volume is disabled. Also mutes the device.</summary>
+        /// <summary>
+        /// Whether adjusting the master volume is disabled. Also mutes the device. The setting has effect only on fully
+        /// managed devices.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adjustVolumeDisabled")]
         public virtual System.Nullable<bool> AdjustVolumeDisabled { get; set; }
 
@@ -6648,7 +6651,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("screenCaptureDisabled")]
         public virtual System.Nullable<bool> ScreenCaptureDisabled { get; set; }
 
-        /// <summary>Whether changing the user icon is disabled.</summary>
+        /// <summary>
+        /// Whether changing the user icon is disabled. The setting has effect only on fully managed devices.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setUserIconDisabled")]
         public virtual System.Nullable<bool> SetUserIconDisabled { get; set; }
 
