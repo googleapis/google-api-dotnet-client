@@ -14211,6 +14211,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>Message describing MirroringEndpointGroup object.</summary>
     public class MirroringEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. List of Mirroring Endpoint Group Associations that are associated to this endpoint group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associations")]
+        public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociationDetails> Associations { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -14425,6 +14431,32 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This is a subset of the MirroringEndpointGroupAssociation message, containing fields to be used by the consumer.
+    /// </summary>
+    public class MirroringEndpointGroupAssociationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the MirroringEndpointGroupAssociation. Format:
+        /// projects/{project}/locations/{location}/mirroringEndpointGroupAssociations/{mirroringEndpointGroupAssociation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. Current state of the association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
