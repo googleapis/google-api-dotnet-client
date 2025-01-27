@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3296,6 +3296,10 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the
         /// same meaning as [task_retry_limit in
         /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+        /// Note: Cloud Tasks stops retrying only when `max_attempts` and `max_retry_duration` are both satisfied. When
+        /// the task has been attempted `max_attempts` times and when the `max_retry_duration` time has passed, no
+        /// further attempts are made, and the task is deleted. If you want your task to retry infinitely, you must set
+        /// `max_attempts` to -1 and `max_retry_duration` to 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAttempts")]
         public virtual System.Nullable<int> MaxAttempts { get; set; }
