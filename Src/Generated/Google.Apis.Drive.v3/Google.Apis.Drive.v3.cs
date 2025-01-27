@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -9321,7 +9321,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> Published { get; set; }
 
         /// <summary>
-        /// Output only. A link to the published revision. This is only populated for Google Sites files.
+        /// Output only. A link to the published revision. This is only populated for Docs Editors files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedLink")]
         public virtual string PublishedLink { get; set; }
