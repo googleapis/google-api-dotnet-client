@@ -8349,6 +8349,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pricingPlan")]
         public virtual string PricingPlan { get; set; }
 
+        /// <summary>Optional. Configuration value for recreation of replica after certain replication lag</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationLagMaxSeconds")]
+        public virtual System.Nullable<int> ReplicationLagMaxSeconds { get; set; }
+
         /// <summary>
         /// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated)
         /// This property was only applicable to First Generation instances.
