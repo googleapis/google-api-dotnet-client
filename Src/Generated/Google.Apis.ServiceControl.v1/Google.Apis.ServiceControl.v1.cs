@@ -2136,6 +2136,13 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
+        /// <summary>
+        /// The values from Origin header from the HTTP request, such as "https://console.cloud.google.com". Modern
+        /// browsers can only have one origin. Special browsers and/or HTTP clients may require multiple origins.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; }
+
         /// <summary>The HTTP URL path, excluding the query parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
