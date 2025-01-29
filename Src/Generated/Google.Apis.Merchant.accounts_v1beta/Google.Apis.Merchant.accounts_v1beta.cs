@@ -3431,6 +3431,23 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instruction for adding a user to the account during creation.</summary>
+    public class AddUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Details about the user to be added. At the moment, only access rights may be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual User User { get; set; }
+
+        /// <summary>Required. The email address of the user (for example, `john.doe@gmail.com`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Shipping address of the warehouse.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3685,6 +3702,13 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual System.Collections.Generic.IList<AddAccountService> Service { get; set; }
 
         /// <summary>Optional. Users to be added to the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual System.Collections.Generic.IList<AddUser> User { get; set; }
+
+        /// <summary>
+        /// Optional. Users to be added to the account. This field is deprecated and will not exist after the API
+        /// evolves out of beta. Use the `user` field instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
         public virtual System.Collections.Generic.IList<CreateUserRequest> Users { get; set; }
 
