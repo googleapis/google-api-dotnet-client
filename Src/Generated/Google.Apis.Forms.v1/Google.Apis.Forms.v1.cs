@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1376,6 +1376,10 @@ namespace Google.Apis.Forms.v1.Data
     /// <summary>A form's settings.</summary>
     public class FormSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Kind of email collection configured in the form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailCollectionType")]
+        public virtual string EmailCollectionType { get; set; }
+
         /// <summary>Settings related to quiz forms and grading.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quizSettings")]
         public virtual QuizSettings QuizSettings { get; set; }
