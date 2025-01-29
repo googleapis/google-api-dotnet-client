@@ -66,6 +66,15 @@ namespace Google.Apis.ChromeManagement.v1
             /// </summary>
             public static string ChromeManagementAppdetailsReadonly = "https://www.googleapis.com/auth/chrome.management.appdetails.readonly";
 
+            /// <summary>
+            /// See, edit, delete, and take other necessary actions on Chrome browser profiles managed by your
+            /// organization
+            /// </summary>
+            public static string ChromeManagementProfiles = "https://www.googleapis.com/auth/chrome.management.profiles";
+
+            /// <summary>See Chrome browser profiles managed by your organization</summary>
+            public static string ChromeManagementProfilesReadonly = "https://www.googleapis.com/auth/chrome.management.profiles.readonly";
+
             /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
             public static string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
 
@@ -84,6 +93,15 @@ namespace Google.Apis.ChromeManagement.v1
             /// organization
             /// </summary>
             public const string ChromeManagementAppdetailsReadonly = "https://www.googleapis.com/auth/chrome.management.appdetails.readonly";
+
+            /// <summary>
+            /// See, edit, delete, and take other necessary actions on Chrome browser profiles managed by your
+            /// organization
+            /// </summary>
+            public const string ChromeManagementProfiles = "https://www.googleapis.com/auth/chrome.management.profiles";
+
+            /// <summary>See Chrome browser profiles managed by your organization</summary>
+            public const string ChromeManagementProfilesReadonly = "https://www.googleapis.com/auth/chrome.management.profiles.readonly";
 
             /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
             public const string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
