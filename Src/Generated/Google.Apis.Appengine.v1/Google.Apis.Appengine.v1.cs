@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4267,6 +4267,13 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Serving status of this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingStatus")]
         public virtual string ServingStatus { get; set; }
+
+        /// <summary>
+        /// The SSL policy that will be applied to the application. If set to Modern it will restrict traffic with TLS
+        /// &amp;lt; 1.2 and allow only Modern Ciphers suite
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslPolicy")]
+        public virtual string SslPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
