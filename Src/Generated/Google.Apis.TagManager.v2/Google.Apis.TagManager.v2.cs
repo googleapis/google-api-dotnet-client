@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -9327,6 +9327,13 @@ namespace Google.Apis.TagManager.v2.Data
     /// </summary>
     public class GalleryReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// ID for the gallery template that is generated once during first sync and travels with the template
+        /// redirects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("galleryTemplateId")]
+        public virtual string GalleryTemplateId { get; set; }
+
         /// <summary>The name of the host for the community gallery template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
