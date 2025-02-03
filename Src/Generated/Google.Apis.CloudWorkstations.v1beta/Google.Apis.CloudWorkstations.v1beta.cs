@@ -3872,6 +3872,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boostConfigs")]
         public virtual System.Collections.Generic.IList<WorkstationBoostConfig> BoostConfigs { get; set; }
 
+        /// <summary>Output only. Status conditions describing the workstation's current state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<Status> Conditions { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -3908,6 +3912,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. Whether this workstation is in degraded mode, in which case it may require user action to
+        /// restore full functionality. Details can be found in conditions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("degraded")]
+        public virtual System.Nullable<bool> Degraded { get; set; }
 
         private string _deleteTimeRaw;
 
