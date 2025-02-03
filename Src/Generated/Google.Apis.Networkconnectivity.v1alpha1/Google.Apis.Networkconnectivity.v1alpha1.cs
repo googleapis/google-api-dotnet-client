@@ -3285,8 +3285,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
 
         /// <summary>
         /// Immutable. Resource path of the target resource. The target project can be different, as in the cases when
-        /// migrating to peer networks. The resource For example:
-        /// /projects/{project}/regions/{region}/subnetworks/{subnet}
+        /// migrating to peer networks. For example: /projects/{project}/regions/{region}/subnetworks/{subnet}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
