@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1270,7 +1270,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                         }
                     }
 
-                    /// <summary>Get a FeedbackThread object.</summary>
+                    /// <summary> Get a FeedbackThread object.</summary>
                     /// <param name="name">
                     /// Required. Name of the feedback. Format:
                     /// 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}'.
@@ -1280,7 +1280,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Get a FeedbackThread object.</summary>
+                    /// <summary> Get a FeedbackThread object.</summary>
                     public class GetRequest : DataLabelingBaseServiceRequest<Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1FeedbackThread>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -1879,7 +1879,9 @@ namespace Google.Apis.DataLabeling.v1beta1
                     }
                 }
 
-                /// <summary>Gets an evaluation by resource name (to search, use projects.evaluations.search).</summary>
+                /// <summary>
+                ///  Gets an evaluation by resource name (to search, use projects.evaluations.search).
+                /// </summary>
                 /// <param name="name">
                 /// Required. Name of the evaluation. Format: "projects/{project_id}/datasets/
                 /// {dataset_id}/evaluations/{evaluation_id}'
@@ -1889,7 +1891,9 @@ namespace Google.Apis.DataLabeling.v1beta1
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets an evaluation by resource name (to search, use projects.evaluations.search).</summary>
+                /// <summary>
+                ///  Gets an evaluation by resource name (to search, use projects.evaluations.search).
+                /// </summary>
                 public class GetRequest : DataLabelingBaseServiceRequest<Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1Evaluation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1949,7 +1953,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 }
 
                 /// <summary>
-                /// Starts a labeling task for image. The type of image labeling task is configured by feature in the
+                ///  Starts a labeling task for image. The type of image labeling task is configured by feature in the
                 /// request.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -1963,7 +1967,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 }
 
                 /// <summary>
-                /// Starts a labeling task for image. The type of image labeling task is configured by feature in the
+                ///  Starts a labeling task for image. The type of image labeling task is configured by feature in the
                 /// request.
                 /// </summary>
                 public class LabelRequest : DataLabelingBaseServiceRequest<Google.Apis.DataLabeling.v1beta1.Data.GoogleLongrunningOperation>
@@ -2180,7 +2184,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 }
             }
 
-            /// <summary>Creates dataset. If success return a Dataset resource.</summary>
+            /// <summary> Creates dataset. If success return a Dataset resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Dataset resource parent, format: projects/{project_id}</param>
             public virtual CreateRequest Create(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1CreateDatasetRequest body, string parent)
@@ -2188,7 +2192,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 return new CreateRequest(this.service, body, parent);
             }
 
-            /// <summary>Creates dataset. If success return a Dataset resource.</summary>
+            /// <summary> Creates dataset. If success return a Dataset resource.</summary>
             public class CreateRequest : DataLabelingBaseServiceRequest<Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1Dataset>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2560,7 +2564,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 this.service = service;
             }
 
-            /// <summary>Creates an evaluation job.</summary>
+            /// <summary> Creates an evaluation job.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Evaluation job resource parent. Format: "projects/{project_id}"</param>
             public virtual CreateRequest Create(Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest body, string parent)
@@ -2568,7 +2572,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                 return new CreateRequest(this.service, body, parent);
             }
 
-            /// <summary>Creates an evaluation job.</summary>
+            /// <summary> Creates an evaluation job.</summary>
             public class CreateRequest : DataLabelingBaseServiceRequest<Google.Apis.DataLabeling.v1beta1.Data.GoogleCloudDatalabelingV1beta1EvaluationJob>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -4855,7 +4859,7 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for CreateEvaluationJob.</summary>
+    /// <summary> Request message for CreateEvaluationJob.</summary>
     public class GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The evaluation job to create.</summary>
@@ -6364,7 +6368,7 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for starting an image labeling task.</summary>
+    /// <summary> Request message for starting an image labeling task.</summary>
     public class GoogleCloudDatalabelingV1beta1LabelImageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Basic human annotation config.</summary>
@@ -6641,7 +6645,7 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for LabelVideo.</summary>
+    /// <summary> Request message for LabelVideo.</summary>
     public class GoogleCloudDatalabelingV1beta1LabelVideoRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Basic human annotation config.</summary>
