@@ -2269,6 +2269,10 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -3387,8 +3391,8 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
     }
 
     /// <summary>
-    /// Information related to: * A function's eligibility for 1st Gen to 2nd Gen migration and 2nd Gen to CRf detach. *
-    /// Current state of migration for function undergoing migration/detach.
+    /// Information related to: * A function's eligibility for 1st Gen to 2nd Gen migration. * Current state of
+    /// migration for function undergoing migration.
     /// </summary>
     public class UpgradeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
