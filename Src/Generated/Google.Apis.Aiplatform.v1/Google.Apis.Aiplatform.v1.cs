@@ -1273,6 +1273,65 @@ namespace Google.Apis.Aiplatform.v1
             }
         }
 
+        /// <summary>Perform an online prediction.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="endpoint">
+        /// Required. The name of the Endpoint requested to serve the prediction. Format:
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+        /// </param>
+        public virtual PredictRequest Predict(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictRequest body, string endpoint)
+        {
+            return new PredictRequest(this.service, body, endpoint);
+        }
+
+        /// <summary>Perform an online prediction.</summary>
+        public class PredictRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictResponse>
+        {
+            /// <summary>Constructs a new Predict request.</summary>
+            public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictRequest body, string endpoint) : base(service)
+            {
+                Endpoint = endpoint;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the Endpoint requested to serve the prediction. Format:
+            /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Endpoint { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "predict";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+endpoint}:predict";
+
+            /// <summary>Initializes Predict parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endpoint",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^endpoints/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Generate content with multimodal inputs with streaming support.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="model">
@@ -18215,10 +18274,7 @@ namespace Google.Apis.Aiplatform.v1
                     }
                 }
 
-                /// <summary>
-                /// Deploys an Index into this IndexEndpoint, creating a DeployedIndex within it. Only non-empty Indexes
-                /// can be deployed.
-                /// </summary>
+                /// <summary>Deploys an Index into this IndexEndpoint, creating a DeployedIndex within it.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="indexEndpoint">
                 /// Required. The name of the IndexEndpoint resource into which to deploy an Index. Format:
@@ -18229,10 +18285,7 @@ namespace Google.Apis.Aiplatform.v1
                     return new DeployIndexRequest(this.service, body, indexEndpoint);
                 }
 
-                /// <summary>
-                /// Deploys an Index into this IndexEndpoint, creating a DeployedIndex within it. Only non-empty Indexes
-                /// can be deployed.
-                /// </summary>
+                /// <summary>Deploys an Index into this IndexEndpoint, creating a DeployedIndex within it.</summary>
                 public class DeployIndexRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new DeployIndex request.</summary>
@@ -26561,6 +26614,90 @@ namespace Google.Apis.Aiplatform.v1
                         RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists checkpoints of the specified model version.</summary>
+                /// <param name="name">
+                /// Required. The name of the model version to list checkpoints for.
+                /// `projects/{project}/locations/{location}/models/{model}@{version}` Example:
+                /// `projects/{project}/locations/{location}/models/{model}@2` or
+                /// `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is
+                /// specified, the latest version will be used.
+                /// </param>
+                public virtual ListCheckpointsRequest ListCheckpoints(string name)
+                {
+                    return new ListCheckpointsRequest(this.service, name);
+                }
+
+                /// <summary>Lists checkpoints of the specified model version.</summary>
+                public class ListCheckpointsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse>
+                {
+                    /// <summary>Constructs a new ListCheckpoints request.</summary>
+                    public ListCheckpointsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the model version to list checkpoints for.
+                    /// `projects/{project}/locations/{location}/models/{model}@{version}` Example:
+                    /// `projects/{project}/locations/{location}/models/{model}@2` or
+                    /// `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is
+                    /// specified, the latest version will be used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The standard list page token. Typically obtained via next_page_token of the previous
+                    /// ListModelVersionCheckpoints call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listCheckpoints";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:listCheckpoints";
+
+                    /// <summary>Initializes ListCheckpoints parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/models/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -43807,6 +43944,65 @@ namespace Google.Apis.Aiplatform.v1
                 }
             }
 
+            /// <summary>Perform an online prediction.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="endpoint">
+            /// Required. The name of the Endpoint requested to serve the prediction. Format:
+            /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+            /// </param>
+            public virtual PredictRequest Predict(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictRequest body, string endpoint)
+            {
+                return new PredictRequest(this.service, body, endpoint);
+            }
+
+            /// <summary>Perform an online prediction.</summary>
+            public class PredictRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictResponse>
+            {
+                /// <summary>Constructs a new Predict request.</summary>
+                public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictRequest body, string endpoint) : base(service)
+                {
+                    Endpoint = endpoint;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Endpoint { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PredictRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "predict";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+endpoint}:predict";
+
+                /// <summary>Initializes Predict parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endpoint",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/models/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Generate content with multimodal inputs with streaming support.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="model">
@@ -45925,6 +46121,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
+        /// <summary>
+        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs. This field is
+        /// only returned in PromptMessage for prompt management. It is not currently used in the Gemini GenerateContent
+        /// calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Required. The IANA standard MIME type of the source data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -45991,7 +46195,7 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. Creatation time of the cache entry.</summary>
+        /// <summary>Output only. Creation time of the cache entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -46391,6 +46595,25 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Customizable online prediction request timeout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inferenceTimeout")]
         public virtual object InferenceTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Result of executing the [ExecutableCode]. Always follows a `part` containing the [ExecutableCode].
+    /// </summary>
+    public class GoogleCloudAiplatformV1CodeExecutionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Outcome of the code execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
+        public virtual string Outcome { get; set; }
+
+        /// <summary>
+        /// Optional. Contains stdout when code execution is successful, stderr or other description otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual string Output { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46995,6 +47218,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Response message for PredictionService.CountTokens.</summary>
     public class GoogleCloudAiplatformV1CountTokensResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. List of modalities that were processed in the request input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1ModalityTokenCount> PromptTokensDetails { get; set; }
+
         /// <summary>The total number of billable characters counted across all instances from the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBillableCharacters")]
         public virtual System.Nullable<int> TotalBillableCharacters { get; set; }
@@ -49052,6 +49279,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedResources")]
         public virtual string SharedResources { get; set; }
 
+        /// <summary>Optional. Spec for configuring speculative decoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speculativeDecodingSpec")]
+        public virtual GoogleCloudAiplatformV1SpeculativeDecodingSpec SpeculativeDecodingSpec { get; set; }
+
         /// <summary>Output only. Runtime status of the deployed model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleCloudAiplatformV1DeployedModelStatus Status { get; set; }
@@ -49471,6 +49702,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for GenAiAdvancedFeatures. If the endpoint is serving GenAI models, advanced
+        /// features like native RAG integration can be configured. Currently, only Model Garden models are supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genAiAdvancedFeaturesConfig")]
+        public virtual GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig GenAiAdvancedFeaturesConfig { get; set; }
 
         /// <summary>
         /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer
@@ -50355,6 +50593,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The namespace name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceName")]
         public virtual string NamespaceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Code generated by the model that is meant to be executed, and the result returned to the model. Generated when
+    /// using the [FunctionDeclaration] tool and [FunctionCallingConfig] mode is set to [Mode.CODE].
+    /// </summary>
+    public class GoogleCloudAiplatformV1ExecutableCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The code to be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Required. Programming language of the `code`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52541,6 +52797,22 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>
+        /// Output only. A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to
+        /// this service account to allow Vertex AI Feature Store to sync data to the online store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When
+        /// using an IAM Policy to isolate this FeatureView within a project, a separate service account should be
+        /// provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate
+        /// service account to access the BigQuery source table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentType")]
+        public virtual string ServiceAgentType { get; set; }
+
+        /// <summary>
         /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest
         /// featureValues for each entityId of this FeatureView are made ready for online serving.
         /// </summary>
@@ -53307,6 +53579,14 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>URI based data.</summary>
     public class GoogleCloudAiplatformV1FileData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Display name of the file data. Used to provide a label or filename to distinguish file datas. This
+        /// field is only returned in PromptMessage for prompt management. It is not currently used in the Gemini
+        /// GenerateContent calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Required. URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
         public virtual string FileUri { get; set; }
@@ -53787,6 +54067,31 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for GenAiAdvancedFeatures.</summary>
+    public class GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for Retrieval Augmented Generation feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragConfig")]
+        public virtual GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig RagConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Retrieval Augmented Generation feature.</summary>
+    public class GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfigRagConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, enable Retrieval Augmented Generation in ChatCompletion request. Once enabled, the endpoint will be
+        /// identified as GenAI endpoint and Arthedain router will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRag")]
+        public virtual System.Nullable<bool> EnableRag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for [PredictionService.GenerateContent].</summary>
     public class GoogleCloudAiplatformV1GenerateContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -53855,6 +54160,43 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Candidate> Candidates { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when the request is made to the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. The model version used to generate the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
         public virtual string ModelVersion { get; set; }
@@ -53865,6 +54207,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptFeedback")]
         public virtual GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback PromptFeedback { get; set; }
+
+        /// <summary>
+        /// Output only. response_id is used to identify each response. It is the encoding of the event_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
+        public virtual string ResponseId { get; set; }
 
         /// <summary>Usage metadata about the response(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageMetadata")]
@@ -53896,6 +54244,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Usage metadata about response(s).</summary>
     public class GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. List of modalities of the cached content in the request input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1ModalityTokenCount> CacheTokensDetails { get; set; }
+
         /// <summary>Output only. Number of tokens in the cached part in the input (the cached content).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cachedContentTokenCount")]
         public virtual System.Nullable<int> CachedContentTokenCount { get; set; }
@@ -53904,12 +54256,20 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
         public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
 
+        /// <summary>Output only. List of modalities that were returned in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1ModalityTokenCount> CandidatesTokensDetails { get; set; }
+
         /// <summary>
         /// Number of tokens in the request. When `cached_content` is set, this is still the total effective prompt size
         /// meaning this includes the number of tokens in the cached content.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        /// <summary>Output only. List of modalities that were processed in the request input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1ModalityTokenCount> PromptTokensDetails { get; set; }
 
         /// <summary>Total token count for prompt and response candidates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
@@ -56178,6 +56538,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ModelService.ListModelVersionCheckpoints</summary>
+    public class GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Model Version checkpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkpoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1ModelVersionCheckpoint> Checkpoints { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass to ListModelVersionCheckpointsRequest.page_token to
+        /// obtain that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ModelService.ListModelVersions</summary>
     public class GoogleCloudAiplatformV1ListModelVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -57409,6 +57787,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents token counting info for a single modality.</summary>
+    public class GoogleCloudAiplatformV1ModalityTokenCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The modality associated with this token count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modality")]
+        public virtual string Modality { get; set; }
+
+        /// <summary>Number of tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenCount")]
+        public virtual System.Nullable<int> TokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A trained machine learning Model.</summary>
     public class GoogleCloudAiplatformV1Model : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -57477,6 +57870,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStats")]
         public virtual GoogleCloudAiplatformV1ModelDataStats DataStats { get; set; }
+
+        /// <summary>The default checkpoint id of a model version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultCheckpointId")]
+        public virtual string DefaultCheckpointId { get; set; }
 
         /// <summary>
         /// Output only. The pointers to DeployedModels created from this Model. Note that Model could have been
@@ -58781,6 +59178,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicModelName")]
         public virtual string PublicModelName { get; set; }
 
+        /// <summary>Optional. Whether to avoid pulling the model from the HF cache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipHfModelCache")]
+        public virtual System.Nullable<bool> SkipHfModelCache { get; set; }
+
+        /// <summary>Optional. The model garden source model version ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual string VersionId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -59065,6 +59470,28 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Type of the model source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
         public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A proto representation of a Spanner-stored ModelVersionCheckpoint. The meaning of the fields is equivalent to
+    /// their in-Spanner counterparts.
+    /// </summary>
+    public class GoogleCloudAiplatformV1ModelVersionCheckpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the checkpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkpointId")]
+        public virtual string CheckpointId { get; set; }
+
+        /// <summary>The epoch of the checkpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epoch")]
+        public virtual System.Nullable<long> Epoch { get; set; }
+
+        /// <summary>The step of the checkpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("step")]
+        public virtual System.Nullable<long> Step { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60428,6 +60855,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedVmConfig")]
         public virtual GoogleCloudAiplatformV1ShieldedVmConfig ShieldedVmConfig { get; set; }
 
+        /// <summary>Output only. Software config of the notebook runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
+        public virtual GoogleCloudAiplatformV1NotebookSoftwareConfig SoftwareConfig { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -60610,6 +61041,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedVmConfig")]
         public virtual GoogleCloudAiplatformV1ShieldedVmConfig ShieldedVmConfig { get; set; }
 
+        /// <summary>Optional. The notebook software configuration of the notebook runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
+        public virtual GoogleCloudAiplatformV1NotebookSoftwareConfig SoftwareConfig { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -60654,6 +61089,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Immutable. A resource name of the NotebookRuntimeTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplate")]
         public virtual string NotebookRuntimeTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Notebook Software Config.</summary>
+    public class GoogleCloudAiplatformV1NotebookSoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Environment variables to be passed to the container. Maximum limit is 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1EnvVar> Env { get; set; }
+
+        /// <summary>Optional. Post startup script config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postStartupScriptConfig")]
+        public virtual GoogleCloudAiplatformV1PostStartupScriptConfig PostStartupScriptConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60897,6 +61347,14 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1Part : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Result of executing the [ExecutableCode].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeExecutionResult")]
+        public virtual GoogleCloudAiplatformV1CodeExecutionResult CodeExecutionResult { get; set; }
+
+        /// <summary>Optional. Code generated by the model that is meant to be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executableCode")]
+        public virtual GoogleCloudAiplatformV1ExecutableCode ExecutableCode { get; set; }
+
         /// <summary>Optional. URI based data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileData")]
         public virtual GoogleCloudAiplatformV1FileData FileData { get; set; }
@@ -61898,6 +62356,25 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerPort")]
         public virtual System.Nullable<int> ContainerPort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Post startup script config.</summary>
+    public class GoogleCloudAiplatformV1PostStartupScriptConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Post startup script to run after runtime is started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postStartupScript")]
+        public virtual string PostStartupScript { get; set; }
+
+        /// <summary>Optional. Post startup script behavior that defines download and execution behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postStartupScriptBehavior")]
+        public virtual string PostStartupScriptBehavior { get; set; }
+
+        /// <summary>Optional. Post startup script url to download. Example: https://bucket/script.sh</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postStartupScriptUrl")]
+        public virtual string PostStartupScriptUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -70461,6 +70938,55 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Speculative Decoding.</summary>
+    public class GoogleCloudAiplatformV1SpeculativeDecodingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>draft model speculation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftModelSpeculation")]
+        public virtual GoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation DraftModelSpeculation { get; set; }
+
+        /// <summary>N-Gram speculation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ngramSpeculation")]
+        public virtual GoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation NgramSpeculation { get; set; }
+
+        /// <summary>The number of speculative tokens to generate at each step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speculativeTokenCount")]
+        public virtual System.Nullable<int> SpeculativeTokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Draft model speculation works by using the smaller model to generate candidate tokens for speculative decoding.
+    /// </summary>
+    public class GoogleCloudAiplatformV1SpeculativeDecodingSpecDraftModelSpeculation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name of the draft model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftModel")]
+        public virtual string DraftModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// N-Gram speculation works by trying to find matching tokens in the previous prompt sequence and use those as
+    /// speculation for generating new tokens.
+    /// </summary>
+    public class GoogleCloudAiplatformV1SpeculativeDecodingSpecNgramSpeculation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of last N input tokens used as ngram to search/match against the previous prompt sequence. This
+        /// is equal to the N in N-Gram. The default value is 3 if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ngramSize")]
+        public virtual System.Nullable<int> NgramSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The speech generation config.</summary>
     public class GoogleCloudAiplatformV1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -72645,6 +73171,13 @@ namespace Google.Apis.Aiplatform.v1.Data
     public class GoogleCloudAiplatformV1Tool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. CodeExecution tool type. Enables the model to execute code as part of generation. This field is
+        /// only used by the Gemini Developer API services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeExecution")]
+        public virtual GoogleCloudAiplatformV1ToolCodeExecution CodeExecution { get; set; }
+
+        /// <summary>
         /// Optional. Function tool type. One or more function declarations to be passed to the model along with the
         /// current user query. Model may decide to call a subset of these functions by populating FunctionCall in the
         /// response. User should provide a FunctionResponse for each function call in the next turn. Based on the
@@ -72746,6 +73279,16 @@ namespace Google.Apis.Aiplatform.v1.Data
 
     /// <summary>Spec for tool call valid metric.</summary>
     public class GoogleCloudAiplatformV1ToolCallValidSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Tool that executes code generated by the model, and automatically returns the result to the model. See also
+    /// [ExecutableCode]and [CodeExecutionResult] which are input and output to this tool.
+    /// </summary>
+    public class GoogleCloudAiplatformV1ToolCodeExecution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -73805,7 +74348,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The Model Registry Model and Online Prediction Endpoint assiociated with this TuningJob.</summary>
+    /// <summary>The Model Registry Model and Online Prediction Endpoint associated with this TuningJob.</summary>
     public class GoogleCloudAiplatformV1TunedModel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -74033,7 +74576,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supervisedTuningSpec")]
         public virtual GoogleCloudAiplatformV1SupervisedTuningSpec SupervisedTuningSpec { get; set; }
 
-        /// <summary>Output only. The tuned model resources assiociated with this TuningJob.</summary>
+        /// <summary>Output only. The tuned model resources associated with this TuningJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tunedModel")]
         public virtual GoogleCloudAiplatformV1TunedModel TunedModel { get; set; }
 
