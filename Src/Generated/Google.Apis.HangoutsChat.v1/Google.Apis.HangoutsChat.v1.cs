@@ -1604,9 +1604,8 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Creates a reaction and adds it to a message. Only unicode emojis are supported. For an example, see
-                /// [Add a reaction to a message](https://developers.google.com/workspace/chat/create-reactions).
-                /// Requires [user
+                /// Creates a reaction and adds it to a message. For an example, see [Add a reaction to a
+                /// message](https://developers.google.com/workspace/chat/create-reactions). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -1619,9 +1618,8 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Creates a reaction and adds it to a message. Only unicode emojis are supported. For an example, see
-                /// [Add a reaction to a message](https://developers.google.com/workspace/chat/create-reactions).
-                /// Requires [user
+                /// Creates a reaction and adds it to a message. For an example, see [Add a reaction to a
+                /// message](https://developers.google.com/workspace/chat/create-reactions). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
                 public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Reaction>
@@ -1671,7 +1669,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Deletes a reaction to a message. Only unicode emojis are supported. For an example, see [Delete a
+                /// Deletes a reaction to a message. For an example, see [Delete a
                 /// reaction](https://developers.google.com/workspace/chat/delete-reactions). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
@@ -1685,7 +1683,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Deletes a reaction to a message. Only unicode emojis are supported. For an example, see [Delete a
+                /// Deletes a reaction to a message. For an example, see [Delete a
                 /// reaction](https://developers.google.com/workspace/chat/delete-reactions). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
@@ -4160,6 +4158,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The metadata for a custom emoji.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customEmojiMetadata")]
+        public virtual CustomEmojiMetadata CustomEmojiMetadata { get; set; }
+
         /// <summary>Length of the substring in the plain-text message body this annotation corresponds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
         public virtual System.Nullable<int> Length { get; set; }
@@ -4591,6 +4593,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Annotation metadata for custom emoji.</summary>
+    public class CustomEmojiMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The custom emoji.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
+        public virtual CustomEmoji CustomEmoji { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Date input values.</summary>
     public class DateInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4830,7 +4843,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>An emoji that is used as a reaction to a message.</summary>
     public class Emoji : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. A custom emoji.</summary>
+        /// <summary>A custom emoji.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
         public virtual CustomEmoji CustomEmoji { get; set; }
 
