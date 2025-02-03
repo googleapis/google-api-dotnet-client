@@ -3803,7 +3803,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MySQL database profile. Next ID: 7.</summary>
+    /// <summary>MySQL database profile.</summary>
     public class MysqlProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Hostname for the MySQL connection.</summary>
@@ -4099,7 +4099,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for Oracle Automatic Storage Management (ASM) connection. .</summary>
+    /// <summary>Configuration for Oracle Automatic Storage Management (ASM) connection.</summary>
     public class OracleAsmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. ASM service name for the Oracle ASM connection.</summary>
@@ -4199,7 +4199,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Oracle database profile. Next ID: 10.</summary>
+    /// <summary>Oracle database profile.</summary>
     public class OracleProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Connection string attributes</summary>
@@ -5027,7 +5027,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>SQLServer database profile. Next ID: 8.</summary>
+    /// <summary>SQLServer database profile.</summary>
     public class SqlServerProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Database for the SQLServer connection.</summary>
