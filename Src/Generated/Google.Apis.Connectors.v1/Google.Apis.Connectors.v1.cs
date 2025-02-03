@@ -7759,6 +7759,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual EndPoint Endpoint { get; set; }
 
+        /// <summary>OPTION 3: Write the event to Pub/Sub topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsub")]
+        public virtual PubSub Pubsub { get; set; }
+
         /// <summary>Service account needed for runtime plane to trigger IP workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -9808,9 +9812,17 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("demoUri")]
         public virtual string DemoUri { get; set; }
 
+        /// <summary>Output only. Has dynamic open api spec uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasDynamicSpecUri")]
+        public virtual System.Nullable<bool> HasDynamicSpecUri { get; set; }
+
         /// <summary>Required. Integration example templates for the custom connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationTemplates")]
         public virtual string IntegrationTemplates { get; set; }
+
+        /// <summary>Output only. Local spec path. Required if has_dynamic_spec_uri is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSpecPath")]
+        public virtual string LocalSpecPath { get; set; }
 
         /// <summary>Optional. Marketplace product name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketplaceProduct")]
@@ -10123,6 +10135,29 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pub/Sub message includes details of the Destination Pub/Sub topic.</summary>
+    public class PubSub : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Pub/Sub message attributes to be added to the Pub/Sub message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
+
+        /// <summary>Optional. Configuration for configuring the trigger</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configVariables")]
+        public virtual System.Collections.Generic.IList<ConfigVariable> ConfigVariables { get; set; }
+
+        /// <summary>Required. The project id which has the Pub/Sub topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Required. The topic id of the Pub/Sub topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
+        public virtual string TopicId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
