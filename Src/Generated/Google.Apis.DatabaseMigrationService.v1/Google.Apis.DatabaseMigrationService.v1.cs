@@ -1902,7 +1902,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                         /// <summary>
                         /// Top-most (Database, Schema) nodes which are returned contains summary details for their
-                        /// decendents such as the number of entities per type and issues rollups. When this view is
+                        /// descendants such as the number of entities per type and issues rollups. When this view is
                         /// used, only a single page of result is returned and the page_size property of the request is
                         /// ignored. The returned page will only include the top-most node types.
                         /// </summary>
