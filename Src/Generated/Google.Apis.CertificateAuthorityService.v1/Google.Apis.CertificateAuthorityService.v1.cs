@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4497,6 +4497,14 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. User-defined URLs for accessing content published by this CertificateAuthority, including the CA
+        /// certificate and the PEM-encoded CRLs. The service does not publish content to these URLs. It is up to the
+        /// user to mirror content to these URLs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedAccessUrls")]
+        public virtual UserDefinedAccessUrls UserDefinedAccessUrls { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6307,6 +6315,27 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User-defined URLs for accessing content published by this CertificateAuthority.</summary>
+    public class UserDefinedAccessUrls : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of URLs where the issuer CA certificate may be downloaded, which appears in the "Authority
+        /// Information Access" extension in the certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiaIssuingCertificateUrls")]
+        public virtual System.Collections.Generic.IList<string> AiaIssuingCertificateUrls { get; set; }
+
+        /// <summary>
+        /// Optional. A list of URLs where to obtain CRL information, i.e. the DistributionPoint.fullName described by
+        /// https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crlAccessUrls")]
+        public virtual System.Collections.Generic.IList<string> CrlAccessUrls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
