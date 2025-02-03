@@ -1476,7 +1476,7 @@ namespace Google.Apis.CloudBuild.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Arbitrary additional key to find the maching repository for a webhook event if needed.
+                    /// Arbitrary additional key to find the matching repository for a webhook event if needed.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("webhookKey", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WebhookKey { get; set; }
