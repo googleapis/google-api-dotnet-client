@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3031,8 +3031,12 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     public class Page : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown
-        /// file. The content can be used to produce the documentation page such as HTML format page.
+        /// The Markdown content of the page. You can use
+        /// ```
+        /// (== include {path} ==)
+        /// ```
+        /// to include content from a
+        /// Markdown file. The content can be used to produce the documentation page such as HTML format page.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
