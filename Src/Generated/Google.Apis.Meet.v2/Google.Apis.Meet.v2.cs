@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -68,6 +68,9 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>Read information about any of your Google Meet conferences</summary>
             public static string MeetingsSpaceReadonly = "https://www.googleapis.com/auth/meetings.space.readonly";
+
+            /// <summary>Edit, and see settings for all of your Google Meet calls.</summary>
+            public static string MeetingsSpaceSettings = "https://www.googleapis.com/auth/meetings.space.settings";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Meet API.</summary>
@@ -80,6 +83,9 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>Read information about any of your Google Meet conferences</summary>
             public const string MeetingsSpaceReadonly = "https://www.googleapis.com/auth/meetings.space.readonly";
+
+            /// <summary>Edit, and see settings for all of your Google Meet calls.</summary>
+            public const string MeetingsSpaceSettings = "https://www.googleapis.com/auth/meetings.space.settings";
         }
 
         /// <summary>Gets the ConferenceRecords resource.</summary>
