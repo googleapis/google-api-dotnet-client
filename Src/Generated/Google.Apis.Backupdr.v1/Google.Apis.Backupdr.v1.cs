@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -297,6 +297,7 @@ namespace Google.Apis.Backupdr.v1
                 BackupVaults = new BackupVaultsResource(service);
                 ManagementServers = new ManagementServersResource(service);
                 Operations = new OperationsResource(service);
+                ResourceBackupConfigs = new ResourceBackupConfigsResource(service);
                 ServiceConfig = new ServiceConfigResource(service);
             }
 
@@ -3797,6 +3798,128 @@ namespace Google.Apis.Backupdr.v1
                 }
             }
 
+            /// <summary>Gets the ResourceBackupConfigs resource.</summary>
+            public virtual ResourceBackupConfigsResource ResourceBackupConfigs { get; }
+
+            /// <summary>The "resourceBackupConfigs" collection of methods.</summary>
+            public class ResourceBackupConfigsResource
+            {
+                private const string Resource = "resourceBackupConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ResourceBackupConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists ResourceBackupConfigs.</summary>
+                /// <param name="parent">
+                /// Required. The project and location for which to retrieve resource backup configs. Format:
+                /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to Google Cloud
+                /// regions, for example **us-central1**.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists ResourceBackupConfigs.</summary>
+                public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListResourceBackupConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location for which to retrieve resource backup configs. Format:
+                    /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to Google
+                    /// Cloud regions, for example **us-central1**.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/resourceBackupConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the ServiceConfig resource.</summary>
             public virtual ServiceConfigResource ServiceConfig { get; }
 
@@ -4762,6 +4885,109 @@ namespace Google.Apis.Backupdr.v1.Data
     }
 
     /// <summary>
+    /// BackupConfigDetails has information about how the resource is configured for backups and about the most recent
+    /// backup taken for this configuration.
+    /// </summary>
+    public class BackupConfigDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of
+        /// the resource that is applicable for the backup configuration. Example:
+        /// "//compute.googleapis.com/projects/{project}/zones/{zone}/instances/{instance}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableResource")]
+        public virtual string ApplicableResource { get; set; }
+
+        /// <summary>
+        /// Output only. The full resource name of the backup config source resource. For example,
+        /// "//backupdr.googleapis.com/v1/projects/{project}/locations/{region}/backupPlans/{backupplanId}" or
+        /// "//compute.googleapis.com/projects/{project}/locations/{region}/resourcePolicies/{resourcePolicyId}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfigSource")]
+        public virtual string BackupConfigSource { get; set; }
+
+        /// <summary>Output only. The display name of the backup config source resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfigSourceDisplayName")]
+        public virtual string BackupConfigSourceDisplayName { get; set; }
+
+        /// <summary>Backup and DR's Backup Plan specific data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupDrPlanConfig")]
+        public virtual BackupDrPlanConfig BackupDrPlanConfig { get; set; }
+
+        /// <summary>Backup and DR's Template specific data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupDrTemplateConfig")]
+        public virtual BackupDrTemplateConfig BackupDrTemplateConfig { get; set; }
+
+        /// <summary>The locations where the backups are to be stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupLocations")]
+        public virtual System.Collections.Generic.IList<BackupLocation> BackupLocations { get; set; }
+
+        /// <summary>
+        /// Output only. The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of
+        /// the backup vault that will store the backups generated through this backup configuration. Example:
+        /// "//backupdr.googleapis.com/v1/projects/{project}/locations/{region}/backupVaults/{backupvaultId}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupVault")]
+        public virtual string BackupVault { get; set; }
+
+        private string _latestSuccessfulBackupTimeRaw;
+
+        private object _latestSuccessfulBackupTime;
+
+        /// <summary>
+        /// Output only. Timestamp of the latest successful backup created via this backup configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestSuccessfulBackupTime")]
+        public virtual string LatestSuccessfulBackupTimeRaw
+        {
+            get => _latestSuccessfulBackupTimeRaw;
+            set
+            {
+                _latestSuccessfulBackupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestSuccessfulBackupTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestSuccessfulBackupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestSuccessfulBackupTimeDateTimeOffset instead.")]
+        public virtual object LatestSuccessfulBackupTime
+        {
+            get => _latestSuccessfulBackupTime;
+            set
+            {
+                _latestSuccessfulBackupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestSuccessfulBackupTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestSuccessfulBackupTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestSuccessfulBackupTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestSuccessfulBackupTimeRaw);
+            set => LatestSuccessfulBackupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Point in time recovery settings of the backup configuration resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pitrSettings")]
+        public virtual PitrSettings PitrSettings { get; set; }
+
+        /// <summary>Output only. The state of the backup config resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The type of the backup config resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// BackupConfigInfo has information about how the resource is configured for Backup and about the most recent
     /// backup to this vault.
     /// </summary>
@@ -4824,6 +5050,105 @@ namespace Google.Apis.Backupdr.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSuccessfulBackupConsistencyTimeRaw);
             set => LastSuccessfulBackupConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BackupDrPlanConfig has additional information about Backup and DR's Plan backup configuration.
+    /// </summary>
+    public class BackupDrPlanConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup rules of the backup plan resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupDrPlanRules")]
+        public virtual System.Collections.Generic.IList<BackupDrPlanRule> BackupDrPlanRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BackupDrPlanRule has rule specific information of the backup plan resource.</summary>
+    public class BackupDrPlanRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastSuccessfulBackupTimeRaw;
+
+        private object _lastSuccessfulBackupTime;
+
+        /// <summary>Output only. Timestamp of the latest successful backup created via this backup rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulBackupTime")]
+        public virtual string LastSuccessfulBackupTimeRaw
+        {
+            get => _lastSuccessfulBackupTimeRaw;
+            set
+            {
+                _lastSuccessfulBackupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSuccessfulBackupTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSuccessfulBackupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSuccessfulBackupTimeDateTimeOffset instead.")]
+        public virtual object LastSuccessfulBackupTime
+        {
+            get => _lastSuccessfulBackupTime;
+            set
+            {
+                _lastSuccessfulBackupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSuccessfulBackupTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSuccessfulBackupTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSuccessfulBackupTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSuccessfulBackupTimeRaw);
+            set => LastSuccessfulBackupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Unique Id of the backup rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BackupDrTemplateConfig has additional information about Backup and DR's Template backup configuration.
+    /// </summary>
+    public class BackupDrTemplateConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The URI of the BackupDr template resource for the first party identity users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPartyManagementUri")]
+        public virtual string FirstPartyManagementUri { get; set; }
+
+        /// <summary>
+        /// Output only. The URI of the BackupDr template resource for the third party identity users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyManagementUri")]
+        public virtual string ThirdPartyManagementUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BackupLocation represents a cloud location where a backup can be stored.</summary>
+    public class BackupLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The id of the cloud location. Example: "us-central1"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; }
+
+        /// <summary>Output only. The type of the location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6689,6 +7014,21 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for ListResourceBackupConfigs.</summary>
+    public class ListResourceBackupConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of ResourceBackupConfigs for the specified scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceBackupConfigs")]
+        public virtual System.Collections.Generic.IList<ResourceBackupConfig> ResourceBackupConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7203,6 +7543,17 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Point in time recovery settings of the backup configuration resource.</summary>
+    public class PitrSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of days to retain the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
+        public virtual System.Nullable<int> RetentionDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
@@ -7294,6 +7645,67 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResourceBackupConfig represents a resource along with its backup configurations.</summary>
+    public class ResourceBackupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Backup configurations applying to the target resource, including those targeting its related/child
+        /// resources. For example, backup configuration applicable to Compute Engine disks will be populated in this
+        /// field for a Compute Engine VM which has the disk associated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfigsDetails")]
+        public virtual System.Collections.Generic.IList<BackupConfigDetails> BackupConfigsDetails { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the target resource is configured for backup. This is true if the
+        /// backup_configs_details is not empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfigured")]
+        public virtual System.Nullable<bool> BackupConfigured { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the ResourceBackupConfig. Format:
+        /// projects/{project}/locations/{location}/resourceBackupConfigs/{uid}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of
+        /// the cloud resource that this configuration applies to. Supported resource types are
+        /// ResourceBackupConfig.ResourceType.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>Output only. The human friendly name of the target resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceDisplayName")]
+        public virtual string TargetResourceDisplayName { get; set; }
+
+        /// <summary>Labels associated with the target resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TargetResourceLabels { get; set; }
+
+        /// <summary>Output only. The type of the target resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceType")]
+        public virtual string TargetResourceType { get; set; }
+
+        /// <summary>Output only. The unique identifier of the resource backup config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the target resource is protected by a backup vault. This is true if the
+        /// backup_configs_details is not empty and any of the ResourceBackupConfig.backup_configs_details has a backup
+        /// configuration with BackupConfigDetails.backup_vault set. set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vaulted")]
+        public virtual System.Nullable<bool> Vaulted { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
