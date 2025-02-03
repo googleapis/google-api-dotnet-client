@@ -5803,7 +5803,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         private object _expireTime;
 
-        /// <summary>Output only. For a deleted resource, the time after which it will be permamently deleted.</summary>
+        /// <summary>Output only. For a deleted resource, the time after which it will be permanently deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
         {
@@ -5920,7 +5920,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// Output only. Returns true if the Service is currently being acted upon by the system to bring it into the
         /// desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously
         /// perform all necessary steps to bring the Service to the desired serving state. This process is called
-        /// reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`,
+        /// reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revision`,
         /// `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once
         /// reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded
         /// and the serving state matches the Service, or there was an error, and reconciliation failed. This state can
