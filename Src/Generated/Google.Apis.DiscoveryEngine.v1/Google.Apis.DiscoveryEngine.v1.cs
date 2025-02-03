@@ -14308,6 +14308,492 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
                     }
                 }
+
+                /// <summary>Creates a new Identity Mapping Store.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent collection resource name, such as `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1IdentityMappingStore body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Identity Mapping Store.</summary>
+                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1IdentityMappingStore>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1IdentityMappingStore body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent collection resource name, such as
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Resource name of the CmekConfig to use for protecting this Identity Mapping Store.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("cmekConfigName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CmekConfigName { get; set; }
+
+                    /// <summary>
+                    /// Identity Mapping Store without CMEK protections. If a default CmekConfig is set for the project,
+                    /// setting this field will override the default CmekConfig as well.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("disableCmek", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> DisableCmek { get; set; }
+
+                    /// <summary>
+                    /// Required. The ID of the Identity Mapping Store to create. The ID must contain only letters (a-z,
+                    /// A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 63 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("identityMappingStoreId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IdentityMappingStoreId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1IdentityMappingStore Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/identityMappingStores";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("cmekConfigName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "cmekConfigName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("disableCmek", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "disableCmek",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("identityMappingStoreId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "identityMappingStoreId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the Identity Mapping Store.</summary>
+                /// <param name="name">
+                /// Required. The name of the Identity Mapping Store to delete. Format:
+                /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes the Identity Mapping Store.</summary>
+                public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Identity Mapping Store to delete. Format:
+                    /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/identityMappingStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the Identity Mapping Store.</summary>
+                /// <param name="name">
+                /// Required. The name of the Identity Mapping Store to get. Format:
+                /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the Identity Mapping Store.</summary>
+                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1IdentityMappingStore>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Identity Mapping Store to get. Format:
+                    /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/identityMappingStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Imports a list of Identity Mapping Entries to an Identity Mapping Store.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="identityMappingStore">
+                /// Required. The name of the Identity Mapping Store to import Identity Mapping Entries to. Format:
+                /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                /// </param>
+                public virtual ImportIdentityMappingsRequest ImportIdentityMappings(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequest body, string identityMappingStore)
+                {
+                    return new ImportIdentityMappingsRequest(this.service, body, identityMappingStore);
+                }
+
+                /// <summary>Imports a list of Identity Mapping Entries to an Identity Mapping Store.</summary>
+                public class ImportIdentityMappingsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new ImportIdentityMappings request.</summary>
+                    public ImportIdentityMappingsRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequest body, string identityMappingStore) : base(service)
+                    {
+                        IdentityMappingStore = identityMappingStore;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Identity Mapping Store to import Identity Mapping Entries to. Format:
+                    /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("identityMappingStore", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string IdentityMappingStore { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "importIdentityMappings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+identityMappingStore}:importIdentityMappings";
+
+                    /// <summary>Initializes ImportIdentityMappings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("identityMappingStore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "identityMappingStore",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/identityMappingStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all Identity Mapping Stores.</summary>
+                /// <param name="parent">
+                /// Required. The parent of the Identity Mapping Stores to list. Format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all Identity Mapping Stores.</summary>
+                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent of the Identity Mapping Stores to list. Format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Maximum number of IdentityMappingStores to return. If unspecified, defaults to 100. The maximum
+                    /// allowed value is 1000. Values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListIdentityMappingStores` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListIdentityMappingStores` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/identityMappingStores";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists Identity Mappings in an Identity Mapping Store.</summary>
+                /// <param name="identityMappingStore">
+                /// Required. The name of the Identity Mapping Store to list Identity Mapping Entries in. Format:
+                /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                /// </param>
+                public virtual ListIdentityMappingsRequest ListIdentityMappings(string identityMappingStore)
+                {
+                    return new ListIdentityMappingsRequest(this.service, identityMappingStore);
+                }
+
+                /// <summary>Lists Identity Mappings in an Identity Mapping Store.</summary>
+                public class ListIdentityMappingsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse>
+                {
+                    /// <summary>Constructs a new ListIdentityMappings request.</summary>
+                    public ListIdentityMappingsRequest(Google.Apis.Services.IClientService service, string identityMappingStore) : base(service)
+                    {
+                        IdentityMappingStore = identityMappingStore;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Identity Mapping Store to list Identity Mapping Entries in. Format:
+                    /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("identityMappingStore", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string IdentityMappingStore { get; private set; }
+
+                    /// <summary>
+                    /// Maximum number of IdentityMappings to return. If unspecified, defaults to 2000. The maximum
+                    /// allowed value is 10000. Values above 10000 will be coerced to 10000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListIdentityMappings` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListIdentityMappings` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listIdentityMappings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+identityMappingStore}:listIdentityMappings";
+
+                    /// <summary>Initializes ListIdentityMappings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("identityMappingStore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "identityMappingStore",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/identityMappingStores/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Purges specified or all Identity Mapping Entries from an Identity Mapping Store.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="identityMappingStore">
+                /// Required. The name of the Identity Mapping Store to purge Identity Mapping Entries from. Format:
+                /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                /// </param>
+                public virtual PurgeIdentityMappingsRequest PurgeIdentityMappings(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequest body, string identityMappingStore)
+                {
+                    return new PurgeIdentityMappingsRequest(this.service, body, identityMappingStore);
+                }
+
+                /// <summary>Purges specified or all Identity Mapping Entries from an Identity Mapping Store.</summary>
+                public class PurgeIdentityMappingsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new PurgeIdentityMappings request.</summary>
+                    public PurgeIdentityMappingsRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequest body, string identityMappingStore) : base(service)
+                    {
+                        IdentityMappingStore = identityMappingStore;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Identity Mapping Store to purge Identity Mapping Entries from. Format:
+                    /// `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("identityMappingStore", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string IdentityMappingStore { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "purgeIdentityMappings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+identityMappingStore}:purgeIdentityMappings";
+
+                    /// <summary>Initializes PurgeIdentityMappings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("identityMappingStore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "identityMappingStore",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/identityMappingStores/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -17280,7 +17766,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("claimText")]
         public virtual string ClaimText { get; set; }
 
-        /// <summary>Position indicating the end of the claim in the answer candidate, exclusive.</summary>
+        /// <summary>
+        /// Position indicating the end of the claim in the answer candidate, exclusive, in bytes. Note that this is not
+        /// measured in characters and, therefore, must be rendered as such. For example, if the claim text contains
+        /// non-ASCII characters, the start and end positions vary when measured in characters
+        /// (programming-language-dependent) and when measured in bytes (programming-language-independent).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endPos")]
         public virtual System.Nullable<int> EndPos { get; set; }
 
@@ -17292,7 +17783,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groundingCheckRequired")]
         public virtual System.Nullable<bool> GroundingCheckRequired { get; set; }
 
-        /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
+        /// <summary>
+        /// Position indicating the start of the claim in the answer candidate, measured in bytes. Note that this is not
+        /// measured in characters and, therefore, must be rendered in the user interface keeping in mind that some
+        /// characters may take more than one byte. For example, if the claim text contains non-ASCII characters, the
+        /// start and end positions vary when measured in characters (programming-language-dependent) and when measured
+        /// in bytes (programming-language-independent).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
         public virtual System.Nullable<int> StartPos { get; set; }
 
@@ -17842,6 +18339,73 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedBoost")]
         public virtual System.Nullable<float> FixedBoost { get; set; }
+
+        /// <summary>
+        /// Optional. Complex specification for custom ranking based on customer defined attribute value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationBoostSpec")]
+        public virtual GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec InterpolationBoostSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for custom ranking based on customer specified attribute value. It provides more controls for
+    /// customized ranking than the simple (condition, boost) combination above.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived
+        /// from the field value of the specified field_name. In the case of numerical it is straightforward i.e.
+        /// attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() -
+        /// datetime_field_value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeType")]
+        public virtual string AttributeType { get; set; }
+
+        /// <summary>
+        /// Optional. The control points used to define the curve. The monotonic function (defined through the
+        /// interpolation_type above) passes through the control points listed here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint> ControlPoints { get; set; }
+
+        /// <summary>Optional. The name of the field whose value will be used to determine the boost amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>
+        /// Optional. The interpolation type to be applied to connect the control points listed below.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationType")]
+        public virtual string InterpolationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The control points used to define the curve. The curve defined through these control points can only be
+    /// monotonically increasing or decreasing(constant values are acceptable).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be
+        /// formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern
+        /// for this is: `nDnM]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; }
+
+        /// <summary>
+        /// Optional. The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the
+        /// value specified above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostAmount")]
+        public virtual System.Nullable<float> BoostAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18735,6 +19299,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
         public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfig DocumentProcessingConfig { get; set; }
 
+        /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
+        public virtual GoogleCloudDiscoveryengineV1HealthcareFhirConfig HealthcareFhirConfig { get; set; }
+
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -18935,6 +19503,90 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CmekConfigService.DeleteCmekConfig operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DeleteCmekConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20747,6 +21399,108 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config to data store for `HEALTHCARE_FHIR` vertical.</summary>
+    public class GoogleCloudDiscoveryengineV1HealthcareFhirConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to enable configurable schema for `HEALTHCARE_FHIR` vertical. If set to `true`, the predefined
+        /// healthcare fhir schema can be extended for more customized searching and filtering.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfigurableSchema")]
+        public virtual System.Nullable<bool> EnableConfigurableSchema { get; set; }
+
+        /// <summary>
+        /// Whether to enable static indexing for `HEALTHCARE_FHIR` batch ingestion. If set to `true`, the batch
+        /// ingestion will be processed in a static indexing mode which is slower but more capable of handling larger
+        /// volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStaticIndexingForBatchIngestion")]
+        public virtual System.Nullable<bool> EnableStaticIndexingForBatchIngestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity Mapping Entry that maps an external identity to an internal identity.</summary>
+    public class GoogleCloudDiscoveryengineV1IdentityMappingEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Identity outside the customer identity provider. The length limit of external identity will be of
+        /// 100 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdentity")]
+        public virtual string ExternalIdentity { get; set; }
+
+        /// <summary>
+        /// Group identifier. For Google Workspace user account, group_id should be the google workspace group email.
+        /// For non-google identity provider, group_id is the mapped group identifier configured during the
+        /// workforcepool config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// User identifier. For Google Workspace user account, user_id should be the google workspace user email. For
+        /// non-google identity provider, user_id is the mapped user identifier configured during the workforcepool
+        /// config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// IdentityMappingEntry LongRunningOperation metadata for [IdentityMappingStoreService.ImportIdentityMappings] and
+    /// [IdentityMappingStoreService.PurgeIdentityMappings]
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of IdentityMappingEntries that failed to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>The number of IdentityMappingEntries that were successfully processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>The total number of IdentityMappingEntries that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity Mapping Store which contains Identity Mapping Entries.</summary>
+    public class GoogleCloudDiscoveryengineV1IdentityMappingStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. CMEK-related information for the Identity Mapping Store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleCloudDiscoveryengineV1CmekConfig CmekConfig { get; set; }
+
+        /// <summary>
+        /// Input only. The KMS key to be used to protect this Identity Mapping Store at creation time. Must be set for
+        /// requests that need to comply with CMEK Org Policy protections. If this field is set and processed
+        /// successfully, the Identity Mapping Store will be protected by the KMS key, as indicated in the cmek_config
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the identity mapping store. Format:
+        /// `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`. This field must be
+        /// a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -21126,6 +21880,39 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for IdentityMappingStoreService.ImportIdentityMappings</summary>
+    public class GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The inline source to import identity mapping entries from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource InlineSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The inline source to import identity mapping entries from.</summary>
+    public class GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A maximum of 10000 entries can be imported at one time</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityMappingEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1IdentityMappingEntry> IdentityMappingEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for IdentityMappingStoreService.ImportIdentityMappings</summary>
+    public class GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21528,6 +22315,42 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1Engine> Engines { get; set; }
 
         /// <summary>Not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for IdentityMappingStoreService.ListIdentityMappingStores</summary>
+    public class GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Identity Mapping Stores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityMappingStores")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1IdentityMappingStore> IdentityMappingStores { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for IdentityMappingStoreService.ListIdentityMappings</summary>
+    public class GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Identity Mapping Entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityMappingEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1IdentityMappingEntry> IdentityMappingEntries { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -22197,6 +23020,47 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for IdentityMappingStoreService.PurgeIdentityMappings</summary>
+    public class GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Filter matching identity mappings to purge. The eligible field for filtering is: * `update_time`: in ISO
+        /// 8601 "zulu" format. * `external_id` Examples: * Deleting all identity mappings updated in a time range:
+        /// `update_time &amp;gt; "2012-04-23T18:25:43.511Z" AND update_time &amp;lt; "2012-04-23T18:30:43.511Z"` *
+        /// Deleting all identity mappings for a given external_id: `external_id = "id1"` * Deleting all identity
+        /// mappings inside an identity mapping store: `*` The filtering fields are assumed to have an implicit AND.
+        /// Should not be used with source. An error will be thrown, if both are provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Actually performs the purge. If `force` is set to false, return the expected purge count without deleting
+        /// any identity mappings. This field is only supported for purge with filter. For input source this field is
+        /// ignored and data will be purged regardless of the value of this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The inline source to purge identity mapping entries from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource InlineSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The inline source to purge identity mapping entries from.</summary>
+    public class GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A maximum of 10000 entries can be purged at one time</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityMappingEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1IdentityMappingEntry> IdentityMappingEntries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22907,8 +23771,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1SearchRequestSpellCorrectionSpec SpellCorrectionSpec { get; set; }
 
         /// <summary>
-        /// Information about the end user. Highly recommended for analytics. UserInfo.user_agent is used to deduce
-        /// `device_type` for analytics.
+        /// Information about the end user. Highly recommended for analytics and personalization. UserInfo.user_agent is
+        /// used to deduce `device_type` for analytics.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudDiscoveryengineV1UserInfo UserInfo { get; set; }
@@ -26625,6 +27489,73 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fixedBoost")]
         public virtual System.Nullable<float> FixedBoost { get; set; }
 
+        /// <summary>
+        /// Optional. Complex specification for custom ranking based on customer defined attribute value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationBoostSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec InterpolationBoostSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for custom ranking based on customer specified attribute value. It provides more controls for
+    /// customized ranking than the simple (condition, boost) combination above.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived
+        /// from the field value of the specified field_name. In the case of numerical it is straightforward i.e.
+        /// attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() -
+        /// datetime_field_value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeType")]
+        public virtual string AttributeType { get; set; }
+
+        /// <summary>
+        /// Optional. The control points used to define the curve. The monotonic function (defined through the
+        /// interpolation_type above) passes through the control points listed here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint> ControlPoints { get; set; }
+
+        /// <summary>Optional. The name of the field whose value will be used to determine the boost amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>
+        /// Optional. The interpolation type to be applied to connect the control points listed below.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationType")]
+        public virtual string InterpolationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The control points used to define the curve. The curve defined through these control points can only be
+    /// monotonically increasing or decreasing(constant values are acceptable).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be
+        /// formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern
+        /// for this is: `nDnM]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; }
+
+        /// <summary>
+        /// Optional. The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the
+        /// value specified above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostAmount")]
+        public virtual System.Nullable<float> BoostAmount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27561,6 +28492,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig DocumentProcessingConfig { get; set; }
 
+        /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
+
         /// <summary>Output only. Data store level identity provider config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaIdpConfig IdpConfig { get; set; }
@@ -27799,6 +28734,90 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userTriggeredCrawlRate")]
         public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries UserTriggeredCrawlRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CmekConfigService.DeleteCmekConfig operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29545,6 +30564,50 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config to data store for `HEALTHCARE_FHIR` vertical.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to enable configurable schema for `HEALTHCARE_FHIR` vertical. If set to `true`, the predefined
+        /// healthcare fhir schema can be extended for more customized searching and filtering.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfigurableSchema")]
+        public virtual System.Nullable<bool> EnableConfigurableSchema { get; set; }
+
+        /// <summary>
+        /// Whether to enable static indexing for `HEALTHCARE_FHIR` batch ingestion. If set to `true`, the batch
+        /// ingestion will be processed in a static indexing mode which is slower but more capable of handling larger
+        /// volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStaticIndexingForBatchIngestion")]
+        public virtual System.Nullable<bool> EnableStaticIndexingForBatchIngestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// IdentityMappingEntry LongRunningOperation metadata for [IdentityMappingStoreService.ImportIdentityMappings] and
+    /// [IdentityMappingStoreService.PurgeIdentityMappings]
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of IdentityMappingEntries that failed to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>The number of IdentityMappingEntries that were successfully processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>The total number of IdentityMappingEntries that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration for the identity data synchronization runs.</summary>
     public class GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29828,6 +30891,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for IdentityMappingStoreService.ImportIdentityMappings</summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31119,6 +32193,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("invalidUrisCount")]
         public virtual System.Nullable<int> InvalidUrisCount { get; set; }
 
+        /// <summary>URIs that have no index meta tag. Sample limited to 1000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noindexUris")]
+        public virtual System.Collections.Generic.IList<string> NoindexUris { get; set; }
+
+        /// <summary>Total number of URIs that have no index meta tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noindexUrisCount")]
+        public virtual System.Nullable<int> NoindexUrisCount { get; set; }
+
         /// <summary>Total number of URIs that have yet to be crawled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingCount")]
         public virtual System.Nullable<int> PendingCount { get; set; }
@@ -31675,8 +32757,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec SpellCorrectionSpec { get; set; }
 
         /// <summary>
-        /// Information about the end user. Highly recommended for analytics. UserInfo.user_agent is used to deduce
-        /// `device_type` for analytics.
+        /// Information about the end user. Highly recommended for analytics and personalization. UserInfo.user_agent is
+        /// used to deduce `device_type` for analytics.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaUserInfo UserInfo { get; set; }
@@ -33870,6 +34952,73 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fixedBoost")]
         public virtual System.Nullable<float> FixedBoost { get; set; }
 
+        /// <summary>
+        /// Optional. Complex specification for custom ranking based on customer defined attribute value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationBoostSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec InterpolationBoostSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for custom ranking based on customer specified attribute value. It provides more controls for
+    /// customized ranking than the simple (condition, boost) combination above.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived
+        /// from the field value of the specified field_name. In the case of numerical it is straightforward i.e.
+        /// attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() -
+        /// datetime_field_value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeType")]
+        public virtual string AttributeType { get; set; }
+
+        /// <summary>
+        /// Optional. The control points used to define the curve. The monotonic function (defined through the
+        /// interpolation_type above) passes through the control points listed here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint> ControlPoints { get; set; }
+
+        /// <summary>Optional. The name of the field whose value will be used to determine the boost amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>
+        /// Optional. The interpolation type to be applied to connect the control points listed below.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationType")]
+        public virtual string InterpolationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The control points used to define the curve. The curve defined through these control points can only be
+    /// monotonically increasing or decreasing(constant values are acceptable).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be
+        /// formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern
+        /// for this is: `nDnM]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; }
+
+        /// <summary>
+        /// Optional. The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the
+        /// value specified above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostAmount")]
+        public virtual System.Nullable<float> BoostAmount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -34442,6 +35591,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Configuration for Document understanding and enrichment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig DocumentProcessingConfig { get; set; }
+
+        /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
 
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
@@ -35894,6 +37047,50 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Config to data store for `HEALTHCARE_FHIR` vertical.</summary>
+    public class GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to enable configurable schema for `HEALTHCARE_FHIR` vertical. If set to `true`, the predefined
+        /// healthcare fhir schema can be extended for more customized searching and filtering.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfigurableSchema")]
+        public virtual System.Nullable<bool> EnableConfigurableSchema { get; set; }
+
+        /// <summary>
+        /// Whether to enable static indexing for `HEALTHCARE_FHIR` batch ingestion. If set to `true`, the batch
+        /// ingestion will be processed in a static indexing mode which is slower but more capable of handling larger
+        /// volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStaticIndexingForBatchIngestion")]
+        public virtual System.Nullable<bool> EnableStaticIndexingForBatchIngestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// IdentityMappingEntry LongRunningOperation metadata for [IdentityMappingStoreService.ImportIdentityMappings] and
+    /// [IdentityMappingStoreService.PurgeIdentityMappings]
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of IdentityMappingEntries that failed to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>The number of IdentityMappingEntries that were successfully processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>The total number of IdentityMappingEntries that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -36128,6 +37325,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for IdentityMappingStoreService.ImportIdentityMappings</summary>
+    public class GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37330,8 +38538,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec SpellCorrectionSpec { get; set; }
 
         /// <summary>
-        /// Information about the end user. Highly recommended for analytics. UserInfo.user_agent is used to deduce
-        /// `device_type` for analytics.
+        /// Information about the end user. Highly recommended for analytics and personalization. UserInfo.user_agent is
+        /// used to deduce `device_type` for analytics.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
         public virtual GoogleCloudDiscoveryengineV1betaUserInfo UserInfo { get; set; }
