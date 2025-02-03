@@ -8731,8 +8731,11 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
         /// parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog
-        /// net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn
-        /// net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse kernel.shmmni kernel.shmmax kernel.shmall
+        /// net.core.rmem_max net.core.rmem_default net.core.wmem_default net.core.wmem_max net.core.optmem_max
+        /// net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.netfilter.nf_conntrack_max
+        /// net.netfilter.nf_conntrack_buckets net.netfilter.nf_conntrack_tcp_timeout_close_wait
+        /// net.netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.nf_conntrack_tcp_timeout_established
+        /// net.netfilter.nf_conntrack_acct kernel.shmmni kernel.shmmax kernel.shmall vm.max_map_count
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sysctls")]
         public virtual System.Collections.Generic.IDictionary<string, string> Sysctls { get; set; }
@@ -9571,6 +9574,35 @@ namespace Google.Apis.Container.v1.Data
     public class NodeKubeletConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns (ending in `*`). The
+        /// unsafe namespaced sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
+        /// Leaving this allowlist empty means they cannot be set on Pods. To allow certain sysctls or sysctl patterns
+        /// to be set on Pods, list them separated by commas. For example: `kernel.msg*,net.ipv4.route.min_pmtu`. See
+        /// https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/ for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedUnsafeSysctls")]
+        public virtual System.Collections.Generic.IList<string> AllowedUnsafeSysctls { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the maximum number of container log files that can be present for a container. See
+        /// https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-rotation The value must be an
+        /// integer between 2 and 10, inclusive. The default value is 5 if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerLogMaxFiles")]
+        public virtual System.Nullable<int> ContainerLogMaxFiles { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the maximum size of the container log file before it is rotated. See
+        /// https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-rotation Valid format is positive
+        /// number + unit, e.g. 100Ki, 10Mi. Valid units are Ki, Mi, Gi. The value must be between 10Mi and 500Mi,
+        /// inclusive. Note that the total container log size (container_log_max_size * container_log_max_files) cannot
+        /// exceed 1% of the total storage of the node, to avoid disk pressure caused by log files. The default value is
+        /// 10Mi if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerLogMaxSize")]
+        public virtual string ContainerLogMaxSize { get; set; }
+
+        /// <summary>
         /// Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default
         /// which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to
         /// enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to
@@ -9597,6 +9629,42 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuManagerPolicy")]
         public virtual string CpuManagerPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the percent of disk usage after which image garbage collection is always run. The percent
+        /// is calculated as this field value out of 100. The value must be between 10 and 85, inclusive and greater
+        /// than image_gc_low_threshold_percent. The default value is 85 if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageGcHighThresholdPercent")]
+        public virtual System.Nullable<int> ImageGcHighThresholdPercent { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the percent of disk usage before which image garbage collection is never run. Lowest disk
+        /// usage to garbage collect to. The percent is calculated as this field value out of 100. The value must be
+        /// between 10 and 85, inclusive and smaller than image_gc_high_threshold_percent. The default value is 80 if
+        /// unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageGcLowThresholdPercent")]
+        public virtual System.Nullable<int> ImageGcLowThresholdPercent { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the maximum age an image can be unused before it is garbage collected. The string must be
+        /// a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300s", "1.5h", and
+        /// "2h45m". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive
+        /// duration greater than image_minimum_gc_age or "0s". The default value is "0s" if unspecified, which disables
+        /// this field, meaning images won't be garbage collected based on being unused for too long.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageMaximumGcAge")]
+        public virtual string ImageMaximumGcAge { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the minimum age for an unused image before it is garbage collected. The string must be a
+        /// sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300s", "1.5h", and
+        /// "2h45m". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive
+        /// duration less than or equal to 2 minutes. The default value is "2m0s" if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageMinimumGcAge")]
+        public virtual string ImageMinimumGcAge { get; set; }
 
         /// <summary>Enable or disable Kubelet read only port.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insecureKubeletReadonlyPortEnabled")]
