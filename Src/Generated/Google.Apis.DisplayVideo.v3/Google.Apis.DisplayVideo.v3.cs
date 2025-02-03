@@ -47,6 +47,7 @@ namespace Google.Apis.DisplayVideo.v3
             Media = new MediaResource(this);
             Partners = new PartnersResource(this);
             Sdfdownloadtasks = new SdfdownloadtasksResource(this);
+            Sdfuploadtasks = new SdfuploadtasksResource(this);
             TargetingTypes = new TargetingTypesResource(this);
             Users = new UsersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://displayvideo.googleapis.com/");
@@ -149,6 +150,9 @@ namespace Google.Apis.DisplayVideo.v3
 
         /// <summary>Gets the Sdfdownloadtasks resource.</summary>
         public virtual SdfdownloadtasksResource Sdfdownloadtasks { get; }
+
+        /// <summary>Gets the Sdfuploadtasks resource.</summary>
+        public virtual SdfuploadtasksResource Sdfuploadtasks { get; }
 
         /// <summary>Gets the TargetingTypes resource.</summary>
         public virtual TargetingTypesResource TargetingTypes { get; }
@@ -20483,6 +20487,91 @@ namespace Google.Apis.DisplayVideo.v3
         }
     }
 
+    /// <summary>The "sdfuploadtasks" collection of methods.</summary>
+    public class SdfuploadtasksResource
+    {
+        private const string Resource = "sdfuploadtasks";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SdfuploadtasksResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Operations = new OperationsResource(service);
+        }
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations { get; }
+
+        /// <summary>The "operations" collection of methods.</summary>
+        public class OperationsResource
+        {
+            private const string Resource = "operations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OperationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Gets the latest state of an asynchronous SDF download task operation. Clients should poll this method at
+            /// intervals of 30 seconds.
+            /// </summary>
+            /// <param name="name">The name of the operation resource.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Gets the latest state of an asynchronous SDF download task operation. Clients should poll this method at
+            /// intervals of 30 seconds.
+            /// </summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>The name of the operation resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^sdfuploadtasks/operations/[^/]+$",
+                    });
+                }
+            }
+        }
+    }
+
     /// <summary>The "targetingTypes" collection of methods.</summary>
     public class TargetingTypesResource
     {
@@ -30471,6 +30560,105 @@ namespace Google.Apis.DisplayVideo.v3.Data
         }
 
         /// <summary>The SDF version used to execute this download task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Type for the response returned by [SdfUploadTaskService.CreateSdfUploadTask].</summary>
+    public class SdfUploadTask : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A resource name to be used in media.download to Download the script files. Or media.upload to Upload the
+        /// script files. Resource names have the format `download/sdfuploadtasks/media/{media_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Type for the metadata returned by [SdfUploadTaskService.CreateSdfUploadTask].</summary>
+    public class SdfUploadTaskMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time when execution was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The SDF version used to execute this upload task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
