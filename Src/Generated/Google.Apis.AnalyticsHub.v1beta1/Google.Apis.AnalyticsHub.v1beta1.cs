@@ -1915,7 +1915,6 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains the reference that identifies a destination bigquery dataset.</summary>
     public class GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
