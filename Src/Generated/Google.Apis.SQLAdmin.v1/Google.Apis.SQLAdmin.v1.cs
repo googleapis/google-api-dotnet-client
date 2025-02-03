@@ -6092,7 +6092,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ClientCertificate { get; set; }
 
         /// <summary>
-        /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's
+        /// PEM representation of the replica's private key. The corresponding public key is encoded in the client's
         /// certificate. The format of the replica's private key can be either PKCS #1 or PKCS #8.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
@@ -7358,7 +7358,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ClientCertificate { get; set; }
 
         /// <summary>
-        /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's
+        /// PEM representation of the replica's private key. The corresponding public key is encoded in the client's
         /// certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
@@ -7431,7 +7431,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ClientCertificate { get; set; }
 
         /// <summary>
-        /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's
+        /// PEM representation of the replica's private key. The corresponding public key is encoded in the client's
         /// certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
