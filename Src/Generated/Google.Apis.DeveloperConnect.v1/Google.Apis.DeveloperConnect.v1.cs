@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -897,6 +897,136 @@ namespace Google.Apis.DeveloperConnect.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud instances for notifying
+                    /// events.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The GitRepositoryLink where the webhook will be received. Format:
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual ProcessBitbucketCloudWebhookRequest ProcessBitbucketCloudWebhook(Google.Apis.DeveloperConnect.v1.Data.ProcessBitbucketCloudWebhookRequest body, string name)
+                    {
+                        return new ProcessBitbucketCloudWebhookRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud instances for notifying
+                    /// events.
+                    /// </summary>
+                    public class ProcessBitbucketCloudWebhookRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new ProcessBitbucketCloudWebhook request.</summary>
+                        public ProcessBitbucketCloudWebhookRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.ProcessBitbucketCloudWebhookRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The GitRepositoryLink where the webhook will be received. Format:
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DeveloperConnect.v1.Data.ProcessBitbucketCloudWebhookRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "processBitbucketCloudWebhook";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:processBitbucketCloudWebhook";
+
+                        /// <summary>Initializes ProcessBitbucketCloudWebhook parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// ProcessBitbucketDataCenterWebhook is called by the external Bitbucket Data Center instances for
+                    /// notifying events.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The GitRepositoryLink where the webhook will be received. Format:
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual ProcessBitbucketDataCenterWebhookRequest ProcessBitbucketDataCenterWebhook(Google.Apis.DeveloperConnect.v1.Data.ProcessBitbucketDataCenterWebhookRequest body, string name)
+                    {
+                        return new ProcessBitbucketDataCenterWebhookRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// ProcessBitbucketDataCenterWebhook is called by the external Bitbucket Data Center instances for
+                    /// notifying events.
+                    /// </summary>
+                    public class ProcessBitbucketDataCenterWebhookRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new ProcessBitbucketDataCenterWebhook request.</summary>
+                        public ProcessBitbucketDataCenterWebhookRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.ProcessBitbucketDataCenterWebhookRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The GitRepositoryLink where the webhook will be received. Format:
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DeveloperConnect.v1.Data.ProcessBitbucketDataCenterWebhookRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "processBitbucketDataCenterWebhook";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:processBitbucketDataCenterWebhook";
+
+                        /// <summary>Initializes ProcessBitbucketDataCenterWebhook parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
                             });
                         }
                     }
@@ -2103,6 +2233,90 @@ namespace Google.Apis.DeveloperConnect.v1
 }
 namespace Google.Apis.DeveloperConnect.v1.Data
 {
+    /// <summary>Configuration for connections to an instance of Bitbucket Cloud.</summary>
+    public class BitbucketCloudConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. An access token with the minimum `repository`, `pullrequest` and `webhook` scope access. It can
+        /// either be a workspace, project or repository access token. This is needed to create webhooks. It's
+        /// recommended to use a system account to generate these credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizerCredential")]
+        public virtual UserCredential AuthorizerCredential { get; set; }
+
+        /// <summary>
+        /// Required. An access token with the minimum `repository` access. It can either be a workspace, project or
+        /// repository access token. It's recommended to use a system account to generate the credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAuthorizerCredential")]
+        public virtual UserCredential ReadAuthorizerCredential { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events,
+        /// formatted as `projects/*/secrets/*/versions/*`. This is used to validate and create webhooks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
+        public virtual string WebhookSecretSecretVersion { get; set; }
+
+        /// <summary>Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspace")]
+        public virtual string Workspace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for connections to an instance of Bitbucket Data Center.</summary>
+    public class BitbucketDataCenterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. An http access token with the minimum `Repository admin` scope access. This is needed to create
+        /// webhooks. It's recommended to use a system account to generate these credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizerCredential")]
+        public virtual UserCredential AuthorizerCredential { get; set; }
+
+        /// <summary>Required. The URI of the Bitbucket Data Center host this connection is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
+        public virtual string HostUri { get; set; }
+
+        /// <summary>
+        /// Required. An http access token with the minimum `Repository read` access. It's recommended to use a system
+        /// account to generate the credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAuthorizerCredential")]
+        public virtual UserCredential ReadAuthorizerCredential { get; set; }
+
+        /// <summary>Output only. Version of the Bitbucket Data Center server running on the `host_uri`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverVersion")]
+        public virtual string ServerVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center
+        /// instance. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by
+        /// public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the
+        /// public internet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
+        /// <summary>
+        /// Optional. SSL certificate authority to trust when making requests to Bitbucket Data Center.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCaCertificate")]
+        public virtual string SslCaCertificate { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events,
+        /// formatted as `projects/*/secrets/*/versions/*`. This is used to validate webhooks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
+        public virtual string WebhookSecretSecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2116,6 +2330,14 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Optional. Allows clients to store small amounts of arbitrary data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Configuration for connections to an instance of Bitbucket Clouds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketCloudConfig")]
+        public virtual BitbucketCloudConfig BitbucketCloudConfig { get; set; }
+
+        /// <summary>Configuration for connections to an instance of Bitbucket Data Center.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketDataCenterConfig")]
+        public virtual BitbucketDataCenterConfig BitbucketDataCenterConfig { get; set; }
 
         private string _createTimeRaw;
 
@@ -2211,6 +2433,13 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the git proxy feature. Enabling the git proxy allows clients to perform git
+        /// operations on the repositories linked in the connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitProxyConfig")]
+        public virtual GitProxyConfig GitProxyConfig { get; set; }
 
         /// <summary>Configuration for connections to github.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubConfig")]
@@ -2664,6 +2893,20 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The git proxy configuration.</summary>
+    public class GitProxyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Setting this to true allows the git proxy to be used for performing git operations on the
+        /// repositories linked in the connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing the GitRepositoryLink object</summary>
     public class GitRepositoryLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2755,6 +2998,13 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. URI to access the linked repository through the Git Proxy. This field is only populated if the
+        /// git proxy is enabled for the connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitProxyUri")]
+        public virtual string GitProxyUri { get; set; }
 
         /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -3172,6 +3422,28 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC request object accepted by the ProcessBitbucketCloudWebhook RPC method.</summary>
+    public class ProcessBitbucketCloudWebhookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. HTTP request body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual HttpBody Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC request object accepted by the ProcessBitbucketDataCenterWebhook RPC method.</summary>
+    public class ProcessBitbucketDataCenterWebhookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. HTTP request body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual HttpBody Body { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
