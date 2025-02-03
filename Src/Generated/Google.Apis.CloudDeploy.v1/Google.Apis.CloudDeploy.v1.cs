@@ -8024,7 +8024,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string JobId { get; set; }
 
         /// <summary>
-        /// Identifier. Name of the `JobRun`. Format is
+        /// Output only. Name of the `JobRun`. Format is
         /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/{rollouts}/jobRuns/{uuid}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
