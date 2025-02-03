@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3407,6 +3407,13 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blankView")]
         public virtual Empty BlankView { get; set; }
+
+        /// <summary>
+        /// Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data.
+        /// For example, you can break down the data by region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("breakdowns")]
+        public virtual System.Collections.Generic.IList<Breakdown> Breakdowns { get; set; }
 
         /// <summary>
         /// Optional. A dimension is a structured label, class, or category for a set of measurements in your data.
