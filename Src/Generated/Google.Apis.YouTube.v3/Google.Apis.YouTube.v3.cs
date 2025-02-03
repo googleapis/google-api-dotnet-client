@@ -12187,6 +12187,12 @@ namespace Google.Apis.YouTube.v3.Data
     public class ChannelStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Whether the channel is considered ypp monetization enabled. See go/yppornot for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isChannelMonetizationEnabled")]
+        public virtual System.Nullable<bool> IsChannelMonetizationEnabled { get; set; }
+
+        /// <summary>
         /// If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user doesn't
         /// have a public YouTube identity.
         /// </summary>
