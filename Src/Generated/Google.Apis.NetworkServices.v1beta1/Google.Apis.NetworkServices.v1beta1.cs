@@ -6814,8 +6814,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Etag of the resource. If this is provided, it must match the server's etag. If the
-        /// provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
+        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -7231,8 +7231,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Etag of the resource. If this is provided, it must match the server's etag. If the
-        /// provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
+        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -9258,8 +9258,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Etag of the resource. If this is provided, it must match the server's etag. If the
-        /// provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
+        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -9480,8 +9480,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Etag of the resource. If this is provided, it must match the server's etag. If the
-        /// provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
+        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -9605,7 +9605,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
     /// <summary>
     /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "AND"ed for
-    /// evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
+    /// evaluation.
     /// </summary>
     public class TlsRouteRouteMatch : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9638,7 +9638,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Required. RouteMatch defines the predicate used to match requests to a given action. Multiple match types
-        /// are "OR"ed for evaluation.
+        /// are "OR"ed for evaluation. Atleast one RouteMatch must be supplied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matches")]
         public virtual System.Collections.Generic.IList<TlsRouteRouteMatch> Matches { get; set; }
