@@ -4314,6 +4314,30 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>User-defined JavaScript function that can transform or filter a Pub/Sub message.</summary>
+    public class JavaScriptUDF : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. JavaScript code that contains a function `function_name` with the below signature: /** *
+        /// Transforms a Pub/Sub message. * @return {(Object)&amp;gt;|null)} - To * filter a message, return `null`. To
+        /// transform a message return a map * with the following keys: * - (required) 'data' : {string} * - (optional)
+        /// 'attributes' : {Object} * Returning empty `attributes` will remove all attributes from the * message. * *
+        /// @param {(Object)&amp;gt;} Pub/Sub * message. Keys: * - (required) 'data' : {string} * - (required)
+        /// 'attributes' : {Object} * * @param {Object} metadata - Pub/Sub message metadata. * Keys: * - (required)
+        /// 'message_id' : {string} * - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format * - (optional)
+        /// 'ordering_key': {string} */ function (message, metadata) { }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Required. Name of the JavasScript function that should applied to Pub/Sub messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
+        public virtual string FunctionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the `ListSchemaRevisions` method.</summary>
     public class ListSchemaRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4459,6 +4483,27 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforceInTransit")]
         public virtual System.Nullable<bool> EnforceInTransit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>All supported message transforms types.</summary>
+    public class MessageTransform : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, the transform is enabled. If false, the transform is disabled and will not be
+        /// applied to messages. Defaults to `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. JavaScript User Defined Function. If multiple JavaScriptUDF's are specified on a resource, each
+        /// must have a unique `function_name`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("javascriptUdf")]
+        public virtual JavaScriptUDF JavascriptUdf { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5274,6 +5319,13 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual object MessageRetentionDuration { get; set; }
 
         /// <summary>
+        /// Optional. Transforms to be applied to messages before they are delivered to subscribers. Transforms are
+        /// applied in the order specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageTransforms")]
+        public virtual System.Collections.Generic.IList<MessageTransform> MessageTransforms { get; set; }
+
+        /// <summary>
         /// Required. The name of the subscription. It must have the format
         /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain
         /// only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -5423,6 +5475,13 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageStoragePolicy")]
         public virtual MessageStoragePolicy MessageStoragePolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Transforms to be applied to messages published to the topic. Transforms are applied in the order
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageTransforms")]
+        public virtual System.Collections.Generic.IList<MessageTransform> MessageTransforms { get; set; }
 
         /// <summary>
         /// Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}`
