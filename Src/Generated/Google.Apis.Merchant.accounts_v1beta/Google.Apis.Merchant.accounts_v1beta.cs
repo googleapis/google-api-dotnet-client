@@ -2825,7 +2825,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
         /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
         /// or filters. This is not just listing the sub-accounts of an MCA, but all accounts the calling user has
         /// access to including other MCAs, linked accounts, standalone accounts and so on. If no filter is provided,
-        /// then it returns accounts the user is directly added to.
+        /// then it returns accounts the user is directly added to. This method is eventually consistent, meaning
+        /// changes such as creating, updating an account or a change of relationships between accounts may not show up
+        /// in the results immediately. Instead, these changes propagate over a short period, after which the updated
+        /// information can match the associated predicates. That means, that searching by account name might not return
+        /// a recently changed account even though it satisfies the predicate.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2836,7 +2840,11 @@ namespace Google.Apis.Merchant.accounts_v1beta
         /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
         /// or filters. This is not just listing the sub-accounts of an MCA, but all accounts the calling user has
         /// access to including other MCAs, linked accounts, standalone accounts and so on. If no filter is provided,
-        /// then it returns accounts the user is directly added to.
+        /// then it returns accounts the user is directly added to. This method is eventually consistent, meaning
+        /// changes such as creating, updating an account or a change of relationships between accounts may not show up
+        /// in the results immediately. Instead, these changes propagate over a short period, after which the updated
+        /// information can match the associated predicates. That means, that searching by account name might not return
+        /// a recently changed account even though it satisfies the predicate.
         /// </summary>
         public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountsResponse>
         {
