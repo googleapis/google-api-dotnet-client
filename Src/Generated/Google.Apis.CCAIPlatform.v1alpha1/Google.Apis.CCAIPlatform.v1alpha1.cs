@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1210,7 +1210,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing ContactCenter object Next ID: 24</summary>
+    /// <summary>Message describing ContactCenter object</summary>
     public class ContactCenter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Info about the first admin user, such as given name and family name.</summary>
