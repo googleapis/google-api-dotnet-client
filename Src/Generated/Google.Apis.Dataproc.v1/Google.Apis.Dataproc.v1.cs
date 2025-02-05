@@ -13817,6 +13817,13 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual ReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>
+        /// Optional. Resource manager tags to add to all instances (see Resource manager tags resources
+        /// (https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
+
+        /// <summary>
         /// Optional. The Dataproc service account
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc)
         /// (also see VM Data Plane identity
