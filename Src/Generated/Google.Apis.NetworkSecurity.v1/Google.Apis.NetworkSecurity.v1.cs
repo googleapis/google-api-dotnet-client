@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -10426,6 +10426,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// <summary>Optional. Reference to a SecurityProfile with the CustomMirroring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
         public virtual string CustomMirroringProfile { get; set; }
+
+        /// <summary>Output only. Identifier used by the data-path. Unique within {container, location}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPathId")]
+        public virtual System.Nullable<ulong> DataPathId { get; set; }
 
         /// <summary>Optional. An optional description of the profile group. Max length 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
