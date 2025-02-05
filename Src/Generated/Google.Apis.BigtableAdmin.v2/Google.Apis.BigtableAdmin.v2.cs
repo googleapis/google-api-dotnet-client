@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3629,8 +3629,9 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// `change_stream_config`) in the `table` field should be updated. This mask is relative to the
                     /// `table` field, not to the request message. The wildcard (*) path is currently not supported.
                     /// Currently UpdateTable is only supported for the following fields: * `change_stream_config` *
-                    /// `change_stream_config.retention_period` * `deletion_protection` If `column_families` is set in
-                    /// `update_mask`, it will return an UNIMPLEMENTED error.
+                    /// `change_stream_config.retention_period` * `deletion_protection` * `automated_backup_policy` *
+                    /// `automated_backup_policy.retention_period` * `automated_backup_policy.frequency` If
+                    /// `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
