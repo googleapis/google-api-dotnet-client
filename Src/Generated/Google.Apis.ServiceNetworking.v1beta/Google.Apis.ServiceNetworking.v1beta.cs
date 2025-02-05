@@ -1921,6 +1921,14 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restAsyncIoEnabled")]
         public virtual System.Nullable<bool> RestAsyncIoEnabled { get; set; }
 
+        /// <summary>
+        /// Disables generation of an unversioned Python package for this client library. This means that the module
+        /// names will need to be versioned in import statements. For example `import google.cloud.library_v2` instead
+        /// of `import google.cloud.library`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unversionedPackageDisabled")]
+        public virtual System.Nullable<bool> UnversionedPackageDisabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3486,6 +3494,15 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// </summary>
     public class SelectiveGapicGeneration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Setting this to true indicates to the client generators that methods that would be excluded from the
+        /// generation should instead be generated in a way that indicates these methods should not be consumed by end
+        /// users. How this is expressed is up to individual language implementations to decide. Some examples may be:
+        /// added annotations, obfuscated identifiers, or other language idiomatic patterns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generateOmittedAsInternal")]
+        public virtual System.Nullable<bool> GenerateOmittedAsInternal { get; set; }
+
         /// <summary>
         /// An allowlist of the fully qualified names of RPCs that should be included on public client surfaces.
         /// </summary>
