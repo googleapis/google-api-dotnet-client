@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3268,7 +3268,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// Output only. An option to bypass pretargeting for private auctions and preferred deals. When true, bid
         /// requests from these nonguaranteed deals will always be sent. When false, bid requests will be subject to
         /// regular pretargeting configurations. Programmatic Guaranteed deals will always be sent to the bidder,
-        /// regardless of the value for this flag. Auction packages are not impacted by this value and are subject to
+        /// regardless of the value for this option. Auction packages are not impacted by this value and are subject to
         /// the regular pretargeting configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bypassNonguaranteedDealsPretargeting")]
