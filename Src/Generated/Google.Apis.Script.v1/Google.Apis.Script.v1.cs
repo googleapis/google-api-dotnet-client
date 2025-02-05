@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2032,16 +2032,7 @@ namespace Google.Apis.Script.v1
             this.service = service;
         }
 
-        /// <summary>
-        /// Runs a function in an Apps Script project. The script project must be deployed for use with the Apps Script
-        /// API and the calling application must share the same Cloud Platform project. This method requires
-        /// authorization with an OAuth 2.0 token that includes at least one of the scopes listed in the
-        /// [Authorization](#authorization-scopes) section; script projects that do not require authorization cannot be
-        /// executed through this API. To find the correct scopes to include in the authentication token, open the
-        /// script project **Overview** page and scroll down to "Project OAuth Scopes." The error `403,
-        /// PERMISSION_DENIED: The caller does not have permission` indicates that the Cloud Platform project used to
-        /// authorize the request is not the same as the one used by the script.
-        /// </summary>
+        /// <summary></summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="scriptId">
         /// The script ID of the script to be executed. Find the script ID on the **Project settings** page under "IDs."
@@ -2053,16 +2044,7 @@ namespace Google.Apis.Script.v1
             return new RunRequest(this.service, body, scriptId);
         }
 
-        /// <summary>
-        /// Runs a function in an Apps Script project. The script project must be deployed for use with the Apps Script
-        /// API and the calling application must share the same Cloud Platform project. This method requires
-        /// authorization with an OAuth 2.0 token that includes at least one of the scopes listed in the
-        /// [Authorization](#authorization-scopes) section; script projects that do not require authorization cannot be
-        /// executed through this API. To find the correct scopes to include in the authentication token, open the
-        /// script project **Overview** page and scroll down to "Project OAuth Scopes." The error `403,
-        /// PERMISSION_DENIED: The caller does not have permission` indicates that the Cloud Platform project used to
-        /// authorize the request is not the same as the one used by the script.
-        /// </summary>
+        /// <summary></summary>
         public class RunRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Operation>
         {
             /// <summary>Constructs a new Run request.</summary>
