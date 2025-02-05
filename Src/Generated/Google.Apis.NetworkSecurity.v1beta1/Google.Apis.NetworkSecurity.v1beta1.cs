@@ -14015,6 +14015,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         }
 
         /// <summary>
+        /// Optional. User-provided description of the deployment. Used as additional context for the deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
         /// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded to. Format
         /// is: projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
         /// </summary>
@@ -14130,6 +14136,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. User-provided description of the deployment group. Used as additional context for the deployment
+        /// group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -14253,6 +14266,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. User-provided description of the endpoint group. Used as additional context for the endpoint
+        /// group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -14834,6 +14854,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Optional. Reference to a SecurityProfile with the CustomMirroring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
         public virtual string CustomMirroringProfile { get; set; }
+
+        /// <summary>Output only. Identifier used by the data-path. Unique within {container, location}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPathId")]
+        public virtual System.Nullable<ulong> DataPathId { get; set; }
 
         /// <summary>Optional. An optional description of the profile group. Max length 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
