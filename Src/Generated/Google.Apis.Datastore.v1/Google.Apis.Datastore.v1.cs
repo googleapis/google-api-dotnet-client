@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3871,7 +3871,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>The response for Datastore.RunQuery.</summary>
     public class RunQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A batch of query results (always present).</summary>
+        /// <summary>
+        /// A batch of query results. This is always present unless running a query under explain-only mode:
+        /// RunQueryRequest.explain_options was provided and ExplainOptions.analyze was set to false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batch")]
         public virtual QueryResultBatch Batch { get; set; }
 
