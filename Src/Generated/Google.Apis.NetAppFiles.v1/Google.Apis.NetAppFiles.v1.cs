@@ -5978,6 +5978,10 @@ namespace Google.Apis.NetAppFiles.v1.Data
     /// <summary>Metadata for a given google.cloud.location.Location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Supported flex performance in a location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedFlexPerformance")]
+        public virtual System.Collections.Generic.IList<string> SupportedFlexPerformance { get; set; }
+
         /// <summary>Output only. Supported service levels in a location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedServiceLevels")]
         public virtual System.Collections.Generic.IList<string> SupportedServiceLevels { get; set; }
