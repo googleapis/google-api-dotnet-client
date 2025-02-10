@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3099,6 +3099,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restAsyncIoEnabled")]
         public virtual System.Nullable<bool> RestAsyncIoEnabled { get; set; }
 
+        /// <summary>
+        /// Disables generation of an unversioned Python package for this client library. This means that the module
+        /// names will need to be versioned in import statements. For example `import google.cloud.library_v2` instead
+        /// of `import google.cloud.library`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unversionedPackageDisabled")]
+        public virtual System.Nullable<bool> UnversionedPackageDisabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4410,8 +4418,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class Page : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown
-        /// file. The content can be used to produce the documentation page such as HTML format page.
+        /// The Markdown content of the page. You can use
+        /// ```
+        /// (== include {path} ==)
+        /// ```
+        /// to include content from a
+        /// Markdown file. The content can be used to produce the documentation page such as HTML format page.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -4858,6 +4870,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// </summary>
     public class SelectiveGapicGeneration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Setting this to true indicates to the client generators that methods that would be excluded from the
+        /// generation should instead be generated in a way that indicates these methods should not be consumed by end
+        /// users. How this is expressed is up to individual language implementations to decide. Some examples may be:
+        /// added annotations, obfuscated identifiers, or other language idiomatic patterns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generateOmittedAsInternal")]
+        public virtual System.Nullable<bool> GenerateOmittedAsInternal { get; set; }
+
         /// <summary>
         /// An allowlist of the fully qualified names of RPCs that should be included on public client surfaces.
         /// </summary>
