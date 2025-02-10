@@ -1246,7 +1246,7 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
-                        /// characters and can include only letters, digits, underscores, and hyphens.
+                        /// characters and can include only letters, digits, underscores, hyphens, and periods.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ViewId { get; set; }
@@ -5523,7 +5523,7 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
-                        /// characters and can include only letters, digits, underscores, and hyphens.
+                        /// characters and can include only letters, digits, underscores, hyphens, and periods.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ViewId { get; set; }
@@ -9370,7 +9370,7 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, and hyphens.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ViewId { get; set; }
@@ -12071,7 +12071,7 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
-                        /// characters and can include only letters, digits, underscores, and hyphens.
+                        /// characters and can include only letters, digits, underscores, hyphens, and periods.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ViewId { get; set; }
@@ -16542,7 +16542,7 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100
-                        /// characters and can include only letters, digits, underscores, and hyphens.
+                        /// characters and can include only letters, digits, underscores, hyphens, and periods.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ViewId { get; set; }
@@ -21021,6 +21021,57 @@ namespace Google.Apis.Logging.v2
 }
 namespace Google.Apis.Logging.v2.Data
 {
+    /// <summary>
+    /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
+    /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.If
+    /// there are AuditConfigs for both allServices and a specific service, the union of the two AuditConfigs is used
+    /// for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted.Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
+    /// "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ]
+    /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+    /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
+    /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// </summary>
+    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for logging of each type of permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
+
+        /// <summary>
+        /// Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com,
+        /// cloudsql.googleapis.com. allServices is a special value that covers all services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type":
+    /// "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+    /// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+    /// </summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of
+        /// Binding.members.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a BigQuery dataset that was created by a link.</summary>
     public class BigQueryDataset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24087,6 +24138,10 @@ namespace Google.Apis.Logging.v2.Data
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
+
         /// <summary>
         /// Associates a list of members, or principals, with a role. Optionally, may specify a condition that
         /// determines how and when the bindings are applied. Each of the bindings must contain at least one
