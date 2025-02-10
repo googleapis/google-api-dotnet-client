@@ -953,7 +953,7 @@ namespace Google.Apis.CloudFunctions.v2alpha
 
                     /// <summary>
                     /// The sorting order of the resources returned. Value should be a comma separated list of fields.
-                    /// The default sorting oder is ascending. See https://google.aip.dev/132#ordering.
+                    /// The default sorting order is ascending. See https://google.aip.dev/132#ordering.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
