@@ -10658,6 +10658,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportsExactlyOnce")]
         public virtual System.Nullable<bool> SupportsExactlyOnce { get; set; }
 
+        /// <summary>Optional. For future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yamlDefinition")]
+        public virtual string YamlDefinition { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
