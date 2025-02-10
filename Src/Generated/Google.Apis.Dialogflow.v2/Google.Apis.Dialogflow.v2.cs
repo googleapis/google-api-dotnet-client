@@ -6047,11 +6047,8 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. Filters to restrict results to specific answer records. The expression has the following
-                /// syntax: [AND ] ... The following fields and operators are supported: * conversation_id with
-                /// equals(=) operator Examples: * "conversation_id=bar" matches answer records in the
-                /// projects/foo/locations/global/conversations/bar conversation (assuming the parent is
-                /// projects/foo/locations/global). For more information about filtering, see [API
+                /// Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't
+                /// been, and isn't currently, supported. For more information about filtering, see [API
                 /// Filtering](https://aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -14782,11 +14779,8 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filters to restrict results to specific answer records. The expression has the
-                    /// following syntax: [AND ] ... The following fields and operators are supported: * conversation_id
-                    /// with equals(=) operator Examples: * "conversation_id=bar" matches answer records in the
-                    /// projects/foo/locations/global/conversations/bar conversation (assuming the parent is
-                    /// projects/foo/locations/global). For more information about filtering, see [API
+                    /// Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't
+                    /// been, and isn't currently, supported. For more information about filtering, see [API
                     /// Filtering](https://aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -22750,7 +22744,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Optional. The client secret provided by the 3rd party platform.</summary>
+        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
@@ -25530,7 +25524,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Optional. The client secret provided by the 3rd party platform.</summary>
+        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
