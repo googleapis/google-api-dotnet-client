@@ -8412,6 +8412,13 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("incrementalBackupChainId")]
         public virtual string IncrementalBackupChainId { get; set; }
 
+        /// <summary>
+        /// Output only. The instance partition(s) storing the backup. This is the same as the list of the instance
+        /// partition(s) that the database had footprint in at the backup's `version_time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePartitions")]
+        public virtual System.Collections.Generic.IList<BackupInstancePartition> InstancePartitions { get; set; }
+
         private string _maxExpireTimeRaw;
 
         private object _maxExpireTime;
@@ -8676,12 +8683,26 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instance partition information for the backup.</summary>
+    public class BackupInstancePartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A unique identifier for the instance partition. Values are of the form
+        /// `projects//instances//instancePartitions/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePartition")]
+        public virtual string InstancePartition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BackupSchedule expresses the automated backup creation specification for a Spanner database.</summary>
     public class BackupSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The encryption configuration that will be used to encrypt the backup. If this field is not
-        /// specified, the backup will use the same encryption configuration as the database.
+        /// Optional. The encryption configuration that is used to encrypt the backup. If this field is not specified,
+        /// the backup uses the same encryption configuration as the database.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual CreateBackupEncryptionConfig EncryptionConfig { get; set; }
@@ -9999,14 +10020,14 @@ namespace Google.Apis.Spanner.v1.Data
     }
 
     /// <summary>
-    /// CrontabSpec can be used to specify the version time and frequency at which the backup should be created.
+    /// CrontabSpec can be used to specify the version time and frequency at which the backup is created.
     /// </summary>
     public class CrontabSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Schedule backups will contain an externally consistent copy of the database at the version time
-        /// specified in `schedule_spec.cron_spec`. However, Spanner may not initiate the creation of the scheduled
-        /// backups at that version time. Spanner will initiate the creation of scheduled backups within the time window
+        /// Output only. Scheduled backups contain an externally consistent copy of the database at the version time
+        /// specified in `schedule_spec.cron_spec`. However, Spanner might not initiate the creation of the scheduled
+        /// backups at that version time. Spanner initiates the creation of scheduled backups within the time window
         /// bounded by the version_time specified in `schedule_spec.cron_spec` and version_time + `creation_window`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationWindow")]
@@ -10018,7 +10039,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// externally consistent copy of the database at the version time. Full backups must be scheduled a minimum of
         /// 12 hours apart and incremental backups must be scheduled a minimum of 4 hours apart. Examples of valid cron
         /// specifications: * `0 2/12 * * *` : every 12 hours at (2, 14) hours past midnight in UTC. * `0 2,14 * * *` :
-        /// every 12 hours at (2,14) hours past midnight in UTC. * `0 */4 * * *` : (incremental backups only) every 4
+        /// every 12 hours at (2, 14) hours past midnight in UTC. * `0 */4 * * *` : (incremental backups only) every 4
         /// hours at (0, 4, 8, 12, 16, 20) hours past midnight in UTC. * `0 2 * * *` : once a day at 2 past midnight in
         /// UTC. * `0 2 * * 0` : once a week every Sunday at 2 past midnight in UTC. * `0 2 8 * *` : once a month on 8th
         /// day at 2 past midnight in UTC.
@@ -10027,7 +10048,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// Output only. The time zone of the times in `CrontabSpec.text`. Currently only UTC is supported.
+        /// Output only. The time zone of the times in `CrontabSpec.text`. Currently, only UTC is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
