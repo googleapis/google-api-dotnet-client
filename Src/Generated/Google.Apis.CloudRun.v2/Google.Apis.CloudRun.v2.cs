@@ -3649,7 +3649,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>
-        /// Base image for this container. Only supported for services. If set. it indicates that the service is
+        /// Base image for this container. Only supported for services. If set, it indicates that the service is
         /// enrolled into automatic base image update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseImageUri")]
@@ -7370,6 +7370,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pool")]
         public virtual GoogleDevtoolsCloudbuildV1PoolOption Pool { get; set; }
+
+        /// <summary>Optional. Option to specify the Pub/Sub topic to receive build status updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
 
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
