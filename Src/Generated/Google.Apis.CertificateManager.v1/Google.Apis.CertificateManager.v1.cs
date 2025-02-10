@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3177,6 +3177,10 @@ namespace Google.Apis.CertificateManager.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The list of resources that use this Certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedBy")]
+        public virtual System.Collections.Generic.IList<UsedBy> UsedBy { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4358,6 +4362,21 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustAnchors")]
         public virtual System.Collections.Generic.IList<TrustAnchor> TrustAnchors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a resource that uses the certificate.</summary>
+    public class UsedBy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Full name of the resource https://google.aip.dev/122#full-resource-names, e.g.
+        /// `//certificatemanager.googleapis.com/projects/*/locations/*/certificateMaps/*/certificateMapEntries/*` or
+        /// `//compute.googleapis.com/projects/*/locations/*/targetHttpsProxies/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
