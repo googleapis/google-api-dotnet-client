@@ -1972,10 +1972,6 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>Instructions for AI driven test</summary>
     public class GoogleFirebaseAppdistroV1alphaAiInstructions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Describes the app to give the AI some context</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appDescription")]
-        public virtual string AppDescription { get; set; }
-
         /// <summary>Required. Steps to be accomplished by the AI</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaAiStep> Steps { get; set; }
