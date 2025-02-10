@@ -4950,11 +4950,8 @@ namespace Google.Apis.Monitoring.v3
 
                 /// <summary>
                 /// Optional. Optional filter to restrict results to the given criteria. The following fields are
-                /// supported. interval.start_time interval.end_timeFor example:
-                /// ```
-                /// interval.start_time &amp;gt;
+                /// supported. interval.start_time interval.end_timeFor example: interval.start_time &amp;gt;
                 /// "2022-03-11T00:00:00-08:00" AND interval.end_time &amp;lt; "2022-03-12T00:00:00-08:00"
-                /// ```
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
