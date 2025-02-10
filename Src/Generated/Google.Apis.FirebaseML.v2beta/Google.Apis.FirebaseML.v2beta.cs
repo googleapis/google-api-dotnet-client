@@ -1199,13 +1199,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
         public virtual System.Nullable<float> Temperature { get; set; }
 
-        /// <summary>
-        /// Optional. Config for thinking features. An error will be returned if this field is set for models that don't
-        /// support thinking.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("thinkingConfig")]
-        public virtual GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig ThinkingConfig { get; set; }
-
         /// <summary>Optional. If specified, top-k sampling will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topK")]
         public virtual System.Nullable<float> TopK { get; set; }
@@ -1255,20 +1248,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Config for thinking features.</summary>
-    public class GoogleCloudAiplatformV1beta1GenerationConfigThinkingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Indicates whether to include thoughts in the response. If true, thoughts are returned only when
-        /// available.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("includeThoughts")]
-        public virtual System.Nullable<bool> IncludeThoughts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
