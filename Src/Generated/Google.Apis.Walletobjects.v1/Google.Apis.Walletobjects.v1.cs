@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ namespace Google.Apis.Walletobjects.v1
             Smarttap = new SmarttapResource(this);
             Transitclass = new TransitclassResource(this);
             Transitobject = new TransitobjectResource(this);
+            Walletobjects = new WalletobjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://walletobjects.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://walletobjects.googleapis.com/batch");
         }
@@ -145,6 +146,9 @@ namespace Google.Apis.Walletobjects.v1
 
         /// <summary>Gets the Transitobject resource.</summary>
         public virtual TransitobjectResource Transitobject { get; }
+
+        /// <summary>Gets the Walletobjects resource.</summary>
+        public virtual WalletobjectsResource Walletobjects { get; }
     }
 
     /// <summary>A base abstract class for Walletobjects requests.</summary>
@@ -6464,6 +6468,104 @@ namespace Google.Apis.Walletobjects.v1
             }
         }
     }
+
+    /// <summary>The "walletobjects" collection of methods.</summary>
+    public class WalletobjectsResource
+    {
+        private const string Resource = "walletobjects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public WalletobjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            V1 = new V1Resource(service);
+        }
+
+        /// <summary>Gets the V1 resource.</summary>
+        public virtual V1Resource V1 { get; }
+
+        /// <summary>The "v1" collection of methods.</summary>
+        public class V1Resource
+        {
+            private const string Resource = "v1";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public V1Resource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                PrivateContent = new PrivateContentResource(service);
+            }
+
+            /// <summary>Gets the PrivateContent resource.</summary>
+            public virtual PrivateContentResource PrivateContent { get; }
+
+            /// <summary>The "privateContent" collection of methods.</summary>
+            public class PrivateContentResource
+            {
+                private const string Resource = "privateContent";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PrivateContentResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Provide Google with information about awaiting private pass update. This will allow Google to
+                /// provide the update notification to the device that currently holds this pass.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                public virtual SetPassUpdateNoticeRequest SetPassUpdateNotice(Google.Apis.Walletobjects.v1.Data.SetPassUpdateNoticeRequest body)
+                {
+                    return new SetPassUpdateNoticeRequest(this.service, body);
+                }
+
+                /// <summary>
+                /// Provide Google with information about awaiting private pass update. This will allow Google to
+                /// provide the update notification to the device that currently holds this pass.
+                /// </summary>
+                public class SetPassUpdateNoticeRequest : WalletobjectsBaseServiceRequest<Google.Apis.Walletobjects.v1.Data.SetPassUpdateNoticeResponse>
+                {
+                    /// <summary>Constructs a new SetPassUpdateNotice request.</summary>
+                    public SetPassUpdateNoticeRequest(Google.Apis.Services.IClientService service, Google.Apis.Walletobjects.v1.Data.SetPassUpdateNoticeRequest body) : base(service)
+                    {
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Walletobjects.v1.Data.SetPassUpdateNoticeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setPassUpdateNotice";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "walletobjects/v1/privateContent/setPassUpdateNotice";
+
+                    /// <summary>Initializes SetPassUpdateNotice parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                    }
+                }
+            }
+        }
+    }
 }
 namespace Google.Apis.Walletobjects.v1.Data
 {
@@ -11998,6 +12100,45 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("animationType")]
         public virtual string AnimationType { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request to send a private pass update notice information to Google, so that devices can then fetch the notice
+    /// prompting the user to update a pass.
+    /// </summary>
+    public class SetPassUpdateNoticeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A fully qualified identifier of the pass that the issuer wants to notify the pass holder(s) about.
+        /// Formatted as .
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalPassId")]
+        public virtual string ExternalPassId { get; set; }
+
+        /// <summary>
+        /// Required. The issuer endpoint URI the pass holder needs to follow in order to receive an updated pass JWT.
+        /// It can not contain any sensitive information. The endpoint needs to authenticate the user before giving the
+        /// user the updated JWT. Example update URI https://someissuer.com/update/passId=someExternalPassId
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateUri")]
+        public virtual string UpdateUri { get; set; }
+
+        /// <summary>
+        /// Required. The JWT signature of the updated pass that the issuer wants to notify Google about. Only devices
+        /// that report a different JWT signature than this JWT signature will receive the update notification.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedPassJwtSignature")]
+        public virtual string UpdatedPassJwtSignature { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response to a request to notify Google of an awaiting update to a private pass.</summary>
+    public class SetPassUpdateNoticeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
