@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2194,9 +2194,19 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<string> Headers { get; set; }
 
-        /// <summary>Optional. JA3 fingerprint for SSL clients.</summary>
+        /// <summary>
+        /// Optional. JA3 fingerprint for SSL clients. To learn how to compute this fingerprint, please refer to
+        /// https://github.com/salesforce/ja3.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ja3")]
         public virtual string Ja3 { get; set; }
+
+        /// <summary>
+        /// Optional. JA4 fingerprint for SSL clients. To learn how to compute this fingerprint, please refer to
+        /// https://github.com/FoxIO-LLC/ja4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ja4")]
+        public virtual string Ja4 { get; set; }
 
         /// <summary>Optional. The URI resource the user requested that triggered an assessment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedUri")]
