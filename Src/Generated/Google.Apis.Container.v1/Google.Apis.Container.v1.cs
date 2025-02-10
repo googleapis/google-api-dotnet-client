@@ -6506,7 +6506,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>A URL to a public documnetation, which addresses resolving this issue.</summary>
+        /// <summary>A URL to a public documentation, which addresses resolving this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentationUrl")]
         public virtual string DocumentationUrl { get; set; }
 
@@ -6782,7 +6782,7 @@ namespace Google.Apis.Container.v1.Data
     public class CertificateAuthorityDomainConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// List of fully qualified domain names (FQDN). Specifying port is supported. Wilcards are NOT supported.
+        /// List of fully qualified domain names (FQDN). Specifying port is supported. Wildcards are NOT supported.
         /// Examples: - my.customdomain.com - 10.0.1.2:5000
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fqdns")]
@@ -8255,7 +8255,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517</summary>
+    /// <summary>GetJSONWebKeysResponse is a valid JSON Web Key Set as specified in rfc 7517</summary>
     public class GetJSONWebKeysResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9000,7 +9000,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>Whether master is accessbile via Google Compute Engine Public IP addresses.</summary>
+        /// <summary>Whether master is accessible via Google Compute Engine Public IP addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpPublicCidrsAccessEnabled")]
         public virtual System.Nullable<bool> GcpPublicCidrsAccessEnabled { get; set; }
 
@@ -9161,7 +9161,7 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>
         /// Output only. The relative name of the Google Compute Engine
-        /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is
+        /// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is
         /// connected. Example: projects/my-project/global/networks/my-network
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -9392,7 +9392,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
         public virtual System.Nullable<int> LocalSsdCount { get; set; }
 
-        /// <summary>Specifies which method should be used for encrypting the Local SSDs attahced to the node.</summary>
+        /// <summary>Specifies which method should be used for encrypting the Local SSDs attached to the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdEncryptionMode")]
         public virtual string LocalSsdEncryptionMode { get; set; }
 
@@ -12569,6 +12569,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>If true, workloads can use NET_ADMIN capability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowNetAdmin")]
         public virtual System.Nullable<bool> AllowNetAdmin { get; set; }
+
+        /// <summary>If true, enables the GCW Auditor that audits workloads on standard clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autopilotCompatibilityAuditingEnabled")]
+        public virtual System.Nullable<bool> AutopilotCompatibilityAuditingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
