@@ -3773,6 +3773,17 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MySQL GTID position</summary>
+    public class MysqlGtidPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The gtid set to start replication from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtidSet")]
+        public virtual string GtidSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>MySQL log position</summary>
     public class MysqlLogPosition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4939,6 +4950,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>CDC strategy to start replicating from a specific position in the source.</summary>
     public class SpecificStartPosition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>MySQL GTID set to start replicating from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlGtidPosition")]
+        public virtual MysqlGtidPosition MysqlGtidPosition { get; set; }
+
         /// <summary>MySQL specific log position to start replicating from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlLogPosition")]
         public virtual MysqlLogPosition MysqlLogPosition { get; set; }
