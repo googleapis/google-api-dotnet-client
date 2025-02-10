@@ -3652,6 +3652,32 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A condition whose evaluation is based on the value of a template variable.</summary>
+    public class TemplateVariableCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Comparator to use to evaluate whether the value of the template variable matches the
+        /// template_variable_value. For example, if the comparator is REGEX_FULL_MATCH, template_variable_value would
+        /// contain a regex that is matched against the value of the template variable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparator")]
+        public virtual string Comparator { get; set; }
+
+        /// <summary>The template variable whose value is evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateVariable")]
+        public virtual string TemplateVariable { get; set; }
+
+        /// <summary>
+        /// The value to compare the template variable to. For example, if the comparator is REGEX_FULL_MATCH, this
+        /// field should contain a regex.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateVariableValue")]
+        public virtual string TemplateVariableValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A widget that displays textual content.</summary>
     public class Text : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3947,6 +3973,17 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Condition that determines whether the widget should be displayed.</summary>
+    public class VisibilityCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A condition whose evaluation is based on the value of a template variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateVariableCondition")]
+        public virtual TemplateVariableCondition TemplateVariableCondition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
     /// </summary>
@@ -4013,6 +4050,10 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>Optional. The title of the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>Optional. If set, this widget is rendered only when the condition is evaluated to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibilityCondition")]
+        public virtual VisibilityCondition VisibilityCondition { get; set; }
 
         /// <summary>A chart of time series data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xyChart")]
