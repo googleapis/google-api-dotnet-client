@@ -7535,6 +7535,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pool")]
         public virtual GoogleDevtoolsCloudbuildV1PoolOption Pool { get; set; }
 
+        /// <summary>Optional. Option to specify the Pub/Sub topic to receive build status updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
+
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
         public virtual string RequestedVerifyOption { get; set; }
