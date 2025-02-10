@@ -3148,6 +3148,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
         public virtual DriveExportOptions DriveOptions { get; set; }
 
+        /// <summary>Option available for Gemini export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiOptions")]
+        public virtual GeminiExportOptions GeminiOptions { get; set; }
+
         /// <summary>Options for Groups exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupsOptions")]
         public virtual GroupsExportOptions GroupsOptions { get; set; }
@@ -3187,6 +3191,24 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalArtifactCount")]
         public virtual System.Nullable<long> TotalArtifactCount { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The options for Gemini exports.</summary>
+    public class GeminiExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file format for exported messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
+        public virtual string ExportFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional options for Gemini search</summary>
+    public class GeminiOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4033,6 +4055,10 @@ namespace Google.Apis.Vault.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Set Gemini search-specific options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiOptions")]
+        public virtual GeminiOptions GeminiOptions { get; set; }
 
         /// <summary>Required when **SearchMethod** is **ROOM**. (read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatInfo")]
