@@ -3455,8 +3455,8 @@ namespace Google.Apis.Dataform.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set to true, any child resources of this repository will also be deleted. (Otherwise, the
-                    /// request will only succeed if the repository has no child resources.)
+                    /// Optional. If set to true, any child resources of this repository will also be deleted.
+                    /// (Otherwise, the request will only succeed if the repository has no child resources.)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
@@ -4675,6 +4675,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLocation")]
         public virtual string DefaultLocation { get; set; }
 
+        /// <summary>Optional. The default notebook runtime options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultNotebookRuntimeOptions")]
         public virtual NotebookRuntimeOptions DefaultNotebookRuntimeOptions { get; set; }
 
@@ -4813,8 +4814,8 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual CommitMetadata CommitMetadata { get; set; }
 
         /// <summary>
-        /// A map to the path of the file to the operation. The path is the full file path including filename, from
-        /// repository root.
+        /// Optional. A map to the path of the file to the operation. The path is the full file path including filename,
+        /// from repository root.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileOperations")]
         public virtual System.Collections.Generic.IDictionary<string, FileOperation> FileOperations { get; set; }
@@ -5072,7 +5073,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Describes encryption state of a resource.</summary>
     public class DataEncryptionState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The KMS key version name with which data of a resource is encrypted.</summary>
+        /// <summary>Required. The KMS key version name with which data of a resource is encrypted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
         public virtual string KmsKeyVersionName { get; set; }
 
@@ -5739,6 +5740,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a notebook.</summary>
     public class Notebook : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contents of the notebook.</summary>
@@ -5779,6 +5781,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configures various aspects of Dataform notebook runtime.</summary>
     public class NotebookRuntimeOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6454,7 +6457,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
 
         private object _executionTime;
 
-        /// <summary>The timestamp of this execution attempt.</summary>
+        /// <summary>Output only. The timestamp of this execution attempt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionTime")]
         public virtual string ExecutionTimeRaw
         {
@@ -6519,7 +6522,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
 
         private object _releaseTime;
 
-        /// <summary>The timestamp of this release attempt.</summary>
+        /// <summary>Output only. The timestamp of this release attempt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseTime")]
         public virtual string ReleaseTimeRaw
         {
@@ -6657,15 +6660,15 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// </summary>
     public class Target : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The action's database (Google Cloud project ID) .</summary>
+        /// <summary>Optional. The action's database (Google Cloud project ID) .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
-        /// <summary>The action's name, within `database` and `schema`.</summary>
+        /// <summary>Optional. The action's name, within `database` and `schema`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The action's schema (BigQuery dataset ID), within `database`.</summary>
+        /// <summary>Optional. The action's schema (BigQuery dataset ID), within `database`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
@@ -6706,7 +6709,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>Indicates the status of the file.</summary>
+        /// <summary>Output only. Indicates the status of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
