@@ -2939,6 +2939,276 @@ namespace Google.Apis.Bigquery.v2
             this.service = service;
         }
 
+        /// <summary>Deletes provided row access policies.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Required. Project ID of the table to delete the row access policies.</param>
+        /// <param name="datasetId">Required. Dataset ID of the table to delete the row access policies.</param>
+        /// <param name="tableId">Required. Table ID of the table to delete the row access policies.</param>
+        public virtual BatchDeleteRequest BatchDelete(Google.Apis.Bigquery.v2.Data.BatchDeleteRowAccessPoliciesRequest body, string projectId, string datasetId, string tableId)
+        {
+            return new BatchDeleteRequest(this.service, body, projectId, datasetId, tableId);
+        }
+
+        /// <summary>Deletes provided row access policies.</summary>
+        public class BatchDeleteRequest : BigqueryBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new BatchDelete request.</summary>
+            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.BatchDeleteRowAccessPoliciesRequest body, string projectId, string datasetId, string tableId) : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                TableId = tableId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the table to delete the row access policies.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. Dataset ID of the table to delete the row access policies.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Required. Table ID of the table to delete the row access policies.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TableId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.BatchDeleteRowAccessPoliciesRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchDelete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete";
+
+            /// <summary>Initializes BatchDelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Deletes a row access policy.</summary>
+        /// <param name="projectId">Required. Project ID of the table to delete the row access policy.</param>
+        /// <param name="datasetId">Required. Dataset ID of the table to delete the row access policy.</param>
+        /// <param name="tableId">Required. Table ID of the table to delete the row access policy.</param>
+        /// <param name="policyId">Required. Policy ID of the row access policy.</param>
+        public virtual DeleteRequest Delete(string projectId, string datasetId, string tableId, string policyId)
+        {
+            return new DeleteRequest(this.service, projectId, datasetId, tableId, policyId);
+        }
+
+        /// <summary>Deletes a row access policy.</summary>
+        public class DeleteRequest : BigqueryBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId, string policyId) : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                TableId = tableId;
+                PolicyId = policyId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the table to delete the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. Dataset ID of the table to delete the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Required. Table ID of the table to delete the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TableId { get; private set; }
+
+            /// <summary>Required. Policy ID of the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("policyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PolicyId { get; private set; }
+
+            /// <summary>
+            /// If set to true, it deletes the row access policy even if it's the last row access policy on the table
+            /// and the deletion will widen the access rather narrowing it.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Force { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("policyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "policyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "force",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Gets the specified row access policy by policy ID.</summary>
+        /// <param name="projectId">Required. Project ID of the table to get the row access policy.</param>
+        /// <param name="datasetId">Required. Dataset ID of the table to get the row access policy.</param>
+        /// <param name="tableId">Required. Table ID of the table to get the row access policy.</param>
+        /// <param name="policyId">Required. Policy ID of the row access policy.</param>
+        public virtual GetRequest Get(string projectId, string datasetId, string tableId, string policyId)
+        {
+            return new GetRequest(this.service, projectId, datasetId, tableId, policyId);
+        }
+
+        /// <summary>Gets the specified row access policy by policy ID.</summary>
+        public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.RowAccessPolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId, string policyId) : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                TableId = tableId;
+                PolicyId = policyId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. Dataset ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Required. Table ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TableId { get; private set; }
+
+            /// <summary>Required. Policy ID of the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("policyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PolicyId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("policyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "policyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not
         /// have a policy set.
@@ -3000,6 +3270,87 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Creates a row access policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Required. Project ID of the table to get the row access policy.</param>
+        /// <param name="datasetId">Required. Dataset ID of the table to get the row access policy.</param>
+        /// <param name="tableId">Required. Table ID of the table to get the row access policy.</param>
+        public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.RowAccessPolicy body, string projectId, string datasetId, string tableId)
+        {
+            return new InsertRequest(this.service, body, projectId, datasetId, tableId);
+        }
+
+        /// <summary>Creates a row access policy.</summary>
+        public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.RowAccessPolicy>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.RowAccessPolicy body, string projectId, string datasetId, string tableId) : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                TableId = tableId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. Dataset ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Required. Table ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TableId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.RowAccessPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -3169,6 +3520,101 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Updates a row access policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Required. Project ID of the table to get the row access policy.</param>
+        /// <param name="datasetId">Required. Dataset ID of the table to get the row access policy.</param>
+        /// <param name="tableId">Required. Table ID of the table to get the row access policy.</param>
+        /// <param name="policyId">Required. Policy ID of the row access policy.</param>
+        public virtual UpdateRequest Update(Google.Apis.Bigquery.v2.Data.RowAccessPolicy body, string projectId, string datasetId, string tableId, string policyId)
+        {
+            return new UpdateRequest(this.service, body, projectId, datasetId, tableId, policyId);
+        }
+
+        /// <summary>Updates a row access policy.</summary>
+        public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.RowAccessPolicy>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.RowAccessPolicy body, string projectId, string datasetId, string tableId, string policyId) : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                TableId = tableId;
+                PolicyId = policyId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. Dataset ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Required. Table ID of the table to get the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TableId { get; private set; }
+
+            /// <summary>Required. Policy ID of the row access policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("policyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PolicyId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.RowAccessPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PUT";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("policyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "policyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -4588,6 +5034,24 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
         public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the BatchDeleteRowAccessPoliciesRequest method.</summary>
+    public class BatchDeleteRowAccessPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set to true, it deletes the row access policy even if it's the last row access policy on the table and
+        /// the deletion will widen the access rather narrowing it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>Required. Policy IDs of the row access policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyIds")]
+        public virtual System.Collections.Generic.IList<string> PolicyIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7919,6 +8383,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
 
+        /// <summary>
+        /// Optional. This is only supported for a SELECT query using a temporary table. If set, the query is allowed to
+        /// write results incrementally to the temporary result table. This may incur a performance penalty. This option
+        /// cannot be used with Legacy SQL. This feature is not yet available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeIncrementalResults")]
+        public virtual System.Nullable<bool> WriteIncrementalResults { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9838,6 +10310,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("useQueryCache")]
         public virtual System.Nullable<bool> UseQueryCache { get; set; }
 
+        /// <summary>
+        /// Optional. This is only supported for SELECT query. If set, the query is allowed to write results
+        /// incrementally to the temporary result table. This may incur a performance penalty. This option cannot be
+        /// used with Legacy SQL. This feature is not yet available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeIncrementalResults")]
+        public virtual System.Nullable<bool> WriteIncrementalResults { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10451,6 +10931,24 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterPredicate")]
         public virtual string FilterPredicate { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. The optional list of iam_member users or groups that specifies the initial members
+        /// that the row-level access policy should be created with. grantees types: - "user:alice@example.com": An
+        /// email address that represents a specific Google account. -
+        /// "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email address that represents a service
+        /// account. - "group:admins@example.com": An email address that represents a Google group. -
+        /// "domain:example.com":The Google Workspace domain (primary) that represents all the users of that domain. -
+        /// "allAuthenticatedUsers": A special identifier that represents all service accounts and all users on the
+        /// internet who have authenticated with a Google Account. This identifier includes accounts that aren't
+        /// connected to a Google Workspace or Cloud Identity domain, such as personal Gmail accounts. Users who aren't
+        /// authenticated, such as anonymous visitors, aren't included. - "allUsers":A special identifier that
+        /// represents anyone who is on the internet, including authenticated and unauthenticated users. Because
+        /// BigQuery requires authentication before a user can access the service, allUsers includes only authenticated
+        /// users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grantees")]
+        public virtual System.Collections.Generic.IList<string> Grantees { get; set; }
+
         private string _lastModifiedTimeRaw;
 
         private object _lastModifiedTime;
@@ -11031,6 +11529,49 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. Serializer and deserializer information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serdeInfo")]
         public virtual SerDeInfo SerdeInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>If the stored column was not used, explain why.</summary>
+    public class StoredColumnsUnusedReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the high-level reason for the unused scenario, each reason must have a code associated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Specifies the detailed description for the scenario.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// Specifies which columns were not covered by the stored columns for the specified code up to 20 columns. This
+        /// is populated when the code is STORED_COLUMNS_COVER_INSUFFICIENT and BASE_TABLE_HAS_CLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uncoveredColumns")]
+        public virtual System.Collections.Generic.IList<string> UncoveredColumns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates the stored columns usage in the query.</summary>
+    public class StoredColumnsUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the base table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTable")]
+        public virtual TableReference BaseTable { get; set; }
+
+        /// <summary>Specifies whether the query was accelerated with stored columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isQueryAccelerated")]
+        public virtual System.Nullable<bool> IsQueryAccelerated { get; set; }
+
+        /// <summary>If stored columns were not used, explain why.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storedColumnsUnusedReasons")]
+        public virtual System.Collections.Generic.IList<StoredColumnsUnusedReason> StoredColumnsUnusedReasons { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12162,6 +12703,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fitIntercept")]
         public virtual System.Nullable<bool> FitIntercept { get; set; }
 
+        /// <summary>
+        /// The forecast limit lower bound that was used during ARIMA model training with limits. To see more details of
+        /// the algorithm: https://otexts.com/fpp2/limits.html
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forecastLimitLowerBound")]
+        public virtual System.Nullable<double> ForecastLimitLowerBound { get; set; }
+
+        /// <summary>The forecast limit upper bound that was used during ARIMA model training with limits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forecastLimitUpperBound")]
+        public virtual System.Nullable<double> ForecastLimitUpperBound { get; set; }
+
         /// <summary>Hidden units for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenUnits")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> HiddenUnits { get; set; }
@@ -12671,6 +13223,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Specifies the index usage mode for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexUsageMode")]
         public virtual string IndexUsageMode { get; set; }
+
+        /// <summary>
+        /// Specifies the usage of stored columns in the query when stored columns are used in the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storedColumnsUsages")]
+        public virtual System.Collections.Generic.IList<StoredColumnsUsage> StoredColumnsUsages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
