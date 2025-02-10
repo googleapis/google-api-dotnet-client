@@ -16676,7 +16676,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Optional. The client secret provided by the 3rd party platform.</summary>
+        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
@@ -19456,7 +19456,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Optional. The client secret provided by the 3rd party platform.</summary>
+        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
