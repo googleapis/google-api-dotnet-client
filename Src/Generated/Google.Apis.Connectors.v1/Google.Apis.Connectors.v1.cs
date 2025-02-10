@@ -4647,6 +4647,10 @@ namespace Google.Apis.Connectors.v1
                                 /// <summary>JSON schema view of the AuthSchema.</summary>
                                 [Google.Apis.Util.StringValueAttribute("JSON_SCHEMA")]
                                 JSONSCHEMA = 2,
+
+                                /// <summary>EUA Schema view of the AuthSchema.</summary>
+                                [Google.Apis.Util.StringValueAttribute("EUA_SCHEMA")]
+                                EUASCHEMA = 3,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -7621,6 +7625,17 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Data enrichment configuration.</summary>
+    public class EnrichmentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Append ACL to the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appendAcl")]
+        public virtual System.Nullable<bool> AppendAcl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>EnumOption definition</summary>
     public class EnumOption : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7918,6 +7933,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Dead letter configuration for eventing of a connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadLetterConfig")]
         public virtual DeadLetterConfig DeadLetterConfig { get; set; }
+
+        /// <summary>Optional. Data enrichment configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrichmentConfig")]
+        public virtual EnrichmentConfig EnrichmentConfig { get; set; }
 
         /// <summary>Optional. Enrichment Enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrichmentEnabled")]
