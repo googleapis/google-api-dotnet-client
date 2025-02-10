@@ -924,6 +924,27 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     }
 
     /// <summary>
+    /// Aspect represents Generic aspect. It is used to configure an aspect without making direct changes to
+    /// service.proto
+    /// </summary>
+    public class Aspect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of this aspect configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message
+        /// under `apiserving/configaspects/proto`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configuration for an authentication provider, including support for [JSON Web Token
     /// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
     /// </summary>
@@ -3534,6 +3555,14 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apis")]
         public virtual System.Collections.Generic.IList<Api> Apis { get; set; }
+
+        /// <summary>
+        /// Configuration aspects. This is a repeated field to allow multiple aspects to be configured. The kind field
+        /// in each ConfigAspect specifies the type of aspect. The spec field contains the configuration for that
+        /// aspect. The schema for the spec field is defined by the backend service owners.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspects")]
+        public virtual System.Collections.Generic.IList<Aspect> Aspects { get; set; }
 
         /// <summary>Auth configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
