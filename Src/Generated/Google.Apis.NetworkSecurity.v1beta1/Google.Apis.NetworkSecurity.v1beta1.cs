@@ -12029,13 +12029,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// CustomInterceptProfile defines the Packet Intercept Endpoint Group used to intercept traffic to a third-party
-    /// firewall in a Firewall rule.
+    /// CustomInterceptProfile defines in-band integration behavior (intercept). It is used by firewall rules with an
+    /// APPLY_SECURITY_PROFILE_GROUP action.
     /// </summary>
     public class CustomInterceptProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The InterceptEndpointGroup to which traffic associated with the SP should be mirrored.
+        /// Required. The target InterceptEndpointGroup. When a firewall rule with this security profile attached
+        /// matches a packet, the packet will be intercepted to the location-local target in this group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroup")]
         public virtual string InterceptEndpointGroup { get; set; }
@@ -12044,11 +12045,15 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CustomMirroringProfile defines an action for mirroring traffic to a collector's EndpointGroup</summary>
+    /// <summary>
+    /// CustomMirroringProfile defines out-of-band integration behavior (mirroring). It is used by mirroring rules with
+    /// a MIRROR action.
+    /// </summary>
     public class CustomMirroringProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The MirroringEndpointGroup to which traffic associated with the SP should be mirrored.
+        /// Required. The target MirroringEndpointGroup. When a mirroring rule with this security profile attached
+        /// matches a packet, a replica will be mirrored to the location-local target in this group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroup")]
         public virtual string MirroringEndpointGroup { get; set; }
