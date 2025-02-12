@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.FirebaseML.v2beta Client Library</Title>
-    <Version>1.69.0.3686</Version>
+    <Version>1.69.0.3692</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2025 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
