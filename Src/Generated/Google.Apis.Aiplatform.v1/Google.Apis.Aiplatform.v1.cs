@@ -11316,7 +11316,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
                     /// then only the non-empty fields present in the request will be overwritten. Set the update_mask
                     /// to `*` to override all fields. Updatable fields: * `labels` * `description` * `big_query` *
-                    /// `big_query.entity_id_columns`
+                    /// `big_query.entity_id_columns` * `service_agent_type`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -45082,6 +45082,37 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configs for autorater. This is applicable to both EvaluateInstances and EvaluateDataset.</summary>
+    public class GoogleCloudAiplatformV1AutoraterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The fully qualified name of the publisher model or tuned autorater endpoint to use. Publisher
+        /// model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format:
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoraterModel")]
+        public virtual string AutoraterModel { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to flip the candidate and baseline responses. This is only applicable to the pairwise
+        /// metric. If enabled, also provide PairwiseMetricSpec.candidate_response_field_name and
+        /// PairwiseMetricSpec.baseline_response_field_name. When rendering PairwiseMetricSpec.metric_prompt_template,
+        /// the candidate and baseline fields will be flipped for half of the samples to reduce bias.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flipEnabled")]
+        public virtual System.Nullable<bool> FlipEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Number of samples for each instance in the dataset. If not specified, the default is 4. Minimum
+        /// value is 1, maximum value is 32.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplingCount")]
+        public virtual System.Nullable<int> SamplingCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The metric specification that defines the target resource utilization (CPU utilization, accelerator's duty
     /// cycle, and so on) for calculating the desired replica count.
@@ -50035,6 +50066,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Request message for EvaluationService.EvaluateInstances.</summary>
     public class GoogleCloudAiplatformV1EvaluateInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Autorater config used for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoraterConfig")]
+        public virtual GoogleCloudAiplatformV1AutoraterConfig AutoraterConfig { get; set; }
+
         /// <summary>Instances and metric spec for bleu metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bleuInput")]
         public virtual GoogleCloudAiplatformV1BleuInput BleuInput { get; set; }
@@ -57065,6 +57100,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
+        /// <summary>Optional. Immutable. The number of nodes per replica for multihost GPU deployments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multihostGpuNodeCount")]
+        public virtual System.Nullable<int> MultihostGpuNodeCount { get; set; }
+
         /// <summary>
         /// Optional. Immutable. Configuration controlling how this resource pool consumes reservation.
         /// </summary>
@@ -59162,7 +59201,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// `tf-saved-model` A tensorflow model in SavedModel format. * `tf-js` A
         /// [TensorFlow.js](https://www.tensorflow.org/js) model that can be used in the browser and in Node.js using
         /// JavaScript. * `core-ml` Used for iOS mobile devices. * `custom-trained` A Model that was uploaded or trained
-        /// by custom code.
+        /// by custom code. * `genie` A tuned Model Garden model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -61179,9 +61218,21 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Spec for pairwise metric.</summary>
     public class GoogleCloudAiplatformV1PairwiseMetricSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The field name of the baseline response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineResponseFieldName")]
+        public virtual string BaselineResponseFieldName { get; set; }
+
+        /// <summary>Optional. The field name of the candidate response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidateResponseFieldName")]
+        public virtual string CandidateResponseFieldName { get; set; }
+
         /// <summary>Required. Metric prompt template for pairwise metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricPromptTemplate")]
         public virtual string MetricPromptTemplate { get; set; }
+
+        /// <summary>Optional. System instructions for pairwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual string SystemInstruction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -62343,6 +62394,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricPromptTemplate")]
         public virtual string MetricPromptTemplate { get; set; }
 
+        /// <summary>Optional. System instructions for pointwise metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual string SystemInstruction { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -62655,6 +62710,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exec")]
         public virtual GoogleCloudAiplatformV1ProbeExecAction Exec { get; set; }
 
+        /// <summary>
+        /// Number of consecutive failures before the probe is considered failed. Defaults to 3. Minimum value is 1.
+        /// Maps to Kubernetes probe argument 'failureThreshold'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
+        public virtual System.Nullable<int> FailureThreshold { get; set; }
+
         /// <summary>GrpcAction probes the health of a container by sending a gRPC request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grpc")]
         public virtual GoogleCloudAiplatformV1ProbeGrpcAction Grpc { get; set; }
@@ -62664,11 +62726,25 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual GoogleCloudAiplatformV1ProbeHttpGetAction HttpGet { get; set; }
 
         /// <summary>
+        /// Number of seconds to wait before starting the probe. Defaults to 0. Minimum value is 0. Maps to Kubernetes
+        /// probe argument 'initialDelaySeconds'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
+        public virtual System.Nullable<int> InitialDelaySeconds { get; set; }
+
+        /// <summary>
         /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Must be less than
         /// timeout_seconds. Maps to Kubernetes probe argument 'periodSeconds'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
         public virtual System.Nullable<int> PeriodSeconds { get; set; }
+
+        /// <summary>
+        /// Number of consecutive successes before the probe is considered successful. Defaults to 1. Minimum value is
+        /// 1. Maps to Kubernetes probe argument 'successThreshold'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successThreshold")]
+        public virtual System.Nullable<int> SuccessThreshold { get; set; }
 
         /// <summary>TcpSocketAction probes the health of a container by opening a TCP socket connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
