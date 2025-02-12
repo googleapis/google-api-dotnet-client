@@ -4192,6 +4192,25 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata associated with app commands. App commands are a way for users to invoke and interact with a Chat app.
+    /// These can be slash commands typed in the compose box, or items directly selected from the integration menu. For
+    /// more information, see [Respond to quick commands](https://developers.google.com/workspace/chat/quick-commands).
+    /// </summary>
+    public class AppCommandMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The command ID for the given app interaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appCommandId")]
+        public virtual System.Nullable<int> AppCommandId { get; set; }
+
+        /// <summary>The type of the app command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appCommandType")]
+        public virtual string AppCommandType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A GIF image that's specified by a URL.</summary>
     public class AttachedGif : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4663,6 +4682,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual FormAction Action { get; set; }
 
+        /// <summary>Populated for app commands, including slash commands and quick commands.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appCommandMetadata")]
+        public virtual AppCommandMetadata AppCommandMetadata { get; set; }
+
         /// <summary>
         /// Represents information about the user's client, such as locale, host app, and platform. For Chat apps,
         /// `CommonEventObject` includes information submitted by users interacting with
@@ -4672,13 +4695,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual CommonEventObject Common { get; set; }
 
         /// <summary>
-        /// This URL is populated for `MESSAGE` and `ADDED_TO_SPACE` interaction events. After completing an
-        /// authorization or configuration flow outside of Google Chat, users must be redirected to this URL to signal
-        /// to Google Chat that the authorization or configuration flow was successful. For more information, see
-        /// [Connect a Chat app with other services and
-        /// tools](https://developers.google.com/workspace/chat/connect-web-services-tools). In [Developer
-        /// Preview](https://developers.google.com/workspace/preview), this URL is also populated for `APP_COMMAND`
-        /// interaction events.
+        /// This URL is populated for `MESSAGE`, `ADDED_TO_SPACE`, and `APP_COMMAND` interaction events. After
+        /// completing an authorization or configuration flow outside of Google Chat, users must be redirected to this
+        /// URL to signal to Google Chat that the authorization or configuration flow was successful. For more
+        /// information, see [Connect a Chat app with other services and
+        /// tools](https://developers.google.com/workspace/chat/connect-web-services-tools).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; }
@@ -4743,6 +4764,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The space in which the user interacted with the Chat app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }
+
+        /// <summary>
+        /// The thread in which the user interacted with the Chat app. This could be in a new thread created by a newly
+        /// sent message. This field is populated if the interaction event is associated with a specific message or
+        /// thread.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thread")]
+        public virtual Thread Thread { get; set; }
 
         /// <summary>
         /// The Chat app-defined key for the thread related to the interaction event. See
