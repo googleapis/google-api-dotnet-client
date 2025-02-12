@@ -8,6 +8,15 @@
     "1",
     "2"
   ],
+  "Google.Apis.DiscoveryEngine.v1alpha.MediaResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.MediaResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentFormatEnum": [
     "PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED",
     "JSON"
