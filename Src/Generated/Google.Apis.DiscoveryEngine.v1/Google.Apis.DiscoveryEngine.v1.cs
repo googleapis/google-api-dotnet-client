@@ -17979,14 +17979,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>
-        /// Kms key resource name which will be used to encrypt resources
+        /// KMS key resource name which will be used to encrypt resources
         /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// KMS key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
         public virtual string KmsKeyVersion { get; set; }
@@ -17996,7 +17996,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
 
         /// <summary>
-        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or
         /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -18006,7 +18006,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SingleRegionKey> SingleRegionKeys { get; set; }
 
-        /// <summary>Output only. State of the CmekConfig.</summary>
+        /// <summary>Output only. The states of the CmekConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -21452,8 +21452,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
-    /// IdentityMappingEntry LongRunningOperation metadata for [IdentityMappingStoreService.ImportIdentityMappings] and
-    /// [IdentityMappingStoreService.PurgeIdentityMappings]
+    /// IdentityMappingEntry LongRunningOperation metadata for IdentityMappingStoreService.ImportIdentityMappings and
+    /// IdentityMappingStoreService.PurgeIdentityMappings
     /// </summary>
     public class GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23448,11 +23448,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Request message for SiteSearchEngineService.RecrawlUris method.</summary>
     public class GoogleCloudDiscoveryengineV1RecrawlUrisRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Full resource name of the `SiteCredential`, such as
-        /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine/siteCredentials/*`. Only set to crawl
-        /// private URIs.
-        /// </summary>
+        /// <summary>Optional. Credential id to use for crawling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteCredential")]
         public virtual string SiteCredential { get; set; }
 
@@ -26841,14 +26837,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>
-        /// Kms key resource name which will be used to encrypt resources
+        /// KMS key resource name which will be used to encrypt resources
         /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// KMS key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
         public virtual string KmsKeyVersion { get; set; }
@@ -26858,7 +26854,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
 
         /// <summary>
-        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or
         /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -26868,7 +26864,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSingleRegionKey> SingleRegionKeys { get; set; }
 
-        /// <summary>Output only. State of the CmekConfig.</summary>
+        /// <summary>Output only. The states of the CmekConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -27266,6 +27262,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Represents an entity that was synced in this ConnectorRun.</summary>
     public class GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The number of documents deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedRecordCount")]
+        public virtual System.Nullable<long> DeletedRecordCount { get; set; }
+
         /// <summary>The name of the source entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
         public virtual string EntityName { get; set; }
@@ -28389,6 +28389,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
         public virtual string EntityName { get; set; }
 
+        /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
+
         /// <summary>
         /// Attributes for indexing. Key: Field name. Value: The key property to map a field to, such as `title`, and
         /// `description`. Supported key properties: * `title`: The title for data record. This would be displayed on
@@ -28403,6 +28407,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>
+        /// Optional. The start schema to use for the DataStore created from this SourceEntity. If unset, a default
+        /// vertical specialized schema will be used. This field is only used by SetUpDataConnector API, and will be
+        /// ignored if used in other APIs. This field will be omitted from all API responses including GetDataConnector
+        /// API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will
+        /// be validated against certain rules on schema. Learn more from [this
+        /// doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startingSchema")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSchema StartingSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30587,8 +30602,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
-    /// IdentityMappingEntry LongRunningOperation metadata for [IdentityMappingStoreService.ImportIdentityMappings] and
-    /// [IdentityMappingStoreService.PurgeIdentityMappings]
+    /// IdentityMappingEntry LongRunningOperation metadata for IdentityMappingStoreService.ImportIdentityMappings and
+    /// IdentityMappingStoreService.PurgeIdentityMappings
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -32558,6 +32573,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
 
+        /// <summary>Optional. Config for display feature, like match highlighting on search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displaySpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestDisplaySpec DisplaySpec { get; set; }
+
         /// <summary>
         /// Uses the provided embedding to do additional semantic document retrieval. The retrieval is based on the dot
         /// product of SearchRequest.EmbeddingSpec.EmbeddingVector.vector and the document embedding that is provided in
@@ -32683,17 +32702,32 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. This overrides
-        /// ServingConfig.ranking_expression. The ranking expression is a single function or multiple functions that are
+        /// ServingConfig.ranking_expression. The syntax and supported features depend on the ranking_expression_backend
+        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If ranking
+        /// expression is not provided or set to BYOE, it should be a single function or multiple functions that are
         /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
         /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
         /// pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the
         /// document embedding field used with query embedding vector. * `dotProduct`: embedding function between
         /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
         /// field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 *
-        /// dotProduct(doc_embedding)`.
+        /// dotProduct(doc_embedding)`. === CLEARBOX === If ranking expression is set to CLEARBOX, the following
+        /// expression types (and combinations of those chained using + or * operators) are supported: * double * signal
+        /// * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank transformation with second
+        /// argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is NaN, 1 otherwise. *
+        /// fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else returns signal1.
+        /// Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.3 *
+        /// is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
+        /// supported: * gecko_score -- semantic similarity adjustment * bm25_score -- keyword match adjustment *
+        /// jetstream_score -- semantic relevance adjustment * pctr_rank -- predicted conversion rate adjustment as a
+        /// rank * freshness_rank -- freshness adjustment as a rank * base_rank -- the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
+
+        /// <summary>Optional. The backend to use for the ranking expression evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingExpressionBackend")]
+        public virtual string RankingExpressionBackend { get; set; }
 
         /// <summary>
         /// The Unicode country/region code (CLDR) of a location, such as "US" and "419". For more information, see
@@ -33184,6 +33218,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies features for display, like match highlighting.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestDisplaySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which match highlighting should occur.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchHighlightingCondition")]
+        public virtual string MatchHighlightingCondition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34690,14 +34735,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>
-        /// Kms key resource name which will be used to encrypt resources
+        /// KMS key resource name which will be used to encrypt resources
         /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// Kms key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
+        /// KMS key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
         public virtual string KmsKeyVersion { get; set; }
@@ -34707,7 +34752,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual System.Nullable<long> LastRotationTimestampMicros { get; set; }
 
         /// <summary>
-        /// Required. Name of the CmekConfig, of the form `projects/{project}/locations/{location}/cmekConfig` or
+        /// Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or
         /// `projects/{project}/locations/{location}/cmekConfigs/{cmekConfig}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -34717,7 +34762,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleRegionKeys")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSingleRegionKey> SingleRegionKeys { get; set; }
 
-        /// <summary>Output only. State of the CmekConfig.</summary>
+        /// <summary>Output only. The states of the CmekConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -37070,8 +37115,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
-    /// IdentityMappingEntry LongRunningOperation metadata for [IdentityMappingStoreService.ImportIdentityMappings] and
-    /// [IdentityMappingStoreService.PurgeIdentityMappings]
+    /// IdentityMappingEntry LongRunningOperation metadata for IdentityMappingStoreService.ImportIdentityMappings and
+    /// IdentityMappingStoreService.PurgeIdentityMappings
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -38464,17 +38509,32 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// The ranking expression controls the customized ranking on retrieval documents. This overrides
-        /// ServingConfig.ranking_expression. The ranking expression is a single function or multiple functions that are
+        /// ServingConfig.ranking_expression. The syntax and supported features depend on the ranking_expression_backend
+        /// value. If ranking_expression_backend is not provided, it defaults to BYOE. === BYOE === If ranking
+        /// expression is not provided or set to BYOE, it should be a single function or multiple functions that are
         /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
         /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
         /// pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the
         /// document embedding field used with query embedding vector. * `dotProduct`: embedding function between
         /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
         /// field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 *
-        /// dotProduct(doc_embedding)`.
+        /// dotProduct(doc_embedding)`. === CLEARBOX === If ranking expression is set to CLEARBOX, the following
+        /// expression types (and combinations of those chained using + or * operators) are supported: * double * signal
+        /// * log(signal) * exp(signal) * rr(signal, double &amp;gt; 0) -- reciprocal rank transformation with second
+        /// argument being a denominator constant. * is_nan(signal) -- returns 0 if signal is NaN, 1 otherwise. *
+        /// fill_nan(signal1, signal2 | double) -- if signal1 is NaN, returns signal2 | double, else returns signal1.
+        /// Examples: * 0.2 * gecko_score + 0.8 * log(bm25_score) * 0.2 * exp(fill_nan(gecko_score, 0)) + 0.3 *
+        /// is_nan(bm25_score) * 0.2 * rr(gecko_score, 16) + 0.8 * rr(bm25_score, 32) The following signals are
+        /// supported: * gecko_score -- semantic similarity adjustment * bm25_score -- keyword match adjustment *
+        /// jetstream_score -- semantic relevance adjustment * pctr_rank -- predicted conversion rate adjustment as a
+        /// rank * freshness_rank -- freshness adjustment as a rank * base_rank -- the default rank of the result
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
+
+        /// <summary>Optional. The backend to use for the ranking expression evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingExpressionBackend")]
+        public virtual string RankingExpressionBackend { get; set; }
 
         /// <summary>
         /// The Unicode country/region code (CLDR) of a location, such as "US" and "419". For more information, see
