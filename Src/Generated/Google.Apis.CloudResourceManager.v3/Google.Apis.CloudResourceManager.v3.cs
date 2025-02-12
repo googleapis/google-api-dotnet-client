@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1980,9 +1980,8 @@ namespace Google.Apis.CloudResourceManager.v3
         /// which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle
         /// state checked by retrieving the project with GetProject, and the project remains visible to ListProjects.
         /// However, you cannot update the project. After the deletion completes, the project is not retrievable by the
-        /// GetProject, ListProjects, and SearchProjects methods. This method behaves idempotently, such that deleting a
-        /// `DELETE_REQUESTED` project will not cause an error, but also won't do anything. The caller must have
-        /// `resourcemanager.projects.delete` permissions for this project.
+        /// GetProject, ListProjects, and SearchProjects methods. The caller must have `resourcemanager.projects.delete`
+        /// permissions for this project.
         /// </summary>
         /// <param name="name">Required. The name of the Project (for example, `projects/415104041262`).</param>
         public virtual DeleteRequest Delete(string name)
@@ -1997,9 +1996,8 @@ namespace Google.Apis.CloudResourceManager.v3
         /// which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle
         /// state checked by retrieving the project with GetProject, and the project remains visible to ListProjects.
         /// However, you cannot update the project. After the deletion completes, the project is not retrievable by the
-        /// GetProject, ListProjects, and SearchProjects methods. This method behaves idempotently, such that deleting a
-        /// `DELETE_REQUESTED` project will not cause an error, but also won't do anything. The caller must have
-        /// `resourcemanager.projects.delete` permissions for this project.
+        /// GetProject, ListProjects, and SearchProjects methods. The caller must have `resourcemanager.projects.delete`
+        /// permissions for this project.
         /// </summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
