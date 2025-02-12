@@ -1143,6 +1143,14 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jwtAudience")]
         public virtual string JwtAudience { get; set; }
 
+        /// <summary>
+        /// The load balancing policy used for connection to the application backend. Defined as an arbitrary string to
+        /// accomondate custom load balancing policies supported by the underlying channel, but suggest most users use
+        /// one of the standard policies, such as the default, "RoundRobin".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingPolicy")]
+        public virtual string LoadBalancingPolicy { get; set; }
+
         /// <summary>Deprecated, do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
         public virtual System.Nullable<double> MinDeadline { get; set; }
