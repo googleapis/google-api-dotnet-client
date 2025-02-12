@@ -1115,7 +1115,15 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokensDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> PromptTokensDetails { get; set; }
 
-        /// <summary>Total token count for prompt and response candidates.</summary>
+        /// <summary>Output only. Number of tokens present in tool-use prompt(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolUsePromptTokenCount")]
+        public virtual System.Nullable<int> ToolUsePromptTokenCount { get; set; }
+
+        /// <summary>Output only. List of modalities that were processed for tool-use request inputs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolUsePromptTokensDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> ToolUsePromptTokensDetails { get; set; }
+
+        /// <summary>Total token count for prompt, response candidates, and tool-use prompts (if present).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
         public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
