@@ -4318,7 +4318,9 @@ namespace Google.Apis.Pubsub.v1.Data
     public class JavaScriptUDF : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. JavaScript code that contains a function `function_name` with the below signature: /** *
+        /// Required. JavaScript code that contains a function `function_name` with the below signature:
+        /// ```
+        /// /** *
         /// Transforms a Pub/Sub message. * @return {(Object)&amp;gt;|null)} - To * filter a message, return `null`. To
         /// transform a message return a map * with the following keys: * - (required) 'data' : {string} * - (optional)
         /// 'attributes' : {Object} * Returning empty `attributes` will remove all attributes from the * message. * *
@@ -4326,6 +4328,7 @@ namespace Google.Apis.Pubsub.v1.Data
         /// 'attributes' : {Object} * * @param {Object} metadata - Pub/Sub message metadata. * Keys: * - (required)
         /// 'message_id' : {string} * - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format * - (optional)
         /// 'ordering_key': {string} */ function (message, metadata) { }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
