@@ -402,8 +402,8 @@ namespace Google.Apis.Merchant.products_v1beta
 
                 /// <summary>
                 /// Required. The primary or supplemental product data source name. If the product already exists and
-                /// data source provided is different, then the product will be moved to a new data source. Format:
-                /// `accounts/{account}/dataSources/{datasource}`.
+                /// data source provided is different, then the product will be moved to a new data source. Only API
+                /// data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DataSource { get; set; }
