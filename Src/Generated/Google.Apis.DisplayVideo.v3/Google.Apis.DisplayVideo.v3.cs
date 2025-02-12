@@ -27702,6 +27702,13 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludedViolenceRisk")]
         public virtual string ExcludedViolenceRisk { get; set; }
 
+        /// <summary>
+        /// Optional. The quality sync custom segment ID provided by Integral Ad Science. The ID must be between
+        /// `3000000` and `4999999`, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualitySyncCustomSegmentId")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> QualitySyncCustomSegmentId { get; set; }
+
         /// <summary>True advertising quality (applicable to Display line items only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traqScoreOption")]
         public virtual string TraqScoreOption { get; set; }
