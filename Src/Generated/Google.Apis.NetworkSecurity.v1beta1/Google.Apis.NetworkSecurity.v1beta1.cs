@@ -2413,6 +2413,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 AddressGroups = new AddressGroupsResource(service);
                 AuthorizationPolicies = new AuthorizationPoliciesResource(service);
                 AuthzPolicies = new AuthzPoliciesResource(service);
+                BackendAuthenticationConfigs = new BackendAuthenticationConfigsResource(service);
                 ClientTlsPolicies = new ClientTlsPoliciesResource(service);
                 FirewallEndpointAssociations = new FirewallEndpointAssociationsResource(service);
                 GatewaySecurityPolicies = new GatewaySecurityPoliciesResource(service);
@@ -4529,6 +4530,378 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/authzPolicies/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the BackendAuthenticationConfigs resource.</summary>
+            public virtual BackendAuthenticationConfigsResource BackendAuthenticationConfigs { get; }
+
+            /// <summary>The "backendAuthenticationConfigs" collection of methods.</summary>
+            public class BackendAuthenticationConfigsResource
+            {
+                private const string Resource = "backendAuthenticationConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackendAuthenticationConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new BackendAuthenticationConfig in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the BackendAuthenticationConfig. Must be in the format
+                /// `projects/*/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.BackendAuthenticationConfig body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new BackendAuthenticationConfig in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.BackendAuthenticationConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the BackendAuthenticationConfig. Must be in the format
+                    /// `projects/*/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Short name of the BackendAuthenticationConfig resource to be created. This value
+                    /// should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and
+                    /// should not start with a number. E.g. "backend-auth-config".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("backendAuthenticationConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BackendAuthenticationConfigId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.BackendAuthenticationConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/backendAuthenticationConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("backendAuthenticationConfigId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "backendAuthenticationConfigId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single BackendAuthenticationConfig to BackendAuthenticationConfig.</summary>
+                /// <param name="name">
+                /// Required. A name of the BackendAuthenticationConfig to delete. Must be in the format
+                /// `projects/*/locations/{location}/backendAuthenticationConfigs/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single BackendAuthenticationConfig to BackendAuthenticationConfig.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the BackendAuthenticationConfig to delete. Must be in the format
+                    /// `projects/*/locations/{location}/backendAuthenticationConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Etag of the resource. If this is provided, it must match the server's etag.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backendAuthenticationConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets details of a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+                /// </summary>
+                /// <param name="name">
+                /// Required. A name of the BackendAuthenticationConfig to get. Must be in the format
+                /// `projects/*/locations/{location}/backendAuthenticationConfigs/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets details of a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+                /// </summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.BackendAuthenticationConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the BackendAuthenticationConfig to get. Must be in the format
+                    /// `projects/*/locations/{location}/backendAuthenticationConfigs/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backendAuthenticationConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists BackendAuthenticationConfigs in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the BackendAuthenticationConfigs should be listed,
+                /// specified in the format `projects/*/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists BackendAuthenticationConfigs in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListBackendAuthenticationConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the BackendAuthenticationConfigs should be listed,
+                    /// specified in the format `projects/*/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of BackendAuthenticationConfigs to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListBackendAuthenticationConfigsResponse` Indicates that this is
+                    /// a continuation of a prior `ListBackendAuthenticationConfigs` call, and that the system should
+                    /// return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/backendAuthenticationConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the parameters of a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the BackendAuthenticationConfig resource. It matches the pattern
+                /// `projects/*/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.BackendAuthenticationConfig body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the parameters of a single BackendAuthenticationConfig to BackendAuthenticationConfig.
+                /// </summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.BackendAuthenticationConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the BackendAuthenticationConfig resource. It matches the pattern
+                    /// `projects/*/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the
+                    /// BackendAuthenticationConfig resource by the update. The fields specified in the update_mask are
+                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
+                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.BackendAuthenticationConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backendAuthenticationConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -8150,7 +8523,11 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>Updates a single MirroringDeploymentGroup.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. Then name of the MirroringDeploymentGroup.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this deployment group, for example:
+                /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringDeploymentGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -8167,7 +8544,11 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. Then name of the MirroringDeploymentGroup.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this deployment group, for example:
+                    /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8257,7 +8638,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new MirroringDeployment in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringDeployment body, string parent)
@@ -8265,7 +8648,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new MirroringDeployment in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -8346,14 +8731,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single MirroringDeployment.</summary>
+                /// <summary>Deletes a deployment. See https://google.aip.dev/135.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single MirroringDeployment.</summary>
+                /// <summary>Deletes a deployment. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -8412,14 +8797,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single MirroringDeployment.</summary>
+                /// <summary>Gets a specific deployment. See https://google.aip.dev/131.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MirroringDeployment.</summary>
+                /// <summary>Gets a specific deployment. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.MirroringDeployment>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -8457,14 +8842,18 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Lists MirroringDeployments in a given project and location.</summary>
+                /// <summary>
+                /// Lists deployments in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 /// <param name="parent">Required. Parent value for ListMirroringDeploymentsRequest</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists MirroringDeployments in a given project and location.</summary>
+                /// <summary>
+                /// Lists deployments in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListMirroringDeploymentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -8553,15 +8942,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates a single MirroringDeployment.</summary>
+                /// <summary>Updates a deployment. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. The name of the MirroringDeployment.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this deployment, for example:
+                /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringDeployment body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single MirroringDeployment.</summary>
+                /// <summary>Updates a deployment. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -8572,7 +8965,11 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. The name of the MirroringDeployment.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this deployment, for example:
+                    /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8662,15 +9059,22 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new MirroringEndpointGroupAssociation in a given project and location.</summary>
+                /// <summary>
+                /// Creates an association in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Container (project and location) where the association will be created, e.g.
+                /// `projects/123456789/locations/global`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroupAssociation body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new MirroringEndpointGroupAssociation in a given project and location.</summary>
+                /// <summary>
+                /// Creates an association in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -8681,13 +9085,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Container (project and location) where the association will be created, e.g.
+                    /// `projects/123456789/locations/global`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// mirroring_endpoint_group_association_id from the method_signature of Create RPC
+                    /// Optional. ID for the new association. If not provided, the server will generate a unique ID. The
+                    /// ID must be a valid RFC 1035 resource name. The ID must be 1-63 characters long and match the
+                    /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter,
+                    /// and all following characters (except for the last character) must be a dash, lowercase letter,
+                    /// or digit. The last character must be a
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("mirroringEndpointGroupAssociationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MirroringEndpointGroupAssociationId { get; set; }
@@ -8751,14 +9161,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single MirroringEndpointGroupAssociation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes a single association. See https://google.aip.dev/135.</summary>
+                /// <param name="name">
+                /// Required. Full resource name of the association to delete, e.g.
+                /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single MirroringEndpointGroupAssociation.</summary>
+                /// <summary>Deletes a single association. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -8768,7 +9181,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. Full resource name of the association to delete, e.g.
+                    /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8817,14 +9233,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single MirroringEndpointGroupAssociation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets a specific association. See https://google.aip.dev/131.</summary>
+                /// <param name="name">
+                /// Required. Full resource name of the association to get, e.g.
+                /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MirroringEndpointGroupAssociation.</summary>
+                /// <summary>Gets a specific association. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroupAssociation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -8834,7 +9253,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. Full resource name of the association to get, e.g.
+                    /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8862,16 +9284,21 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Lists MirroringEndpointGroupAssociations in a given project and location.</summary>
+                /// <summary>
+                /// Lists associations in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 /// <param name="parent">
-                /// Required. Parent value for ListMirroringEndpointGroupAssociationsRequest
+                /// Required. Parent container (project and location) of the associations to list, e.g.
+                /// `projects/123456789/locations/global`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists MirroringEndpointGroupAssociations in a given project and location.</summary>
+                /// <summary>
+                /// Lists associations in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListMirroringEndpointGroupAssociationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -8881,11 +9308,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListMirroringEndpointGroupAssociationsRequest</summary>
+                    /// <summary>
+                    /// Required. Parent container (project and location) of the associations to list, e.g.
+                    /// `projects/123456789/locations/global`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that filters the results listed in the response. See
+                    /// https://google.aip.dev/160.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -8895,12 +9328,15 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A token identifying a page of results the server should return. See
+                    /// https://google.aip.dev/158.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -8960,15 +9396,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates a single MirroringEndpointGroupAssociation.</summary>
+                /// <summary>Updates an association. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+                /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroupAssociation body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single MirroringEndpointGroupAssociation.</summary>
+                /// <summary>Updates an association. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -8979,7 +9419,11 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+                    /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8997,10 +9441,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the
-                    /// MirroringEndpointGroupAssociation resource by the update. The fields specified in the
-                    /// update_mask are relative to the resource, not the full request. A field will be overwritten if
-                    /// it is in the mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the association by the
+                    /// update. See https://google.aip.dev/161.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -9069,7 +9511,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new MirroringEndpointGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates an endpoint group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroup body, string parent)
@@ -9077,7 +9521,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new MirroringEndpointGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates an endpoint group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -9158,14 +9604,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single MirroringEndpointGroup.</summary>
+                /// <summary>Deletes an endpoint group. See https://google.aip.dev/135.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single MirroringEndpointGroup.</summary>
+                /// <summary>Deletes an endpoint group. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -9224,14 +9670,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single MirroringEndpointGroup.</summary>
+                /// <summary>Gets a specific endpoint group. See https://google.aip.dev/131.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MirroringEndpointGroup.</summary>
+                /// <summary>Gets a specific endpoint group. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -9269,14 +9715,18 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Lists MirroringEndpointGroups in a given project and location.</summary>
+                /// <summary>
+                /// Lists endpoint groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 /// <param name="parent">Required. Parent value for ListMirroringEndpointGroupsRequest</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists MirroringEndpointGroups in a given project and location.</summary>
+                /// <summary>
+                /// Lists endpoint groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListMirroringEndpointGroupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -9365,17 +9815,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates a single MirroringEndpointGroup.</summary>
+                /// <summary>Updates an endpoint group. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.
+                /// Immutable. Identifier. The resource name of this endpoint group, for example:
+                /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/122
+                /// for more details.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single MirroringEndpointGroup.</summary>
+                /// <summary>Updates an endpoint group. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -9386,7 +9838,11 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this endpoint group, for example:
+                    /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -11298,6 +11754,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines what action to take for antivirus threats per protocol.</summary>
+    public class AntivirusOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Threat action override. For some threat types, only a subset of actions applies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Required. Protocol to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This
     /// resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint
@@ -11860,6 +12333,134 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// BackendAuthenticationConfig message groups the TrustConfig together with other settings that control how the
+    /// load balancer authenticates, and expresses its identity to, the backend: * `trustConfig` is the attached
+    /// TrustConfig. * `wellKnownRoots` indicates whether the load balance should trust backend server certificates that
+    /// are issued by public certificate authorities, in addition to certificates trusted by the TrustConfig. *
+    /// `clientCertificate` is a client certificate that the load balancer uses to express its identity to the backend,
+    /// if the connection to the backend uses mTLS. You can attach the BackendAuthenticationConfig to the load
+    /// balancer’s BackendService directly determining how that BackendService negotiates TLS.
+    /// </summary>
+    public class BackendAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A reference to a certificatemanager.googleapis.com.Certificate resource. This is a relative
+        /// resource path following the form "projects/{project}/locations/{location}/certificates/{certificate}". Used
+        /// by a BackendService to negotiate mTLS when the backend connection uses TLS and the backend requests a client
+        /// certificate. Must have a CLIENT_AUTH scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
+        public virtual string ClientCertificate { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Free-text description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Etag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Set of label tags associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Name of the BackendAuthenticationConfig resource. It matches the pattern
+        /// `projects/*/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace. This
+        /// is a relative resource path following the form
+        /// "projects/{project}/locations/{location}/trustConfigs/{trust_config}". A BackendService uses the chain of
+        /// trust represented by this TrustConfig, if specified, to validate the server certificates presented by the
+        /// backend. Required unless wellKnownRoots is set to PUBLIC_ROOTS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustConfig")]
+        public virtual string TrustConfig { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Well known roots to use for server certificate validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wellKnownRoots")]
+        public virtual string WellKnownRoots { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12228,6 +12829,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. Current state of the endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -13065,7 +13674,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing InterceptDeploymentGroup object NEXT ID: 10</summary>
+    /// <summary>Message describing InterceptDeploymentGroup object</summary>
     public class InterceptDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The list of Intercept Endpoint Groups that are connected to this resource.</summary>
@@ -13561,6 +14170,28 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response returned by the ListBackendAuthenticationConfigs method.</summary>
+    public class ListBackendAuthenticationConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of BackendAuthenticationConfig resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendAuthenticationConfigs")]
+        public virtual System.Collections.Generic.IList<BackendAuthenticationConfig> BackendAuthenticationConfigs { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response returned by the ListClientTlsPolicies method.</summary>
     public class ListClientTlsPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13774,14 +14405,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing MirroringEndpointGroupAssociations</summary>
+    /// <summary>Response message for listing associations.</summary>
     public class ListMirroringEndpointGroupAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of MirroringEndpointGroupAssociation</summary>
+        /// <summary>The list of associations returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroupAssociations")]
         public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociation> MirroringEndpointGroupAssociations { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token identifying a page of results the server should return. See https://google.aip.dev/158.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -13979,14 +14612,20 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringDeployment object NEXT ID: 10</summary>
+    /// <summary>
+    /// A deployment represents a zonal mirroring backend ready to accept GENEVE-encapsulated replica traffic, e.g. a
+    /// zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global
+    /// deployment group which represents a global mirroring service.
+    /// </summary>
     public class MirroringDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -14026,34 +14665,40 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded to. Format
-        /// is: projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+        /// Required. Immutable. The regional forwarding rule that fronts the mirroring collectors, for example:
+        /// `projects/123456789/regions/us-central1/forwardingRules/my-rule`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// Required. Immutable. The deployment group that this deployment is a part of, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringDeploymentGroup")]
         public virtual string MirroringDeploymentGroup { get; set; }
 
-        /// <summary>Immutable. Identifier. The name of the MirroringDeployment.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this deployment, for example:
+        /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See https://google.aip.dev/122 for
+        /// more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This part of the normal operation (e.g. linking a new association to the parent
+        /// group). See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the deployment.</summary>
+        /// <summary>Output only. The current state of the deployment. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -14061,7 +14706,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -14098,10 +14746,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringDeploymentGroup object NEXT ID: 10</summary>
+    /// <summary>
+    /// A deployment group aggregates many zonal mirroring backends (deployments) into a single global mirroring
+    /// service. Consumers can connect this service using an endpoint group.
+    /// </summary>
     public class MirroringDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The list of Mirroring Endpoint Groups that are connected to this resource.</summary>
+        /// <summary>Output only. The list of endpoint groups that are connected to this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectedEndpointGroups")]
         public virtual System.Collections.Generic.IList<MirroringDeploymentGroupConnectedEndpointGroup> ConnectedEndpointGroups { get; set; }
 
@@ -14109,7 +14760,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -14149,28 +14802,34 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Immutable. Identifier. Then name of the MirroringDeploymentGroup.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this deployment group, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/122 for
+        /// more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The network that is being used for the deployment. Format is:
-        /// projects/{project}/global/networks/{network}.
+        /// Required. Immutable. The network that will be used for all child deployments, for example:
+        /// `projects/{project}/global/networks/{network}`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This is part of the normal operation (e.g. adding a new deployment to the group)
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the deployment group.</summary>
+        /// <summary>Output only. The current state of the deployment group. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -14178,7 +14837,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -14218,7 +14880,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>An endpoint group connected to this deployment group.</summary>
     public class MirroringDeploymentGroupConnectedEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. A connected mirroring endpoint group.</summary>
+        /// <summary>
+        /// Output only. The connected endpoint group's resource name, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -14226,12 +14891,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringEndpointGroup object.</summary>
+    /// <summary>
+    /// An endpoint group is a consumer frontend for a deployment group (backend). In order to configure mirroring for a
+    /// network, consumers must create: - An association between their network and the endpoint group. - A security
+    /// profile that points to the endpoint group. - A mirroring rule that references the security profile (group).
+    /// </summary>
     public class MirroringEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. List of Mirroring Endpoint Group Associations that are associated to this endpoint group.
-        /// </summary>
+        /// <summary>Output only. List of associations to this endpoint group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociationDetails> Associations { get; set; }
 
@@ -14239,7 +14906,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -14279,28 +14948,34 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// Immutable. The deployment group that this DIRECT endpoint group is connected to, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringDeploymentGroup")]
         public virtual string MirroringDeploymentGroup { get; set; }
 
-        /// <summary>Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this endpoint group, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/122 for more
+        /// details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This is part of the normal operation (e.g. adding a new association to the
+        /// group). See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the endpoint group.</summary>
+        /// <summary>Output only. The current state of the endpoint group. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -14308,123 +14983,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message describing MirroringEndpointGroupAssociation object</summary>
-    public class MirroringEndpointGroupAssociation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. [Output only] Create time stamp</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Optional. Labels as key value pairs</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>Output only. The list of locations that this association is in and its details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationsDetails")]
-        public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociationLocationDetails> LocationsDetails { get; set; }
-
         /// <summary>
-        /// Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format is:
-        /// `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroup")]
-        public virtual string MirroringEndpointGroup { get; set; }
-
-        /// <summary>Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Required. Immutable. The VPC network associated. Format: projects/{project}/global/networks/{network}.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; }
-
-        /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
-        public virtual System.Nullable<bool> Reconciling { get; set; }
-
-        /// <summary>Output only. Current state of the endpoint group association.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. [Output only] Update time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -14462,24 +15024,160 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// This is a subset of the MirroringEndpointGroupAssociation message, containing fields to be used by the consumer.
+    /// An endpoint group association represents a link between a network and an endpoint group in the organization.
+    /// Creating an association creates the networking infrastructure linking the network to the endpoint group, but
+    /// does not enable mirroring by itself. To enable mirroring, the user must also create a network firewall policy
+    /// containing mirroring rules and associate it with the network.
     /// </summary>
-    public class MirroringEndpointGroupAssociationDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class MirroringEndpointGroupAssociation : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
-        /// Output only. The resource name of the MirroringEndpointGroupAssociation. Format:
-        /// projects/{project}/locations/{location}/mirroringEndpointGroupAssociations/{mirroringEndpointGroupAssociation}
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The list of locations where the association is present. This information is retrieved from the
+        /// linked endpoint group, and not configured as part of the association itself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationsDetails")]
+        public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociationLocationDetails> LocationsDetails { get; set; }
+
+        /// <summary>
+        /// Immutable. The endpoint group that this association is connected to, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroup")]
+        public virtual string MirroringEndpointGroup { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`. See
+        /// https://google.aip.dev/122 for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}.
+        /// Immutable. The VPC network that is associated. for example: `projects/123456789/global/networks/my-network`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Output only. Current state of the association.</summary>
+        /// <summary>
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This part of the normal operation (e.g. adding a new location to the target
+        /// deployment group). See https://google.aip.dev/128.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Current state of the endpoint group association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The endpoint group's view of a connected association.</summary>
+    public class MirroringEndpointGroupAssociationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The connected association's resource name, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-ega`. See
+        /// https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The associated network, for example: projects/123456789/global/networks/my-network. See
+        /// https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. Most recent known state of the association.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -14487,14 +15185,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about the association status in a specific cloud location.</summary>
+    /// <summary>Contains details about the state of an association in a specific cloud location.</summary>
     public class MirroringEndpointGroupAssociationLocationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The cloud location.</summary>
+        /// <summary>Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Output only. The association state in this location.</summary>
+        /// <summary>Output only. The current state of the association in this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -15152,6 +15850,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>ThreatPreventionProfile defines an action for specific threat signatures or severity levels.</summary>
     public class ThreatPreventionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration for overriding antivirus actions per protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("antivirusOverrides")]
+        public virtual System.Collections.Generic.IList<AntivirusOverride> AntivirusOverrides { get; set; }
+
         /// <summary>Optional. Configuration for overriding threats actions by severity match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severityOverrides")]
         public virtual System.Collections.Generic.IList<SeverityOverride> SeverityOverrides { get; set; }
