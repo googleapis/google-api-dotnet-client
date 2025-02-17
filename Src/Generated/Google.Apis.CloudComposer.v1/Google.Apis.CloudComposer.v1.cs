@@ -3282,7 +3282,7 @@ namespace Google.Apis.CloudComposer.v1.Data
     public class NetworkingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You
+        /// Optional. Indicates the user requested specific connection type between Tenant and Customer projects. You
         /// cannot set networking connection type in public IP environment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
