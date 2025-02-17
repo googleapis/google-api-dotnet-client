@@ -12586,6 +12586,21 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Native Build Info</summary>
+    public class BuildInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Build key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildKey")]
+        public virtual string BuildKey { get; set; }
+
+        /// <summary>Optional. Build value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildValue")]
+        public virtual string BuildValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to cancel a job.</summary>
     public class CancelJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13709,6 +13724,21 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Native SQL Execution Data</summary>
+    public class FallbackReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Fallback node information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackNode")]
+        public virtual string FallbackNode { get; set; }
+
+        /// <summary>Optional. Fallback to Spark reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackReason")]
+        public virtual string FallbackReasonValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15703,6 +15733,51 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetGkeCluster")]
         public virtual string TargetGkeCluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class NativeBuildInfoUiData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Build class of Native.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildClass")]
+        public virtual string BuildClass { get; set; }
+
+        /// <summary>Optional. Build related details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildInfo")]
+        public virtual System.Collections.Generic.IList<BuildInfo> BuildInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Native SQL Execution Data</summary>
+    public class NativeSqlExecutionUiData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Description of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. Execution ID of the Native SQL Execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual System.Nullable<long> ExecutionId { get; set; }
+
+        /// <summary>Optional. Description of the fallback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackDescription")]
+        public virtual string FallbackDescription { get; set; }
+
+        /// <summary>Optional. Fallback node to reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackNodeToReason")]
+        public virtual System.Collections.Generic.IList<FallbackReason> FallbackNodeToReason { get; set; }
+
+        /// <summary>Optional. Number of nodes fallen back to Spark.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFallbackNodes")]
+        public virtual System.Nullable<int> NumFallbackNodes { get; set; }
+
+        /// <summary>Optional. Number of nodes in Native.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numNativeNodes")]
+        public virtual System.Nullable<int> NumNativeNodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18421,6 +18496,14 @@ namespace Google.Apis.Dataproc.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("jobData")]
         public virtual JobData JobData { get; set; }
+
+        /// <summary>Native Build Info</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nativeBuildInfoUiData")]
+        public virtual NativeBuildInfoUiData NativeBuildInfoUiData { get; set; }
+
+        /// <summary>Native SQL Execution Info</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nativeSqlExecutionUiData")]
+        public virtual NativeSqlExecutionUiData NativeSqlExecutionUiData { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("poolData")]
         public virtual PoolData PoolData { get; set; }
