@@ -2685,6 +2685,59 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                     }
                 }
 
+                /// <summary>Imports data to the cluster. Imperative only.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The resource name of the cluster.</param>
+                public virtual ImportRequest Import(Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.ImportClusterRequest body, string name)
+                {
+                    return new ImportRequest(this.service, body, name);
+                }
+
+                /// <summary>Imports data to the cluster. Imperative only.</summary>
+                public class ImportRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.ImportClusterRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.ImportClusterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "import";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:import";
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists Clusters in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The name of the parent resource. For the required format, see the comment on the
@@ -4748,6 +4801,45 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for importing data in CSV format.</summary>
+    public class CsvImportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The columns to which CSV data is imported. If not specified, all columns of the database table are
+        /// loaded with CSV data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<string> Columns { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the character that should appear before a data character that needs to be escaped. The
+        /// default is same as quote character. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("escapeCharacter")]
+        public virtual string EscapeCharacter { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the character that separates columns within each row (line) of the file. The default is
+        /// comma. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
+        public virtual string FieldDelimiter { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the quoting character to be used when a data value is quoted. The default is
+        /// double-quote. The value of this argument has to be a character in Hex ASCII Code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quoteCharacter")]
+        public virtual string QuoteCharacter { get; set; }
+
+        /// <summary>Required. The database table to import CSV file into.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -4966,6 +5058,43 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Import cluster request.</summary>
+    public class ImportClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Options for importing data in CSV format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvImportOptions")]
+        public virtual CsvImportOptions CsvImportOptions { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the database to which the import will be done. For import from SQL file, this is required
+        /// only if the file does not specify a database. Note - Value provided should be the same as expected from
+        /// `SELECT current_database();` and NOT as a resource reference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>
+        /// Required. The path to the file in Google Cloud Storage where the source file for import will be stored. The
+        /// URI is in the form `gs://bucketName/fileName`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>Options for importing data in SQL format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlImportOptions")]
+        public virtual SqlImportOptions SqlImportOptions { get; set; }
+
+        /// <summary>
+        /// Optional. Database user to be used for importing the data. Note - Value provided should be the same as
+        /// expected from `SELECT current_user;` and NOT as a resource reference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6151,6 +6280,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for importing data in SQL format.</summary>
+    public class SqlImportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>SSL configuration.</summary>
     public class SslConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6616,7 +6752,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 23</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 24</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -6746,6 +6882,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Suspension reason for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
+        public virtual string SuspensionReason { get; set; }
 
         /// <summary>Optional. Tags associated with this resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagsSet")]
@@ -6913,6 +7053,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Information about the last backup attempt for this database</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
+
+        /// <summary>Whether deletion protection is enabled for this internal resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
+        public virtual System.Nullable<bool> IsDeletionProtectionEnabled { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual StorageDatabasecenterProtoCommonProduct Product { get; set; }
