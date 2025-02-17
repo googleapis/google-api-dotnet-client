@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2456,7 +2456,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>
         /// The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date,
         /// `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be
-        /// greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and
+        /// greater than or equal to the timestamp corresponding to the combination of schedule_start_date and
         /// start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and
         /// `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If
         /// `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
@@ -3034,7 +3034,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// When to overwrite objects that already exist in the sink. The default is that only objects that are
-        /// different from the source are ovewritten. If true, all objects in the sink whose name matches an object in
+        /// different from the source are overwritten. If true, all objects in the sink whose name matches an object in
         /// the source are overwritten with the source object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwriteObjectsAlreadyExistingInSink")]
