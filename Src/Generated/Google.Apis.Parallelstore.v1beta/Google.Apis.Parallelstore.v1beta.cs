@@ -1404,8 +1404,8 @@ namespace Google.Apis.Parallelstore.v1beta.Data
         }
 
         /// <summary>
-        /// Optional. The deployment type of the instance. Allowed values are: * `SCRATCH`: the instance is a scratch
-        /// instance. * `PERSISTENT`: the instance is a persistent instance.
+        /// Optional. Immutable. The deployment type of the instance. Allowed values are: * `SCRATCH`: the instance is a
+        /// scratch instance. * `PERSISTENT`: the instance is a persistent instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentType")]
         public virtual string DeploymentType { get; set; }
@@ -1415,10 +1415,10 @@ namespace Google.Apis.Parallelstore.v1beta.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Stripe level for directories. Allowed values are: * `DIRECTORY_STRIPE_LEVEL_MIN`: recommended when
-        /// directories contain a small number of files. * `DIRECTORY_STRIPE_LEVEL_BALANCED`: balances performance for
-        /// workloads involving a mix of small and large directories. * `DIRECTORY_STRIPE_LEVEL_MAX`: recommended for
-        /// directories with a large number of files.
+        /// Optional. Immutable. Stripe level for directories. Allowed values are: * `DIRECTORY_STRIPE_LEVEL_MIN`:
+        /// recommended when directories contain a small number of files. * `DIRECTORY_STRIPE_LEVEL_BALANCED`: balances
+        /// performance for workloads involving a mix of small and large directories. * `DIRECTORY_STRIPE_LEVEL_MAX`:
+        /// recommended for directories with a large number of files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoryStripeLevel")]
         public virtual string DirectoryStripeLevel { get; set; }
@@ -1431,9 +1431,10 @@ namespace Google.Apis.Parallelstore.v1beta.Data
         public virtual string EffectiveReservedIpRange { get; set; }
 
         /// <summary>
-        /// Optional. Stripe level for files. Allowed values are: * `FILE_STRIPE_LEVEL_MIN`: offers the best performance
-        /// for small size files. * `FILE_STRIPE_LEVEL_BALANCED`: balances performance for workloads involving a mix of
-        /// small and large files. * `FILE_STRIPE_LEVEL_MAX`: higher throughput performance for larger files.
+        /// Optional. Immutable. Stripe level for files. Allowed values are: * `FILE_STRIPE_LEVEL_MIN`: offers the best
+        /// performance for small size files. * `FILE_STRIPE_LEVEL_BALANCED`: balances performance for workloads
+        /// involving a mix of small and large files. * `FILE_STRIPE_LEVEL_MAX`: higher throughput performance for
+        /// larger files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileStripeLevel")]
         public virtual string FileStripeLevel { get; set; }
