@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -548,6 +548,61 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Create a POSIX account if it doesn't exist.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The unique ID for the user in format `users/{user}/projects/{project}`.
+            /// </param>
+            public virtual ProvisionPosixAccountRequest ProvisionPosixAccount(Google.Apis.CloudOSLogin.v1alpha.Data.ProvisionPosixAccountRequest body, string name)
+            {
+                return new ProvisionPosixAccountRequest(this.service, body, name);
+            }
+
+            /// <summary>Create a POSIX account if it doesn't exist.</summary>
+            public class ProvisionPosixAccountRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1alpha.Data.PosixAccount>
+            {
+                /// <summary>Constructs a new ProvisionPosixAccount request.</summary>
+                public ProvisionPosixAccountRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudOSLogin.v1alpha.Data.ProvisionPosixAccountRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The unique ID for the user in format `users/{user}/projects/{project}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudOSLogin.v1alpha.Data.ProvisionPosixAccountRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "provisionPosixAccount";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes ProvisionPosixAccount parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/projects/[^/]+$",
                     });
                 }
             }
@@ -1152,6 +1207,20 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
         /// <summary>The username of the POSIX account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request message for creating a POSIX account entry.</summary>
+    public class ProvisionPosixAccountRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The regions to wait for a POSIX account to be written to before returning a response. If
+        /// unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
