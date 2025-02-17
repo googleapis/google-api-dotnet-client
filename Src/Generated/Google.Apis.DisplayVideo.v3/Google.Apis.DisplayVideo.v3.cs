@@ -27516,11 +27516,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Optional. The optimization objective of the insertion order. **This field is only available to allowlisted
-        /// customers.** If a customer is not allowlisted, this field will be null and attempts to set it will return an
-        /// error.
-        /// </summary>
+        /// <summary>Optional. The optimization objective of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationObjective")]
         public virtual string OptimizationObjective { get; set; }
 
