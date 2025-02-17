@@ -5308,10 +5308,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Required. The resource type to which the `BackupPlan` will be applied. Examples include,
-        /// "compute.googleapis.com/Instance", "sqladmin.googleapis.com/Instance", or "alloydb.googleapis.com/Cluster".
-        /// </summary>
+        /// <summary>Required. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
@@ -5425,7 +5422,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
-        /// <summary>Required. Immutable. Resource type of workload on which backupplan is applied</summary>
+        /// <summary>Required. Immutable. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
