@@ -4498,9 +4498,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         }
 
         /// <summary>
-        /// Optional. User-defined URLs for accessing content published by this CertificateAuthority, including the CA
-        /// certificate and the PEM-encoded CRLs. The service does not publish content to these URLs. It is up to the
-        /// user to mirror content to these URLs.
+        /// Optional. User-defined URLs for CA certificate and CRLs. The service does not publish content to these URLs.
+        /// It is up to the user to mirror content to these URLs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedAccessUrls")]
         public virtual UserDefinedAccessUrls UserDefinedAccessUrls { get; set; }
@@ -6325,14 +6324,14 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     {
         /// <summary>
         /// Optional. A list of URLs where the issuer CA certificate may be downloaded, which appears in the "Authority
-        /// Information Access" extension in the certificate.
+        /// Information Access" extension in the certificate. If specified, the default GCS URLs will be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiaIssuingCertificateUrls")]
         public virtual System.Collections.Generic.IList<string> AiaIssuingCertificateUrls { get; set; }
 
         /// <summary>
         /// Optional. A list of URLs where to obtain CRL information, i.e. the DistributionPoint.fullName described by
-        /// https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        /// https://tools.ietf.org/html/rfc5280#section-4.2.1.13. If specified, the default GCS URLs will be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crlAccessUrls")]
         public virtual System.Collections.Generic.IList<string> CrlAccessUrls { get; set; }
