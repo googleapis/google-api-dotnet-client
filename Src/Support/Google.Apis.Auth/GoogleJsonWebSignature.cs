@@ -19,6 +19,7 @@ using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using static Google.Apis.Auth.SignedTokenVerification;
 
@@ -152,6 +153,7 @@ namespace Google.Apis.Auth
         /// <summary>
         /// Validates a Google-issued Json Web Token (JWT).
         /// Will throw a <see cref="InvalidJwtException"/> if the specified JWT fails any validation check.
+        /// If you want to use a cancellation token you can use <see cref="ValidateAsync(string,ValidationSettings,CancellationToken)"/>
         /// </summary>
         /// <remarks>
         /// <para>Follows the procedure to
@@ -178,15 +180,50 @@ namespace Google.Apis.Auth
         public static Task<Payload> ValidateAsync(string jwt, ValidationSettings validationSettings) =>
             ValidateInternalAsync(jwt, validationSettings);
 
+        /// <summary>
+        /// Validates a Google-issued Json Web Token (JWT).
+        /// Will throw a <see cref="InvalidJwtException"/> if the specified JWT fails any validation check.
+        /// </summary>
+        /// <remarks>
+        /// <para>Follows the procedure to
+        /// <see href="https://developers.google.com/identity/protocols/OpenIDConnect#validatinganidtoken">validate a JWT ID token</see>.
+        /// </para>
+        /// <para>
+        /// Issued-at validation and expiry validation is performed using the clock on this local client,
+        /// so local clock inaccuracies can lead to incorrect validation results.
+        /// Use <see cref="ValidationSettings.IssuedAtClockTolerance"/> and <see cref="ValidationSettings.ExpirationTimeClockTolerance"/>
+        /// to allow for local clock inaccuracy
+        /// <c>IssuedAtClockTolerance</c> defaults to 30 seconds; it is very unlikely a JWT will be issued that isn't already valid.
+        /// <c>ExpirationTimeClockTolerance</c> defaults to zero seconds; in some use-cases it may be useful to set this to a negative
+        /// value to help ensure that passing local validation means it will pass server validation.
+        /// Regardless of whether local validation passed, code must always correctly handle an invalid JWT error
+        /// from the server.
+        /// </para>
+        /// <para>Google certificates are cached, and refreshed once per hour. This can be overridden by setting
+        /// <see cref="ValidationSettings.ForceGoogleCertRefresh"/> to true.</para>
+        /// </remarks>
+        /// <param name="jwt">The JWT to validate.</param>
+        /// <param name="validationSettings">Specifies how to carry out the validation.</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>The payload of the verified token.</returns>
+        /// <exception cref="InvalidJwtException">If the token does not pass verification.</exception>
+        public static Task<Payload> ValidateAsync(string jwt, ValidationSettings validationSettings, CancellationToken cancellationToken) =>
+            ValidateInternalAsync(jwt, validationSettings, cancellationToken);
+
         // internal for testing
-        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings)
+        internal static Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings)
+        {
+            return ValidateInternalAsync(jwt, validationSettings, default);
+        }
+
+        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings, CancellationToken cancellationToken)
         {
             var settings = validationSettings.ThrowIfNull(nameof(validationSettings)).Clone();
             var verificationOptions = validationSettings.ToVerificationOptions();
             var signedToken = SignedToken<Header, Payload>.FromSignedToken(jwt);
 
             // Start general validation task ...
-            var generalValidationTask = SignedTokenVerification.VerifySignedTokenAsync(signedToken, verificationOptions, default);
+            var generalValidationTask = SignedTokenVerification.VerifySignedTokenAsync(signedToken, verificationOptions, cancellationToken);
 
             // ... and do Google specific validation in the meantime.
 
