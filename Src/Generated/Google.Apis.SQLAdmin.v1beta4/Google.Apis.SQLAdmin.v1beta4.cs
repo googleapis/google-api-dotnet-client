@@ -35,6 +35,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public SQLAdminService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             BackupRuns = new BackupRunsResource(this);
+            Backups = new BackupsResource(this);
             Connect = new ConnectResource(this);
             Databases = new DatabasesResource(this);
             Flags = new FlagsResource(this);
@@ -94,6 +95,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         /// <summary>Gets the BackupRuns resource.</summary>
         public virtual BackupRunsResource BackupRuns { get; }
+
+        /// <summary>Gets the Backups resource.</summary>
+        public virtual BackupsResource Backups { get; }
 
         /// <summary>Gets the Connect resource.</summary>
         public virtual ConnectResource Connect { get; }
@@ -624,6 +628,352 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "backups" collection of methods.</summary>
+    public class BackupsResource
+    {
+        private const string Resource = "backups";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BackupsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Creates a backup for a Cloud SQL instance. This API can be used only to create on-demand backups.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The parent resource where this backup is created. Format: projects/{project}
+        /// </param>
+        public virtual CreateBackupRequest CreateBackup(Google.Apis.SQLAdmin.v1beta4.Data.Backup body, string parent)
+        {
+            return new CreateBackupRequest(this.service, body, parent);
+        }
+
+        /// <summary>
+        /// Creates a backup for a Cloud SQL instance. This API can be used only to create on-demand backups.
+        /// </summary>
+        public class CreateBackupRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new CreateBackup request.</summary>
+            public CreateBackupRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.Backup body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The parent resource where this backup is created. Format: projects/{project}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.Backup Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createBackup";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+parent}/backups";
+
+            /// <summary>Initializes CreateBackup parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Deletes the backup.</summary>
+        /// <param name="name">
+        /// Required. The name of the backup to delete. Format: projects/{project}/backups/{backup}
+        /// </param>
+        public virtual DeleteBackupRequest DeleteBackup(string name)
+        {
+            return new DeleteBackupRequest(this.service, name);
+        }
+
+        /// <summary>Deletes the backup.</summary>
+        public class DeleteBackupRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new DeleteBackup request.</summary>
+            public DeleteBackupRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the backup to delete. Format: projects/{project}/backups/{backup}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "deleteBackup";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+name}";
+
+            /// <summary>Initializes DeleteBackup parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/backups/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Retrieves a resource containing information about a backup.</summary>
+        /// <param name="name">
+        /// Required. The name of the backup to retrieve. Format: projects/{project}/backups/{backup}
+        /// </param>
+        public virtual GetBackupRequest GetBackup(string name)
+        {
+            return new GetBackupRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves a resource containing information about a backup.</summary>
+        public class GetBackupRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Backup>
+        {
+            /// <summary>Constructs a new GetBackup request.</summary>
+            public GetBackupRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the backup to retrieve. Format: projects/{project}/backups/{backup}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getBackup";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+name}";
+
+            /// <summary>Initializes GetBackup parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/backups/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists all backups associated with the project.</summary>
+        /// <param name="parent">
+        /// Required. The parent that owns this collection of backups. Format: projects/{project}
+        /// </param>
+        public virtual ListBackupsRequest ListBackups(string parent)
+        {
+            return new ListBackupsRequest(this.service, parent);
+        }
+
+        /// <summary>Lists all backups associated with the project.</summary>
+        public class ListBackupsRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.ListBackupsResponse>
+        {
+            /// <summary>Constructs a new ListBackups request.</summary>
+            public ListBackupsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>Required. The parent that owns this collection of backups. Format: projects/{project}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// Multiple filter queries are separated by spaces. For example, 'instance:abc type:FINAL. You can filter
+            /// by type, instance name, creation time, or location.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of backups to return per response. The service might return fewer backups than this
+            /// value. If a value for this parameter isn't specified, then, at most, 500 backups are returned. The
+            /// maximum value is 2,000. Any values that you set, which are greater than 2,000, are changed to 2,000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A page token, received from a previous `ListBackups` call. Provide this to retrieve the subsequent page.
+            /// When paginating, all other parameters provided to `ListBackups` must match the call that provided the
+            /// page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listBackups";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+parent}/backups";
+
+            /// <summary>Initializes ListBackups parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the retention period and the description of the backup. You can use this API to update final backups
+        /// only.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}
+        /// </param>
+        public virtual UpdateBackupRequest UpdateBackup(Google.Apis.SQLAdmin.v1beta4.Data.Backup body, string name)
+        {
+            return new UpdateBackupRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the retention period and the description of the backup. You can use this API to update final backups
+        /// only.
+        /// </summary>
+        public class UpdateBackupRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateBackup request.</summary>
+            public UpdateBackupRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.Backup body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// The list of fields that you can update. You can update only the description and retention period of the
+            /// final backup.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.Backup Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateBackup";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+name}";
+
+            /// <summary>Initializes UpdateBackup parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/backups/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1820,6 +2170,49 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Flag to opt-in for final backup. By default, it is turned off.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enableFinalBackup", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnableFinalBackup { get; set; }
+
+            /// <summary>Optional. The description of the final backup.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("finalBackupDescription", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FinalBackupDescription { get; set; }
+
+            private object _finalBackupExpiryTime;
+
+            /// <summary>
+            /// String representation of <see cref="FinalBackupExpiryTimeDateTimeOffset"/>, formatted for inclusion in
+            /// the HTTP request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("finalBackupExpiryTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FinalBackupExpiryTimeRaw { get; private set; }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="FinalBackupExpiryTimeRaw"/>.</summary>
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinalBackupExpiryTimeDateTimeOffset instead.")]
+            public virtual object FinalBackupExpiryTime
+            {
+                get => _finalBackupExpiryTime;
+                set
+                {
+                    FinalBackupExpiryTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                    _finalBackupExpiryTime = value;
+                }
+            }
+
+            public virtual System.DateTimeOffset? FinalBackupExpiryTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinalBackupExpiryTimeRaw);
+                set
+                {
+                    FinalBackupExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                    _finalBackupExpiryTime = value;
+                }
+            }
+
+            /// <summary>Optional. Retention period of the final backup.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("finalBackupTtlDays", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> FinalBackupTtlDays { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -1846,6 +2239,38 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enableFinalBackup", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enableFinalBackup",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("finalBackupDescription", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "finalBackupDescription",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("finalBackupExpiryTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "finalBackupExpiryTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("finalBackupTtlDays", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "finalBackupTtlDays",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -5072,6 +5497,149 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A backup resource.</summary>
+    public class Backup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. This output contains the following values: start_time: All database writes up to this time are
+        /// available. end_time: Any database writes after this time aren't available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupInterval")]
+        public virtual Interval BackupInterval { get; set; }
+
+        /// <summary>Output only. Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupKind")]
+        public virtual string BackupKind { get; set; }
+
+        /// <summary>Output only. The mapping to backup run resource used for IAM validations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual string BackupRun { get; set; }
+
+        /// <summary>The description of this backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Information about why the backup operation fails (for example, when the backup state fails).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual OperationError Error { get; set; }
+
+        private string _expiryTimeRaw;
+
+        private object _expiryTime;
+
+        /// <summary>Backup expiration time. A UTC timestamp of when this resource expired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
+        public virtual string ExpiryTimeRaw
+        {
+            get => _expiryTimeRaw;
+            set
+            {
+                _expiryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expiryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpiryTimeDateTimeOffset instead.")]
+        public virtual object ExpiryTime
+        {
+            get => _expiryTime;
+            set
+            {
+                _expiryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expiryTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The name of the database instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>Output only. This is always `sql#backup`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. This output contains the encryption configuration for a backup and the resource name of the KMS
+        /// key for disk encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Output only. This output contains the encryption status for a backup and the version of the KMS key that's
+        /// used to encrypt the Cloud SQL instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>The storage location of the backups. The location can be multi-regional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Output only. The maximum chargeable bytes for the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxChargeableBytes")]
+        public virtual System.Nullable<long> MaxChargeableBytes { get; set; }
+
+        /// <summary>Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. This status indicates whether the backup satisfies PZI. The status is reserved for future use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>
+        /// Output only. This status indicates whether the backup satisfies PZS. The status is reserved for future use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Output only. The URI of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. The state of this backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. This output contains a backup time zone. If a Cloud SQL for SQL Server instance has a different
+        /// time zone from the backup's time zone, then restores to the instance won't happen.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>
+        /// Input only. The time-to-live (TTL) interval for this resource (in days). For example: ttlDays:7 means 7
+        /// days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttlDays")]
+        public virtual System.Nullable<long> TtlDays { get; set; }
+
+        /// <summary>
+        /// Output only. The type of this backup. The type can be "AUTOMATED", "ON_DEMAND", or “FINAL”.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance backup configuration.</summary>
     public class BackupConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5137,6 +5705,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always `sql#backupContext`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The name of the backup. Format: projects/{project}/backups/{backup}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5798,6 +6370,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
         public virtual GeminiInstanceConfig GeminiConfig { get; set; }
 
+        /// <summary>
+        /// Input only. Determines whether an in-place major version upgrade of replicas happens when an in-place major
+        /// version upgrade of a primary instance is initiated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeReplicasForMajorVersionUpgrade")]
+        public virtual System.Nullable<bool> IncludeReplicasForMajorVersionUpgrade { get; set; }
+
         /// <summary>The instance type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
@@ -6227,6 +6806,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sqlExportOptions")]
         public virtual SqlExportOptionsData SqlExportOptions { get; set; }
 
+        /// <summary>Optional. Export parameters specific to SQL Server TDE certificates</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tdeExportOptions")]
+        public virtual TdeExportOptionsData TdeExportOptions { get; set; }
+
         /// <summary>
         /// The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form
         /// `gs://bucketName/fileName`. If the file already exists, the request succeeds, but the operation fails. If
@@ -6444,6 +7027,32 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("ifExists")]
                 public virtual System.Nullable<bool> IfExists { get; set; }
             }
+        }
+
+        /// <summary>Optional. Export parameters specific to SQL Server TDE certificates</summary>
+        public class TdeExportOptionsData
+        {
+            /// <summary>
+            /// Required. Path to the TDE certificate public key in the form gs://bucketName/fileName. The instance must
+            /// have write access to the location. Applicable only for SQL Server instances.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("certificatePath")]
+            public virtual string CertificatePath { get; set; }
+
+            /// <summary>Required. Certificate name. Applicable only for SQL Server instances.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name { get; set; }
+
+            /// <summary>Required. Password that encrypts the private key.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("privateKeyPassword")]
+            public virtual string PrivateKeyPassword { get; set; }
+
+            /// <summary>
+            /// Required. Path to the TDE certificate private key in the form gs://bucketName/fileName. The instance
+            /// must have write access to the location. Applicable only for SQL Server instances.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("privateKeyPath")]
+            public virtual string PrivateKeyPath { get; set; }
         }
     }
 
@@ -6694,6 +7303,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual SqlImportOptionsData SqlImportOptions { get; set; }
 
         /// <summary>
+        /// Optional. Import parameters specific to SQL Server .TDE files Import parameters specific to SQL Server TDE
+        /// certificates
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tdeImportOptions")]
+        public virtual TdeImportOptionsData TdeImportOptions { get; set; }
+
+        /// <summary>
         /// Path to the import file in Cloud Storage, in the form `gs://bucketName/fileName`. Compressed gzip files
         /// (.gz) are supported when `fileType` is `SQL`. The instance must have write permissions to the bucket and
         /// read access to the file.
@@ -6792,6 +7408,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("certPath")]
                 public virtual string CertPath { get; set; }
 
+                /// <summary>Optional. Whether the imported file remains encrypted.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("keepEncrypted")]
+                public virtual System.Nullable<bool> KeepEncrypted { get; set; }
+
                 /// <summary>Password that encrypts the private key</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("pvkPassword")]
                 public virtual string PvkPassword { get; set; }
@@ -6873,6 +7493,35 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("ifExists")]
                 public virtual System.Nullable<bool> IfExists { get; set; }
             }
+        }
+
+        /// <summary>
+        /// Optional. Import parameters specific to SQL Server .TDE files Import parameters specific to SQL Server TDE
+        /// certificates
+        /// </summary>
+        public class TdeImportOptionsData
+        {
+            /// <summary>
+            /// Required. Path to the TDE certificate public key in the form gs://bucketName/fileName. The instance must
+            /// have read access to the file. Applicable only for SQL Server instances.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("certificatePath")]
+            public virtual string CertificatePath { get; set; }
+
+            /// <summary>Required. Certificate name. Applicable only for SQL Server instances.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name { get; set; }
+
+            /// <summary>Required. Password that encrypts the private key.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("privateKeyPassword")]
+            public virtual string PrivateKeyPassword { get; set; }
+
+            /// <summary>
+            /// Required. Path to the TDE certificate private key in the form gs://bucketName/fileName. The instance
+            /// must have read access to the file. Applicable only for SQL Server instances.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("privateKeyPath")]
+            public virtual string PrivateKeyPath { get; set; }
         }
     }
 
@@ -7101,9 +7750,25 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance restore backup request.</summary>
     public class InstancesRestoreBackupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The name of the backup that's used to restore a Cloud SQL instance: Format:
+        /// projects/{project-id}/backups/{backup-uid}. Only one of restore_backup_context, backup, backupdr_backup can
+        /// be passed to the input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
         /// <summary>Parameters required to perform the restore backup operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreBackupContext")]
         public virtual RestoreBackupContext RestoreBackupContext { get; set; }
+
+        /// <summary>
+        /// Optional. By using this parameter, Cloud SQL overrides any instance settings that it stored with the
+        /// instance settings that you want to restore. You can't change the Instance's major database version and you
+        /// can only increase the disk size. You can use this field to restore new instances only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreInstanceSettings")]
+        public virtual DatabaseInstance RestoreInstanceSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7137,6 +7802,97 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Contains details about the truncate log operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truncateLogContext")]
         public virtual TruncateLogContext TruncateLogContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7278,6 +8034,30 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response payload containing a list of the backups.</summary>
+    public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, then there
+        /// aren't subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// If a region isn't unavailable or if an unknown error occurs, then a warning message is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<ApiWarning> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
