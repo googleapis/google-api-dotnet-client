@@ -5726,6 +5726,13 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specific details for an AWS RDS database deployment.</summary>
+    public class AwsRds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Azure VM specific details.</summary>
     public class AzureVmPlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6041,6 +6048,10 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         /// <summary>Output only. Aggregated stats for the database deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregatedStats")]
         public virtual DatabaseDeploymentDetailsAggregatedStats AggregatedStats { get; set; }
+
+        /// <summary>Optional. Details of an AWS RDS instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRds")]
+        public virtual AwsRds AwsRds { get; set; }
 
         /// <summary>Optional. The database deployment edition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
@@ -6582,6 +6593,25 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Disk partition details.</summary>
+    public class DiskPartitionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Total free space of all partitions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeSpaceBytes")]
+        public virtual System.Nullable<long> FreeSpaceBytes { get; set; }
+
+        /// <summary>Optional. List of partitions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
+        public virtual DiskPartitionList Partitions { get; set; }
+
+        /// <summary>Output only. Total capacity of all partitions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCapacityBytes")]
+        public virtual System.Nullable<long> TotalCapacityBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Disk partition list.</summary>
     public class DiskPartitionList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6597,17 +6627,23 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     public class DiskUsageSample : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Average IOPS sampled over a short window. Must be non-negative. Must be equal to the sum of read
-        /// and write if one of them is positive. if both read and write are zero they are ignored.
+        /// Optional. Average IOPS sampled over a short window. Must be non-negative. If read or write are set, the sum
+        /// of read and write will override the value of the average_iops.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageIops")]
         public virtual System.Nullable<float> AverageIops { get; set; }
 
-        /// <summary>Optional. Average read IOPS sampled over a short window. Must be non-negative.</summary>
+        /// <summary>
+        /// Optional. Average read IOPS sampled over a short window. Must be non-negative. If both read and write are
+        /// zero they are ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageReadIops")]
         public virtual System.Nullable<float> AverageReadIops { get; set; }
 
-        /// <summary>Optional. Average write IOPS sampled over a short window. Must be non-negative.</summary>
+        /// <summary>
+        /// Optional. Average write IOPS sampled over a short window. Must be non-negative. If both read and write are
+        /// zero they are ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageWriteIops")]
         public virtual System.Nullable<float> AverageWriteIops { get; set; }
 
@@ -7912,6 +7948,13 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. Disk partitions details. Note: Partitions are not necessarily mounted on local disks and therefore
+        /// might not have a one-to-one correspondence with local disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskPartitions")]
+        public virtual DiskPartitionDetails DiskPartitions { get; set; }
 
         /// <summary>Disk details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
