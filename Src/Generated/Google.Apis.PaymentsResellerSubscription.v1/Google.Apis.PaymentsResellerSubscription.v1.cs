@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1581,6 +1581,20 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Payload specific for Google Home products.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This identifies the structure ID on partner side that the subscription should be applied to. Only
+        /// required when the partner requires structure mapping.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerStructureId")]
+        public virtual string PartnerStructureId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Payload specific to Google One products.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1738,6 +1752,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Specifies product specific payload.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Payload specific to Google Home products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleHomePayload")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload GoogleHomePayload { get; set; }
+
         /// <summary>Product-specific payloads. Payload specific to Google One products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleOnePayload")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload GoogleOnePayload { get; set; }
