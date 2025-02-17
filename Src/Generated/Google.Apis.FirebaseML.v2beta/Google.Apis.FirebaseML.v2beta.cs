@@ -1884,8 +1884,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1Tool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. CodeExecution tool type. Enables the model to execute code as part of generation. This field is
-        /// only used by the Gemini Developer API services.
+        /// Optional. CodeExecution tool type. Enables the model to execute code as part of generation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeExecution")]
         public virtual GoogleCloudAiplatformV1beta1ToolCodeExecution CodeExecution { get; set; }
