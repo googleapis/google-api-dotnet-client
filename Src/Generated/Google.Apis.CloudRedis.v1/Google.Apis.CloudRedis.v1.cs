@@ -3796,7 +3796,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 23</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 24</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -3926,6 +3926,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Suspension reason for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
+        public virtual string SuspensionReason { get; set; }
 
         /// <summary>Optional. Tags associated with this resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagsSet")]
@@ -4606,10 +4610,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> RedisConfigs { get; set; }
 
         /// <summary>
-        /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently,
-        /// the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0
-        /// compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
-        /// * `REDIS_7_0` for Redis 7.0 compatibility
+        /// Optional. The version of Redis software. If not provided, the default version will be used. Currently, the
+        /// supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility *
+        /// `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility * `REDIS_7_0` for Redis
+        /// 7.0 compatibility (default) * `REDIS_7_2` for Redis 7.2 compatibility
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; }
@@ -4705,6 +4709,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Information about the last backup attempt for this database</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual BackupRun BackupRun { get; set; }
+
+        /// <summary>Whether deletion protection is enabled for this internal resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
+        public virtual System.Nullable<bool> IsDeletionProtectionEnabled { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual Product Product { get; set; }
@@ -6178,6 +6186,10 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>Represents information about an updating cluster.</summary>
     public class UpdateInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Target node type for redis cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetNodeType")]
+        public virtual string TargetNodeType { get; set; }
+
         /// <summary>Target number of replica nodes per shard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetReplicaCount")]
         public virtual System.Nullable<int> TargetReplicaCount { get; set; }
