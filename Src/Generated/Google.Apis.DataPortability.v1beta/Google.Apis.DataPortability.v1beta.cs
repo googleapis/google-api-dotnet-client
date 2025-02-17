@@ -692,6 +692,66 @@ namespace Google.Apis.DataPortability.v1beta
             this.service = service;
         }
 
+        /// <summary>Cancels a Portability Archive job.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response.
+        /// The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress.
+        /// </param>
+        public virtual CancelRequest Cancel(Google.Apis.DataPortability.v1beta.Data.CancelPortabilityArchiveRequest body, string name)
+        {
+            return new CancelRequest(this.service, body, name);
+        }
+
+        /// <summary>Cancels a Portability Archive job.</summary>
+        public class CancelRequest : DataPortabilityBaseServiceRequest<Google.Apis.DataPortability.v1beta.Data.CancelPortabilityArchiveResponse>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DataPortability.v1beta.Data.CancelPortabilityArchiveRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive
+            /// response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in
+            /// progress.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DataPortability.v1beta.Data.CancelPortabilityArchiveRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/{+name}:cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^archiveJobs/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Retrieves the state of an Archive job for the Portability API.</summary>
         /// <param name="name">
         /// Required. The archive job ID that is returned when you request the state of the job. The format is:
@@ -925,6 +985,20 @@ namespace Google.Apis.DataPortability.v1beta
 }
 namespace Google.Apis.DataPortability.v1beta.Data
 {
+    /// <summary>Request to cancel a Portability Archive job.</summary>
+    public class CancelPortabilityArchiveRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to canceling a Data Portability Archive job.</summary>
+    public class CancelPortabilityArchiveResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -939,12 +1013,92 @@ namespace Google.Apis.DataPortability.v1beta.Data
     /// <summary>Request to kick off an Archive job.</summary>
     public class InitiatePortabilityArchiveRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. The timestamp that represents the end point for the data you are exporting. If the end_time is not
+        /// specified in the InitiatePortabilityArchiveRequest, this field is set to the latest available data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// The resources from which you're exporting data. These values have a 1:1 correspondence with the OAuth
         /// scopes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. The timestamp that represents the starting point for the data you are exporting. If the start_time
+        /// is not specified in the InitiatePortabilityArchiveRequest, the field is set to the earliest available data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -953,6 +1107,10 @@ namespace Google.Apis.DataPortability.v1beta.Data
     /// <summary>Response from initiating an Archive job.</summary>
     public class InitiatePortabilityArchiveResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The access type of the Archive job initiated by the API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
+        public virtual string AccessType { get; set; }
+
         /// <summary>
         /// The archive job ID that is initiated in the API. This can be used to get the state of the job.
         /// </summary>
@@ -966,12 +1124,93 @@ namespace Google.Apis.DataPortability.v1beta.Data
     /// <summary>Resource that contains the state of an Archive job.</summary>
     public class PortabilityArchiveState : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _exportTimeRaw;
+
+        private object _exportTime;
+
+        /// <summary>
+        /// The timestamp that represents the end point for the data you are exporting. If the end_time value is set in
+        /// the InitiatePortabilityArchiveRequest, this field is set to that value. If end_time is not set, this value
+        /// is set to the time the export was requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportTime")]
+        public virtual string ExportTimeRaw
+        {
+            get => _exportTimeRaw;
+            set
+            {
+                _exportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _exportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExportTimeDateTimeOffset instead.")]
+        public virtual object ExportTime
+        {
+            get => _exportTime;
+            set
+            {
+                _exportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _exportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExportTimeRaw);
+            set => ExportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// The resource name of ArchiveJob's PortabilityArchiveState singleton. The format is:
         /// archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID provided in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// The timestamp that represents the starting point for the data you are exporting. This field is set only if
+        /// the start_time field is specified in the InitiatePortabilityArchiveRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Resource that represents the state of the Archive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
