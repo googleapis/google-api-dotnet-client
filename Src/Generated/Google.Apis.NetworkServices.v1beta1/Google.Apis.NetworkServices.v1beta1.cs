@@ -1691,13 +1691,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the
-                    /// provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Etag { get; set; }
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -1718,14 +1711,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/grpcRoutes/[^/]+$",
-                        });
-                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "etag",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     }
                 }
@@ -2050,13 +2035,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the
-                    /// provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Etag { get; set; }
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -2077,14 +2055,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/httpRoutes/[^/]+$",
-                        });
-                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "etag",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     }
                 }
@@ -4660,13 +4630,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the
-                    /// provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Etag { get; set; }
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -4687,14 +4650,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/tcpRoutes/[^/]+$",
-                        });
-                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "etag",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     }
                 }
@@ -5019,13 +4974,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the
-                    /// provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Etag { get; set; }
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -5046,14 +4994,6 @@ namespace Google.Apis.NetworkServices.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/tlsRoutes/[^/]+$",
-                        });
-                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "etag",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     }
                 }
@@ -6814,13 +6754,6 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
-        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>
         /// Optional. Gateways defines a list of gateways this GrpcRoute is attached to, as one of the routing rules to
         /// route the requests served by the gateway. Each gateway reference should match the pattern:
         /// `projects/*/locations/global/gateways/`
@@ -6913,6 +6846,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>The destination to which traffic will be routed.</summary>
@@ -7231,13 +7167,6 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
-        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>
         /// Optional. Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to
         /// route the requests served by the gateway. Each gateway reference should match the pattern:
         /// `projects/*/locations/global/gateways/`
@@ -7328,6 +7257,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>The Specification for allowing client side cross-origin requests.</summary>
@@ -9258,13 +9190,6 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
-        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>
         /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to
         /// route the requests served by the gateway. Each gateway reference should match the pattern:
         /// `projects/*/locations/global/gateways/`
@@ -9338,6 +9263,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>The specifications for routing traffic and applying associated policies.</summary>
@@ -9480,13 +9408,6 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
-        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>
         /// Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to
         /// route the requests served by the gateway. Each gateway reference should match the pattern:
         /// `projects/*/locations/global/gateways/`
@@ -9560,6 +9481,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>The specifications for routing traffic and applying associated policies.</summary>
