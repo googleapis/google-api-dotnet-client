@@ -2807,7 +2807,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         private object _startTime;
 
-        /// <summary>Inclusive start time aligned to a day (UTC).</summary>
+        /// <summary>Inclusive start time aligned to a day in the America/Los_Angeles (Pacific) timezone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
