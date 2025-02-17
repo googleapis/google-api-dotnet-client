@@ -5080,6 +5080,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                         [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                                         public virtual string DicomWebPath { get; private set; }
 
+                                        /// <summary>
+                                        /// Optional. The viewport setting to use as specified in
+                                        /// https://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3
+                                        /// </summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("viewport", Google.Apis.Util.RequestParameterType.Query)]
+                                        public virtual string Viewport { get; set; }
+
                                         /// <summary>Gets the method name.</summary>
                                         public override string MethodName => "retrieveRendered";
 
@@ -5108,6 +5115,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                                 ParameterType = "path",
                                                 DefaultValue = null,
                                                 Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/frames/[^/]+/rendered$",
+                                            });
+                                            RequestParameters.Add("viewport", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "viewport",
+                                                IsRequired = false,
+                                                ParameterType = "query",
+                                                DefaultValue = null,
+                                                Pattern = null,
                                             });
                                         }
                                     }
@@ -5439,6 +5454,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                                     public virtual string DicomWebPath { get; private set; }
 
+                                    /// <summary>
+                                    /// Optional. The viewport setting to use as specified in
+                                    /// https://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("viewport", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual string Viewport { get; set; }
+
                                     /// <summary>Gets the method name.</summary>
                                     public override string MethodName => "retrieveRendered";
 
@@ -5467,6 +5489,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                             ParameterType = "path",
                                             DefaultValue = null,
                                             Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/rendered$",
+                                        });
+                                        RequestParameters.Add("viewport", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "viewport",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
                                         });
                                     }
                                 }
