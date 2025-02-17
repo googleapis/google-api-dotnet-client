@@ -6686,11 +6686,10 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ExecutionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be
-        /// &amp;lt;= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be
-        /// used for that execution. The actual number of tasks running in steady state will be less than this number
-        /// when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max
-        /// parallelism.
+        /// Optional. Specifies the maximum desired number of tasks the execution should run at given time. When the job
+        /// is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual
+        /// number of tasks running in steady state will be less than this number when there are fewer tasks waiting to
+        /// be completed, i.e. when the work left to do is less than max parallelism.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parallelism")]
         public virtual System.Nullable<int> Parallelism { get; set; }
@@ -7240,6 +7239,12 @@ namespace Google.Apis.CloudRun.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Dependencies that the Cloud Build worker will fetch before executing user steps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1Dependency> Dependencies { get; set; }
+
         /// <summary>Output only. Contains information about the build when status=FAILURE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureInfo")]
         public virtual GoogleDevtoolsCloudbuildV1FailureInfo FailureInfo { get; set; }
@@ -7764,6 +7769,21 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A dependency that the Cloud Build worker will fetch before executing user steps.</summary>
+    public class GoogleDevtoolsCloudbuildV1Dependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set to true disable all dependency fetching (ignoring the default source as well).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("empty")]
+        public virtual System.Nullable<bool> Empty { get; set; }
+
+        /// <summary>Represents a git repository as a build dependency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
+        public virtual GoogleDevtoolsCloudbuildV1GitSourceDependency GitSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This config defines the location of a source through Developer Connect.</summary>
     public class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7853,6 +7873,53 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Required. Location of the Git repo to build. This will be used as a `git remote`, see
         /// https://git-scm.com/docs/git-remote.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a git repository as a build dependency.</summary>
+    public class GoogleDevtoolsCloudbuildV1GitSourceDependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. How much history should be fetched for the build (default 1, -1 for all history).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("depth")]
+        public virtual System.Nullable<long> Depth { get; set; }
+
+        /// <summary>Required. Where should the files be placed on the worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
+        public virtual string DestPath { get; set; }
+
+        /// <summary>Optional. True if submodules should be fetched too (default false).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurseSubmodules")]
+        public virtual System.Nullable<bool> RecurseSubmodules { get; set; }
+
+        /// <summary>Required. The kind of repo (url or dev connect).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual GoogleDevtoolsCloudbuildV1GitSourceRepository Repository { get; set; }
+
+        /// <summary>Required. The revision that we will fetch the repo at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A repository for a git source.</summary>
+    public class GoogleDevtoolsCloudbuildV1GitSourceRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Developer Connect Git repository link or the url that matches a repository link in the current project,
+        /// formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerConnect")]
+        public virtual string DeveloperConnect { get; set; }
+
+        /// <summary>Location of the Git repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
