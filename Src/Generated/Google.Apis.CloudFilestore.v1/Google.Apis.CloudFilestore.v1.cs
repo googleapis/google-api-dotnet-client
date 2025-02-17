@@ -3581,6 +3581,14 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// <summary>PromoteReplicaRequest promotes a Filestore standby instance (replica).</summary>
     public class PromoteReplicaRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The resource name of the peer instance to promote, in the format
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. The peer instance is required if
+        /// the operation is called on an active instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerInstance")]
+        public virtual string PeerInstance { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
