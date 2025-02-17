@@ -10527,7 +10527,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Condition being reported.</summary>
+    /// <summary>
+    /// Condition being reported. TODO b/395151419: Remove this message once the membership-level conditions field uses
+    /// the common Condition message.
+    /// </summary>
     public class ServiceMeshCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10586,12 +10589,44 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Condition being reported. TODO b/395151419: This message should be used to replace the membership-level
+    /// Condition message.
+    /// </summary>
+    public class ServiceMeshFeatureCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Unique identifier of the condition which describes the condition recognizable to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A short summary about the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>Links contains actionable information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
+        public virtual string DocumentationLink { get; set; }
+
+        /// <summary>Severity level of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.</summary>
     public class ServiceMeshFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Results of running Service Mesh analyzers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisMessages")]
         public virtual System.Collections.Generic.IList<ServiceMeshAnalysisMessage> AnalysisMessages { get; set; }
+
+        /// <summary>Output only. List of conditions reported for this feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<ServiceMeshFeatureCondition> Conditions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10629,7 +10664,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analysisMessages")]
         public virtual System.Collections.Generic.IList<ServiceMeshAnalysisMessage> AnalysisMessages { get; set; }
 
-        /// <summary>Output only. List of conditions reported for this membership.</summary>
+        /// <summary>
+        /// Output only. List of conditions reported for this membership. TODO b/395151419: Use the common Condition
+        /// message.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<ServiceMeshCondition> Conditions { get; set; }
 
