@@ -2026,6 +2026,27 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }
 
     /// <summary>
+    /// Aspect represents Generic aspect. It is used to configure an aspect without making direct changes to
+    /// service.proto
+    /// </summary>
+    public class Aspect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of this aspect configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message
+        /// under `apiserving/configaspects/proto`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
     /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
@@ -2275,6 +2296,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwtAudience")]
         public virtual string JwtAudience { get; set; }
+
+        /// <summary>
+        /// The load balancing policy used for connection to the application backend. Defined as an arbitrary string to
+        /// accomondate custom load balancing policies supported by the underlying channel, but suggest most users use
+        /// one of the standard policies, such as the default, "RoundRobin".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingPolicy")]
+        public virtual string LoadBalancingPolicy { get; set; }
 
         /// <summary>Deprecated, do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
@@ -4910,6 +4939,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apis")]
         public virtual System.Collections.Generic.IList<Api> Apis { get; set; }
+
+        /// <summary>
+        /// Configuration aspects. This is a repeated field to allow multiple aspects to be configured. The kind field
+        /// in each ConfigAspect specifies the type of aspect. The spec field contains the configuration for that
+        /// aspect. The schema for the spec field is defined by the backend service owners.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspects")]
+        public virtual System.Collections.Generic.IList<Aspect> Aspects { get; set; }
 
         /// <summary>Auth configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
