@@ -42,7 +42,6 @@ namespace Google.Apis.Drive.v3
             Comments = new CommentsResource(this);
             Drives = new DrivesResource(this);
             Files = new FilesResource(this);
-            Operation = new OperationResource(this);
             Operations = new OperationsResource(this);
             Permissions = new PermissionsResource(this);
             Replies = new RepliesResource(this);
@@ -165,9 +164,6 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>Gets the Files resource.</summary>
         public virtual FilesResource Files { get; }
-
-        /// <summary>Gets the Operation resource.</summary>
-        public virtual OperationResource Operation { get; }
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
@@ -4440,16 +4436,16 @@ namespace Google.Apis.Drive.v3
         }
     }
 
-    /// <summary>The "operation" collection of methods.</summary>
-    public class OperationResource
+    /// <summary>The "operations" collection of methods.</summary>
+    public class OperationsResource
     {
-        private const string Resource = "operation";
+        private const string Resource = "operations";
 
         /// <summary>The service which this resource belongs to.</summary>
         private readonly Google.Apis.Services.IClientService service;
 
         /// <summary>Constructs a new resource.</summary>
-        public OperationResource(Google.Apis.Services.IClientService service)
+        public OperationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
         }
@@ -4496,7 +4492,7 @@ namespace Google.Apis.Drive.v3
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "operation/{name}:cancel";
+            public override string RestPath => "operations/{name}:cancel";
 
             /// <summary>Initializes Cancel parameter list.</summary>
             protected override void InitParameters()
@@ -4549,7 +4545,7 @@ namespace Google.Apis.Drive.v3
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "operation/{name}";
+            public override string RestPath => "operations/{name}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -4564,21 +4560,6 @@ namespace Google.Apis.Drive.v3
                     Pattern = null,
                 });
             }
-        }
-    }
-
-    /// <summary>The "operations" collection of methods.</summary>
-    public class OperationsResource
-    {
-        private const string Resource = "operations";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public OperationsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
         }
 
         /// <summary>
