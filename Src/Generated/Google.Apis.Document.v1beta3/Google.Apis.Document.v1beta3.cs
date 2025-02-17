@@ -7398,7 +7398,7 @@ namespace Google.Apis.Document.v1beta3.Data
     {
         /// <summary>
         /// Optional. The percentile of cosine dissimilarity that must be exceeded between a group of tokens and the
-        /// next. The smaller this number is, the more chunks will be generated.
+        /// next. The smaller this number is, the more chunks will be generated. THIS FIELD IS NOT YET USED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpointPercentileThreshold")]
         public virtual System.Nullable<int> BreakpointPercentileThreshold { get; set; }
@@ -7411,7 +7411,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeAncestorHeadings")]
         public virtual System.Nullable<bool> IncludeAncestorHeadings { get; set; }
 
-        /// <summary>Optional. The number of tokens to group together when evaluating semantic similarity.</summary>
+        /// <summary>
+        /// Optional. The number of tokens to group together when evaluating semantic similarity. THIS FIELD IS NOT YET
+        /// USED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("semanticChunkingGroupSize")]
         public virtual System.Nullable<bool> SemanticChunkingGroupSize { get; set; }
 
