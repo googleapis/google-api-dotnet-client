@@ -22626,7 +22626,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     public class GoogleCloudSecuritycenterV2OrgPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the org policy. Example: "organizations/{organization_id}/policies/{constraint_name}"
+        /// Identifier. The resource name of the org policy. Example:
+        /// "organizations/{organization_id}/policies/{constraint_name}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
