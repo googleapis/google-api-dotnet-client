@@ -6524,7 +6524,11 @@ namespace Google.Apis.NetworkSecurity.v1
 
                 /// <summary>Updates a single MirroringDeploymentGroup.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. Then name of the MirroringDeploymentGroup.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this deployment group, for example:
+                /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.MirroringDeploymentGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -6541,7 +6545,11 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. Then name of the MirroringDeploymentGroup.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this deployment group, for example:
+                    /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6631,7 +6639,9 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new MirroringDeployment in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.MirroringDeployment body, string parent)
@@ -6639,7 +6649,9 @@ namespace Google.Apis.NetworkSecurity.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new MirroringDeployment in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -6720,14 +6732,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single MirroringDeployment.</summary>
+                /// <summary>Deletes a deployment. See https://google.aip.dev/135.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single MirroringDeployment.</summary>
+                /// <summary>Deletes a deployment. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -6786,14 +6798,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single MirroringDeployment.</summary>
+                /// <summary>Gets a specific deployment. See https://google.aip.dev/131.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MirroringDeployment.</summary>
+                /// <summary>Gets a specific deployment. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.MirroringDeployment>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -6831,14 +6843,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists MirroringDeployments in a given project and location.</summary>
+                /// <summary>
+                /// Lists deployments in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 /// <param name="parent">Required. Parent value for ListMirroringDeploymentsRequest</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists MirroringDeployments in a given project and location.</summary>
+                /// <summary>
+                /// Lists deployments in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListMirroringDeploymentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -6927,15 +6943,19 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Updates a single MirroringDeployment.</summary>
+                /// <summary>Updates a deployment. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. The name of the MirroringDeployment.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this deployment, for example:
+                /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.MirroringDeployment body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single MirroringDeployment.</summary>
+                /// <summary>Updates a deployment. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -6946,7 +6966,11 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. The name of the MirroringDeployment.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this deployment, for example:
+                    /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -7036,15 +7060,22 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new MirroringEndpointGroupAssociation in a given project and location.</summary>
+                /// <summary>
+                /// Creates an association in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Container (project and location) where the association will be created, e.g.
+                /// `projects/123456789/locations/global`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.MirroringEndpointGroupAssociation body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new MirroringEndpointGroupAssociation in a given project and location.</summary>
+                /// <summary>
+                /// Creates an association in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -7055,13 +7086,19 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Container (project and location) where the association will be created, e.g.
+                    /// `projects/123456789/locations/global`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// mirroring_endpoint_group_association_id from the method_signature of Create RPC
+                    /// Optional. ID for the new association. If not provided, the server will generate a unique ID. The
+                    /// ID must be a valid RFC 1035 resource name. The ID must be 1-63 characters long and match the
+                    /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter,
+                    /// and all following characters (except for the last character) must be a dash, lowercase letter,
+                    /// or digit. The last character must be a
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("mirroringEndpointGroupAssociationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MirroringEndpointGroupAssociationId { get; set; }
@@ -7125,14 +7162,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single MirroringEndpointGroupAssociation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes a single association. See https://google.aip.dev/135.</summary>
+                /// <param name="name">
+                /// Required. Full resource name of the association to delete, e.g.
+                /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single MirroringEndpointGroupAssociation.</summary>
+                /// <summary>Deletes a single association. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -7142,7 +7182,10 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. Full resource name of the association to delete, e.g.
+                    /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -7191,14 +7234,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single MirroringEndpointGroupAssociation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets a specific association. See https://google.aip.dev/131.</summary>
+                /// <param name="name">
+                /// Required. Full resource name of the association to get, e.g.
+                /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MirroringEndpointGroupAssociation.</summary>
+                /// <summary>Gets a specific association. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.MirroringEndpointGroupAssociation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -7208,7 +7254,10 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. Full resource name of the association to get, e.g.
+                    /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -7236,16 +7285,21 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists MirroringEndpointGroupAssociations in a given project and location.</summary>
+                /// <summary>
+                /// Lists associations in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 /// <param name="parent">
-                /// Required. Parent value for ListMirroringEndpointGroupAssociationsRequest
+                /// Required. Parent container (project and location) of the associations to list, e.g.
+                /// `projects/123456789/locations/global`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists MirroringEndpointGroupAssociations in a given project and location.</summary>
+                /// <summary>
+                /// Lists associations in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListMirroringEndpointGroupAssociationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -7255,11 +7309,17 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListMirroringEndpointGroupAssociationsRequest</summary>
+                    /// <summary>
+                    /// Required. Parent container (project and location) of the associations to list, e.g.
+                    /// `projects/123456789/locations/global`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that filters the results listed in the response. See
+                    /// https://google.aip.dev/160.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -7269,12 +7329,15 @@ namespace Google.Apis.NetworkSecurity.v1
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A token identifying a page of results the server should return. See
+                    /// https://google.aip.dev/158.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -7334,15 +7397,19 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Updates a single MirroringEndpointGroupAssociation.</summary>
+                /// <summary>Updates an association. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+                /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.MirroringEndpointGroupAssociation body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single MirroringEndpointGroupAssociation.</summary>
+                /// <summary>Updates an association. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -7353,7 +7420,11 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+                    /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -7371,10 +7442,8 @@ namespace Google.Apis.NetworkSecurity.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the
-                    /// MirroringEndpointGroupAssociation resource by the update. The fields specified in the
-                    /// update_mask are relative to the resource, not the full request. A field will be overwritten if
-                    /// it is in the mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the association by the
+                    /// update. See https://google.aip.dev/161.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -7443,7 +7512,9 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new MirroringEndpointGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates an endpoint group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.MirroringEndpointGroup body, string parent)
@@ -7451,7 +7522,9 @@ namespace Google.Apis.NetworkSecurity.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new MirroringEndpointGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates an endpoint group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -7532,14 +7605,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single MirroringEndpointGroup.</summary>
+                /// <summary>Deletes an endpoint group. See https://google.aip.dev/135.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single MirroringEndpointGroup.</summary>
+                /// <summary>Deletes an endpoint group. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -7598,14 +7671,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single MirroringEndpointGroup.</summary>
+                /// <summary>Gets a specific endpoint group. See https://google.aip.dev/131.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MirroringEndpointGroup.</summary>
+                /// <summary>Gets a specific endpoint group. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.MirroringEndpointGroup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -7643,14 +7716,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists MirroringEndpointGroups in a given project and location.</summary>
+                /// <summary>
+                /// Lists endpoint groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 /// <param name="parent">Required. Parent value for ListMirroringEndpointGroupsRequest</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists MirroringEndpointGroups in a given project and location.</summary>
+                /// <summary>
+                /// Lists endpoint groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListMirroringEndpointGroupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -7739,17 +7816,19 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Updates a single MirroringEndpointGroup.</summary>
+                /// <summary>Updates an endpoint group. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.
+                /// Immutable. Identifier. The resource name of this endpoint group, for example:
+                /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/122
+                /// for more details.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.MirroringEndpointGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single MirroringEndpointGroup.</summary>
+                /// <summary>Updates an endpoint group. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -7760,7 +7839,11 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this endpoint group, for example:
+                    /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -9672,6 +9755,23 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines what action to take for antivirus threats per protocol.</summary>
+    public class AntivirusOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Threat action override. For some threat types, only a subset of actions applies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Required. Protocol to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This
     /// resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint
@@ -10602,6 +10702,14 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. Current state of the endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -11561,14 +11669,16 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing MirroringEndpointGroupAssociations</summary>
+    /// <summary>Response message for listing associations.</summary>
     public class ListMirroringEndpointGroupAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of MirroringEndpointGroupAssociation</summary>
+        /// <summary>The list of associations returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroupAssociations")]
         public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociation> MirroringEndpointGroupAssociations { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token identifying a page of results the server should return. See https://google.aip.dev/158.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -11766,14 +11876,20 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringDeployment object NEXT ID: 10</summary>
+    /// <summary>
+    /// A deployment represents a zonal mirroring backend ready to accept GENEVE-encapsulated replica traffic, e.g. a
+    /// zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global
+    /// deployment group which represents a global mirroring service.
+    /// </summary>
     public class MirroringDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -11813,34 +11929,40 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The regional load balancer which the mirrored traffic should be forwarded to. Format
-        /// is: projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+        /// Required. Immutable. The regional forwarding rule that fronts the mirroring collectors, for example:
+        /// `projects/123456789/regions/us-central1/forwardingRules/my-rule`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is part of. Format is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// Required. Immutable. The deployment group that this deployment is a part of, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringDeploymentGroup")]
         public virtual string MirroringDeploymentGroup { get; set; }
 
-        /// <summary>Immutable. Identifier. The name of the MirroringDeployment.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this deployment, for example:
+        /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See https://google.aip.dev/122 for
+        /// more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This part of the normal operation (e.g. linking a new association to the parent
+        /// group). See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the deployment.</summary>
+        /// <summary>Output only. The current state of the deployment. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -11848,7 +11970,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -11885,10 +12010,13 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringDeploymentGroup object NEXT ID: 10</summary>
+    /// <summary>
+    /// A deployment group aggregates many zonal mirroring backends (deployments) into a single global mirroring
+    /// service. Consumers can connect this service using an endpoint group.
+    /// </summary>
     public class MirroringDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The list of Mirroring Endpoint Groups that are connected to this resource.</summary>
+        /// <summary>Output only. The list of endpoint groups that are connected to this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectedEndpointGroups")]
         public virtual System.Collections.Generic.IList<MirroringDeploymentGroupConnectedEndpointGroup> ConnectedEndpointGroups { get; set; }
 
@@ -11896,7 +12024,9 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -11936,28 +12066,34 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Immutable. Identifier. Then name of the MirroringDeploymentGroup.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this deployment group, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/122 for
+        /// more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The network that is being used for the deployment. Format is:
-        /// projects/{project}/global/networks/{network}.
+        /// Required. Immutable. The network that will be used for all child deployments, for example:
+        /// `projects/{project}/global/networks/{network}`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This is part of the normal operation (e.g. adding a new deployment to the group)
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the deployment group.</summary>
+        /// <summary>Output only. The current state of the deployment group. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -11965,7 +12101,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -12005,7 +12144,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     /// <summary>An endpoint group connected to this deployment group.</summary>
     public class MirroringDeploymentGroupConnectedEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. A connected mirroring endpoint group.</summary>
+        /// <summary>
+        /// Output only. The connected endpoint group's resource name, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -12013,12 +12155,14 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing MirroringEndpointGroup object.</summary>
+    /// <summary>
+    /// An endpoint group is a consumer frontend for a deployment group (backend). In order to configure mirroring for a
+    /// network, consumers must create: - An association between their network and the endpoint group. - A security
+    /// profile that points to the endpoint group. - A mirroring rule that references the security profile (group).
+    /// </summary>
     public class MirroringEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. List of Mirroring Endpoint Group Associations that are associated to this endpoint group.
-        /// </summary>
+        /// <summary>Output only. List of associations to this endpoint group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociationDetails> Associations { get; set; }
 
@@ -12026,7 +12170,9 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -12066,28 +12212,34 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Mirroring Deployment Group that this resource is connected to. Format is:
-        /// `projects/{project}/locations/global/mirroringDeploymentGroups/{mirroringDeploymentGroup}`
+        /// Immutable. The deployment group that this DIRECT endpoint group is connected to, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringDeploymentGroup")]
         public virtual string MirroringDeploymentGroup { get; set; }
 
-        /// <summary>Immutable. Identifier. Next ID: 11 The name of the MirroringEndpointGroup.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this endpoint group, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/122 for more
+        /// details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This is part of the normal operation (e.g. adding a new association to the
+        /// group). See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the endpoint group.</summary>
+        /// <summary>Output only. The current state of the endpoint group. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -12095,123 +12247,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message describing MirroringEndpointGroupAssociation object</summary>
-    public class MirroringEndpointGroupAssociation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. [Output only] Create time stamp</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Optional. Labels as key value pairs</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>Output only. The list of locations that this association is in and its details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationsDetails")]
-        public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociationLocationDetails> LocationsDetails { get; set; }
-
         /// <summary>
-        /// Required. Immutable. The Mirroring Endpoint Group that this resource is connected to. Format is:
-        /// `projects/{project}/locations/global/mirroringEndpointGroups/{mirroringEndpointGroup}`
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroup")]
-        public virtual string MirroringEndpointGroup { get; set; }
-
-        /// <summary>Immutable. Identifier. The name of the MirroringEndpointGroupAssociation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Required. Immutable. The VPC network associated. Format: projects/{project}/global/networks/{network}.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; }
-
-        /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
-        public virtual System.Nullable<bool> Reconciling { get; set; }
-
-        /// <summary>Output only. Current state of the endpoint group association.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. [Output only] Update time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -12249,24 +12288,160 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     }
 
     /// <summary>
-    /// This is a subset of the MirroringEndpointGroupAssociation message, containing fields to be used by the consumer.
+    /// An endpoint group association represents a link between a network and an endpoint group in the organization.
+    /// Creating an association creates the networking infrastructure linking the network to the endpoint group, but
+    /// does not enable mirroring by itself. To enable mirroring, the user must also create a network firewall policy
+    /// containing mirroring rules and associate it with the network.
     /// </summary>
-    public class MirroringEndpointGroupAssociationDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class MirroringEndpointGroupAssociation : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
-        /// Output only. The resource name of the MirroringEndpointGroupAssociation. Format:
-        /// projects/{project}/locations/{location}/mirroringEndpointGroupAssociations/{mirroringEndpointGroupAssociation}
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The list of locations where the association is present. This information is retrieved from the
+        /// linked endpoint group, and not configured as part of the association itself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationsDetails")]
+        public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociationLocationDetails> LocationsDetails { get; set; }
+
+        /// <summary>
+        /// Immutable. The endpoint group that this association is connected to, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroup")]
+        public virtual string MirroringEndpointGroup { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`. See
+        /// https://google.aip.dev/122 for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}.
+        /// Immutable. The VPC network that is associated. for example: `projects/123456789/global/networks/my-network`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Output only. Current state of the association.</summary>
+        /// <summary>
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This part of the normal operation (e.g. adding a new location to the target
+        /// deployment group). See https://google.aip.dev/128.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Current state of the endpoint group association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The endpoint group's view of a connected association.</summary>
+    public class MirroringEndpointGroupAssociationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The connected association's resource name, for example:
+        /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-ega`. See
+        /// https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The associated network, for example: projects/123456789/global/networks/my-network. See
+        /// https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. Most recent known state of the association.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -12274,14 +12449,14 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about the association status in a specific cloud location.</summary>
+    /// <summary>Contains details about the state of an association in a specific cloud location.</summary>
     public class MirroringEndpointGroupAssociationLocationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The cloud location.</summary>
+        /// <summary>Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Output only. The association state in this location.</summary>
+        /// <summary>Output only. The current state of the association in this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -12939,6 +13114,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     /// <summary>ThreatPreventionProfile defines an action for specific threat signatures or severity levels.</summary>
     public class ThreatPreventionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration for overriding antivirus actions per protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("antivirusOverrides")]
+        public virtual System.Collections.Generic.IList<AntivirusOverride> AntivirusOverrides { get; set; }
+
         /// <summary>Optional. Configuration for overriding threats actions by severity match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severityOverrides")]
         public virtual System.Collections.Generic.IList<SeverityOverride> SeverityOverrides { get; set; }
