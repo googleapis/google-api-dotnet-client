@@ -4811,6 +4811,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Dependencies that the Cloud Build worker will fetch before executing user steps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
+        public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1Dependency> Dependencies { get; set; }
+
         /// <summary>Output only. Contains information about the build when status=FAILURE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureInfo")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo FailureInfo { get; set; }
@@ -5110,6 +5116,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pool")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption Pool { get; set; }
 
+        /// <summary>Optional. Option to specify the Pub/Sub topic to receive build status updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
+
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
         public virtual string RequestedVerifyOption { get; set; }
@@ -5362,6 +5372,68 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A dependency that the Cloud Build worker will fetch before executing user steps.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1Dependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set to true disable all dependency fetching (ignoring the default source as well).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("empty")]
+        public virtual System.Nullable<bool> Empty { get; set; }
+
+        /// <summary>Represents a git repository as a build dependency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceDependency GitSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a git repository as a build dependency.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceDependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. How much history should be fetched for the build (default 1, -1 for all history).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("depth")]
+        public virtual System.Nullable<long> Depth { get; set; }
+
+        /// <summary>Required. Where should the files be placed on the worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
+        public virtual string DestPath { get; set; }
+
+        /// <summary>Optional. True if submodules should be fetched too (default false).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurseSubmodules")]
+        public virtual System.Nullable<bool> RecurseSubmodules { get; set; }
+
+        /// <summary>Required. The kind of repo (url or dev connect).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository Repository { get; set; }
+
+        /// <summary>Required. The revision that we will fetch the repo at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A repository for a git source.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Developer Connect Git repository link or the url that matches a repository link in the current project,
+        /// formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerConnect")]
+        public virtual string DeveloperConnect { get; set; }
+
+        /// <summary>Location of the Git repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
