@@ -2403,6 +2403,145 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Disaster Recovery(DR) replication status of the reservation.</summary>
+    public class ReplicationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The last error encountered while trying to replicate changes from the primary to the secondary.
+        /// This field is only available if the replication has not succeeded since.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        private string _lastErrorTimeRaw;
+
+        private object _lastErrorTime;
+
+        /// <summary>
+        /// Output only. The time at which the last error was encountered while trying to replicate changes from the
+        /// primary to the secondary. This field is only available if the replication has not succeeded since.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastErrorTime")]
+        public virtual string LastErrorTimeRaw
+        {
+            get => _lastErrorTimeRaw;
+            set
+            {
+                _lastErrorTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastErrorTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastErrorTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastErrorTimeDateTimeOffset instead.")]
+        public virtual object LastErrorTime
+        {
+            get => _lastErrorTime;
+            set
+            {
+                _lastErrorTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastErrorTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastErrorTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastErrorTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastErrorTimeRaw);
+            set => LastErrorTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastReplicationTimeRaw;
+
+        private object _lastReplicationTime;
+
+        /// <summary>
+        /// Output only. A timestamp corresponding to the last change on the primary that was successfully replicated to
+        /// the secondary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastReplicationTime")]
+        public virtual string LastReplicationTimeRaw
+        {
+            get => _lastReplicationTimeRaw;
+            set
+            {
+                _lastReplicationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastReplicationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastReplicationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastReplicationTimeDateTimeOffset instead.")]
+        public virtual object LastReplicationTime
+        {
+            get => _lastReplicationTime;
+            set
+            {
+                _lastReplicationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastReplicationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastReplicationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastReplicationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastReplicationTimeRaw);
+            set => LastReplicationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _softFailoverStartTimeRaw;
+
+        private object _softFailoverStartTime;
+
+        /// <summary>
+        /// Output only. The time at which a soft failover for the reservation and its associated datasets was
+        /// initiated. After this field is set, all subsequent changes to the reservation will be rejected unless a hard
+        /// failover overrides this operation. This field will be cleared once the failover is complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softFailoverStartTime")]
+        public virtual string SoftFailoverStartTimeRaw
+        {
+            get => _softFailoverStartTimeRaw;
+            set
+            {
+                _softFailoverStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _softFailoverStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SoftFailoverStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SoftFailoverStartTimeDateTimeOffset instead.")]
+        public virtual object SoftFailoverStartTime
+        {
+            get => _softFailoverStartTime;
+            set
+            {
+                _softFailoverStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _softFailoverStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SoftFailoverStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SoftFailoverStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SoftFailoverStartTimeRaw);
+            set => SoftFailoverStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A reservation is a mechanism used to guarantee slots to users.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2506,6 +2645,15 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryLocation")]
         public virtual string PrimaryLocation { get; set; }
+
+        /// <summary>
+        /// Output only. The Disater Recovery(DR) replication status of the reservation. This is only available for the
+        /// primary replica of DR/failover reservations and provides information about the both the staleness of the
+        /// secondary and the last error encountered while trying to replicate changes from the primary to the
+        /// secondary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationStatus")]
+        public virtual ReplicationStatus ReplicationStatus { get; set; }
 
         /// <summary>
         /// Optional. The current location of the reservation's secondary replica. This field is only set for
