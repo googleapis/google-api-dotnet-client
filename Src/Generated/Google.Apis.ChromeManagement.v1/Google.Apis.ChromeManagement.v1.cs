@@ -6765,6 +6765,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
 
+        /// <summary>Output only. The CA connection is a generic CA connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericCaConnection")]
+        public virtual GoogleChromeManagementVersionsV1GenericCaConnection GenericCaConnection { get; set; }
+
+        /// <summary>Output only. The profile is a generic certificate provisioning profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericProfile")]
+        public virtual GoogleChromeManagementVersionsV1GenericProfile GenericProfile { get; set; }
+
         /// <summary>
         /// Output only. The issued certificate for this `CertificateProvisioningProcess` in PEM format.
         /// </summary>
@@ -7233,6 +7241,34 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes a generic Certificate Authority Connection.</summary>
+    public class GoogleChromeManagementVersionsV1GenericCaConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A string that references the administrator-provided configuration for the certification
+        /// authority service. This field can be missing if no configuration was given.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caConnectionAdapterConfigReference")]
+        public virtual string CaConnectionAdapterConfigReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a generic certificate provisioning profile.</summary>
+    public class GoogleChromeManagementVersionsV1GenericProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A string that references the administrator-provided configuration for the certificate
+        /// provisioning profile. This field can be missing if no configuration was given.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileAdapterConfigReference")]
+        public virtual string ProfileAdapterConfigReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to ListChromeBrowserProfiles method.</summary>
     public class GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7490,6 +7526,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
 
+        /// <summary>Output only. The CA connection is a generic CA connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericCaConnection")]
+        public virtual GoogleChromeManagementVersionsV1alpha1GenericCaConnection GenericCaConnection { get; set; }
+
+        /// <summary>Output only. The profile is a generic certificate provisioning profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericProfile")]
+        public virtual GoogleChromeManagementVersionsV1alpha1GenericProfile GenericProfile { get; set; }
+
         /// <summary>
         /// Output only. The issued certificate for this `CertificateProvisioningProcess` in PEM format.
         /// </summary>
@@ -7626,6 +7670,34 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. The primary e-mail address of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPrimaryEmail")]
         public virtual string UserPrimaryEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a generic Certificate Authority Connection.</summary>
+    public class GoogleChromeManagementVersionsV1alpha1GenericCaConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A string that references the administrator-provided configuration for the certification
+        /// authority service. This field can be missing if no configuration was given.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caConnectionAdapterConfigReference")]
+        public virtual string CaConnectionAdapterConfigReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a generic certificate provisioning profile.</summary>
+    public class GoogleChromeManagementVersionsV1alpha1GenericProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A string that references the administrator-provided configuration for the certificate
+        /// provisioning profile. This field can be missing if no configuration was given.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileAdapterConfigReference")]
+        public virtual string ProfileAdapterConfigReference { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
