@@ -331,221 +331,248 @@ namespace Google.Apis.Looker.v1
                         this.service = service;
                     }
 
-                    /// <summary>
-                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
-                    /// and does not have a policy set.
-                    /// </summary>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
+                    /// <summary>Backup Looker instance.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Format: projects/{project}/locations/{location}/instances/{instance}
                     /// </param>
-                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    public virtual CreateRequest Create(Google.Apis.Looker.v1.Data.InstanceBackup body, string parent)
                     {
-                        return new GetIamPolicyRequest(this.service, resource);
+                        return new CreateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>
-                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
-                    /// and does not have a policy set.
-                    /// </summary>
-                    public class GetIamPolicyRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.Policy>
+                    /// <summary>Backup Looker instance.</summary>
+                    public class CreateRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.Operation>
                     {
-                        /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Looker.v1.Data.InstanceBackup body, string parent) : base(service)
                         {
-                            Resource = resource;
+                            Parent = parent;
+                            Body = body;
                             InitParameters();
                         }
 
                         /// <summary>
-                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
+                        /// Required. Format: projects/{project}/locations/{location}/instances/{instance}
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
 
-                        /// <summary>
-                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
-                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
-                        /// policies with any conditional role bindings must specify version 3. Policies with no
-                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
-                        /// in the response might use the policy version that you specified, or it might use a lower
-                        /// policy version. For example, if you specify version 3, but the policy has no conditional
-                        /// role bindings, the response uses version 1. To learn which resources support conditions in
-                        /// their IAM policies, see the [IAM
-                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Looker.v1.Data.InstanceBackup Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
 
                         /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "getIamPolicy";
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/backups";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Delete backup.</summary>
+                    /// <param name="name">
+                    /// Required. Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Delete backup.</summary>
+                    public class DeleteRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Format:
+                        /// projects/{project}/locations/{location}/instances/{instance}/backups/{backup}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/backups/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary></summary>
+                    /// <param name="name">
+                    /// Required. Format:
+                    /// `projects/{project}/locations/{location}/instances/{instance}/backups/{backup}`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary></summary>
+                    public class GetRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.InstanceBackup>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Format:
+                        /// `projects/{project}/locations/{location}/instances/{instance}/backups/{backup}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
 
                         /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+                        public override string RestPath => "v1/{+name}";
 
-                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        /// <summary>Initializes Get parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resource",
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/backups/[^/]+$",
                             });
-                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        }
+                    }
+
+                    /// <summary>List backups of Looker instance.</summary>
+                    /// <param name="parent">
+                    /// Required. Format: projects/{project}/locations/{location}/instances/{instance}.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>List backups of Looker instance.</summary>
+                    public class ListRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.ListInstanceBackupsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Format: projects/{project}/locations/{location}/instances/{instance}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Sort results. Default order is "create_time desc". Other supported fields are "state" and
+                        /// "expire_time". https://google.aip.dev/132#ordering
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>The maximum number of instances to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A page token received from a previous ListInstances request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/backups";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "options.requestedPolicyVersion",
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
-                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Looker.v1.Data.SetIamPolicyRequest body, string resource)
-                    {
-                        return new SetIamPolicyRequest(this.service, body, resource);
-                    }
-
-                    /// <summary>
-                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
-                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                    /// </summary>
-                    public class SetIamPolicyRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.Policy>
-                    {
-                        /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Looker.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Looker.v1.Data.SetIamPolicyRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "setIamPolicy";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+resource}:setIamPolicy";
-
-                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/backups/[^/]+$",
+                                Pattern = null,
                             });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                    /// designed to be used for building permission-aware UIs and command-line tools, not for
-                    /// authorization checking. This operation may "fail open" without warning.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Looker.v1.Data.TestIamPermissionsRequest body, string resource)
-                    {
-                        return new TestIamPermissionsRequest(this.service, body, resource);
-                    }
-
-                    /// <summary>
-                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                    /// designed to be used for building permission-aware UIs and command-line tools, not for
-                    /// authorization checking. This operation may "fail open" without warning.
-                    /// </summary>
-                    public class TestIamPermissionsRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.TestIamPermissionsResponse>
-                    {
-                        /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Looker.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Looker.v1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "testIamPermissions";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+resource}:testIamPermissions";
-
-                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/backups/[^/]+$",
+                                Pattern = null,
                             });
                         }
                     }
@@ -783,86 +810,6 @@ namespace Google.Apis.Looker.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
-                {
-                    return new GetIamPolicyRequest(this.service, resource);
-                }
-
-                /// <summary>
-                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-                /// does not have a policy set.
-                /// </summary>
-                public class GetIamPolicyRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.Policy>
-                {
-                    /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
-                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
-                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
-                    /// specify any valid value or leave the field unset. The policy in the response might use the
-                    /// policy version that you specified, or it might use a lower policy version. For example, if you
-                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
-                    /// To learn which resources support conditions in their IAM policies, see the [IAM
-                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getIamPolicy";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:getIamPolicy";
-
-                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                        });
-                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     }
                 }
@@ -1126,136 +1073,57 @@ namespace Google.Apis.Looker.v1
                     }
                 }
 
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
+                /// <summary>Restore Looker instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
+                /// <param name="name">
+                /// Required. Instance being restored Format:
+                /// projects/{project}/locations/{location}/instances/{instance}
                 /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Looker.v1.Data.SetIamPolicyRequest body, string resource)
+                public virtual RestoreRequest Restore(Google.Apis.Looker.v1.Data.RestoreInstanceRequest body, string name)
                 {
-                    return new SetIamPolicyRequest(this.service, body, resource);
+                    return new RestoreRequest(this.service, body, name);
                 }
 
-                /// <summary>
-                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-                /// </summary>
-                public class SetIamPolicyRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.Policy>
+                /// <summary>Restore Looker instance.</summary>
+                public class RestoreRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.Operation>
                 {
-                    /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Looker.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    /// <summary>Constructs a new Restore request.</summary>
+                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Looker.v1.Data.RestoreInstanceRequest body, string name) : base(service)
                     {
-                        Resource = resource;
+                        Name = name;
                         Body = body;
                         InitParameters();
                     }
 
                     /// <summary>
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
+                    /// Required. Instance being restored Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}
                     /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Looker.v1.Data.SetIamPolicyRequest Body { get; set; }
+                    Google.Apis.Looker.v1.Data.RestoreInstanceRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
                     /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "setIamPolicy";
+                    public override string MethodName => "restore";
 
                     /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+                    public override string RestPath => "v1/{+name}:restore";
 
-                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    /// <summary>Initializes Restore parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">
-                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                /// field.
-                /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Looker.v1.Data.TestIamPermissionsRequest body, string resource)
-                {
-                    return new TestIamPermissionsRequest(this.service, body, resource);
-                }
-
-                /// <summary>
-                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
-                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
-                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
-                /// checking. This operation may "fail open" without warning.
-                /// </summary>
-                public class TestIamPermissionsRequest : LookerBaseServiceRequest<Google.Apis.Looker.v1.Data.TestIamPermissionsResponse>
-                {
-                    /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Looker.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Looker.v1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "testIamPermissions";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+resource}:testIamPermissions";
-
-                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -1690,131 +1558,6 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
-    /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
-    /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
-    /// for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
-    /// "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ]
-    /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-    /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
-    /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
-    /// logging.
-    /// </summary>
-    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The configuration for logging of each type of permission.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
-
-        /// <summary>
-        /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
-        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type":
-    /// "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-    /// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-    /// </summary>
-    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of
-        /// Binding.members.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
-
-        /// <summary>The log type that this config enables.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Associates `members`, or principals, with a `role`.</summary>
-    public class Binding : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
-        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
-        /// the current request. However, a different role binding might grant the same role to one or more of the
-        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; }
-
-        /// <summary>
-        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
-        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
-        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
-        /// with a Google account or a service account. Does not include identities that come from external identity
-        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
-        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
-        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
-        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
-        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
-        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
-        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
-        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
-        /// A single identity in a workforce identity pool. *
-        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
-        /// workforce identities in a group. *
-        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
-        /// All workforce identities with a specific attribute value. *
-        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
-        /// workforce identity pool. *
-        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
-        /// A single identity in a workload identity pool. *
-        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
-        /// A workload identity pool group. *
-        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
-        /// All identities in a workload identity pool with a certain attribute. *
-        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
-        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
-        /// (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
-        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
-        /// service account that has been recently deleted. For example,
-        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
-        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
-        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
-        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. *
-        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
-        /// Deleted single identity in a workforce identity pool. For example,
-        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; }
-
-        /// <summary>
-        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
-        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
-        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2011,50 +1754,6 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
-    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
-    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
-    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
-    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
-    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
-    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
-    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
-    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
-    /// may be referenced within an expression are determined by the service that evaluates it. See the service
-    /// documentation for additional information.
-    /// </summary>
-    public class Expr : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
-        /// hovered over it in a UI.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; }
-
-        /// <summary>
-        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
-        /// position in the file.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; }
-
-        /// <summary>
-        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
-        /// which allow to enter the expression.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Requestion options for importing looker data to an Instance</summary>
     public class ImportInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2214,6 +1913,14 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservedRange")]
         public virtual string ReservedRange { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. The state of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -2258,6 +1965,124 @@ namespace Google.Apis.Looker.v1.Data
         /// <summary>Optional. User metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userMetadata")]
         public virtual UserMetadata UserMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of a backup resource.</summary>
+    public class InstanceBackup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the backup was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Current status of the CMEK encryption</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Output only. The time when the backup will be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Immutable. The relative resource name of the backup, in the following form:
+        /// `projects/{project_number}/locations/{location_id}/instances/{instance_id}/backups/{backup}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current state of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from listing Looker instance backups.</summary>
+    public class ListInstanceBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of instances matching the request filters, up to the requested `page_size`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceBackups")]
+        public virtual System.Collections.Generic.IList<InstanceBackup> InstanceBackups { get; set; }
+
+        /// <summary>
+        /// If provided, a page token that can look up the next `page_size` results. If empty, the results list is
+        /// exhausted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2616,83 +2441,6 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
-    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
-    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
-    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
-    /// ```
-    /// {
-    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    /// ```
-    /// **YAML
-    /// example:**
-    /// ```
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
-    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
-    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
-    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
-    /// ```
-    /// For a description of IAM and its
-    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-    /// </summary>
-    public class Policy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
-
-        /// <summary>
-        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
-        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
-        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
-        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
-        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
-        /// can add another 1,450 principals to the `bindings` in the `Policy`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
-
-        /// <summary>
-        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
-        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
-        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
-        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
-        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
-        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
-        /// conditions in the version `3` policy are lost.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>
-        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
-        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
-        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
-        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
-        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
-        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
-        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
-        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
-        /// that policy may specify any valid version or leave the field unset. To learn which resources support
-        /// conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; }
-    }
-
     /// <summary>Information for Private Service Connect (PSC) setup for a Looker instance.</summary>
     public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2722,6 +2470,20 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request options for restoring an instance</summary>
+    public class RestoreInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Backup being used to restore the instance Format:
+        /// projects/{project}/locations/{location}/instances/{instance}/backups/{backup}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Service attachment configuration.</summary>
     public class ServiceAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2742,28 +2504,6 @@ namespace Google.Apis.Looker.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetServiceAttachmentUri")]
         public virtual string TargetServiceAttachmentUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for `SetIamPolicy` method.</summary>
-    public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
-        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
-        /// reject them.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; }
-
-        /// <summary>
-        /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be
-        /// modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2793,32 +2533,6 @@ namespace Google.Apis.Looker.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for `TestIamPermissions` method.</summary>
-    public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
-        /// are not allowed. For more information see [IAM
-        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for `TestIamPermissions` method.</summary>
-    public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
