@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4925,7 +4925,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
     /// <summary>Specification that applies to a table resource. Valid only for entries with the `TABLE` type.</summary>
     public class GoogleCloudDatacatalogV1DatabaseTableSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Spec what aplies to tables that are actually views. Not set for "real" tables.</summary>
+        /// <summary>Spec what applies to tables that are actually views. Not set for "real" tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseViewSpec")]
         public virtual GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec DatabaseViewSpec { get; set; }
 
@@ -5296,7 +5296,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
     /// <summary>Detail description of the source information of a Vertex Feature Online Store.</summary>
     public class GoogleCloudDatacatalogV1FeatureOnlineStoreSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Type of underelaying storage for the FeatureOnlineStore.</summary>
+        /// <summary>Output only. Type of underlying storage for the FeatureOnlineStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageType")]
         public virtual string StorageType { get; set; }
 
