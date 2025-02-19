@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -722,7 +722,7 @@ namespace Google.Apis.Datastore.v1beta1.Data
     /// <summary>Details for the `REDIRECT_WRITES` step.</summary>
     public class GoogleDatastoreAdminV1RedirectWritesStepDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Ths concurrency mode for this database.</summary>
+        /// <summary>The concurrency mode for this database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
         public virtual string ConcurrencyMode { get; set; }
 
