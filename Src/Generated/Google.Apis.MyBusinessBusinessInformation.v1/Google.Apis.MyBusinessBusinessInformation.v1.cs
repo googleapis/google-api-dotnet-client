@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2209,7 +2209,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canOperateHealthData")]
         public virtual System.Nullable<bool> CanOperateHealthData { get; set; }
 
-        /// <summary>Output only. Indicates if the listing can manage local posts.</summary>
+        /// <summary>
+        /// Output only. Indicates if the listing can manage local posts. Deprecated: This field is no longer populated
+        /// and will be removed in a future version.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canOperateLocalPost")]
         public virtual System.Nullable<bool> CanOperateLocalPost { get; set; }
 
