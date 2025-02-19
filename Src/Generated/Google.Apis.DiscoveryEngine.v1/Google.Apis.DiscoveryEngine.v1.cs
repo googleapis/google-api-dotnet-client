@@ -4222,6 +4222,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                         {
                             this.service = service;
                             Operations = new OperationsResource(service);
+                            Sitemaps = new SitemapsResource(service);
                             TargetSites = new TargetSitesResource(service);
                         }
 
@@ -4372,6 +4373,203 @@ namespace Google.Apis.DiscoveryEngine.v1
                                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Gets the Sitemaps resource.</summary>
+                        public virtual SitemapsResource Sitemaps { get; }
+
+                        /// <summary>The "sitemaps" collection of methods.</summary>
+                        public class SitemapsResource
+                        {
+                            private const string Resource = "sitemaps";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public SitemapsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Creates a Sitemap.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. Parent resource name of the SiteSearchEngine, such as
+                            /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                            /// </param>
+                            public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1Sitemap body, string parent)
+                            {
+                                return new CreateRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>Creates a Sitemap.</summary>
+                            public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1Sitemap body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Parent resource name of the SiteSearchEngine, such as
+                                /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1Sitemap Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "create";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/sitemaps";
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/siteSearchEngine$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Deletes a Sitemap.</summary>
+                            /// <param name="name">
+                            /// Required. Full resource name of Sitemap, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`.
+                            /// If the caller does not have permission to access the Sitemap, regardless of whether or
+                            /// not it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap does not
+                            /// exist, a NOT_FOUND error is returned.
+                            /// </param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(this.service, name);
+                            }
+
+                            /// <summary>Deletes a Sitemap.</summary>
+                            public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Full resource name of Sitemap, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`.
+                                /// If the caller does not have permission to access the Sitemap, regardless of whether
+                                /// or not it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap
+                                /// does not exist, a NOT_FOUND error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "delete";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/siteSearchEngine/sitemaps/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Fetch Sitemaps in a DataStore.</summary>
+                            /// <param name="parent">
+                            /// Required. Parent resource name of the SiteSearchEngine, such as
+                            /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                            /// </param>
+                            public virtual FetchRequest Fetch(string parent)
+                            {
+                                return new FetchRequest(this.service, parent);
+                            }
+
+                            /// <summary>Fetch Sitemaps in a DataStore.</summary>
+                            public class FetchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1FetchSitemapsResponse>
+                            {
+                                /// <summary>Constructs a new Fetch request.</summary>
+                                public FetchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Parent resource name of the SiteSearchEngine, such as
+                                /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>The Sitemap uris.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("matcher.urisMatcher.uris", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual Google.Apis.Util.Repeatable<string> MatcherUrisMatcherUris { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "fetch";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/sitemaps:fetch";
+
+                                /// <summary>Initializes Fetch parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/siteSearchEngine$",
+                                    });
+                                    RequestParameters.Add("matcher.urisMatcher.uris", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "matcher.urisMatcher.uris",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -12380,7 +12578,205 @@ namespace Google.Apis.DiscoveryEngine.v1
                     public SiteSearchEngineResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Sitemaps = new SitemapsResource(service);
                         TargetSites = new TargetSitesResource(service);
+                    }
+
+                    /// <summary>Gets the Sitemaps resource.</summary>
+                    public virtual SitemapsResource Sitemaps { get; }
+
+                    /// <summary>The "sitemaps" collection of methods.</summary>
+                    public class SitemapsResource
+                    {
+                        private const string Resource = "sitemaps";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SitemapsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Creates a Sitemap.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. Parent resource name of the SiteSearchEngine, such as
+                        /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1Sitemap body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Creates a Sitemap.</summary>
+                        public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1Sitemap body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Parent resource name of the SiteSearchEngine, such as
+                            /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1Sitemap Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/sitemaps";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/siteSearchEngine$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes a Sitemap.</summary>
+                        /// <param name="name">
+                        /// Required. Full resource name of Sitemap, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`.
+                        /// If the caller does not have permission to access the Sitemap, regardless of whether or not
+                        /// it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap does not exist, a
+                        /// NOT_FOUND error is returned.
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Deletes a Sitemap.</summary>
+                        public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of Sitemap, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`.
+                            /// If the caller does not have permission to access the Sitemap, regardless of whether or
+                            /// not it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap does not
+                            /// exist, a NOT_FOUND error is returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/siteSearchEngine/sitemaps/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Fetch Sitemaps in a DataStore.</summary>
+                        /// <param name="parent">
+                        /// Required. Parent resource name of the SiteSearchEngine, such as
+                        /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                        /// </param>
+                        public virtual FetchRequest Fetch(string parent)
+                        {
+                            return new FetchRequest(this.service, parent);
+                        }
+
+                        /// <summary>Fetch Sitemaps in a DataStore.</summary>
+                        public class FetchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1FetchSitemapsResponse>
+                        {
+                            /// <summary>Constructs a new Fetch request.</summary>
+                            public FetchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Parent resource name of the SiteSearchEngine, such as
+                            /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>The Sitemap uris.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("matcher.urisMatcher.uris", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> MatcherUrisMatcherUris { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "fetch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/sitemaps:fetch";
+
+                            /// <summary>Initializes Fetch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/siteSearchEngine$",
+                                });
+                                RequestParameters.Add("matcher.urisMatcher.uris", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "matcher.urisMatcher.uris",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the TargetSites resource.</summary>
@@ -16340,7 +16736,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Citation info for a segment.</summary>
     public class GoogleCloudDiscoveryengineV1AnswerCitation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>End of the attributed segment, exclusive.</summary>
+        /// <summary>
+        /// End of the attributed segment, exclusive. Measured in bytes (UTF-8 unicode). If there are multi-byte
+        /// characters,such as non-ASCII characters, the index measurement is longer than the string length.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<long> EndIndex { get; set; }
 
@@ -16348,7 +16747,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AnswerCitationSource> Sources { get; set; }
 
-        /// <summary>Index indicates the start of the segment, measured in bytes (UTF-8 unicode).</summary>
+        /// <summary>
+        /// Index indicates the start of the segment, measured in bytes (UTF-8 unicode). If there are multi-byte
+        /// characters,such as non-ASCII characters, the index measurement is longer than the string length.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<long> StartIndex { get; set; }
 
@@ -17102,6 +17504,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Structured search data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
+
+        /// <summary>Output only. The title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. The URI of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18989,6 +19399,90 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.CreateSitemap operation. This will be returned
+    /// by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1CreateSitemapMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.CreateTargetSite operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
     /// </summary>
@@ -19284,7 +19778,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The id of the default Schema asscociated to this data store.</summary>
+        /// <summary>Output only. The id of the default Schema associated to this data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
         public virtual string DefaultSchemaId { get; set; }
 
@@ -19302,6 +19796,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
         public virtual GoogleCloudDiscoveryengineV1HealthcareFhirConfig HealthcareFhirConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The fully qualified resource name of the associated IdentityMappingStore. This field can only be
+        /// set for acl_enabled DataStores with `THIRD_PARTY` or `GSUITE` IdP. Format:
+        /// `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityMappingStore")]
+        public virtual string IdentityMappingStore { get; set; }
 
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
@@ -19846,6 +20348,90 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
     /// <summary>Metadata for DeleteSchema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1DeleteSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.DeleteSitemap operation. This will be returned
+    /// by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DeleteSitemapMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
@@ -20880,6 +21466,28 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.FetchSitemaps method.</summary>
+    public class GoogleCloudDiscoveryengineV1FetchSitemapsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Sitemaps fetched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sitemapsMetadata")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata> SitemapsMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a Sitemap and its metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Sitemap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sitemap")]
+        public virtual GoogleCloudDiscoveryengineV1Sitemap Sitemap { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24380,7 +24988,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// The number of top search results to persist. The persisted search results can be used for the subsequent
-        /// /answer api call. This field is simliar to the `summary_result_count` field in
+        /// /answer api call. This field is similar to the `summary_result_count` field in
         /// SearchRequest.ContentSearchSpec.SummarySpec.summary_result_count. At most 10 results for documents mode, or
         /// 50 for chunks mode.
         /// </summary>
@@ -25222,6 +25830,62 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VerifyTimeRaw);
             set => VerifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A sitemap for the SiteSearchEngine.</summary>
+    public class GoogleCloudDiscoveryengineV1Sitemap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The sitemap's creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The fully qualified resource name of the sitemap.
+        /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine/sitemaps/*` The `sitemap_id` suffix is
+        /// system-generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Public URI for the sitemap, e.g. `www.example.com/sitemap.xml`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26369,7 +27033,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Citation info for a segment.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAnswerCitation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>End of the attributed segment, exclusive.</summary>
+        /// <summary>
+        /// End of the attributed segment, exclusive. Measured in bytes (UTF-8 unicode). If there are multi-byte
+        /// characters,such as non-ASCII characters, the index measurement is longer than the string length.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<long> EndIndex { get; set; }
 
@@ -26377,7 +27044,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerCitationSource> Sources { get; set; }
 
-        /// <summary>Index indicates the start of the segment, measured in bytes (UTF-8 unicode).</summary>
+        /// <summary>
+        /// Index indicates the start of the segment, measured in bytes (UTF-8 unicode). If there are multi-byte
+        /// characters,such as non-ASCII characters, the index measurement is longer than the string length.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<long> StartIndex { get; set; }
 
@@ -26542,6 +27212,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Structured search data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
+
+        /// <summary>Output only. The title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. The URI of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28492,7 +29170,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The id of the default Schema asscociated to this data store.</summary>
+        /// <summary>Output only. The id of the default Schema associated to this data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
         public virtual string DefaultSchemaId { get; set; }
 
@@ -28510,6 +29188,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The fully qualified resource name of the associated IdentityMappingStore. This field can only be
+        /// set for acl_enabled DataStores with `THIRD_PARTY` or `GSUITE` IdP. Format:
+        /// `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityMappingStore")]
+        public virtual string IdentityMappingStore { get; set; }
 
         /// <summary>Output only. Data store level identity provider config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
@@ -30399,28 +31085,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleQuerySet")]
         public virtual string SampleQuerySet { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for SiteSearchEngineService.FetchSitemaps method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of Sitemaps fetched.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sitemapsMetadata")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata> SitemapsMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains a Sitemap and its metadata.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaFetchSitemapsResponseSitemapMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Sitemap.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sitemap")]
-        public virtual GoogleCloudDiscoveryengineV1alphaSitemap Sitemap { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33475,7 +34139,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// The number of top search results to persist. The persisted search results can be used for the subsequent
-        /// /answer api call. This field is simliar to the `summary_result_count` field in
+        /// /answer api call. This field is similar to the `summary_result_count` field in
         /// SearchRequest.ContentSearchSpec.SummarySpec.summary_result_count. At most 10 results for documents mode, or
         /// 50 for chunks mode.
         /// </summary>
@@ -35139,6 +35803,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The historical crawl rate timeseries data, used for monitoring.</summary>
+    public class GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The QPS of the crawl rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qpsTimeSeries")]
+        public virtual GoogleMonitoringV3TimeSeries QpsTimeSeries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the DataStoreService.CreateDataStore operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -35622,7 +36297,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The id of the default Schema asscociated to this data store.</summary>
+        /// <summary>Output only. The id of the default Schema associated to this data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
         public virtual string DefaultSchemaId { get; set; }
 
@@ -35640,6 +36315,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Configuration for `HEALTHCARE_FHIR` vertical.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthcareFhirConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The fully qualified resource name of the associated IdentityMappingStore. This field can only be
+        /// set for acl_enabled DataStores with `THIRD_PARTY` or `GSUITE` IdP. Format:
+        /// `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityMappingStore")]
+        public virtual string IdentityMappingStore { get; set; }
 
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
@@ -35849,6 +36532,32 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>If set true, the DataStore will not be available for serving search requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledForServing")]
         public virtual System.Nullable<bool> DisabledForServing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The historical dedicated crawl rate timeseries data, used for monitoring. Dedicated crawl is used by Vertex AI
+    /// to crawl the user's website when dedicate crawl is set.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Vertex AI's dedicated crawl rate time series of auto-refresh, which is the crawl rate of
+        /// Google-CloudVertexBot when dedicate crawl is set, and the crawl rate is for best effort use cases like
+        /// refreshing urls periodically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRefreshCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries AutoRefreshCrawlRate { get; set; }
+
+        /// <summary>
+        /// Vertex AI's dedicated crawl rate time series of user triggered crawl, which is the crawl rate of
+        /// Google-CloudVertexBot when dedicate crawl is set, and user triggered crawl rate is for deterministic use
+        /// cases like crawling urls or sitemaps specified by users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userTriggeredCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries UserTriggeredCrawlRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37070,28 +37779,6 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for SiteSearchEngineService.FetchSitemaps method.</summary>
-    public class GoogleCloudDiscoveryengineV1betaFetchSitemapsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of Sitemaps fetched.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sitemapsMetadata")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata> SitemapsMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains a Sitemap and its metadata.</summary>
-    public class GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Sitemap.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sitemap")]
-        public virtual GoogleCloudDiscoveryengineV1betaSitemap Sitemap { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Config to data store for `HEALTHCARE_FHIR` vertical.</summary>
     public class GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -37794,6 +38481,60 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response message for CrawlRateManagementService.ObtainCrawlRate method. The response contains organcic or
+    /// dedicated crawl rate time series data for monitoring, depending on whether dedicated crawl rate is set.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The historical dedicated crawl rate timeseries data, used for monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedCrawlRateTimeSeries")]
+        public virtual GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries DedicatedCrawlRateTimeSeries { get; set; }
+
+        /// <summary>Errors from service when handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The historical organic crawl rate timeseries data, used for monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organicCrawlRateTimeSeries")]
+        public virtual GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries OrganicCrawlRateTimeSeries { get; set; }
+
+        /// <summary>Output only. The state of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The historical organic crawl rate timeseries data, used for monitoring. Organic crawl is auto-determined by
+    /// Google to crawl the user's website when dedicate crawl is not set. Crawl rate is the QPS of crawl request Google
+    /// sends to the user's website.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google's organic crawl rate time series, which is the sum of all googlebots' crawl rate. Please refer to
+        /// https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers for more details about
+        /// googlebots.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleOrganicCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries GoogleOrganicCrawlRate { get; set; }
+
+        /// <summary>
+        /// Vertex AI's organic crawl rate time series, which is the crawl rate of Google-CloudVertexBot when dedicate
+        /// crawl is not set. Please refer to
+        /// https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers#google-cloudvertexbot for
+        /// more details about Google-CloudVertexBot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiOrganicCrawlRate")]
+        public virtual GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries VertexAiOrganicCrawlRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1betaProject : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -38285,6 +39026,108 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>The top-5 value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("top5")]
         public virtual System.Nullable<double> Top5 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CrawlRateManagementService.RemoveDedicatedCrawlRate operation. This will
+    /// be returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for CrawlRateManagementService.RemoveDedicatedCrawlRate method. It simply returns the state of
+    /// the response, and an error message if the state is FAILED.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors from service when handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Output only. The state of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39271,7 +40114,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// The number of top search results to persist. The persisted search results can be used for the subsequent
-        /// /answer api call. This field is simliar to the `summary_result_count` field in
+        /// /answer api call. This field is similar to the `summary_result_count` field in
         /// SearchRequest.ContentSearchSpec.SummarySpec.summary_result_count. At most 10 results for documents mode, or
         /// 50 for chunks mode.
         /// </summary>
@@ -39290,6 +40133,108 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the CrawlRateManagementService.SetDedicatedCrawlRate operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for CrawlRateManagementService.SetDedicatedCrawlRate method. It simply returns the state of the
+    /// response, and an error message if the state is FAILED.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors from service when handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Output only. The state of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
