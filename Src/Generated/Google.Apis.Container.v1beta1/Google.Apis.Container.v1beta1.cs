@@ -6898,6 +6898,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AutopilotConfig contains configuration of autopilot feature for this nodepool.</summary>
+    public class AutopilotConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Denotes that nodes belonging to this node pool are Autopilot nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AutopilotConversionStatus represents conversion status.</summary>
     public class AutopilotConversionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10526,6 +10537,13 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class NodePool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Specifies the autopilot configuration for this node pool. This field is exclusively reserved for Cluster
+        /// Autoscaler to implement go/gke-managed-nodes-ccc-api
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autopilotConfig")]
+        public virtual AutopilotConfig AutopilotConfig { get; set; }
+
         /// <summary>
         /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         /// </summary>
