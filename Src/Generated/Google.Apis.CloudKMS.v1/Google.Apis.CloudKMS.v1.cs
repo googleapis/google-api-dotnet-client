@@ -1915,6 +1915,50 @@ namespace Google.Apis.CloudKMS.v1
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
+                            /// <summary>
+                            /// Optional. The PublicKey format specified by the user. This field is required for PQC
+                            /// algorithms. If specified, the public key will be exported through the public_key field
+                            /// in the requested format. Otherwise, the pem field will be populated for non-PQC
+                            /// algorithms, and an error will be returned for PQC algorithms.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("publicKeyFormat", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<PublicKeyFormatEnum> PublicKeyFormat { get; set; }
+
+                            /// <summary>
+                            /// Optional. The PublicKey format specified by the user. This field is required for PQC
+                            /// algorithms. If specified, the public key will be exported through the public_key field
+                            /// in the requested format. Otherwise, the pem field will be populated for non-PQC
+                            /// algorithms, and an error will be returned for PQC algorithms.
+                            /// </summary>
+                            public enum PublicKeyFormatEnum
+                            {
+                                /// <summary>
+                                /// If the public_key_format field is not specified: - For PQC algorithms, an error will
+                                /// be returned. - For non-PQC algorithms, the default format is PEM, and the field pem
+                                /// will be populated. Otherwise, the public key will be exported through the public_key
+                                /// field in the requested format.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("PUBLIC_KEY_FORMAT_UNSPECIFIED")]
+                                PUBLICKEYFORMATUNSPECIFIED = 0,
+
+                                /// <summary>
+                                /// The returned public key will be encoded in PEM format. See the
+                                /// [RFC7468](https://tools.ietf.org/html/rfc7468) sections for [General
+                                /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding
+                                /// of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13) for
+                                /// more information.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("PEM")]
+                                PEM = 1,
+
+                                /// <summary>
+                                /// This is supported only for PQC algorithms. The key material is returned in the
+                                /// format defined by NIST PQC standards (FIPS 203, FIPS 204, and FIPS 205).
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("NIST_PQC")]
+                                NISTPQC = 2,
+                            }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "getPublicKey";
 
@@ -1935,6 +1979,14 @@ namespace Google.Apis.CloudKMS.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
+                                });
+                                RequestParameters.Add("publicKeyFormat", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "publicKeyFormat",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -5111,6 +5163,29 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Data with integrity verification field.</summary>
+    public class ChecksummedData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Integrity verification field. A CRC32C checksum of the returned ChecksummedData.data. An integrity check of
+        /// ChecksummedData.data can be performed by computing the CRC32C checksum of ChecksummedData.data and comparing
+        /// your results to this field. Discard the response in case of non-matching checksum values, and perform a
+        /// limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C
+        /// checksum. Note: This field is defined as int64 for reasons of compatibility across different languages.
+        /// However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to
+        /// uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crc32cChecksum")]
+        public virtual System.Nullable<long> Crc32cChecksum { get; set; }
+
+        /// <summary>Raw Data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A CryptoKey represents a logical key that can be used for cryptographic operations. A CryptoKey is made up of
     /// zero or more versions, which represent the actual key material used in cryptographic operations.
@@ -6899,6 +6974,17 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The ProtectionLevel of the CryptoKeyVersion public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
         public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>
+        /// This field contains the public key (with integrity verification), formatted according to the
+        /// public_key_format field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
+        public virtual ChecksummedData PublicKeyValue { get; set; }
+
+        /// <summary>The PublicKey format specified by the customer through the public_key_format field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyFormat")]
+        public virtual string PublicKeyFormat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
