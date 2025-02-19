@@ -2476,7 +2476,7 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>Details for the `REDIRECT_WRITES` step.</summary>
     public class GoogleDatastoreAdminV1RedirectWritesStepDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Ths concurrency mode for this database.</summary>
+        /// <summary>The concurrency mode for this database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
         public virtual string ConcurrencyMode { get; set; }
 
