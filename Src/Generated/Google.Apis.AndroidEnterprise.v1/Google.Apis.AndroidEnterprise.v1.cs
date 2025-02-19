@@ -6513,6 +6513,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("administrator")]
         public virtual System.Collections.Generic.IList<Administrator> Administrator { get; set; }
 
+        /// <summary>The type of the enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseType")]
+        public virtual string EnterpriseType { get; set; }
+
         /// <summary>Output only. Settings for Google-provided user authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAuthenticationSettings")]
         public virtual GoogleAuthenticationSettings GoogleAuthenticationSettings { get; set; }
@@ -6520,6 +6524,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The unique ID for the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The type of managed Google domain</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedGoogleDomainType")]
+        public virtual string ManagedGoogleDomainType { get; set; }
 
         /// <summary>The name of the enterprise, for example, "Example, Inc".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
