@@ -23,5 +23,15 @@
   "Google.Apis.Compute.v1.NetworksResource+ListPeeringRoutesRequest.DirectionEnum": [
     "INCOMING",
     "OUTGOING"
+  ],
+  "Google.Apis.Compute.v1.RoutersResource+ListBgpRoutesRequest.AddressFamilyEnum": [
+    "IPV4",
+    "IPV6",
+    "UNSPECIFIED_IP_VERSION"
+  ],
+  "Google.Apis.Compute.v1.RoutersResource+ListBgpRoutesRequest.RouteTypeEnum": [
+    "ADVERTISED",
+    "LEARNED",
+    "UNSPECIFIED_ROUTE_TYPE"
   ]
 }
