@@ -8,6 +8,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.CloudKMS.v1.ProjectsResource+LocationsResource+KeyRingsResource+CryptoKeysResource+CryptoKeyVersionsResource+GetPublicKeyRequest.PublicKeyFormatEnum": [
+    "PUBLIC_KEY_FORMAT_UNSPECIFIED",
+    "PEM",
+    "NIST_PQC"
+  ],
   "Google.Apis.CloudKMS.v1.ProjectsResource+LocationsResource+KeyRingsResource+CryptoKeysResource+CryptoKeyVersionsResource+ListRequest.ViewEnum": [
     "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED",
     "FULL"
