@@ -1376,7 +1376,9 @@ namespace Google.Apis.Forms.v1.Data
     /// <summary>A form's settings.</summary>
     public class FormSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Kind of email collection configured in the form.</summary>
+        /// <summary>
+        /// Optional. The setting that determines whether the form collects email addresses from respondents.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailCollectionType")]
         public virtual string EmailCollectionType { get; set; }
 
