@@ -9374,6 +9374,10 @@ namespace Google.Apis.TagManager.v2.Data
 
     public class GetContainerSnippetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Server container config param for manually provisioning a tagging server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerConfig")]
+        public virtual string ContainerConfig { get; set; }
+
         /// <summary>Tagging snippet for a Container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual string Snippet { get; set; }
