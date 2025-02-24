@@ -3146,6 +3146,659 @@ namespace Google.Apis.CloudRun.v2
                         }
                     }
                 }
+
+                /// <summary>Creates a new WorkerPool in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location and project in which this worker pool should be created. Format:
+                /// projects/{project}/locations/{location}, where {project} can be project id or number. Only lowercase
+                /// characters, digits, and hyphens.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new WorkerPool in a given project and location.</summary>
+                public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location and project in which this worker pool should be created. Format:
+                    /// projects/{project}/locations/{location}, where {project} can be project id or number. Only
+                    /// lowercase characters, digits, and hyphens.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Indicates that the request should be validated and default values populated, without
+                    /// persisting the request or creating any resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>
+                    /// Required. The unique identifier for the WorkerPool. It must begin with letter, and cannot end
+                    /// with hyphen; must contain fewer than 50 characters. The name of the worker pool becomes
+                    /// {parent}/workerPools/{worker_pool_id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("workerPoolId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string WorkerPoolId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/workerPools";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("workerPoolId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "workerPoolId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a WorkerPool.</summary>
+                /// <param name="name">
+                /// Required. The full name of the WorkerPool. Format:
+                /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where {project} can be project id
+                /// or number.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a WorkerPool.</summary>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full name of the WorkerPool. Format:
+                    /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where {project} can be
+                    /// project id or number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// A system-generated fingerprint for this version of the resource. May be used to detect
+                    /// modification conflict during updates.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. Indicates that the request should be validated without actually deleting any
+                    /// resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets information about a WorkerPool.</summary>
+                /// <param name="name">
+                /// Required. The full name of the WorkerPool. Format:
+                /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where {project} can be project id
+                /// or number.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets information about a WorkerPool.</summary>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full name of the WorkerPool. Format:
+                    /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where {project} can be
+                    /// project id or number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the IAM Access Control policy currently in effect for the given Cloud Run WorkerPool. This
+                /// result does not include any inherited policies.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the IAM Access Control policy currently in effect for the given Cloud Run WorkerPool. This
+                /// result does not include any inherited policies.
+                /// </summary>
+                public class GetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists WorkerPools. Results are sorted by creation time, descending.</summary>
+                /// <param name="parent">
+                /// Required. The location and project to list resources on. Location must be a valid Google Cloud
+                /// region, and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where
+                /// {project} can be project id or number.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists WorkerPools. Results are sorted by creation time, descending.</summary>
+                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ListWorkerPoolsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location and project to list resources on. Location must be a valid Google Cloud
+                    /// region, and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where
+                    /// {project} can be project id or number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of WorkerPools to return in this call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token received from a previous call to ListWorkerPools. All other parameters must match.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>If true, returns deleted (but unexpired) resources along with active ones.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/workerPools";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a WorkerPool.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this field is ignored, and
+                /// instead composed from CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id. Format:
+                /// projects/{project}/locations/{location}/workerPools/{worker_id}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a WorkerPool.</summary>
+                public class PatchRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this field is ignored,
+                    /// and instead composed from CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id.
+                    /// Format: projects/{project}/locations/{location}/workerPools/{worker_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and if the WorkerPool does not exist, it will create a new one. The
+                    /// caller must have 'run.workerpools.create' permissions if this is set to true and the WorkerPool
+                    /// does not exist.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, a new revision will be created from the template even if the system
+                    /// doesn't detect any changes from the previously deployed revision. This may be useful for cases
+                    /// where the underlying resources need to be recreated or reinitialized. For example if the image
+                    /// is specified by label, but the underlying image digest has changed) or if the container performs
+                    /// deployment initialization work that needs to be performed again.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("forceNewRevision", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ForceNewRevision { get; set; }
+
+                    /// <summary>Optional. The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. Indicates that the request should be validated and default values populated, without
+                    /// persisting the request or updating any resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2WorkerPool Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("forceNewRevision", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "forceNewRevision",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the IAM Access control policy for the specified WorkerPool. Overwrites any existing policy.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudRun.v2.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the IAM Access control policy for the specified WorkerPool. Overwrites any existing policy.
+                /// </summary>
+                public class SetIamPolicyRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified Project. There are no permissions required
+                /// for making this API call.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified Project. There are no permissions required
+                /// for making this API call.
+                /// </summary>
+                public class TestIamPermissionsRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workerPools/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Export image for a given resource.</summary>
@@ -4540,6 +5193,51 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>
+    /// Holds a single instance split entry for the Worker. Allocations can be done to a specific Revision name, or
+    /// pointing to the latest Ready Revision.
+    /// </summary>
+    public class GoogleCloudRunV2InstanceSplit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percent")]
+        public virtual System.Nullable<int> Percent { get; set; }
+
+        /// <summary>
+        /// Revision to which to assign this portion of instances, if split allocation is by revision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The allocation type for this instance split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the observed state of a single `InstanceSplit` entry.</summary>
+    public class GoogleCloudRunV2InstanceSplitStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies percent of the instance split to this Revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percent")]
+        public virtual System.Nullable<int> Percent { get; set; }
+
+        /// <summary>Revision to which this instance split is assigned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The allocation type for this instance split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Job represents the configuration of a single job, which references a container image that is run to completion.
     /// </summary>
     public class GoogleCloudRunV2Job : Google.Apis.Requests.IDirectResponseSchema
@@ -4922,6 +5620,24 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>The resulting list of Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Task> Tasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message containing a list of WorkerPools.</summary>
+    public class GoogleCloudRunV2ListWorkerPoolsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token indicating there are more items than page_size. Use it in the next ListWorkerPools request to
+        /// continue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The resulting list of WorkerPools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2WorkerPool> WorkerPools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6839,6 +7555,486 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2NetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// WorkerPool acts as a top-level container that manages a set of configurations and revision templates which
+    /// implement a pull-based workload. WorkerPool exists to provide a singular abstraction which can be access
+    /// controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team
+    /// resource ownership.
+    /// </summary>
+    public class GoogleCloudRunV2WorkerPool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They
+        /// are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support
+        /// annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or
+        /// `autoscaling.knative.dev` namespaces, and they will be rejected in new resources. All system annotations in
+        /// v1 now have a corresponding field in v2 WorkerPool. This field follows Kubernetes annotations' namespacing,
+        /// limits, and rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Optional. Settings for the Binary Authorization feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
+        public virtual GoogleCloudRunV2BinaryAuthorization BinaryAuthorization { get; set; }
+
+        /// <summary>Arbitrary identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Arbitrary version identifier for the API client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
+        public virtual string ClientVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The Conditions of all other associated sub-resources. They contain additional diagnostics
+        /// information in case the WorkerPool does not reach its Serving state. See comments in `reconciling` for
+        /// additional information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Email address of the authenticated creator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual string Creator { get; set; }
+
+        /// <summary>
+        /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the
+        /// full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For
+        /// more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customAudiences")]
+        public virtual System.Collections.Generic.IList<string> CustomAudiences { get; set; }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. The deletion time. It is only populated as a response to a Delete request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// User-provided description of the WorkerPool. This field currently has a 512-character limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. A system-generated fingerprint for this version of the resource. May be used to detect
+        /// modification conflict during updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Output only. For a deleted resource, the time after which it will be permamently deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. A number that monotonically increases every time the user modifies the desired state. Please
+        /// note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a
+        /// `string` instead of an `integer`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>
+        /// Output only. Detailed status information for corresponding instance splits. See comments in `reconciling`
+        /// for additional information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceSplitStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2InstanceSplitStatus> InstanceSplitStatuses { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool.
+        /// If instance split is empty or not provided, defaults to 100% instances assigned to the latest `Ready`
+        /// Revision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceSplits")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2InstanceSplit> InstanceSplits { get; set; }
+
+        /// <summary>
+        /// Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided
+        /// labels are shared with Google's billing system, so they can be used to filter, or break down billing charges
+        /// by team, component, environment, state, etc. For more information, visit
+        /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+        /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
+        /// namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2
+        /// WorkerPool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. Email address of the last authenticated modifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifier")]
+        public virtual string LastModifier { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the last created revision. See comments in `reconciling` for additional information on
+        /// reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestCreatedRevision")]
+        public virtual string LatestCreatedRevision { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the latest revision that is serving traffic. See comments in `reconciling` for
+        /// additional information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestReadyRevision")]
+        public virtual string LatestReadyRevision { get; set; }
+
+        /// <summary>
+        /// Optional. The launch stage as defined by [Google Cloud Platform Launch
+        /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no
+        /// value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview
+        /// features in that stage. On read (or output), describes whether the resource uses preview features. For
+        /// example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be
+        /// BETA on output.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; }
+
+        /// <summary>
+        /// The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this field is ignored, and instead
+        /// composed from CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id. Format:
+        /// projects/{project}/locations/{location}/workerPools/{worker_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The generation of this WorkerPool currently serving traffic. See comments in `reconciling` for
+        /// additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64
+        /// value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
+        public virtual System.Nullable<long> ObservedGeneration { get; set; }
+
+        /// <summary>
+        /// Output only. Returns true if the WorkerPool is currently being acted upon by the system to bring it into the
+        /// desired state. When a new WorkerPool is created, or an existing one is updated, Cloud Run will
+        /// asynchronously perform all necessary steps to bring the WorkerPool to the desired serving state. This
+        /// process is called reconciliation. While reconciliation is in process, `observed_generation`,
+        /// `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the
+        /// intended state: Once reconciliation is over (and this field is false), there are two possible outcomes:
+        /// reconciliation succeeded and the serving state matches the WorkerPool, or there was an error, and
+        /// reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded,
+        /// the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`,
+        /// `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`,
+        /// `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or
+        /// empty for newly created WorkerPools. Additional information on the failure can be found in
+        /// `terminal_condition` and `conditions`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Optional. Specifies worker-pool-level scaling settings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
+        public virtual GoogleCloudRunV2WorkerPoolScaling Scaling { get; set; }
+
+        /// <summary>Required. The template used to create revisions for this WorkerPool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("template")]
+        public virtual GoogleCloudRunV2WorkerPoolRevisionTemplate Template { get; set; }
+
+        /// <summary>
+        /// Output only. The Condition of this WorkerPool, containing its readiness status, and detailed error
+        /// information in case it did not reach a serving state. See comments in `reconciling` for additional
+        /// information on reconciliation process in Cloud Run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminalCondition")]
+        public virtual GoogleCloudRunV2Condition TerminalCondition { get; set; }
+
+        /// <summary>
+        /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed
+        /// to remain unchanged until the resource is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last-modified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// WorkerPoolRevisionTemplate describes the data a worker pool revision should have when created from a template.
+    /// </summary>
+    public class GoogleCloudRunV2WorkerPoolRevisionTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They
+        /// are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support
+        /// annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or
+        /// `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a
+        /// corresponding field in v2 WorkerPoolRevisionTemplate. This field follows Kubernetes annotations'
+        /// namespacing, limits, and rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Holds list of the containers that defines the unit of execution for this Revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Container> Containers { get; set; }
+
+        /// <summary>
+        /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more
+        /// information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual string EncryptionKey { get; set; }
+
+        /// <summary>Optional. The action to take if the encryption key is revoked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyRevocationAction")]
+        public virtual string EncryptionKeyRevocationAction { get; set; }
+
+        /// <summary>
+        /// Optional. If encryption_key_revocation_action is SHUTDOWN, the duration before shutting down all instances.
+        /// The minimum increment is 1 hour.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyShutdownDuration")]
+        public virtual object EncryptionKeyShutdownDuration { get; set; }
+
+        /// <summary>
+        /// Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided
+        /// labels are shared with Google's billing system, so they can be used to filter, or break down billing charges
+        /// by team, component, environment, state, etc. For more information, visit
+        /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+        /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
+        /// namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2
+        /// WorkerPoolRevisionTemplate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. The node selector for the revision template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
+        public virtual GoogleCloudRunV2NodeSelector NodeSelector { get; set; }
+
+        /// <summary>
+        /// Optional. The unique name for the revision. If this field is omitted, it will be automatically generated
+        /// based on the WorkerPool name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>
+        /// Optional. Email address of the IAM service account associated with the revision of the service. The service
+        /// account represents the identity of the running revision, and determines what permissions the revision has.
+        /// If not provided, the revision will use the project's default service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Optional. Enables service mesh connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceMesh")]
+        public virtual GoogleCloudRunV2ServiceMesh ServiceMesh { get; set; }
+
+        /// <summary>Optional. Enable session affinity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
+        public virtual System.Nullable<bool> SessionAffinity { get; set; }
+
+        /// <summary>Optional. A list of Volumes to make available to containers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2Volume> Volumes { get; set; }
+
+        /// <summary>
+        /// Optional. VPC Access configuration to use for this Revision. For more information, visit
+        /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
+        public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Worker pool scaling settings.</summary>
+    public class GoogleCloudRunV2WorkerPoolScaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The total number of instances in manual scaling mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualInstanceCount")]
+        public virtual System.Nullable<int> ManualInstanceCount { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum count of instances distributed among revisions based on the specified instance split
+        /// percentages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
+        public virtual System.Nullable<int> MaxInstanceCount { get; set; }
+
+        /// <summary>
+        /// Optional. A maximum percentage of instances that will be moved in each step of traffic split changes. When
+        /// set to a positive value, the server will bring up, at most, that percentage of new instances at a time
+        /// before moving traffic to them. After moving traffic, the server will bring down instances of the old
+        /// revision. This can reduce a spike of total active instances during changes from one revision to another but
+        /// specifying how many extra instances can be brought up at a time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSurge")]
+        public virtual System.Nullable<int> MaxSurge { get; set; }
+
+        /// <summary>
+        /// Optional. A maximum percentage of instances that may be unavailable during changes from one revision to
+        /// another. When set to a positive value, the server may bring down instances before bringing up new instances.
+        /// This can prevent a spike of total active instances during changes from one revision by reducing the pool of
+        /// instances before bringing up new ones. Some requests may be slow or fail to serve during the transition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
+        public virtual System.Nullable<int> MaxUnavailable { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum count of instances distributed among revisions based on the specified instance split
+        /// percentages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
+        public virtual System.Nullable<int> MinInstanceCount { get; set; }
+
+        /// <summary>Optional. The scaling mode for the worker pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scalingMode")]
+        public virtual string ScalingMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
