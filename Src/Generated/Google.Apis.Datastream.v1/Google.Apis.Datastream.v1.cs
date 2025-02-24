@@ -2858,6 +2858,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlExcludedObjects")]
         public virtual PostgresqlRdbms PostgresqlExcludedObjects { get; set; }
 
+        /// <summary>Salesforce data source objects to avoid backfilling</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceExcludedObjects")]
+        public virtual SalesforceOrg SalesforceExcludedObjects { get; set; }
+
         /// <summary>SQLServer data source objects to avoid backfilling</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerExcludedObjects")]
         public virtual SqlServerRdbms SqlServerExcludedObjects { get; set; }
@@ -2973,6 +2977,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appendOnly")]
         public virtual AppendOnly AppendOnly { get; set; }
 
+        /// <summary>Optional. Big Lake Managed Tables (BLMT) configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blmtConfig")]
+        public virtual BlmtConfig BlmtConfig { get; set; }
+
         /// <summary>
         /// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field
         /// will only affect new tables created in the future, but existing tables will not be impacted. Lower values
@@ -3022,6 +3030,33 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Use Binary log position based replication.</summary>
     public class BinaryLogPosition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for BLMT.</summary>
+    public class BlmtConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Cloud Storage bucket name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Required. The bigquery connection. Format: `{project}.{location}.{name}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
+        public virtual string ConnectionName { get; set; }
+
+        /// <summary>Required. The file format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
+        public virtual string FileFormat { get; set; }
+
+        /// <summary>The root path inside the Cloud Storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootPath")]
+        public virtual string RootPath { get; set; }
+
+        /// <summary>Required. The table format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableFormat")]
+        public virtual string TableFormat { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3133,6 +3168,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Private connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
+
+        /// <summary>Salesforce Connection Profile configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceProfile")]
+        public virtual SalesforceProfile SalesforceProfile { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
@@ -3954,6 +3993,31 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>CDC strategy to resume replication from the next available position in the source.</summary>
     public class NextAvailableStartPosition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OAuth2 Client Credentials.</summary>
+    public class Oauth2ClientCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Client ID for Salesforce OAuth2 Client Credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>
+        /// Optional. Client secret for Salesforce OAuth2 Client Credentials. Mutually exclusive with the
+        /// `secret_manager_stored_client_secret` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the Salesforce OAuth2 client_secret.
+        /// Mutually exclusive with the `client_secret` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredClientSecret")]
+        public virtual string SecretManagerStoredClientSecret { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4821,6 +4885,106 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Salesforce field.</summary>
+    public class SalesforceField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Field name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Indicates whether the field can accept nil values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nillable")]
+        public virtual System.Nullable<bool> Nillable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Salesforce object.</summary>
+    public class SalesforceObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Salesforce fields. When unspecified as part of include objects, includes everything, when unspecified as
+        /// part of exclude objects, excludes nothing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<SalesforceField> Fields { get; set; }
+
+        /// <summary>Object name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
+        public virtual string ObjectName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Salesforce data source object identifier.</summary>
+    public class SalesforceObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The object name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
+        public virtual string ObjectName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Salesforce organization structure.</summary>
+    public class SalesforceOrg : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Salesforce objects in the database server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objects")]
+        public virtual System.Collections.Generic.IList<SalesforceObject> Objects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Salesforce profile</summary>
+    public class SalesforceProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Domain endpoint for the Salesforce connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>Connected app authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientCredentials")]
+        public virtual Oauth2ClientCredentials Oauth2ClientCredentials { get; set; }
+
+        /// <summary>User-password authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCredentials")]
+        public virtual UserCredentials UserCredentials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Salesforce source configuration</summary>
+    public class SalesforceSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Salesforce objects to exclude from the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual SalesforceOrg ExcludeObjects { get; set; }
+
+        /// <summary>Salesforce objects to retrieve from the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual SalesforceOrg IncludeObjects { get; set; }
+
+        /// <summary>
+        /// Required. Salesforce objects polling interval. The interval at which new changes will be polled for each
+        /// object. The duration must be between 5 minutes and 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingInterval")]
+        public virtual object PollingInterval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Message represents the option where Datastream will enforce the encryption and authenticate the server identity
     /// as well as the client identity. ca_certificate, client_certificate and client_key must be set if user selects
@@ -4896,6 +5060,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlSourceConfig")]
         public virtual PostgresqlSourceConfig PostgresqlSourceConfig { get; set; }
 
+        /// <summary>Salesforce data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceSourceConfig")]
+        public virtual SalesforceSourceConfig SalesforceSourceConfig { get; set; }
+
         /// <summary>
         /// Required. Source connection profile resoource. Format:
         /// `projects/{project}/locations/{location}/connectionProfiles/{name}`
@@ -4938,6 +5106,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>PostgreSQL data source object identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlIdentifier")]
         public virtual PostgresqlObjectIdentifier PostgresqlIdentifier { get; set; }
+
+        /// <summary>Salesforce data source object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceIdentifier")]
+        public virtual SalesforceObjectIdentifier SalesforceIdentifier { get; set; }
 
         /// <summary>SQLServer data source object identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerIdentifier")]
@@ -5509,6 +5681,45 @@ namespace Google.Apis.Datastream.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Username-password credentials.</summary>
+    public class UserCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Password for the Salesforce connection. Mutually exclusive with the
+        /// `secret_manager_stored_password` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the Salesforce connection's password.
+        /// Mutually exclusive with the `password` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredPassword")]
+        public virtual string SecretManagerStoredPassword { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the Salesforce connection's security token.
+        /// Mutually exclusive with the `security_token` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredSecurityToken")]
+        public virtual string SecretManagerStoredSecurityToken { get; set; }
+
+        /// <summary>
+        /// Optional. Security token for the Salesforce connection. Mutually exclusive with the
+        /// `secret_manager_stored_security_token` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityToken")]
+        public virtual string SecurityToken { get; set; }
+
+        /// <summary>Required. Username for the Salesforce connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
