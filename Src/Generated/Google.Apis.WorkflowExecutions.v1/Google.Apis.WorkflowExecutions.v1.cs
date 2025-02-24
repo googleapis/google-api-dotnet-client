@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1468,10 +1468,9 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         public virtual Error Error { get; set; }
 
         /// <summary>
-        /// Optional. Describes the level of the execution history feature to apply to this execution. If not specified,
-        /// the level of the execution history feature will be determined by its workflow's execution history level. If
-        /// the value is different from its workflow's value, it will override the workflow's execution history level
-        /// for this exeuction.
+        /// Optional. Describes the execution history level to apply to this execution. If not specified, the execution
+        /// history level is determined by its workflow's execution history level. If the levels are different, the
+        /// executionHistoryLevel overrides the workflow's execution history level for this execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionHistoryLevel")]
         public virtual string ExecutionHistoryLevel { get; set; }
@@ -1901,7 +1900,7 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The NavigationInfo associated to this step.</summary>
+        /// <summary>Output only. The NavigationInfo associated with this step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("navigationInfo")]
         public virtual NavigationInfo NavigationInfo { get; set; }
 
@@ -1920,7 +1919,7 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("step")]
         public virtual string Step { get; set; }
 
-        /// <summary>Output only. The StepEntryMetadata associated to this step.</summary>
+        /// <summary>Output only. The StepEntryMetadata associated with this step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepEntryMetadata")]
         public virtual StepEntryMetadata StepEntryMetadata { get; set; }
 
@@ -1965,7 +1964,7 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The VariableData associated to this step.</summary>
+        /// <summary>Output only. The VariableData associated with this step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableData")]
         public virtual VariableData VariableData { get; set; }
 
