@@ -663,7 +663,7 @@ namespace Google.Apis.Bigquery.v2
 
             /// <summary>
             /// An expression for filtering the results of the request by label. The syntax is `labels.[:]`. Multiple
-            /// filters can be ANDed together by connecting with a space. Example: `labels.department:receiving
+            /// filters can be AND-ed together by connecting with a space. Example: `labels.department:receiving
             /// labels.active`. See [Filtering datasets using
             /// labels](https://cloud.google.com/bigquery/docs/filtering-labels#filtering_datasets_using_labels) for
             /// details.
@@ -4691,7 +4691,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Threshold at which the metrics are computed. For binary classification models this is the positive class
-        /// threshold. For multi-class classfication models this is the confidence threshold.
+        /// threshold. For multi-class classification models this is the confidence threshold.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<double> Threshold { get; set; }
@@ -6900,6 +6900,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("csvOptions")]
         public virtual CsvOptions CsvOptions { get; set; }
 
+        /// <summary>Optional. Format used to parse DATE values. Supports C-style and SQL-style values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateFormat")]
+        public virtual string DateFormat { get; set; }
+
+        /// <summary>Optional. Format used to parse DATETIME values. Supports C-style and SQL-style values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datetimeFormat")]
+        public virtual string DatetimeFormat { get; set; }
+
         /// <summary>
         /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and
         /// the precision and the scale parameters of the decimal field determine the target type. In the order of
@@ -6910,7 +6918,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -&amp;gt; NUMERIC; *
         /// (39,9) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -&amp;gt; BIGNUMERIC (NUMERIC
         /// cannot hold 10 fractional digits); * (76,38) -&amp;gt; BIGNUMERIC; * (77,38) -&amp;gt; BIGNUMERIC (error if
-        /// value exeeds supported range). This field cannot contain duplicate types. The order of the types in this
+        /// value exceeds supported range). This field cannot contain duplicate types. The order of the types in this
         /// field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and
         /// NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"]
         /// for the other file formats.
@@ -7022,6 +7030,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; }
+
+        /// <summary>Optional. Format used to parse TIME values. Supports C-style and SQL-style values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeFormat")]
+        public virtual string TimeFormat { get; set; }
+
+        /// <summary>
+        /// Optional. Time zone used when parsing timestamp values that do not have specific time zone information (e.g.
+        /// 2024-04-20 12:34:56). The expected format is a IANA timezone string (e.g. America/Los_Angeles).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampFormat")]
+        public virtual string TimestampFormat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7934,6 +7957,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createSession")]
         public virtual System.Nullable<bool> CreateSession { get; set; }
 
+        /// <summary>Optional. Date format used for parsing DATE values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateFormat")]
+        public virtual string DateFormat { get; set; }
+
+        /// <summary>Optional. Date format used for parsing DATETIME values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datetimeFormat")]
+        public virtual string DatetimeFormat { get; set; }
+
         /// <summary>
         /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and
         /// the precision and the scale parameters of the decimal field determine the target type. In the order of
@@ -7944,7 +7975,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -&amp;gt; NUMERIC; *
         /// (39,9) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -&amp;gt; BIGNUMERIC (NUMERIC
         /// cannot hold 10 fractional digits); * (76,38) -&amp;gt; BIGNUMERIC; * (77,38) -&amp;gt; BIGNUMERIC (error if
-        /// value exeeds supported range). This field cannot contain duplicate types. The order of the types in this
+        /// value exceeds supported range). This field cannot contain duplicate types. The order of the types in this
         /// field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and
         /// NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"]
         /// for the other file formats.
@@ -8152,12 +8183,27 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; }
 
+        /// <summary>Optional. Date format used for parsing TIME values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeFormat")]
+        public virtual string TimeFormat { get; set; }
+
         /// <summary>
         /// Time-based partitioning specification for the destination table. Only one of timePartitioning and
         /// rangePartitioning should be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; }
+
+        /// <summary>
+        /// Optional. [Experimental] Default time zone that will apply when parsing timestamp values that have no
+        /// specific time zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>Optional. Date format used for parsing TIMESTAMP values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampFormat")]
+        public virtual string TimestampFormat { get; set; }
 
         /// <summary>
         /// Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the
@@ -9512,7 +9558,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Statistics for metadata caching in BigLake tables.</summary>
+    /// <summary>Statistics for metadata caching in queried tables.</summary>
     public class MetadataCacheStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Set for the Metadata caching eligible tables referenced in the query.</summary>
@@ -10185,6 +10231,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataset")]
         public virtual DatasetReference DefaultDataset { get; set; }
 
+        /// <summary>Optional. Custom encryption configuration (e.g., Cloud KMS keys)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
+        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; }
+
         /// <summary>
         /// Optional. If set to true, BigQuery doesn't run the job. Instead, if the query is valid, BigQuery returns
         /// statistics about the job such as how many bytes would be processed. If the query is invalid, an error
@@ -10203,6 +10253,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobCreationMode")]
         public virtual string JobCreationMode { get; set; }
+
+        /// <summary>
+        /// Optional. Job timeout in milliseconds. If this time limit is exceeded, BigQuery will attempt to stop a
+        /// longer job, but may not always succeed in canceling it before the job completes. For example, a job that
+        /// takes more than 60 seconds to complete has a better chance of being stopped than a job that takes 10 seconds
+        /// to complete. This timeout applies to the query even if a job does not need to be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobTimeoutMs")]
+        public virtual System.Nullable<long> JobTimeoutMs { get; set; }
 
         /// <summary>The resource type of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -12354,7 +12413,7 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>Information about a logical view.</summary>
             public class ViewData
             {
-                /// <summary>Specifices the privacy policy for the view.</summary>
+                /// <summary>Specifies the privacy policy for the view.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicy")]
                 public virtual PrivacyPolicy PrivacyPolicy { get; set; }
 
@@ -13241,7 +13300,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("foreignDefinitions")]
         public virtual System.Collections.Generic.IList<ForeignViewDefinition> ForeignDefinitions { get; set; }
 
-        /// <summary>Optional. Specifices the privacy policy for the view.</summary>
+        /// <summary>Optional. Specifies the privacy policy for the view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicy")]
         public virtual PrivacyPolicy PrivacyPolicy { get; set; }
 
