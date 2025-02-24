@@ -3673,10 +3673,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string AccessLevel { get; set; }
 
         /// <summary>
-        /// A Google Cloud resource that you want to allow to egress the perimeter. These resources can access data
-        /// outside the perimeter. This field only supports projects. The project format is `projects/{project_number}`.
-        /// The resource can be in any Google Cloud organization, not just the organization where the perimeter is
-        /// defined. You can't use `*` in this field to allow all Google Cloud resources.
+        /// A Google Cloud resource from the service perimeter that you want to allow to access data outside the
+        /// perimeter. This field supports only projects. The project format is `projects/{project_number}`. You can't
+        /// use `*` in this field to allow all Google Cloud resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
