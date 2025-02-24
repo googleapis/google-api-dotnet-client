@@ -2500,6 +2500,13 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual string Listing { get; set; }
 
         /// <summary>
+        /// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled
+        /// for DataExchange/Listing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logLinkedDatasetQueryUserEmail")]
+        public virtual System.Nullable<bool> LogLinkedDatasetQueryUserEmail { get; set; }
+
+        /// <summary>
         /// Output only. The resource name of the subscription. e.g.
         /// `projects/myproject/locations/US/subscriptions/123`.
         /// </summary>
