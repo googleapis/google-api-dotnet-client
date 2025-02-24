@@ -1404,6 +1404,13 @@ namespace Google.Apis.Parallelstore.v1beta.Data
         }
 
         /// <summary>
+        /// Output only. Deprecated 'daos_version' field. Output only. The version of DAOS software running in the
+        /// instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daosVersion")]
+        public virtual string DaosVersion { get; set; }
+
+        /// <summary>
         /// Optional. Immutable. The deployment type of the instance. Allowed values are: * `SCRATCH`: the instance is a
         /// scratch instance. * `PERSISTENT`: the instance is a persistent instance.
         /// </summary>
