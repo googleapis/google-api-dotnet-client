@@ -1723,8 +1723,8 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual System.Collections.Generic.IList<DocumentationRule> Rules { get; set; }
 
         /// <summary>
-        /// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides
-        /// following sections: 1. rest.service.client_libraries
+        /// Specifies section and content to override the boilerplate content. Currently overrides following sections:
+        /// 1. rest.service.client_libraries
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionOverrides")]
         public virtual System.Collections.Generic.IList<Page> SectionOverrides { get; set; }
@@ -1768,7 +1768,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
 
         /// <summary>
         /// String of comma or space separated case-sensitive words for which method/field name replacement will be
-        /// disabled by go/api-docgen.
+        /// disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableReplacementWords")]
         public virtual string DisableReplacementWords { get; set; }
