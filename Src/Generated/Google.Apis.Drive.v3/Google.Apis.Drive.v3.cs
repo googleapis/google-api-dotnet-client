@@ -4915,6 +4915,10 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
+            /// <summary>Whether the request should enforce expansive access rules.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enforceExpansiveAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceExpansiveAccess { get; set; }
+
             /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -4958,6 +4962,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enforceExpansiveAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceExpansiveAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
                     Pattern = null,
                 });
                 RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
@@ -5251,6 +5263,10 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
+            /// <summary>Whether the request should enforce expansive access rules.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enforceExpansiveAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnforceExpansiveAccess { get; set; }
+
             /// <summary>Whether to remove the expiration date.</summary>
             [Google.Apis.Util.RequestParameterAttribute("removeExpiration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RemoveExpiration { get; set; }
@@ -5311,6 +5327,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enforceExpansiveAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceExpansiveAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
                     Pattern = null,
                 });
                 RequestParameters.Add("removeExpiration", new Google.Apis.Discovery.Parameter
@@ -7731,6 +7755,12 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageMediaMetadata")]
         public virtual ImageMediaMetadataData ImageMediaMetadata { get; set; }
 
+        /// <summary>
+        /// Whether this file has inherited permissions disabled. Inherited permissions are enabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inheritedPermissionsDisabled")]
+        public virtual System.Nullable<bool> InheritedPermissionsDisabled { get; set; }
+
         /// <summary>Output only. Whether the file was created or opened by the requesting app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAppAuthorized")]
         public virtual System.Nullable<bool> IsAppAuthorized { get; set; }
@@ -8154,6 +8184,10 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
             public virtual System.Nullable<bool> CanDeleteChildren { get; set; }
 
+            /// <summary>Whether a user can disable inherited permissions.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDisableInheritedPermissions")]
+            public virtual System.Nullable<bool> CanDisableInheritedPermissions { get; set; }
+
             /// <summary>Output only. Whether the current user can download this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
             public virtual System.Nullable<bool> CanDownload { get; set; }
@@ -8164,6 +8198,10 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
             public virtual System.Nullable<bool> CanEdit { get; set; }
+
+            /// <summary>Whether a user can re-enable inherited permissions.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canEnableInheritedPermissions")]
+            public virtual System.Nullable<bool> CanEnableInheritedPermissions { get; set; }
 
             /// <summary>
             /// Output only. Whether the current user can list the children of this folder. This is always false when
@@ -8933,6 +8971,12 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Id { get; set; }
 
         /// <summary>
+        /// When true, only organizers, owners, and users with permissions added directly on the item can access it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inheritedPermissionsDisabled")]
+        public virtual System.Nullable<bool> InheritedPermissionsDisabled { get; set; }
+
+        /// <summary>
         /// Output only. Identifies what kind of resource this is. Value: the fixed string `"drive#permission"`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -8946,8 +8990,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> PendingOwner { get; set; }
 
         /// <summary>
-        /// Output only. Details of whether the permissions on this shared drive item are inherited or directly on this
-        /// item. This is an output-only field which is present only for shared drive items.
+        /// Output only. Details of whether the permissions on this item are inherited or directly on this item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionDetails")]
         public virtual System.Collections.Generic.IList<PermissionDetailsData> PermissionDetails { get; set; }
@@ -8977,8 +9020,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Indicates the view for this permission. Only populated for permissions that belong to a view. 'published' is
-        /// the only supported value.
+        /// Indicates the view for this permission. Only populated for permissions that belong to a view. published and
+        /// metadata are the only supported values. - published: The permission's role is published_reader. - metadata:
+        /// The item is only visible to the metadata view because the item has limited access and the scope has at least
+        /// read access to the parent. Note: The metadata view is currently only supported on folders.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
@@ -8987,8 +9032,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. Details of whether the permissions on this shared drive item are inherited or directly on this
-        /// item. This is an output-only field which is present only for shared drive items.
+        /// Output only. Details of whether the permissions on this item are inherited or directly on this item.
         /// </summary>
         public class PermissionDetailsData
         {
@@ -9000,7 +9044,8 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> Inherited { get; set; }
 
             /// <summary>
-            /// Output only. The ID of the item from which this permission is inherited. This is an output-only field.
+            /// Output only. The ID of the item from which this permission is inherited. This is only populated for
+            /// items in shared drives.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("inheritedFrom")]
             public virtual string InheritedFrom { get; set; }
