@@ -2955,6 +2955,28 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specify Drive documents by document ID.</summary>
+    public class DriveDocumentIds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A list of Drive document IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ids")]
+        public virtual System.Collections.Generic.IList<string> Ids { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Drive documents to search.</summary>
+    public class DriveDocumentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specify Drive documents by document ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentIds")]
+        public virtual DriveDocumentIds DocumentIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Options for Drive exports.</summary>
     public class DriveExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4012,6 +4034,10 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The data source to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataScope")]
         public virtual string DataScope { get; set; }
+
+        /// <summary>Required when **SearchMethod** is **DRIVE_DOCUMENT**.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveDocumentInfo")]
+        public virtual DriveDocumentInfo DriveDocumentInfo { get; set; }
 
         /// <summary>Set Drive search-specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
