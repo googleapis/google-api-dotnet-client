@@ -11205,7 +11205,12 @@ namespace Google.Apis.DisplayVideo.v2
                 this.service = service;
             }
 
-            /// <summary>Creates a new custom bidding script. Returns the newly created script if successful.</summary>
+            /// <summary>
+            /// Creates a new custom bidding script. Returns the newly created script if successful. *Warning*: Starting
+            /// **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line items will
+            /// return an error. [Read more about this announced
+            /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customBiddingAlgorithmId">
             /// Required. The ID of the custom bidding algorithm that owns the script.
@@ -11215,7 +11220,12 @@ namespace Google.Apis.DisplayVideo.v2
                 return new CreateRequest(this.service, body, customBiddingAlgorithmId);
             }
 
-            /// <summary>Creates a new custom bidding script. Returns the newly created script if successful.</summary>
+            /// <summary>
+            /// Creates a new custom bidding script. Returns the newly created script if successful. *Warning*: Starting
+            /// **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line items will
+            /// return an error. [Read more about this announced
+            /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+            /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.CustomBiddingScript>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -11748,6 +11758,9 @@ namespace Google.Apis.DisplayVideo.v2
 
         /// <summary>
         /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
+        /// *Warning*: Starting **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line
+        /// items will return an error. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customBiddingAlgorithmId">
@@ -11760,6 +11773,9 @@ namespace Google.Apis.DisplayVideo.v2
 
         /// <summary>
         /// Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful.
+        /// *Warning*: Starting **April 1, 2025**, requests updating custom bidding algorithms that are assigned to line
+        /// items will return an error. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
         /// </summary>
         public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.CustomBiddingAlgorithm>
         {
@@ -19334,11 +19350,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Asset association for the creative.</summary>
     public class AssetAssociation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The associated asset.</summary>
+        /// <summary>Optional. The associated asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
         public virtual Asset Asset { get; set; }
 
-        /// <summary>The role of this asset for the creative.</summary>
+        /// <summary>Optional. The role of this asset for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
@@ -19796,31 +19812,34 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// Assigned audience group targeting option details. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group
     /// is UNION, except for excluded_first_and_third_party_audience_group and excluded_google_audience_group, of which
-    /// COMPLEMENT is used as an INTERSECTION with other groups. NEXT_ID: 9
+    /// COMPLEMENT is used as an INTERSECTION with other groups.
     /// </summary>
     public class AudienceGroupAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Google audience ids of the excluded Google audience group. Used for negative targeting. The COMPLEMENT
-        /// of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive
-        /// audience targeting. Only contains Affinity, In-market and Installed-apps type Google audiences. All items
-        /// are logically ‘OR’ of each other.
+        /// Optional. The Google audience ids of the excluded Google audience group. Used for negative targeting. The
+        /// COMPLEMENT of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any
+        /// positive audience targeting. Only contains Affinity, In-market and Installed-apps type Google audiences. All
+        /// items are logically ‘OR’ of each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedGoogleAudienceGroup")]
         public virtual GoogleAudienceGroup ExcludedGoogleAudienceGroup { get; set; }
 
         /// <summary>
-        /// The combined audience ids of the included combined audience group. Contains combined audience ids only.
+        /// Optional. The combined audience ids of the included combined audience group. Contains combined audience ids
+        /// only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedCombinedAudienceGroup")]
         public virtual CombinedAudienceGroup IncludedCombinedAudienceGroup { get; set; }
 
-        /// <summary>The custom list ids of the included custom list group. Contains custom list ids only.</summary>
+        /// <summary>
+        /// Optional. The custom list ids of the included custom list group. Contains custom list ids only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedCustomListGroup")]
         public virtual CustomListGroup IncludedCustomListGroup { get; set; }
 
         /// <summary>
-        /// The Google audience ids of the included Google audience group. Contains Google audience ids only.
+        /// Optional. The Google audience ids of the included Google audience group. Contains Google audience ids only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedGoogleAudienceGroup")]
         public virtual GoogleAudienceGroup IncludedGoogleAudienceGroup { get; set; }
@@ -19884,11 +19903,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>The length an audio or a video has been played.</summary>
     public class AudioVideoOffset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The offset in percentage of the audio or video duration.</summary>
+        /// <summary>Optional. The offset in percentage of the audio or video duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
         public virtual System.Nullable<long> Percentage { get; set; }
 
-        /// <summary>The offset in seconds from the start of the audio or video.</summary>
+        /// <summary>Optional. The offset in seconds from the start of the audio or video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<long> Seconds { get; set; }
 
@@ -20670,7 +20689,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
-        /// <summary>Required. The frequency cap setting of the campaign.</summary>
+        /// <summary>
+        /// Required. The frequency cap setting of the campaign. *Warning*: On **February 28, 2025**, frequency cap time
+        /// periods greater than 30 days will no longer be accepted. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
 
@@ -21025,15 +21048,15 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>A Campaign Manager 360 tracking ad.</summary>
     public class CmTrackingAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ad ID of the campaign manager 360 tracking Ad.</summary>
+        /// <summary>Optional. The ad ID of the campaign manager 360 tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmAdId")]
         public virtual System.Nullable<long> CmAdId { get; set; }
 
-        /// <summary>The creative ID of the campaign manager 360 tracking Ad.</summary>
+        /// <summary>Optional. The creative ID of the campaign manager 360 tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmCreativeId")]
         public virtual System.Nullable<long> CmCreativeId { get; set; }
 
-        /// <summary>The placement ID of the campaign manager 360 tracking Ad.</summary>
+        /// <summary>Optional. The placement ID of the campaign manager 360 tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmPlacementId")]
         public virtual System.Nullable<long> CmPlacementId { get; set; }
 
@@ -21066,8 +21089,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class CombinedAudienceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. All combined audience targeting settings in combined audience group. Repeated settings with same
-        /// id will be ignored. The number of combined audience settings should be no more than five, error will be
+        /// Required. All combined audience targeting settings in combined audience group. Repeated settings with the
+        /// same id will be ignored. The number of combined audience settings should be no more than five, error will be
         /// thrown otherwise.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
@@ -21320,7 +21343,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of
-        /// all of the conversions counted by all of the Floodlight activity IDs specified in this field.
+        /// all of the conversions counted by all of the Floodlight activity IDs specified in this field. *Warning*:
+        /// Starting **April 1, 2025**, this field will no longer be writable while a custom bidding algorithm is
+        /// assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request,
+        /// the floodlight activities must match the ones used by the custom bidding algorithm. [Read more about this
+        /// announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityConfigs")]
         public virtual System.Collections.Generic.IList<TrackingFloodlightActivityConfig> FloodlightActivityConfigs { get; set; }
@@ -21435,7 +21462,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class Creative : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Additional dimensions. Applicable when creative_type is one of: * `CREATIVE_TYPE_STANDARD` *
+        /// Optional. Additional dimensions. Applicable when creative_type is one of: * `CREATIVE_TYPE_STANDARD` *
         /// `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
         /// `CREATIVE_TYPE_LIGHTBOX` * `CREATIVE_TYPE_PUBLISHER_HOSTED` If this field is specified, width_pixels and
         /// height_pixels are both required and must be greater than or equal to 0.
@@ -21447,7 +21474,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Third-party HTML tracking tag to be appended to the creative tag.</summary>
+        /// <summary>Optional. Third-party HTML tracking tag to be appended to the creative tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendedTag")]
         public virtual string AppendedTag { get; set; }
 
@@ -21463,28 +21490,28 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<long> CmPlacementId { get; set; }
 
         /// <summary>
-        /// The Campaign Manager 360 tracking ad associated with the creative. Optional for the following creative_type
-        /// when created by an advertiser that uses both Campaign Manager 360 and third-party ad serving: *
-        /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` Output only for other cases.
+        /// Optional. The Campaign Manager 360 tracking ad associated with the creative. Optional for the following
+        /// creative_type when created by an advertiser that uses both Campaign Manager 360 and third-party ad serving:
+        /// * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` Output only for other cases.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmTrackingAd")]
         public virtual CmTrackingAd CmTrackingAd { get; set; }
 
         /// <summary>
-        /// The IDs of companion creatives for a video creative. You can assign existing display creatives (with image
-        /// or HTML5 assets) to serve surrounding the publisher's video player. Companions display around the video
-        /// player while the video is playing and remain after the video has completed. Creatives contain additional
-        /// dimensions can not be companion creatives. This field is only supported for following creative_type: *
-        /// `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`
+        /// Optional. The IDs of companion creatives for a video creative. You can assign existing display creatives
+        /// (with image or HTML5 assets) to serve surrounding the publisher's video player. Companions display around
+        /// the video player while the video is playing and remain after the video has completed. Creatives contain
+        /// additional dimensions can not be companion creatives. This field is only supported for the following
+        /// creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionCreativeIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreativeIds { get; set; }
 
         /// <summary>
-        /// Counter events for a rich media creative. Counters track the number of times that a user interacts with any
-        /// part of a rich media creative in a specified way (mouse-overs, mouse-outs, clicks, taps, data loading,
-        /// keyboard entries, etc.). Any event that can be captured in the creative can be recorded as a counter. Leave
-        /// it empty or unset for creatives containing image assets only.
+        /// Optional. Counter events for a rich media creative. Counters track the number of times that a user interacts
+        /// with any part of a rich media creative in a specified way (mouse-overs, mouse-outs, clicks, taps, data
+        /// loading, keyboard entries, etc.). Any event that can be captured in the creative can be recorded as a
+        /// counter. Leave it empty or unset for creatives containing image assets only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counterEvents")]
         public virtual System.Collections.Generic.IList<CounterEvent> CounterEvents { get; set; }
@@ -21603,23 +21630,23 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<bool> Html5Video { get; set; }
 
         /// <summary>
-        /// Indicates whether Integral Ad Science (IAS) campaign monitoring is enabled. To enable this for the creative,
-        /// make sure the Advertiser.creative_config.ias_client_id has been set to your IAS client ID.
+        /// Optional. Indicates whether Integral Ad Science (IAS) campaign monitoring is enabled. To enable this for the
+        /// creative, make sure the Advertiser.creative_config.ias_client_id has been set to your IAS client ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iasCampaignMonitoring")]
         public virtual System.Nullable<bool> IasCampaignMonitoring { get; set; }
 
         /// <summary>
-        /// ID information used to link this creative to an external system. Must be UTF-8 encoded with a length of no
-        /// more than 10,000 characters.
+        /// Optional. ID information used to link this creative to an external system. Must be UTF-8 encoded with a
+        /// length of no more than 10,000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationCode")]
         public virtual string IntegrationCode { get; set; }
 
         /// <summary>
-        /// JavaScript measurement URL from supported third-party verification providers (ComScore, DoubleVerify, IAS,
-        /// Moat). HTML script tags are not supported. This field is only writeable in following creative_type: *
-        /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
+        /// Optional. JavaScript measurement URL from supported third-party verification providers (ComScore,
+        /// DoubleVerify, IAS, Moat). HTML script tags are not supported. This field is only writeable in the following
+        /// creative_type: * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsTrackerUrl")]
         public virtual string JsTrackerUrl { get; set; }
@@ -21652,14 +21679,15 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// User notes for this creative. Must be UTF-8 encoded with a length of no more than 20,000 characters.
+        /// Optional. User notes for this creative. Must be UTF-8 encoded with a length of no more than 20,000
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
         /// <summary>
-        /// Specifies the OBA icon for a video creative. This field is only supported in following creative_type: *
-        /// `CREATIVE_TYPE_VIDEO`
+        /// Optional. Specifies the OBA icon for a video creative. This field is only supported in the following
+        /// creative_type: * `CREATIVE_TYPE_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obaIcon")]
         public virtual ObaIcon ObaIcon { get; set; }
@@ -21673,8 +21701,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<bool> OggAudio { get; set; }
 
         /// <summary>
-        /// Amount of time to play the video before counting a view. This field is required when skippable is true. This
-        /// field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
+        /// Optional. Amount of time to play the video before counting a view. This field is required when skippable is
+        /// true. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressOffset")]
         public virtual AudioVideoOffset ProgressOffset { get; set; }
@@ -21715,15 +21743,15 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual ReviewStatusInfo ReviewStatus { get; set; }
 
         /// <summary>
-        /// Amount of time to play the video before the skip button appears. This field is required when skippable is
-        /// true. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
+        /// Optional. Amount of time to play the video before the skip button appears. This field is required when
+        /// skippable is true. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipOffset")]
         public virtual AudioVideoOffset SkipOffset { get; set; }
 
         /// <summary>
-        /// Whether the user can choose to skip a video creative. This field is only supported for the following
-        /// creative_type: * `CREATIVE_TYPE_VIDEO`
+        /// Optional. Whether the user can choose to skip a video creative. This field is only supported for the
+        /// following creative_type: * `CREATIVE_TYPE_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
         public virtual System.Nullable<bool> Skippable { get; set; }
@@ -21738,27 +21766,27 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ThirdPartyTag { get; set; }
 
         /// <summary>
-        /// Tracking URLs from third parties to track interactions with a video creative. This field is only supported
-        /// for the following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` *
+        /// Optional. Tracking URLs from third parties to track interactions with a video creative. This field is only
+        /// supported for the following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` *
         /// `CREATIVE_TYPE_NATIVE_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyUrls")]
         public virtual System.Collections.Generic.IList<ThirdPartyUrl> ThirdPartyUrls { get; set; }
 
         /// <summary>
-        /// Timer custom events for a rich media creative. Timers track the time during which a user views and interacts
-        /// with a specified part of a rich media creative. A creative can have multiple timer events, each timed
-        /// independently. Leave it empty or unset for creatives containing image assets only.
+        /// Optional. Timer custom events for a rich media creative. Timers track the time during which a user views and
+        /// interacts with a specified part of a rich media creative. A creative can have multiple timer events, each
+        /// timed independently. Leave it empty or unset for creatives containing image assets only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timerEvents")]
         public virtual System.Collections.Generic.IList<TimerEvent> TimerEvents { get; set; }
 
         /// <summary>
-        /// Tracking URLs for analytics providers or third-party ad technology vendors. The URLs must start with https
-        /// (except on inventory that doesn't require SSL compliance). If using macros in your URL, use only macros
-        /// supported by Display &amp;amp; Video 360. Standard URLs only, no IMG or SCRIPT tags. This field is only
-        /// writeable in following creative_type: * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
-        /// `CREATIVE_TYPE_NATIVE_VIDEO`
+        /// Optional. Tracking URLs for analytics providers or third-party ad technology vendors. The URLs must start
+        /// with `https:` (except on inventory that doesn't require SSL compliance). If using macros in your URL, use
+        /// only macros supported by Display &amp;amp; Video 360. Standard URLs only, no IMG or SCRIPT tags. This field
+        /// is only writeable in the following creative_type: * `CREATIVE_TYPE_NATIVE` *
+        /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackerUrls")]
         public virtual System.Collections.Generic.IList<string> TrackerUrls { get; set; }
@@ -21769,7 +21797,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// rate, and video bit rate), each designed for specific video players or bandwidths. These transcodes give a
         /// publisher's system more options to choose from for each impression on your video and ensures that the
         /// appropriate file serves based on the viewer’s connection and screen size. This field is only supported in
-        /// following creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_AUDIO`
+        /// the following creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_AUDIO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcodes")]
         public virtual System.Collections.Generic.IList<Transcode> Transcodes { get; set; }
@@ -22082,8 +22110,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class CustomListGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. All custom list targeting settings in custom list group. Repeated settings with same id will be
-        /// ignored.
+        /// Required. All custom list targeting settings in custom list group. Repeated settings with the same id will
+        /// be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
         public virtual System.Collections.Generic.IList<CustomListTargetingSetting> Settings { get; set; }
@@ -22693,15 +22721,15 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class ExitEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the click tag of the exit event. The name must be unique within one creative. Leave it empty or
-        /// unset for creatives containing image assets only.
+        /// Optional. The name of the click tag of the exit event. The name must be unique within one creative. Leave it
+        /// empty or unset for creatives containing image assets only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The name used to identify this event in reports. Leave it empty or unset for creatives containing image
-        /// assets only.
+        /// Optional. The name used to identify this event in reports. Leave it empty or unset for creatives containing
+        /// image assets only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingName")]
         public virtual string ReportingName { get; set; }
@@ -22853,7 +22881,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<int> MaxViews { get; set; }
 
         /// <summary>
-        /// The time unit in which the frequency cap will be applied. Required when unlimited is `false`.
+        /// The time unit in which the frequency cap will be applied. Required when unlimited is `false`. *Warning*: On
+        /// **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. This
+        /// field will no longer accept the value `TIME_UNIT_LIFETIME`. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
         public virtual string TimeUnit { get; set; }
@@ -22863,7 +22894,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output only and
         /// will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be between 1 and
         /// 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 *
-        /// `TIME_UNIT_MINUTES` - must be between 1 and 59
+        /// `TIME_UNIT_MINUTES` - must be between 1 and 59 *Warning*: On **February 28, 2025**, frequency cap time
+        /// periods greater than 30 days will no longer be accepted. This field will no longer accept the value 2 if the
+        /// value of time_unit is `TIME_UNIT_MONTHS`. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitCount")]
         public virtual System.Nullable<int> TimeUnitCount { get; set; }
@@ -23024,8 +23058,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class GoogleAudienceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. All Google audience targeting settings in Google audience group. Repeated settings with same id
-        /// will be ignored.
+        /// Required. All Google audience targeting settings in Google audience group. Repeated settings with the same
+        /// id will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
         public virtual System.Collections.Generic.IList<GoogleAudienceTargetingSetting> Settings { get; set; }
@@ -23336,7 +23370,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>The bidding strategy of the insertion order. By default, fixed_bid is set.</summary>
+        /// <summary>Optional. The bidding strategy of the insertion order. By default, fixed_bid is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
         public virtual BiddingStrategy BidStrategy { get; set; }
 
@@ -23371,7 +23405,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
-        /// <summary>Required. The frequency capping setting of the insertion order.</summary>
+        /// <summary>
+        /// Required. The frequency capping setting of the insertion order. *Warning*: On **February 28, 2025**,
+        /// frequency cap time periods greater than 30 days will no longer be accepted. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
 
@@ -23380,12 +23418,13 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<long> InsertionOrderId { get; set; }
 
         /// <summary>
-        /// The type of insertion order. If this field is unspecified in creation, the value defaults to `RTB`.
+        /// Optional. The type of insertion order. If this field is unspecified in creation, the value defaults to
+        /// `RTB`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrderType")]
         public virtual string InsertionOrderType { get; set; }
 
-        /// <summary>Additional integration details of the insertion order.</summary>
+        /// <summary>Optional. Additional integration details of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationDetails")]
         public virtual IntegrationDetails IntegrationDetails { get; set; }
 
@@ -23401,8 +23440,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual Pacing Pacing { get; set; }
 
         /// <summary>
-        /// The partner costs associated with the insertion order. If absent or empty in CreateInsertionOrder method,
-        /// the newly created insertion order will inherit partner costs from the partner settings.
+        /// Optional. The partner costs associated with the insertion order. If absent or empty in CreateInsertionOrder
+        /// method, the newly created insertion order will inherit partner costs from the partner settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerCosts")]
         public virtual System.Collections.Generic.IList<PartnerCost> PartnerCosts { get; set; }
@@ -23462,8 +23501,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class InsertionOrderBudget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The type of automation used to manage bid and budget for the insertion order. If this field is unspecified
-        /// in creation, the value defaults to `INSERTION_ORDER_AUTOMATION_TYPE_NONE`.
+        /// Optional. The type of automation used to manage bid and budget for the insertion order. If this field is
+        /// unspecified in creation, the value defaults to `INSERTION_ORDER_AUTOMATION_TYPE_NONE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automationType")]
         public virtual string AutomationType { get; set; }
@@ -23496,7 +23535,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<long> BudgetAmountMicros { get; set; }
 
         /// <summary>
-        /// The budget_id of the campaign budget that this insertion order budget segment is a part of.
+        /// Optional. The budget_id of the campaign budget that this insertion order budget segment is a part of.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignBudgetId")]
         public virtual System.Nullable<long> CampaignBudgetId { get; set; }
@@ -23511,8 +23550,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual DateRange DateRange { get; set; }
 
         /// <summary>
-        /// The budget segment description. It can be used to enter Purchase Order information for each budget segment
-        /// and have that information printed on the invoices. Must be UTF-8 encoded.
+        /// Optional. The budget segment description. It can be used to enter Purchase Order information for each budget
+        /// segment and have that information printed on the invoices. Must be UTF-8 encoded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -24132,7 +24171,13 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual System.Nullable<long> CampaignId { get; set; }
 
-        /// <summary>The conversion tracking setting of the line item.</summary>
+        /// <summary>
+        /// The conversion tracking setting of the line item. *Warning*: Starting **April 1, 2025**, the
+        /// floodlight_activity_configs field will no longer be writable while a custom bidding algorithm is assigned to
+        /// the line item. If you set this field and assign a custom bidding algorithm in the same request, the
+        /// floodlight activities must match the ones used by the custom bidding algorithm. [Read more about this
+        /// announced change](/display-video/api/deprecations#features.custom_bidding_floodlight).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionCounting")]
         public virtual ConversionCountingConfig ConversionCounting { get; set; }
 
@@ -24169,7 +24214,9 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// Required. The impression frequency cap settings of the line item. The max_impressions field in this settings
-        /// object must be used if assigning a limited cap.
+        /// object must be used if assigning a limited cap. *Warning*: On **February 28, 2025**, frequency cap time
+        /// periods greater than 30 days will no longer be accepted. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
@@ -25112,7 +25159,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is
-        /// set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
+        /// set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **April 1, 2025**,
+        /// assigning a custom bidding algorithm that uses floodlight activities not identified in
+        /// floodlightActivityConfigs will return an error. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
         public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
@@ -25325,41 +25375,41 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// Required. The click tracking URL of the OBA icon. Only URLs of the following domains are allowed: *
-        /// https://info.evidon.com * https://l.betrad.com
+        /// `https://info.evidon.com` * `https://l.betrad.com`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTrackingUrl")]
         public virtual string ClickTrackingUrl { get; set; }
 
-        /// <summary>The dimensions of the OBA icon.</summary>
+        /// <summary>Optional. The dimensions of the OBA icon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual Dimensions Dimensions { get; set; }
 
         /// <summary>
         /// Required. The landing page URL of the OBA icon. Only URLs of the following domains are allowed: *
-        /// https://info.evidon.com * https://l.betrad.com
+        /// `https://info.evidon.com` * `https://l.betrad.com`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageUrl")]
         public virtual string LandingPageUrl { get; set; }
 
-        /// <summary>The position of the OBA icon on the creative.</summary>
+        /// <summary>Optional. The position of the OBA icon on the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual string Position { get; set; }
 
-        /// <summary>The program of the OBA icon. For example: “AdChoices”.</summary>
+        /// <summary>Optional. The program of the OBA icon. For example: “AdChoices”.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("program")]
         public virtual string Program { get; set; }
 
-        /// <summary>The MIME type of the OBA icon resource.</summary>
+        /// <summary>Optional. The MIME type of the OBA icon resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceMimeType")]
         public virtual string ResourceMimeType { get; set; }
 
-        /// <summary>The URL of the OBA icon resource.</summary>
+        /// <summary>Optional. The URL of the OBA icon resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; }
 
         /// <summary>
         /// Required. The view tracking URL of the OBA icon. Only URLs of the following domains are allowed: *
-        /// https://info.evidon.com * https://l.betrad.com
+        /// `https://info.evidon.com` * `https://l.betrad.com`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewTrackingUrl")]
         public virtual string ViewTrackingUrl { get; set; }
@@ -25840,7 +25890,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
     {
         /// <summary>
         /// The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when performance_goal_type is
-        /// set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
+        /// set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. *Warning*: Starting **April 1, 2025**,
+        /// assigning a custom bidding algorithm that uses floodlight activities not identified in
+        /// floodlightActivityConfigs will return an error. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.custom_bidding_floodlight).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
         public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
@@ -26798,13 +26851,13 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Tracking URLs from third parties to track interactions with an audio or a video creative.</summary>
     public class ThirdPartyUrl : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of interaction needs to be tracked by the tracking URL</summary>
+        /// <summary>Optional. The type of interaction needs to be tracked by the tracking URL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Tracking URL used to track the interaction. Provide a URL with optional path or query string, beginning with
-        /// `https:`. For example, https://www.example.com/path
+        /// Optional. Tracking URL used to track the interaction. Provide a URL with optional path or query string,
+        /// beginning with `https:`. For example, `https://www.example.com/path`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
@@ -26975,44 +27028,44 @@ namespace Google.Apis.DisplayVideo.v2.Data
     public class Transcode : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The bit rate for the audio stream of the transcoded video, or the bit rate for the transcoded audio, in
-        /// kilobits per second.
+        /// Optional. The bit rate for the audio stream of the transcoded video, or the bit rate for the transcoded
+        /// audio, in kilobits per second.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioBitRateKbps")]
         public virtual System.Nullable<long> AudioBitRateKbps { get; set; }
 
         /// <summary>
-        /// The sample rate for the audio stream of the transcoded video, or the sample rate for the transcoded audio,
-        /// in hertz.
+        /// Optional. The sample rate for the audio stream of the transcoded video, or the sample rate for the
+        /// transcoded audio, in hertz.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioSampleRateHz")]
         public virtual System.Nullable<long> AudioSampleRateHz { get; set; }
 
-        /// <summary>The transcoding bit rate of the transcoded video, in kilobits per second.</summary>
+        /// <summary>Optional. The transcoding bit rate of the transcoded video, in kilobits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitRateKbps")]
         public virtual System.Nullable<long> BitRateKbps { get; set; }
 
-        /// <summary>The dimensions of the transcoded video.</summary>
+        /// <summary>Optional. The dimensions of the transcoded video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual Dimensions Dimensions { get; set; }
 
-        /// <summary>The size of the transcoded file, in bytes.</summary>
+        /// <summary>Optional. The size of the transcoded file, in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSizeBytes")]
         public virtual System.Nullable<long> FileSizeBytes { get; set; }
 
-        /// <summary>The frame rate of the transcoded video, in frames per second.</summary>
+        /// <summary>Optional. The frame rate of the transcoded video, in frames per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
         public virtual System.Nullable<float> FrameRate { get; set; }
 
-        /// <summary>The MIME type of the transcoded file.</summary>
+        /// <summary>Optional. The MIME type of the transcoded file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
-        /// <summary>The name of the transcoded file.</summary>
+        /// <summary>Optional. The name of the transcoded file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Indicates if the transcoding was successful.</summary>
+        /// <summary>Optional. Indicates if the transcoding was successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcoded")]
         public virtual System.Nullable<bool> Transcoded { get; set; }
 
@@ -27026,11 +27079,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class UniversalAdId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The unique creative identifier.</summary>
+        /// <summary>Optional. The unique creative identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The registry provides unique creative identifiers.</summary>
+        /// <summary>Optional. The registry provides unique creative identifiers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registry")]
         public virtual string Registry { get; set; }
 
@@ -27625,7 +27678,9 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// The view frequency cap settings of the line item. The max_views field in this settings object must be used
-        /// if assigning a limited cap.
+        /// if assigning a limited cap. *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30
+        /// days will no longer be accepted. [Read more about this announced
+        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewFrequencyCap")]
         public virtual FrequencyCap ViewFrequencyCap { get; set; }
