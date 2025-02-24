@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21540,19 +21540,23 @@ namespace Google.Apis.Dfareporting.v4.Data
 
         /// <summary>
         /// The feed labels associated with the feed where your items are uploaded. For more information, please refer
-        /// to ​​ https://support.google.com/merchants/answer/12453549. This is a required field.
+        /// to ​​ https://support.google.com/merchants/answer/12453549. Providing the feed label reduces ambiguity in
+        /// identifying the right offer details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLabel")]
         public virtual string MerchantFeedLabel { get; set; }
 
         /// <summary>
-        /// The language associated with the feed where your items are uploaded. Use ISO 639-1 language codes. This
-        /// field is needed only when item IDs are not unique across multiple Merchant Center feeds.
+        /// The language associated with the feed where your items are uploaded. Use ISO 639-1 language codes. Providing
+        /// the feed language reduces ambiguity in identifying the right offer details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLanguage")]
         public virtual string MerchantFeedLanguage { get; set; }
 
-        /// <summary>The Merchant Center ID where the items are uploaded. This is a required field.</summary>
+        /// <summary>
+        /// The Merchant Center ID where the items are uploaded. Providing Merchant Center ID reduces ambiguity in
+        /// identifying the right offer details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<long> MerchantId { get; set; }
 
@@ -22143,7 +22147,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userIdentifiers")]
         public virtual System.Collections.Generic.IList<UserIdentifier> UserIdentifiers { get; set; }
 
-        /// <summary>The value of the conversion. This is a required field.</summary>
+        /// <summary>
+        /// The value of the conversion. Interpreted in CM360 Floodlight config parent advertiser's currency code. This
+        /// is a required field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
 
@@ -28720,6 +28727,13 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>Whether click-tracking string should be included in the tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeClickTracking")]
         public virtual System.Nullable<bool> IncludeClickTracking { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates that the unescapedlpurl macro should be included in the tag for the static landing page.
+        /// New placements will default to the value set on their site.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeUnescapedlpurlMacro")]
+        public virtual System.Nullable<bool> IncludeUnescapedlpurlMacro { get; set; }
 
         /// <summary>
         /// Option specifying how keywords are embedded in ad tags. This setting can be used to specify whether keyword
