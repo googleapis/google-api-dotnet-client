@@ -6751,9 +6751,20 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ddl")]
         public virtual string Ddl { get; set; }
 
+        /// <summary>The DDL Kind selected for apply, or SOURCE if getting the source tree.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlKind")]
+        public virtual string DdlKind { get; set; }
+
         /// <summary>Type of DDL (Create, Alter).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlType")]
         public virtual string DdlType { get; set; }
+
+        /// <summary>
+        /// If ddl_kind is USER_EDIT, this holds the DDL kind of the original content - DETERMINISTIC or AI. Otherwise,
+        /// this is DDL_KIND_UNSPECIFIED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editedDdlKind")]
+        public virtual string EditedDdlKind { get; set; }
 
         /// <summary>The name of the database entity the ddl refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
