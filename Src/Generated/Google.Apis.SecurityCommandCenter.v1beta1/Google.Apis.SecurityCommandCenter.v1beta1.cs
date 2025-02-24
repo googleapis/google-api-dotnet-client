@@ -2352,6 +2352,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Allowed IP rule.</summary>
+    public class Allowed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional list of allowed IP rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRules")]
+        public virtual System.Collections.Generic.IList<IpRule> IpRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an application associated with a finding.</summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3840,6 +3851,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Denied IP rule.</summary>
+    public class Denied : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional list of denied IP rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRules")]
+        public virtual System.Collections.Generic.IList<IpRule> IpRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Memory hash detection contributing to the binary family match.</summary>
     public class Detection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4336,6 +4358,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual Indicator Indicator { get; set; }
 
+        /// <summary>IP rules associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRules")]
+        public virtual IpRules IpRules { get; set; }
+
+        /// <summary>Job associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual Job Job { get; set; }
+
         /// <summary>Signature of the kernel rootkit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kernelRootkit")]
         public virtual KernelRootkit KernelRootkit { get; set; }
@@ -4431,6 +4461,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Represents the VPC networks that the resource is attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<Network> Networks { get; set; }
 
         /// <summary>Steps to address the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
@@ -6292,6 +6326,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Allowed IP rule.</summary>
+    public class GoogleCloudSecuritycenterV2Allowed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional list of allowed IP rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IpRule> IpRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an application associated with a finding.</summary>
     public class GoogleCloudSecuritycenterV2Application : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7613,6 +7658,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Denied IP rule.</summary>
+    public class GoogleCloudSecuritycenterV2Denied : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional list of denied IP rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IpRule> IpRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Memory hash detection contributing to the binary family match.</summary>
     public class GoogleCloudSecuritycenterV2Detection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8258,6 +8314,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
         public virtual GoogleCloudSecuritycenterV2Indicator Indicator { get; set; }
 
+        /// <summary>IP rules associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRules")]
+        public virtual GoogleCloudSecuritycenterV2IpRules IpRules { get; set; }
+
+        /// <summary>Job associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual GoogleCloudSecuritycenterV2Job Job { get; set; }
+
         /// <summary>Signature of the kernel rootkit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kernelRootkit")]
         public virtual GoogleCloudSecuritycenterV2KernelRootkit KernelRootkit { get; set; }
@@ -8357,6 +8421,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Represents the VPC networks that the resource is attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Network> Networks { get; set; }
 
         /// <summary>Steps to address the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
@@ -8545,6 +8613,68 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>The list of URIs associated to the Findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>IP rule information.</summary>
+    public class GoogleCloudSecuritycenterV2IpRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional list of ports to which this rule applies. This field is only applicable for the UDP or
+        /// (S)TCP protocols. Each entry must be either an integer or a range including a min and max port number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portRanges")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2PortRange> PortRanges { get; set; }
+
+        /// <summary>
+        /// The IP protocol this rule applies to. This value can either be one of the following well known protocol
+        /// strings (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or a string representation of the integer value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>IP rules associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2IpRules : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tuple with allowed rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual GoogleCloudSecuritycenterV2Allowed Allowed { get; set; }
+
+        /// <summary>Tuple with denied rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denied")]
+        public virtual GoogleCloudSecuritycenterV2Denied Denied { get; set; }
+
+        /// <summary>
+        /// If destination IP ranges are specified, the firewall rule applies only to traffic that has a destination IP
+        /// address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationIpRanges")]
+        public virtual System.Collections.Generic.IList<string> DestinationIpRanges { get; set; }
+
+        /// <summary>The direction that the rule is applicable to, one of ingress or egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; }
+
+        /// <summary>
+        /// Name of the network protocol service, such as FTP, that is exposed by the open port. Follows the naming
+        /// convention available at:
+        /// https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedServices")]
+        public virtual System.Collections.Generic.IList<string> ExposedServices { get; set; }
+
+        /// <summary>
+        /// If source IP ranges are specified, the firewall rule applies only to traffic that has a source IP address in
+        /// these ranges. These ranges must be expressed in CIDR format. Only supports IPv4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIpRanges")]
+        public virtual System.Collections.Generic.IList<string> SourceIpRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8988,6 +9118,29 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes a job</summary>
+    public class GoogleCloudSecuritycenterV2Job : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If the job did not complete successfully, this field describes why.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual System.Nullable<int> ErrorCode { get; set; }
+
+        /// <summary>Optional. Gives the location where the job ran, such as `US` or `europe-west1`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The fully-qualified name for a job. e.g. `projects//jobs/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the job, such as `RUNNING` or `PENDING`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Kernel mode rootkit signatures.</summary>
     public class GoogleCloudSecuritycenterV2KernelRootkit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9384,6 +9537,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about a VPC network associated with the finding.</summary>
+    public class GoogleCloudSecuritycenterV2Network : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the VPC network resource, for example,
+        /// `//compute.googleapis.com/projects/my-project/global/networks/my-network`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Kubernetes nodes associated with the finding.</summary>
     public class GoogleCloudSecuritycenterV2Node : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9611,6 +9778,24 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A port range which is inclusive of the min and max values. Values are between 0 and 2^16-1. The max can be equal
+    /// / must be not smaller than the min value. If min and max are equal this indicates that it is a single port.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2PortRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum port value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<long> Max { get; set; }
+
+        /// <summary>Minimum port value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<long> Min { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10787,6 +10972,91 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>IP rule information.</summary>
+    public class IpRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional list of ports to which this rule applies. This field is only applicable for the UDP or
+        /// (S)TCP protocols. Each entry must be either an integer or a range including a min and max port number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portRanges")]
+        public virtual System.Collections.Generic.IList<PortRange> PortRanges { get; set; }
+
+        /// <summary>
+        /// The IP protocol this rule applies to. This value can either be one of the following well known protocol
+        /// strings (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or a string representation of the integer value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>IP rules associated with the finding.</summary>
+    public class IpRules : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tuple with allowed rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual Allowed Allowed { get; set; }
+
+        /// <summary>Tuple with denied rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denied")]
+        public virtual Denied Denied { get; set; }
+
+        /// <summary>
+        /// If destination IP ranges are specified, the firewall rule applies only to traffic that has a destination IP
+        /// address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationIpRanges")]
+        public virtual System.Collections.Generic.IList<string> DestinationIpRanges { get; set; }
+
+        /// <summary>The direction that the rule is applicable to, one of ingress or egress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; }
+
+        /// <summary>
+        /// Name of the network protocol service, such as FTP, that is exposed by the open port. Follows the naming
+        /// convention available at:
+        /// https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedServices")]
+        public virtual System.Collections.Generic.IList<string> ExposedServices { get; set; }
+
+        /// <summary>
+        /// If source IP ranges are specified, the firewall rule applies only to traffic that has a source IP address in
+        /// these ranges. These ranges must be expressed in CIDR format. Only supports IPv4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIpRanges")]
+        public virtual System.Collections.Generic.IList<string> SourceIpRanges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a job</summary>
+    public class Job : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If the job did not complete successfully, this field describes why.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual System.Nullable<int> ErrorCode { get; set; }
+
+        /// <summary>Optional. Gives the location where the job ran, such as `US` or `europe-west1`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The fully-qualified name for a job. e.g. `projects//jobs/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the job, such as `RUNNING` or `PENDING`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Kernel mode rootkit signatures.</summary>
     public class KernelRootkit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11168,6 +11438,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about a VPC network associated with the finding.</summary>
+    public class Network : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the VPC network resource, for example,
+        /// `//compute.googleapis.com/projects/my-project/global/networks/my-network`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Kubernetes nodes associated with the finding.</summary>
     public class Node : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11522,6 +11806,24 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A port range which is inclusive of the min and max values. Values are between 0 and 2^16-1. The max can be equal
+    /// / must be not smaller than the min value. If min and max are equal this indicates that it is a single port.
+    /// </summary>
+    public class PortRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum port value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<long> Max { get; set; }
+
+        /// <summary>Minimum port value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<long> Min { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
