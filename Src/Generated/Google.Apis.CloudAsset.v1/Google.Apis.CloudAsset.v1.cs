@@ -1793,7 +1793,7 @@ namespace Google.Apis.CloudAsset.v1
 
             /// <summary>
             /// Required. Name of the Google Cloud folder or organization to reparent the target resource. The analysis
-            /// will be performed against hypothetically moving the resource to this specified desitination parent. This
+            /// will be performed against hypothetically moving the resource to this specified destination parent. This
             /// can only be a folder number (such as "folders/123") or an organization number (such as
             /// "organizations/123").
             /// </summary>
@@ -5599,10 +5599,9 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string AccessLevel { get; set; }
 
         /// <summary>
-        /// A Google Cloud resource that you want to allow to egress the perimeter. These resources can access data
-        /// outside the perimeter. This field only supports projects. The project format is `projects/{project_number}`.
-        /// The resource can be in any Google Cloud organization, not just the organization where the perimeter is
-        /// defined. You can't use `*` in this field to allow all Google Cloud resources.
+        /// A Google Cloud resource from the service perimeter that you want to allow to access data outside the
+        /// perimeter. This field supports only projects. The project format is `projects/{project_number}`. You can't
+        /// use `*` in this field to allow all Google Cloud resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
@@ -6190,7 +6189,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// The project that the associated Google Cloud resource belongs to, in the form of projects/{PROJECT_NUMBER}.
         /// If an IAM policy is set on a resource (like VM instance, Cloud Storage bucket), the project field will
-        /// indicate the project that contains the resource. If an IAM policy is set on a folder or orgnization, this
+        /// indicate the project that contains the resource. If an IAM policy is set on a folder or organization, this
         /// field will be empty. To search against the `project`: * specify the `scope` field as this project in your
         /// search request.
         /// </summary>
