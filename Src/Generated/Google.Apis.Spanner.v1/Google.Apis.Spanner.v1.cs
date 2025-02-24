@@ -8109,7 +8109,7 @@ namespace Google.Apis.Spanner.v1.Data
     public class AddSplitPointsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A user-supplied tag associated with the split points. For example, "intital_data_load",
+        /// Optional. A user-supplied tag associated with the split points. For example, "initial_data_load",
         /// "special_event_1". Defaults to "CloudAddSplitPointsAPI" if not specified. The length of the tag must not
         /// exceed 50 characters,else will be trimmed. Only valid UTF8 characters are allowed.
         /// </summary>
@@ -11058,8 +11058,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// should be present in the message. Users can set the `node_count` field to specify the target number of nodes
         /// allocated to the instance. If autoscaling is enabled, `node_count` is treated as an `OUTPUT_ONLY` field and
         /// reflects the current number of nodes allocated to the instance. This might be zero in API responses for
-        /// instances that are not yet in the `READY` state. For more information, see [Compute capacity, nodes, and
-        /// processing units](https://cloud.google.com/spanner/docs/compute-capacity).
+        /// instances that are not yet in the `READY` state. If the instance has varying node count across replicas
+        /// (achieved by setting `asymmetric_autoscaling_options` in the autoscaling configuration), the `node_count`
+        /// set here is the maximum node count across all replicas. For more information, see [Compute capacity, nodes,
+        /// and processing units](https://cloud.google.com/spanner/docs/compute-capacity).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -11069,8 +11071,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// `node_count` should be present in the message. Users can set the `processing_units` field to specify the
         /// target number of processing units allocated to the instance. If autoscaling is enabled, `processing_units`
         /// is treated as an `OUTPUT_ONLY` field and reflects the current number of processing units allocated to the
-        /// instance. This might be zero in API responses for instances that are not yet in the `READY` state. For more
-        /// information, see [Compute capacity, nodes and processing
+        /// instance. This might be zero in API responses for instances that are not yet in the `READY` state. If the
+        /// instance has varying processing units per replica (achieved by setting `asymmetric_autoscaling_options` in
+        /// the autoscaling configuration), the `processing_units` set here is the maximum processing units across all
+        /// replicas. For more information, see [Compute capacity, nodes and processing
         /// units](https://cloud.google.com/spanner/docs/compute-capacity).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
@@ -13730,7 +13734,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>
         /// Optional. If true, specifies a multiplexed session. Use a multiplexed session for multiple, concurrent
         /// read-only operations. Don't use them for read-write transactions, partitioned reads, or partitioned queries.
-        /// Use CreateSession to create multiplexed sessions. Don't use BatchCreateSessions to create a multiplexed
+        /// Use `sessions.create` to create multiplexed sessions. Don't use BatchCreateSessions to create a multiplexed
         /// session. You can't delete or list multiplexed sessions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiplexed")]
