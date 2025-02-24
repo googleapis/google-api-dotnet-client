@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2660,7 +2660,7 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("CUSTOM_CHANNEL_ID")]
                     CUSTOMCHANNELID = 13,
 
-                    /// <summary>Unique ID of a hosted client's custom channel.</summary>
+                    /// <summary>Not supported.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOSTED_CUSTOM_CHANNEL_ID")]
                     HOSTEDCUSTOMCHANNELID = 48,
 
@@ -3497,7 +3497,7 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("CUSTOM_CHANNEL_ID")]
                     CUSTOMCHANNELID = 13,
 
-                    /// <summary>Unique ID of a hosted client's custom channel.</summary>
+                    /// <summary>Not supported.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOSTED_CUSTOM_CHANNEL_ID")]
                     HOSTEDCUSTOMCHANNELID = 48,
 
