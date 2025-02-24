@@ -1054,13 +1054,13 @@ namespace Google.Apis.OnDemandScanning.v1.Data
     /// <summary>BaseImage describes a base image of a container image.</summary>
     public class BaseImage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The number of layers that the base image is composed of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layerCount")]
+        public virtual System.Nullable<int> LayerCount { get; set; }
+
         /// <summary>The name of the base image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The number of layers that the base image is composed of.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numLayers")]
-        public virtual string NumLayers { get; set; }
 
         /// <summary>The repository name in which the base image is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
@@ -1900,6 +1900,9 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
         public virtual string FilePath { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("layerDetails")]
+        public virtual LayerDetails LayerDetails { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1969,6 +1972,25 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BaseImage describes a base image of a container image.</summary>
+    public class GrafeasV1BaseImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of layers that the base image is composed of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layerCount")]
+        public virtual System.Nullable<int> LayerCount { get; set; }
+
+        /// <summary>The name of the base image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The repository name in which the base image is from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Indicates the location at which a package was found.</summary>
     public class GrafeasV1FileLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1978,6 +2000,39 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
         public virtual string FilePath { get; set; }
+
+        /// <summary>
+        /// Each package found in a file should have its own layer metadata (that is, information from the origin layer
+        /// of the package).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layerDetails")]
+        public virtual GrafeasV1LayerDetails LayerDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the layer a package was found in.</summary>
+    public class GrafeasV1LayerDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base images the layer is found within.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseImages")]
+        public virtual System.Collections.Generic.IList<GrafeasV1BaseImage> BaseImages { get; set; }
+
+        /// <summary>
+        /// The layer build command that was used to build the layer. This may not be found in all layers depending on
+        /// how the container image is built.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual string Command { get; set; }
+
+        /// <summary>The diff ID (typically a sha256 hash) of the layer in the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffId")]
+        public virtual string DiffId { get; set; }
+
+        /// <summary>The index of the layer in the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
