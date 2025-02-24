@@ -1955,12 +1955,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>
-    /// Retrieve from Vertex AI Search datastore for grounding. See https://cloud.google.com/products/agent-builder
+    /// Retrieve from Vertex AI Search datastore or engine for grounding. datastore and engine are mutually exclusive.
+    /// See https://cloud.google.com/products/agent-builder
     /// </summary>
     public class GoogleCloudAiplatformV1beta1VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Fully-qualified Vertex AI Search data store resource ID. Format:
+        /// Optional. Fully-qualified Vertex AI Search data store resource ID. Format:
         /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
