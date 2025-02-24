@@ -10421,6 +10421,12 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<int> MaxRetries { get; set; }
 
         /// <summary>
+        /// Optional. The Node Selector configuration. Map of selector key to a value which matches a node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
+        public virtual System.Collections.Generic.IDictionary<string, string> NodeSelector { get; set; }
+
+        /// <summary>
         /// Optional. Email address of the IAM service account associated with the task of a job execution. The service
         /// account represents the identity of the running task, and determines what permissions the task has. If not
         /// provided, the task will use the project's default service account.
