@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -292,6 +292,7 @@ namespace Google.Apis.VMwareEngine.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Announcements = new AnnouncementsResource(service);
                 DnsBindPermission = new DnsBindPermissionResource(service);
                 NetworkPeerings = new NetworkPeeringsResource(service);
                 NetworkPolicies = new NetworkPoliciesResource(service);
@@ -300,6 +301,209 @@ namespace Google.Apis.VMwareEngine.v1
                 PrivateClouds = new PrivateCloudsResource(service);
                 PrivateConnections = new PrivateConnectionsResource(service);
                 VmwareEngineNetworks = new VmwareEngineNetworksResource(service);
+            }
+
+            /// <summary>Gets the Announcements resource.</summary>
+            public virtual AnnouncementsResource Announcements { get; }
+
+            /// <summary>The "announcements" collection of methods.</summary>
+            public class AnnouncementsResource
+            {
+                private const string Resource = "announcements";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AnnouncementsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieves a `Announcement` by its resource name.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the announcement to retrieve. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-west1-a/announcements/announcement-uuid`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieves a `Announcement` by its resource name.</summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Announcement>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the announcement to retrieve. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-west1-a/announcements/announcement-uuid`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/announcements/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `Announcements` for a given region and project</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location to be queried for announcements. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-west1-a`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists `Announcements` for a given region and project</summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListAnnouncementsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to be queried for announcements. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-west1-a`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A filter expression that matches resources returned in the response. The expression must specify
+                    /// the field name, a comparison operator, and the value that you want to use for filtering. The
+                    /// value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`,
+                    /// `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of announcement runs, you
+                    /// can exclude the ones named `example-announcement` by specifying `name !=
+                    /// "example-announcement"`. You can also filter nested fields. To filter on multiple expressions,
+                    /// provide each separate expression within parentheses. For example:
+                    /// ```
+                    /// (name =
+                    /// "example-announcement") (createTime &amp;gt; "2021-04-12T08:15:10.40Z")
+                    /// ```
+                    /// By default, each
+                    /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+                    /// explicitly. For example:
+                    /// ```
+                    /// (name = "announcement-1") AND (createTime &amp;gt;
+                    /// "2021-04-12T08:15:10.40Z") OR (name = "announcement-2")
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
+                    /// ascending order. You can also sort results in descending order based on the `name` value using
+                    /// `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of announcements to return in one page. The service may return fewer than
+                    /// this value. The maximum value is coerced to 1000. The default value of this field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListAnnouncements` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListAnnouncements` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/announcements";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the DnsBindPermission resource.</summary>
@@ -2627,6 +2831,7 @@ namespace Google.Apis.VMwareEngine.v1
                     LoggingServers = new LoggingServersResource(service);
                     ManagementDnsZoneBindings = new ManagementDnsZoneBindingsResource(service);
                     Subnets = new SubnetsResource(service);
+                    Upgrades = new UpgradesResource(service);
                 }
 
                 /// <summary>Gets the Clusters resource.</summary>
@@ -5836,6 +6041,322 @@ namespace Google.Apis.VMwareEngine.v1
                     }
                 }
 
+                /// <summary>Gets the Upgrades resource.</summary>
+                public virtual UpgradesResource Upgrades { get; }
+
+                /// <summary>The "upgrades" collection of methods.</summary>
+                public class UpgradesResource
+                {
+                    private const string Resource = "upgrades";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public UpgradesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Retrieves a private cloud `Upgrade` resource by its resource name.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the `Upgrade` resource to be retrieved. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Retrieves a private cloud `Upgrade` resource by its resource name.</summary>
+                    public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Upgrade>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the `Upgrade` resource to be retrieved. Resource names are schemeless
+                        /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                        /// example:
+                        /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/upgrades/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists past, ongoing and upcoming `Upgrades` for the given private cloud.</summary>
+                    /// <param name="parent">
+                    /// Required. Query a list of `Upgrades` for the given private cloud resource name. Resource names
+                    /// are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists past, ongoing and upcoming `Upgrades` for the given private cloud.</summary>
+                    public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListUpgradesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Query a list of `Upgrades` for the given private cloud resource name. Resource
+                        /// names are schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// A filter expression that matches resources returned in the response. The expression must
+                        /// specify the field name, a comparison operator, and the value that you want to use for
+                        /// filtering. The value must be a string, a number, or a boolean. The comparison operator must
+                        /// be `=`, `!=`, `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of
+                        /// upgrades, you can exclude the ones named `example-upgrade1` by specifying `name !=
+                        /// "example-upgrade1"`. You can also filter nested fields. To filter on multiple expressions,
+                        /// provide each separate expression within parentheses. For example:
+                        /// ```
+                        /// (name =
+                        /// "example-upgrade") (createTime &amp;gt; "2021-04-12T08:15:10.40Z")
+                        /// ```
+                        /// By default, each
+                        /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+                        /// explicitly. For example:
+                        /// ```
+                        /// (name = "upgrade-1") AND (createTime &amp;gt;
+                        /// "2021-04-12T08:15:10.40Z") OR (name = "upgrade-2")
+                        /// ```
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
+                        /// ascending order. You can also sort results in descending order based on the `name` value
+                        /// using `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of `Upgrades` to return in one page. The service may return fewer
+                        /// resources than this value. The maximum value is coerced to 1000. The default value of this
+                        /// field is 500.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListUpgrades` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to `ListUpgrades` must match
+                        /// the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/upgrades";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Update the private cloud `Upgrade` resource. Only `schedule` field can updated. The schedule can
+                    /// only be updated when the upgrade has not started and schedule edit window is open. Only fields
+                    /// specified in `update_mask` are considered.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. Identifier. The resource name of the private cloud `Upgrade`. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.Upgrade body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Update the private cloud `Upgrade` resource. Only `schedule` field can updated. The schedule can
+                    /// only be updated when the upgrade has not started and schedule edit window is open. Only fields
+                    /// specified in `update_mask` are considered.
+                    /// </summary>
+                    public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.Upgrade body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. Identifier. The resource name of the private cloud `Upgrade`. Resource names
+                        /// are schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
+                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
+                        /// initial request and the request times out. If you make the request again with the same
+                        /// request ID, the server can check if original operation with the same request ID was
+                        /// received, and if so, will ignore the second request. This prevents clients from accidentally
+                        /// creating duplicate commitments. The request ID must be a valid UUID with the exception that
+                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Required. Field mask is used to specify the fields to be overwritten in the `Upgrade`
+                        /// resource by the update. The fields specified in the `update_mask` are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
+                        /// user does not provide a mask then all fields will be overwritten.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.Upgrade Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/upgrades/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>
                 /// Creates a new `PrivateCloud` resource in a given project and location. Private clouds of type
                 /// `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. Creating
@@ -8405,6 +8926,137 @@ namespace Google.Apis.VMwareEngine.v1
 }
 namespace Google.Apis.VMwareEngine.v1.Data
 {
+    /// <summary>Announcement for the resources of Vmware Engine.</summary>
+    public class Announcement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Activity type of the announcement There can be only one active announcement for a given activity
+        /// type and target resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activityType")]
+        public virtual string ActivityType { get; set; }
+
+        /// <summary>A Cluster resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        /// <summary>
+        /// Required. Code of the announcement. Indicates the presence of a VMware Engine related announcement and
+        /// corresponds to a related message in the `description` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. Creation time of this resource. It also serves as start time of notification.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Description of the announcement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Additional structured details about this announcement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the announcement. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-west1-a/announcements/my-announcement-id`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>A Private Cloud resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateCloud")]
+        public virtual string PrivateCloud { get; set; }
+
+        /// <summary>
+        /// Output only. State of the resource. New values may be added to this enum when appropriate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Target Resource Type defines the type of the target for the announcement</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceType")]
+        public virtual string TargetResourceType { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -8728,6 +9380,36 @@ namespace Google.Apis.VMwareEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Constraints to be applied while editing a schedule. These constraints ensure that `Upgrade` specific
+    /// requirements are met.
+    /// </summary>
+    public class Constraints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Minimum number of hours must be allotted for the upgrade activities for each selected day. This
+        /// is a minimum; the upgrade schedule can allot more hours for the given day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minHoursDay")]
+        public virtual System.Nullable<int> MinHoursDay { get; set; }
+
+        /// <summary>
+        /// Output only. The minimum number of weekly hours must be allotted for the upgrade activities. This is just a
+        /// minimum; the schedule can assign more weekly hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minHoursWeek")]
+        public virtual System.Nullable<int> MinHoursWeek { get; set; }
+
+        /// <summary>
+        /// Output only. Output Only. The user can only reschedule an upgrade that starts within this range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rescheduleDateRange")]
+        public virtual Interval RescheduleDateRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9353,6 +10035,97 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An IP range provided in any one of the supported formats.</summary>
     public class IpRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9373,6 +10146,28 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// <summary>An IP address range in the CIDR format. For example: `10.0.0.0/24`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddressRange")]
         public virtual string IpAddressRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListAnnouncements</summary>
+    public class ListAnnouncementsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of announcement runs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("announcements")]
+        public virtual System.Collections.Generic.IList<Announcement> Announcements { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>list of unreachable locations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9721,6 +10516,28 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// <summary>Locations that could not be reached when making an aggregated query using wildcards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListUpgrades.</summary>
+    public class ListUpgradesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>A list of `Upgrades`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrades")]
+        public virtual System.Collections.Generic.IList<Upgrade> Upgrades { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11315,6 +12132,77 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Schedule for the upgrade.</summary>
+    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Output Only. Constraints applied to the schedule. These constraints should be applicable at the
+        /// time of any rescheduling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
+        public virtual Constraints Constraints { get; set; }
+
+        /// <summary>
+        /// Output only. Output Only. The schedule is open for edits during this time interval or window.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editWindow")]
+        public virtual Interval EditWindow { get; set; }
+
+        /// <summary>
+        /// Output only. Output Only. Indicates who most recently edited the upgrade schedule. The value is updated
+        /// whenever the upgrade is rescheduled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEditor")]
+        public virtual string LastEditor { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Required. The scheduled start time for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Weekly time windows for upgrade activities. The server performs upgrade activities during these
+        /// time windows to minimize disruptions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyWindows")]
+        public virtual System.Collections.Generic.IList<TimeWindow> WeeklyWindows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11472,6 +12360,62 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+        /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>
+        /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+        /// 999,999,999.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An
+        /// API may allow the value 60 if it allows leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the time window to perform upgrade activities.</summary>
+    public class TimeWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Day of the week for this window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+        public virtual string DayOfWeek { get; set; }
+
+        /// <summary>
+        /// Required. The duration of the window. The max allowed duration for any window is 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Required. Time in UTC when the window starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for VmwareEngine.UndeletePrivateCloud</summary>
     public class UndeletePrivateCloudRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11484,6 +12428,183 @@ namespace Google.Apis.VMwareEngine.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes Private cloud Upgrade.</summary>
+    public class Upgrade : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Output Only. The list of component upgrades.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentUpgrades")]
+        public virtual System.Collections.Generic.IList<VmwareUpgradeComponent> ComponentUpgrades { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Output Only. Creation time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Output Only. The description of the upgrade. This is used to provide additional information
+        /// about the private cloud upgrade, such as the upgrade's purpose, the changes included in the upgrade, or any
+        /// other relevant information about the upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. Output Only. End time of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Output Only. The estimated total duration of the upgrade. This information can be used to plan
+        /// or schedule upgrades to minimize disruptions. Please note that the estimated duration is only an estimate.
+        /// The actual upgrade duration may vary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedDuration")]
+        public virtual object EstimatedDuration { get; set; }
+
+        /// <summary>
+        /// The etag for the upgrade resource. If this is provided on update, it must match the server's etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The resource name of the private cloud `Upgrade`. Resource names are schemeless
+        /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Schedule details for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual Schedule Schedule { get; set; }
+
+        /// <summary>Output only. Output Only. The start version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startVersion")]
+        public virtual string StartVersion { get; set; }
+
+        /// <summary>Output only. The current state of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Output Only. The target version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; }
+
+        /// <summary>Output only. Output Only. The type of upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. System-generated unique identifier for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Output Only. Last update time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
     }
 
     /// <summary>Details about a vCenter Server management appliance.</summary>
@@ -11624,6 +12745,21 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcNetworks")]
         public virtual System.Collections.Generic.IList<VpcNetwork> VpcNetworks { get; set; }
+    }
+
+    /// <summary>Per component upgrade resource</summary>
+    public class VmwareUpgradeComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Type of component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentType")]
+        public virtual string ComponentType { get; set; }
+
+        /// <summary>Output only. Component's upgrade state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Represents a VMware Engine VPC network that is managed by a VMware Engine network resource.</summary>
