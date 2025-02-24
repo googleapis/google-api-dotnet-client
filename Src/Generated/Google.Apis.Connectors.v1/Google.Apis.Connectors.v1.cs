@@ -8584,6 +8584,13 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>JsonSchema representation of schema metadata</summary>
     public class JsonSchema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Additional details apart from standard json schema fields, this gives flexibility to store metadata about
+        /// the schema
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalDetails { get; set; }
+
         /// <summary>The default value of the field or object described by this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
         public virtual object Default__ { get; set; }
@@ -10399,7 +10406,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("helperTextTemplate")]
         public virtual string HelperTextTemplate { get; set; }
 
-        /// <summary>Optional. Prinicipal/Identity for whom the role need to assigned.</summary>
+        /// <summary>Optional. Principal/Identity for whom the role need to assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual string Principal { get; set; }
 
@@ -10728,7 +10735,7 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Source to extract the backend from.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Field identifier. For example config vaiable name.</summary>
+        /// <summary>Field identifier. For example config variable name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual string FieldId { get; set; }
 
