@@ -1814,6 +1814,56 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                 }
             }
         }
+
+        /// <summary>Get information about the quota for `ReleaseTests`.</summary>
+        /// <param name="name">
+        /// Required. The name of the `TestQuota` resource to retrieve. Format: `projects/{project_number}/testQuota`
+        /// </param>
+        public virtual GetTestQuotaRequest GetTestQuota(string name)
+        {
+            return new GetTestQuotaRequest(this.service, name);
+        }
+
+        /// <summary>Get information about the quota for `ReleaseTests`.</summary>
+        public class GetTestQuotaRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaTestQuota>
+        {
+            /// <summary>Constructs a new GetTestQuota request.</summary>
+            public GetTestQuotaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the `TestQuota` resource to retrieve. Format:
+            /// `projects/{project_number}/testQuota`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getTestQuota";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}";
+
+            /// <summary>Initializes GetTestQuota parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/testQuota$",
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
@@ -2922,6 +2972,30 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>Required. The version of the device (API level on Android).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Customer quota information for `ReleaseTests`. Note: This quota only applies to tests with `AiInstructions` and
+    /// is separate from the quota which might apply to the device time used by any tests.
+    /// </summary>
+    public class GoogleFirebaseAppdistroV1alphaTestQuota : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Maximum number of `ReleaseTests` allotted for the current month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<long> Limit { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the `TestQuota` resource. Format: `projects/{project_number}/testQuota`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Number of `ReleaseTests` run in the current month</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usage")]
+        public virtual System.Nullable<long> Usage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
