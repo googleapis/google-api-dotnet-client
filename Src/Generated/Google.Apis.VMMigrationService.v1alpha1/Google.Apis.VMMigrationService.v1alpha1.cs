@@ -5053,7 +5053,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Holds informatiom about the available versions for upgrade.</summary>
+    /// <summary>Holds information about the available versions for upgrade.</summary>
     public class AvailableUpdates : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6099,7 +6099,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
 
     /// <summary>
     /// CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the
-    /// VM, creating a snapshot and clonning the VM using the replicated snapshot.
+    /// VM, creating a snapshot and cloning the VM using the replicated snapshot.
     /// </summary>
     public class CutoverJob : Google.Apis.Requests.IDirectResponseSchema
     {
