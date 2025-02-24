@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -341,7 +341,10 @@ namespace Google.Apis.AreaInsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
         public virtual LatLng LatLng { get; set; }
 
-        /// <summary>The Place resource name of the center of the circle. Only point places are supported.</summary>
+        /// <summary>
+        /// **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the unique identifier of a place.
+        /// For example: `places/ChIJgUbEo8cfqokR5lP9_Wh_DaM`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("place")]
         public virtual string Place { get; set; }
 
