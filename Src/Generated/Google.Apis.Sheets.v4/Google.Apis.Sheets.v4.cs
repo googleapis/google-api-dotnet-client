@@ -5858,7 +5858,9 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Inserts cells into a range, shifting the existing cells over or down.</summary>
     public class InsertRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The range to insert new cells into.</summary>
+        /// <summary>
+        /// The range to insert new cells into. The range is constrained to the current sheet boundaries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; }
 
