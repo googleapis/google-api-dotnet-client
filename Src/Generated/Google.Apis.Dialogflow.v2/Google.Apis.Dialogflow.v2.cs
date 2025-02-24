@@ -6047,8 +6047,11 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't
-                /// been, and isn't currently, supported. For more information about filtering, see [API
+                /// Optional. Filters to restrict results to specific answer records. The expression has the following
+                /// syntax: [AND ] ... The following fields and operators are supported: * conversation_id with
+                /// equals(=) operator Examples: * "conversation_id=bar" matches answer records in the
+                /// projects/foo/locations/global/conversations/bar conversation (assuming the parent is
+                /// projects/foo/locations/global). For more information about filtering, see [API
                 /// Filtering](https://aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -14779,8 +14782,11 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't
-                    /// been, and isn't currently, supported. For more information about filtering, see [API
+                    /// Optional. Filters to restrict results to specific answer records. The expression has the
+                    /// following syntax: [AND ] ... The following fields and operators are supported: * conversation_id
+                    /// with equals(=) operator Examples: * "conversation_id=bar" matches answer records in the
+                    /// projects/foo/locations/global/conversations/bar conversation (assuming the parent is
+                    /// projects/foo/locations/global). For more information about filtering, see [API
                     /// Filtering](https://aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -22744,7 +22750,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
+        /// <summary>Optional. The client secret provided by the 3rd party platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
@@ -25524,7 +25530,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
+        /// <summary>Optional. The client secret provided by the 3rd party platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
@@ -25886,7 +25892,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>
         /// Optional. Whether or not the information in the document is correct. For example: * Query: "Can I return the
         /// package in 2 days once received?" * Suggested document says: "Items must be returned/exchanged within 60
-        /// days of the purchase date." * Ground truth: "No return or exchange is allowed." * [document_correctness]:
+        /// days of the purchase date." * Ground truth: "No return or exchange is allowed." * document_correctness:
         /// INCORRECT
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentCorrectness")]
@@ -27194,7 +27200,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Human eval template in csv format. It tooks real-world conversations provided through input
+        /// Output only. Human eval template in csv format. It takes real-world conversations provided through input
         /// dataset, generates example suggestions for customer to verify quality of the model. For Smart Reply, the
         /// generated csv file contains columns of Context, (Suggestions,Q1,Q2)*3, Actual reply. Context contains at
         /// most 10 latest messages in the conversation prior to the current suggestion. Q1: "Would you send it as the
@@ -28225,11 +28231,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2InputDataset> Datasets { get; set; }
 
-        /// <summary>Configuration for smart compose model evalution.</summary>
+        /// <summary>Configuration for smart compose model evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartComposeConfig")]
         public virtual GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig SmartComposeConfig { get; set; }
 
-        /// <summary>Configuration for smart reply model evalution.</summary>
+        /// <summary>Configuration for smart reply model evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartReplyConfig")]
         public virtual GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig SmartReplyConfig { get; set; }
 
@@ -32575,7 +32581,7 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Optional. The previously suggested query for the given conversation. This helps identify whether the next
-        /// suggestion we generate is resonably different from the previous one. This is useful to avoid similar
+        /// suggestion we generate is reasonably different from the previous one. This is useful to avoid similar
         /// suggestions within the conversation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousSuggestedQuery")]
@@ -35454,9 +35460,9 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>
     /// Indicates that the conversation should be handed off to a human agent. Dialogflow only uses this to determine
     /// which conversations were handed off to a human agent for measurement purposes. What else to do with this signal
-    /// is up to you and your handoff procedures. You may set this, for example: * In the entry fulfillment of a CX Page
-    /// if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when
-    /// you determine that the customer issue can only be handled by a human.
+    /// is up to you and your handoff procedures. You may set this, for example: * In the entry fulfillment of a
+    /// Dialogflow CX Page if entering the page indicates something went extremely wrong in the conversation. * In a
+    /// webhook response when you determine that the customer issue can only be handled by a human.
     /// </summary>
     public class GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff : Google.Apis.Requests.IDirectResponseSchema
     {
