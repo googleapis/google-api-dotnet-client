@@ -5172,7 +5172,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// your results to this field. Discard the response in case of non-matching checksum values, and perform a
         /// limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C
         /// checksum. Note: This field is defined as int64 for reasons of compatibility across different languages.
-        /// However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to
+        /// However, it is a non-negative integer, which will never exceed `2^32-1`, and can be safely downconverted to
         /// uint32 in languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crc32cChecksum")]
@@ -6965,8 +6965,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// to this field. Discard the response in case of non-matching checksum values, and perform a limited number of
         /// retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This
         /// field is defined as int64 for reasons of compatibility across different languages. However, it is a
-        /// non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-        /// that support this type. NOTE: This field is in Beta.
+        /// non-negative integer, which will never exceed `2^32-1`, and can be safely downconverted to uint32 in
+        /// languages that support this type. NOTE: This field is in Beta.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemCrc32c")]
         public virtual System.Nullable<long> PemCrc32c { get; set; }
