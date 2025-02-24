@@ -3587,9 +3587,10 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual System.Collections.Generic.IList<string> DetectedAttributes { get; set; }
 
         /// <summary>
-        /// Output only. IDs of the detected categories, if any. The taxonomy in which the categories are expressed is
-        /// specified by the detected_categories_taxonomy field. Can be used to filter the response of the
-        /// creatives.list method.
+        /// Output only. IDs of the detected categories. The taxonomy in which the categories are expressed is specified
+        /// by the detected_categories_taxonomy field. Use this in conjunction with BidRequest.bcat to avoid bidding on
+        /// impressions where a given ad category is blocked, or to troubleshoot filtered bids. Can be used to filter
+        /// the response of the creatives.list method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedCategories")]
         public virtual System.Collections.Generic.IList<string> DetectedCategories { get; set; }
