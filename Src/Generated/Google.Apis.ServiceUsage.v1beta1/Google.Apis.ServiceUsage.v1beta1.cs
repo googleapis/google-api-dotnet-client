@@ -2606,6 +2606,27 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     }
 
     /// <summary>
+    /// Aspect represents Generic aspect. It is used to configure an aspect without making direct changes to
+    /// service.proto
+    /// </summary>
+    public class Aspect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of this aspect configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message
+        /// under `apiserving/configaspects/proto`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configuration for an authentication provider, including support for [JSON Web Token
     /// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
     /// </summary>
@@ -2803,6 +2824,14 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwtAudience")]
         public virtual string JwtAudience { get; set; }
+
+        /// <summary>
+        /// The load balancing policy used for connection to the application backend. Defined as an arbitrary string to
+        /// accomondate custom load balancing policies supported by the underlying channel, but suggest most users use
+        /// one of the standard policies, such as the default, "RoundRobin".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingPolicy")]
+        public virtual string LoadBalancingPolicy { get; set; }
 
         /// <summary>Deprecated, do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
@@ -3433,8 +3462,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual System.Collections.Generic.IList<DocumentationRule> Rules { get; set; }
 
         /// <summary>
-        /// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides
-        /// following sections: 1. rest.service.client_libraries
+        /// Specifies section and content to override the boilerplate content. Currently overrides following sections:
+        /// 1. rest.service.client_libraries
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionOverrides")]
         public virtual System.Collections.Generic.IList<Page> SectionOverrides { get; set; }
@@ -3478,7 +3507,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         /// String of comma or space separated case-sensitive words for which method/field name replacement will be
-        /// disabled by go/api-docgen.
+        /// disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableReplacementWords")]
         public virtual string DisableReplacementWords { get; set; }
@@ -3739,6 +3768,14 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restAsyncIoEnabled")]
         public virtual System.Nullable<bool> RestAsyncIoEnabled { get; set; }
 
+        /// <summary>
+        /// Disables generation of an unversioned Python package for this client library. This means that the module
+        /// names will need to be versioned in import statements. For example `import google.cloud.library_v2` instead
+        /// of `import google.cloud.library`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unversionedPackageDisabled")]
+        public virtual System.Nullable<bool> UnversionedPackageDisabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3895,6 +3932,14 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apis")]
         public virtual System.Collections.Generic.IList<Api> Apis { get; set; }
+
+        /// <summary>
+        /// Configuration aspects. This is a repeated field to allow multiple aspects to be configured. The kind field
+        /// in each ConfigAspect specifies the type of aspect. The spec field contains the configuration for that
+        /// aspect. The schema for the spec field is defined by the backend service owners.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspects")]
+        public virtual System.Collections.Generic.IList<Aspect> Aspects { get; set; }
 
         /// <summary>Auth configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
@@ -4316,8 +4361,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     public class GoogleApiServiceusageV2betaAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Analysis result of updating a policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
-        public virtual GoogleApiServiceusageV2betaAnalysisResult Analysis { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisResult")]
+        public virtual GoogleApiServiceusageV2betaAnalysisResult AnalysisResult { get; set; }
 
         /// <summary>Output only. The type of analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisType")]
