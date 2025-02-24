@@ -8337,7 +8337,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ListRolloutsResponse is the response object reutrned by `ListRollouts`.</summary>
+    /// <summary>ListRolloutsResponse is the response object returned by `ListRollouts`.</summary>
     public class ListRolloutsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10179,9 +10179,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will
-        /// always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to
-        /// facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations
-        /// are specified.
+        /// always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitate
+        /// successful DNS lookup in the route destination clusters. Can only be set to true if destinations are
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propagateService")]
         public virtual System.Nullable<bool> PropagateService { get; set; }
