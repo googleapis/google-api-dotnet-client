@@ -288,6 +288,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             KnowledgeBases = new KnowledgeBasesResource(service);
             Locations = new LocationsResource(service);
             Operations = new OperationsResource(service);
+            PhoneNumbers = new PhoneNumbersResource(service);
             Suggestions = new SuggestionsResource(service);
         }
 
@@ -6347,8 +6348,12 @@ namespace Google.Apis.Dialogflow.v2beta1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. Filters to restrict results to specific answer records. For more information about
-                /// filtering, see [API Filtering](https://aip.dev/160).
+                /// Optional. Filters to restrict results to specific answer records. The expression has the following
+                /// syntax: [AND ] ... The following fields and operators are supported: * conversation_id with
+                /// equals(=) operator Examples: * "conversation_id=bar" matches answer records in the
+                /// projects/foo/locations/global/conversations/bar conversation (assuming the parent is
+                /// projects/foo/locations/global). For more information about filtering, see [API
+                /// Filtering](https://aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -9581,6 +9586,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 Generators = new GeneratorsResource(service);
                 KnowledgeBases = new KnowledgeBasesResource(service);
                 Operations = new OperationsResource(service);
+                PhoneNumbers = new PhoneNumbersResource(service);
                 SipTrunks = new SipTrunksResource(service);
                 StatelessSuggestion = new StatelessSuggestionResource(service);
                 Suggestions = new SuggestionsResource(service);
@@ -14798,8 +14804,12 @@ namespace Google.Apis.Dialogflow.v2beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filters to restrict results to specific answer records. For more information about
-                    /// filtering, see [API Filtering](https://aip.dev/160).
+                    /// Optional. Filters to restrict results to specific answer records. The expression has the
+                    /// following syntax: [AND ] ... The following fields and operators are supported: * conversation_id
+                    /// with equals(=) operator Examples: * "conversation_id=bar" matches answer records in the
+                    /// projects/foo/locations/global/conversations/bar conversation (assuming the parent is
+                    /// projects/foo/locations/global). For more information about filtering, see [API
+                    /// Filtering](https://aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -18316,6 +18326,313 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
             }
 
+            /// <summary>Gets the PhoneNumbers resource.</summary>
+            public virtual PhoneNumbersResource PhoneNumbers { get; }
+
+            /// <summary>The "phoneNumbers" collection of methods.</summary>
+            public class PhoneNumbersResource
+            {
+                private const string Resource = "phoneNumbers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PhoneNumbersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Requests deletion of a `PhoneNumber`. The `PhoneNumber` is moved into the DELETE_REQUESTED state
+                /// immediately, and is deleted approximately 30 days later. This method may only be called on a
+                /// `PhoneNumber` in the ACTIVE state.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The unique identifier of the `PhoneNumber` to delete. Format: `projects//phoneNumbers/`.
+                /// Format: `projects//locations//phoneNumbers/`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Requests deletion of a `PhoneNumber`. The `PhoneNumber` is moved into the DELETE_REQUESTED state
+                /// immediately, and is deleted approximately 30 days later. This method may only be called on a
+                /// `PhoneNumber` in the ACTIVE state.
+                /// </summary>
+                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The unique identifier of the `PhoneNumber` to delete. Format:
+                    /// `projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/phoneNumbers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns the list of all phone numbers in the specified project.</summary>
+                /// <param name="parent">
+                /// Required. The project to list all `PhoneNumber` resources from. Format: `projects/`. Format:
+                /// `projects//locations/`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Returns the list of all phone numbers in the specified project.</summary>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project to list all `PhoneNumber` resources from. Format: `projects/`. Format:
+                    /// `projects//locations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return in a single page. The default value is 100. The
+                    /// maximum value is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. Controls whether `PhoneNumber` resources in the DELETE_REQUESTED state should be
+                    /// returned. Defaults to false.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+parent}/phoneNumbers";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the specified `PhoneNumber`.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Optional. The unique identifier of this phone number. Required for PhoneNumbers.UpdatePhoneNumber
+                /// method. Format: `projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the specified `PhoneNumber`.</summary>
+                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Optional. The unique identifier of this phone number. Required for
+                    /// PhoneNumbers.UpdatePhoneNumber method. Format: `projects//phoneNumbers/`. Format:
+                    /// `projects//locations//phoneNumbers/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The mask to control which fields get updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/phoneNumbers/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Cancels the deletion request for a `PhoneNumber`. This method may only be called on a `PhoneNumber`
+                /// in the DELETE_REQUESTED state.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The unique identifier of the `PhoneNumber` to delete. Format: `projects//phoneNumbers/`.
+                /// Format: `projects//locations//phoneNumbers/`.
+                /// </param>
+                public virtual UndeleteRequest Undelete(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest body, string name)
+                {
+                    return new UndeleteRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Cancels the deletion request for a `PhoneNumber`. This method may only be called on a `PhoneNumber`
+                /// in the DELETE_REQUESTED state.
+                /// </summary>
+                public class UndeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The unique identifier of the `PhoneNumber` to delete. Format:
+                    /// `projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "undelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+name}:undelete";
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/phoneNumbers/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the SipTrunks resource.</summary>
             public virtual SipTrunksResource SipTrunks { get; }
 
@@ -19425,6 +19742,312 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the PhoneNumbers resource.</summary>
+        public virtual PhoneNumbersResource PhoneNumbers { get; }
+
+        /// <summary>The "phoneNumbers" collection of methods.</summary>
+        public class PhoneNumbersResource
+        {
+            private const string Resource = "phoneNumbers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PhoneNumbersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Requests deletion of a `PhoneNumber`. The `PhoneNumber` is moved into the DELETE_REQUESTED state
+            /// immediately, and is deleted approximately 30 days later. This method may only be called on a
+            /// `PhoneNumber` in the ACTIVE state.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The unique identifier of the `PhoneNumber` to delete. Format: `projects//phoneNumbers/`.
+            /// Format: `projects//locations//phoneNumbers/`.
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Requests deletion of a `PhoneNumber`. The `PhoneNumber` is moved into the DELETE_REQUESTED state
+            /// immediately, and is deleted approximately 30 days later. This method may only be called on a
+            /// `PhoneNumber` in the ACTIVE state.
+            /// </summary>
+            public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The unique identifier of the `PhoneNumber` to delete. Format: `projects//phoneNumbers/`.
+                /// Format: `projects//locations//phoneNumbers/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/phoneNumbers/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Returns the list of all phone numbers in the specified project.</summary>
+            /// <param name="parent">
+            /// Required. The project to list all `PhoneNumber` resources from. Format: `projects/`. Format:
+            /// `projects//locations/`.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Returns the list of all phone numbers in the specified project.</summary>
+            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project to list all `PhoneNumber` resources from. Format: `projects/`. Format:
+                /// `projects//locations/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of items to return in a single page. The default value is 100. The
+                /// maximum value is 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Optional. Controls whether `PhoneNumber` resources in the DELETE_REQUESTED state should be returned.
+                /// Defaults to false.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+parent}/phoneNumbers";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates the specified `PhoneNumber`.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Optional. The unique identifier of this phone number. Required for PhoneNumbers.UpdatePhoneNumber
+            /// method. Format: `projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the specified `PhoneNumber`.</summary>
+            public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Optional. The unique identifier of this phone number. Required for PhoneNumbers.UpdatePhoneNumber
+                /// method. Format: `projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The mask to control which fields get updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/phoneNumbers/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Cancels the deletion request for a `PhoneNumber`. This method may only be called on a `PhoneNumber` in
+            /// the DELETE_REQUESTED state.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The unique identifier of the `PhoneNumber` to delete. Format: `projects//phoneNumbers/`.
+            /// Format: `projects//locations//phoneNumbers/`.
+            /// </param>
+            public virtual UndeleteRequest Undelete(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest body, string name)
+            {
+                return new UndeleteRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Cancels the deletion request for a `PhoneNumber`. This method may only be called on a `PhoneNumber` in
+            /// the DELETE_REQUESTED state.
+            /// </summary>
+            public class UndeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+            {
+                /// <summary>Constructs a new Undelete request.</summary>
+                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The unique identifier of the `PhoneNumber` to delete. Format: `projects//phoneNumbers/`.
+                /// Format: `projects//locations//phoneNumbers/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "undelete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+name}:undelete";
+
+                /// <summary>Initializes Undelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/phoneNumbers/[^/]+$",
                     });
                 }
             }
@@ -22204,7 +22827,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
+        /// <summary>Optional. The client secret provided by the 3rd party platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
@@ -24984,7 +25607,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
+        /// <summary>Optional. The client secret provided by the 3rd party platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual string ClientSecret { get; set; }
 
@@ -28087,7 +28710,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>
         /// Optional. Whether or not the information in the document is correct. For example: * Query: "Can I return the
         /// package in 2 days once received?" * Suggested document says: "Items must be returned/exchanged within 60
-        /// days of the purchase date." * Ground truth: "No return or exchange is allowed." * [document_correctness]:
+        /// days of the purchase date." * Ground truth: "No return or exchange is allowed." * document_correctness:
         /// INCORRECT
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentCorrectness")]
@@ -28283,7 +28906,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual GoogleCloudDialogflowV2beta1AudioInput AudioInput { get; set; }
 
         /// <summary>
-        /// The unique identifier of the CX page to override the `current_page` in the session. Format:
+        /// The unique identifier of the Dialogflow CX page to override the `current_page` in the session. Format:
         /// `projects//locations//agents//flows//pages/`. If `cx_current_page` is specified, the previous state of the
         /// session will be ignored by Dialogflow CX, including the previous page and the previous session parameters.
         /// In most cases, `cx_current_page` and `cx_parameters` should be configured together to direct a session to a
@@ -33121,6 +33744,26 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for PhoneNumbers.ListPhoneNumbers.</summary>
+    public class GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The list of `PhoneNumber` resources. There is a maximum number of items returned based on the page_size
+        /// field in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1PhoneNumber> PhoneNumbers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for SessionEntityTypes.ListSessionEntityTypes.</summary>
     public class GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -33553,6 +34196,45 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     }
 
     /// <summary>
+    /// Represents a phone number. `PhoneNumber` resources enable phone calls to be answered by Dialogflow services and
+    /// are added to a project through a PhoneNumberOrder.
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1PhoneNumber : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The conversation profile calls to this `PhoneNumber` should use. The project ID here should be the
+        /// same as the one in name. Format: `projects//conversationProfiles/`. Format:
+        /// `projects//locations//conversationProfiles/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>
+        /// Output only. The state of the `PhoneNumber`. Defaults to `ACTIVE`. `PhoneNumber` objects set to
+        /// `DELETE_REQUESTED` always decline incoming calls and can be removed completely within 30 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; }
+
+        /// <summary>
+        /// Optional. The unique identifier of this phone number. Required for PhoneNumbers.UpdatePhoneNumber method.
+        /// Format: `projects//phoneNumbers/`. Format: `projects//locations//phoneNumbers/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly
+        /// formatted phone number: +15556767888.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents the query input. It can contain either: 1. An audio config which instructs the speech recognizer how
     /// to process the speech audio. 2. A conversational query in the form of text. 3. An event that specifies which
     /// intent to trigger.
@@ -33865,9 +34547,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>
     /// Indicates that the conversation should be handed off to a human agent. Dialogflow only uses this to determine
     /// which conversations were handed off to a human agent for measurement purposes. What else to do with this signal
-    /// is up to you and your handoff procedures. You may set this, for example: * In the entry fulfillment of a CX Page
-    /// if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when
-    /// you determine that the customer issue can only be handled by a human.
+    /// is up to you and your handoff procedures. You may set this, for example: * In the entry fulfillment of a
+    /// Dialogflow CX Page if entering the page indicates something went extremely wrong in the conversation. * In a
+    /// webhook response when you determine that the customer issue can only be handled by a human.
     /// </summary>
     public class GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -34984,7 +35666,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         /// <summary>
         /// Optional. The previously suggested query for the given conversation. This helps identify whether the next
-        /// suggestion we generate is resonably different from the previous one. This is useful to avoid similar
+        /// suggestion we generate is reasonably different from the previous one. This is useful to avoid similar
         /// suggestions within the conversation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousSuggestedQuery")]
@@ -35507,6 +36189,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     /// <summary>The request message for Agents.TrainAgent.</summary>
     public class GoogleCloudDialogflowV2beta1TrainAgentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for PhoneNumbers.UndeletePhoneNumber.</summary>
+    public class GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
