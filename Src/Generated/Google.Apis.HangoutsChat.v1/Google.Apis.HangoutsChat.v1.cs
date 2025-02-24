@@ -4192,18 +4192,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Metadata associated with app commands. App commands are a way for users to invoke and interact with a Chat app.
-    /// These can be slash commands typed in the compose box, or items directly selected from the integration menu. For
-    /// more information, see [Respond to quick commands](https://developers.google.com/workspace/chat/quick-commands).
-    /// </summary>
+    /// <summary>Metadata about a [Chat app command](https://developers.google.com/workspace/chat/commands).</summary>
     public class AppCommandMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The command ID for the given app interaction.</summary>
+        /// <summary>The ID for the command specified in the Chat API configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCommandId")]
         public virtual System.Nullable<int> AppCommandId { get; set; }
 
-        /// <summary>The type of the app command.</summary>
+        /// <summary>The type of Chat app command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCommandType")]
         public virtual string AppCommandType { get; set; }
 
@@ -4682,7 +4678,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual FormAction Action { get; set; }
 
-        /// <summary>Populated for app commands, including slash commands and quick commands.</summary>
+        /// <summary>Metadata about a Chat app command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCommandMetadata")]
         public virtual AppCommandMetadata AppCommandMetadata { get; set; }
 
@@ -7946,11 +7942,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A [slash command](https://developers.google.com/workspace/chat/slash-commands) in Google Chat.
+    /// Metadata about a [slash command](https://developers.google.com/workspace/chat/commands) in Google Chat.
     /// </summary>
     public class SlashCommand : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the slash command invoked.</summary>
+        /// <summary>The ID of the slash command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandId")]
         public virtual System.Nullable<long> CommandId { get; set; }
 
