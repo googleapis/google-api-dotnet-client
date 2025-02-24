@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -525,7 +525,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
 
                 /// <summary>
                 /// Deletes a single Collector - changes state of collector to "Deleting". Background jobs does final
-                /// deletion thorugh producer api.
+                /// deletion through producer API.
                 /// </summary>
                 /// <param name="name">Required. Name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -535,7 +535,7 @@ namespace Google.Apis.RapidMigrationAssessment.v1
 
                 /// <summary>
                 /// Deletes a single Collector - changes state of collector to "Deleting". Background jobs does final
-                /// deletion thorugh producer api.
+                /// deletion through producer API.
                 /// </summary>
                 public class DeleteRequest : RapidMigrationAssessmentBaseServiceRequest<Google.Apis.RapidMigrationAssessment.v1.Data.Operation>
                 {
