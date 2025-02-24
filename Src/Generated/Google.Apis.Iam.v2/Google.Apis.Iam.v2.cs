@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1004,10 +1004,14 @@ namespace Google.Apis.Iam.v2.Data
         /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
         /// All identities in a workload identity pool with a certain attribute. *
         /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
-        /// All identities in a workload identity pool. * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A
-        /// specific Google Account that was deleted recently. For example,
-        /// `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google Account is recovered,
-        /// this identifier reverts to the standard identifier for a Google Account. *
+        /// All identities in a workload identity pool. *
+        /// `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAccount`:
+        /// All service accounts grouped under a resource (project, folder, or organization). *
+        /// `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAgent`:
+        /// All service agents grouped under a resource (project, folder, or organization). *
+        /// `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted
+        /// recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google
+        /// Account is recovered, this identifier reverts to the standard identifier for a Google Account. *
         /// `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group that was deleted recently. For
         /// example, `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is
         /// restored, this identifier reverts to the standard identifier for a Google group. *
