@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -9605,7 +9605,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 GivenName = 2,
             }
 
-            /// <summary>Token to specify next page in the list</summary>
+            /// <summary>Token to specify next page in the list. The page token is only valid for three days.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -14723,7 +14723,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Token used to access next page of this result.</summary>
+        /// <summary>
+        /// Token used to access next page of this result. The page token is only valid for three days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
