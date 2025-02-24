@@ -883,7 +883,7 @@ namespace Google.Apis.CloudRedis.v1
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClusterId { get; set; }
 
-                    /// <summary>Idempotent request UUID.</summary>
+                    /// <summary>Optional. Idempotent request UUID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
@@ -962,7 +962,7 @@ namespace Google.Apis.CloudRedis.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Idempotent request UUID.</summary>
+                    /// <summary>Optional. Idempotent request UUID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
@@ -1233,7 +1233,7 @@ namespace Google.Apis.CloudRedis.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Idempotent request UUID.</summary>
+                    /// <summary>Optional. Idempotent request UUID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
@@ -3059,7 +3059,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupCollection")]
         public virtual string BackupCollection { get; set; }
 
-        /// <summary>Optional. A list of cluster enpoints.</summary>
+        /// <summary>Optional. A list of cluster endpoints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterEndpoints")]
         public virtual System.Collections.Generic.IList<ClusterEndpoint> ClusterEndpoints { get; set; }
 
@@ -3238,8 +3238,8 @@ namespace Google.Apis.CloudRedis.v1.Data
     public class ClusterEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the
-        /// cluster.
+        /// Required. A group of PSC connections. They are created in the same VPC network, one for each service
+        /// attachment in the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
         public virtual System.Collections.Generic.IList<ConnectionDetail> Connections { get; set; }
@@ -3340,7 +3340,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Upcoming maitenance schedule.</summary>
+    /// <summary>Upcoming maintenance schedule.</summary>
     public class ClusterMaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _endTimeRaw;
@@ -3796,7 +3796,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 24</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 25</summary>
     public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -3876,6 +3876,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expectedState")]
         public virtual string ExpectedState { get; set; }
 
+        /// <summary>GCBDR configuration for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcbdrConfiguration")]
+        public virtual GCBDRConfiguration GcbdrConfiguration { get; set; }
+
         /// <summary>Required. Unique identifier for a Database resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual DatabaseResourceId Id { get; set; }
@@ -3927,7 +3931,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>Suspension reason for the resource.</summary>
+        /// <summary>Optional. Suspension reason for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual string SuspensionReason { get; set; }
 
@@ -4230,13 +4234,25 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GCBDR Configuration for the resource.</summary>
+    public class GCBDRConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the resource is managed by GCBDR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcbdrManaged")]
+        public virtual System.Nullable<bool> GcbdrManaged { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
     /// </summary>
     public class GcsBackupSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        /// Optional. URIs of the Cloud Storage objects to import. Example: gs://bucket1/object1,
+        /// gs://bucket2/folder2/object2
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
@@ -5675,6 +5691,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Output only. The port number of the exposed discovery endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>Optional. Project ID of the consumer project where the forwarding rule is created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
