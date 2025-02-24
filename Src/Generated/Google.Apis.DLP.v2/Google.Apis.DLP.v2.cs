@@ -15297,6 +15297,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("otherCloudStartingLocation")]
         public virtual GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation OtherCloudStartingLocation { get; set; }
 
+        /// <summary>
+        /// Optional. Processing location configuration. Vertex AI dataset scanning will set
+        /// processing_location.image_fallback_type to MultiRegionProcessing by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingLocation")]
+        public virtual GooglePrivacyDlpV2ProcessingLocation ProcessingLocation { get; set; }
+
         /// <summary>Required. A status for this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
@@ -15604,6 +15611,117 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretsTarget")]
         public virtual GooglePrivacyDlpV2SecretsDiscoveryTarget SecretsTarget { get; set; }
+
+        /// <summary>
+        /// Vertex AI dataset target for Discovery. The first target to match a dataset will be the one applied. Note
+        /// that discovery for Vertex AI can incur Cloud Storage Class B operation charges for storage.objects.get
+        /// operations and retrieval fees. For more information, see [Cloud Storage
+        /// pricing](https://cloud.google.com/storage/pricing#price-tables). Note that discovery for Vertex AI dataset
+        /// will not be able to scan images unless DiscoveryConfig.processing_location.image_fallback_location has
+        /// multi_region_processing or global_processing configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexDatasetTarget")]
+        public virtual GooglePrivacyDlpV2VertexDatasetDiscoveryTarget VertexDatasetTarget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Requirements that must be true before a dataset is profiled for the first time.</summary>
+    public class GooglePrivacyDlpV2DiscoveryVertexDatasetConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createdAfterRaw;
+
+        private object _createdAfter;
+
+        /// <summary>Vertex AI dataset must have been created after this date. Used to avoid backfilling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAfter")]
+        public virtual string CreatedAfterRaw
+        {
+            get => _createdAfterRaw;
+            set
+            {
+                _createdAfter = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createdAfterRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreatedAfterRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedAfterDateTimeOffset instead.")]
+        public virtual object CreatedAfter
+        {
+            get => _createdAfter;
+            set
+            {
+                _createdAfterRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createdAfter = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedAfterRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedAfterDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreatedAfterRaw);
+            set => CreatedAfterRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Minimum age a Vertex AI dataset must have. If set, the value must be 1 hour or greater.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAge")]
+        public virtual object MinAge { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Determines what datasets will have profiles generated within an organization or project. Includes the ability to
+    /// filter by regular expression patterns on project ID or dataset regex.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryVertexDatasetFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A specific set of Vertex AI datasets for this filter to apply to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
+        public virtual GooglePrivacyDlpV2VertexDatasetCollection Collection { get; set; }
+
+        /// <summary>
+        /// Catch-all. This should always be the last target in the list because anything above it will apply first.
+        /// Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("others")]
+        public virtual GooglePrivacyDlpV2AllOtherResources Others { get; set; }
+
+        /// <summary>
+        /// The dataset resource to scan. Targets including this can only include one target (the target with this
+        /// dataset resource reference).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexDatasetResourceReference")]
+        public virtual GooglePrivacyDlpV2VertexDatasetResourceReference VertexDatasetResourceReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// How often existing datasets should have their profiles refreshed. New datasets are scanned as quickly as
+    /// possible depending on system capacity.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If
+        /// not set, changing the template will not cause a data profile to be updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateModifiedCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence InspectTemplateModifiedCadence { get; set; }
+
+        /// <summary>
+        /// If you set this field, profiles are refreshed at this frequency regardless of whether the underlying
+        /// datasets have changed. Defaults to never.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshFrequency")]
+        public virtual string RefreshFrequency { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16204,7 +16322,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileStoreLocation")]
         public virtual string FileStoreLocation { get; set; }
 
-        /// <summary>The file store path. * Cloud Storage: `gs://{bucket}` * Amazon S3: `s3://{bucket}`</summary>
+        /// <summary>
+        /// The file store path. * Cloud Storage: `gs://{bucket}` * Amazon S3: `s3://{bucket}` * Vertex AI dataset:
+        /// `projects/{project_number}/locations/{location}/datasets/{dataset_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileStorePath")]
         public virtual string FileStorePath { get; set; }
 
@@ -16322,6 +16443,10 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>Resources related to this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedResources")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2RelatedResource> RelatedResources { get; set; }
 
         /// <summary>
         /// Attributes of the resource being profiled. Currently used attributes: * customer_managed_encryption: boolean
@@ -16610,6 +16735,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Processing will happen in the global region.</summary>
+    public class GooglePrivacyDlpV2GlobalProcessing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The rule that adjusts the likelihood of findings within a certain proximity of hotwords.</summary>
     public class GooglePrivacyDlpV2HotwordRule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16790,6 +16922,24 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableOptions")]
         public virtual GooglePrivacyDlpV2TableOptions TableOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configure image processing to fall back to the configured processing option below if unavailable in the request
+    /// location.
+    /// </summary>
+    public class GooglePrivacyDlpV2ImageFallbackLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Processing will happen in the global region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalProcessing")]
+        public virtual GooglePrivacyDlpV2GlobalProcessing GlobalProcessing { get; set; }
+
+        /// <summary>Processing will happen in a multi-region that contains the current region if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiRegionProcessing")]
+        public virtual GooglePrivacyDlpV2MultiRegionProcessing MultiRegionProcessing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18207,6 +18357,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Processing will happen in a multi-region that contains the current region if available.</summary>
+    public class GooglePrivacyDlpV2MultiRegionProcessing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Compute numerical stats over an individual column, including min, max, and quantiles.</summary>
     public class GooglePrivacyDlpV2NumericalStatsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18567,6 +18724,20 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Numerical stats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalStatsConfig")]
         public virtual GooglePrivacyDlpV2NumericalStatsConfig NumericalStatsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configure processing location for discovery and inspection. For example, image OCR is only provided in limited
+    /// regions but configuring ProcessingLocation will redirect OCR to a location where OCR is provided.
+    /// </summary>
+    public class GooglePrivacyDlpV2ProcessingLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Image processing will fall back using this configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageFallbackLocation")]
+        public virtual GooglePrivacyDlpV2ImageFallbackLocation ImageFallbackLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19234,6 +19405,20 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>An overview of the changes that were made to the `item`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
         public virtual GooglePrivacyDlpV2TransformationOverview Overview { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A related resource. Examples: * The source BigQuery table for a Vertex AI dataset. * The source Cloud Storage
+    /// bucket for a Vertex AI dataset.
+    /// </summary>
+    public class GooglePrivacyDlpV2RelatedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full resource name of the related resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResource")]
+        public virtual string FullResource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20043,6 +20228,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The resource name of the project data profile for this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDataProfile")]
         public virtual string ProjectDataProfile { get; set; }
+
+        /// <summary>Resources related to this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedResources")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2RelatedResource> RelatedResources { get; set; }
 
         /// <summary>The labels applied to the resource at the time the profile was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
@@ -20881,6 +21070,90 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Name of the version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Match dataset resources using regex filters.</summary>
+    public class GooglePrivacyDlpV2VertexDatasetCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The regex used to filter dataset resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexDatasetRegexes")]
+        public virtual GooglePrivacyDlpV2VertexDatasetRegexes VertexDatasetRegexes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Target used to match against for discovery with Vertex AI datasets.</summary>
+    public class GooglePrivacyDlpV2VertexDatasetDiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// In addition to matching the filter, these conditions must be true before a profile is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual GooglePrivacyDlpV2DiscoveryVertexDatasetConditions Conditions { get; set; }
+
+        /// <summary>Disable profiling for datasets that match this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual GooglePrivacyDlpV2Disabled Disabled { get; set; }
+
+        /// <summary>
+        /// Required. The datasets the discovery cadence applies to. The first target with a matching filter will be the
+        /// one to apply to a dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GooglePrivacyDlpV2DiscoveryVertexDatasetFilter Filter { get; set; }
+
+        /// <summary>
+        /// How often and when to update profiles. New datasets that match both the filter and conditions are scanned as
+        /// quickly as possible depending on system capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence GenerationCadence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A pattern to match against one or more dataset resources.</summary>
+    public class GooglePrivacyDlpV2VertexDatasetRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For organizations, if unset, will match all projects. Has no effect for configurations created within a
+        /// project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectIdRegex")]
+        public virtual string ProjectIdRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of regular expressions to determine what datasets to match against.</summary>
+    public class GooglePrivacyDlpV2VertexDatasetRegexes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The group of regular expression patterns to match against one or more datasets. Maximum of 100
+        /// entries. The sum of the lengths of all regular expressions can't exceed 10 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patterns")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2VertexDatasetRegex> Patterns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a single Vertex AI dataset.</summary>
+    public class GooglePrivacyDlpV2VertexDatasetResourceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the dataset resource. If set within a project-level configuration, the specified
+        /// resource must be within the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetResourceName")]
+        public virtual string DatasetResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
