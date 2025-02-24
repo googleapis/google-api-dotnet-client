@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1533,7 +1533,7 @@ namespace Google.Apis.Workflows.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Describes the level of the execution history feature to apply to this workflow.</summary>
+        /// <summary>Optional. Describes the execution history level to apply to this workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionHistoryLevel")]
         public virtual string ExecutionHistoryLevel { get; set; }
 
