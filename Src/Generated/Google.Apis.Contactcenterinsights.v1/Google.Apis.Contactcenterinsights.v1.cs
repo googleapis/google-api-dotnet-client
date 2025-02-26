@@ -5967,6 +5967,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
         public virtual string ConversationProfile { get; set; }
 
+        /// <summary>
+        /// The resource name of the existing created generator. Format: projects//locations//generators/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generator")]
+        public virtual string Generator { get; set; }
+
         /// <summary>Default summarization model to be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationModel")]
         public virtual string SummarizationModel { get; set; }
@@ -11793,6 +11799,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
         public virtual string ConversationProfile { get; set; }
+
+        /// <summary>
+        /// The resource name of the existing created generator. Format: projects//locations//generators/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generator")]
+        public virtual string Generator { get; set; }
 
         /// <summary>Default summarization model to be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationModel")]
