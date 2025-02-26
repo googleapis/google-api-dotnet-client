@@ -2673,7 +2673,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
         public virtual string AdminPassword { get; set; }
 
-        /// <summary>Required. The subnet CIDR range for the Autonmous Database.</summary>
+        /// <summary>Optional. The subnet CIDR range for the Autonmous Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
         public virtual string Cidr { get; set; }
 
@@ -2746,7 +2746,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The name of the VPC network used by the Autonomous Database in the following format:
+        /// Optional. The name of the VPC network used by the Autonomous Database in the following format:
         /// projects/{project}/global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
