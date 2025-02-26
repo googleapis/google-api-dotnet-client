@@ -6573,7 +6573,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("freeBytes")]
         public virtual System.Nullable<long> FreeBytes { get; set; }
 
-        /// <summary>Mount pount (Linux/Windows) or drive letter (Windows).</summary>
+        /// <summary>Mount point (Linux/Windows) or drive letter (Windows).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPoint")]
         public virtual string MountPoint { get; set; }
 
