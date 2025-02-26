@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -441,22 +441,6 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// <summary>List of detected app types signalled for App Access Risk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appsDetected")]
         public virtual System.Collections.Generic.IList<string> AppsDetected { get; set; }
-
-        /// <summary>
-        /// Deprecated: this field will be removed, please use apps_detected instead. App access risk verdict related to
-        /// apps that are not installed by Google Play, and are not preloaded on the system image by the device
-        /// manufacturer.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("otherApps")]
-        public virtual string OtherApps { get; set; }
-
-        /// <summary>
-        /// Deprecated: this field will be removed, please use apps_detected instead. App access risk verdict related to
-        /// apps that are not installed by the Google Play Store, and are not preloaded on the system image by the
-        /// device manufacturer.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("playOrSystemApps")]
-        public virtual string PlayOrSystemApps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
