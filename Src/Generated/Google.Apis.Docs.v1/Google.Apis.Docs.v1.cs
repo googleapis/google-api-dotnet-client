@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -910,7 +910,7 @@ namespace Google.Apis.Docs.v1.Data
     /// content's 4 edges. - If the offset is in the interval (0, 1), the corresponding edge of crop rectangle is
     /// positioned inside of the image's original bounding rectangle. - If the offset is negative or greater than 1, the
     /// corresponding edge of crop rectangle is positioned outside of the image's original bounding rectangle. - If all
-    /// offsets and rotation angle are 0, the image is not cropped.
+    /// offsets and rotation angles are 0, the image is not cropped.
     /// </summary>
     public class CropProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1412,7 +1412,7 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>
         /// Indicates whether DocumentStyle margin_header, SectionStyle margin_header and DocumentStyle margin_footer,
         /// SectionStyle margin_footer are respected. When false, the default values in the Docs editor for header and
-        /// footer margin are used. This property is read-only.
+        /// footer margin is used. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useCustomHeaderFooterMargins")]
         public virtual System.Nullable<bool> UseCustomHeaderFooterMargins { get; set; }
@@ -2683,7 +2683,7 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string GlyphFormat { get; set; }
 
         /// <summary>
-        /// A custom glyph symbol used by bullets when paragraphs at this level of nesting are unordered. The glyph
+        /// A custom glyph symbol used by bullets when paragraphs at this level of nesting is unordered. The glyph
         /// symbol replaces placeholders within the glyph_format. For example, if the glyph_symbol is the solid circle
         /// corresponding to Unicode U+25cf code point and the glyph_format is `%0`, the rendered glyph would be the
         /// solid circle.
@@ -2692,11 +2692,11 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string GlyphSymbol { get; set; }
 
         /// <summary>
-        /// The type of glyph used by bullets when paragraphs at this level of nesting are ordered. The glyph type
+        /// The type of glyph used by bullets when paragraphs at this level of nesting is ordered. The glyph type
         /// determines the type of glyph used to replace placeholders within the glyph_format when paragraphs at this
         /// level of nesting are ordered. For example, if the nesting level is 0, the glyph_format is `%0.` and the
         /// glyph type is DECIMAL, then the rendered glyph would replace the placeholder `%0` in the glyph format with a
-        /// number corresponding to list item's order within the list.
+        /// number corresponding to the list item's order within the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glyphType")]
         public virtual string GlyphType { get; set; }
