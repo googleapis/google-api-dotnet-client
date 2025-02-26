@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -261,9 +261,9 @@ namespace Google.Apis.TravelImpactModel.v1
         /// https://github.com/google/travel-impact-model The response will contain all entries that match the input
         /// flight legs, in the same order. If there are no estimates available for a certain flight leg, the response
         /// will return the flight leg object with empty emission fields. The request will still be considered
-        /// successful. Reasons for missing emission estimates include: - The flight is unknown to the server. - The
-        /// input flight leg is missing one or more identifiers. - The flight date is in the past. - The aircraft type
-        /// is not supported by the model. - Missing seat configuration. The request can contain up to 1000 flight legs.
+        /// successful. Reasons for missing emission estimates include: * The flight is unknown to the server. * The
+        /// input flight leg is missing one or more identifiers. * The flight date is in the past. * The aircraft type
+        /// is not supported by the model. * Missing seat configuration. The request can contain up to 1000 flight legs.
         /// If the request has more than 1000 direct flights, if will fail with an INVALID_ARGUMENT error.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -277,9 +277,9 @@ namespace Google.Apis.TravelImpactModel.v1
         /// https://github.com/google/travel-impact-model The response will contain all entries that match the input
         /// flight legs, in the same order. If there are no estimates available for a certain flight leg, the response
         /// will return the flight leg object with empty emission fields. The request will still be considered
-        /// successful. Reasons for missing emission estimates include: - The flight is unknown to the server. - The
-        /// input flight leg is missing one or more identifiers. - The flight date is in the past. - The aircraft type
-        /// is not supported by the model. - Missing seat configuration. The request can contain up to 1000 flight legs.
+        /// successful. Reasons for missing emission estimates include: * The flight is unknown to the server. * The
+        /// input flight leg is missing one or more identifiers. * The flight date is in the past. * The aircraft type
+        /// is not supported by the model. * Missing seat configuration. The request can contain up to 1000 flight legs.
         /// If the request has more than 1000 direct flights, if will fail with an INVALID_ARGUMENT error.
         /// </summary>
         public class ComputeFlightEmissionsRequest : TravelImpactModelBaseServiceRequest<Google.Apis.TravelImpactModel.v1.Data.ComputeFlightEmissionsResponse>
