@@ -5035,7 +5035,6 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next: 5</summary>
     public class SeasonalOverride : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5053,9 +5052,17 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
-        /// <summary>Required. The return policy for the given date range.</summary>
+        /// <summary>The return policy for the given date range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+
+        /// <summary>Number of days (from the delivery date) that the product can be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnDays")]
+        public virtual System.Nullable<int> ReturnDays { get; set; }
+
+        /// <summary>Fixed end date until which the product can be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnUntilDate")]
+        public virtual Date ReturnUntilDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
