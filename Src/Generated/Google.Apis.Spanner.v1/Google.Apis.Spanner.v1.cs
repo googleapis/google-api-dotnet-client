@@ -3867,6 +3867,128 @@ namespace Google.Apis.Spanner.v1
                     }
 
                     /// <summary>
+                    /// Handles a single message from the client and returns the result as a stream. The server will
+                    /// interpret the message frame and respond with message frames to the client.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The database session in which the adapter request is processed.
+                    /// </param>
+                    public virtual AdaptMessageRequest AdaptMessage(Google.Apis.Spanner.v1.Data.AdaptMessageRequest body, string name)
+                    {
+                        return new AdaptMessageRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Handles a single message from the client and returns the result as a stream. The server will
+                    /// interpret the message frame and respond with message frames to the client.
+                    /// </summary>
+                    public class AdaptMessageRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.AdaptMessageResponse>
+                    {
+                        /// <summary>Constructs a new AdaptMessage request.</summary>
+                        public AdaptMessageRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.AdaptMessageRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The database session in which the adapter request is processed.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.AdaptMessageRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "adaptMessage";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:adaptMessage";
+
+                        /// <summary>Initializes AdaptMessage parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Creates a new session to be used for requests made by the adapter. A session identifies a
+                    /// specific incarnation of a database resource and is meant to be reused across many `AdaptMessage`
+                    /// calls.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The database in which the new session is created.</param>
+                    public virtual AdapterRequest Adapter(Google.Apis.Spanner.v1.Data.AdapterSession body, string parent)
+                    {
+                        return new AdapterRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a new session to be used for requests made by the adapter. A session identifies a
+                    /// specific incarnation of a database resource and is meant to be reused across many `AdaptMessage`
+                    /// calls.
+                    /// </summary>
+                    public class AdapterRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.AdapterSession>
+                    {
+                        /// <summary>Constructs a new Adapter request.</summary>
+                        public AdapterRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.AdapterSession body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The database in which the new session is created.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.AdapterSession Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "adapter";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/sessions:adapter";
+
+                        /// <summary>Initializes Adapter parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Creates multiple new sessions. This API can be used to initialize a session cache on the
                     /// clients. See https://goo.gl/TgSFN2 for best practices on session cache management.
                     /// </summary>
@@ -8105,6 +8227,51 @@ namespace Google.Apis.Spanner.v1
 }
 namespace Google.Apis.Spanner.v1.Data
 {
+    /// <summary>Message sent by the client to the adapter.</summary>
+    public class AdaptMessageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Opaque request state passed by the client to the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Attachments { get; set; }
+
+        /// <summary>Optional. Uninterpreted bytes from the underlying wire protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual string Payload { get; set; }
+
+        /// <summary>Required. Identifier for the underlying wire protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message sent by the adapter to the client.</summary>
+    public class AdaptMessageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Uninterpreted bytes from the underlying wire protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual string Payload { get; set; }
+
+        /// <summary>Optional. Opaque state updates to be applied by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateUpdates")]
+        public virtual System.Collections.Generic.IDictionary<string, string> StateUpdates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A session in the Cloud Spanner Adapter API.</summary>
+    public class AdapterSession : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier. The name of the session. This is always system-assigned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for AddSplitPoints.</summary>
     public class AddSplitPointsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
