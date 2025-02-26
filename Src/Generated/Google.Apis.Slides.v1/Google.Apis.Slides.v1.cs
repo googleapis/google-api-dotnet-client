@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -751,13 +751,13 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The autofit properties of a Shape.</summary>
+    /// <summary>The autofit properties of a Shape. This property is only set for shapes that allow text.</summary>
     public class Autofit : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The autofit type of the shape. If the autofit type is AUTOFIT_TYPE_UNSPECIFIED, the autofit type is
         /// inherited from a parent placeholder if it exists. The field is automatically set to NONE if a request is
-        /// made that might affect text fitting within its bounding text box. In this case the font_scale is applied to
+        /// made that might affect text fitting within its bounding text box. In this case, the font_scale is applied to
         /// the font_size and the line_spacing_reduction is applied to the line_spacing. Both properties are also reset
         /// to default values.
         /// </summary>
@@ -766,7 +766,7 @@ namespace Google.Apis.Slides.v1.Data
 
         /// <summary>
         /// The font scale applied to the shape. For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value is the
-        /// default value of 1. For TEXT_AUTOFIT, this value multiplied by the font_size gives the font size that is
+        /// default value of 1. For TEXT_AUTOFIT, this value multiplied by the font_size gives the font size that's
         /// rendered in the editor. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontScale")]
@@ -775,7 +775,7 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>
         /// The line spacing reduction applied to the shape. For shapes with autofit_type NONE or SHAPE_AUTOFIT, this
         /// value is the default value of 0. For TEXT_AUTOFIT, this value subtracted from the line_spacing gives the
-        /// line spacing that is rendered in the editor. This property is read-only.
+        /// line spacing that's rendered in the editor. This property is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineSpacingReduction")]
         public virtual System.Nullable<float> LineSpacingReduction { get; set; }
@@ -1808,10 +1808,11 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>
         /// The index of the connection site on the connected page element. In most cases, it corresponds to the
         /// predefined connection site index from the ECMA-376 standard. More information on those connection sites can
-        /// be found in the description of the "cnx" attribute in section 20.1.9.9 and Annex H. "Predefined DrawingML
-        /// Shape and Text Geometries" of "Office Open XML File Formats-Fundamentals and Markup Language Reference",
-        /// part 1 of [ECMA-376 5th edition] (http://www.ecma-international.org/publications/standards/Ecma-376.htm).
-        /// The position of each connection site can also be viewed from Slides editor.
+        /// be found in both the description of the "cxn" attribute in section 20.1.9.9 and "Annex H. Example Predefined
+        /// DrawingML Shape and Text Geometries" of "Office Open XML File Formats - Fundamentals and Markup Language
+        /// Reference", part 1 of [ECMA-376 5th
+        /// edition](https://ecma-international.org/publications-and-standards/standards/ecma-376/). The position of
+        /// each connection site can also be viewed from Slides editor.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionSiteIndex")]
         public virtual System.Nullable<int> ConnectionSiteIndex { get; set; }
@@ -3009,7 +3010,8 @@ namespace Google.Apis.Slides.v1.Data
     }
 
     /// <summary>
-    /// A PageElement kind representing a generic shape that does not have a more specific classification.
+    /// A PageElement kind representing a generic shape that doesn't have a more specific classification. For more
+    /// information, see [Size and position page elements](https://developers.google.com/slides/api/guides/transform).
     /// </summary>
     public class Shape : Google.Apis.Requests.IDirectResponseSchema
     {
