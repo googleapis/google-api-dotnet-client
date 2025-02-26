@@ -21066,6 +21066,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Double list.</summary>
+    public class GoogleCloudDiscoveryengineV1DoubleList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Double values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.EnableAdvancedSiteSearch operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -21319,6 +21330,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentCreationConfig")]
         public virtual GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig AgentCreationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If the flag set to true, we allow the agent and engine are in different locations, otherwise the
+        /// agent and engine are required to be in the same location. The flag is set to false by default. Note that the
+        /// `allow_cross_region` are one-time consumed by and passed to EngineService.CreateEngine. It means they cannot
+        /// be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCrossRegion")]
+        public virtual System.Nullable<bool> AllowCrossRegion { get; set; }
 
         /// <summary>
         /// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide
@@ -24339,6 +24359,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionSpec")]
         public virtual GoogleCloudDiscoveryengineV1SearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
 
+        /// <summary>Optional. The specification for returning the relevance score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScoreSpec")]
+        public virtual GoogleCloudDiscoveryengineV1SearchRequestRelevanceScoreSpec RelevanceScoreSpec { get; set; }
+
         /// <summary>Whether to turn on safe search. This is only supported for website search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
         public virtual System.Nullable<bool> SafeSearch { get; set; }
@@ -24956,6 +24980,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The specification for returning the document relevance score.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchRequestRelevanceScoreSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to return the relevance score for search results. The higher the score, the more relevant
+        /// the document is to the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnRelevanceScore")]
+        public virtual System.Nullable<bool> ReturnRelevanceScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification for search as you type in search requests.</summary>
     public class GoogleCloudDiscoveryengineV1SearchRequestSearchAsYouTypeSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25166,6 +25204,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Document.id of the searched Document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>Output only. Google provided available scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelScores")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1DoubleList> ModelScores { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27412,6 +27454,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration for the BAP connector.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaBAPConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The supported connector modes for the associated BAP connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedConnectorModes")]
+        public virtual System.Collections.Generic.IList<string> SupportedConnectorModes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -28772,6 +28825,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRunDisabled")]
         public virtual System.Nullable<bool> AutoRunDisabled { get; set; }
+
+        /// <summary>Optional. The configuration for establishing a BAP connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bapConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaBAPConfig BapConfig { get; set; }
 
         /// <summary>
         /// Output only. User actions that must be completed before the connector can start syncing data.
@@ -30635,6 +30692,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentCreationConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig AgentCreationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If the flag set to true, we allow the agent and engine are in different locations, otherwise the
+        /// agent and engine are required to be in the same location. The flag is set to false by default. Note that the
+        /// `allow_cross_region` are one-time consumed by and passed to EngineService.CreateEngine. It means they cannot
+        /// be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCrossRegion")]
+        public virtual System.Nullable<bool> AllowCrossRegion { get; set; }
 
         /// <summary>
         /// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide
@@ -33401,10 +33467,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        /// <summary>Optional. The specification for returning the relevance score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScoreSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec RelevanceScoreSpec { get; set; }
+
         /// <summary>
         /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
         /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
-        /// information.
+        /// information. This feature is not supported for healthcare search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
         public virtual string RelevanceThreshold { get; set; }
@@ -34102,6 +34172,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
         public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for returning the document relevance score.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to return the relevance score for search results. The higher the score, the more relevant
+        /// the document is to the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnRelevanceScore")]
+        public virtual System.Nullable<bool> ReturnRelevanceScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37526,6 +37610,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig AgentCreationConfig { get; set; }
 
         /// <summary>
+        /// Optional. If the flag set to true, we allow the agent and engine are in different locations, otherwise the
+        /// agent and engine are required to be in the same location. The flag is set to false by default. Note that the
+        /// `allow_cross_region` are one-time consumed by and passed to EngineService.CreateEngine. It means they cannot
+        /// be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCrossRegion")]
+        public virtual System.Nullable<bool> AllowCrossRegion { get; set; }
+
+        /// <summary>
         /// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide
         /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
         /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
@@ -39387,10 +39480,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        /// <summary>Optional. The specification for returning the relevance score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScoreSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec RelevanceScoreSpec { get; set; }
+
         /// <summary>
         /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
         /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
-        /// information.
+        /// information. This feature is not supported for healthcare search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
         public virtual string RelevanceThreshold { get; set; }
@@ -40077,6 +40174,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
         public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for returning the document relevance score.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to return the relevance score for search results. The higher the score, the more relevant
+        /// the document is to the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnRelevanceScore")]
+        public virtual System.Nullable<bool> ReturnRelevanceScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
