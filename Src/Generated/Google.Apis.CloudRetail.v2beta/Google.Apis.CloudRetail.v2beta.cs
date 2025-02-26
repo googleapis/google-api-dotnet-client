@@ -12607,6 +12607,15 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn"
+        /// [list](https://www.unicode.org/cldr/charts/46/summary/root.html). For more information, see [Standardized
+        /// codes](https://google.aip.dev/143). This field helps to better interpret the query. If a value isn't
+        /// specified, the query language code is automatically detected, which may not be accurate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
         /// A 0-indexed integer that specifies the current offset (that is, starting result location, amongst the
         /// Products deemed by the API as relevant) in search results. This field is only considered if page_token is
         /// unset. If this field is negative, an INVALID_ARGUMENT is returned.
@@ -12671,6 +12680,15 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionSpec")]
         public virtual GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
+
+        /// <summary>
+        /// Optional. The Unicode country/region code (CLDR) of a location, such as "US" and "419"
+        /// [list](https://www.unicode.org/cldr/charts/46/supplemental/territory_information.html). For more
+        /// information, see [Standardized codes](https://google.aip.dev/143). If set, then results will be boosted
+        /// based on the region_code provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
 
         /// <summary>
         /// The search mode of the search request. If not specified, a single search request triggers both product
@@ -13873,8 +13891,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Required. User event type. Allowed values are: * `add-to-cart`: Products being added to cart. *
         /// `remove-from-cart`: Products being removed from cart. * `category-page-view`: Special pages such as sale or
         /// promotion pages viewed. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage
-        /// viewed. * `promotion-offered`: Promotion is offered to a user. * `promotion-not-offered`: Promotion is not
-        /// offered to a user. * `purchase-complete`: User finishing a purchase. * `search`: Product search. *
+        /// viewed. * `purchase-complete`: User finishing a purchase. * `search`: Product search. *
         /// `shopping-cart-page-view`: User viewing a shopping cart.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
