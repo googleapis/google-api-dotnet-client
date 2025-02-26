@@ -292,11 +292,223 @@ namespace Google.Apis.WorkloadManager.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Discoveredprofiles = new DiscoveredprofilesResource(service);
                 Evaluations = new EvaluationsResource(service);
                 Insights = new InsightsResource(service);
                 Operations = new OperationsResource(service);
                 Rules = new RulesResource(service);
                 SapSystems = new SapSystemsResource(service);
+            }
+
+            /// <summary>Gets the Discoveredprofiles resource.</summary>
+            public virtual DiscoveredprofilesResource Discoveredprofiles { get; }
+
+            /// <summary>The "discoveredprofiles" collection of methods.</summary>
+            public class DiscoveredprofilesResource
+            {
+                private const string Resource = "discoveredprofiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DiscoveredprofilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Healthes = new HealthesResource(service);
+                }
+
+                /// <summary>Gets the Healthes resource.</summary>
+                public virtual HealthesResource Healthes { get; }
+
+                /// <summary>The "healthes" collection of methods.</summary>
+                public class HealthesResource
+                {
+                    private const string Resource = "healthes";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public HealthesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Get the health of a discovered workload profile.</summary>
+                    /// <param name="name">Required. The resource name</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Get the health of a discovered workload profile.</summary>
+                    public class GetRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.WorkloadProfileHealth>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The resource name</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/discoveredprofiles/[^/]+/healthes/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets details of a discovered workload profile.</summary>
+                /// <param name="name">Required. Name of the resource</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a discovered workload profile.</summary>
+                public class GetRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.WorkloadProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/discoveredprofiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List discovered workload profiles</summary>
+                /// <param name="parent">Required. Parent value for ListDiscoveredProfilesRequest</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>List discovered workload profiles</summary>
+                public class ListRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.ListDiscoveredProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListDiscoveredProfilesRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/discoveredprofiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Evaluations resource.</summary>
@@ -1861,6 +2073,25 @@ namespace Google.Apis.WorkloadManager.v1
 }
 namespace Google.Apis.WorkloadManager.v1.Data
 {
+    /// <summary>The API layer server</summary>
+    public class APILayerServer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The api layer name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. OS information</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>Output only. resources in the component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<CloudResource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>* An AgentCommand specifies a one-time executable program for the agent to run.</summary>
     public class AgentCommand : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1873,6 +2104,106 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The availability groups for sqlserver</summary>
+    public class AvailabilityGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The databases</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
+        public virtual System.Collections.Generic.IList<string> Databases { get; set; }
+
+        /// <summary>Output only. The availability group name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The primary server</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryServer")]
+        public virtual string PrimaryServer { get; set; }
+
+        /// <summary>Output only. The secondary servers</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryServers")]
+        public virtual System.Collections.Generic.IList<string> SecondaryServers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The backend server</summary>
+    public class BackendServer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The backup file</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupFile")]
+        public virtual string BackupFile { get; set; }
+
+        /// <summary>Output only. The backup schedule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupSchedule")]
+        public virtual string BackupSchedule { get; set; }
+
+        /// <summary>Output only. The backend name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. OS information</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>Output only. resources in the component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<CloudResource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Backup properties.</summary>
+    public class BackupProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The state of the latest backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestBackupStatus")]
+        public virtual string LatestBackupStatus { get; set; }
+
+        private string _latestBackupTimeRaw;
+
+        private object _latestBackupTime;
+
+        /// <summary>The time when the latest backup was performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestBackupTime")]
+        public virtual string LatestBackupTimeRaw
+        {
+            get => _latestBackupTimeRaw;
+            set
+            {
+                _latestBackupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestBackupTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestBackupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestBackupTimeDateTimeOffset instead.")]
+        public virtual object LatestBackupTime
+        {
+            get => _latestBackupTime;
+            set
+            {
+                _latestBackupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestBackupTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestBackupTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestBackupTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestBackupTimeRaw);
+            set => LatestBackupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1900,6 +2231,40 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The resource on GCP</summary>
+    public class CloudResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. All instance properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
+        public virtual InstanceProperties InstanceProperties { get; set; }
+
+        /// <summary>Output only. ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Output only. resource name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The cluster for sqlserver</summary>
+    public class Cluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The nodes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<string> Nodes { get; set; }
+
+        /// <summary>Output only. The witness server</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("witnessServer")]
+        public virtual string WitnessServer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>* Command specifies the type of command to execute.</summary>
     public class Command : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1910,6 +2275,75 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>ShellCommand is invoked via the agent's command line executor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shellCommand")]
         public virtual ShellCommand ShellCommand { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HealthCondition contains the detailed health check of each component.</summary>
+    public class ComponentHealth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The component of a workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("component")]
+        public virtual string Component { get; set; }
+
+        /// <summary>The detailed health checks of the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentHealthChecks")]
+        public virtual System.Collections.Generic.IList<HealthCheck> ComponentHealthChecks { get; set; }
+
+        /// <summary>Output only. The type of the component health.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentHealthType")]
+        public virtual string ComponentHealthType { get; set; }
+
+        /// <summary>Output only. The requirement of the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRequired")]
+        public virtual System.Nullable<bool> IsRequired { get; set; }
+
+        /// <summary>Output only. The health state of the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Sub component health.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subComponentHealthes")]
+        public virtual System.Collections.Generic.IList<ComponentHealth> SubComponentHealthes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The database for sqlserver</summary>
+    public class Database : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The backup file</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupFile")]
+        public virtual string BackupFile { get; set; }
+
+        /// <summary>Output only. The backup schedule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupSchedule")]
+        public virtual string BackupSchedule { get; set; }
+
+        /// <summary>Output only. The host VM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostVm")]
+        public virtual string HostVm { get; set; }
+
+        /// <summary>Output only. The database name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Database Properties.</summary>
+    public class DatabaseProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Backup properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupProperties")]
+        public virtual BackupProperties BackupProperties { get; set; }
+
+        /// <summary>Output only. Type of the database. HANA, DB2, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
+        public virtual string DatabaseType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2287,12 +2721,58 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The front end server</summary>
+    public class FrontEndServer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The frontend name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. OS information</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>Output only. resources in the component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<CloudResource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing compute engine instance filter</summary>
     public class GceInstanceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Service account of compute engine</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<string> ServiceAccounts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HealthCheck contains the detailed health check of a component based on asource.</summary>
+    public class HealthCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The message of the health check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Output only. The health check source metric name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>Output only. The resource the check performs on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual CloudResource Resource { get; set; }
+
+        /// <summary>Output only. The source of the health check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Output only. The state of the health check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2360,6 +2840,102 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>The insights data for workload validation of torso workloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("torsoValidation")]
         public virtual TorsoValidation TorsoValidation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>a vm instance</summary>
+    public class Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. name of the VM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The location of the VM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Output only. The state of the VM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Instance Properties.</summary>
+    public class InstanceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Instance number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceNumber")]
+        public virtual string InstanceNumber { get; set; }
+
+        /// <summary>Optional. Instance machine type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. Instance role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>Optional. Instance roles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
+
+        /// <summary>Optional. SAP Instance properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sapInstanceProperties")]
+        public virtual SapInstanceProperties SapInstanceProperties { get; set; }
+
+        /// <summary>Optional. Instance status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Optional. the next maintenance event on VM</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenanceEvent")]
+        public virtual UpcomingMaintenanceEvent UpcomingMaintenanceEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The database layer</summary>
+    public class Layer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>the application layer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
+        public virtual string ApplicationType { get; set; }
+
+        /// <summary>Optional. the database layer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
+        public virtual string DatabaseType { get; set; }
+
+        /// <summary>Optional. instances in a layer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
+
+        /// <summary>Output only. system identification of a layer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sid")]
+        public virtual string Sid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List discovered profile Response returns discovered profiles from agents</summary>
+    public class ListDiscoveredProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A token identifying a page of results the server should return</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>Output only. The list of workload profiles</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadProfiles")]
+        public virtual System.Collections.Generic.IList<WorkloadProfile> WorkloadProfiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2479,6 +3055,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>All scanned resources in response</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedResources")]
         public virtual System.Collections.Generic.IList<ScannedResource> ScannedResources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The load balancer for sqlserver</summary>
+    public class LoadBalancerServer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The IP address</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ip")]
+        public virtual string Ip { get; set; }
+
+        /// <summary>Output only. The VM name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vm")]
+        public virtual string Vm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2675,6 +3266,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Product contains the details of a product.</summary>
+    public class Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Version of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message represent resource in execution result</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2835,6 +3441,36 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The component of sap workload</summary>
+    public class SapComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. All instance properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseProperties")]
+        public virtual DatabaseProperties DatabaseProperties { get; set; }
+
+        /// <summary>
+        /// A list of host URIs that are part of the HA configuration if present. An empty list indicates the component
+        /// is not configured for HA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("haHosts")]
+        public virtual System.Collections.Generic.IList<string> HaHosts { get; set; }
+
+        /// <summary>Output only. resources in the component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<CloudResource> Resources { get; set; }
+
+        /// <summary>Output only. sid is the sap component identificator</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sid")]
+        public virtual string Sid { get; set; }
+
+        /// <summary>The detected topology of the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topologyType")]
+        public virtual string TopologyType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3263,6 +3899,17 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>SAP instance properties.</summary>
+    public class SapInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. SAP Instance numbers. They are from '00' to '99'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numbers")]
+        public virtual System.Collections.Generic.IList<string> Numbers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A presentation of SAP workload insight. The schema of SAP workloads validation related data.</summary>
     public class SapValidation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3296,6 +3943,33 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. The SAP system that the validation data is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sapValidationType")]
         public virtual string SapValidationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The body of sap workload</summary>
+    public class SapWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. the acsc componment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual SapComponent Application { get; set; }
+
+        /// <summary>Output only. the architecture</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>Output only. the database componment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual SapComponent Database { get; set; }
+
+        /// <summary>Output only. The metadata for SAP workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Output only. the products on this workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<Product> Products { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3390,6 +4064,29 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The body of sqlserver workload</summary>
+    public class SqlserverWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The availability groups for sqlserver</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ags")]
+        public virtual System.Collections.Generic.IList<AvailabilityGroup> Ags { get; set; }
+
+        /// <summary>Output only. The cluster for sqlserver</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual Cluster Cluster { get; set; }
+
+        /// <summary>Output only. The databases for sqlserver</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
+        public virtual System.Collections.Generic.IList<Database> Databases { get; set; }
+
+        /// <summary>Output only. The load balancer for sqlserver</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerServer")]
+        public virtual LoadBalancerServer LoadBalancerServer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -3438,6 +4135,29 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The body of three tier workload</summary>
+    public class ThreeTierWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The API layer for three tier workload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiLayer")]
+        public virtual APILayerServer ApiLayer { get; set; }
+
+        /// <summary>Output only. The backend for three tier workload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backend")]
+        public virtual BackendServer Backend { get; set; }
+
+        /// <summary>Output only. the workload endpoint</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>Output only. The frontend for three tier workload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frontend")]
+        public virtual FrontEndServer Frontend { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The schema of torso workload validation data.</summary>
     public class TorsoValidation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3469,6 +4189,95 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Maintenance Event</summary>
+    public class UpcomingMaintenanceEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Optional. End time</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Maintenance status</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceStatus")]
+        public virtual string MaintenanceStatus { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Optional. Start time</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing the violation in an evaluation result.</summary>
     public class ViolationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3483,6 +4292,144 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>The service account associated with the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>workload resource</summary>
+    public class WorkloadProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The application layer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual Layer Application { get; set; }
+
+        /// <summary>Optional. The ascs layer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ascs")]
+        public virtual Layer Ascs { get; set; }
+
+        /// <summary>Optional. The database layer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual Layer Database { get; set; }
+
+        /// <summary>Optional. such as name, description, version. More example can be found in deployment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. name of resource names have the form 'projects/{project_id}/workloads/{workload_id}'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _refreshedTimeRaw;
+
+        private object _refreshedTime;
+
+        /// <summary>Required. time when the workload data was refreshed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshedTime")]
+        public virtual string RefreshedTimeRaw
+        {
+            get => _refreshedTimeRaw;
+            set
+            {
+                _refreshedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _refreshedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RefreshedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RefreshedTimeDateTimeOffset instead.")]
+        public virtual object RefreshedTime
+        {
+            get => _refreshedTime;
+            set
+            {
+                _refreshedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _refreshedTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RefreshedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RefreshedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RefreshedTimeRaw);
+            set => RefreshedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The sap workload content</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sapWorkload")]
+        public virtual SapWorkload SapWorkload { get; set; }
+
+        /// <summary>The sqlserver workload content</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverWorkload")]
+        public virtual SqlserverWorkload SqlserverWorkload { get; set; }
+
+        /// <summary>Output only. [output only] the current state if a a workload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The 3 tier web app workload content</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threeTierWorkload")]
+        public virtual ThreeTierWorkload ThreeTierWorkload { get; set; }
+
+        /// <summary>Required. The type of the workload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadType")]
+        public virtual string WorkloadType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>WorkloadProfileHealth contains the detailed health check of workload.</summary>
+    public class WorkloadProfileHealth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _checkTimeRaw;
+
+        private object _checkTime;
+
+        /// <summary>The time when the health check was performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkTime")]
+        public virtual string CheckTimeRaw
+        {
+            get => _checkTimeRaw;
+            set
+            {
+                _checkTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _checkTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CheckTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CheckTimeDateTimeOffset instead.")]
+        public virtual object CheckTime
+        {
+            get => _checkTime;
+            set
+            {
+                _checkTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _checkTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CheckTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CheckTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CheckTimeRaw);
+            set => CheckTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The detailed condition reports of each component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentHealthes")]
+        public virtual System.Collections.Generic.IList<ComponentHealth> ComponentHealthes { get; set; }
+
+        /// <summary>Output only. The health state of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
