@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4309,7 +4309,7 @@ namespace Google.Apis.BeyondCorp.v1
                             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string RequestId { get; set; }
 
-                            /// <summary>Required. Mutable fields include: display_name.</summary>
+                            /// <summary>Optional. Mutable fields include: display_name.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
 
@@ -5600,7 +5600,7 @@ namespace Google.Apis.BeyondCorp.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
-                    /// <summary>Required. Mutable fields include: display_name, hubs.</summary>
+                    /// <summary>Optional. Mutable fields include: display_name, hubs.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
