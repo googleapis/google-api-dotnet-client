@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2464,7 +2464,7 @@ namespace Google.Apis.SecurityPosture.v1.Data
         public virtual System.Nullable<bool> Enforce { get; set; }
 
         /// <summary>
-        /// Optional. Required for GMCs if parameters defined in constraints. Pass parameter values when policy
+        /// Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy
         /// enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition.
         /// For example: { "allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true }
         /// </summary>
@@ -2472,8 +2472,8 @@ namespace Google.Apis.SecurityPosture.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>
-        /// Optional. The resource types policy can support, only used for Google managed constraint and method type is
-        /// GOVERN_TAGS.
+        /// Optional. The resource types policies can support, only used for managed constraints. Method type is
+        /// `GOVERN_TAGS`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual ResourceTypes ResourceTypes { get; set; }
@@ -3449,15 +3449,15 @@ namespace Google.Apis.SecurityPosture.v1.Data
     }
 
     /// <summary>
-    /// Set multiple resource types for one policy, eg: resourceTypes: included: - compute.googleapis.com/Instance -
-    /// compute.googleapis.com/Disk Constraint definition contains an empty resource type in order to support multiple
-    /// resource types in the policy. Only support Google managed constriaint and method type is GOVERN_TAGS Refer
-    /// go/multi-resource-support-force-tags-gmc to get more details.
+    /// Set multiple resource types for one policy, for example: resourceTypes: included: -
+    /// compute.googleapis.com/Instance - compute.googleapis.com/Disk Constraint definition contains an empty resource
+    /// type in order to support multiple resource types in the policy. Only supports managed constraints. Method type
+    /// is `GOVERN_TAGS`. Refer go/multi-resource-support-force-tags-gmc to get more details.
     /// </summary>
     public class ResourceTypes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The resource type we currently support.
+        /// Optional. The resource types we currently support.
         /// cloud/orgpolicy/customconstraintconfig/prod/resource_types.prototext
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("included")]
