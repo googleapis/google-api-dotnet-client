@@ -6487,7 +6487,8 @@ namespace Google.Apis.DLP.v2
             /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn more.
             /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
-            /// updated.
+            /// updated. Only the first frame of each multiframe image is redacted. Metadata and other frames are
+            /// omitted in the response.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -6509,7 +6510,8 @@ namespace Google.Apis.DLP.v2
             /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn more.
             /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
-            /// updated.
+            /// updated. Only the first frame of each multiframe image is redacted. Metadata and other frames are
+            /// omitted in the response.
             /// </summary>
             public class RedactRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageResponse>
             {
@@ -10007,7 +10009,8 @@ namespace Google.Apis.DLP.v2
                 /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn
                 /// more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
                 /// automatically choose what detectors to run. By default this may be all types, but may change over
-                /// time as detectors are updated.
+                /// time as detectors are updated. Only the first frame of each multiframe image is redacted. Metadata
+                /// and other frames are omitted in the response.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -10029,7 +10032,8 @@ namespace Google.Apis.DLP.v2
                 /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn
                 /// more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
                 /// automatically choose what detectors to run. By default this may be all types, but may change over
-                /// time as detectors are updated.
+                /// time as detectors are updated. Only the first frame of each multiframe image is redacted. Metadata
+                /// and other frames are omitted in the response.
                 /// </summary>
                 public class RedactRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageResponse>
                 {
