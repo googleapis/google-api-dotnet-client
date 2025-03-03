@@ -2807,6 +2807,33 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a serverless direct VPC egress connection.</summary>
+    public class DirectVpcEgressConnectionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of direct access network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>Region in which the Direct VPC egress is deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Selected starting IP address, from the selected IP range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedIpAddress")]
+        public virtual string SelectedIpAddress { get; set; }
+
+        /// <summary>Selected IP range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedIpRange")]
+        public virtual string SelectedIpRange { get; set; }
+
+        /// <summary>URI of direct access subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
+        public virtual string SubnetworkUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of the final state "drop" and associated resource.</summary>
     public class DropInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4241,6 +4268,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with a serverless public connection.</summary>
+    public class ServerlessExternalConnectionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Selected starting IP address, from the Google dynamic address pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedIpAddress")]
+        public virtual string SelectedIpAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with the serverless network endpoint group backend.</summary>
     public class ServerlessNegInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4341,6 +4379,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Display information of a serverless direct VPC egress connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directVpcEgressConnection")]
+        public virtual DirectVpcEgressConnectionInfo DirectVpcEgressConnection { get; set; }
+
         /// <summary>Display information of the final state "drop" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drop")]
         public virtual DropInfo Drop { get; set; }
@@ -4415,6 +4457,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display information of a Compute Engine route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("route")]
         public virtual RouteInfo Route { get; set; }
+
+        /// <summary>Display information of a serverless public (external) connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverlessExternalConnection")]
+        public virtual ServerlessExternalConnectionInfo ServerlessExternalConnection { get; set; }
 
         /// <summary>
         /// Display information of a Serverless network endpoint group backend. Used only for return traces.
