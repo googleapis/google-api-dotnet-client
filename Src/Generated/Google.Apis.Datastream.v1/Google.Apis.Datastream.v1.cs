@@ -5065,7 +5065,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual SalesforceSourceConfig SalesforceSourceConfig { get; set; }
 
         /// <summary>
-        /// Required. Source connection profile resoource. Format:
+        /// Required. Source connection profile resource. Format:
         /// `projects/{project}/locations/{location}/connectionProfiles/{name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConnectionProfile")]
