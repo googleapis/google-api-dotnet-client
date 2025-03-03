@@ -7139,6 +7139,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. The node selector for the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
+        public virtual GoogleCloudRunV2NodeSelector NodeSelector { get; set; }
+
         /// <summary>
         /// Output only. The generation of this Task. See comments in `Job.reconciling` for additional information on
         /// reconciliation process in Cloud Run.
@@ -7357,6 +7361,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Number of retries allowed per Task, before marking this Task failed. Defaults to 3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
         public virtual System.Nullable<int> MaxRetries { get; set; }
+
+        /// <summary>Optional. The node selector for the task template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
+        public virtual GoogleCloudRunV2NodeSelector NodeSelector { get; set; }
 
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the Task of a Job. The service account
