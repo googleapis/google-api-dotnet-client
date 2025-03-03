@@ -12742,6 +12742,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("convertedRegionPrices")]
         public virtual System.Collections.Generic.IDictionary<string, ConvertedRegionPrice> ConvertedRegionPrices { get; set; }
 
+        /// <summary>The region version at which the prices were generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionVersion")]
+        public virtual RegionsVersion RegionVersion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
