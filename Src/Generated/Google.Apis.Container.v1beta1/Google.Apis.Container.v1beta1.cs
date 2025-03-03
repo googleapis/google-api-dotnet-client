@@ -7369,7 +7369,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled
-        /// instead.
+        /// instead. This field is deprecated due to the deprecation of 2VM TPU. The end of life date for 2VM TPU is
+        /// 2025-04-25.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTpu")]
         public virtual System.Nullable<bool> EnableTpu { get; set; }
@@ -7714,13 +7715,17 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
-        /// <summary>Configuration for Cloud TPU support;</summary>
+        /// <summary>
+        /// Configuration for Cloud TPU support; This field is deprecated due to the deprecation of 2VM TPU. The end of
+        /// life date for 2VM TPU is 2025-04-25.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuConfig")]
         public virtual TpuConfig TpuConfig { get; set; }
 
         /// <summary>
         /// Output only. The IP address range of the Cloud TPUs in this cluster, in
-        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
+        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). This field
+        /// is deprecated due to the deprecation of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
         public virtual string TpuIpv4CidrBlock { get; set; }
@@ -8164,7 +8169,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredStackType")]
         public virtual string DesiredStackType { get; set; }
 
-        /// <summary>The desired Cloud TPU configuration.</summary>
+        /// <summary>
+        /// The desired Cloud TPU configuration. This field is deprecated due to the deprecation of 2VM TPU. The end of
+        /// life date for 2VM TPU is 2025-04-25.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredTpuConfig")]
         public virtual TpuConfig DesiredTpuConfig { get; set; }
 
@@ -12608,7 +12616,10 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for Cloud TPU.</summary>
+    /// <summary>
+    /// Configuration for Cloud TPU. This message is deprecated due to the deprecation of 2VM TPU. The end of life date
+    /// for 2VM TPU is 2025-04-25.
+    /// </summary>
     public class TpuConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether Cloud TPU integration is enabled or not.</summary>
