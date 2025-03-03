@@ -3842,10 +3842,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                 /// <summary>Create a DataTaxonomy resource.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The resource name of the data taxonomy location, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
-                /// </param>
+                /// <param name="parent"><c>null</c></param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1DataTaxonomy body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -3862,10 +3859,6 @@ namespace Google.Apis.CloudDataplex.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The resource name of the data taxonomy location, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4002,10 +3995,7 @@ namespace Google.Apis.CloudDataplex.v1
                 }
 
                 /// <summary>Retrieves a DataTaxonomy resource.</summary>
-                /// <param name="name">
-                /// Required. The resource name of the DataTaxonomy:
-                /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}
-                /// </param>
+                /// <param name="name"><c>null</c></param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -4021,10 +4011,6 @@ namespace Google.Apis.CloudDataplex.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The resource name of the DataTaxonomy:
-                    /// projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4625,11 +4611,7 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>
-                    /// Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex Catalog is changing. For
-                    /// more information, see Changes to BigQuery metadata stored in Dataplex Catalog
-                    /// (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
-                    /// </summary>
+                    /// <summary>Gets an Entry.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Entry:
                     /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
@@ -4639,11 +4621,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>
-                    /// Gets an Entry.Caution: The BigQuery metadata that is stored in Dataplex Catalog is changing. For
-                    /// more information, see Changes to BigQuery metadata stored in Dataplex Catalog
-                    /// (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
-                    /// </summary>
+                    /// <summary>Gets an Entry.</summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -13985,11 +13963,7 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
-            /// <summary>
-            /// Looks up a single Entry by name using the permission on the source system.Caution: The BigQuery metadata
-            /// that is stored in Dataplex Catalog is changing. For more information, see Changes to BigQuery metadata
-            /// stored in Dataplex Catalog (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
-            /// </summary>
+            /// <summary>Looks up an entry by name using the permission on the source system.</summary>
             /// <param name="name">
             /// Required. The project to which the request should be attributed in the following form:
             /// projects/{project}/locations/{location}.
@@ -13999,11 +13973,7 @@ namespace Google.Apis.CloudDataplex.v1
                 return new LookupEntryRequest(this.service, name);
             }
 
-            /// <summary>
-            /// Looks up a single Entry by name using the permission on the source system.Caution: The BigQuery metadata
-            /// that is stored in Dataplex Catalog is changing. For more information, see Changes to BigQuery metadata
-            /// stored in Dataplex Catalog (https://cloud.google.com/dataplex/docs/biqquery-metadata-changes).
-            /// </summary>
+            /// <summary>Looks up an entry by name using the permission on the source system.</summary>
             public class LookupEntryRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
             {
                 /// <summary>Constructs a new LookupEntry request.</summary>
@@ -15523,6 +15493,25 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Payload associated with Business Glossary related log events.</summary>
+    public class GoogleCloudDataplexV1BusinessGlossaryEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>The log message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Name of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cancel task jobs.</summary>
     public class GoogleCloudDataplexV1CancelJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16053,6 +16042,23 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Connection { get; set; }
 
         /// <summary>
+        /// Optional. The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables
+        /// to. 1. If the Cloud Storage bucket is located in a multi-region bucket, then BigQuery dataset can be in the
+        /// same multi-region bucket or any single region that is included in the same multi-region bucket. The datascan
+        /// can be created in any single region that is included in the same multi-region bucket 2. If the Cloud Storage
+        /// bucket is located in a dual-region bucket, then BigQuery dataset can be located in regions that are included
+        /// in the dual-region bucket, or in a multi-region that includes the dual-region. The datascan can be created
+        /// in any single region that is included in the same dual-region bucket. 3. If the Cloud Storage bucket is
+        /// located in a single region, then BigQuery dataset can be in the same single region or any multi-region
+        /// bucket that includes the same single region. The datascan will be created in the same single region as the
+        /// bucket. 4. If the BigQuery dataset is in single region, it must be in the same single region as the
+        /// datascan.For supported values, refer to
+        /// https://cloud.google.com/bigquery/docs/locations#supported_locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
         /// Optional. Determines whether to publish discovered tables as BigLake external tables or non-BigLake external
         /// tables.
         /// </summary>
@@ -16415,8 +16421,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL
-        /// expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &amp;gt;= 0 AND col2 &amp;lt;
-        /// 10
+        /// expression for a WHERE clause in GoogleSQL syntax
+        /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#where_clause).Example: col1
+        /// &amp;gt;= 0 AND col2 &amp;lt; 10
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowFilter")]
         public virtual string RowFilter { get; set; }
@@ -16797,8 +16804,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL
-    /// syntax and should produce a boolean value per row as the result.Example: col1 &amp;gt;= 0 AND col2 &amp;lt; 10
+    /// Evaluates whether each row passes the specified condition.The SQL expression needs to use GoogleSQL syntax
+    /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) and should produce a boolean value
+    /// per row as the result.Example: col1 &amp;gt;= 0 AND col2 &amp;lt; 10
     /// </summary>
     public class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16823,10 +16831,11 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
     /// <summary>
     /// A SQL statement that is evaluated to return rows that match an invalid state. If any rows are are returned, this
-    /// rule fails.The SQL statement must use BigQuery standard SQL syntax, and must not contain any semicolons.You can
-    /// use the data reference parameter ${data()} to reference the source table with all of its precondition filters
-    /// applied. Examples of precondition filters include row filters, incremental data filters, and sampling. For more
-    /// information, see Data reference parameter
+    /// rule fails.The SQL statement must use GoogleSQL syntax
+    /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax), and must not contain any
+    /// semicolons.You can use the data reference parameter ${data()} to reference the source table with all of its
+    /// precondition filters applied. Examples of precondition filters include row filters, incremental data filters,
+    /// and sampling. For more information, see Data reference parameter
     /// (https://cloud.google.com/dataplex/docs/auto-data-quality-overview#data-reference-parameter).Example: SELECT *
     /// FROM ${data()} WHERE price &amp;lt; 0
     /// </summary>
@@ -16880,8 +16889,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax
-    /// and should produce a scalar boolean result.Example: MIN(col1) &amp;gt;= 0
+    /// Evaluates whether the provided expression is true.The SQL expression needs to use GoogleSQL syntax
+    /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) and should produce a scalar boolean
+    /// result.Example: MIN(col1) &amp;gt;= 0
     /// </summary>
     public class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16979,8 +16989,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL
-        /// expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &amp;gt;= 0 AND col2 &amp;lt;
-        /// 10
+        /// expression for a WHERE clause in GoogleSQL syntax
+        /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#where_clause).Example: col1
+        /// &amp;gt;= 0 AND col2 &amp;lt; 10
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowFilter")]
         public virtual string RowFilter { get; set; }
