@@ -20486,7 +20486,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual object NoSpeechTimeout { get; set; }
 
         /// <summary>
-        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
         public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
@@ -21862,7 +21862,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         /// <summary>
         /// A list of transitions for the transition rules of this page. They route the conversation to another page in
-        /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
+        /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evaluated in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
         /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
         /// * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined
@@ -23205,7 +23205,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual object NoSpeechTimeout { get; set; }
 
         /// <summary>
-        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
         public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
@@ -24581,7 +24581,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         /// <summary>
         /// A list of transitions for the transition rules of this page. They route the conversation to another page in
-        /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
+        /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evaluated in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
         /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
         /// * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined
@@ -27821,7 +27821,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         private object _sendTime;
 
-        /// <summary>Optional. The time when the message was sent.</summary>
+        /// <summary>
+        /// Optional. The time when the message was sent. For voice messages, this is the time when an utterance
+        /// started.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
         public virtual string SendTimeRaw
         {
@@ -33932,7 +33935,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         private object _sendTime;
 
-        /// <summary>Optional. The time when the message was sent.</summary>
+        /// <summary>
+        /// Optional. The time when the message was sent. For voice messages, this is the time when an utterance
+        /// started.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
         public virtual string SendTimeRaw
         {
@@ -34801,7 +34807,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boostSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecs> BoostSpecs { get; set; }
 
-        /// <summary>Optional. Filter specification for data store queries.</summary>
+        /// <summary>
+        /// Optional. Filter specification for data store queries. Maps from datastore name to the filter expression for
+        /// that datastore. Do not specify more than one FilterSpecs for each datastore name. If multiple FilterSpecs
+        /// are provided for the same datastore name, the behavior is undefined.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigFilterSpecs> FilterSpecs { get; set; }
 
@@ -34809,7 +34819,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Boost specifications for data stores.</summary>
+    /// <summary>
+    /// Boost specifications for data stores. Maps from datastore name to their boost configuration. Do not specify more
+    /// than one BoostSpecs for each datastore name. If multiple BoostSpecs are provided for the same datastore name,
+    /// the behavior is undefined.
+    /// </summary>
     public class GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecs : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -34836,7 +34850,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Condition boost specifications. If a document matches multiple conditions in the specifictions,
+        /// Optional. Condition boost specifications. If a document matches multiple conditions in the specifications,
         /// boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of
         /// specifications is 20.
         /// </summary>
@@ -35286,7 +35300,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string SpeechModelVariant { get; set; }
 
         /// <summary>
-        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
         public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
