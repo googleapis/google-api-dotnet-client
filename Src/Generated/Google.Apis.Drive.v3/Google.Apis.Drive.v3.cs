@@ -7296,6 +7296,23 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A restriction for copy and download of the file.</summary>
+    public class DownloadRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether download and copy is restricted for readers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedForReaders")]
+        public virtual System.Nullable<bool> RestrictedForReaders { get; set; }
+
+        /// <summary>
+        /// Whether download and copy is restricted for writers. If true, download is also restricted for readers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedForWriters")]
+        public virtual System.Nullable<bool> RestrictedForWriters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Representation of a shared drive. Some resource methods (such as `drives.update`) require a `driveId`. Use the
     /// `drives.list` method to retrieve the ID for a shared drive.
@@ -7575,6 +7592,10 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("domainUsersOnly")]
             public virtual System.Nullable<bool> DomainUsersOnly { get; set; }
+
+            /// <summary>Download restrictions applied by shared drive managers.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("downloadRestriction")]
+            public virtual DownloadRestriction DownloadRestriction { get; set; }
 
             /// <summary>Whether access to items inside this shared drive is restricted to its members.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("driveMembersOnly")]
@@ -9059,7 +9080,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>
             /// Output only. The primary role for this user. While new values may be added in the future, the following
-            /// are currently possible: * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader`
+            /// are currently possible: * `owner` * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader`
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; }
@@ -9689,6 +9710,10 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("domainUsersOnly")]
             public virtual System.Nullable<bool> DomainUsersOnly { get; set; }
+
+            /// <summary>Download restrictions applied by shared drive managers.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("downloadRestriction")]
+            public virtual DownloadRestriction DownloadRestriction { get; set; }
 
             /// <summary>
             /// If true, only users with the organizer role can share folders. If false, users with either the organizer
