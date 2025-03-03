@@ -2213,7 +2213,7 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A node-attached disk resource. Next ID: 8;</summary>
+    /// <summary>A node-attached disk resource.</summary>
     public class AttachedDisk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2229,6 +2229,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
         public virtual string SourceDisk { get; set; }
+
+        /// <summary>Optional. The list of worker IDs this disk is attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerIds")]
+        public virtual System.Collections.Generic.IList<string> WorkerIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
