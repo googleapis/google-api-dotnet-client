@@ -11828,7 +11828,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual object NoSpeechTimeout { get; set; }
 
         /// <summary>
-        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
         public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
@@ -13204,7 +13204,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// A list of transitions for the transition rules of this page. They route the conversation to another page in
-        /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
+        /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evaluated in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
         /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
         /// * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined
@@ -14574,7 +14574,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual object NoSpeechTimeout { get; set; }
 
         /// <summary>
-        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
         public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
@@ -15048,7 +15048,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3beta1BoostSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Condition boost specifications. If a document matches multiple conditions in the specifictions,
+        /// Optional. Condition boost specifications. If a document matches multiple conditions in the specifications,
         /// boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of
         /// specifications is 20.
         /// </summary>
@@ -17539,7 +17539,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// utterances in the flow. * They are inherited by every page's transition routes and can support use cases
         /// such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless
         /// of the current page. Transition routes defined in the page have higher priority than those defined in the
-        /// flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. *
+        /// flow. TransitionRoutes are evaluated in the following order: * TransitionRoutes with intent specified. *
         /// TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by
         /// pages in the flow.
         /// </summary>
@@ -19527,7 +19527,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// A list of transitions for the transition rules of this page. They route the conversation to another page in
-        /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
+        /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evaluated in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
         /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
         /// * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined
@@ -20841,11 +20841,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Search configuration for UCS search queries.</summary>
     public class GoogleCloudDialogflowCxV3beta1SearchConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Boosting configuration for the datastores.</summary>
+        /// <summary>
+        /// Optional. Boosting configuration for the datastores. Maps from datastore name to their boost configuration.
+        /// Do not specify more than one BoostSpecs for each datastore name. If multiple BoostSpecs are provided for the
+        /// same datastore name, the behavior is undefined.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1BoostSpecs> BoostSpecs { get; set; }
 
-        /// <summary>Optional. Filter configuration for the datastores.</summary>
+        /// <summary>
+        /// Optional. Filter configuration for the datastores. Maps from datastore name to the filter expression for
+        /// that datastore. Do not specify more than one FilterSpecs for each datastore name. If multiple FilterSpecs
+        /// are provided for the same datastore name, the behavior is undefined.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FilterSpecs> FilterSpecs { get; set; }
 
@@ -24691,7 +24699,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         private object _sendTime;
 
-        /// <summary>Optional. The time when the message was sent.</summary>
+        /// <summary>
+        /// Optional. The time when the message was sent. For voice messages, this is the time when an utterance
+        /// started.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
         public virtual string SendTimeRaw
         {
@@ -27440,7 +27451,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         private object _sendTime;
 
-        /// <summary>Optional. The time when the message was sent.</summary>
+        /// <summary>
+        /// Optional. The time when the message was sent. For voice messages, this is the time when an utterance
+        /// started.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
         public virtual string SendTimeRaw
         {
