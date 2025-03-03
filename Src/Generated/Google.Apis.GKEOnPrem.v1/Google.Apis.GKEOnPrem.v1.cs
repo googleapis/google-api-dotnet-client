@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ namespace Google.Apis.GKEOnPrem.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the GDC Virtual API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the GKE On-Prem API.</summary>
         public class Scope
         {
             /// <summary>
@@ -67,7 +67,7 @@ namespace Google.Apis.GKEOnPrem.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the GDC Virtual API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the GKE On-Prem API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
