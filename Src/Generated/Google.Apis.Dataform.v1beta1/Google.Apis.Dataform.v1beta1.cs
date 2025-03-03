@@ -61,6 +61,11 @@ namespace Google.Apis.Dataform.v1beta1
         public class Scope
         {
             /// <summary>
+            /// View and manage your data in Google BigQuery and see the email address for your Google Account
+            /// </summary>
+            public static string Bigquery = "https://www.googleapis.com/auth/bigquery";
+
+            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
@@ -70,6 +75,11 @@ namespace Google.Apis.Dataform.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Dataform API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// View and manage your data in Google BigQuery and see the email address for your Google Account
+            /// </summary>
+            public const string Bigquery = "https://www.googleapis.com/auth/bigquery";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
@@ -1354,7 +1364,7 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>Requests cancellation of a running WorkflowInvocation.</summary>
-                    public class CancelRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                    public class CancelRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.CancelWorkflowInvocationResponse>
                     {
                         /// <summary>Constructs a new Cancel request.</summary>
                         public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.CancelWorkflowInvocationRequest body, string name) : base(service)
@@ -1761,7 +1771,7 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>Applies a Git commit for uncommitted files in a Workspace.</summary>
-                    public class CommitRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                    public class CommitRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.CommitWorkspaceChangesResponse>
                     {
                         /// <summary>Constructs a new Commit request.</summary>
                         public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.CommitWorkspaceChangesRequest body, string name) : base(service)
@@ -2549,7 +2559,7 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>Pulls Git commits from the Repository's remote into a Workspace.</summary>
-                    public class PullRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                    public class PullRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.PullGitCommitsResponse>
                     {
                         /// <summary>Constructs a new Pull request.</summary>
                         public PullRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.PullGitCommitsRequest body, string name) : base(service)
@@ -2602,7 +2612,7 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>Pushes Git commits from a Workspace to the Repository's remote.</summary>
-                    public class PushRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                    public class PushRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.PushGitCommitsResponse>
                     {
                         /// <summary>Constructs a new Push request.</summary>
                         public PushRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.PushGitCommitsRequest body, string name) : base(service)
@@ -2821,7 +2831,7 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>Deletes a directory (inside a Workspace) and all of its contents.</summary>
-                    public class RemoveDirectoryRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                    public class RemoveDirectoryRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.RemoveDirectoryResponse>
                     {
                         /// <summary>Constructs a new RemoveDirectory request.</summary>
                         public RemoveDirectoryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.RemoveDirectoryRequest body, string workspace) : base(service)
@@ -2874,7 +2884,7 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>Deletes a file (inside a Workspace).</summary>
-                    public class RemoveFileRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                    public class RemoveFileRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.RemoveFileResponse>
                     {
                         /// <summary>Constructs a new RemoveFile request.</summary>
                         public RemoveFileRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.RemoveFileRequest body, string workspace) : base(service)
@@ -2927,7 +2937,7 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>Performs a Git reset for uncommitted files in a Workspace.</summary>
-                    public class ResetRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                    public class ResetRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.ResetWorkspaceChangesResponse>
                     {
                         /// <summary>Constructs a new Reset request.</summary>
                         public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.ResetWorkspaceChangesRequest body, string name) : base(service)
@@ -4651,6 +4661,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`CancelWorkflowInvocation` response message.</summary>
+    public class CancelWorkflowInvocationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configures various aspects of Dataform code compilation.</summary>
     public class CodeCompilationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4860,6 +4877,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`CommitWorkspaceChanges` response message.</summary>
+    public class CommitWorkspaceChangesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6024,6 +6048,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`PullGitCommits` response message.</summary>
+    public class PullGitCommitsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`PushGitCommits` request message.</summary>
     public class PushGitCommitsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6034,6 +6065,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("remoteBranch")]
         public virtual string RemoteBranch { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`PushGitCommits` response message.</summary>
+    public class PushGitCommitsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6304,6 +6342,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`RemoveDirectory` response message.</summary>
+    public class RemoveDirectoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`RemoveFile` request message.</summary>
     public class RemoveFileRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6311,6 +6356,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`RemoveFile` response message.</summary>
+    public class RemoveFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6439,6 +6491,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`ResetWorkspaceChanges` response message.</summary>
+    public class ResetWorkspaceChangesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
