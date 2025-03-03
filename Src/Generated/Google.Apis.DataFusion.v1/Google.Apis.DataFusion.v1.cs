@@ -2056,7 +2056,7 @@ namespace Google.Apis.DataFusion.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableRbac")]
         public virtual System.Nullable<bool> EnableRbac { get; set; }
 
-        /// <summary>Optional. Option to enable Stackdriver Logging.</summary>
+        /// <summary>Optional. Option to enable Dataproc Stackdriver Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
@@ -2082,6 +2082,13 @@ namespace Google.Apis.DataFusion.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. The logging configuration for this instance. This field is supported only in CDF versions 6.11.0
+        /// and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>Output only. The maintenance events for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceEvents")]
@@ -2125,6 +2132,10 @@ namespace Google.Apis.DataFusion.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateInstance")]
         public virtual System.Nullable<bool> PrivateInstance { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
@@ -2329,6 +2340,20 @@ namespace Google.Apis.DataFusion.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Logging configuration for a Data Fusion instance.</summary>
+    public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Option to determine whether instance logs should be written to Cloud Logging. By default, instance
+        /// logs are written to Cloud Logging.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCloudLoggingDisabled")]
+        public virtual System.Nullable<bool> InstanceCloudLoggingDisabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
