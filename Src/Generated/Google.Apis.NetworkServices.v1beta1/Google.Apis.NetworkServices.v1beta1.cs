@@ -361,10 +361,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes since the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -447,10 +446,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -542,8 +540,8 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Lists `AuthzExtension` resources in a given project and location.</summary>
                 /// <param name="parent">
-                /// Required. The project and location from which the `AuthzExtension` resources are listed, specified
-                /// in the following format: `projects/{project}/locations/{location}`.
+                /// Required. The project and location from which the `AuthzExtension` resources are listed. These
+                /// values are specified in the following format: `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -561,8 +559,8 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The project and location from which the `AuthzExtension` resources are listed,
-                    /// specified in the following format: `projects/{project}/locations/{location}`.
+                    /// Required. The project and location from which the `AuthzExtension` resources are listed. These
+                    /// values are specified in the following format: `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -571,7 +569,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    /// <summary>Optional. Hint about how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -674,10 +672,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes since the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -2318,10 +2315,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes since the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -2404,10 +2400,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -2499,8 +2494,8 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Lists `LbRouteExtension` resources in a given project and location.</summary>
                 /// <param name="parent">
-                /// Required. The project and location from which the `LbRouteExtension` resources are listed, specified
-                /// in the following format: `projects/{project}/locations/{location}`.
+                /// Required. The project and location from which the `LbRouteExtension` resources are listed. These
+                /// values are specified in the following format: `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2518,8 +2513,8 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The project and location from which the `LbRouteExtension` resources are listed,
-                    /// specified in the following format: `projects/{project}/locations/{location}`.
+                    /// Required. The project and location from which the `LbRouteExtension` resources are listed. These
+                    /// values are specified in the following format: `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2528,7 +2523,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    /// <summary>Optional. Hint about how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -2631,10 +2626,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes since the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -2752,10 +2746,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes since the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -2838,10 +2831,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -2933,8 +2925,8 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Lists `LbTrafficExtension` resources in a given project and location.</summary>
                 /// <param name="parent">
-                /// Required. The project and location from which the `LbTrafficExtension` resources are listed,
-                /// specified in the following format: `projects/{project}/locations/{location}`.
+                /// Required. The project and location from which the `LbTrafficExtension` resources are listed. These
+                /// values are specified in the following format: `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2952,8 +2944,8 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The project and location from which the `LbTrafficExtension` resources are listed,
-                    /// specified in the following format: `projects/{project}/locations/{location}`.
+                    /// Required. The project and location from which the `LbTrafficExtension` resources are listed.
+                    /// These values are specified in the following format: `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2962,7 +2954,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    /// <summary>Optional. Hint about how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -3065,10 +3057,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// The server guarantees that for 60 minutes since the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request This prevents clients from
                     /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
@@ -3505,6 +3496,13 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// Otherwise if one of the locations is down or unreachable, the Aggregated List request will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -3537,6 +3535,14 @@ namespace Google.Apis.NetworkServices.v1beta1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3916,8 +3922,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Creates a new ServiceBinding in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the ServiceBinding. Must be in the format
-                /// `projects/*/locations/global`.
+                /// Required. The parent resource of the ServiceBinding. Must be in the format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkServices.v1beta1.Data.ServiceBinding body, string parent)
                 {
@@ -3937,7 +3942,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. The parent resource of the ServiceBinding. Must be in the format
-                    /// `projects/*/locations/global`.
+                    /// `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3987,7 +3992,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Deletes a single ServiceBinding.</summary>
                 /// <param name="name">
                 /// Required. A name of the ServiceBinding to delete. Must be in the format
-                /// `projects/*/locations/global/serviceBindings/*`.
+                /// `projects/*/locations/*/serviceBindings/*`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -4006,7 +4011,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. A name of the ServiceBinding to delete. Must be in the format
-                    /// `projects/*/locations/global/serviceBindings/*`.
+                    /// `projects/*/locations/*/serviceBindings/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4038,7 +4043,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Gets details of a single ServiceBinding.</summary>
                 /// <param name="name">
                 /// Required. A name of the ServiceBinding to get. Must be in the format
-                /// `projects/*/locations/global/serviceBindings/*`.
+                /// `projects/*/locations/*/serviceBindings/*`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -4057,7 +4062,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. A name of the ServiceBinding to get. Must be in the format
-                    /// `projects/*/locations/global/serviceBindings/*`.
+                    /// `projects/*/locations/*/serviceBindings/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4089,7 +4094,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Lists ServiceBinding in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the ServiceBindings should be listed, specified in the
-                /// format `projects/*/locations/global`.
+                /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4108,7 +4113,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. The project and location from which the ServiceBindings should be listed, specified in
-                    /// the format `projects/*/locations/global`.
+                    /// the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6170,8 +6175,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         }
 
         /// <summary>
-        /// Optional. The format of communication supported by the callout extension. If not specified, the default is
-        /// `EXT_PROC_GRPC`.
+        /// Optional. The format of communication supported by the callout extension. If not specified, the default
+        /// value `EXT_PROC_GRPC` is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wireFormat")]
         public virtual string WireFormat { get; set; }
@@ -8063,8 +8068,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Required. All backend services and forwarding rules referenced by this extension must share the same load
-        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to
-        /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// balancing scheme. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer
+        /// to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; }
@@ -8324,6 +8329,13 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable resources. Populated when the request opts into `return_partial_success` and reading across
+        /// collections e.g. when attempting to list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8851,7 +8863,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     }
 
     /// <summary>
-    /// ServiceBinding is the resource that defines a Service Directory Service to be used in a BackendService resource.
+    /// ServiceBinding can be used to: - Bind a Service Directory Service to be used in a BackendService resource. -
+    /// Bind a Private Service Connect producer service to be used in consumer Cloud Service Mesh or Application Load
+    /// Balancers.
     /// </summary>
     public class ServiceBinding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8902,20 +8916,20 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Identifier. Name of the ServiceBinding resource. It matches pattern
-        /// `projects/*/locations/global/serviceBindings/service_binding_name`.
+        /// `projects/*/locations/*/serviceBindings/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The full Service Directory Service name of the format
-        /// projects/*/locations/*/namespaces/*/services/*
+        /// Optional. The full Service Directory Service name of the format
+        /// `projects/*/locations/*/namespaces/*/services/*`. This field must be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
         /// <summary>
-        /// Output only. The unique identifier of the Service Directory Service against which the Service Binding
+        /// Output only. The unique identifier of the Service Directory Service against which the ServiceBinding
         /// resource is validated. This is populated when the Service Binding resource is used in another resource (like
         /// Backend Service). This is of the UUID4 format.
         /// </summary>
