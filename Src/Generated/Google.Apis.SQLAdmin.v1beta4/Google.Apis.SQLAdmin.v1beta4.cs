@@ -910,7 +910,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}
+        /// Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}.
         /// </param>
         public virtual UpdateBackupRequest UpdateBackup(Google.Apis.SQLAdmin.v1beta4.Data.Backup body, string name)
         {
@@ -932,7 +932,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
 
             /// <summary>
-            /// Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}
+            /// Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -5592,7 +5592,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxChargeableBytes")]
         public virtual System.Nullable<long> MaxChargeableBytes { get; set; }
 
-        /// <summary>Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}</summary>
+        /// <summary>
+        /// Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5618,7 +5620,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// Output only. This output contains a backup time zone. If a Cloud SQL for SQL Server instance has a different
-        /// time zone from the backup's time zone, then restores to the instance won't happen.
+        /// time zone from the backup's time zone, then the restore to the instance doesn't happen.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -8440,6 +8442,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subOperationType")]
         public virtual SqlSubOperationType SubOperationType { get; set; }
 
+        /// <summary>Name of the resource on which this operation runs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual string TargetId { get; set; }
 
