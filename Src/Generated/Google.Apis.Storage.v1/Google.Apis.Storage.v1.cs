@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3410,7 +3410,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>If true, any parent folder which doesn’t exist will be created automatically.</summary>
+            /// <summary>If true, any parent folder which doesn't exist will be created automatically.</summary>
             [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Recursive { get; set; }
 
@@ -12113,17 +12113,17 @@ namespace Google.Apis.Storage.v1.Data
 
             /// <summary>
             /// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as
-            /// follows:   - allUsers — A special identifier that represents anyone on the internet; with or without a
-            /// Google account.   - allAuthenticatedUsers — A special identifier that represents anyone who is
-            /// authenticated with a Google account or a service account.   - user:emailid — An email address that
+            /// follows:   - allUsers - A special identifier that represents anyone on the internet; with or without a
+            /// Google account.   - allAuthenticatedUsers - A special identifier that represents anyone who is
+            /// authenticated with a Google account or a service account.   - user:emailid - An email address that
             /// represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.   -
-            /// serviceAccount:emailid — An email address that represents a service account. For example,
-            /// serviceAccount:my-other-app@appspot.gserviceaccount.com .   - group:emailid — An email address that
-            /// represents a Google group. For example, group:admins@example.com.   - domain:domain — A Google Apps
+            /// serviceAccount:emailid - An email address that represents a service account. For example,
+            /// serviceAccount:my-other-app@appspot.gserviceaccount.com .   - group:emailid - An email address that
+            /// represents a Google group. For example, group:admins@example.com.   - domain:domain - A Google Apps
             /// domain name that represents all the users of that domain. For example, domain:google.com or
-            /// domain:example.com.   - projectOwner:projectid — Owners of the given project. For example,
-            /// projectOwner:my-example-project   - projectEditor:projectid — Editors of the given project. For example,
-            /// projectEditor:my-example-project   - projectViewer:projectid — Viewers of the given project. For
+            /// domain:example.com.   - projectOwner:projectid - Owners of the given project. For example,
+            /// projectOwner:my-example-project   - projectEditor:projectid - Editors of the given project. For example,
+            /// projectEditor:my-example-project   - projectViewer:projectid - Viewers of the given project. For
             /// example, projectViewer:my-example-project
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("members")]
@@ -12133,17 +12133,17 @@ namespace Google.Apis.Storage.v1.Data
             /// The role to which members belong. Two types of roles are supported: new IAM roles, which grant
             /// permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map
             /// directly to ACL permissions. All roles are of the format roles/storage.specificRole. The new IAM roles
-            /// are:   - roles/storage.admin — Full control of Google Cloud Storage resources.   -
-            /// roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.   -
-            /// roles/storage.objectCreator — Access to create objects in Google Cloud Storage.   -
-            /// roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
-            /// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL
-            /// entry on an object with the READER role.   - roles/storage.legacyObjectOwner — Read/write access to
+            /// are:   - roles/storage.admin - Full control of Google Cloud Storage resources.   -
+            /// roles/storage.objectViewer - Read-Only access to Google Cloud Storage objects.   -
+            /// roles/storage.objectCreator - Access to create objects in Google Cloud Storage.   -
+            /// roles/storage.objectAdmin - Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+            /// - roles/storage.legacyObjectReader - Read-only access to objects without listing. Equivalent to an ACL
+            /// entry on an object with the READER role.   - roles/storage.legacyObjectOwner - Read/write access to
             /// existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.   -
-            /// roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL
-            /// entry on a bucket with the READER role.   - roles/storage.legacyBucketWriter — Read access to buckets
+            /// roles/storage.legacyBucketReader - Read access to buckets with object listing. Equivalent to an ACL
+            /// entry on a bucket with the READER role.   - roles/storage.legacyBucketWriter - Read access to buckets
             /// with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.   -
-            /// roles/storage.legacyBucketOwner — Read and write access to existing buckets with object
+            /// roles/storage.legacyBucketOwner - Read and write access to existing buckets with object
             /// listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
@@ -12248,17 +12248,17 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>
         /// The permissions held by the caller. Permissions are always of the format storage.resource.capability, where
         /// resource is one of buckets, objects, or managedFolders. The supported permissions are as follows:   -
-        /// storage.buckets.delete — Delete bucket.   - storage.buckets.get — Read bucket metadata.   -
-        /// storage.buckets.getIamPolicy — Read bucket IAM policy.   - storage.buckets.create — Create bucket.   -
-        /// storage.buckets.list — List buckets.   - storage.buckets.setIamPolicy — Update bucket IAM policy.   -
-        /// storage.buckets.update — Update bucket metadata.   - storage.objects.delete — Delete object.   -
-        /// storage.objects.get — Read object data and metadata.   - storage.objects.getIamPolicy — Read object IAM
-        /// policy.   - storage.objects.create — Create object.   - storage.objects.list — List objects.   -
-        /// storage.objects.setIamPolicy — Update object IAM policy.   - storage.objects.update — Update object
-        /// metadata.  - storage.managedFolders.delete — Delete managed folder.   - storage.managedFolders.get — Read
-        /// managed folder metadata.   - storage.managedFolders.getIamPolicy — Read managed folder IAM policy.   -
-        /// storage.managedFolders.create — Create managed folder.   - storage.managedFolders.list — List managed
-        /// folders.   - storage.managedFolders.setIamPolicy — Update managed folder IAM policy.
+        /// storage.buckets.delete - Delete bucket.   - storage.buckets.get - Read bucket metadata.   -
+        /// storage.buckets.getIamPolicy - Read bucket IAM policy.   - storage.buckets.create - Create bucket.   -
+        /// storage.buckets.list - List buckets.   - storage.buckets.setIamPolicy - Update bucket IAM policy.   -
+        /// storage.buckets.update - Update bucket metadata.   - storage.objects.delete - Delete object.   -
+        /// storage.objects.get - Read object data and metadata.   - storage.objects.getIamPolicy - Read object IAM
+        /// policy.   - storage.objects.create - Create object.   - storage.objects.list - List objects.   -
+        /// storage.objects.setIamPolicy - Update object IAM policy.   - storage.objects.update - Update object
+        /// metadata.  - storage.managedFolders.delete - Delete managed folder.   - storage.managedFolders.get - Read
+        /// managed folder metadata.   - storage.managedFolders.getIamPolicy - Read managed folder IAM policy.   -
+        /// storage.managedFolders.create - Create managed folder.   - storage.managedFolders.list - List managed
+        /// folders.   - storage.managedFolders.setIamPolicy - Update managed folder IAM policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
