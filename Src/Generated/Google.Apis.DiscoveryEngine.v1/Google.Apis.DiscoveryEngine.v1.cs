@@ -16401,6 +16401,117 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The error payload that is populated on LRO sync APIs, including the following: *
+    /// `google.cloud.discoveryengine.v1main.DataConnectorService.SetUpDataConnector` *
+    /// `google.cloud.discoveryengine.v1main.DataConnectorService.StartConnectorRun`
+    /// </summary>
+    public class GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full resource name of the Connector Run. Format:
+        /// `projects/*/locations/*/collections/*/dataConnector/connectorRuns/*`. The `connector_run_id` is
+        /// system-generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorRun")]
+        public virtual string ConnectorRun { get; set; }
+
+        /// <summary>
+        /// The full resource name of the DataConnector. Format: `projects/*/locations/*/collections/*/dataConnector`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataConnector")]
+        public virtual string DataConnector { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time when the connector run ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The entity to sync for the connector run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
+
+        /// <summary>The operation resource name of the LRO to sync the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time when the connector run started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The type of sync run. Can be one of the following: * `FULL` * `INCREMENTAL`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncType")]
+        public virtual string SyncType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A description of the context in which an error occurred.</summary>
     public class GoogleCloudDiscoveryengineLoggingErrorContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16422,6 +16533,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>An error log which is reported to the Error Reporting system.</summary>
     public class GoogleCloudDiscoveryengineLoggingErrorLog : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The error payload that is populated on LRO connector sync APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorRunPayload")]
+        public virtual GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext ConnectorRunPayload { get; set; }
+
         /// <summary>A description of the context in which the error occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual GoogleCloudDiscoveryengineLoggingErrorContext Context { get; set; }
@@ -24362,6 +24477,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. The specification for returning the relevance score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceScoreSpec")]
         public virtual GoogleCloudDiscoveryengineV1SearchRequestRelevanceScoreSpec RelevanceScoreSpec { get; set; }
+
+        /// <summary>
+        /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
+        /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
+        /// information. This feature is not supported for healthcare search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
+        public virtual string RelevanceThreshold { get; set; }
 
         /// <summary>Whether to turn on safe search. This is only supported for website search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
