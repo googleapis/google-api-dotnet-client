@@ -6971,7 +6971,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableKubernetesAlpha")]
         public virtual System.Nullable<bool> EnableKubernetesAlpha { get; set; }
 
-        /// <summary>Enable the ability to use Cloud TPUs in this cluster.</summary>
+        /// <summary>
+        /// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated due to the deprecation of 2VM
+        /// TPU. The end of life date for 2VM TPU is 2025-04-25.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTpu")]
         public virtual System.Nullable<bool> EnableTpu { get; set; }
 
@@ -7052,12 +7055,6 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("legacyAbac")]
         public virtual LegacyAbac LegacyAbac { get; set; }
 
-        /// <summary>
-        /// Output only. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or
-        /// [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster
-        /// resides.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -7283,7 +7280,8 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>
         /// Output only. The IP address range of the Cloud TPUs in this cluster, in
-        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
+        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). This field
+        /// is deprecated due to the deprecation of 2VM TPU. The end of life date for 2VM TPU is 2025-04-25.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
         public virtual string TpuIpv4CidrBlock { get; set; }
@@ -8544,7 +8542,8 @@ namespace Google.Apis.Container.v1.Data
         /// range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific
         /// netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g.
         /// `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to
-        /// pick a specific range to use.
+        /// pick a specific range to use. This field is deprecated due to the deprecation of 2VM TPU. The end of life
+        /// date for 2VM TPU is 2025-04-25.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
         public virtual string TpuIpv4CidrBlock { get; set; }
