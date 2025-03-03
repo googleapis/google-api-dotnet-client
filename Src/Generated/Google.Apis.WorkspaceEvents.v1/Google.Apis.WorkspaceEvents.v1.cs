@@ -960,10 +960,10 @@ namespace Google.Apis.WorkspaceEvents.v1.Data
     public class NotificationEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. The Cloud Pub/Sub topic that receives events for the subscription. Format:
+        /// Immutable. The Pub/Sub topic that receives events for the subscription. Format:
         /// `projects/{project}/topics/{topic}` You must create the topic in the same Google Cloud project where you
-        /// create this subscription. When the topic receives events, the events are encoded as Cloud Pub/Sub messages.
-        /// For details, see the [Google Cloud Pub/Sub Protocol Binding for
+        /// create this subscription. When the topic receives events, the events are encoded as Pub/Sub messages. For
+        /// details, see the [Google Cloud Pub/Sub Protocol Binding for
         /// CloudEvents](https://github.com/googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
