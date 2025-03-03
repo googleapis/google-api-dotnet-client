@@ -5844,12 +5844,26 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual DataCacheConfig DataCacheConfig { get; set; }
 
         /// <summary>
+        /// Optional. Provisioned number of I/O operations per second for the data disk. This field is only used for
+        /// hyperdisk-balanced disk types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiskProvisionedIops")]
+        public virtual System.Nullable<long> DataDiskProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Optional. Provisioned throughput measured in MiB per second for the data disk. This field is only used for
+        /// hyperdisk-balanced disk types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiskProvisionedThroughput")]
+        public virtual System.Nullable<long> DataDiskProvisionedThroughput { get; set; }
+
+        /// <summary>
         /// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDiskSizeGb")]
         public virtual System.Nullable<long> DataDiskSizeGb { get; set; }
 
-        /// <summary>The type of storage: `PD_SSD` (default) or `PD_HDD`.</summary>
+        /// <summary>The type of storage: `PD_SSD` (default) or `PD_HDD` or `HYPERDISK_BALANCED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDiskType")]
         public virtual string DataDiskType { get; set; }
 
@@ -6152,11 +6166,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
-        /// <summary>Output only. Zone Isolation compliance state of the resource.</summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
-        /// <summary>Output only. Zone Separation compliance state of the resource.</summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -7897,11 +7911,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reverseSshConnectivity")]
         public virtual ReverseSshConnectivity ReverseSshConnectivity { get; set; }
 
-        /// <summary>Output only. Zone Isolation compliance state of the resource.</summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
-        /// <summary>Output only. Zone Separation compliance state of the resource.</summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -8765,11 +8779,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Zone Isolation compliance state of the resource.</summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
-        /// <summary>Output only. Zone Separation compliance state of the resource.</summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
