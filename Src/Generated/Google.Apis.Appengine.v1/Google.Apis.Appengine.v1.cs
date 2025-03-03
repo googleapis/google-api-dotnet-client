@@ -3097,13 +3097,6 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServicesId { get; private set; }
 
-                /// <summary>
-                /// Optional. If set to true, any versions of this service will also be deleted. (Otherwise, the request
-                /// will only succeed if the service has no versions.)
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Force { get; set; }
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -3130,14 +3123,6 @@ namespace Google.Apis.Appengine.v1
                         Name = "servicesId",
                         IsRequired = true,
                         ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "force",
-                        IsRequired = false,
-                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4089,13 +4074,6 @@ namespace Google.Apis.Appengine.v1
                         [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServicesId { get; private set; }
 
-                        /// <summary>
-                        /// Optional. If set to true, any versions of this service will also be deleted. (Otherwise, the
-                        /// request will only succeed if the service has no versions.)
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<bool> Force { get; set; }
-
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
@@ -4138,14 +4116,6 @@ namespace Google.Apis.Appengine.v1
                                 Name = "servicesId",
                                 IsRequired = true,
                                 ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "force",
-                                IsRequired = false,
-                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
