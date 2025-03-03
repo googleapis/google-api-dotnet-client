@@ -13779,13 +13779,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string Actor { get; set; }
 
         /// <summary>
-        /// An abstract identifier that describes the environment or conditions under which the accessor is acting. Can
-        /// be "*" if it applies to all environments.
+        /// An abstract identifier that describes the environment or conditions under which the accessor is acting. If
+        /// it's not specified, it applies to all environments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
-        /// <summary>The intent of data use. Can be "*" if it applies to all purposes.</summary>
+        /// <summary>The intent of data use. If it's not specified, it applies to all purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
         public virtual string Purpose { get; set; }
 
