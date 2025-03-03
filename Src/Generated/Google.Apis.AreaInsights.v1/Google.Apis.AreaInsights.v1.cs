@@ -416,8 +416,8 @@ namespace Google.Apis.AreaInsights.v1.Data
         public virtual System.Collections.Generic.IList<string> OperatingStatus { get; set; }
 
         /// <summary>
-        /// Optional. Restricts results to places whose price level is included on this list. If price_level is not set,
-        /// all price levels are included in the results.
+        /// Optional. Restricts results to places whose price level is included on this list. If `price_levels` is not
+        /// set, all price levels are included in the results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceLevels")]
         public virtual System.Collections.Generic.IList<string> PriceLevels { get; set; }
