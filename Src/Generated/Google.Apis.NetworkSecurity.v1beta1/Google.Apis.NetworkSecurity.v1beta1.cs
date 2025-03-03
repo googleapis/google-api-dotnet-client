@@ -695,6 +695,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -727,6 +733,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2903,6 +2917,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -2935,6 +2955,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6603,15 +6631,22 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new InterceptDeploymentGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this deployment group will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new InterceptDeploymentGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -6622,26 +6657,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this deployment group will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// intercept_deployment_group_id from the method_signature of Create RPC
+                    /// Required. The ID to use for the new deployment group, which will become the final component of
+                    /// the deployment group's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interceptDeploymentGroupId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InterceptDeploymentGroupId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -6692,14 +6724,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single InterceptDeploymentGroup.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes a deployment group. See https://google.aip.dev/135.</summary>
+                /// <param name="name">Required. The deployment group to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single InterceptDeploymentGroup.</summary>
+                /// <summary>Deletes a deployment group. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -6709,19 +6741,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The deployment group to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -6758,14 +6784,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single InterceptDeploymentGroup.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets a specific deployment group. See https://google.aip.dev/131.</summary>
+                /// <param name="name">
+                /// Required. The name of the deployment group to retrieve. Format:
+                /// projects/{project}/locations/{location}/interceptDeploymentGroups/{intercept_deployment_group}
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single InterceptDeploymentGroup.</summary>
+                /// <summary>Gets a specific deployment group. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -6775,7 +6804,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. The name of the deployment group to retrieve. Format:
+                    /// projects/{project}/locations/{location}/interceptDeploymentGroups/{intercept_deployment_group}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6803,14 +6835,21 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Lists InterceptDeploymentGroups in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListInterceptDeploymentGroupsRequest</param>
+                /// <summary>
+                /// Lists deployment groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of deployment groups. Example:
+                /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists InterceptDeploymentGroups in a given project and location.</summary>
+                /// <summary>
+                /// Lists deployment groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListInterceptDeploymentGroupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -6820,26 +6859,38 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListInterceptDeploymentGroupsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of deployment groups. Example:
+                    /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. Filter expression. See https://google.aip.dev/160#filtering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>
+                    /// Optional. Sort expression. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListInterceptDeploymentGroups` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListInterceptDeploymentGroups` must match the call that provided the page token. See
+                    /// https://google.aip.dev/158 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -6899,15 +6950,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates a single InterceptDeploymentGroup.</summary>
+                /// <summary>Updates a deployment group. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. Then name of the InterceptDeploymentGroup.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this deployment group, for example:
+                /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeploymentGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single InterceptDeploymentGroup.</summary>
+                /// <summary>Updates a deployment group. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -6918,28 +6973,25 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. Then name of the InterceptDeploymentGroup.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this deployment group, for example:
+                    /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the
-                    /// InterceptDeploymentGroup resource by the update. The fields specified in the update_mask are
-                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
-                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// Optional. The list of fields to update. Fields are specified relative to the deployment group
+                    /// (e.g. `description`; *not* `intercept_deployment_group.description`). See
+                    /// https://google.aip.dev/161 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -7008,15 +7060,22 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new InterceptDeployment in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this deployment will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new InterceptDeployment in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -7027,26 +7086,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this deployment will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// intercept_deployment_id from the method_signature of Create RPC
+                    /// Required. The ID to use for the new deployment, which will become the final component of the
+                    /// deployment's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interceptDeploymentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InterceptDeploymentId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -7097,14 +7153,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single InterceptDeployment.</summary>
+                /// <summary>Deletes a deployment. See https://google.aip.dev/135.</summary>
                 /// <param name="name">Required. Name of the resource</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single InterceptDeployment.</summary>
+                /// <summary>Deletes a deployment. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -7119,14 +7175,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -7163,14 +7213,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single InterceptDeployment.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets a specific deployment. See https://google.aip.dev/131.</summary>
+                /// <param name="name">
+                /// Required. The name of the deployment to retrieve. Format:
+                /// projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single InterceptDeployment.</summary>
+                /// <summary>Gets a specific deployment. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -7180,7 +7233,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. The name of the deployment to retrieve. Format:
+                    /// projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -7208,14 +7264,21 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Lists InterceptDeployments in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListInterceptDeploymentsRequest</param>
+                /// <summary>
+                /// Lists deployments in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of deployments. Example:
+                /// `projects/123456789/locations/us-central1-a`. See https://google.aip.dev/132 for more details.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists InterceptDeployments in a given project and location.</summary>
+                /// <summary>
+                /// Lists deployments in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListInterceptDeploymentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -7225,26 +7288,38 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListInterceptDeploymentsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of deployments. Example:
+                    /// `projects/123456789/locations/us-central1-a`. See https://google.aip.dev/132 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. Filter expression. See https://google.aip.dev/160#filtering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>
+                    /// Optional. Sort expression. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListInterceptDeployments` call. Provide this
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListInterceptDeployments` must match the call that provided the page token. See
+                    /// https://google.aip.dev/158 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -7304,15 +7379,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates a single InterceptDeployment.</summary>
+                /// <summary>Updates a deployment. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. The name of the InterceptDeployment.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this deployment, for example:
+                /// `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptDeployment body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single InterceptDeployment.</summary>
+                /// <summary>Updates a deployment. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -7323,28 +7402,25 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. The name of the InterceptDeployment.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this deployment, for example:
+                    /// `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the InterceptDeployment
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
-                    /// provide a mask then all fields will be overwritten.
+                    /// Optional. The list of fields to update. Fields are specified relative to the deployment (e.g.
+                    /// `description`; *not* `intercept_deployment.description`). See https://google.aip.dev/161 for
+                    /// more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -7413,15 +7489,22 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new InterceptEndpointGroupAssociation in a given project and location.</summary>
+                /// <summary>
+                /// Creates an association in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this association will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new InterceptEndpointGroupAssociation in a given project and location.</summary>
+                /// <summary>
+                /// Creates an association in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -7432,26 +7515,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this association will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// intercept_endpoint_group_association_id from the method_signature of Create RPC
+                    /// Optional. The ID to use for the new association, which will become the final component of the
+                    /// endpoint group's resource name. If not provided, the server will generate a unique ID.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interceptEndpointGroupAssociationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InterceptEndpointGroupAssociationId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -7502,14 +7582,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single InterceptEndpointGroupAssociation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes an association. See https://google.aip.dev/135.</summary>
+                /// <param name="name">Required. The association to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single InterceptEndpointGroupAssociation.</summary>
+                /// <summary>Deletes an association. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -7519,19 +7599,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The association to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -7568,14 +7642,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single InterceptEndpointGroupAssociation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets a specific association. See https://google.aip.dev/131.</summary>
+                /// <param name="name">
+                /// Required. The name of the association to retrieve. Format:
+                /// projects/{project}/locations/{location}/interceptEndpointGroupAssociations/{intercept_endpoint_group_association}
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single InterceptEndpointGroupAssociation.</summary>
+                /// <summary>Gets a specific association. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -7585,7 +7662,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. The name of the association to retrieve. Format:
+                    /// projects/{project}/locations/{location}/interceptEndpointGroupAssociations/{intercept_endpoint_group_association}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -7613,16 +7693,21 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Lists InterceptEndpointGroupAssociations in a given project and location.</summary>
+                /// <summary>
+                /// Lists associations in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 /// <param name="parent">
-                /// Required. Parent value for ListInterceptEndpointGroupAssociationsRequest
+                /// Required. The parent, which owns this collection of associations. Example:
+                /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists InterceptEndpointGroupAssociations in a given project and location.</summary>
+                /// <summary>
+                /// Lists associations in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListInterceptEndpointGroupAssociationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -7632,26 +7717,38 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListInterceptEndpointGroupAssociationsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of associations. Example:
+                    /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. Filter expression. See https://google.aip.dev/160#filtering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>
+                    /// Optional. Sort expression. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListInterceptEndpointGroups` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListInterceptEndpointGroups` must match the call that provided the page token. See
+                    /// https://google.aip.dev/158 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -7711,15 +7808,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates a single InterceptEndpointGroupAssociation.</summary>
+                /// <summary>Updates an association. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. The name of the InterceptEndpointGroupAssociation.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+                /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`. See
+                /// https://google.aip.dev/122 for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroupAssociation body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single InterceptEndpointGroupAssociation.</summary>
+                /// <summary>Updates an association. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -7730,28 +7831,25 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. The name of the InterceptEndpointGroupAssociation.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+                    /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the
-                    /// InterceptEndpointGroupAssociation resource by the update. The fields specified in the
-                    /// update_mask are relative to the resource, not the full request. A field will be overwritten if
-                    /// it is in the mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// Optional. The list of fields to update. Fields are specified relative to the association (e.g.
+                    /// `description`; *not* `intercept_endpoint_group_association.description`). See
+                    /// https://google.aip.dev/161 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -7820,15 +7918,22 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new InterceptEndpointGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates an endpoint group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this endpoint group will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new InterceptEndpointGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates an endpoint group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -7839,26 +7944,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this endpoint group will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// intercept_endpoint_group_id from the method_signature of Create RPC
+                    /// Required. The ID to use for the endpoint group, which will become the final component of the
+                    /// endpoint group's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("interceptEndpointGroupId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InterceptEndpointGroupId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -7909,14 +8011,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single InterceptEndpointGroup.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes an endpoint group. See https://google.aip.dev/135.</summary>
+                /// <param name="name">Required. The endpoint group to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single InterceptEndpointGroup.</summary>
+                /// <summary>Deletes an endpoint group. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -7926,19 +8028,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The endpoint group to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -7975,14 +8071,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single InterceptEndpointGroup.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets a specific endpoint group. See https://google.aip.dev/131.</summary>
+                /// <param name="name">
+                /// Required. The name of the endpoint group to retrieve. Format:
+                /// projects/{project}/locations/{location}/interceptEndpointGroups/{intercept_endpoint_group}
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single InterceptEndpointGroup.</summary>
+                /// <summary>Gets a specific endpoint group. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -7992,7 +8091,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. The name of the endpoint group to retrieve. Format:
+                    /// projects/{project}/locations/{location}/interceptEndpointGroups/{intercept_endpoint_group}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8020,14 +8122,21 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Lists InterceptEndpointGroups in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListInterceptEndpointGroupsRequest</param>
+                /// <summary>
+                /// Lists endpoint groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of endpoint groups. Example:
+                /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists InterceptEndpointGroups in a given project and location.</summary>
+                /// <summary>
+                /// Lists endpoint groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListInterceptEndpointGroupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -8037,26 +8146,38 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListInterceptEndpointGroupsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of endpoint groups. Example:
+                    /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. Filter expression. See https://google.aip.dev/160#filtering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>
+                    /// Optional. Sort expression. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListInterceptEndpointGroups` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListInterceptEndpointGroups` must match the call that provided the page token. See
+                    /// https://google.aip.dev/158 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -8116,15 +8237,19 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates a single InterceptEndpointGroup.</summary>
+                /// <summary>Updates an endpoint group. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. The name of the InterceptEndpointGroup.</param>
+                /// <param name="name">
+                /// Immutable. Identifier. The resource name of this endpoint group, for example:
+                /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/122
+                /// for more details.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.InterceptEndpointGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single InterceptEndpointGroup.</summary>
+                /// <summary>Updates an endpoint group. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -8135,28 +8260,25 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. The name of the InterceptEndpointGroup.</summary>
+                    /// <summary>
+                    /// Immutable. Identifier. The resource name of this endpoint group, for example:
+                    /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See
+                    /// https://google.aip.dev/122 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the
-                    /// InterceptEndpointGroup resource by the update. The fields specified in the update_mask are
-                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
-                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// Optional. The list of fields to update. Fields are specified relative to the endpoint group
+                    /// (e.g. `description`; *not* `intercept_endpoint_group.description`). See
+                    /// https://google.aip.dev/161 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -8225,15 +8347,22 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new MirroringDeploymentGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this deployment group will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringDeploymentGroup body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new MirroringDeploymentGroup in a given project and location.</summary>
+                /// <summary>
+                /// Creates a deployment group in a given project and location. See https://google.aip.dev/133.
+                /// </summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -8244,26 +8373,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this deployment group will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// mirroring_deployment_group_id from the method_signature of Create RPC
+                    /// Required. The ID to use for the new deployment group, which will become the final component of
+                    /// the deployment group's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("mirroringDeploymentGroupId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MirroringDeploymentGroupId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -8314,14 +8440,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single MirroringDeploymentGroup.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes a deployment group. See https://google.aip.dev/135.</summary>
+                /// <param name="name">Required. The deployment group to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single MirroringDeploymentGroup.</summary>
+                /// <summary>Deletes a deployment group. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -8331,19 +8457,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The deployment group to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -8380,14 +8500,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Gets details of a single MirroringDeploymentGroup.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets a specific deployment group. See https://google.aip.dev/131.</summary>
+                /// <param name="name">
+                /// Required. The name of the deployment group to retrieve. Format:
+                /// projects/{project}/locations/{location}/mirroringDeploymentGroups/{mirroring_deployment_group}
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single MirroringDeploymentGroup.</summary>
+                /// <summary>Gets a specific deployment group. See https://google.aip.dev/131.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.MirroringDeploymentGroup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -8397,7 +8520,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. The name of the deployment group to retrieve. Format:
+                    /// projects/{project}/locations/{location}/mirroringDeploymentGroups/{mirroring_deployment_group}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8425,14 +8551,21 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Lists MirroringDeploymentGroups in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListMirroringDeploymentGroupsRequest</param>
+                /// <summary>
+                /// Lists deployment groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of deployment groups. Example:
+                /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists MirroringDeploymentGroups in a given project and location.</summary>
+                /// <summary>
+                /// Lists deployment groups in a given project and location. See https://google.aip.dev/132.
+                /// </summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListMirroringDeploymentGroupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -8442,26 +8575,38 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListMirroringDeploymentGroupsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of deployment groups. Example:
+                    /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. Filter expression. See https://google.aip.dev/160#filtering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>
+                    /// Optional. Sort expression. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListMirroringDeploymentGroups` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListMirroringDeploymentGroups` must match the call that provided the page token. See
+                    /// https://google.aip.dev/158 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -8521,7 +8666,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Updates a single MirroringDeploymentGroup.</summary>
+                /// <summary>Updates a deployment group. See https://google.aip.dev/134.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Immutable. Identifier. The resource name of this deployment group, for example:
@@ -8533,7 +8678,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a single MirroringDeploymentGroup.</summary>
+                /// <summary>Updates a deployment group. See https://google.aip.dev/134.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -8553,23 +8698,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the
-                    /// MirroringDeploymentGroup resource by the update. The fields specified in the update_mask are
-                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
-                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// Optional. The list of fields to update. Fields are specified relative to the deployment group
+                    /// (e.g. `description`; *not* `mirroring_deployment_group.description`). See
+                    /// https://google.aip.dev/161 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -8642,7 +8780,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// Creates a deployment in a given project and location. See https://google.aip.dev/133.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this deployment will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringDeployment body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -8661,26 +8802,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this deployment will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// mirroring_deployment_id from the method_signature of Create RPC
+                    /// Required. The ID to use for the new deployment, which will become the final component of the
+                    /// deployment's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("mirroringDeploymentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MirroringDeploymentId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -8753,14 +8891,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -8798,7 +8930,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 }
 
                 /// <summary>Gets a specific deployment. See https://google.aip.dev/131.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">
+                /// Required. The name of the deployment to retrieve. Format:
+                /// projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -8814,7 +8949,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. The name of the deployment to retrieve. Format:
+                    /// projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -8845,7 +8983,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// <summary>
                 /// Lists deployments in a given project and location. See https://google.aip.dev/132.
                 /// </summary>
-                /// <param name="parent">Required. Parent value for ListMirroringDeploymentsRequest</param>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of deployments. Example:
+                /// `projects/123456789/locations/us-central1-a`. See https://google.aip.dev/132 for more details.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -8863,26 +9004,38 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListMirroringDeploymentsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of deployments. Example:
+                    /// `projects/123456789/locations/us-central1-a`. See https://google.aip.dev/132 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. Filter expression. See https://google.aip.dev/160#filtering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>
+                    /// Optional. Sort expression. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListMirroringDeployments` call. Provide this
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListMirroringDeployments` must match the call that provided the page token. See
+                    /// https://google.aip.dev/158 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -8974,23 +9127,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the MirroringDeployment
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
-                    /// provide a mask then all fields will be overwritten.
+                    /// Optional. The list of fields to update. Fields are specified relative to the deployment (e.g.
+                    /// `description`; *not* `mirroring_deployment.description`). See https://google.aip.dev/161 for
+                    /// more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -9064,8 +9210,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. Container (project and location) where the association will be created, e.g.
-                /// `projects/123456789/locations/global`.
+                /// Required. The parent resource where this association will be created. Format:
+                /// projects/{project}/locations/{location}
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroupAssociation body, string parent)
                 {
@@ -9086,31 +9232,22 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Container (project and location) where the association will be created, e.g.
-                    /// `projects/123456789/locations/global`.
+                    /// Required. The parent resource where this association will be created. Format:
+                    /// projects/{project}/locations/{location}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. ID for the new association. If not provided, the server will generate a unique ID. The
-                    /// ID must be a valid RFC 1035 resource name. The ID must be 1-63 characters long and match the
-                    /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter,
-                    /// and all following characters (except for the last character) must be a dash, lowercase letter,
-                    /// or digit. The last character must be a
+                    /// Optional. The ID to use for the new association, which will become the final component of the
+                    /// endpoint group's resource name. If not provided, the server will generate a unique ID.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("mirroringEndpointGroupAssociationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MirroringEndpointGroupAssociationId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -9161,17 +9298,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single association. See https://google.aip.dev/135.</summary>
-                /// <param name="name">
-                /// Required. Full resource name of the association to delete, e.g.
-                /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
-                /// </param>
+                /// <summary>Deletes an association. See https://google.aip.dev/135.</summary>
+                /// <param name="name">Required. The association to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single association. See https://google.aip.dev/135.</summary>
+                /// <summary>Deletes an association. See https://google.aip.dev/135.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -9181,22 +9315,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. Full resource name of the association to delete, e.g.
-                    /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
-                    /// </summary>
+                    /// <summary>Required. The association to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -9235,8 +9360,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
 
                 /// <summary>Gets a specific association. See https://google.aip.dev/131.</summary>
                 /// <param name="name">
-                /// Required. Full resource name of the association to get, e.g.
-                /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                /// Required. The name of the association to retrieve. Format:
+                /// projects/{project}/locations/{location}/mirroringEndpointGroupAssociations/{mirroring_endpoint_group_association}
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -9254,8 +9379,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Full resource name of the association to get, e.g.
-                    /// projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association.
+                    /// Required. The name of the association to retrieve. Format:
+                    /// projects/{project}/locations/{location}/mirroringEndpointGroupAssociations/{mirroring_endpoint_group_association}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -9288,8 +9413,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// Lists associations in a given project and location. See https://google.aip.dev/132.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. Parent container (project and location) of the associations to list, e.g.
-                /// `projects/123456789/locations/global`.
+                /// Required. The parent, which owns this collection of associations. Example:
+                /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -9309,33 +9434,36 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Parent container (project and location) of the associations to list, e.g.
-                    /// `projects/123456789/locations/global`.
+                    /// Required. The parent, which owns this collection of associations. Example:
+                    /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. A filter expression that filters the results listed in the response. See
-                    /// https://google.aip.dev/160.
+                    /// Optional. Filter expression. See https://google.aip.dev/160#filtering for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>
+                    /// Optional. Sort expression. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default. See https://google.aip.dev/158.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. A token identifying a page of results the server should return. See
-                    /// https://google.aip.dev/158.
+                    /// Optional. A page token, received from a previous `ListMirroringEndpointGroups` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListMirroringEndpointGroups` must match the call that provided the page token. See
+                    /// https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -9428,21 +9556,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. Field mask is used to specify the fields to be overwritten in the association by the
-                    /// update. See https://google.aip.dev/161.
+                    /// Optional. The list of fields to update. Fields are specified relative to the association (e.g.
+                    /// `description`; *not* `mirroring_endpoint_group_association.description`). See
+                    /// https://google.aip.dev/161 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -9515,7 +9638,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// Creates an endpoint group in a given project and location. See https://google.aip.dev/133.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this endpoint group will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.MirroringEndpointGroup body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -9534,26 +9660,23 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this endpoint group will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// mirroring_endpoint_group_id from the method_signature of Create RPC
+                    /// Required. The ID to use for the endpoint group, which will become the final component of the
+                    /// endpoint group's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("mirroringEndpointGroupId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MirroringEndpointGroupId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -9605,7 +9728,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 }
 
                 /// <summary>Deletes an endpoint group. See https://google.aip.dev/135.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">Required. The endpoint group to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
@@ -9621,19 +9744,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The endpoint group to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -9671,7 +9788,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 }
 
                 /// <summary>Gets a specific endpoint group. See https://google.aip.dev/131.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <param name="name">
+                /// Required. The name of the endpoint group to retrieve. Format:
+                /// projects/{project}/locations/{location}/mirroringEndpointGroups/{mirroring_endpoint_group}
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -9687,7 +9807,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>
+                    /// Required. The name of the endpoint group to retrieve. Format:
+                    /// projects/{project}/locations/{location}/mirroringEndpointGroups/{mirroring_endpoint_group}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -9718,7 +9841,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// <summary>
                 /// Lists endpoint groups in a given project and location. See https://google.aip.dev/132.
                 /// </summary>
-                /// <param name="parent">Required. Parent value for ListMirroringEndpointGroupsRequest</param>
+                /// <param name="parent">
+                /// Required. The parent, which owns this collection of endpoint groups. Example:
+                /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -9736,26 +9862,38 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListMirroringEndpointGroupsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent, which owns this collection of endpoint groups. Example:
+                    /// `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>
+                    /// Optional. Filter expression. See https://google.aip.dev/160#filtering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>
+                    /// Optional. Sort expression. See https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// server will pick an appropriate default. See https://google.aip.dev/158 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListMirroringEndpointGroups` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListMirroringEndpointGroups` must match the call that provided the page token. See
+                    /// https://google.aip.dev/158 for more details.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -9847,23 +9985,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent
+                    /// if a `request_id` is provided. See https://google.aip.dev/155 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the
-                    /// MirroringEndpointGroup resource by the update. The fields specified in the update_mask are
-                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
-                    /// mask. If the user does not provide a mask then all fields will be overwritten.
+                    /// Optional. The list of fields to update. Fields are specified relative to the endpoint group
+                    /// (e.g. `description`; *not* `mirroring_endpoint_group.description`). See
+                    /// https://google.aip.dev/161 for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -12071,10 +12202,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     {
         /// <summary>
         /// Optional. A list of identities derived from the client's certificate. This field will not match on a request
-        /// unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is
-        /// matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be
-        /// exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
-        /// Limited to 5 principals.
+        /// unless mutual TLS is enabled for the forwarding rule or Gateway. For Application Load Balancers, each
+        /// identity is a string whose value is matched against the URI SAN, or DNS SAN, or SPIFFE ID, or the subject
+        /// field in the client's certificate. For Cloud Service Mesh, each identity is a string whose value is matched
+        /// against the URI SAN, or DNS SAN, or the subject field in the client's certificate. The match can be exact,
+        /// prefix, suffix, or a substring match. One of exact, prefix, suffix, or contains must be specified. Limited
+        /// to 5 principals.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principals")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Principals { get; set; }
@@ -13555,14 +13688,20 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing InterceptDeployment object NEXT ID: 10</summary>
+    /// <summary>
+    /// A deployment represents a zonal intercept backend ready to accept GENEVE-encapsulated traffic, e.g. a zonal
+    /// instance group fronted by an internal passthrough load balancer. Deployments are always part of a global
+    /// deployment group which represents a global intercept service.
+    /// </summary>
     public class InterceptDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -13602,34 +13741,40 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The regional load balancer which the intercepted traffic should be forwarded to. Format
-        /// is: projects/{project}/regions/{region}/forwardingRules/{forwardingRule}
+        /// Required. Immutable. The regional forwarding rule that fronts the intercept collectors, for example:
+        /// `projects/123456789/regions/us-central1/forwardingRules/my-rule`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Intercept Deployment Group that this resource is part of. Format is:
-        /// `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+        /// Required. Immutable. The deployment group that this deployment is a part of, for example:
+        /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptDeploymentGroup")]
         public virtual string InterceptDeploymentGroup { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Immutable. Identifier. The name of the InterceptDeployment.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this deployment, for example:
+        /// `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`. See https://google.aip.dev/122 for
+        /// more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This part of the normal operation (e.g. linking a new association to the parent
+        /// group). See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the deployment.</summary>
+        /// <summary>Output only. The current state of the deployment. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -13637,7 +13782,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -13674,10 +13822,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing InterceptDeploymentGroup object</summary>
+    /// <summary>
+    /// A deployment group aggregates many zonal intercept backends (deployments) into a single global intercept
+    /// service. Consumers can connect this service using an endpoint group.
+    /// </summary>
     public class InterceptDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The list of Intercept Endpoint Groups that are connected to this resource.</summary>
+        /// <summary>Output only. The list of endpoint groups that are connected to this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectedEndpointGroups")]
         public virtual System.Collections.Generic.IList<InterceptDeploymentGroupConnectedEndpointGroup> ConnectedEndpointGroups { get; set; }
 
@@ -13685,7 +13836,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -13725,28 +13878,38 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Immutable. Identifier. Then name of the InterceptDeploymentGroup.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this deployment group, for example:
+        /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/122 for
+        /// more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. The list of Intercept Deployments that belong to this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nestedDeployments")]
+        public virtual System.Collections.Generic.IList<InterceptDeploymentGroupDeployment> NestedDeployments { get; set; }
+
         /// <summary>
-        /// Required. Immutable. The network that is being used for the deployment. Format is:
-        /// projects/{project}/global/networks/{network}.
+        /// Required. Immutable. The network that will be used for all child deployments, for example:
+        /// `projects/{project}/global/networks/{network}`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This is part of the normal operation (e.g. adding a new deployment to the group)
+        /// See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the deployment group.</summary>
+        /// <summary>Output only. The current state of the deployment group. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -13754,7 +13917,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -13794,7 +13960,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>An endpoint group connected to this deployment group.</summary>
     public class InterceptDeploymentGroupConnectedEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. A connected intercept endpoint group.</summary>
+        /// <summary>
+        /// Output only. The connected endpoint group's resource name, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/124.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -13802,12 +13971,32 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing InterceptEndpointGroup object.</summary>
-    public class InterceptEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>A deployment belonging to this deployment group.</summary>
+    public class InterceptDeploymentGroupDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. List of Intercept Endpoint Group Associations that are associated to this endpoint group.
+        /// Output only. The name of the Intercept Deployment, in the format:
+        /// `projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}`.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Most recent known state of the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An endpoint group is a consumer frontend for a deployment group (backend). In order to configure intercept for a
+    /// network, consumers must create: - An association between their network and the endpoint group. - A security
+    /// profile that points to the endpoint group. - A firewall rule that references the security profile (group).
+    /// </summary>
+    public class InterceptEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of associations to this endpoint group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<InterceptEndpointGroupAssociationDetails> Associations { get; set; }
 
@@ -13815,7 +14004,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -13856,27 +14047,33 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Intercept Deployment Group that this resource is connected to. Format is:
-        /// `projects/{project}/locations/global/interceptDeploymentGroups/{interceptDeploymentGroup}`
+        /// Immutable. The deployment group that this endpoint group is connected to, for example:
+        /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptDeploymentGroup")]
         public virtual string InterceptDeploymentGroup { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Immutable. Identifier. The name of the InterceptEndpointGroup.</summary>
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this endpoint group, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/122 for more
+        /// details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This is part of the normal operation (e.g. adding a new association to the
+        /// group). See https://google.aip.dev/128.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. Current state of the endpoint group.</summary>
+        /// <summary>Output only. The current state of the endpoint group. See https://google.aip.dev/216.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -13884,123 +14081,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message describing InterceptEndpointGroupAssociation object</summary>
-    public class InterceptEndpointGroupAssociation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. [Output only] Create time stamp</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
         /// <summary>
-        /// Required. Immutable. The Intercept Endpoint Group that this resource is connected to. Format is:
-        /// `projects/{project}/locations/global/interceptEndpointGroups/{interceptEndpointGroup}`
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroup")]
-        public virtual string InterceptEndpointGroup { get; set; }
-
-        /// <summary>Optional. Labels as key value pairs</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>Output only. The list of locations that this association is in and its details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationsDetails")]
-        public virtual System.Collections.Generic.IList<InterceptEndpointGroupAssociationLocationDetails> LocationsDetails { get; set; }
-
-        /// <summary>Immutable. Identifier. The name of the InterceptEndpointGroupAssociation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Required. Immutable. The VPC network associated. Format: projects/{project}/global/networks/{network}.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; }
-
-        /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
-        public virtual System.Nullable<bool> Reconciling { get; set; }
-
-        /// <summary>Output only. Current state of the endpoint group association.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. [Output only] Update time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -14038,24 +14122,160 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// This is a subset of the InterceptEndpointGroupAssociation message, containing fields to be used by the consumer.
+    /// An endpoint group association represents a link between a network and an endpoint group in the organization.
+    /// Creating an association creates the networking infrastructure linking the network to the endpoint group, but
+    /// does not enable intercept by itself. To enable intercept, the user must also create a network firewall policy
+    /// containing intercept rules and associate it with the network.
     /// </summary>
-    public class InterceptEndpointGroupAssociationDetails : Google.Apis.Requests.IDirectResponseSchema
+    public class InterceptEndpointGroupAssociation : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
-        /// Output only. The resource name of the InterceptEndpointGroupAssociation. Format:
-        /// projects/{project}/locations/{location}/interceptEndpointGroupAssociations/{interceptEndpointGroupAssociation}
+        /// Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Immutable. The endpoint group that this association is connected to, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroup")]
+        public virtual string InterceptEndpointGroup { get; set; }
+
+        /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The list of locations where the association is present. This information is retrieved from the
+        /// linked endpoint group, and not configured as part of the association itself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationsDetails")]
+        public virtual System.Collections.Generic.IList<InterceptEndpointGroupAssociationLocationDetails> LocationsDetails { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. The resource name of this endpoint group association, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`. See
+        /// https://google.aip.dev/122 for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}.
+        /// Immutable. The VPC network that is associated. for example: `projects/123456789/global/networks/my-network`.
+        /// See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Output only. Current state of the association.</summary>
+        /// <summary>
+        /// Output only. The current state of the resource does not match the user's intended state, and the system is
+        /// working to reconcile them. This part of the normal operation (e.g. adding a new location to the target
+        /// deployment group). See https://google.aip.dev/128.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. Current state of the endpoint group association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was most recently updated. See
+        /// https://google.aip.dev/148#timestamps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The endpoint group's view of a connected association.</summary>
+    public class InterceptEndpointGroupAssociationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The connected association's resource name, for example:
+        /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-ega`. See
+        /// https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The associated network, for example: projects/123456789/global/networks/my-network. See
+        /// https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. Most recent known state of the association.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -14063,14 +14283,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about the association status in a specific cloud location.</summary>
+    /// <summary>Contains details about the state of an association in a specific cloud location.</summary>
     public class InterceptEndpointGroupAssociationLocationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The cloud location.</summary>
+        /// <summary>Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Output only. The association state in this location.</summary>
+        /// <summary>Output only. The current state of the association in this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -14128,6 +14348,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14292,14 +14516,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing InterceptDeploymentGroups</summary>
+    /// <summary>Response message for ListInterceptDeploymentGroups.</summary>
     public class ListInterceptDeploymentGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of InterceptDeploymentGroup</summary>
+        /// <summary>The deployment groups from the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptDeploymentGroups")]
         public virtual System.Collections.Generic.IList<InterceptDeploymentGroup> InterceptDeploymentGroups { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. See https://google.aip.dev/158 for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -14307,14 +14534,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing InterceptDeployments</summary>
+    /// <summary>Response message for ListInterceptDeployments.</summary>
     public class ListInterceptDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of InterceptDeployment</summary>
+        /// <summary>The deployments from the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptDeployments")]
         public virtual System.Collections.Generic.IList<InterceptDeployment> InterceptDeployments { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. See https://google.aip.dev/158 for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -14326,14 +14556,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing InterceptEndpointGroupAssociations</summary>
+    /// <summary>Response message for ListInterceptEndpointGroupAssociations.</summary>
     public class ListInterceptEndpointGroupAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of InterceptEndpointGroupAssociation</summary>
+        /// <summary>The associations from the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroupAssociations")]
         public virtual System.Collections.Generic.IList<InterceptEndpointGroupAssociation> InterceptEndpointGroupAssociations { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. See https://google.aip.dev/158 for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -14341,14 +14574,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing InterceptEndpointGroups</summary>
+    /// <summary>Response message for ListInterceptEndpointGroups.</summary>
     public class ListInterceptEndpointGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of InterceptEndpointGroup</summary>
+        /// <summary>The endpoint groups from the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroups")]
         public virtual System.Collections.Generic.IList<InterceptEndpointGroup> InterceptEndpointGroups { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. See https://google.aip.dev/158 for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -14371,14 +14607,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing MirroringDeploymentGroups</summary>
+    /// <summary>Response message for ListMirroringDeploymentGroups.</summary>
     public class ListMirroringDeploymentGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of MirroringDeploymentGroup</summary>
+        /// <summary>The deployment groups from the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringDeploymentGroups")]
         public virtual System.Collections.Generic.IList<MirroringDeploymentGroup> MirroringDeploymentGroups { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. See https://google.aip.dev/158 for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -14386,14 +14625,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing MirroringDeployments</summary>
+    /// <summary>Response message for ListMirroringDeployments.</summary>
     public class ListMirroringDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of MirroringDeployment</summary>
+        /// <summary>The deployments from the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringDeployments")]
         public virtual System.Collections.Generic.IList<MirroringDeployment> MirroringDeployments { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. See https://google.aip.dev/158 for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -14405,15 +14647,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for listing associations.</summary>
+    /// <summary>Response message for ListMirroringEndpointGroupAssociations.</summary>
     public class ListMirroringEndpointGroupAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of associations returned.</summary>
+        /// <summary>The associations from the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroupAssociations")]
         public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociation> MirroringEndpointGroupAssociations { get; set; }
 
         /// <summary>
-        /// A token identifying a page of results the server should return. See https://google.aip.dev/158.
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. See https://google.aip.dev/158 for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14422,14 +14665,17 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing MirroringEndpointGroups</summary>
+    /// <summary>Response message for ListMirroringEndpointGroups.</summary>
     public class ListMirroringEndpointGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of MirroringEndpointGroup</summary>
+        /// <summary>The endpoint groups from the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirroringEndpointGroups")]
         public virtual System.Collections.Generic.IList<MirroringEndpointGroup> MirroringEndpointGroups { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. See https://google.aip.dev/158 for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -14814,6 +15060,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. The list of Mirroring Deployments that belong to this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nestedDeployments")]
+        public virtual System.Collections.Generic.IList<MirroringDeploymentGroupDeployment> NestedDeployments { get; set; }
+
         /// <summary>
         /// Required. Immutable. The network that will be used for all child deployments, for example:
         /// `projects/{project}/global/networks/{network}`. See https://google.aip.dev/124.
@@ -14886,6 +15136,24 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A deployment belonging to this deployment group.</summary>
+    public class MirroringDeploymentGroupDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of the Mirroring Deployment, in the format:
+        /// `projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Most recent known state of the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
