@@ -17,5 +17,10 @@
     "INSTANCE_VIEW_UNSPECIFIED",
     "INSTANCE_VIEW_BASIC",
     "INSTANCE_VIEW_FULL"
+  ],
+  "Google.Apis.CloudAlloyDBAdmin.v1.ProjectsResource+LocationsResource+SupportedDatabaseFlagsResource+ListRequest.ScopeEnum": [
+    "SCOPE_UNSPECIFIED",
+    "DATABASE",
+    "CONNECTION_POOL"
   ]
 }

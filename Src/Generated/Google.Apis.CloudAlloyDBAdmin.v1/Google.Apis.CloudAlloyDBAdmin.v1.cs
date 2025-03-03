@@ -3105,6 +3105,65 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     }
                 }
 
+                /// <summary>Restores an AlloyDB cluster from a CloudSQL resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The location of the new cluster. For the required format, see the comment on Cluster.name
+                /// field.
+                /// </param>
+                public virtual RestoreFromCloudSQLRequest RestoreFromCloudSQL(Google.Apis.CloudAlloyDBAdmin.v1.Data.RestoreFromCloudSQLRequest body, string parent)
+                {
+                    return new RestoreFromCloudSQLRequest(this.service, body, parent);
+                }
+
+                /// <summary>Restores an AlloyDB cluster from a CloudSQL resource.</summary>
+                public class RestoreFromCloudSQLRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RestoreFromCloudSQL request.</summary>
+                    public RestoreFromCloudSQLRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1.Data.RestoreFromCloudSQLRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location of the new cluster. For the required format, see the comment on
+                    /// Cluster.name field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAlloyDBAdmin.v1.Data.RestoreFromCloudSQLRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restoreFromCloudSQL";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/clusters:restoreFromCloudSQL";
+
+                    /// <summary>Initializes RestoreFromCloudSQL parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the
                 /// SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly
@@ -3561,6 +3620,32 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. The scope for which supported flags are requested. If not specified, default is
+                    /// DATABASE.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ScopeEnum> Scope { get; set; }
+
+                    /// <summary>
+                    /// Optional. The scope for which supported flags are requested. If not specified, default is
+                    /// DATABASE.
+                    /// </summary>
+                    public enum ScopeEnum
+                    {
+                        /// <summary>The scope of the flag is not specified. Default is DATABASE.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SCOPE_UNSPECIFIED")]
+                        SCOPEUNSPECIFIED = 0,
+
+                        /// <summary>The flag is a database flag.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DATABASE")]
+                        DATABASE = 1,
+
+                        /// <summary>The flag is a connection pool flag.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CONNECTION_POOL")]
+                        CONNECTIONPOOL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -3593,6 +3678,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scope",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4520,8 +4613,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
         /// <summary>
         /// The encryption config can be specified to encrypt the backups with a customer-managed encryption key (CMEK).
-        /// When this field is not specified, the backup will then use default encryption scheme to protect the user
-        /// data.
+        /// When this field is not specified, the backup will use the cluster's encryption config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
@@ -5599,7 +5691,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     }
 
     /// <summary>
-    /// Details of a single node in the instance. Nodes in an AlloyDB instance are ephemereal, they can change during
+    /// Details of a single node in the instance. Nodes in an AlloyDB instance are ephemeral, they can change during
     /// update, failover, autohealing and resize operations.
     /// </summary>
     public class Node : Google.Apis.Requests.IDirectResponseSchema
@@ -5768,6 +5860,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
+        /// <summary>Output only. UpgradeClusterStatus related metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeClusterStatus")]
+        public virtual UpgradeClusterStatus UpgradeClusterStatus { get; set; }
+
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
@@ -5820,6 +5916,40 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for setting up PSC service automation. Consumer projects in the configs will be allowlisted
+    /// automatically for the instance.
+    /// </summary>
+    public class PscAutoConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The consumer network for the PSC service automation, example:
+        /// "projects/vpc-host-project/global/networks/default". The consumer network might be hosted a different
+        /// project than the consumer project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; }
+
+        /// <summary>Output only. The status of the service connection policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetworkStatus")]
+        public virtual string ConsumerNetworkStatus { get; set; }
+
+        /// <summary>The consumer project to which the PSC service automation endpoint will be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProject")]
+        public virtual string ConsumerProject { get; set; }
+
+        /// <summary>Output only. The IP address of the PSC service automation endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>Output only. The status of the PSC service automation connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PscConfig contains PSC related configuration at a cluster level.</summary>
     public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5849,6 +5979,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
+
+        /// <summary>Optional. Configurations for setting up PSC service automation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnections")]
+        public virtual System.Collections.Generic.IList<PscAutoConnectionConfig> PscAutoConnections { get; set; }
 
         /// <summary>
         /// Output only. The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
@@ -5973,6 +6107,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Read pool instances upgrade specific status.</summary>
+    public class ReadPoolInstancesUpgradeStageStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Read pool instances upgrade statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeStats")]
+        public virtual Stats UpgradeStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class RestartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6045,6 +6190,25 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for registering Restoring from CloudSQL resource.</summary>
+    public class RestoreFromCloudSQLRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cluster created from CloudSQL backup run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudsqlBackupRunSource")]
+        public virtual CloudSQLBackupRunSource CloudsqlBackupRunSource { get; set; }
+
+        /// <summary>Required. The resource being created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual Cluster Cluster { get; set; }
+
+        /// <summary>Required. ID of the requesting object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6138,6 +6302,48 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Status of the stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status of an upgrade stage.</summary>
+    public class StageStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Read pool instances upgrade metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readPoolInstancesUpgrade")]
+        public virtual ReadPoolInstancesUpgradeStageStatus ReadPoolInstancesUpgrade { get; set; }
+
+        /// <summary>Upgrade stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stage")]
+        public virtual string Stage { get; set; }
+
+        /// <summary>State of this stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Upgrade stats for read pool instances.</summary>
+    public class Stats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of read pool instances which failed to upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failed")]
+        public virtual System.Nullable<int> Failed { get; set; }
+
+        /// <summary>Number of read pool instances for which upgrade has not started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notStarted")]
+        public virtual System.Nullable<int> NotStarted { get; set; }
+
+        /// <summary>Number of read pool instances undergoing upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ongoing")]
+        public virtual System.Nullable<int> Ongoing { get; set; }
+
+        /// <summary>Number of read pool instances successfully upgraded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<int> Success { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6568,7 +6774,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 24</summary>
+    /// <summary>Common model for database resource instance metadata. Next ID: 25</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Availability configuration for this instance</summary>
@@ -6648,6 +6854,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expectedState")]
         public virtual string ExpectedState { get; set; }
 
+        /// <summary>GCBDR configuration for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcbdrConfiguration")]
+        public virtual StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration GcbdrConfiguration { get; set; }
+
         /// <summary>Required. Unique identifier for a Database resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId Id { get; set; }
@@ -6699,7 +6909,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>Suspension reason for the resource.</summary>
+        /// <summary>Optional. Suspension reason for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual string SuspensionReason { get; set; }
 
@@ -6851,6 +7061,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>An enum that represents the type of this entitlement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GCBDR Configuration for the resource.</summary>
+    public class StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the resource is managed by GCBDR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcbdrManaged")]
+        public virtual System.Nullable<bool> GcbdrManaged { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7182,6 +7403,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The recommended value for an INTEGER flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedIntegerValue")]
+        public virtual System.Nullable<long> RecommendedIntegerValue { get; set; }
+
+        /// <summary>The recommended value for a STRING flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedStringValue")]
+        public virtual string RecommendedStringValue { get; set; }
+
         /// <summary>
         /// Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires
         /// database restart is set, the backend will automatically restart the database (making sure to satisfy any
@@ -7189,6 +7418,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiresDbRestart")]
         public virtual System.Nullable<bool> RequiresDbRestart { get; set; }
+
+        /// <summary>The scope of the flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
 
         /// <summary>Restriction on STRING type value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringRestrictions")]
@@ -7453,6 +7686,33 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Status of upgrade operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for current status of the Major Version Upgrade operation.</summary>
+    public class UpgradeClusterStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the operation is cancellable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancellable")]
+        public virtual System.Nullable<bool> Cancellable { get; set; }
+
+        /// <summary>Source database major version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
+        public virtual string SourceVersion { get; set; }
+
+        /// <summary>Status of all upgrade stages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<StageStatus> Stages { get; set; }
+
+        /// <summary>Cluster Major Version Upgrade state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Target database major version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
