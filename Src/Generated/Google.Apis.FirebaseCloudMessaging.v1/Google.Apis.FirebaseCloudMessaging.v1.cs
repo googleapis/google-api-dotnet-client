@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -370,6 +370,13 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// </summary>
     public class AndroidConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If set to true, messages will be allowed to be delivered to the app while the device is in
+        /// bandwidth constrained mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandwidthConstrainedOk")]
+        public virtual System.Nullable<bool> BandwidthConstrainedOk { get; set; }
+
         /// <summary>
         /// An identifier of a group of messages that can be collapsed, so that only the last message gets sent when
         /// delivery can be resumed. A maximum of 4 different collapse keys is allowed at any given time.
