@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -8757,7 +8757,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string RequestId { get; set; }
 
-                            /// <summary>Required. Mutable fields include: display_name.</summary>
+                            /// <summary>Optional. Mutable fields include: display_name.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
 
@@ -10722,7 +10722,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
-                    /// <summary>Required. Mutable fields include: display_name, hubs.</summary>
+                    /// <summary>Optional. Mutable fields include: display_name, hubs.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -14191,11 +14191,20 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Whether the subscription is being created as part of the Citrix flow. If this field is set to
+        /// true, the subscription should have both the start_time and end_time set in the request and the billing
+        /// account used will be the Citrix master billing account regardless of what its set to in the request. This
+        /// field can only be set to true in create requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csgCustomer")]
+        public virtual System.Nullable<bool> CsgCustomer { get; set; }
+
         private string _endTimeRaw;
 
         private object _endTime;
 
-        /// <summary>Output only. End time of the subscription.</summary>
+        /// <summary>Optional. End time of the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -14246,7 +14255,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
 
         private object _startTime;
 
-        /// <summary>Output only. Start time of the subscription.</summary>
+        /// <summary>Optional. Start time of the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
