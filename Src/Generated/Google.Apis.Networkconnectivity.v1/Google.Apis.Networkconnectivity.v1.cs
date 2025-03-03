@@ -2181,7 +2181,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. Unique id for the policy-based route to create.</summary>
+                        /// <summary>
+                        /// Required. Unique id for the policy-based route to create. Provided by the client when the
+                        /// resource is created. The name must comply with
+                        /// https://google.aip.dev/122#resource-id-segments. Specifically, the name must be 1-63
+                        /// characters long and match the regular expression [a-z]([a-z0-9-]*[a-z0-9])?. The first
+                        /// character must be a lowercase letter, and all following characters (except for the last
+                        /// character) must be a dash, lowercase letter, or digit. The last character must be a
+                        /// lowercase letter or digit.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("policyBasedRouteId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PolicyBasedRouteId { get; set; }
 
@@ -7361,9 +7369,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service
-        /// Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the
-        /// hub. The default value is false.
+        /// Optional. Whether Private Service Connect connection propagation is enabled for the hub. If true, Private
+        /// Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached
+        /// to the hub. The default value is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportPsc")]
         public virtual System.Nullable<bool> ExportPsc { get; set; }
