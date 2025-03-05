@@ -1048,19 +1048,29 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
     /// </summary>
     public class ProductChange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new value of the changed resource or attribute.</summary>
+        /// <summary>
+        /// The new value of the changed resource or attribute. If empty, it means that the product was deleted. Will
+        /// have one of these values : (`approved`, `pending`, `disapproved`, ``)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
         public virtual string NewValue { get; set; }
 
-        /// <summary>The old value of the changed resource or attribute.</summary>
+        /// <summary>
+        /// The old value of the changed resource or attribute. If empty, it means that the product was created. Will
+        /// have one of these values : (`approved`, `pending`, `disapproved`, ``)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
         public virtual string OldValue { get; set; }
 
-        /// <summary>Countries that have the change (if applicable)</summary>
+        /// <summary>Countries that have the change (if applicable). Represented in the ISO 3166 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
-        /// <summary>Reporting contexts that have the change (if applicable)</summary>
+        /// <summary>
+        /// Reporting contexts that have the change (if applicable). Currently this field supports only (`SHOPPING_ADS`,
+        /// `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value
+        /// [ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/ReportingContextEnum)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
         public virtual string ReportingContext { get; set; }
 
@@ -1125,8 +1135,8 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
         private object _expirationTime;
 
         /// <summary>
-        /// The product expiration time. This field will not bet set if the notification is sent for a product deletion
-        /// event.
+        /// Optional. The product expiration time. This field will not bet set if the notification is sent for a product
+        /// deletion event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw
@@ -1169,7 +1179,7 @@ namespace Google.Apis.Merchant.inventories_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managingAccount")]
         public virtual string ManagingAccount { get; set; }
 
-        /// <summary>The product name. Format: `{product.name=accounts/{account}/products/{product}}`</summary>
+        /// <summary>The product name. Format: `accounts/{account}/products/{product}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
