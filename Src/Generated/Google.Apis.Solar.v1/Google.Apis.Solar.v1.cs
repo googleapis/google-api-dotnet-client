@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -285,8 +285,8 @@ namespace Google.Apis.Solar.v1
         }
 
         /// <summary>
-        /// Locates the closest building to a query point. Returns an error with code `NOT_FOUND` if there are no
-        /// buildings within approximately 50m of the query point.
+        /// Locates the building whose centroid is closest to a query point. Returns an error with code `NOT_FOUND` if
+        /// there are no buildings within approximately 50m of the query point.
         /// </summary>
         public virtual FindClosestRequest FindClosest()
         {
@@ -294,8 +294,8 @@ namespace Google.Apis.Solar.v1
         }
 
         /// <summary>
-        /// Locates the closest building to a query point. Returns an error with code `NOT_FOUND` if there are no
-        /// buildings within approximately 50m of the query point.
+        /// Locates the building whose centroid is closest to a query point. Returns an error with code `NOT_FOUND` if
+        /// there are no buildings within approximately 50m of the query point.
         /// </summary>
         public class FindClosestRequest : SolarBaseServiceRequest<Google.Apis.Solar.v1.Data.BuildingInsights>
         {
