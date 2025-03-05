@@ -3762,6 +3762,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buyer")]
         public virtual string Buyer { get; set; }
 
+        /// <summary>Output only. The buyer permission type of the deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerPermissionType")]
+        public virtual string BuyerPermissionType { get; set; }
+
         /// <summary>
         /// Output only. Refers to a Client. Format: `buyers/{buyerAccountId}/clients/{clientAccountid}`
         /// </summary>
