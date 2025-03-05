@@ -1147,6 +1147,91 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
         }
 
+        /// <summary>
+        /// Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a
+        /// managed Google domain. **Note:** This feature is not generally available.
+        /// </summary>
+        /// <param name="enterpriseId">Required. The ID of the enterprise.</param>
+        public virtual GenerateEnterpriseUpgradeUrlRequest GenerateEnterpriseUpgradeUrl(string enterpriseId)
+        {
+            return new GenerateEnterpriseUpgradeUrlRequest(this.service, enterpriseId);
+        }
+
+        /// <summary>
+        /// Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a
+        /// managed Google domain. **Note:** This feature is not generally available.
+        /// </summary>
+        public class GenerateEnterpriseUpgradeUrlRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.GenerateEnterpriseUpgradeUrlResponse>
+        {
+            /// <summary>Constructs a new GenerateEnterpriseUpgradeUrl request.</summary>
+            public GenerateEnterpriseUpgradeUrlRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>
+            /// Optional. Email address used to prefill the admin field of the enterprise signup form as part of the
+            /// upgrade process. This value is a hint only and can be altered by the user. Personal email addresses are
+            /// not allowed. If `allowedDomains` is non-empty then this must belong to one of the `allowedDomains`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("adminEmail", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AdminEmail { get; set; }
+
+            /// <summary>
+            /// Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email
+            /// address with a domain name that is not in this list. Subdomains of domains in this list are not allowed
+            /// but can be allowed by adding a second entry which has `*.` prefixed to the domain name (e.g.
+            /// *.example.com). If the field is not present or is an empty list then the IT admin is free to use any
+            /// valid domain name. Personal email domains are not allowed.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("allowedDomains", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AllowedDomains { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateEnterpriseUpgradeUrl";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/generateEnterpriseUpgradeUrl";
+
+            /// <summary>Initializes GenerateEnterpriseUpgradeUrl parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adminEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adminEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("allowedDomains", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "allowedDomains",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Generates a sign-up URL.</summary>
         public virtual GenerateSignupUrlRequest GenerateSignupUrl()
         {
@@ -6566,6 +6651,19 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An event generated when an enterprise is upgraded. **Note:** This feature is not generally available.
+    /// </summary>
+    public class EnterpriseUpgradeEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The upgrade state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeState")]
+        public virtual string UpgradeState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class EnterprisesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An enterprise.</summary>
@@ -6623,6 +6721,22 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
         public virtual System.Collections.Generic.IList<Entitlement> Entitlement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for generating a URL to upgrade an existing managed Google Play Accounts enterprise to a
+    /// managed Google domain. **Note:** This feature is not generally available.
+    /// </summary>
+    public class GenerateEnterpriseUpgradeUrlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A URL for an enterprise admin to upgrade their enterprise. The page can't be rendered in an iframe.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7099,6 +7213,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The ID of the enterprise for which the notification is sent. This will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseId")]
         public virtual string EnterpriseId { get; set; }
+
+        /// <summary>
+        /// Notifications about enterprise upgrade. **Note:** This feature is not generally available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseUpgradeEvent")]
+        public virtual EnterpriseUpgradeEvent EnterpriseUpgradeEvent { get; set; }
 
         /// <summary>Notifications about an app installation failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installFailureEvent")]
