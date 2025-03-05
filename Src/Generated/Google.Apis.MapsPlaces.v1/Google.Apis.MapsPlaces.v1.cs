@@ -1842,6 +1842,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("takeout")]
         public virtual System.Nullable<bool> Takeout { get; set; }
 
+        /// <summary>IANA Time Zone Database time zone. For example "America/New_York".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual GoogleTypeTimeZone TimeZone { get; set; }
+
         /// <summary>
         /// A set of type tags for this result. For example, "political" and "locality". For the complete list of
         /// possible values, see Table A and Table B at
@@ -3081,6 +3085,21 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).</summary>
+    public class GoogleTypeTimeZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IANA Time Zone Database time zone. For example "America/New_York".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. IANA Time Zone Database version number. For example "2019a".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
