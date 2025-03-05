@@ -167,6 +167,9 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>View last read time for Google Chat conversations</summary>
             public static string ChatUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.users.readstate.readonly";
+
+            /// <summary>Read and update your space settings</summary>
+            public static string ChatUsersSpacesettings = "https://www.googleapis.com/auth/chat.users.spacesettings";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Chat API.</summary>
@@ -277,6 +280,9 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>View last read time for Google Chat conversations</summary>
             public const string ChatUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.users.readstate.readonly";
+
+            /// <summary>Read and update your space settings</summary>
+            public const string ChatUsersSpacesettings = "https://www.googleapis.com/auth/chat.users.spacesettings";
         }
 
         /// <summary>Gets the Media resource.</summary>
@@ -3777,7 +3783,166 @@ namespace Google.Apis.HangoutsChat.v1
             public SpacesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                SpaceNotificationSetting = new SpaceNotificationSettingResource(service);
                 Threads = new ThreadsResource(service);
+            }
+
+            /// <summary>Gets the SpaceNotificationSetting resource.</summary>
+            public virtual SpaceNotificationSettingResource SpaceNotificationSetting { get; }
+
+            /// <summary>The "spaceNotificationSetting" collection of methods.</summary>
+            public class SpaceNotificationSettingResource
+            {
+                private const string Resource = "spaceNotificationSetting";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SpaceNotificationSettingResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the space notification state setting. Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+                /// </summary>
+                /// <param name="name">
+                /// Required. Format: users/{user}/spaces/{space}/spaceNotificationSetting -
+                /// `users/me/spaces/{space}/spaceNotificationSetting`, OR -
+                /// `users/user@example.com/spaces/{space}/spaceNotificationSetting`, OR -
+                /// `users/123456789/spaces/{space}/spaceNotificationSetting`. Note: Only the caller's user id or email
+                /// is allowed in the path.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets the space notification state setting. Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+                /// </summary>
+                public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceNotificationSetting>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: users/{user}/spaces/{space}/spaceNotificationSetting -
+                    /// `users/me/spaces/{space}/spaceNotificationSetting`, OR -
+                    /// `users/user@example.com/spaces/{space}/spaceNotificationSetting`, OR -
+                    /// `users/123456789/spaces/{space}/spaceNotificationSetting`. Note: Only the caller's user id or
+                    /// email is allowed in the path.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/spaces/[^/]+/spaceNotificationSetting$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the space notification state setting. Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the space notification setting. Format:
+                /// `users/{user}/spaces/{space}/spaceNotificationSetting`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.SpaceNotificationSetting body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the space notification state setting. Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+                /// </summary>
+                public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceNotificationSetting>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.SpaceNotificationSetting body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the space notification setting. Format:
+                    /// `users/{user}/spaces/{space}/spaceNotificationSetting`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. Supported field paths: - `notification_setting` - `mute_setting`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.HangoutsChat.v1.Data.SpaceNotificationSetting Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/spaces/[^/]+/spaceNotificationSetting$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Threads resource.</summary>
@@ -8467,6 +8632,28 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Event payload for a space update. Event type: `google.workspace.chat.space.v1.updated`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceUpdatedEventData")]
         public virtual SpaceUpdatedEventData SpaceUpdatedEventData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The notification setting of a user in a space.</summary>
+    public class SpaceNotificationSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The space notification mute setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("muteSetting")]
+        public virtual string MuteSetting { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the space notification setting. Format:
+        /// `users/{user}/spaces/{space}/spaceNotificationSetting`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The notification setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationSetting")]
+        public virtual string NotificationSetting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
