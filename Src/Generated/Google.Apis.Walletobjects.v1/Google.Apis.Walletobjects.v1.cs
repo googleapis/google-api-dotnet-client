@@ -9868,7 +9868,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Wrapping type for Google hosted images. Next ID: 7</summary>
+    /// <summary>Wrapping type for Google hosted images. Next ID: 8</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description of the image used for accessibility.</summary>
