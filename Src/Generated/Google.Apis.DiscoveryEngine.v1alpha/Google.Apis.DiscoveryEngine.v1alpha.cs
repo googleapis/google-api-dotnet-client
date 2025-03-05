@@ -30201,6 +30201,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indexedRecordCount")]
         public virtual System.Nullable<long> IndexedRecordCount { get; set; }
 
+        /// <summary>Metadata to generate the progress bar.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress Progress { get; set; }
+
         /// <summary>The number of requests sent to 3p API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceApiRequestCount")]
         public virtual System.Nullable<long> SourceApiRequestCount { get; set; }
@@ -30293,6 +30297,25 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Sync type of this run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncType")]
         public virtual string SyncType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the progress of a sync run.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentCount")]
+        public virtual System.Nullable<long> CurrentCount { get; set; }
+
+        /// <summary>Derived. The percentile of the progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
+        public virtual System.Nullable<int> Percentile { get; set; }
+
+        /// <summary>The total.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -32072,6 +32095,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDedicatedCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Vertex AI's error rate time series of auto-refresh dedicated crawl.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRefreshCrawlErrorRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries AutoRefreshCrawlErrorRate { get; set; }
+
         /// <summary>
         /// Vertex AI's dedicated crawl rate time series of auto-refresh, which is the crawl rate of
         /// Google-CloudVertexBot when dedicate crawl is set, and the crawl rate is for best effort use cases like
@@ -32079,6 +32106,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRefreshCrawlRate")]
         public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries AutoRefreshCrawlRate { get; set; }
+
+        /// <summary>Vertex AI's error rate time series of user triggered dedicated crawl.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userTriggeredCrawlErrorRate")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries UserTriggeredCrawlErrorRate { get; set; }
 
         /// <summary>
         /// Vertex AI's dedicated crawl rate time series of user triggered crawl, which is the crawl rate of
@@ -34558,6 +34589,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Grounding source.</summary>
     public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set, grounding is performed with enterprise web retrieval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseWebRetrievalSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceEnterpriseWebRetrievalSource EnterpriseWebRetrievalSource { get; set; }
+
         /// <summary>If set, grounding is performed with Google Search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceGoogleSearchSource GoogleSearchSource { get; set; }
@@ -34570,6 +34605,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceSearchSource SearchSource { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Params for using enterprise web retrieval as grounding source.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGenerateGroundedContentRequestGroundingSourceEnterpriseWebRetrievalSource : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -39803,6 +39845,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Information describing what natural language understanding was done on the input query.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The classified intents from the input query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classifiedIntents")]
+        public virtual System.Collections.Generic.IList<string> ClassifiedIntents { get; set; }
+
         /// <summary>The filters that were extracted from the input query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractedFilters")]
         public virtual string ExtractedFilters { get; set; }
@@ -42809,6 +42855,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreNonAnswerSeekingQuery")]
         public virtual System.Nullable<bool> IgnoreNonAnswerSeekingQuery { get; set; }
 
+        /// <summary>Optional. Source of image returned in the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSource")]
+        public virtual string ImageSource { get; set; }
+
         /// <summary>
         /// Language code for Summary. Use language tags defined by
         /// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This is an experimental feature.
@@ -44130,6 +44180,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Vertex AI's error rate time series of auto-refresh dedicated crawl.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRefreshCrawlErrorRate")]
+        public virtual GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries AutoRefreshCrawlErrorRate { get; set; }
+
         /// <summary>
         /// Vertex AI's dedicated crawl rate time series of auto-refresh, which is the crawl rate of
         /// Google-CloudVertexBot when dedicate crawl is set, and the crawl rate is for best effort use cases like
@@ -44137,6 +44191,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRefreshCrawlRate")]
         public virtual GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries AutoRefreshCrawlRate { get; set; }
+
+        /// <summary>Vertex AI's error rate time series of user triggered dedicated crawl.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userTriggeredCrawlErrorRate")]
+        public virtual GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries UserTriggeredCrawlErrorRate { get; set; }
 
         /// <summary>
         /// Vertex AI's dedicated crawl rate time series of user triggered crawl, which is the crawl rate of
