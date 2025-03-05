@@ -18910,7 +18910,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>The return reason category info wrapper.</summary>
     public class ReturnPolicyOnlineReturnReasonCategoryInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The corresponding return label source.</summary>
+        /// <summary>
+        /// The corresponding return label source. If the `ReturnMethod` field includes `BY_MAIL`, it is required to
+        /// specify `ReturnLabelSource` for both `BUYER_REMORSE` and `ITEM_DEFECT` return reason categories.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnLabelSource")]
         public virtual string ReturnLabelSource { get; set; }
 
