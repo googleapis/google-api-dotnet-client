@@ -2262,6 +2262,69 @@ namespace Google.Apis.AndroidManagement.v1
             }
         }
 
+        /// <summary>
+        /// Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a
+        /// managed Google domain.Note: This feature is not generally available.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The name of the enterprise to be upgraded in the form enterprises/{enterpriseId}.
+        /// </param>
+        public virtual GenerateEnterpriseUpgradeUrlRequest GenerateEnterpriseUpgradeUrl(Google.Apis.AndroidManagement.v1.Data.GenerateEnterpriseUpgradeUrlRequest body, string name)
+        {
+            return new GenerateEnterpriseUpgradeUrlRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a
+        /// managed Google domain.Note: This feature is not generally available.
+        /// </summary>
+        public class GenerateEnterpriseUpgradeUrlRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.GenerateEnterpriseUpgradeUrlResponse>
+        {
+            /// <summary>Constructs a new GenerateEnterpriseUpgradeUrl request.</summary>
+            public GenerateEnterpriseUpgradeUrlRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidManagement.v1.Data.GenerateEnterpriseUpgradeUrlRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the enterprise to be upgraded in the form enterprises/{enterpriseId}.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidManagement.v1.Data.GenerateEnterpriseUpgradeUrlRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateEnterpriseUpgradeUrl";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:generateEnterpriseUpgradeUrl";
+
+            /// <summary>Initializes GenerateEnterpriseUpgradeUrl parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^enterprises/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Gets an enterprise.</summary>
         /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
         public virtual GetRequest Get(string name)
@@ -4821,6 +4884,50 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual Date StartDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request message for generating a URL to upgrade an existing managed Google Play Accounts enterprise to a managed
+    /// Google domain.Note: This feature is not generally available.
+    /// </summary>
+    public class GenerateEnterpriseUpgradeUrlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Email address used to prefill the admin field of the enterprise signup form as part of the upgrade
+        /// process. This value is a hint only and can be altered by the user. Personal email addresses are not allowed.
+        /// If allowedDomains is non-empty then this must belong to one of the allowedDomains.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminEmail")]
+        public virtual string AdminEmail { get; set; }
+
+        /// <summary>
+        /// Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email
+        /// address with a domain name that is not in this list. Subdomains of domains in this list are not allowed but
+        /// can be allowed by adding a second entry which has *. prefixed to the domain name (e.g. *.example.com). If
+        /// the field is not present or is an empty list then the IT admin is free to use any valid domain name.
+        /// Personal email domains are not allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedDomains")]
+        public virtual System.Collections.Generic.IList<string> AllowedDomains { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for generating a URL to upgrade an existing managed Google Play Accounts enterprise to a
+    /// managed Google domain.Note: This feature is not generally available.
+    /// </summary>
+    public class GenerateEnterpriseUpgradeUrlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A URL for an enterprise admin to upgrade their enterprise. The page can't be rendered in an iframe.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
