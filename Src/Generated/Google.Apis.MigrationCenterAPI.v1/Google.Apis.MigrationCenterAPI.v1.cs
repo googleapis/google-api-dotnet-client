@@ -588,6 +588,18 @@ namespace Google.Apis.MigrationCenterAPI.v1
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_FULL")]
                         ASSETVIEWFULL = 2,
+
+                        /// <summary>The asset view includes the standard metadata of an asset.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_STANDARD")]
+                        ASSETVIEWSTANDARD = 3,
+
+                        /// <summary>The asset view includes fields needed by UI.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_UI")]
+                        ASSETVIEWUI = 4,
+
+                        /// <summary>The asset view includes asset name and labels.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_LABELS")]
+                        ASSETVIEWLABELS = 5,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -684,6 +696,18 @@ namespace Google.Apis.MigrationCenterAPI.v1
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_FULL")]
                         ASSETVIEWFULL = 2,
+
+                        /// <summary>The asset view includes the standard metadata of an asset.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_STANDARD")]
+                        ASSETVIEWSTANDARD = 3,
+
+                        /// <summary>The asset view includes fields needed by UI.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_UI")]
+                        ASSETVIEWUI = 4,
+
+                        /// <summary>The asset view includes asset name and labels.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ASSET_VIEW_LABELS")]
+                        ASSETVIEWLABELS = 5,
                     }
 
                     /// <summary>Gets the method name.</summary>

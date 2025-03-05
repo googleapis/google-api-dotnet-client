@@ -11,12 +11,18 @@
   "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+AssetsResource+GetRequest.ViewEnum": [
     "ASSET_VIEW_UNSPECIFIED",
     "ASSET_VIEW_BASIC",
-    "ASSET_VIEW_FULL"
+    "ASSET_VIEW_FULL",
+    "ASSET_VIEW_STANDARD",
+    "ASSET_VIEW_UI",
+    "ASSET_VIEW_LABELS"
   ],
   "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+AssetsResource+ListRequest.ViewEnum": [
     "ASSET_VIEW_UNSPECIFIED",
     "ASSET_VIEW_BASIC",
-    "ASSET_VIEW_FULL"
+    "ASSET_VIEW_FULL",
+    "ASSET_VIEW_STANDARD",
+    "ASSET_VIEW_UI",
+    "ASSET_VIEW_LABELS"
   ],
   "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+ImportJobsResource+GetRequest.ViewEnum": [
     "IMPORT_JOB_VIEW_UNSPECIFIED",
