@@ -1291,6 +1291,65 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
                     this.service = service;
                 }
 
+                /// <summary>Delete test cases.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where these test cases will be deleted. Format:
+                /// `projects/{project_number}/apps/{app_id}`
+                /// </param>
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest body, string parent)
+                {
+                    return new BatchDeleteRequest(this.service, body, parent);
+                }
+
+                /// <summary>Delete test cases.</summary>
+                public class BatchDeleteRequest : FirebaseAppDistributionBaseServiceRequest<Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new BatchDelete request.</summary>
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where these test cases will be deleted. Format:
+                    /// `projects/{project_number}/apps/{app_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseAppDistribution.v1alpha.Data.GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchDelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/testCases:batchDelete";
+
+                    /// <summary>Initializes BatchDelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Create a new test case.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2146,6 +2205,20 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>Output only. The screenshot used in the context of this assertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenshot")]
         public virtual GoogleFirebaseAppdistroV1alphaScreenshot Screenshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for `DeleteTestCase`.</summary>
+    public class GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the test cases to delete. A maximum number of 1000 test cases can be deleted in one
+        /// batch Format: `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
