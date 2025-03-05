@@ -1585,6 +1585,12 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     public class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Output only. This identifies whether the subscription is attached to a Google Home structure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedToGoogleStructure")]
+        public virtual System.Nullable<bool> AttachedToGoogleStructure { get; set; }
+
+        /// <summary>
         /// Optional. This identifies the structure ID on partner side that the subscription should be applied to. Only
         /// required when the partner requires structure mapping.
         /// </summary>
