@@ -6456,6 +6456,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AutoMonitoringConfig defines the configuration for GKE Workload Auto-Monitoring.</summary>
+    public class AutoMonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Scope for GKE Workload Auto-Monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
     /// </summary>
@@ -8931,6 +8942,10 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class ManagedPrometheusConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GKE Workload Auto-Monitoring Configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoMonitoringConfig")]
+        public virtual AutoMonitoringConfig AutoMonitoringConfig { get; set; }
+
         /// <summary>Enable Managed Collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
