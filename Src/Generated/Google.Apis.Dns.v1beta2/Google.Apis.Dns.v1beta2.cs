@@ -5264,7 +5264,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual RRSetRoutingPolicyGeoPolicy GeoPolicy { get; set; }
 
         /// <summary>
-        /// The selfLink attribute of the HealthCheck resource to use for this RRSetRoutingPolicy.
+        /// The fully qualified URL of the HealthCheck to use for this RRSetRoutingPolicy. Format this URL like
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/healthChecks/{healthCheck}`.
         /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
@@ -5337,8 +5338,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
 
         /// <summary>
-        /// DNSSEC generated signatures for all the `rrdata` within this item. If health checked targets are provided
-        /// for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
+        /// DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for
+        /// DNSSEC-enabled zones, you can only use at most one health-checked IP address per item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
         public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
@@ -5349,7 +5350,8 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     /// <summary>
     /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the
-    /// healthy endpoints will be included in the response.
+    /// healthy endpoints will be included in the response. Set either `internal_load_balancer` or `external_endpoints`.
+    /// Do not set both.
     /// </summary>
     public class RRSetRoutingPolicyHealthCheckTargets : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5481,8 +5483,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
 
         /// <summary>
-        /// DNSSEC generated signatures for all the `rrdata` within this item. Note that if health checked targets are
-        /// provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
+        /// DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for
+        /// DNSSEC-enabled zones, you can only use at most one health-checked IP address per item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
         public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
