@@ -6049,9 +6049,9 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>
                 /// Optional. Filters to restrict results to specific answer records. The expression has the following
                 /// syntax: [AND ] ... The following fields and operators are supported: * conversation_id with
-                /// equals(=) operator Examples: * "conversation_id=bar" matches answer records in the
-                /// projects/foo/locations/global/conversations/bar conversation (assuming the parent is
-                /// projects/foo/locations/global). For more information about filtering, see [API
+                /// equals(=) operator Examples: * `conversation_id=bar` matches answer records in the
+                /// `projects/foo/locations/global/conversations/bar` conversation (assuming the parent is
+                /// `projects/foo/locations/global`). For more information about filtering, see [API
                 /// Filtering](https://aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -14784,9 +14784,9 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>
                     /// Optional. Filters to restrict results to specific answer records. The expression has the
                     /// following syntax: [AND ] ... The following fields and operators are supported: * conversation_id
-                    /// with equals(=) operator Examples: * "conversation_id=bar" matches answer records in the
-                    /// projects/foo/locations/global/conversations/bar conversation (assuming the parent is
-                    /// projects/foo/locations/global). For more information about filtering, see [API
+                    /// with equals(=) operator Examples: * `conversation_id=bar` matches answer records in the
+                    /// `projects/foo/locations/global/conversations/bar` conversation (assuming the parent is
+                    /// `projects/foo/locations/global`). For more information about filtering, see [API
                     /// Filtering](https://aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -32251,7 +32251,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
-        /// <summary>List of names of Cloud Speech phrase sets that are used for transcription.</summary>
+        /// <summary>
+        /// List of names of Cloud Speech phrase sets that are used for transcription. For phrase set limitations,
+        /// please refer to [Cloud Speech API quotas and
+        /// limits](https://cloud.google.com/speech-to-text/quotas#content).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
         public virtual System.Collections.Generic.IList<string> PhraseSets { get; set; }
 
