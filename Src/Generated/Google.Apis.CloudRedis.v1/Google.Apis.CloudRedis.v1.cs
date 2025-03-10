@@ -3156,6 +3156,13 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
         public virtual string NodeType { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Ondemand maintenance for the cluster. This field can be used to trigger ondemand
+        /// critical update on the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ondemandMaintenance")]
+        public virtual System.Nullable<bool> OndemandMaintenance { get; set; }
+
         /// <summary>Optional. Persistence config (RDB, AOF) for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistenceConfig")]
         public virtual ClusterPersistenceConfig PersistenceConfig { get; set; }
@@ -4921,15 +4928,13 @@ namespace Google.Apis.CloudRedis.v1.Data
     public class MachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/342346271) add proto validations
-        /// again after bug fix.
+        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add proto validations again after
+        /// bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
-        /// <summary>
-        /// Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
-        /// </summary>
+        /// <summary>Memory size in bytes. TODO(b/342344482) add proto validations again after bug fix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
         public virtual System.Nullable<long> MemorySizeInBytes { get; set; }
 
@@ -4938,7 +4943,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Nullable<int> ShardCount { get; set; }
 
         /// <summary>
-        /// Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// Optional. The number of vCPUs. TODO(b/342344482) add proto validations again after bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
         public virtual System.Nullable<double> VcpuCount { get; set; }
