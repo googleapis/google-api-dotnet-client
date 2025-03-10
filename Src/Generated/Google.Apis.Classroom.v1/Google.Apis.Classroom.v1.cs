@@ -8127,7 +8127,8 @@ namespace Google.Apis.Classroom.v1
             /// Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
             /// user is not permitted to access the requested course, create a topic in the requested course, or for
             /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a
-            /// topic in the course with the same name. * `NOT_FOUND` if the requested course does not exist.
+            /// topic in the course with the same name. * `FAILED_PRECONDITION` for the following request error: *
+            /// CourseTopicLimitReached * `NOT_FOUND` if the requested course does not exist.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">
@@ -8142,7 +8143,8 @@ namespace Google.Apis.Classroom.v1
             /// Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
             /// user is not permitted to access the requested course, create a topic in the requested course, or for
             /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a
-            /// topic in the course with the same name. * `NOT_FOUND` if the requested course does not exist.
+            /// topic in the course with the same name. * `FAILED_PRECONDITION` for the following request error: *
+            /// CourseTopicLimitReached * `NOT_FOUND` if the requested course does not exist.
             /// </summary>
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
             {
