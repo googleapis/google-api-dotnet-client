@@ -4575,6 +4575,49 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        private string _lastSuccessfulBackupTimeRaw;
+
+        private object _lastSuccessfulBackupTime;
+
+        /// <summary>
+        /// Output only. Completion time of the last successful Backup. This is sourced from a successful Backup's
+        /// complete_time field. This field is added to maintain consistency with BackupPlanBinding to display last
+        /// successful backup time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulBackupTime")]
+        public virtual string LastSuccessfulBackupTimeRaw
+        {
+            get => _lastSuccessfulBackupTimeRaw;
+            set
+            {
+                _lastSuccessfulBackupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSuccessfulBackupTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSuccessfulBackupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSuccessfulBackupTimeDateTimeOffset instead.")]
+        public virtual object LastSuccessfulBackupTime
+        {
+            get => _lastSuccessfulBackupTime;
+            set
+            {
+                _lastSuccessfulBackupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSuccessfulBackupTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSuccessfulBackupTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSuccessfulBackupTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSuccessfulBackupTimeRaw);
+            set => LastSuccessfulBackupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Output only. The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
         /// </summary>
