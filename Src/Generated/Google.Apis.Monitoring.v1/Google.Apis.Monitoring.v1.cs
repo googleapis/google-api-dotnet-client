@@ -3484,6 +3484,10 @@ namespace Google.Apis.Monitoring.v1.Data
     /// </summary>
     public class SingleViewGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Determines how the widget selector will be displayed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayType")]
+        public virtual string DisplayType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
