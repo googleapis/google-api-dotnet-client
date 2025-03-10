@@ -34,6 +34,7 @@ namespace Google.Apis.DataPortability.v1beta
         /// <param name="initializer">The service initializer.</param>
         public DataPortabilityService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            AccessType = new AccessTypeResource(this);
             ArchiveJobs = new ArchiveJobsResource(this);
             Authorization = new AuthorizationResource(this);
             PortabilityArchive = new PortabilityArchiveResource(this);
@@ -487,6 +488,9 @@ namespace Google.Apis.DataPortability.v1beta
             public const string DataportabilityYoutubeUnlistedVideos = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_videos";
         }
 
+        /// <summary>Gets the AccessType resource.</summary>
+        public virtual AccessTypeResource AccessType { get; }
+
         /// <summary>Gets the ArchiveJobs resource.</summary>
         public virtual ArchiveJobsResource ArchiveJobs { get; }
 
@@ -675,6 +679,60 @@ namespace Google.Apis.DataPortability.v1beta
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "accessType" collection of methods.</summary>
+    public class AccessTypeResource
+    {
+        private const string Resource = "accessType";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AccessTypeResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets the access type of the token.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CheckRequest Check(Google.Apis.DataPortability.v1beta.Data.CheckAccessTypeRequest body)
+        {
+            return new CheckRequest(this.service, body);
+        }
+
+        /// <summary>Gets the access type of the token.</summary>
+        public class CheckRequest : DataPortabilityBaseServiceRequest<Google.Apis.DataPortability.v1beta.Data.CheckAccessTypeResponse>
+        {
+            /// <summary>Constructs a new Check request.</summary>
+            public CheckRequest(Google.Apis.Services.IClientService service, Google.Apis.DataPortability.v1beta.Data.CheckAccessTypeRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DataPortability.v1beta.Data.CheckAccessTypeRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "check";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/accessType:check";
+
+            /// <summary>Initializes Check parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
         }
     }
 
@@ -995,6 +1053,34 @@ namespace Google.Apis.DataPortability.v1beta.Data
     /// <summary>Response to canceling a Data Portability Archive job.</summary>
     public class CancelPortabilityArchiveResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request to check the token's access type. All required information is derived from the attached OAuth token.
+    /// </summary>
+    public class CheckAccessTypeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to checking the token's access type.</summary>
+    public class CheckAccessTypeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Jobs initiated with this token will be one-time if any requested resources have one-time access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneTimeResources")]
+        public virtual System.Collections.Generic.IList<string> OneTimeResources { get; set; }
+
+        /// <summary>
+        /// Jobs initiated with this token will be time-based if all requested resources have time-based access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeBasedResources")]
+        public virtual System.Collections.Generic.IList<string> TimeBasedResources { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
