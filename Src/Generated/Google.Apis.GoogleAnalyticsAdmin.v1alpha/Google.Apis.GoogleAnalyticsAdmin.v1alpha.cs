@@ -12109,6 +12109,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSignalsSettings")]
         public virtual GoogleAnalyticsAdminV1alphaGoogleSignalsSettings GoogleSignalsSettings { get; set; }
 
+        /// <summary>A snapshot of a KeyEvent resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyEvent")]
+        public virtual GoogleAnalyticsAdminV1alphaKeyEvent KeyEvent { get; set; }
+
         /// <summary>A snapshot of a MeasurementProtocolSecret resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementProtocolSecret")]
         public virtual GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret MeasurementProtocolSecret { get; set; }
