@@ -10827,7 +10827,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("artifactUri")]
         public virtual string ArtifactUri { get; set; }
 
-        /// <summary>Output only. File path of the rendered manifest relative to the URI.</summary>
+        /// <summary>Output only. File path of the rendered manifest relative to the URI for the stable phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifestPath")]
         public virtual string ManifestPath { get; set; }
 
@@ -10835,7 +10835,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phaseArtifacts")]
         public virtual System.Collections.Generic.IDictionary<string, PhaseArtifact> PhaseArtifacts { get; set; }
 
-        /// <summary>Output only. File path of the resolved Skaffold configuration relative to the URI.</summary>
+        /// <summary>
+        /// Output only. File path of the resolved Skaffold configuration for the stable phase, relative to the URI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldConfigPath")]
         public virtual string SkaffoldConfigPath { get; set; }
 
