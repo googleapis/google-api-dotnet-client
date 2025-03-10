@@ -1289,6 +1289,10 @@ namespace Google.Apis.Parallelstore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationGcsBucket")]
         public virtual DestinationGcsBucket DestinationGcsBucket { get; set; }
 
+        /// <summary>Optional. The metadata options for the export data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataOptions")]
+        public virtual TransferMetadataOptions MetadataOptions { get; set; }
+
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
         /// your request, the server will know to ignore the request if it has already been completed. The server will
@@ -1336,6 +1340,10 @@ namespace Google.Apis.Parallelstore.v1.Data
         /// <summary>Parallelstore destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationParallelstore")]
         public virtual DestinationParallelstore DestinationParallelstore { get; set; }
+
+        /// <summary>Optional. The transfer metadata options for the import data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataOptions")]
+        public virtual TransferMetadataOptions MetadataOptions { get; set; }
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
@@ -1765,6 +1773,21 @@ namespace Google.Apis.Parallelstore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation metadata returned by the CLH during resource state reconciliation.</summary>
+    public class ReconciliationOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DEPRECATED. Use exclusive_action instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteResource")]
+        public virtual System.Nullable<bool> DeleteResource { get; set; }
+
+        /// <summary>Excluisive action returned by the CLH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
+        public virtual string ExclusiveAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cloud Storage as the source of a data transfer.</summary>
     public class SourceGcsBucket : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1815,6 +1838,25 @@ namespace Google.Apis.Parallelstore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Transfer metadata options for the instance.</summary>
+    public class TransferMetadataOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The GID preservation behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gid")]
+        public virtual string Gid { get; set; }
+
+        /// <summary>Optional. The mode preservation behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Optional. The UID preservation behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
