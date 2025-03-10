@@ -1351,6 +1351,10 @@ namespace Google.Apis.GKEHub.v2beta.Data
     /// <summary>Configuration for Config Sync</summary>
     public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration for deployment overrides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentOverrides")]
+        public virtual System.Collections.Generic.IList<ConfigManagementDeploymentOverride> DeploymentOverrides { get; set; }
+
         /// <summary>
         /// Optional. Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and
         /// the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be
@@ -1539,6 +1543,52 @@ namespace Google.Apis.GKEHub.v2beta.Data
         /// <summary>Version of the deployed syncer pod.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncer")]
         public virtual string Syncer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a container override.</summary>
+    public class ConfigManagementContainerOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
+        public virtual string ContainerName { get; set; }
+
+        /// <summary>Optional. The cpu limit of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuLimit")]
+        public virtual string CpuLimit { get; set; }
+
+        /// <summary>Optional. The cpu request of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuRequest")]
+        public virtual string CpuRequest { get; set; }
+
+        /// <summary>Optional. The memory limit of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryLimit")]
+        public virtual string MemoryLimit { get; set; }
+
+        /// <summary>Optional. The memory request of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryRequest")]
+        public virtual string MemoryRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a deployment override.</summary>
+    public class ConfigManagementDeploymentOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The containers of the deployment resource to be overridden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containers")]
+        public virtual System.Collections.Generic.IList<ConfigManagementContainerOverride> Containers { get; set; }
+
+        /// <summary>Required. The name of the deployment resource to be overridden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentName")]
+        public virtual string DeploymentName { get; set; }
+
+        /// <summary>Required. The namespace of the deployment resource to be overridden..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentNamespace")]
+        public virtual string DeploymentNamespace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
