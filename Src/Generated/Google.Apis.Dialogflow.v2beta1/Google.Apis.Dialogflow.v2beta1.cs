@@ -35279,7 +35279,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
-        /// <summary>List of names of Cloud Speech phrase sets that are used for transcription.</summary>
+        /// <summary>
+        /// List of names of Cloud Speech phrase sets that are used for transcription. For phrase set limitations,
+        /// please refer to [Cloud Speech API quotas and
+        /// limits](https://cloud.google.com/speech-to-text/quotas#content).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
         public virtual System.Collections.Generic.IList<string> PhraseSets { get; set; }
 
