@@ -505,8 +505,9 @@ namespace Google.Apis.SQLAdmin.v1
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// Multiple filter queries are separated by spaces. For example, 'instance:abc type:FINAL. You can filter
-            /// by type, instance name, creation time or location.
+            /// Multiple filter queries are separated by spaces. For example, 'instance:abc AND type:FINAL,
+            /// 'location:us', 'backupInterval.startTime&amp;gt;=1950-01-01T01:01:25.771Z'. You can filter by type,
+            /// instance, backupInterval.startTime (creation time), or location.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -5566,6 +5567,53 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
 
+        private string _instanceDeletionTimeRaw;
+
+        private object _instanceDeletionTime;
+
+        /// <summary>
+        /// Optional. Output only. Timestamp in UTC of when the instance associated with this backup is deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceDeletionTime")]
+        public virtual string InstanceDeletionTimeRaw
+        {
+            get => _instanceDeletionTimeRaw;
+            set
+            {
+                _instanceDeletionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _instanceDeletionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InstanceDeletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstanceDeletionTimeDateTimeOffset instead.")]
+        public virtual object InstanceDeletionTime
+        {
+            get => _instanceDeletionTime;
+            set
+            {
+                _instanceDeletionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _instanceDeletionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InstanceDeletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InstanceDeletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstanceDeletionTimeRaw);
+            set => InstanceDeletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Output only. The instance setting of the source instance that's associated with this backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceSettings")]
+        public virtual DatabaseInstance InstanceSettings { get; set; }
+
         /// <summary>Output only. This is always `sql#backup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -5626,8 +5674,9 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string TimeZone { get; set; }
 
         /// <summary>
-        /// Input only. The time-to-live (TTL) interval for this resource (in days). For example: ttlDays:7 means 7
-        /// days.
+        /// Input only. The time-to-live (TTL) interval for this resource (in days). For example: ttlDays:7, means 7
+        /// days from the current time. The expiration time can't exceed 365 days from the time that the backup is
+        /// created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttlDays")]
         public virtual System.Nullable<long> TtlDays { get; set; }
@@ -6148,6 +6197,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
         public virtual string DnsName { get; set; }
 
+        /// <summary>Output only. The list of DNS names used by this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsNames")]
+        public virtual System.Collections.Generic.IList<DnsNameMapping> DnsNames { get; set; }
+
         /// <summary>The assigned IP addresses for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
         public virtual System.Collections.Generic.IList<IpMapping> IpAddresses { get; set; }
@@ -6348,6 +6401,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Output only. The dns name of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
         public virtual string DnsName { get; set; }
+
+        /// <summary>Output only. The list of DNS names used by this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsNames")]
+        public virtual System.Collections.Generic.IList<DnsNameMapping> DnsNames { get; set; }
 
         /// <summary>
         /// This field is deprecated and will be removed from a future version of the API. Use the
@@ -6757,6 +6814,25 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DNS metadata.</summary>
+    public class DnsNameMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The connection type of the DNS name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>Output only. The scope that the DNS name applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsScope")]
+        public virtual string DnsScope { get; set; }
+
+        /// <summary>The DNS name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -6783,10 +6859,12 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// Databases to be exported. `MySQL instances:` If `fileType` is `SQL` and no database is specified, all
         /// databases are exported, except for the `mysql` system database. If `fileType` is `CSV`, you can specify one
         /// database, either by using this property or by using the `csvExportOptions.selectQuery` property, which takes
-        /// precedence over this property. `PostgreSQL instances:` You must specify one database to be exported. If
-        /// `fileType` is `CSV`, this database must match the one specified in the `csvExportOptions.selectQuery`
-        /// property. `SQL Server instances:` You must specify one database to be exported, and the `fileType` must be
-        /// `BAK`.
+        /// precedence over this property. `PostgreSQL instances:` If you don't specify a database by name, all user
+        /// databases in the instance are exported. This excludes system databases and Cloud SQL databases used to
+        /// manage internal operations. Exporting all user databases is only available for directory-formatted parallel
+        /// export. If `fileType` is `CSV`, this database must match the one specified in the
+        /// `csvExportOptions.selectQuery` property. `SQL Server instances:` You must specify one database to be
+        /// exported, and the `fileType` must be `BAK`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databases")]
         public virtual System.Collections.Generic.IList<string> Databases { get; set; }
@@ -7278,8 +7356,9 @@ namespace Google.Apis.SQLAdmin.v1.Data
 
         /// <summary>
         /// The target database for the import. If `fileType` is `SQL`, this field is required only if the import file
-        /// does not specify a database, and is overridden by any database specification in the import file. If
-        /// `fileType` is `CSV`, one database must be specified.
+        /// does not specify a database, and is overridden by any database specification in the import file. For entire
+        /// instance parallel import operations, the database is overridden by the database name stored in subdirectory
+        /// name. If `fileType` is `CSV`, one database must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
@@ -7755,9 +7834,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual RestoreBackupContext RestoreBackupContext { get; set; }
 
         /// <summary>
-        /// Optional. By using this parameter, Cloud SQL overrides the instance settings existed at time of backup with
-        /// the instance settings that you want to restore. You can't change the Instance's major database version and
-        /// you can only increase the disk size. You can use this field to restore new instances only.
+        /// Optional. By using this parameter, Cloud SQL overrides any instance settings stored in the backup you are
+        /// restoring from. You can't change the instance's major database version and you can only increase the disk
+        /// size. You can use this field to restore new instances only. This field is not applicable for restore to
+        /// existing instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreInstanceSettings")]
         public virtual DatabaseInstance RestoreInstanceSettings { get; set; }
@@ -7949,7 +8029,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
 
         /// <summary>
         /// Optional. The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the
-        /// `server_ca_mode`. Format: projects//locations//caPools/
+        /// `server_ca_mode`. Format: projects/{PROJECT}/locations/{REGION}/caPools/{CA_POOL_ID}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCaPool")]
         public virtual string ServerCaPool { get; set; }
@@ -9132,6 +9212,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationType")]
         public virtual string ReplicationType { get; set; }
+
+        /// <summary>
+        /// Optional. When this parameter is set to true, Cloud SQL retains backups of the instance even after the
+        /// instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project.
+        /// The AUTOMATED backup will be retained based on the backups retention setting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retainBackupsOnDelete")]
+        public virtual System.Nullable<bool> RetainBackupsOnDelete { get; set; }
 
         /// <summary>
         /// The version of instance settings. This is a required field for update method to make sure concurrent updates
