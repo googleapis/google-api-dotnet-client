@@ -8926,6 +8926,346 @@ namespace Google.Apis.Dialogflow.v3beta1
                     public ToolsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Versions = new VersionsResource(service);
+                    }
+
+                    /// <summary>Gets the Versions resource.</summary>
+                    public virtual VersionsResource Versions { get; }
+
+                    /// <summary>The "versions" collection of methods.</summary>
+                    public class VersionsResource
+                    {
+                        private const string Resource = "versions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public VersionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Creates a version for the specified Tool.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The tool to create a version for. Format: `projects//locations//agents//tools/`.
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ToolVersion body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Creates a version for the specified Tool.</summary>
+                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ToolVersion>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ToolVersion body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The tool to create a version for. Format:
+                            /// `projects//locations//agents//tools/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ToolVersion Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+parent}/versions";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/tools/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes the specified version of the Tool.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the tool version to delete. Format:
+                        /// `projects//locations//agents//tools//versions/`.
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Deletes the specified version of the Tool.</summary>
+                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the tool version to delete. Format:
+                            /// `projects//locations//agents//tools//versions/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. This field has no effect for Tools not being used. For Tools that are used: *
+                            /// If `force` is set to false, an error will be returned with message indicating the
+                            /// referenced resources. * If `force` is set to true, Dialogflow will remove the tool, as
+                            /// well as any references to the tool.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> Force { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/tools/[^/]+/versions/[^/]+$",
+                                });
+                                RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "force",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Retrieves the specified version of the Tool.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the tool version. Format:
+                        /// `projects//locations//agents//tools//versions/`.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Retrieves the specified version of the Tool.</summary>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ToolVersion>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the tool version. Format:
+                            /// `projects//locations//agents//tools//versions/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/tools/[^/]+/versions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>List versions of the specified Tool.</summary>
+                        /// <param name="parent">
+                        /// Required. The parent of the tool versions. Format: `projects//locations//agents//tools/`.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>List versions of the specified Tool.</summary>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent of the tool versions. Format:
+                            /// `projects//locations//agents//tools/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of items to return in a single page. By default 100 and at
+                            /// most 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. The next_page_token value returned from a previous list request.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+parent}/versions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/tools/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Retrieves the specified version of the Tool and stores it as the current tool draft,
+                        /// returning the tool with resources updated.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The name of the tool version. Format:
+                        /// `projects//locations//agents//tools//versions/`.
+                        /// </param>
+                        public virtual RestoreRequest Restore(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest body, string name)
+                        {
+                            return new RestoreRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Retrieves the specified version of the Tool and stores it as the current tool draft,
+                        /// returning the tool with resources updated.
+                        /// </summary>
+                        public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse>
+                        {
+                            /// <summary>Constructs a new Restore request.</summary>
+                            public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the tool version. Format:
+                            /// `projects//locations//agents//tools//versions/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "restore";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}:restore";
+
+                            /// <summary>Initializes Restore parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/tools/[^/]+/versions/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Creates a Tool in the specified agent.</summary>
@@ -14803,9 +15143,43 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Settings for connecting to Git repository for an agent.</summary>
     public class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Git connection settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitConnectionSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGitConnectionSettings GitConnectionSettings { get; set; }
+
         /// <summary>GitHub settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings GithubSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Integration settings for a Git service hosted on Cloud Run.</summary>
+    public class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGitConnectionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the SecretManager secret version resource storing the git access token. Format:
+        /// `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessTokenSecret")]
+        public virtual string AccessTokenSecret { get; set; }
+
+        /// <summary>Optional. List of branches configured for the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branches")]
+        public virtual System.Collections.Generic.IList<string> Branches { get; set; }
+
+        /// <summary>Required. Display name for the repository</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. Git server reporitory URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryUri")]
+        public virtual string RepositoryUri { get; set; }
+
+        /// <summary>Required. Default branch of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingBranch")]
+        public virtual string TrackingBranch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18201,6 +18575,64 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Handler can be used to define custom logic to be executed based on the user-specified triggers.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1Handler : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A handler triggered by event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventHandler")]
+        public virtual GoogleCloudDialogflowCxV3beta1HandlerEventHandler EventHandler { get; set; }
+
+        /// <summary>A handler triggered during specific lifecycle of the playbook execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleHandler")]
+        public virtual GoogleCloudDialogflowCxV3beta1HandlerLifecycleHandler LifecycleHandler { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A handler that is triggered by the specified event.</summary>
+    public class GoogleCloudDialogflowCxV3beta1HandlerEventHandler : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The condition that must be satisfied to trigger this handler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>Required. The name of the event that triggers this handler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
+
+        /// <summary>Required. The fulfillment to call when the event occurs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fulfillment")]
+        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment Fulfillment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A handler that is triggered on the specific lifecycle_stage of the playbook execution.</summary>
+    public class GoogleCloudDialogflowCxV3beta1HandlerLifecycleHandler : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The condition that must be satisfied to trigger this handler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>Required. The fulfillment to call when this handler is triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fulfillment")]
+        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment Fulfillment { get; set; }
+
+        /// <summary>
+        /// Required. The name of the lifecycle stage that triggers this handler. Supported values: * `playbook-start` *
+        /// `pre-action-selection` * `pre-action-execution`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleStage")]
+        public virtual string LifecycleStage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the EntityTypes.ImportEntityTypes long running operation.</summary>
     public class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19160,6 +19592,26 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Tools.ListToolVersions.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The list of tool versions. There will be a maximum number of items returned based on the page_size field in
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolVersions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ToolVersion> ToolVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Tools.ListTools.</summary>
     public class GoogleCloudDialogflowCxV3beta1ListToolsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19715,6 +20167,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
         public virtual string Goal { get; set; }
+
+        /// <summary>Optional. A list of registered handlers to execute based on the specified triggers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Handler> Handlers { get; set; }
 
         /// <summary>Optional. Defined structured input parameters for this playbook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameterDefinitions")]
@@ -20636,6 +21092,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>tracking branch for the git pull</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingBranch")]
         public virtual string TrackingBranch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Tools.RestoreToolVersion.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Tools.RestoreToolVersion.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual GoogleCloudDialogflowCxV3beta1Tool Tool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21827,6 +22301,102 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. The tool that should be used. Format: `projects//locations//agents//tools/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tool version is a snapshot of the tool at certain timestamp.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ToolVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Last time the tool version was created or modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The display name of the tool version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. The unique identifier of the tool version. Format:
+        /// `projects//locations//agents//tools//versions/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Snapshot of the tool to be associated with this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual GoogleCloudDialogflowCxV3beta1Tool Tool { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last time the tool version was created or modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
