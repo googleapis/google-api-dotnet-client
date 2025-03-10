@@ -5481,14 +5481,20 @@ namespace Google.Apis.Eventarc.v1
                 }
             }
 
-            /// <summary>Get a GoogleChannelConfig</summary>
+            /// <summary>
+            /// Get a GoogleChannelConfig. The name of the GoogleChannelConfig in the response is ALWAYS coded with
+            /// projectID.
+            /// </summary>
             /// <param name="name">Required. The name of the config to get.</param>
             public virtual GetGoogleChannelConfigRequest GetGoogleChannelConfig(string name)
             {
                 return new GetGoogleChannelConfigRequest(this.service, name);
             }
 
-            /// <summary>Get a GoogleChannelConfig</summary>
+            /// <summary>
+            /// Get a GoogleChannelConfig. The name of the GoogleChannelConfig in the response is ALWAYS coded with
+            /// projectID.
+            /// </summary>
             public class GetGoogleChannelConfigRequest : EventarcBaseServiceRequest<Google.Apis.Eventarc.v1.Data.GoogleChannelConfig>
             {
                 /// <summary>Constructs a new GetGoogleChannelConfig request.</summary>
@@ -5619,7 +5625,8 @@ namespace Google.Apis.Eventarc.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name of the config. Must be in the format of,
-            /// `projects/{project}/locations/{location}/googleChannelConfig`.
+            /// `projects/{project}/locations/{location}/googleChannelConfig`. In API responses, the config name always
+            /// includes the projectID, regardless of whether the projectID or projectNumber was provided.
             /// </param>
             public virtual UpdateGoogleChannelConfigRequest UpdateGoogleChannelConfig(Google.Apis.Eventarc.v1.Data.GoogleChannelConfig body, string name)
             {
@@ -5639,7 +5646,8 @@ namespace Google.Apis.Eventarc.v1
 
                 /// <summary>
                 /// Required. The resource name of the config. Must be in the format of,
-                /// `projects/{project}/locations/{location}/googleChannelConfig`.
+                /// `projects/{project}/locations/{location}/googleChannelConfig`. In API responses, the config name
+                /// always includes the projectID, regardless of whether the projectID or projectNumber was provided.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -6609,7 +6617,8 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>
         /// Required. The resource name of the config. Must be in the format of,
-        /// `projects/{project}/locations/{location}/googleChannelConfig`.
+        /// `projects/{project}/locations/{location}/googleChannelConfig`. In API responses, the config name always
+        /// includes the projectID, regardless of whether the projectID or projectNumber was provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
