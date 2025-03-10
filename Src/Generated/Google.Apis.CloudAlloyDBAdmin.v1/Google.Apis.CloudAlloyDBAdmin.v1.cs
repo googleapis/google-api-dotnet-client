@@ -3864,8 +3864,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
         /// <summary>
         /// Optional. The encryption config can be specified to encrypt the backups with a customer-managed encryption
-        /// key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect
-        /// the user data.
+        /// key (CMEK). When this field is not specified, the backup will use the cluster's encryption config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
@@ -5300,6 +5299,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
 
+        /// <summary>Configuration for observability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
+        public virtual ObservabilityInstanceConfig ObservabilityConfig { get; set; }
+
         /// <summary>Output only. All outbound public IP addresses configured for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outboundPublicIpAddresses")]
         public virtual System.Collections.Generic.IList<string> OutboundPublicIpAddresses { get; set; }
@@ -5715,6 +5718,57 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Output only. The Compute Engine zone of the VM e.g. "us-central1-b".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
         public virtual string ZoneId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Observability Instance specific configuration.</summary>
+    public class ObservabilityInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Observability feature status for an instance. This flag is turned "off" by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Query string length. The default value is 10k.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxQueryStringLength")]
+        public virtual System.Nullable<int> MaxQueryStringLength { get; set; }
+
+        /// <summary>Preserve comments in query string for an instance. This flag is turned "off" by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preserveComments")]
+        public virtual System.Nullable<bool> PreserveComments { get; set; }
+
+        /// <summary>
+        /// Number of query execution plans captured by Insights per minute for all queries combined. The default value
+        /// is 200. Any integer between 0 to 200 is considered valid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPlansPerMinute")]
+        public virtual System.Nullable<int> QueryPlansPerMinute { get; set; }
+
+        /// <summary>Record application tags for an instance. This flag is turned "off" by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordApplicationTags")]
+        public virtual System.Nullable<bool> RecordApplicationTags { get; set; }
+
+        /// <summary>
+        /// Track actively running queries on the instance. If not set, this flag is "off" by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueries")]
+        public virtual System.Nullable<bool> TrackActiveQueries { get; set; }
+
+        /// <summary>
+        /// Output only. Track wait event types during query execution for an instance. This flag is turned "on" by
+        /// default but tracking is enabled only after observability enabled flag is also turned on. This is read-only
+        /// flag and only modifiable by internal API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackWaitEventTypes")]
+        public virtual System.Nullable<bool> TrackWaitEventTypes { get; set; }
+
+        /// <summary>
+        /// Track wait events during query execution for an instance. This flag is turned "on" by default but tracking
+        /// is enabled only after observability enabled flag is also turned on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackWaitEvents")]
+        public virtual System.Nullable<bool> TrackWaitEvents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7116,15 +7170,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     public class StorageDatabasecenterPartnerapiV1mainMachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/342346271) add proto validations
-        /// again after bug fix.
+        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add proto validations again after
+        /// bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
-        /// <summary>
-        /// Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
-        /// </summary>
+        /// <summary>Memory size in bytes. TODO(b/342344482) add proto validations again after bug fix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
         public virtual System.Nullable<long> MemorySizeInBytes { get; set; }
 
@@ -7133,7 +7185,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual System.Nullable<int> ShardCount { get; set; }
 
         /// <summary>
-        /// Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// Optional. The number of vCPUs. TODO(b/342344482) add proto validations again after bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
         public virtual System.Nullable<double> VcpuCount { get; set; }
