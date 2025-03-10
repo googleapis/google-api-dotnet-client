@@ -1180,6 +1180,59 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
+                    /// <summary>Accepts a proposal to update a Network Connectivity Center spoke in a hub.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the hub to accept spoke update.</param>
+                    public virtual AcceptSpokeUpdateRequest AcceptSpokeUpdate(Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeUpdateRequest body, string name)
+                    {
+                        return new AcceptSpokeUpdateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Accepts a proposal to update a Network Connectivity Center spoke in a hub.</summary>
+                    public class AcceptSpokeUpdateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new AcceptSpokeUpdate request.</summary>
+                        public AcceptSpokeUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeUpdateRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the hub to accept spoke update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeUpdateRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "acceptSpokeUpdate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:acceptSpokeUpdate";
+
+                        /// <summary>Initializes AcceptSpokeUpdate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a new Network Connectivity Center hub in the specified project.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The parent resource.</param>
@@ -1988,6 +2041,59 @@ namespace Google.Apis.Networkconnectivity.v1
                         public override string RestPath => "v1/{+name}:rejectSpoke";
 
                         /// <summary>Initializes RejectSpoke parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Rejects a proposal to update a Network Connectivity Center spoke in a hub.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the hub to reject spoke update.</param>
+                    public virtual RejectSpokeUpdateRequest RejectSpokeUpdate(Google.Apis.Networkconnectivity.v1.Data.RejectSpokeUpdateRequest body, string name)
+                    {
+                        return new RejectSpokeUpdateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Rejects a proposal to update a Network Connectivity Center spoke in a hub.</summary>
+                    public class RejectSpokeUpdateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new RejectSpokeUpdate request.</summary>
+                        public RejectSpokeUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.RejectSpokeUpdateRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the hub to reject spoke update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Networkconnectivity.v1.Data.RejectSpokeUpdateRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "rejectSpokeUpdate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:rejectSpokeUpdate";
+
+                        /// <summary>Initializes RejectSpokeUpdate parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -6678,6 +6784,34 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for HubService.AcceptSpokeUpdate.</summary>
+    public class AcceptSpokeUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
+        /// request, the server knows to ignore the request if it has already been completed. The server guarantees that
+        /// a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider
+        /// a situation where you make an initial request and the request times out. If you make the request again with
+        /// the same request ID, the server can check to see whether the original operation was received. If it was, the
+        /// server ignores the second request. This behavior prevents clients from mistakenly creating duplicate
+        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>Required. The etag of the spoke to accept update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeEtag")]
+        public virtual string SpokeEtag { get; set; }
+
+        /// <summary>Required. The URI of the spoke to accept update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeUri")]
+        public virtual string SpokeUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -7744,6 +7878,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerNetwork")]
         public virtual string ProducerNetwork { get; set; }
 
+        /// <summary>
+        /// Optional. The proposed include export IP ranges waiting for hub administration's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
+
         /// <summary>Output only. The Service Consumer Network spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConsumerVpcSpoke")]
         public virtual string ServiceConsumerVpcSpoke { get; set; }
@@ -7806,6 +7946,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerVpcSpokes")]
         public virtual System.Collections.Generic.IList<string> ProducerVpcSpokes { get; set; }
+
+        /// <summary>
+        /// Optional. The proposed include export IP ranges waiting for hub administration's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
 
         /// <summary>Required. The URI of the VPC network resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -9004,6 +9150,38 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for HubService.RejectSpokeUpdate.</summary>
+    public class RejectSpokeUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional information provided by the hub administrator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
+        /// request, the server knows to ignore the request if it has already been completed. The server guarantees that
+        /// a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider
+        /// a situation where you make an initial request and the request times out. If you make the request again with
+        /// the same request ID, the server can check to see whether the original operation was received. If it was, the
+        /// server ignores the second request. This behavior prevents clients from mistakenly creating duplicate
+        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>Required. The etag of the spoke to reject update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeEtag")]
+        public virtual string SpokeEtag { get; set; }
+
+        /// <summary>Required. The URI of the spoke to reject update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeUri")]
+        public virtual string SpokeUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A route defines a path from VM instances within a spoke to a specific destination resource. Only VPC spokes have
     /// routes.
@@ -9909,6 +10087,17 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. The list of fields waiting for hub administration's approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPathsPendingUpdate")]
+        public virtual System.Collections.Generic.IList<string> FieldPathsPendingUpdate { get; set; }
+
         /// <summary>Optional. The name of the group that this spoke is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
@@ -10007,9 +10196,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>The number of spokes that are in a particular state and associated with a given hub.</summary>
