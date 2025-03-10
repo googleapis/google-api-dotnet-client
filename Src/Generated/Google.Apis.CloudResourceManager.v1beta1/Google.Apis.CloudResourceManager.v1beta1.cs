@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -447,7 +447,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// <summary>
             /// An optional query string used to filter the Organizations to return in the response. Filter rules are
             /// case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the
-            /// domain is a G Suite domain, for example: * Filter `owner.directorycustomerid:123456789` returns
+            /// domain is a verified G Suite domain, for example: * Filter `owner.directorycustomerid:123456789` returns
             /// Organization resources with `owner.directory_customer_id` equal to `123456789`. * Filter
             /// `domain:google.com` returns Organization resources corresponding to the domain `google.com`. This field
             /// is optional.
