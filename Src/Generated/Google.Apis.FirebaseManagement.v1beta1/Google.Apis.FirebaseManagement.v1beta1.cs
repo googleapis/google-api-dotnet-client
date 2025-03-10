@@ -4399,8 +4399,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class StatusProto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The canonical error code (see codes.proto) that most closely corresponds to this status. This may be
-        /// missing, and in the common case of the generic space, it definitely will be.
         /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 canonical_code = 6;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
@@ -4428,8 +4426,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual MessageSet MessageSet { get; set; }
 
         /// <summary>
-        /// The following are usually only present when code != 0 Space to which this status belongs
-        /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string space = 2;
+        /// copybara:strip_begin(b/383363683) Space to which this status belongs copybara:strip_end_and_replace optional
+        /// string space = 2; // Space to which this status belongs
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual string Space { get; set; }
