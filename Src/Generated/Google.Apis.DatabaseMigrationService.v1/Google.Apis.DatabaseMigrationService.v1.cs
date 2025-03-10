@@ -1908,6 +1908,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("DATABASE_ENTITY_VIEW_ROOT_SUMMARY")]
                         DATABASEENTITYVIEWROOTSUMMARY = 3,
+
+                        /// <summary>Returns full entity details except for ddls and schema custom features.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DATABASE_ENTITY_VIEW_FULL_COMPACT")]
+                        DATABASEENTITYVIEWFULLCOMPACT = 4,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -6765,7 +6769,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ddl")]
         public virtual string Ddl { get; set; }
 
-        /// <summary>The DDL Kind selected for apply, or SOURCE if getting the source tree.</summary>
+        /// <summary>The DDL Kind selected for apply, or UNSPECIFIED if the entity wasn't converted yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlKind")]
         public virtual string DdlKind { get; set; }
 
