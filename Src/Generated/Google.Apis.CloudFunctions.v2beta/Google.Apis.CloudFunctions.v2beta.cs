@@ -2477,6 +2477,10 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Whether a custom IAM role binding was detected during the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customIamRoleDetected")]
+        public virtual System.Nullable<bool> CustomIamRoleDetected { get; set; }
+
         private string _endTimeRaw;
 
         private object _endTime;
