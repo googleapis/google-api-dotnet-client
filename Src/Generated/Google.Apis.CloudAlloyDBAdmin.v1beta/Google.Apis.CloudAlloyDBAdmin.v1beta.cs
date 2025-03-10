@@ -3856,8 +3856,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// Optional. The encryption config can be specified to encrypt the backups with a customer-managed encryption
-        /// key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect
-        /// the user data.
+        /// key (CMEK). When this field is not specified, the backup will use the cluster's encryption config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
@@ -4947,6 +4946,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instance level configuration parameters related to the Gemini Cloud Assist product.</summary>
+    public class GCAInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Represents the GCA entitlement state of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcaEntitlement")]
+        public virtual string GcaEntitlement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Destination for Export. Export will be done to cloud storage.</summary>
     public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5259,6 +5269,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>For Resource freshness validation (https://google.aip.dev/154)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>Output only. Configuration parameters related to Gemini Cloud Assist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcaConfig")]
+        public virtual GCAInstanceConfig GcaConfig { get; set; }
 
         /// <summary>
         /// The Compute Engine zone that the instance should serve from, per
@@ -5776,14 +5790,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueries")]
         public virtual System.Nullable<bool> TrackActiveQueries { get; set; }
 
-        /// <summary>Track client address for an instance. If not set, default value is "off".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trackClientAddress")]
-        public virtual System.Nullable<bool> TrackClientAddress { get; set; }
-
         /// <summary>
         /// Output only. Track wait event types during query execution for an instance. This flag is turned "on" by
         /// default but tracking is enabled only after observability enabled flag is also turned on. This is read-only
-        /// flag and only modifiable by producer API.
+        /// flag and only modifiable by internal API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackWaitEventTypes")]
         public virtual System.Nullable<bool> TrackWaitEventTypes { get; set; }
@@ -7195,15 +7205,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
     public class StorageDatabasecenterPartnerapiV1mainMachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482, b/342346271) add proto validations
-        /// again after bug fix.
+        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add proto validations again after
+        /// bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
-        /// <summary>
-        /// Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
-        /// </summary>
+        /// <summary>Memory size in bytes. TODO(b/342344482) add proto validations again after bug fix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
         public virtual System.Nullable<long> MemorySizeInBytes { get; set; }
 
@@ -7212,7 +7220,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual System.Nullable<int> ShardCount { get; set; }
 
         /// <summary>
-        /// Optional. The number of vCPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// Optional. The number of vCPUs. TODO(b/342344482) add proto validations again after bug fix.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
         public virtual System.Nullable<double> VcpuCount { get; set; }
