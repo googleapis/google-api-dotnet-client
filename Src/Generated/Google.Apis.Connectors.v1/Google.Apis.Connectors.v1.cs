@@ -6335,6 +6335,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tlsServiceDirectory")]
         public virtual string TlsServiceDirectory { get; set; }
 
+        /// <summary>Optional. Traffic shaping configuration for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficShapingConfigs")]
+        public virtual System.Collections.Generic.IList<TrafficShapingConfig> TrafficShapingConfigs { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -6893,7 +6897,7 @@ namespace Google.Apis.Connectors.v1.Data
     }
 
     /// <summary>
-    /// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every
+    /// This configuration provides infra configs like rate limit threshold which need to be configurable for every
     /// connector version
     /// </summary>
     public class ConnectorVersionInfraConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -10970,6 +10974,37 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// * TrafficShapingConfig defines the configuration for shaping API traffic by specifying a quota limit and the
+    /// duration over which this limit is enforced. This configuration helps to control and manage the rate at which API
+    /// calls are made on the client side, preventing service overload on the backend. For example: - if the quota limit
+    /// is 100 calls per 10 seconds, then the message would be: { quota_limit: 100 duration: { seconds: 10 } } - if the
+    /// quota limit is 100 calls per 5 minutes, then the message would be: { quota_limit: 100 duration: { seconds: 300 }
+    /// } - if the quota limit is 10000 calls per day, then the message would be: { quota_limit: 10000 duration: {
+    /// seconds: 86400 } and so on.
+    /// </summary>
+    public class TrafficShapingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. * The duration over which the API call quota limits are calculated. This duration is used to
+        /// define the time window for evaluating if the number of API calls made by a user is within the allowed quota
+        /// limits. For example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a quota
+        /// sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a quota sampled over 1 day, set `seconds`
+        /// to 86400 (24 * 60 * 60) and so on. It is important to note that this duration is not the time the quota is
+        /// valid for, but rather the time window over which the quota is evaluated. For example, if the quota is 100
+        /// calls per 10 seconds, then this duration field would be set to 10 seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Required. Maximum number of api calls allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaLimit")]
+        public virtual System.Nullable<long> QuotaLimit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
