@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -2115,6 +2115,14 @@ namespace Google.Apis.DataprocMetastore.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constituentRegions")]
         public virtual System.Collections.Generic.IList<string> ConstituentRegions { get; set; }
 
+        /// <summary>The continent for this multi-region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continent")]
+        public virtual string Continent { get; set; }
+
+        /// <summary>The Spanner witness region for this multi-region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("witnessRegion")]
+        public virtual string WitnessRegion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2367,6 +2375,14 @@ namespace Google.Apis.DataprocMetastore.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constituentRegions")]
         public virtual System.Collections.Generic.IList<string> ConstituentRegions { get; set; }
 
+        /// <summary>The continent for this multi-region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continent")]
+        public virtual string Continent { get; set; }
+
+        /// <summary>The Spanner witness region for this multi-region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("witnessRegion")]
+        public virtual string WitnessRegion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2618,6 +2634,14 @@ namespace Google.Apis.DataprocMetastore.v2alpha.Data
         /// <summary>The regions constituting the multi-region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constituentRegions")]
         public virtual System.Collections.Generic.IList<string> ConstituentRegions { get; set; }
+
+        /// <summary>The continent for this multi-region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continent")]
+        public virtual string Continent { get; set; }
+
+        /// <summary>The Spanner witness region for this multi-region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("witnessRegion")]
+        public virtual string WitnessRegion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3117,7 +3141,7 @@ namespace Google.Apis.DataprocMetastore.v2alpha.Data
     }
 
     /// <summary>
-    /// A specification of the location of and metadata about a database dump from a relational database management
+    /// A specification of the location and metadata type for a database dump from a relational database management
     /// system.
     /// </summary>
     public class GoogleCloudMetastoreV2alphaDatabaseDump : Google.Apis.Requests.IDirectResponseSchema
