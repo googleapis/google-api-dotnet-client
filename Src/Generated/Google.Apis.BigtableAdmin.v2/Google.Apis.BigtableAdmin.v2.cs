@@ -542,6 +542,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 this.service = service;
                 AppProfiles = new AppProfilesResource(service);
                 Clusters = new ClustersResource(service);
+                LogicalViews = new LogicalViewsResource(service);
                 MaterializedViews = new MaterializedViewsResource(service);
                 Tables = new TablesResource(service);
             }
@@ -2226,6 +2227,217 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
             }
 
+            /// <summary>Gets the LogicalViews resource.</summary>
+            public virtual LogicalViewsResource LogicalViews { get; }
+
+            /// <summary>The "logicalViews" collection of methods.</summary>
+            public class LogicalViewsResource
+            {
+                private const string Resource = "logicalViews";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LogicalViewsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the access control policy for an instance resource. Returns an empty policy if an instance
+                /// exists but does not have a policy set.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for an instance resource. Returns an empty policy if an instance
+                /// exists but does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/logicalViews/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on an instance resource. Replaces any existing policy.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on an instance resource. Replaces any existing policy.
+                /// </summary>
+                public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/logicalViews/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns permissions that the caller has on the specified instance resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>Returns permissions that the caller has on the specified instance resource.</summary>
+                public class TestIamPermissionsRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/logicalViews/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the MaterializedViews resource.</summary>
             public virtual MaterializedViewsResource MaterializedViews { get; }
 
@@ -3842,8 +4054,9 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// `table` field, not to the request message. The wildcard (*) path is currently not supported.
                     /// Currently UpdateTable is only supported for the following fields: * `change_stream_config` *
                     /// `change_stream_config.retention_period` * `deletion_protection` * `automated_backup_policy` *
-                    /// `automated_backup_policy.retention_period` * `automated_backup_policy.frequency` If
-                    /// `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED error.
+                    /// `automated_backup_policy.retention_period` * `automated_backup_policy.frequency` *
+                    /// `row_key_schema` If `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED
+                    /// error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -6542,6 +6755,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class GoogleBigtableAdminV2TypeBytesEncodingRaw : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If set, allows NULL values to be encoded as the empty string "". The actual empty string, or any value which
+        /// only contains the null byte 0x00, has one more null byte appended.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("escapeNulls")]
+        public virtual System.Nullable<bool> EscapeNulls { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6585,6 +6805,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigEndianBytes")]
         public virtual GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes BigEndianBytes { get; set; }
 
+        /// <summary>Use `OrderedCodeBytes` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderedCodeBytes")]
+        public virtual GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes OrderedCodeBytes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6600,6 +6824,16 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bytesType")]
         public virtual GoogleBigtableAdminV2TypeBytes BytesType { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encodes the value in a variable length binary format of up to 10 bytes. Values that are closer to zero use fewer
+    /// bytes. Sorted mode: all values are supported. Distinct mode: all values are supported.
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6657,6 +6891,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Single-character escape sequence used to support NULL values. If set, allows NULL values to be encoded as
+        /// the empty string "". The actual empty string, or any value where every character equals `null_escape_char`,
+        /// has one more `null_escape_char` appended. If `null_escape_char` is set and does not equal the ASCII null
+        /// character 0x00, then the encoding will not support sorted mode. .
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullEscapeChar")]
+        public virtual string NullEscapeChar { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6674,10 +6917,83 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class GoogleBigtableAdminV2TypeStruct : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The encoding to use when converting to or from lower level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual GoogleBigtableAdminV2TypeStructEncoding Encoding { get; set; }
+
         /// <summary>The names and types of the fields in this struct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleBigtableAdminV2TypeStructField> Fields { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rules used to convert to or from lower level types.</summary>
+    public class GoogleBigtableAdminV2TypeStructEncoding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use `DelimitedBytes` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delimitedBytes")]
+        public virtual GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes DelimitedBytes { get; set; }
+
+        /// <summary>User `OrderedCodeBytes` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderedCodeBytes")]
+        public virtual GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes OrderedCodeBytes { get; set; }
+
+        /// <summary>Use `Singleton` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleton")]
+        public virtual GoogleBigtableAdminV2TypeStructEncodingSingleton Singleton { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Fields are encoded independently and concatenated with a configurable `delimiter` in between. A struct with no
+    /// fields defined is encoded as a single `delimiter`. Sorted mode: - Fields are encoded in sorted mode. - Encoded
+    /// field values must not contain any bytes &amp;lt;= `delimiter[0]` - Element-wise order is preserved: `A &amp;lt;
+    /// B` if `A[0] &amp;lt; B[0]`, or if `A[0] == B[0] &amp;amp;&amp;amp; A[1] &amp;lt; B[1]`, etc. Strict prefixes
+    /// sort first. Distinct mode: - Fields are encoded in distinct mode. - Encoded field values must not contain
+    /// `delimiter[0]`.
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Byte sequence used to delimit concatenated fields. The delimiter must contain at least 1 character and at
+        /// most 50 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delimiter")]
+        public virtual string Delimiter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Fields are encoded independently and concatenated with the fixed byte pair {0x00, 0x01} in between. Any null
+    /// (0x00) byte in an encoded field is replaced by the fixed byte pair {0x00, 0xFF}. Fields that encode to the empty
+    /// string "" have special handling: - If *every* field encodes to "", or if the STRUCT has no fields defined, then
+    /// the STRUCT is encoded as the fixed byte pair {0x00, 0x00}. - Otherwise, the STRUCT only encodes until the last
+    /// non-empty field, omitting any trailing empty fields. Any empty fields that aren't omitted are replaced with the
+    /// fixed byte pair {0x00, 0x00}. Examples: - STRUCT() -&amp;gt; "\00\00" - STRUCT("") -&amp;gt; "\00\00" -
+    /// STRUCT("", "") -&amp;gt; "\00\00" - STRUCT("", "B") -&amp;gt; "\00\00" + "\00\01" + "B" - STRUCT("A", "")
+    /// -&amp;gt; "A" - STRUCT("", "B", "") -&amp;gt; "\00\00" + "\00\01" + "B" - STRUCT("A", "", "C") -&amp;gt; "A" +
+    /// "\00\01" + "\00\00" + "\00\01" + "C" Since null bytes are always escaped, this encoding can cause size blowup
+    /// for encodings like `Int64.BigEndianBytes` that are likely to produce many such bytes. Sorted mode: - Fields are
+    /// encoded in sorted mode. - All values supported by the field encodings are allowed - Element-wise order is
+    /// preserved: `A &amp;lt; B` if `A[0] &amp;lt; B[0]`, or if `A[0] == B[0] &amp;amp;&amp;amp; A[1] &amp;lt; B[1]`,
+    /// etc. Strict prefixes sort first. Distinct mode: - Fields are encoded in distinct mode. - All values supported by
+    /// the field encodings are allowed.
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Uses the encoding of `fields[0].type` as-is. Only valid if `fields.size == 1`.</summary>
+    public class GoogleBigtableAdminV2TypeStructEncodingSingleton : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6703,6 +7019,24 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Timestamp Values of type `Timestamp` are stored in `Value.timestamp_value`.</summary>
     public class GoogleBigtableAdminV2TypeTimestamp : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The encoding to use when converting to or from lower level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual GoogleBigtableAdminV2TypeTimestampEncoding Encoding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rules used to convert to or from lower level types.</summary>
+    public class GoogleBigtableAdminV2TypeTimestampEncoding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Encodes the number of microseconds since the Unix epoch using the given `Int64` encoding. Values must be
+        /// microsecond-aligned. Compatible with: - Java `Instant.truncatedTo()` with `ChronoUnit.MICROS`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unixMicrosInt64")]
+        public virtual GoogleBigtableAdminV2TypeInt64Encoding UnixMicrosInt64 { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
