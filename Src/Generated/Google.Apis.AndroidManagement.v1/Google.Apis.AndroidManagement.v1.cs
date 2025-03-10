@@ -4872,15 +4872,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
     {
         /// <summary>
         /// The end date (inclusive) of the freeze period. Must be no later than 90 days from the start date. If the end
-        /// date is earlier than the start date, the freeze period is considered wrapping year-end. Note: year must not
-        /// be set. For example, {"month": 1,"date": 30}.
+        /// date is earlier than the start date, the freeze period is considered wrapping year-end. Note: day and month
+        /// must be set. year should not be set as it is not used. For example, {"month": 1,"date": 30}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual Date EndDate { get; set; }
 
         /// <summary>
-        /// The start date (inclusive) of the freeze period. Note: year must not be set. For example, {"month":
-        /// 1,"date": 30}.
+        /// The start date (inclusive) of the freeze period. Note: day and month must be set. year should not be set as
+        /// it is not used. For example, {"month": 1,"date": 30}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual Date StartDate { get; set; }
