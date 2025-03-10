@@ -3595,7 +3595,8 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string Location { get; set; }
 
         /// <summary>
-        /// URI of a Redis Cluster network in format "projects/{project_id}/global/networks/{network_id}".
+        /// URI of the network containing the Redis Cluster endpoints in format
+        /// "projects/{project_id}/global/networks/{network_id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
