@@ -17889,61 +17889,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 }
             }
 
-            /// <summary>Generates grounded content.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="location">
-            /// Required. Location resource. Format: `projects/{project}/locations/{location}`.
-            /// </param>
-            public virtual GenerateGroundedContentRequest GenerateGroundedContent(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequest body, string location)
-            {
-                return new GenerateGroundedContentRequest(this.service, body, location);
-            }
-
-            /// <summary>Generates grounded content.</summary>
-            public class GenerateGroundedContentRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponse>
-            {
-                /// <summary>Constructs a new GenerateGroundedContent request.</summary>
-                public GenerateGroundedContentRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequest body, string location) : base(service)
-                {
-                    Location = location;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Location resource. Format: `projects/{project}/locations/{location}`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Location { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "generateGroundedContent";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta/{+location}:generateGroundedContent";
-
-                /// <summary>Initializes GenerateGroundedContent parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                    });
-                }
-            }
-
             /// <summary>
             /// Obtains the time series data of organic or dedicated crawl rate for monitoring. When dedicated crawl
             /// rate is not set, it will return vertex AI's organic crawl rate time series. Organic crawl means Google
@@ -24862,9 +24807,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentCount")]
         public virtual System.Nullable<long> CurrentCount { get; set; }
 
-        /// <summary>Derived. The percentile of the progress.</summary>
+        /// <summary>
+        /// Derived. The percentile of the progress.current_count / total_count. The value is between [0, 1.0]
+        /// inclusive.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
-        public virtual System.Nullable<int> Percentile { get; set; }
+        public virtual System.Nullable<float> Percentile { get; set; }
 
         /// <summary>The total.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
@@ -25593,6 +25541,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blockingReasons")]
         public virtual System.Collections.Generic.IList<string> BlockingReasons { get; set; }
 
+        /// <summary>
+        /// Output only. The type of connector. Each source can only map to one type. For example, salesforce,
+        /// confluence and jira have THIRD_PARTY connector type. It is notmutable once set by system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorType")]
+        public virtual string ConnectorType { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -25798,6 +25753,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivityProjectId")]
         public virtual string PrivateConnectivityProjectId { get; set; }
+
+        /// <summary>Output only. real-time sync state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("realtimeState")]
+        public virtual string RealtimeState { get; set; }
 
         /// <summary>
         /// Required. The refresh interval for data sync. If duration is set to 0, the data will be synced in real time.
@@ -30061,9 +30020,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec CustomFineTuningSpec { get; set; }
 
         /// <summary>
-        /// Specs defining DataStores to filter on in a search call and configurations for those data stores. This is
-        /// only considered for Engines with multiple data stores. For engines with a single data store, the specs
-        /// directly under SearchRequest should be used.
+        /// Specifications that define the specific [DataStore]s to be searched, along with configurations for those
+        /// data stores. This is only considered for Engines with multiple data stores. For engines with a single data
+        /// store, the specs directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
@@ -37678,410 +37637,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Top-level message sent by the client for the `GenerateGroundedContent` method.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Content of the current conversation with the model. For single-turn queries, this is a single instance. For
-        /// multi-turn queries, this is a repeated field that contains conversation history + latest request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaGroundedGenerationContent> Contents { get; set; }
-
-        /// <summary>Content generation specification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generationSpec")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGenerationSpec GenerationSpec { get; set; }
-
-        /// <summary>Grounding specification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSpec GroundingSpec { get; set; }
-
-        /// <summary>
-        /// Content of the system instruction for the current API. These instructions will take priority over any other
-        /// prompt instructions if the selected model is supporting them.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
-        public virtual GoogleCloudDiscoveryengineV1betaGroundedGenerationContent SystemInstruction { get; set; }
-
-        /// <summary>
-        /// The user labels applied to a resource must meet the following requirements: * Each resource can have
-        /// multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length
-        /// of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a
-        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
-        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
-        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
-        /// must start with a lowercase letter or international character. See [Google Cloud
-        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
-        /// details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Describes the options to customize dynamic retrieval.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestDynamicRetrievalConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Specification for the predictor for dynamic retrieval.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("predictor")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestDynamicRetrievalConfigurationDynamicRetrievalPredictor Predictor { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Describes the predictor settings for dynamic retrieval.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestDynamicRetrievalConfigurationDynamicRetrievalPredictor : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The value of the threshold. If the predictor will predict a value smaller than this, it would suppress
-        /// grounding in the source.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
-        public virtual System.Nullable<float> Threshold { get; set; }
-
-        /// <summary>The version of the predictor to be used in dynamic retrieval.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Content generation specification.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If specified, custom value for frequency penalty will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("frequencyPenalty")]
-        public virtual System.Nullable<float> FrequencyPenalty { get; set; }
-
-        /// <summary>
-        /// Language code for content. Use language tags defined by
-        /// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>If specified, custom value for max output tokens will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
-        public virtual System.Nullable<int> MaxOutputTokens { get; set; }
-
-        /// <summary>Specifies which Vertex model id to use for generation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
-        public virtual string ModelId { get; set; }
-
-        /// <summary>If specified, custom value for presence penalty will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
-        public virtual System.Nullable<float> PresencePenalty { get; set; }
-
-        /// <summary>If specified, custom value for the seed will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
-        public virtual System.Nullable<int> Seed { get; set; }
-
-        /// <summary>If specified, custom value for the temperature will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
-        public virtual System.Nullable<float> Temperature { get; set; }
-
-        /// <summary>If specified, custom value for top-k sampling will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
-        public virtual System.Nullable<int> TopK { get; set; }
-
-        /// <summary>If specified, custom value for nucleus sampling will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topP")]
-        public virtual System.Nullable<float> TopP { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Grounding source.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If set, grounding is performed with enterprise web retrieval.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseWebRetrievalSource")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSourceEnterpriseWebRetrievalSource EnterpriseWebRetrievalSource { get; set; }
-
-        /// <summary>If set, grounding is performed with Google Search.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchSource")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSourceGoogleSearchSource GoogleSearchSource { get; set; }
-
-        /// <summary>If set, grounding is performed with inline content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSourceInlineSource InlineSource { get; set; }
-
-        /// <summary>If set, grounding is performed with Vertex AI Search.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchSource")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSourceSearchSource SearchSource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Params for using enterprise web retrieval as grounding source.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSourceEnterpriseWebRetrievalSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Google Search config parameters.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSourceGoogleSearchSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Specifies the dynamic retrieval configuration for the given source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicRetrievalConfig")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestDynamicRetrievalConfiguration DynamicRetrievalConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message to be used for grounding based on inline content.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSourceInlineSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Attributes associated with the content. Common attributes include `source` (indicating where the content was
-        /// sourced from) and `author` (indicating the author of the content).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
-
-        /// <summary>List of facts to be used for grounding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingFacts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaGroundingFact> GroundingFacts { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message to be used for grounding with Vertex AI Search.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSourceSearchSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Filter expression to be applied to the search. The syntax is the same as SearchRequest.filter.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; }
-
-        /// <summary>
-        /// Number of search results to return. The default value is 10. The maximumm allowed value is 10.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxResultCount")]
-        public virtual System.Nullable<int> MaxResultCount { get; set; }
-
-        /// <summary>If set, safe search is enabled in Vertex AI Search requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
-        public virtual System.Nullable<bool> SafeSearch { get; set; }
-
-        /// <summary>
-        /// The resource name of the Engine to use. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
-        public virtual string ServingConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Grounding specification.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Grounding sources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingSources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaGenerateGroundedContentRequestGroundingSource> GroundingSources { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for the `GenerateGroundedContent` method.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Generated candidates.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidate> Candidates { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A response candidate generated from the model.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Content of the candidate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual GoogleCloudDiscoveryengineV1betaGroundedGenerationContent Content { get; set; }
-
-        /// <summary>Grounding metadata for the generated content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadata GroundingMetadata { get; set; }
-
-        /// <summary>The overall grounding score for the candidate, in the range of [0, 1].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingScore")]
-        public virtual System.Nullable<float> GroundingScore { get; set; }
-
-        /// <summary>Index of the candidate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Citation for the generated content.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// GroundingSupport across all claims in the answer candidate. An support to a fact indicates that the claim is
-        /// supported by the fact.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingSupport")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataGroundingSupport> GroundingSupport { get; set; }
-
-        /// <summary>
-        /// Retrieval metadata to provide an understanding in the retrieval steps performed by the model. There can be
-        /// multiple such messages which can correspond to different parts of the retrieval. This is a mechanism used to
-        /// ensure transparency to our users.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retrievalMetadata")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataRetrievalMetadata> RetrievalMetadata { get; set; }
-
-        /// <summary>Google search entry for the following-up web searches.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataSearchEntryPoint SearchEntryPoint { get; set; }
-
-        /// <summary>
-        /// List of chunks to be attributed across all claims in the candidate. These are derived from the grounding
-        /// sources supplied in the request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportChunks")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaFactChunk> SupportChunks { get; set; }
-
-        /// <summary>Web search queries for the following-up web search.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
-        public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Describes the metadata about dynamic retrieval.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Metadata for the dynamic retrieval predictor.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("predictorMetadata")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalPredictorMetadata PredictorMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Describes the metadata about the dynamic retrieval predictor.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalPredictorMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The value of the predictor. This should be between [0, 1] where a value of 0 means that the query would not
-        /// benefit from grounding, while a value of 1.0 means that the query would benefit the most. In between values
-        /// allow to differentiate between different usefulness scores for grounding.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("prediction")]
-        public virtual System.Nullable<float> Prediction { get; set; }
-
-        /// <summary>The version of the predictor which was used in dynamic retrieval.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Grounding info for a claim in the candidate and its support.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataGroundingSupport : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Text for the claim in the candidate. Always provided when a support is found.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("claimText")]
-        public virtual string ClaimText { get; set; }
-
-        /// <summary>
-        /// A list of indices (into 'support_chunks') specifying the citations associated with the claim. For instance
-        /// [1,3,4] means that support_chunks[1], support_chunks[3], support_chunks[4] are the chunks attributed to the
-        /// claim.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportChunkIndices")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> SupportChunkIndices { get; set; }
-
-        /// <summary>
-        /// A score in the range of [0, 1] describing how grounded is a specific claim in the support chunks indicated.
-        /// Higher value means that the claim is better supported by the chunks.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportScore")]
-        public virtual System.Nullable<float> SupportScore { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Describes the metadata associated with a retrieval step.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataRetrievalMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Metadata for dynamic retrieval.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicRetrievalMetadata")]
-        public virtual GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataDynamicRetrievalMetadata DynamicRetrievalMetadata { get; set; }
-
-        /// <summary>Describes the source to which the metadata is referring to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Google search entry point.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGenerateGroundedContentResponseCandidateGroundingMetadataSearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Web content snippet that can be embedded in a web page or an app webview.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("renderedContent")]
-        public virtual string RenderedContent { get; set; }
-
-        /// <summary>Base64 encoded JSON representing array of tuple.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sdkBlob")]
-        public virtual string SdkBlob { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Base structured datatype containing multi-part content of a message.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGroundedGenerationContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Ordered `Parts` that constitute a single message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaGroundedGenerationContentPart> Parts { get; set; }
-
-        /// <summary>
-        /// Producer of the content. Must be either `user` or `model`. Intended to be used for multi-turn conversations.
-        /// Otherwise, it can be left unset.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Single part of content.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGroundedGenerationContentPart : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Inline text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Grounding Fact.</summary>
     public class GoogleCloudDiscoveryengineV1betaGroundingFact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -40283,7 +39838,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The identifier of the model to use. It is one of: * `semantic-ranker-512@latest`: Semantic ranking model
-        /// with maxiumn input token size 512. It is set to `semantic-ranker-512@latest` by default if unspecified.
+        /// with maximum input token size 512. It is set to `semantic-ranker-512@latest` by default if unspecified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -41074,9 +40629,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
         /// <summary>
-        /// Specs defining DataStores to filter on in a search call and configurations for those data stores. This is
-        /// only considered for Engines with multiple data stores. For engines with a single data store, the specs
-        /// directly under SearchRequest should be used.
+        /// Specifications that define the specific [DataStore]s to be searched, along with configurations for those
+        /// data stores. This is only considered for Engines with multiple data stores. For engines with a single data
+        /// store, the specs directly under SearchRequest should be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
