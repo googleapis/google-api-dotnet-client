@@ -11754,6 +11754,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
         public virtual System.Nullable<bool> IsInternal { get; set; }
 
+        /// <summary>To specify whether to log the results of failed probes to Cloud Logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logCheckFailures")]
+        public virtual System.Nullable<bool> LogCheckFailures { get; set; }
+
         /// <summary>
         /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance,
