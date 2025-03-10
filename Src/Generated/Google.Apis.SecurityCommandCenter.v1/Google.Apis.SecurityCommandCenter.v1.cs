@@ -16914,7 +16914,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Maximum duration of retention allowed from the DRD control. This comes from the DRD control where users set
-        /// a max TTL for their data. For example, suppose that a user set the max TTL for a Cloud Storage bucket to 90
+        /// a max TTL for their data. For example, suppose that a user sets the max TTL for a Cloud Storage bucket to 90
         /// days. However, an object in that bucket is 100 days old. In this case, a DataRetentionDeletionEvent will be
         /// generated for that Cloud Storage bucket, and the max_retention_allowed is 90 days.
         /// </summary>
@@ -17007,7 +17007,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The name of the disk, for example,
-        /// "https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id".
+        /// "https://www.googleapis.com/compute/v1/projects/{project-id}/zones/{zone-id}/disks/{disk-id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -20689,7 +20689,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Maximum duration of retention allowed from the DRD control. This comes from the DRD control where users set
-        /// a max TTL for their data. For example, suppose that a user set the max TTL for a Cloud Storage bucket to 90
+        /// a max TTL for their data. For example, suppose that a user sets the max TTL for a Cloud Storage bucket to 90
         /// days. However, an object in that bucket is 100 days old. In this case, a DataRetentionDeletionEvent will be
         /// generated for that Cloud Storage bucket, and the max_retention_allowed is 90 days.
         /// </summary>
@@ -20782,7 +20782,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The name of the disk, for example,
-        /// "https://www.googleapis.com/compute/v1/projects/project-id/zones/zone-id/disks/disk-id".
+        /// "https://www.googleapis.com/compute/v1/projects/{project-id}/zones/{zone-id}/disks/{disk-id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
