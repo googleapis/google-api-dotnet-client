@@ -14196,6 +14196,119 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
+    /// Details about a piece of potentially sensitive information that was detected when the data resource was
+    /// profiled.
+    /// </summary>
+    public class GooglePrivacyDlpV2DataProfileFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name of the data profile associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResourceName")]
+        public virtual string DataProfileResourceName { get; set; }
+
+        /// <summary>A unique identifier for the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingId")]
+        public virtual string FindingId { get; set; }
+
+        /// <summary>
+        /// The [type of content](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference) that
+        /// might have been found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infotype")]
+        public virtual GooglePrivacyDlpV2InfoType Infotype { get; set; }
+
+        /// <summary>Where the content was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual GooglePrivacyDlpV2DataProfileFindingLocation Location { get; set; }
+
+        /// <summary>
+        /// The content that was found. Even if the content is not textual, it may be converted to a textual
+        /// representation here. If the finding exceeds 4096 bytes in length, the quote may be omitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quote")]
+        public virtual string Quote { get; set; }
+
+        /// <summary>
+        /// Contains data parsed from quotes. Currently supported infoTypes: DATE, DATE_OF_BIRTH, and TIME.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quoteInfo")]
+        public virtual GooglePrivacyDlpV2QuoteInfo QuoteInfo { get; set; }
+
+        /// <summary>How broadly a resource has been shared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceVisibility")]
+        public virtual string ResourceVisibility { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>Timestamp when the finding was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of a data profile finding within a resource.</summary>
+    public class GooglePrivacyDlpV2DataProfileFindingLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the container where the finding is located. The top-level name is the source file name or table
+        /// name. Names of some common storage containers are formatted as follows: * BigQuery tables:
+        /// `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files: `gs://{bucket}/{path}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
+        public virtual string ContainerName { get; set; }
+
+        /// <summary>Location of a finding within a resource that produces a table data profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProfileFindingRecordLocation")]
+        public virtual GooglePrivacyDlpV2DataProfileFindingRecordLocation DataProfileFindingRecordLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of a finding within a resource that produces a table data profile.</summary>
+    public class GooglePrivacyDlpV2DataProfileFindingRecordLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Field ID of the column containing the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configuration for setting up a job to scan resources for profile generation. Only one data profile configuration
     /// may exist per organization, folder, or project. The generated data profiles are retained according to the [data
     /// retention policy] (https://cloud.google.com/sensitive-data-protection/docs/data-profiles#retention).
@@ -16069,6 +16182,15 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profileTable")]
         public virtual GooglePrivacyDlpV2BigQueryTable ProfileTable { get; set; }
 
+        /// <summary>
+        /// Store sample data profile findings in an existing table or a new table in an existing dataset. Each
+        /// regeneration will result in new rows in BigQuery. Data is inserted using [streaming
+        /// insert](https://cloud.google.com/blog/products/bigquery/life-of-a-bigquery-streaming-insert) and so data may
+        /// be in the buffer for a period of time after the profile has finished.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleFindingsTable")]
+        public virtual GooglePrivacyDlpV2BigQueryTable SampleFindingsTable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16467,6 +16589,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>How broadly a resource has been shared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVisibility")]
         public virtual string ResourceVisibility { get; set; }
+
+        /// <summary>The BigQuery table to which the sample findings are written.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleFindingsTable")]
+        public virtual GooglePrivacyDlpV2BigQueryTable SampleFindingsTable { get; set; }
 
         /// <summary>The sensitivity score of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
@@ -20250,6 +20376,10 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<long> RowCount { get; set; }
+
+        /// <summary>The BigQuery table to which the sample findings are written.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleFindingsTable")]
+        public virtual GooglePrivacyDlpV2BigQueryTable SampleFindingsTable { get; set; }
 
         /// <summary>The number of columns profiled in the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedColumnCount")]
