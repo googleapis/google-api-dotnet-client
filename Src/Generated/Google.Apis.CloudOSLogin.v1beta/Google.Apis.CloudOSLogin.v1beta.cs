@@ -34,6 +34,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
         /// <param name="initializer">The service initializer.</param>
         public CloudOSLoginService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Projects = new ProjectsResource(this);
             Users = new UsersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://oslogin.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://oslogin.googleapis.com/batch");
@@ -98,6 +99,9 @@ namespace Google.Apis.CloudOSLogin.v1beta
             /// <summary>View your Google Compute Engine resources</summary>
             public const string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
         }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the Users resource.</summary>
         public virtual UsersResource Users { get; }
@@ -281,6 +285,101 @@ namespace Google.Apis.CloudOSLogin.v1beta
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent for the signing request. Format: projects/{project}/locations/{location}
+            /// </param>
+            public virtual SignSshPublicKeyRequest SignSshPublicKey(Google.Apis.CloudOSLogin.v1beta.Data.GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest body, string parent)
+            {
+                return new SignSshPublicKeyRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
+            /// </summary>
+            public class SignSshPublicKeyRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1beta.Data.GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse>
+            {
+                /// <summary>Constructs a new SignSshPublicKey request.</summary>
+                public SignSshPublicKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudOSLogin.v1beta.Data.GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent for the signing request. Format: projects/{project}/locations/{location}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudOSLogin.v1beta.Data.GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "signSshPublicKey";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}:signSshPublicKey";
+
+                /// <summary>Initializes SignSshPublicKey parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
         }
     }
 
@@ -1046,6 +1145,52 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request message for signing an SSH public key.</summary>
+    public class GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The App Engine instance to sign the SSH public key for. Expected format:
+        /// services/{service}/versions/{version}/instances/{instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineInstance")]
+        public virtual string AppEngineInstance { get; set; }
+
+        /// <summary>
+        /// The compute instance to sign the SSH public key for. Expected format:
+        /// projects/{project}/zones/{zone}/instances/{numeric_instance_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeInstance")]
+        public virtual string ComputeInstance { get; set; }
+
+        /// <summary>
+        /// Optional. The service account for the Compute instance. If the instance in question does not have a service
+        /// account, this field should be left empty. If the wrong service account is provided, this operation will
+        /// return a signed certificate that will not be accepted by the VM. During rollout of the new regionalized
+        /// SignSshPublicKey API, this field will be required for all requests, but the VM will not initially carry out
+        /// the
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Required. The SSH public key to sign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKey")]
+        public virtual string SshPublicKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for signing an SSH public key.</summary>
+    public class GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The signed SSH public key to use in the SSH handshake.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedSshPublicKey")]
+        public virtual string SignedSshPublicKey { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
