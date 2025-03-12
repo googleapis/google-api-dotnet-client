@@ -969,7 +969,7 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Infra Usage of billing metrics.</summary>
+    /// <summary>LINT: LEGACY_NAMES Infra Usage of billing metrics.</summary>
     public class InfraUsage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Aggregated core metrics since requested start_time.</summary>
