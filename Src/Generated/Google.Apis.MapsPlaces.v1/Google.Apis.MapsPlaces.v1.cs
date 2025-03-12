@@ -2327,8 +2327,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
     }
 
     /// <summary>
-    /// Place resource name and id of sub destinations that relate to the place. For example, different terminals are
-    /// different destinations of an airport.
+    /// Sub destinations are specific places associated with a main place. These provide more specific destinations for
+    /// users who are searching for a large or complex place, like an airport, national park, university, or stadium.
+    /// For example, sub destinations at an airport might include associated terminals and parking lots. Sub
+    /// destinations return the place id and place resource name, which can be used in subsequent Place Details (New)
+    /// requests to fetch richer details, including the sub destination's displayName and location.
     /// </summary>
     public class GoogleMapsPlacesV1PlaceSubDestination : Google.Apis.Requests.IDirectResponseSchema
     {
