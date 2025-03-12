@@ -847,6 +847,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IDictionary<string, object> Args { get; set; }
 
+        /// <summary>
+        /// Optional. The unique id of the function call. If populated, the client to execute the `function_call` and
+        /// return the response with the matching `id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>Required. The name of the function to call. Matches [FunctionDeclaration.name].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -925,6 +932,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1FunctionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The id of the function call this response is for. Populated by the client to match the
+        /// corresponding function call `id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>
         /// Required. The name of the function to call. Matches [FunctionDeclaration.name] and [FunctionCall.name].
         /// </summary>
@@ -1121,6 +1135,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Output only. List of modalities that were processed in the request input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokensDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ModalityTokenCount> PromptTokensDetails { get; set; }
+
+        /// <summary>Output only. Number of tokens present in thoughts output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thoughtsTokenCount")]
+        public virtual System.Nullable<int> ThoughtsTokenCount { get; set; }
 
         /// <summary>Output only. Number of tokens present in tool-use prompt(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolUsePromptTokenCount")]
@@ -1979,6 +1997,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
+
+        /// <summary>
+        /// Optional. Fully-qualified Vertex AI Search engine resource ID. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
