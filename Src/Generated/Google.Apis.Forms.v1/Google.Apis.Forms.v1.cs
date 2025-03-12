@@ -824,6 +824,13 @@ namespace Google.Apis.Forms.v1
                 InitParameters();
             }
 
+            /// <summary>
+            /// Optional. Whether the form is unpublished. If set to `true`, the form doesn't accept responses. If set
+            /// to `false` or unset, the form is published and accepts responses.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("unpublished", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Unpublished { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Forms.v1.Data.Form Body { get; set; }
 
@@ -843,6 +850,14 @@ namespace Google.Apis.Forms.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("unpublished", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "unpublished",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -877,6 +892,65 @@ namespace Google.Apis.Forms.v1
             public override string RestPath => "v1/forms/{formId}";
 
             /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("formId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "formId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the publish settings of a form. Legacy forms aren't supported because they don't have the
+        /// `publish_settings` field.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="formId">Required. The ID of the form. You can get the id from `Form.form_id` field.</param>
+        public virtual SetPublishSettingsRequest SetPublishSettings(Google.Apis.Forms.v1.Data.SetPublishSettingsRequest body, string formId)
+        {
+            return new SetPublishSettingsRequest(this.service, body, formId);
+        }
+
+        /// <summary>
+        /// Updates the publish settings of a form. Legacy forms aren't supported because they don't have the
+        /// `publish_settings` field.
+        /// </summary>
+        public class SetPublishSettingsRequest : FormsBaseServiceRequest<Google.Apis.Forms.v1.Data.SetPublishSettingsResponse>
+        {
+            /// <summary>Constructs a new SetPublishSettings request.</summary>
+            public SetPublishSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Forms.v1.Data.SetPublishSettingsRequest body, string formId) : base(service)
+            {
+                FormId = formId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the form. You can get the id from `Form.form_id` field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("formId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string FormId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Forms.v1.Data.SetPublishSettingsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setPublishSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/forms/{formId}:setPublishSettings";
+
+            /// <summary>Initializes SetPublishSettings parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1233,6 +1307,14 @@ namespace Google.Apis.Forms.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedSheetId")]
         public virtual string LinkedSheetId { get; set; }
+
+        /// <summary>
+        /// Output only. The publishing settings for a form. This field isn't set for legacy forms because they don't
+        /// have the `publish_settings` field. All newly created forms support publish settings. Forms with
+        /// `publish_settings` value set can call UpdatePublishSettings API to publish or unpublish the form.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishSettings")]
+        public virtual PublishSettings PublishSettings { get; set; }
 
         /// <summary>
         /// Output only. The form URI to share with responders. This opens a page that allows the user to submit
@@ -1707,6 +1789,39 @@ namespace Google.Apis.Forms.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The publishing settings of a form.</summary>
+    public class PublishSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The publishing state of a form. When updating `publish_state`, both `is_published` and
+        /// `is_accepting_responses` must be set. However, setting `is_accepting_responses` to `true` and `is_published`
+        /// to `false` isn't supported and returns an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishState")]
+        public virtual PublishState PublishState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The publishing state of a form.</summary>
+    public class PublishState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Whether the form accepts responses. If `is_published` is set to `false`, this field is forced to
+        /// `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAcceptingResponses")]
+        public virtual System.Nullable<bool> IsAcceptingResponses { get; set; }
+
+        /// <summary>Required. Whether the form is published and visible to others.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPublished")]
+        public virtual System.Nullable<bool> IsPublished { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Any question. The specific type of question is known by its `kind`.</summary>
     public class Question : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1910,6 +2025,40 @@ namespace Google.Apis.Forms.v1.Data
         /// <summary>The label to display describing the lowest point on the scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowLabel")]
         public virtual string LowLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Updates the publish settings of a Form.</summary>
+    public class SetPublishSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The desired publish settings to apply to the form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishSettings")]
+        public virtual PublishSettings PublishSettings { get; set; }
+
+        /// <summary>
+        /// Optional. The `publish_settings` fields to update. This field mask accepts the following values: *
+        /// `publish_state`: Updates or replaces all `publish_state` settings. * `"*"`: Updates or replaces all
+        /// `publish_settings` fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of a `SetPublishSettings` request.</summary>
+    public class SetPublishSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the Form. This is same as the `Form.form_id` field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formId")]
+        public virtual string FormId { get; set; }
+
+        /// <summary>The publish settings of the form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishSettings")]
+        public virtual PublishSettings PublishSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
