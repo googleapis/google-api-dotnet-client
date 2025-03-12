@@ -20479,6 +20479,17 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Suggestion generated using free form generator.</summary>
+    public class GoogleCloudDialogflowV2FreeFormSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Free form suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Google Cloud Storage location for the output.</summary>
     public class GoogleCloudDialogflowV2GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20489,6 +20500,62 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Conversations.GenerateSuggestions.</summary>
+    public class GoogleCloudDialogflowV2GenerateSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The answers generated for the conversation based on context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestionAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer> GeneratorSuggestionAnswers { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used as context for compiling suggestion. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A GeneratorSuggestion answer.</summary>
+    public class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Answer record that uniquely identifies the suggestion. This can be used to provide suggestion feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>Suggestion details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
+        public virtual GoogleCloudDialogflowV2GeneratorSuggestion GeneratorSuggestion { get; set; }
+
+        /// <summary>
+        /// The name of the generator used to generate this suggestion. Format: `projects//locations//generators/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceGenerator")]
+        public virtual string SourceGenerator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestion generated using a Generator.</summary>
+    public class GoogleCloudDialogflowV2GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Free form suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeFormSuggestion")]
+        public virtual GoogleCloudDialogflowV2FreeFormSuggestion FreeFormSuggestion { get; set; }
+
+        /// <summary>Optional. Suggested summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
+        public virtual GoogleCloudDialogflowV2SummarySuggestion SummarySuggestion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22294,6 +22361,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
+        /// <summary>Suggestions generated using generators triggered by customer or agent messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generateSuggestionsResponse")]
+        public virtual GoogleCloudDialogflowV2GenerateSuggestionsResponse GenerateSuggestionsResponse { get; set; }
+
         /// <summary>SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestArticlesResponse")]
         public virtual GoogleCloudDialogflowV2SuggestArticlesResponse SuggestArticlesResponse { get; set; }
@@ -22309,6 +22380,32 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]
         public virtual GoogleCloudDialogflowV2SuggestSmartRepliesResponse SuggestSmartRepliesResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggested summary of the conversation.</summary>
+    public class GoogleCloudDialogflowV2SummarySuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. All the parts of generated summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarySuggestionSummarySection> SummarySections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A component of the generated summary.</summary>
+    public class GoogleCloudDialogflowV2SummarySuggestionSummarySection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("section")]
+        public virtual string Section { get; set; }
+
+        /// <summary>Required. Summary text for the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22906,6 +23003,17 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Suggestion generated using free form generator.</summary>
+    public class GoogleCloudDialogflowV2beta1FreeFormSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Free form suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Google Cloud Storage location for the output.</summary>
     public class GoogleCloudDialogflowV2beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22916,6 +23024,62 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Conversations.GenerateSuggestions.</summary>
+    public class GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The answers generated for the conversation based on context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestionAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer> GeneratorSuggestionAnswers { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used as context for compiling suggestion. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A GeneratorSuggestion answer.</summary>
+    public class GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Answer record that uniquely identifies the suggestion. This can be used to provide suggestion feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>Suggestion details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1GeneratorSuggestion GeneratorSuggestion { get; set; }
+
+        /// <summary>
+        /// The name of the generator used to generate this suggestion. Format: `projects//locations//generators/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceGenerator")]
+        public virtual string SourceGenerator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestion generated using a Generator.</summary>
+    public class GoogleCloudDialogflowV2beta1GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Free form suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeFormSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1FreeFormSuggestion FreeFormSuggestion { get; set; }
+
+        /// <summary>Optional. Suggested summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1SummarySuggestion SummarySuggestion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25219,6 +25383,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
+        /// <summary>Suggestions generated using generators triggered by customer or agent messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generateSuggestionsResponse")]
+        public virtual GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse GenerateSuggestionsResponse { get; set; }
+
         /// <summary>SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestArticlesResponse")]
         public virtual GoogleCloudDialogflowV2beta1SuggestArticlesResponse SuggestArticlesResponse { get; set; }
@@ -25242,6 +25410,32 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]
         public virtual GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse SuggestSmartRepliesResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggested summary of the conversation.</summary>
+    public class GoogleCloudDialogflowV2beta1SummarySuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. All the parts of generated summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection> SummarySections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A component of the generated summary.</summary>
+    public class GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("section")]
+        public virtual string Section { get; set; }
+
+        /// <summary>Required. Summary text for the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
