@@ -13,6 +13,11 @@
     "ACTION_VIEW_BASIC",
     "ACTION_VIEW_FULL"
   ],
+  "Google.Apis.Connectors.v2.ProjectsResource+LocationsResource+ConnectionsResource+EntityTypesResource+GetRequest.ViewEnum": [
+    "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED",
+    "ENTITY_TYPE_SCHEMA_VIEW_BASIC",
+    "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED"
+  ],
   "Google.Apis.Connectors.v2.ProjectsResource+LocationsResource+ConnectionsResource+EntityTypesResource+ListRequest.ViewEnum": [
     "ENTITY_TYPE_VIEW_UNSPECIFIED",
     "ENTITY_TYPE_VIEW_BASIC",

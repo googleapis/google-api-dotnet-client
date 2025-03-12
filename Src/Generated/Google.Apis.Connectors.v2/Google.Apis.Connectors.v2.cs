@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1144,6 +1144,26 @@ namespace Google.Apis.Connectors.v2
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Specifies view for entity type schema.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Specifies view for entity type schema.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>VIEW_UNSPECIFIED. The unset value. Defaults to BASIC View.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED")]
+                            ENTITYTYPESCHEMAVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Return basic entity type schema.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ENTITY_TYPE_SCHEMA_VIEW_BASIC")]
+                            ENTITYTYPESCHEMAVIEWBASIC = 1,
+
+                            /// <summary>Return enriched entity types schema.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ENTITY_TYPE_SCHEMA_VIEW_ENRICHED")]
+                            ENTITYTYPESCHEMAVIEWENRICHED = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -1164,6 +1184,14 @@ namespace Google.Apis.Connectors.v2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/entityTypes/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
