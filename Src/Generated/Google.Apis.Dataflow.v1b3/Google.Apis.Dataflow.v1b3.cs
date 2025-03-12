@@ -6531,6 +6531,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalExperiments")]
         public virtual System.Collections.Generic.IList<string> AdditionalExperiments { get; set; }
 
+        /// <summary>Optional. Additional pipeline option flags for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalPipelineOptions")]
+        public virtual System.Collections.Generic.IList<string> AdditionalPipelineOptions { get; set; }
+
         /// <summary>
         /// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified
         /// in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
@@ -8037,7 +8041,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes the state of a metric. Next ID: 14</summary>
+    /// <summary>Describes the state of a metric.</summary>
     public class MetricUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8931,6 +8935,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalExperiments")]
         public virtual System.Collections.Generic.IList<string> AdditionalExperiments { get; set; }
+
+        /// <summary>Optional. Additional pipeline option flags for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalPipelineOptions")]
+        public virtual System.Collections.Generic.IList<string> AdditionalPipelineOptions { get; set; }
 
         /// <summary>
         /// Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions
