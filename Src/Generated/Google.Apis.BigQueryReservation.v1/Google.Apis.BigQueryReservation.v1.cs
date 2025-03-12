@@ -2495,49 +2495,6 @@ namespace Google.Apis.BigQueryReservation.v1.Data
             set => LastReplicationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        private string _softFailoverStartTimeRaw;
-
-        private object _softFailoverStartTime;
-
-        /// <summary>
-        /// Output only. The time at which a soft failover for the reservation and its associated datasets was
-        /// initiated. After this field is set, all subsequent changes to the reservation will be rejected unless a hard
-        /// failover overrides this operation. This field will be cleared once the failover is complete.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("softFailoverStartTime")]
-        public virtual string SoftFailoverStartTimeRaw
-        {
-            get => _softFailoverStartTimeRaw;
-            set
-            {
-                _softFailoverStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _softFailoverStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SoftFailoverStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SoftFailoverStartTimeDateTimeOffset instead.")]
-        public virtual object SoftFailoverStartTime
-        {
-            get => _softFailoverStartTime;
-            set
-            {
-                _softFailoverStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _softFailoverStartTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SoftFailoverStartTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SoftFailoverStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SoftFailoverStartTimeRaw);
-            set => SoftFailoverStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2676,10 +2633,11 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string PrimaryLocation { get; set; }
 
         /// <summary>
-        /// Output only. The Disater Recovery(DR) replication status of the reservation. This is only available for the
-        /// primary replica of DR/failover reservations and provides information about the both the staleness of the
+        /// Output only. The Disaster Recovery(DR) replication status of the reservation. This is only available for the
+        /// primary replicas of DR/failover reservations and provides information about the both the staleness of the
         /// secondary and the last error encountered while trying to replicate changes from the primary to the
-        /// secondary.
+        /// secondary. If this field is blank, it means that the reservation is either not a DR reservation or the
+        /// reservation is a DR secondary or that any replication operations on the reservation have succeeded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationStatus")]
         public virtual ReplicationStatus ReplicationStatus { get; set; }
