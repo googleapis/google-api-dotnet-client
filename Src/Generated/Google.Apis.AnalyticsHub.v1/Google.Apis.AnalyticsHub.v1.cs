@@ -578,6 +578,14 @@ namespace Google.Apis.AnalyticsHub.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. If the listing is commercial then this field must be set to true, otherwise a
+                        /// failure is thrown. This acts as a safety guard to avoid deleting commercial listings
+                        /// accidentally.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deleteCommercial", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> DeleteCommercial { get; set; }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
@@ -598,6 +606,14 @@ namespace Google.Apis.AnalyticsHub.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+/listings/[^/]+$",
+                            });
+                            RequestParameters.Add("deleteCommercial", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "deleteCommercial",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -3293,7 +3309,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// </summary>
     public class Listing : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Shared dataset i.e. BigQuery dataset source.</summary>
+        /// <summary>Shared dataset i.e. BigQuery dataset source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDataset")]
         public virtual BigQueryDatasetSource BigqueryDataset { get; set; }
 
@@ -3368,7 +3384,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual Publisher Publisher { get; set; }
 
-        /// <summary>Required. Pub/Sub topic source.</summary>
+        /// <summary>Pub/Sub topic source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual PubSubTopicSource PubsubTopic { get; set; }
 
@@ -3871,6 +3887,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// <summary>Message for revoking a subscription.</summary>
     public class RevokeSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If the subscription is commercial then this field must be set to true, otherwise a failure is
+        /// thrown. This acts as a safety guard to avoid revoking commercial subscriptions accidentally.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revokeCommercial")]
+        public virtual System.Nullable<bool> RevokeCommercial { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4015,7 +4038,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
         public virtual DestinationDataset DestinationDataset { get; set; }
 
-        /// <summary>Required. Input only. Destination Pub/Sub subscription to create for the subscriber.</summary>
+        /// <summary>Input only. Destination Pub/Sub subscription to create for the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationPubsubSubscription")]
         public virtual DestinationPubSubSubscription DestinationPubsubSubscription { get; set; }
 
