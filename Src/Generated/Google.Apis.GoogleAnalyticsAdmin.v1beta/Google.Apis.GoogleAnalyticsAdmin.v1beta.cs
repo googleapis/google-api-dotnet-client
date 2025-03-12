@@ -4895,28 +4895,42 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Allows any of Google sales to access the data in order to suggest configuration changes to improve results.
-        /// </summary>
+        /// <summary>Deprecated. This field is no longer used and always returns false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleAnySalesEnabled")]
         public virtual System.Nullable<bool> SharingWithGoogleAnySalesEnabled { get; set; }
 
         /// <summary>
-        /// Allows Google sales teams that are assigned to the customer to access the data in order to suggest
-        /// configuration changes to improve results. Sales team restrictions still apply when enabled.
+        /// Allows Google access to your Google Analytics account data, including account usage and configuration data,
+        /// product spending, and users associated with your Google Analytics account, so that Google can help you make
+        /// the most of Google products, providing you with insights, offers, recommendations, and optimization tips
+        /// across Google Analytics and other Google products for business. This field maps to the "Recommendations for
+        /// your business" field in the Google Analytics Admin UI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleAssignedSalesEnabled")]
         public virtual System.Nullable<bool> SharingWithGoogleAssignedSalesEnabled { get; set; }
 
-        /// <summary>Allows Google to use the data to improve other Google products or services.</summary>
+        /// <summary>
+        /// Allows Google to use the data to improve other Google products or services. This fields maps to the "Google
+        /// products &amp;amp; services" field in the Google Analytics Admin UI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleProductsEnabled")]
         public virtual System.Nullable<bool> SharingWithGoogleProductsEnabled { get; set; }
 
-        /// <summary>Allows Google support to access the data in order to help troubleshoot issues.</summary>
+        /// <summary>
+        /// Allows Google technical support representatives access to your Google Analytics data and account when
+        /// necessary to provide service and find solutions to technical issues. This field maps to the "Technical
+        /// support" field in the Google Analytics Admin UI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSupportEnabled")]
         public virtual System.Nullable<bool> SharingWithGoogleSupportEnabled { get; set; }
 
-        /// <summary>Allows Google to share the data anonymously in aggregate form with others.</summary>
+        /// <summary>
+        /// Enable features like predictions, modeled data, and benchmarking that can provide you with richer business
+        /// insights when you contribute aggregated measurement data. The data you share (including information about
+        /// the property from which it is shared) is aggregated and de-identified before being used to generate business
+        /// insights. This field maps to the "Modeling contributions &amp;amp; business insights" field in the Google
+        /// Analytics Admin UI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingWithOthersEnabled")]
         public virtual System.Nullable<bool> SharingWithOthersEnabled { get; set; }
 
