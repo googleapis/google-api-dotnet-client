@@ -8008,6 +8008,73 @@ namespace Google.Apis.Dialogflow.v2beta1
                     this.service = service;
                 }
 
+                /// <summary>
+                /// Generates all the suggestions using generators configured in the conversation profile. A generator
+                /// is used only if its trigger event is matched.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="conversation">
+                /// Required. The conversation for which the suggestions are generated. Format:
+                /// `projects//locations//conversations/`. The conversation must be created with a conversation profile
+                /// which has generators configured in it to be able to get suggestions.
+                /// </param>
+                public virtual GenerateRequest Generate(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest body, string conversation)
+                {
+                    return new GenerateRequest(this.service, body, conversation);
+                }
+
+                /// <summary>
+                /// Generates all the suggestions using generators configured in the conversation profile. A generator
+                /// is used only if its trigger event is matched.
+                /// </summary>
+                public class GenerateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse>
+                {
+                    /// <summary>Constructs a new Generate request.</summary>
+                    public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest body, string conversation) : base(service)
+                    {
+                        Conversation = conversation;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The conversation for which the suggestions are generated. Format:
+                    /// `projects//locations//conversations/`. The conversation must be created with a conversation
+                    /// profile which has generators configured in it to be able to get suggestions.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Conversation { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+conversation}/suggestions:generate";
+
+                    /// <summary>Initializes Generate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("conversation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "conversation",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/conversations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Get answers for the given query based on knowledge documents.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="conversation">
@@ -16284,6 +16351,73 @@ namespace Google.Apis.Dialogflow.v2beta1
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Generates all the suggestions using generators configured in the conversation profile. A
+                    /// generator is used only if its trigger event is matched.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="conversation">
+                    /// Required. The conversation for which the suggestions are generated. Format:
+                    /// `projects//locations//conversations/`. The conversation must be created with a conversation
+                    /// profile which has generators configured in it to be able to get suggestions.
+                    /// </param>
+                    public virtual GenerateRequest Generate(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest body, string conversation)
+                    {
+                        return new GenerateRequest(this.service, body, conversation);
+                    }
+
+                    /// <summary>
+                    /// Generates all the suggestions using generators configured in the conversation profile. A
+                    /// generator is used only if its trigger event is matched.
+                    /// </summary>
+                    public class GenerateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse>
+                    {
+                        /// <summary>Constructs a new Generate request.</summary>
+                        public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest body, string conversation) : base(service)
+                        {
+                            Conversation = conversation;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The conversation for which the suggestions are generated. Format:
+                        /// `projects//locations//conversations/`. The conversation must be created with a conversation
+                        /// profile which has generators configured in it to be able to get suggestions.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Conversation { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "generate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta1/{+conversation}/suggestions:generate";
+
+                        /// <summary>Initializes Generate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("conversation", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "conversation",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Get answers for the given query based on knowledge documents.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="conversation">
@@ -16611,6 +16745,65 @@ namespace Google.Apis.Dialogflow.v2beta1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Data ingestion API. Ingests context references for an existing conversation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="conversation">
+                /// Required. Resource identifier of the conversation to ingest context information for. Format:
+                /// `projects//locations//conversations/`.
+                /// </param>
+                public virtual IngestContextReferencesRequest IngestContextReferences(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1IngestContextReferencesRequest body, string conversation)
+                {
+                    return new IngestContextReferencesRequest(this.service, body, conversation);
+                }
+
+                /// <summary>Data ingestion API. Ingests context references for an existing conversation.</summary>
+                public class IngestContextReferencesRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1IngestContextReferencesResponse>
+                {
+                    /// <summary>Constructs a new IngestContextReferences request.</summary>
+                    public IngestContextReferencesRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1IngestContextReferencesRequest body, string conversation) : base(service)
+                    {
+                        Conversation = conversation;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource identifier of the conversation to ingest context information for. Format:
+                    /// `projects//locations//conversations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Conversation { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1IngestContextReferencesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "ingestContextReferences";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+conversation}:ingestContextReferences";
+
+                    /// <summary>Initializes IngestContextReferences parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("conversation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "conversation",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -26622,6 +26815,17 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Suggestion generated using free form generator.</summary>
+    public class GoogleCloudDialogflowV2FreeFormSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Free form suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Google Cloud Storage location for the output.</summary>
     public class GoogleCloudDialogflowV2GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26632,6 +26836,62 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Conversations.GenerateSuggestions.</summary>
+    public class GoogleCloudDialogflowV2GenerateSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The answers generated for the conversation based on context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestionAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer> GeneratorSuggestionAnswers { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used as context for compiling suggestion. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A GeneratorSuggestion answer.</summary>
+    public class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Answer record that uniquely identifies the suggestion. This can be used to provide suggestion feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>Suggestion details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
+        public virtual GoogleCloudDialogflowV2GeneratorSuggestion GeneratorSuggestion { get; set; }
+
+        /// <summary>
+        /// The name of the generator used to generate this suggestion. Format: `projects//locations//generators/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceGenerator")]
+        public virtual string SourceGenerator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestion generated using a Generator.</summary>
+    public class GoogleCloudDialogflowV2GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Free form suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeFormSuggestion")]
+        public virtual GoogleCloudDialogflowV2FreeFormSuggestion FreeFormSuggestion { get; set; }
+
+        /// <summary>Optional. Suggested summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
+        public virtual GoogleCloudDialogflowV2SummarySuggestion SummarySuggestion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28437,6 +28697,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
+        /// <summary>Suggestions generated using generators triggered by customer or agent messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generateSuggestionsResponse")]
+        public virtual GoogleCloudDialogflowV2GenerateSuggestionsResponse GenerateSuggestionsResponse { get; set; }
+
         /// <summary>SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestArticlesResponse")]
         public virtual GoogleCloudDialogflowV2SuggestArticlesResponse SuggestArticlesResponse { get; set; }
@@ -28452,6 +28716,32 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]
         public virtual GoogleCloudDialogflowV2SuggestSmartRepliesResponse SuggestSmartRepliesResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggested summary of the conversation.</summary>
+    public class GoogleCloudDialogflowV2SummarySuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. All the parts of generated summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarySuggestionSummarySection> SummarySections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A component of the generated summary.</summary>
+    public class GoogleCloudDialogflowV2SummarySuggestionSummarySection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("section")]
+        public virtual string Section { get; set; }
+
+        /// <summary>Required. Summary text for the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29953,6 +30243,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The context reference updates provided by external systems.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestedContextReferences")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowV2beta1ConversationContextReference> IngestedContextReferences { get; set; }
+
         /// <summary>Output only. The current state of the Conversation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; }
@@ -30019,6 +30313,116 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Optional. List of message transcripts in the conversation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageEntries")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1MessageEntry> MessageEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a piece of ingested context information.</summary>
+    public class GoogleCloudDialogflowV2beta1ConversationContextReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of content updates for a context reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextContents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ConversationContextReferenceContextContent> ContextContents { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the context reference was first created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The language of the information ingested, defaults to "en-US" if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Required. The mode in which context reference contents are updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMode")]
+        public virtual string UpdateMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contents ingested.</summary>
+    public class GoogleCloudDialogflowV2beta1ConversationContextReferenceContextContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The information ingested in a single request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Required. The format of the ingested string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentFormat")]
+        public virtual string ContentFormat { get; set; }
+
+        private string _ingestionTimeRaw;
+
+        private object _ingestionTime;
+
+        /// <summary>
+        /// Output only. The time when this information was incorporated into the relevant context reference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionTime")]
+        public virtual string IngestionTimeRaw
+        {
+            get => _ingestionTimeRaw;
+            set
+            {
+                _ingestionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _ingestionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="IngestionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IngestionTimeDateTimeOffset instead.")]
+        public virtual object IngestionTime
+        {
+            get => _ingestionTime;
+            set
+            {
+                _ingestionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _ingestionTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="IngestionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IngestionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IngestionTimeRaw);
+            set => IngestionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30990,6 +31394,28 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Free form generator context that customer can configure.</summary>
+    public class GoogleCloudDialogflowV2beta1FreeFormContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Free form text input to LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestion generated using free form generator.</summary>
+    public class GoogleCloudDialogflowV2beta1FreeFormSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Free form suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a
     /// more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to
@@ -31122,6 +31548,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The request message for Conversations.GenerateStatelessSuggestion.</summary>
     public class GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A section of ingested context information. The key is the name of the context reference and the
+        /// value contains the contents of the context reference. The key is used to incorporate ingested context
+        /// references to enhance the generator.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextReferences")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowV2beta1ConversationContextReference> ContextReferences { get; set; }
+
         /// <summary>Optional. Context of the conversation, including transcripts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationContext")]
         public virtual GoogleCloudDialogflowV2beta1ConversationContext ConversationContext { get; set; }
@@ -31261,6 +31695,68 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Conversations.GenerateSuggestions.</summary>
+    public class GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the latest conversation message for which the request is triggered. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>
+        /// Optional. A list of trigger events. Only generators configured in the conversation_profile whose
+        /// trigger_event is listed here will be triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvents")]
+        public virtual System.Collections.Generic.IList<string> TriggerEvents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Conversations.GenerateSuggestions.</summary>
+    public class GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The answers generated for the conversation based on context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestionAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer> GeneratorSuggestionAnswers { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used as context for compiling suggestion. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A GeneratorSuggestion answer.</summary>
+    public class GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Answer record that uniquely identifies the suggestion. This can be used to provide suggestion feedback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>Suggestion details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1GeneratorSuggestion GeneratorSuggestion { get; set; }
+
+        /// <summary>
+        /// The name of the generator used to generate this suggestion. Format: `projects//locations//generators/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceGenerator")]
+        public virtual string SourceGenerator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>LLM generator.</summary>
     public class GoogleCloudDialogflowV2beta1Generator : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -31305,6 +31801,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Input of free from generator to LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeFormContext")]
+        public virtual GoogleCloudDialogflowV2beta1FreeFormContext FreeFormContext { get; set; }
+
         /// <summary>Optional. Inference parameters for this generator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inferenceParameter")]
         public virtual GoogleCloudDialogflowV2beta1InferenceParameter InferenceParameter { get; set; }
@@ -31314,6 +31814,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The published Large Language Model name. * To use the latest model version, specify the model name
+        /// without version number. Example: `text-bison` * To use a stable model version, specify the version number as
+        /// well. Example: `text-bison@002`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishedModel")]
+        public virtual string PublishedModel { get; set; }
 
         /// <summary>Input of Summarization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationContext")]
@@ -31369,6 +31877,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Suggestion generated using a Generator.</summary>
     public class GoogleCloudDialogflowV2beta1GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Free form suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeFormSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1FreeFormSuggestion FreeFormSuggestion { get; set; }
+
         /// <summary>Optional. Suggested summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
         public virtual GoogleCloudDialogflowV2beta1SummarySuggestion SummarySuggestion { get; set; }
@@ -31943,6 +32455,32 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topP")]
         public virtual System.Nullable<double> TopP { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for ConversationsService.IngestContextReferences.</summary>
+    public class GoogleCloudDialogflowV2beta1IngestContextReferencesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The context references to ingest. The key is the name of the context reference and the value
+        /// contains the contents of the context reference. The key is used to incorporate ingested context references
+        /// to enhance the generator.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextReferences")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowV2beta1ConversationContextReference> ContextReferences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for ConversationsService.IngestContextReferences.</summary>
+    public class GoogleCloudDialogflowV2beta1IngestContextReferencesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All context references ingested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestedContextReferences")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowV2beta1ConversationContextReference> IngestedContextReferences { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35977,6 +36515,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Error status if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Suggestions generated using generators triggered by customer or agent messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generateSuggestionsResponse")]
+        public virtual GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse GenerateSuggestionsResponse { get; set; }
 
         /// <summary>SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestArticlesResponse")]
