@@ -3351,7 +3351,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cidrBlocks")]
         public virtual System.Collections.Generic.IList<CidrBlock> CidrBlocks { get; set; }
 
-        /// <summary>Whether or not master authorized networks feature is enabled.</summary>
+        /// <summary>Optional. Whether or not master authorized networks feature is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
