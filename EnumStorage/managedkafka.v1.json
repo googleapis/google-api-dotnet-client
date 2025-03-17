@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ManagedKafka.v1.ManagedKafkaBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ManagedKafka.v1.ManagedKafkaBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
