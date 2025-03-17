@@ -21021,6 +21021,86 @@ namespace Google.Apis.Logging.v2
 }
 namespace Google.Apis.Logging.v2.Data
 {
+    /// <summary>Metadata associated with App Hub.</summary>
+    public class AppHub : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata associated with the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual AppHubApplication Application { get; set; }
+
+        /// <summary>Metadata associated with the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual AppHubService Service { get; set; }
+
+        /// <summary>Metadata associated with the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workload")]
+        public virtual AppHubWorkload Workload { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Resource identifiers associated with an AppHub application AppHub resources are of the form
+    /// projects//locations//applications/ projects//locations//applications//services/
+    /// projects//locations//applications//workloads/ These resources can be reconstructed from the components below.
+    /// </summary>
+    public class AppHubApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource container that owns the application. Example: "projects/management_project"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual string Container { get; set; }
+
+        /// <summary>Application Id. Example: "my-app"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Location associated with the Application. Example: "us-east1"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with an App Hub service.</summary>
+    public class AppHubService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Service criticality type Example: "CRITICAL"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criticalityType")]
+        public virtual string CriticalityType { get; set; }
+
+        /// <summary>Service environment type Example: "DEV"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentType")]
+        public virtual string EnvironmentType { get; set; }
+
+        /// <summary>Service Id. Example: "my-service"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with an App Hub workload.</summary>
+    public class AppHubWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Workload criticality type Example: "CRITICAL"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criticalityType")]
+        public virtual string CriticalityType { get; set; }
+
+        /// <summary>Workload environment type Example: "DEV"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentType")]
+        public virtual string EnvironmentType { get; set; }
+
+        /// <summary>Workload Id. Example: "my-workload"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a BigQuery dataset that was created by a link.</summary>
     public class BigQueryDataset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22622,6 +22702,13 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>An individual entry in a log.</summary>
     public class LogEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. AppHub application metadata associated with this LogEntry. May be empty if there is no
+        /// associated AppHub application or multiple associated applications (such as for VPC flow logs)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apphub")]
+        public virtual AppHub Apphub { get; set; }
+
         /// <summary>
         /// Output only. The Error Reporting (https://cloud.google.com/error-reporting) error groups associated with
         /// this LogEntry. Error Reporting sets the values for this field during error group creation.For more
