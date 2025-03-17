@@ -16005,10 +16005,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Describes BigQuery publishing configurations.</summary>
     public class GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. The BigQuery dataset to publish to. It takes the form
-        /// projects/{project_id}/datasets/{dataset_id}. If not set, the service creates a default publishing dataset.
-        /// </summary>
+        /// <summary>Output only. The BigQuery dataset the discovered tables are published to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
 
