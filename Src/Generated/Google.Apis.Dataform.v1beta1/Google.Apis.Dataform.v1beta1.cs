@@ -917,8 +917,8 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Updates a single ReleaseConfig. **Note:** This method does not fully implement
-                    /// [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\***) is treated
+                    /// Updates a single ReleaseConfig. **Note:** *This method does not fully implement*, (see
+                    /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated
                     /// as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
                     /// the request is treated as a full update on all modifiable fields
                     /// </summary>
@@ -930,8 +930,8 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Updates a single ReleaseConfig. **Note:** This method does not fully implement
-                    /// [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\***) is treated
+                    /// Updates a single ReleaseConfig. **Note:** *This method does not fully implement*, (see
+                    /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated
                     /// as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
                     /// the request is treated as a full update on all modifiable fields
                     /// </summary>
@@ -1260,8 +1260,8 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Updates a single WorkflowConfig. **Note:** This method does not fully implement
-                    /// [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\***) is treated
+                    /// Updates a single WorkflowConfig. **Note:** *This method does not fully implement*, (see
+                    /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated
                     /// as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
                     /// the request is treated as a full update on all modifiable fields
                     /// </summary>
@@ -1273,8 +1273,8 @@ namespace Google.Apis.Dataform.v1beta1
                     }
 
                     /// <summary>
-                    /// Updates a single WorkflowConfig. **Note:** This method does not fully implement
-                    /// [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\***) is treated
+                    /// Updates a single WorkflowConfig. **Note:** *This method does not fully implement*, (see
+                    /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated
                     /// as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
                     /// the request is treated as a full update on all modifiable fields
                     /// </summary>
@@ -3866,8 +3866,8 @@ namespace Google.Apis.Dataform.v1beta1
                 }
 
                 /// <summary>
-                /// Updates a single Repository. **Note:** This method does not fully implement
-                /// [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\***) is treated as a
+                /// Updates a single Repository. **Note:** *This method does not fully implement*, (see
+                /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated as a
                 /// bad request - When the **field_mask** is omitted, instead of only updating the set fields, the
                 /// request is treated as a full update on all modifiable fields
                 /// </summary>
@@ -3879,8 +3879,8 @@ namespace Google.Apis.Dataform.v1beta1
                 }
 
                 /// <summary>
-                /// Updates a single Repository. **Note:** This method does not fully implement
-                /// [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\***) is treated as a
+                /// Updates a single Repository. **Note:** *This method does not fully implement*, (see
+                /// [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is treated as a
                 /// bad request - When the **field_mask** is omitted, instead of only updating the set fields, the
                 /// request is treated as a full update on all modifiable fields
                 /// </summary>
@@ -4452,10 +4452,10 @@ namespace Google.Apis.Dataform.v1beta1
             }
 
             /// <summary>
-            /// Update default config for a given project and location. **Note:** This method does not fully implement
-            /// [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\***) is treated as a bad
-            /// request - When the **field_mask** is omitted, instead of only updating the set fields, the request is
-            /// treated as a full update on all modifiable fields
+            /// Update default config for a given project and location. **Note:** *This method does not fully
+            /// implement*, (see [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is
+            /// treated as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
+            /// the request is treated as a full update on all modifiable fields
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Identifier. The config name.</param>
@@ -4465,10 +4465,10 @@ namespace Google.Apis.Dataform.v1beta1
             }
 
             /// <summary>
-            /// Update default config for a given project and location. **Note:** This method does not fully implement
-            /// [AIP-134](https://google.aip.dev/134); in particular: - The wildcard entry (**\***) is treated as a bad
-            /// request - When the **field_mask** is omitted, instead of only updating the set fields, the request is
-            /// treated as a full update on all modifiable fields
+            /// Update default config for a given project and location. **Note:** *This method does not fully
+            /// implement*, (see [AIP/134](https://google.aip.dev/134), in particular: - The wildcard entry (**\***) is
+            /// treated as a bad request - When the **field_mask** is omitted, instead of only updating the set fields,
+            /// the request is treated as a full update on all modifiable fields
             /// </summary>
             public class UpdateConfigRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Config>
             {
