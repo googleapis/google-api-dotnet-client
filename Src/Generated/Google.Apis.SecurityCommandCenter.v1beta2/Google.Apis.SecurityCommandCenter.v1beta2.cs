@@ -6315,6 +6315,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     }
 
     /// <summary>
+    /// CWE stands for Common Weakness Enumeration. Information about this weakness, as described by
+    /// [CWE](https://cwe.mitre.org/).
+    /// </summary>
+    public class Cwe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CWE identifier, e.g. CWE-94</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Any reference to the details on the CWE, for example, https://cwe.mitre.org/data/definitions/94.html
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<Reference> References { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Details about a data access attempt made by a principal not authorized under applicable data security policy.
     /// </summary>
     public class DataAccessEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -10054,6 +10074,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     }
 
     /// <summary>
+    /// CWE stands for Common Weakness Enumeration. Information about this weakness, as described by
+    /// [CWE](https://cwe.mitre.org/).
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2Cwe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CWE identifier, e.g. CWE-94</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Any reference to the details on the CWE, for example, https://cwe.mitre.org/data/definitions/94.html
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Reference> References { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Details about a data access attempt made by a principal not authorized under applicable data security policy.
     /// </summary>
     public class GoogleCloudSecuritycenterV2DataAccessEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -13211,6 +13251,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cve")]
         public virtual GoogleCloudSecuritycenterV2Cve Cve { get; set; }
 
+        /// <summary>
+        /// Represents one or more Common Weakness Enumeration (CWE) information on this vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cwes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Cwe> Cwes { get; set; }
+
         /// <summary>The fixed package is relevant to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedPackage")]
         public virtual GoogleCloudSecuritycenterV2Package FixedPackage { get; set; }
@@ -13218,6 +13264,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The offending package is relevant to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offendingPackage")]
         public virtual GoogleCloudSecuritycenterV2Package OffendingPackage { get; set; }
+
+        /// <summary>
+        /// Provider provided risk_score based on multiple factors. The higher the risk score, the more risky the
+        /// vulnerability is.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerRiskScore")]
+        public virtual System.Nullable<long> ProviderRiskScore { get; set; }
+
+        /// <summary>Represents whether the vulnerability is reachable (detected via static analysis)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachable")]
+        public virtual System.Nullable<bool> Reachable { get; set; }
 
         /// <summary>The security bulletin is relevant to this finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityBulletin")]
@@ -14698,6 +14755,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cve")]
         public virtual Cve Cve { get; set; }
 
+        /// <summary>
+        /// Represents one or more Common Weakness Enumeration (CWE) information on this vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cwes")]
+        public virtual System.Collections.Generic.IList<Cwe> Cwes { get; set; }
+
         /// <summary>The fixed package is relevant to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedPackage")]
         public virtual Package FixedPackage { get; set; }
@@ -14705,6 +14768,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The offending package is relevant to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offendingPackage")]
         public virtual Package OffendingPackage { get; set; }
+
+        /// <summary>
+        /// Provider provided risk_score based on multiple factors. The higher the risk score, the more risky the
+        /// vulnerability is.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerRiskScore")]
+        public virtual System.Nullable<long> ProviderRiskScore { get; set; }
+
+        /// <summary>Represents whether the vulnerability is reachable (detected via static analysis)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachable")]
+        public virtual System.Nullable<bool> Reachable { get; set; }
 
         /// <summary>The security bulletin is relevant to this finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityBulletin")]
