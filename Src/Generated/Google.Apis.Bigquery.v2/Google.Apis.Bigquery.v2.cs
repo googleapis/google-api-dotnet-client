@@ -5745,6 +5745,16 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string NullMarker { get; set; }
 
         /// <summary>
+        /// Optional. A list of strings represented as SQL NULL value in a CSV file. null_marker and null_markers can't
+        /// be set at the same time. If null_marker is set, null_markers has to be not set. If null_markers is set,
+        /// null_marker has to be not set. If both null_marker and null_markers are set at the same time, a user error
+        /// would be thrown. Any strings listed in null_markers, including empty string would be interpreted as SQL
+        /// NULL. This applies to all column types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullMarkers")]
+        public virtual System.Collections.Generic.IList<string> NullMarkers { get; set; }
+
+        /// <summary>
         /// Optional. Indicates if the embedded ASCII control characters (the first 32 characters in the ASCII-table,
         /// from '\x00' to '\x1F') are preserved.
         /// </summary>
@@ -5775,6 +5785,17 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
         public virtual System.Nullable<long> SkipLeadingRows { get; set; }
+
+        /// <summary>
+        /// Optional. Controls the strategy used to match loaded columns to the schema. If not set, a sensible default
+        /// is chosen based on how the schema is provided. If autodetect is used, then columns are matched by name.
+        /// Otherwise, columns are matched by position. This is done to keep the behavior backward-compatible.
+        /// Acceptable values are: POSITION - matches by position. This assumes that the columns are ordered the same
+        /// way as the schema. NAME - matches by name. This reads the header row as column names and reorders columns to
+        /// match the field names in the schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceColumnMatch")]
+        public virtual string SourceColumnMatch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8075,6 +8096,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
         public virtual string NullMarker { get; set; }
 
+        /// <summary>
+        /// Optional. A list of strings represented as SQL NULL value in a CSV file. null_marker and null_markers can't
+        /// be set at the same time. If null_marker is set, null_markers has to be not set. If null_markers is set,
+        /// null_marker has to be not set. If both null_marker and null_markers are set at the same time, a user error
+        /// would be thrown. Any strings listed in null_markers, including empty string would be interpreted as SQL
+        /// NULL. This applies to all column types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullMarkers")]
+        public virtual System.Collections.Generic.IList<string> NullMarkers { get; set; }
+
         /// <summary>Optional. Additional properties to set if sourceFormat is set to PARQUET.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parquetOptions")]
         public virtual ParquetOptions ParquetOptions { get; set; }
@@ -8164,6 +8195,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
         public virtual System.Nullable<int> SkipLeadingRows { get; set; }
+
+        /// <summary>
+        /// Optional. Controls the strategy used to match loaded columns to the schema. If not set, a sensible default
+        /// is chosen based on how the schema is provided. If autodetect is used, then columns are matched by name.
+        /// Otherwise, columns are matched by position. This is done to keep the behavior backward-compatible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceColumnMatch")]
+        public virtual string SourceColumnMatch { get; set; }
 
         /// <summary>
         /// Optional. The format of the data files. For CSV files, specify "CSV". For datastore backups, specify
