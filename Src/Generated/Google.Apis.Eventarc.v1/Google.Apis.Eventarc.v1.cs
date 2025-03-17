@@ -6615,6 +6615,10 @@ namespace Google.Apis.Eventarc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
         public virtual string CryptoKeyName { get; set; }
 
+        /// <summary>Optional. Resource labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// Required. The resource name of the config. Must be in the format of,
         /// `projects/{project}/locations/{location}/googleChannelConfig`. In API responses, the config name always
