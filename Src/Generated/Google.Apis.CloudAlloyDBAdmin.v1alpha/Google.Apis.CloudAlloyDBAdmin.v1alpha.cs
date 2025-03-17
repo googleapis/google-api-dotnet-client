@@ -4873,6 +4873,37 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     }
 
     /// <summary>
+    /// DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this
+    /// deny period. The start_date must be less than the end_date.
+    /// </summary>
+    public class DenyMaintenancePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Deny period end date. This can be: * A full date, with non-zero year, month and day values OR * A month and
+        /// day value, with a zero year for recurring
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>
+        /// Deny period start date. This can be: * A full date, with non-zero year, month and day values OR * A month
+        /// and day value, with a zero year for recurring
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>
+        /// Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time OR *
+        /// All zeros for 00:00:00 UTC
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual GoogleTypeTimeOfDay Time { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -5066,6 +5097,35 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5474,6 +5534,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enablePublicIp")]
         public virtual System.Nullable<bool> EnablePublicIp { get; set; }
 
+        /// <summary>
+        /// Output only. The resource link for the VPC network in which instance resources are created and from which
+        /// they are accessible via Private IP. This will be the same value as the parent cluster's network. It is
+        /// specified in the form: // `projects/{project_number}/global/networks/{network_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5625,6 +5693,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
+        /// <summary>
+        /// Machine type of the VM instance. E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd". cpu_count must
+        /// match the number of vCPUs in the machine type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5681,6 +5756,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     /// <summary>MaintenanceUpdatePolicy defines the policy for system updates.</summary>
     public class MaintenanceUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Periods to deny maintenance. Currently limited to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
+        public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }
+
         /// <summary>Preferred windows to perform maintenance. Currently limited to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindows")]
         public virtual System.Collections.Generic.IList<MaintenanceWindow> MaintenanceWindows { get; set; }
@@ -5788,6 +5867,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     /// <summary>Observability Instance specific configuration.</summary>
     public class ObservabilityInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether assistive experiences are enabled for this AlloyDB instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistiveExperiencesEnabled")]
+        public virtual System.Nullable<bool> AssistiveExperiencesEnabled { get; set; }
+
         /// <summary>Observability feature status for an instance. This flag is turned "off" by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
