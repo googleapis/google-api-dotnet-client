@@ -3420,6 +3420,45 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spot")]
         public virtual System.Nullable<bool> Spot { get; set; }
 
+        private string _terminationTimestampRaw;
+
+        private object _terminationTimestamp;
+
+        /// <summary>Output only. The time at which the node will be terminated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminationTimestamp")]
+        public virtual string TerminationTimestampRaw
+        {
+            get => _terminationTimestampRaw;
+            set
+            {
+                _terminationTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _terminationTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TerminationTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminationTimestampDateTimeOffset instead.")]
+        public virtual object TerminationTimestamp
+        {
+            get => _terminationTimestamp;
+            set
+            {
+                _terminationTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _terminationTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TerminationTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TerminationTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminationTimestampRaw);
+            set => TerminationTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
