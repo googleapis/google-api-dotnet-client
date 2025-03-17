@@ -352,10 +352,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Gets a Destination.</summary>
-                /// <param name="path">
-                /// Google Tag Destination's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/destinations/{destination_link_id}
-                /// </param>
+                /// <param name="path">Google Tag Destination's API relative path.</param>
                 public virtual GetRequest Get(string path)
                 {
                     return new GetRequest(this.service, path);
@@ -371,10 +368,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Google Tag Destination's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/destinations/{destination_link_id}
-                    /// </summary>
+                    /// <summary>Google Tag Destination's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -406,9 +400,7 @@ namespace Google.Apis.TagManager.v2
                 /// Adds a Destination to this Container and removes it from the Container to which it is currently
                 /// linked.
                 /// </summary>
-                /// <param name="parent">
-                /// GTM parent Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM parent Container's API relative path.</param>
                 public virtual LinkRequest Link(string parent)
                 {
                     return new LinkRequest(this.service, parent);
@@ -427,10 +419,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM parent Container's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM parent Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -486,9 +475,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Lists all Destinations linked to a GTM Container.</summary>
-                /// <param name="parent">
-                /// GTM parent Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM parent Container's API relative path.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -504,10 +491,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM parent Container's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM parent Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -555,9 +539,7 @@ namespace Google.Apis.TagManager.v2
 
                 /// <summary>Creates a GTM Environment.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM Container's API relative path.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Environment body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -574,9 +556,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -611,10 +591,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Deletes a GTM Environment.</summary>
-                /// <param name="path">
-                /// GTM Environment's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-                /// </param>
+                /// <param name="path">GTM Environment's API relative path.</param>
                 public virtual DeleteRequest Delete(string path)
                 {
                     return new DeleteRequest(this.service, path);
@@ -630,10 +607,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Environment's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-                    /// </summary>
+                    /// <summary>GTM Environment's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -662,10 +636,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Gets a GTM Environment.</summary>
-                /// <param name="path">
-                /// GTM Environment's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-                /// </param>
+                /// <param name="path">GTM Environment's API relative path.</param>
                 public virtual GetRequest Get(string path)
                 {
                     return new GetRequest(this.service, path);
@@ -681,10 +652,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Environment's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-                    /// </summary>
+                    /// <summary>GTM Environment's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -713,9 +681,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Lists all GTM Environments of a GTM Container.</summary>
-                /// <param name="parent">
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM Container's API relative path.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -731,9 +697,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -775,10 +739,7 @@ namespace Google.Apis.TagManager.v2
 
                 /// <summary>Re-generates the authorization code for a GTM Environment.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="path">
-                /// GTM Environment's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-                /// </param>
+                /// <param name="path">GTM Environment's API relative path.</param>
                 public virtual ReauthorizeRequest Reauthorize(Google.Apis.TagManager.v2.Data.Environment body, string path)
                 {
                     return new ReauthorizeRequest(this.service, body, path);
@@ -795,10 +756,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Environment's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-                    /// </summary>
+                    /// <summary>GTM Environment's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -834,10 +792,7 @@ namespace Google.Apis.TagManager.v2
 
                 /// <summary>Updates a GTM Environment.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="path">
-                /// GTM Environment's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-                /// </param>
+                /// <param name="path">GTM Environment's API relative path.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Environment body, string path)
                 {
                     return new UpdateRequest(this.service, body, path);
@@ -854,10 +809,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Environment's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-                    /// </summary>
+                    /// <summary>GTM Environment's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -924,9 +876,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Gets the latest container version header</summary>
-                /// <param name="parent">
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM Container's API relative path.</param>
                 public virtual LatestRequest Latest(string parent)
                 {
                     return new LatestRequest(this.service, parent);
@@ -942,9 +892,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -973,9 +921,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Lists all Container Versions of a GTM Container.</summary>
-                /// <param name="parent">
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM Container's API relative path.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -991,9 +937,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1064,10 +1008,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Deletes a Container Version.</summary>
-                /// <param name="path">
-                /// GTM ContainerVersion's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                /// </param>
+                /// <param name="path">GTM ContainerVersion's API relative path.</param>
                 public virtual DeleteRequest Delete(string path)
                 {
                     return new DeleteRequest(this.service, path);
@@ -1083,10 +1024,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM ContainerVersion's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                    /// </summary>
+                    /// <summary>GTM ContainerVersion's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -1115,10 +1053,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Gets a Container Version.</summary>
-                /// <param name="path">
-                /// GTM ContainerVersion's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                /// </param>
+                /// <param name="path">GTM ContainerVersion's API relative path.</param>
                 public virtual GetRequest Get(string path)
                 {
                     return new GetRequest(this.service, path);
@@ -1134,10 +1069,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM ContainerVersion's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                    /// </summary>
+                    /// <summary>GTM ContainerVersion's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -1180,9 +1112,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Gets the live (i.e. published) container version</summary>
-                /// <param name="parent">
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM Container's API relative path.</param>
                 public virtual LiveRequest Live(string parent)
                 {
                     return new LiveRequest(this.service, parent);
@@ -1198,9 +1128,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1229,10 +1157,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Publishes a Container Version.</summary>
-                /// <param name="path">
-                /// GTM ContainerVersion's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                /// </param>
+                /// <param name="path">GTM ContainerVersion's API relative path.</param>
                 public virtual PublishRequest Publish(string path)
                 {
                     return new PublishRequest(this.service, path);
@@ -1248,10 +1173,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM ContainerVersion's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                    /// </summary>
+                    /// <summary>GTM ContainerVersion's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -1296,10 +1218,7 @@ namespace Google.Apis.TagManager.v2
                 /// <summary>
                 /// Sets the latest version used for synchronization of workspaces when detecting conflicts and errors.
                 /// </summary>
-                /// <param name="path">
-                /// GTM ContainerVersion's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                /// </param>
+                /// <param name="path">GTM ContainerVersion's API relative path.</param>
                 public virtual SetLatestRequest SetLatest(string path)
                 {
                     return new SetLatestRequest(this.service, path);
@@ -1317,10 +1236,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM ContainerVersion's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                    /// </summary>
+                    /// <summary>GTM ContainerVersion's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -1349,10 +1265,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Undeletes a Container Version.</summary>
-                /// <param name="path">
-                /// GTM ContainerVersion's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                /// </param>
+                /// <param name="path">GTM ContainerVersion's API relative path.</param>
                 public virtual UndeleteRequest Undelete(string path)
                 {
                     return new UndeleteRequest(this.service, path);
@@ -1368,10 +1281,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM ContainerVersion's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                    /// </summary>
+                    /// <summary>GTM ContainerVersion's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -1401,10 +1311,7 @@ namespace Google.Apis.TagManager.v2
 
                 /// <summary>Updates a Container Version.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="path">
-                /// GTM ContainerVersion's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                /// </param>
+                /// <param name="path">GTM ContainerVersion's API relative path.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.ContainerVersion body, string path)
                 {
                     return new UpdateRequest(this.service, body, path);
@@ -1421,10 +1328,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM ContainerVersion's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
-                    /// </summary>
+                    /// <summary>GTM ContainerVersion's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -1518,10 +1422,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Creates one or more GTM Built-In Variables.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(string parent)
                     {
                         return new CreateRequest(this.service, parent);
@@ -1537,10 +1438,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -2053,10 +1951,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes one or more GTM Built-In Variables.</summary>
-                    /// <param name="path">
-                    /// GTM BuiltInVariable's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables
-                    /// </param>
+                    /// <param name="path">GTM BuiltInVariable's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -2072,10 +1967,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM BuiltInVariable's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables
-                        /// </summary>
+                        /// <summary>GTM BuiltInVariable's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -2588,10 +2480,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all the enabled Built-In Variables of a GTM Container.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -2607,10 +2496,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -2651,10 +2537,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Built-In Variables in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM BuiltInVariable's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables
-                    /// </param>
+                    /// <param name="path">GTM BuiltInVariable's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -2670,10 +2553,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM BuiltInVariable's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables
-                        /// </summary>
+                        /// <summary>GTM BuiltInVariable's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3193,10 +3073,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a GTM Client.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Client body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -3213,10 +3090,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3251,10 +3125,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a GTM Client.</summary>
-                    /// <param name="path">
-                    /// GTM Client's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
-                    /// </param>
+                    /// <param name="path">GTM Client's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -3270,10 +3141,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Client's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
-                        /// </summary>
+                        /// <summary>GTM Client's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3302,10 +3170,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a GTM Client.</summary>
-                    /// <param name="path">
-                    /// GTM Client's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
-                    /// </param>
+                    /// <param name="path">GTM Client's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -3321,10 +3186,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Client's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
-                        /// </summary>
+                        /// <summary>GTM Client's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3353,10 +3215,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all GTM Clients of a GTM container workspace.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -3372,10 +3231,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3416,10 +3272,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Client in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM Client's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
-                    /// </param>
+                    /// <param name="path">GTM Client's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -3435,10 +3288,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Client's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
-                        /// </summary>
+                        /// <summary>GTM Client's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3482,10 +3332,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a GTM Client.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Client's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
-                    /// </param>
+                    /// <param name="path">GTM Client's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Client body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -3502,10 +3349,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Client's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/clients/{client_id}
-                        /// </summary>
+                        /// <summary>GTM Client's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3573,10 +3417,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a GTM Folder.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Folder body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -3593,10 +3434,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3631,10 +3469,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a GTM Folder.</summary>
-                    /// <param name="path">
-                    /// GTM Folder's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                    /// </param>
+                    /// <param name="path">GTM Folder's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -3650,10 +3485,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Folder's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                        /// </summary>
+                        /// <summary>GTM Folder's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3682,10 +3514,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>List all entities in a GTM Folder.</summary>
-                    /// <param name="path">
-                    /// GTM Folder's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                    /// </param>
+                    /// <param name="path">GTM Folder's API relative path.</param>
                     public virtual EntitiesRequest Entities(string path)
                     {
                         return new EntitiesRequest(this.service, path);
@@ -3701,10 +3530,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Folder's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                        /// </summary>
+                        /// <summary>GTM Folder's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3745,10 +3571,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a GTM Folder.</summary>
-                    /// <param name="path">
-                    /// GTM Folder's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                    /// </param>
+                    /// <param name="path">GTM Folder's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -3764,10 +3587,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Folder's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                        /// </summary>
+                        /// <summary>GTM Folder's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3796,10 +3616,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all GTM Folders of a Container.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -3815,10 +3632,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3863,10 +3677,7 @@ namespace Google.Apis.TagManager.v2
                     /// move entities out of the folder they currently belong to.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Folder's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                    /// </param>
+                    /// <param name="path">GTM Folder's API relative path.</param>
                     public virtual MoveEntitiesToFolderRequest MoveEntitiesToFolder(Google.Apis.TagManager.v2.Data.Folder body, string path)
                     {
                         return new MoveEntitiesToFolderRequest(this.service, body, path);
@@ -3886,10 +3697,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Folder's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                        /// </summary>
+                        /// <summary>GTM Folder's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -3960,10 +3768,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Folder in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM Folder's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                    /// </param>
+                    /// <param name="path">GTM Folder's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -3979,10 +3784,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Folder's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                        /// </summary>
+                        /// <summary>GTM Folder's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4026,10 +3828,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a GTM Folder.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Folder's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                    /// </param>
+                    /// <param name="path">GTM Folder's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Folder body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -4046,10 +3845,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Folder's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
-                        /// </summary>
+                        /// <summary>GTM Folder's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4117,10 +3913,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a Google tag config.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.GtagConfig body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -4137,10 +3930,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -4175,10 +3965,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a Google tag config.</summary>
-                    /// <param name="path">
-                    /// Google tag config's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
-                    /// </param>
+                    /// <param name="path">Google tag config's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -4194,10 +3981,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Google tag config's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
-                        /// </summary>
+                        /// <summary>Google tag config's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4226,10 +4010,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a Google tag config.</summary>
-                    /// <param name="path">
-                    /// Google tag config's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
-                    /// </param>
+                    /// <param name="path">Google tag config's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -4245,10 +4026,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Google tag config's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
-                        /// </summary>
+                        /// <summary>Google tag config's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4277,10 +4055,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all Google tag configs in a Container.</summary>
-                    /// <param name="parent">
-                    /// Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -4296,10 +4071,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -4341,10 +4113,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a Google tag config.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// Google tag config's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
-                    /// </param>
+                    /// <param name="path">Google tag config's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.GtagConfig body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -4361,10 +4130,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Google tag config's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/gtag_config/{gtag_config_id}
-                        /// </summary>
+                        /// <summary>Google tag config's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4432,10 +4198,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a GTM Tag.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Tag body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -4452,10 +4215,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -4490,10 +4250,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a GTM Tag.</summary>
-                    /// <param name="path">
-                    /// GTM Tag's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
-                    /// </param>
+                    /// <param name="path">GTM Tag's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -4509,10 +4266,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Tag's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
-                        /// </summary>
+                        /// <summary>GTM Tag's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4541,10 +4295,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a GTM Tag.</summary>
-                    /// <param name="path">
-                    /// GTM Tag's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
-                    /// </param>
+                    /// <param name="path">GTM Tag's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -4560,10 +4311,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Tag's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
-                        /// </summary>
+                        /// <summary>GTM Tag's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4592,10 +4340,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all GTM Tags of a Container.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -4611,10 +4356,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -4655,10 +4397,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Tag in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM Tag's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
-                    /// </param>
+                    /// <param name="path">GTM Tag's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -4674,10 +4413,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Tag's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
-                        /// </summary>
+                        /// <summary>GTM Tag's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4721,10 +4457,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a GTM Tag.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Tag's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
-                    /// </param>
+                    /// <param name="path">GTM Tag's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Tag body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -4741,10 +4474,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Tag's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
-                        /// </summary>
+                        /// <summary>GTM Tag's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4812,10 +4542,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a GTM Custom Template.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.CustomTemplate body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -4832,10 +4559,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -4870,10 +4594,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a GTM Template.</summary>
-                    /// <param name="path">
-                    /// GTM Custom Template's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
-                    /// </param>
+                    /// <param name="path">GTM Custom Template's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -4889,10 +4610,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Custom Template's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
-                        /// </summary>
+                        /// <summary>GTM Custom Template's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4921,10 +4639,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a GTM Template.</summary>
-                    /// <param name="path">
-                    /// GTM Custom Template's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
-                    /// </param>
+                    /// <param name="path">GTM Custom Template's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -4940,10 +4655,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Custom Template's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
-                        /// </summary>
+                        /// <summary>GTM Custom Template's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -4971,11 +4683,107 @@ namespace Google.Apis.TagManager.v2
                         }
                     }
 
+                    /// <summary>Imports a GTM Custom Template from Gallery.</summary>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
+                    public virtual ImportFromGalleryRequest ImportFromGallery(string parent)
+                    {
+                        return new ImportFromGalleryRequest(this.service, parent);
+                    }
+
+                    /// <summary>Imports a GTM Custom Template from Gallery.</summary>
+                    public class ImportFromGalleryRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.CustomTemplate>
+                    {
+                        /// <summary>Constructs a new ImportFromGallery request.</summary>
+                        public ImportFromGalleryRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>GTM Workspace's API relative path.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Must be set to true to allow Gallery template to be imported into the workspace. If this bit
+                        /// is false, the import operation will fail.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("acknowledgePermissions", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AcknowledgePermissions { get; set; }
+
+                        /// <summary>Owner of the Gallery template to import</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("galleryOwner", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GalleryOwner { get; set; }
+
+                        /// <summary>Repository of the Gallery template to import</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("galleryRepository", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GalleryRepository { get; set; }
+
+                        /// <summary>
+                        /// SHA version of the Gallery template to import. Defaulted to the latest SHA version if not
+                        /// provided.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("gallerySha", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GallerySha { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import_from_gallery";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "tagmanager/v2/{+parent}/templates:import_from_gallery";
+
+                        /// <summary>Initializes ImportFromGallery parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
+                            });
+                            RequestParameters.Add("acknowledgePermissions", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "acknowledgePermissions",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("galleryOwner", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "galleryOwner",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("galleryRepository", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "galleryRepository",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("gallerySha", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "gallerySha",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Lists all GTM Templates of a GTM container workspace.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -4991,10 +4799,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -5035,10 +4840,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Template in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM Custom Template's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
-                    /// </param>
+                    /// <param name="path">GTM Custom Template's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -5054,10 +4856,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Custom Template's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
-                        /// </summary>
+                        /// <summary>GTM Custom Template's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5101,10 +4900,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a GTM Template.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Custom Template's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
-                    /// </param>
+                    /// <param name="path">GTM Custom Template's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.CustomTemplate body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -5121,10 +4917,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Custom Template's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
-                        /// </summary>
+                        /// <summary>GTM Custom Template's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5192,10 +4985,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a GTM Transformation.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Transformation body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -5212,10 +5002,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -5250,10 +5037,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a GTM Transformation.</summary>
-                    /// <param name="path">
-                    /// GTM Transformation's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
-                    /// </param>
+                    /// <param name="path">GTM Transformation's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -5269,10 +5053,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Transformation's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
-                        /// </summary>
+                        /// <summary>GTM Transformation's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5301,10 +5082,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a GTM Transformation.</summary>
-                    /// <param name="path">
-                    /// GTM Transformation's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
-                    /// </param>
+                    /// <param name="path">GTM Transformation's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -5320,10 +5098,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Transformation's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
-                        /// </summary>
+                        /// <summary>GTM Transformation's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5352,10 +5127,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all GTM Transformations of a GTM container workspace.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -5371,10 +5143,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -5415,10 +5184,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Transformation in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM Transformation's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
-                    /// </param>
+                    /// <param name="path">GTM Transformation's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -5434,10 +5200,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Transformation's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
-                        /// </summary>
+                        /// <summary>GTM Transformation's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5481,10 +5244,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a GTM Transformation.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Transformation's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
-                    /// </param>
+                    /// <param name="path">GTM Transformation's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Transformation body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -5501,10 +5261,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Transformation's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
-                        /// </summary>
+                        /// <summary>GTM Transformation's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5572,10 +5329,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a GTM Trigger.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Trigger body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -5592,10 +5346,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -5630,10 +5381,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a GTM Trigger.</summary>
-                    /// <param name="path">
-                    /// GTM Trigger's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
-                    /// </param>
+                    /// <param name="path">GTM Trigger's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -5649,10 +5397,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Trigger's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
-                        /// </summary>
+                        /// <summary>GTM Trigger's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5681,10 +5426,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a GTM Trigger.</summary>
-                    /// <param name="path">
-                    /// GTM Trigger's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
-                    /// </param>
+                    /// <param name="path">GTM Trigger's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -5700,10 +5442,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Trigger's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
-                        /// </summary>
+                        /// <summary>GTM Trigger's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5732,10 +5471,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all GTM Triggers of a Container.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -5751,10 +5487,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -5795,10 +5528,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Trigger in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM Trigger's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
-                    /// </param>
+                    /// <param name="path">GTM Trigger's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -5814,10 +5544,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Trigger's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
-                        /// </summary>
+                        /// <summary>GTM Trigger's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5861,10 +5588,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a GTM Trigger.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Trigger's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
-                    /// </param>
+                    /// <param name="path">GTM Trigger's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Trigger body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -5881,10 +5605,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Trigger's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
-                        /// </summary>
+                        /// <summary>GTM Trigger's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -5952,10 +5673,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a GTM Variable.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Variable body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -5972,10 +5690,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -6010,10 +5725,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a GTM Variable.</summary>
-                    /// <param name="path">
-                    /// GTM Variable's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
-                    /// </param>
+                    /// <param name="path">GTM Variable's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -6029,10 +5741,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Variable's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
-                        /// </summary>
+                        /// <summary>GTM Variable's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -6061,10 +5770,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a GTM Variable.</summary>
-                    /// <param name="path">
-                    /// GTM Variable's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
-                    /// </param>
+                    /// <param name="path">GTM Variable's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -6080,10 +5786,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Variable's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
-                        /// </summary>
+                        /// <summary>GTM Variable's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -6112,10 +5815,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all GTM Variables of a Container.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -6131,10 +5831,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -6175,10 +5872,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Variable in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM Variable's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
-                    /// </param>
+                    /// <param name="path">GTM Variable's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -6194,10 +5888,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Variable's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
-                        /// </summary>
+                        /// <summary>GTM Variable's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -6241,10 +5932,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a GTM Variable.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Variable's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
-                    /// </param>
+                    /// <param name="path">GTM Variable's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Variable body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -6261,10 +5949,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Variable's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
-                        /// </summary>
+                        /// <summary>GTM Variable's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -6332,10 +6017,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Creates a GTM Zone.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Zone body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -6352,10 +6034,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -6390,10 +6069,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Deletes a GTM Zone.</summary>
-                    /// <param name="path">
-                    /// GTM Zone's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
-                    /// </param>
+                    /// <param name="path">GTM Zone's API relative path.</param>
                     public virtual DeleteRequest Delete(string path)
                     {
                         return new DeleteRequest(this.service, path);
@@ -6409,10 +6085,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Zone's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
-                        /// </summary>
+                        /// <summary>GTM Zone's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -6441,10 +6114,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Gets a GTM Zone.</summary>
-                    /// <param name="path">
-                    /// GTM Zone's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
-                    /// </param>
+                    /// <param name="path">GTM Zone's API relative path.</param>
                     public virtual GetRequest Get(string path)
                     {
                         return new GetRequest(this.service, path);
@@ -6460,10 +6130,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Zone's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
-                        /// </summary>
+                        /// <summary>GTM Zone's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -6492,10 +6159,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Lists all GTM Zones of a GTM container workspace.</summary>
-                    /// <param name="parent">
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </param>
+                    /// <param name="parent">GTM Workspace's API relative path.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -6511,10 +6175,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Workspace's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                        /// </summary>
+                        /// <summary>GTM Workspace's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -6555,10 +6216,7 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Reverts changes to a GTM Zone in a GTM Workspace.</summary>
-                    /// <param name="path">
-                    /// GTM Zone's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
-                    /// </param>
+                    /// <param name="path">GTM Zone's API relative path.</param>
                     public virtual RevertRequest Revert(string path)
                     {
                         return new RevertRequest(this.service, path);
@@ -6574,10 +6232,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Zone's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
-                        /// </summary>
+                        /// <summary>GTM Zone's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -6621,10 +6276,7 @@ namespace Google.Apis.TagManager.v2
 
                     /// <summary>Updates a GTM Zone.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="path">
-                    /// GTM Zone's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
-                    /// </param>
+                    /// <param name="path">GTM Zone's API relative path.</param>
                     public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Zone body, string path)
                     {
                         return new UpdateRequest(this.service, body, path);
@@ -6641,10 +6293,7 @@ namespace Google.Apis.TagManager.v2
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// GTM Zone's API relative path. Example:
-                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
-                        /// </summary>
+                        /// <summary>GTM Zone's API relative path.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
@@ -6695,9 +6344,7 @@ namespace Google.Apis.TagManager.v2
 
                 /// <summary>Creates a Workspace.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// GTM parent Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM parent Container's API relative path.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Workspace body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -6714,10 +6361,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM parent Container's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM parent Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -6756,10 +6400,7 @@ namespace Google.Apis.TagManager.v2
                 /// sets the base container version to the newly created version.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="path">
-                /// GTM Workspace's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                /// </param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
                 public virtual CreateVersionRequest CreateVersion(Google.Apis.TagManager.v2.Data.CreateContainerVersionRequestVersionOptions body, string path)
                 {
                     return new CreateVersionRequest(this.service, body, path);
@@ -6779,10 +6420,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </summary>
+                    /// <summary>GTM Workspace's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -6817,10 +6455,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Deletes a Workspace.</summary>
-                /// <param name="path">
-                /// GTM Workspace's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                /// </param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
                 public virtual DeleteRequest Delete(string path)
                 {
                     return new DeleteRequest(this.service, path);
@@ -6836,10 +6471,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </summary>
+                    /// <summary>GTM Workspace's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -6868,10 +6500,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Gets a Workspace.</summary>
-                /// <param name="path">
-                /// GTM Workspace's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                /// </param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
                 public virtual GetRequest Get(string path)
                 {
                     return new GetRequest(this.service, path);
@@ -6887,10 +6516,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </summary>
+                    /// <summary>GTM Workspace's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -6919,10 +6545,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Finds conflicting and modified entities in the workspace.</summary>
-                /// <param name="path">
-                /// GTM Workspace's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                /// </param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
                 public virtual GetStatusRequest GetStatus(string path)
                 {
                     return new GetStatusRequest(this.service, path);
@@ -6938,10 +6561,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </summary>
+                    /// <summary>GTM Workspace's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -6970,9 +6590,7 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>Lists all Workspaces that belong to a GTM Container.</summary>
-                /// <param name="parent">
-                /// GTM parent Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </param>
+                /// <param name="parent">GTM parent Container's API relative path.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -6988,10 +6606,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM parent Container's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}
-                    /// </summary>
+                    /// <summary>GTM parent Container's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -7035,10 +6650,7 @@ namespace Google.Apis.TagManager.v2
                 /// Quick previews a workspace by creating a fake container version from all entities in the provided
                 /// workspace.
                 /// </summary>
-                /// <param name="path">
-                /// GTM Workspace's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                /// </param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
                 public virtual QuickPreviewRequest QuickPreview(string path)
                 {
                     return new QuickPreviewRequest(this.service, path);
@@ -7057,10 +6669,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </summary>
+                    /// <summary>GTM Workspace's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -7093,10 +6702,7 @@ namespace Google.Apis.TagManager.v2
                 /// request.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="path">
-                /// GTM Workspace's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                /// </param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
                 public virtual ResolveConflictRequest ResolveConflict(Google.Apis.TagManager.v2.Data.Entity body, string path)
                 {
                     return new ResolveConflictRequest(this.service, body, path);
@@ -7116,10 +6722,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </summary>
+                    /// <summary>GTM Workspace's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -7172,10 +6775,7 @@ namespace Google.Apis.TagManager.v2
                 /// Syncs a workspace to the latest container version by updating all unmodified workspace entities and
                 /// displaying conflicts for modified entities.
                 /// </summary>
-                /// <param name="path">
-                /// GTM Workspace's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                /// </param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
                 public virtual SyncRequest Sync(string path)
                 {
                     return new SyncRequest(this.service, path);
@@ -7194,10 +6794,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </summary>
+                    /// <summary>GTM Workspace's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -7227,10 +6824,7 @@ namespace Google.Apis.TagManager.v2
 
                 /// <summary>Updates a Workspace.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="path">
-                /// GTM Workspace's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                /// </param>
+                /// <param name="path">GTM Workspace's API relative path.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Workspace body, string path)
                 {
                     return new UpdateRequest(this.service, body, path);
@@ -7247,10 +6841,7 @@ namespace Google.Apis.TagManager.v2
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// GTM Workspace's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
-                    /// </summary>
+                    /// <summary>GTM Workspace's API relative path.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Path { get; private set; }
 
@@ -7300,9 +6891,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Combines Containers.</summary>
-            /// <param name="path">
-            /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-            /// </param>
+            /// <param name="path">GTM Container's API relative path.</param>
             public virtual CombineRequest Combine(string path)
             {
                 return new CombineRequest(this.service, path);
@@ -7318,9 +6907,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </summary>
+                /// <summary>GTM Container's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -7405,7 +6992,7 @@ namespace Google.Apis.TagManager.v2
 
             /// <summary>Creates a Container.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}.</param>
+            /// <param name="parent">GTM Account's API relative path.</param>
             public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Container body, string parent)
             {
                 return new CreateRequest(this.service, body, parent);
@@ -7422,7 +7009,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>GTM Account's API relative path. Example: accounts/{account_id}.</summary>
+                /// <summary>GTM Account's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -7457,9 +7044,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Deletes a Container.</summary>
-            /// <param name="path">
-            /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-            /// </param>
+            /// <param name="path">GTM Container's API relative path.</param>
             public virtual DeleteRequest Delete(string path)
             {
                 return new DeleteRequest(this.service, path);
@@ -7475,9 +7060,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </summary>
+                /// <summary>GTM Container's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -7506,9 +7089,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Gets a Container.</summary>
-            /// <param name="path">
-            /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-            /// </param>
+            /// <param name="path">GTM Container's API relative path.</param>
             public virtual GetRequest Get(string path)
             {
                 return new GetRequest(this.service, path);
@@ -7524,9 +7105,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </summary>
+                /// <summary>GTM Container's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -7555,7 +7134,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Lists all Containers that belongs to a GTM Account.</summary>
-            /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}.</param>
+            /// <param name="parent">GTM Account's API relative path.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
@@ -7571,7 +7150,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>GTM Account's API relative path. Example: accounts/{account_id}.</summary>
+                /// <summary>GTM Account's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -7627,16 +7206,14 @@ namespace Google.Apis.TagManager.v2
                 }
 
                 /// <summary>
-                /// Destination ID linked to a GTM Container, e.g. AW-123456789. Example:
-                /// accounts/containers:lookup?destination_id={destination_id}. Only one of destination_id or tag_id
+                /// Destination ID linked to a GTM Container, e.g. AW-123456789. Only one of destination_id or tag_id
                 /// should be set.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("destinationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DestinationId { get; set; }
 
                 /// <summary>
-                /// Tag ID for a GTM Container, e.g. GTM-123456789. Example: accounts/containers:lookup?tag_id={tag_id}.
-                /// Only one of destination_id or tag_id should be set.
+                /// Tag ID for a GTM Container, e.g. GTM-123456789. Only one of destination_id or tag_id should be set.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string TagId { get; set; }
@@ -7674,9 +7251,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Move Tag ID out of a Container.</summary>
-            /// <param name="path">
-            /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-            /// </param>
+            /// <param name="path">GTM Container's API relative path.</param>
             public virtual MoveTagIdRequest MoveTagId(string path)
             {
                 return new MoveTagIdRequest(this.service, path);
@@ -7692,9 +7267,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </summary>
+                /// <summary>GTM Container's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -7801,9 +7374,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Gets the tagging snippet for a Container.</summary>
-            /// <param name="path">
-            /// Container snippet's API relative path. Example: accounts/{account_id}/containers/{container_id}:snippet
-            /// </param>
+            /// <param name="path">Container snippet's API relative path.</param>
             public virtual SnippetRequest Snippet(string path)
             {
                 return new SnippetRequest(this.service, path);
@@ -7819,10 +7390,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Container snippet's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}:snippet
-                /// </summary>
+                /// <summary>Container snippet's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -7852,9 +7420,7 @@ namespace Google.Apis.TagManager.v2
 
             /// <summary>Updates a Container.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="path">
-            /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-            /// </param>
+            /// <param name="path">GTM Container's API relative path.</param>
             public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Container body, string path)
             {
                 return new UpdateRequest(this.service, body, path);
@@ -7871,9 +7437,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}
-                /// </summary>
+                /// <summary>GTM Container's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -7941,7 +7505,7 @@ namespace Google.Apis.TagManager.v2
 
             /// <summary>Creates a user's Account &amp; Container access.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}</param>
+            /// <param name="parent">GTM Account's API relative path.</param>
             public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.UserPermission body, string parent)
             {
                 return new CreateRequest(this.service, body, parent);
@@ -7958,7 +7522,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>GTM Account's API relative path. Example: accounts/{account_id}</summary>
+                /// <summary>GTM Account's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -7993,10 +7557,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Removes a user from the account, revoking access to it and all of its containers.</summary>
-            /// <param name="path">
-            /// GTM UserPermission's API relative path. Example:
-            /// accounts/{account_id}/user_permissions/{user_permission_id}
-            /// </param>
+            /// <param name="path">GTM UserPermission's API relative path.</param>
             public virtual DeleteRequest Delete(string path)
             {
                 return new DeleteRequest(this.service, path);
@@ -8012,10 +7573,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// GTM UserPermission's API relative path. Example:
-                /// accounts/{account_id}/user_permissions/{user_permission_id}
-                /// </summary>
+                /// <summary>GTM UserPermission's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -8044,10 +7602,7 @@ namespace Google.Apis.TagManager.v2
             }
 
             /// <summary>Gets a user's Account &amp; Container access.</summary>
-            /// <param name="path">
-            /// GTM UserPermission's API relative path. Example:
-            /// accounts/{account_id}/user_permissions/{user_permission_id}
-            /// </param>
+            /// <param name="path">GTM UserPermission's API relative path.</param>
             public virtual GetRequest Get(string path)
             {
                 return new GetRequest(this.service, path);
@@ -8063,10 +7618,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// GTM UserPermission's API relative path. Example:
-                /// accounts/{account_id}/user_permissions/{user_permission_id}
-                /// </summary>
+                /// <summary>GTM UserPermission's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -8098,7 +7650,7 @@ namespace Google.Apis.TagManager.v2
             /// List all users that have access to the account along with Account and Container user access granted to
             /// each of them.
             /// </summary>
-            /// <param name="parent">GTM Account's API relative path. Example: accounts/{account_id}</param>
+            /// <param name="parent">GTM Account's API relative path.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
@@ -8117,7 +7669,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>GTM Account's API relative path. Example: accounts/{account_id}</summary>
+                /// <summary>GTM Account's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -8159,10 +7711,7 @@ namespace Google.Apis.TagManager.v2
 
             /// <summary>Updates a user's Account &amp; Container access.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="path">
-            /// GTM UserPermission's API relative path. Example:
-            /// accounts/{account_id}/user_permissions/{user_permission_id}
-            /// </param>
+            /// <param name="path">GTM UserPermission's API relative path.</param>
             public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.UserPermission body, string path)
             {
                 return new UpdateRequest(this.service, body, path);
@@ -8179,10 +7728,7 @@ namespace Google.Apis.TagManager.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// GTM UserPermission's API relative path. Example:
-                /// accounts/{account_id}/user_permissions/{user_permission_id}
-                /// </summary>
+                /// <summary>GTM UserPermission's API relative path.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Path { get; private set; }
 
@@ -8218,7 +7764,7 @@ namespace Google.Apis.TagManager.v2
         }
 
         /// <summary>Gets a GTM Account.</summary>
-        /// <param name="path">GTM Account's API relative path. Example: accounts/{account_id}</param>
+        /// <param name="path">GTM Account's API relative path.</param>
         public virtual GetRequest Get(string path)
         {
             return new GetRequest(this.service, path);
@@ -8234,7 +7780,7 @@ namespace Google.Apis.TagManager.v2
                 InitParameters();
             }
 
-            /// <summary>GTM Account's API relative path. Example: accounts/{account_id}</summary>
+            /// <summary>GTM Account's API relative path.</summary>
             [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Path { get; private set; }
 
@@ -8319,7 +7865,7 @@ namespace Google.Apis.TagManager.v2
 
         /// <summary>Updates a GTM Account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="path">GTM Account's API relative path. Example: accounts/{account_id}</param>
+        /// <param name="path">GTM Account's API relative path.</param>
         public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Account body, string path)
         {
             return new UpdateRequest(this.service, body, path);
@@ -8336,7 +7882,7 @@ namespace Google.Apis.TagManager.v2
                 InitParameters();
             }
 
-            /// <summary>GTM Account's API relative path. Example: accounts/{account_id}</summary>
+            /// <summary>GTM Account's API relative path.</summary>
             [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Path { get; private set; }
 
@@ -8403,9 +7949,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Account display name. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
-        /// </summary>
+        /// <summary>Account display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -8417,7 +7961,7 @@ namespace Google.Apis.TagManager.v2.Data
         /// Whether the account shares data anonymously with Google and others. This flag enables benchmarking by
         /// sharing your data in an anonymous form. Google will remove all identifiable information about your website,
         /// combine the data with hundreds of other anonymous sites and report aggregate trends in the benchmarking
-        /// service. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
+        /// service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareData")]
         public virtual System.Nullable<bool> ShareData { get; set; }
@@ -8433,10 +7977,7 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Defines the Google Tag Manager Account access permissions.</summary>
     public class AccountAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Whether the user has no access, user access, or admin access to an account. @mutable
-        /// tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>Whether the user has no access, user access, or admin access to an account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual string Permission { get; set; }
 
@@ -8481,10 +8022,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>
-        /// Type of built-in variable. @required.tagmanager.accounts.containers.workspaces.built_in_variable.update
-        /// @mutable tagmanager.accounts.containers.workspaces.built_in_variable.update
-        /// </summary>
+        /// <summary>Type of built-in variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8517,25 +8055,15 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Client display name. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
-        /// tagmanager.accounts.containers.workspaces.clients.update
-        /// </summary>
+        /// <summary>Client display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this tag in the container. @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>User notes on how to apply this tag in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>
-        /// The client's parameters. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
-        /// tagmanager.accounts.containers.workspaces.clients.update
-        /// </summary>
+        /// <summary>The client's parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -8547,10 +8075,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>
-        /// Priority determines relative firing order. @mutable tagmanager.accounts.containers.workspaces.clients.create
-        /// @mutable tagmanager.accounts.containers.workspaces.clients.update
-        /// </summary>
+        /// <summary>Priority determines relative firing order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; }
 
@@ -8558,10 +8083,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagManagerUrl")]
         public virtual string TagManagerUrl { get; set; }
 
-        /// <summary>
-        /// Client type. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
-        /// tagmanager.accounts.containers.workspaces.clients.update
-        /// </summary>
+        /// <summary>Client type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8582,17 +8104,12 @@ namespace Google.Apis.TagManager.v2.Data
         /// time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching,
         /// include a boolean parameter named ignore_case that is set to true. If not specified or set to any other
         /// value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named
-        /// negate boolean parameter that is set to true. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// negate boolean parameter that is set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
-        /// <summary>
-        /// The type of operator for this condition. @mutable tagmanager.accounts.containers.workspaces.triggers.create
-        /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>The type of operator for this condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8614,10 +8131,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>
-        /// List of domain names associated with the Container. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>List of domain names associated with the Container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
         public virtual System.Collections.Generic.IList<string> DomainName { get; set; }
 
@@ -8632,17 +8146,11 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Container display name. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>Container display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Container Notes. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>Container Notes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -8664,15 +8172,12 @@ namespace Google.Apis.TagManager.v2.Data
 
         /// <summary>
         /// List of server-side container URLs for the Container. If multiple URLs are provided, all URL paths must
-        /// match. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update
+        /// match.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taggingServerUrls")]
         public virtual System.Collections.Generic.IList<string> TaggingServerUrls { get; set; }
 
-        /// <summary>
-        /// List of Usage Contexts for the Container. Valid values include: web, android, or ios. @mutable
-        /// tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>List of Usage Contexts for the Container. Valid values include: web, android, or ios.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageContext")]
         public virtual System.Collections.Generic.IList<string> UsageContext { get; set; }
 
@@ -8683,17 +8188,11 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Defines the Google Tag Manager Container access permissions.</summary>
     public class ContainerAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>GTM Container ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>
-        /// List of Container permissions. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>List of Container permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual string Permission { get; set; }
 
@@ -8798,7 +8297,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; }
 
-        /// <summary>Container version description. @mutable tagmanager.accounts.containers.versions.update</summary>
+        /// <summary>Container version description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -8817,7 +8316,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gtagConfig")]
         public virtual System.Collections.Generic.IList<GtagConfig> GtagConfig { get; set; }
 
-        /// <summary>Container version display name. @mutable tagmanager.accounts.containers.versions.update</summary>
+        /// <summary>Container version display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -9184,19 +8683,11 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersionId")]
         public virtual string ContainerVersionId { get; set; }
 
-        /// <summary>
-        /// The environment description. Can be set or changed only on USER type environments. @mutable
-        /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update
-        /// </summary>
+        /// <summary>The environment description. Can be set or changed only on USER type environments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// Whether or not to enable debug by default for the environment. @mutable
-        /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update
-        /// </summary>
+        /// <summary>Whether or not to enable debug by default for the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDebug")]
         public virtual System.Nullable<bool> EnableDebug { get; set; }
 
@@ -9211,11 +8702,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// The environment display name. Can be set or changed only on USER type environments. @mutable
-        /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update
-        /// </summary>
+        /// <summary>The environment display name. Can be set or changed only on USER type environments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -9231,10 +8718,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>
-        /// Default preview page url for the environment. @mutable tagmanager.accounts.containers.environments.create
-        /// @mutable tagmanager.accounts.containers.environments.update
-        /// </summary>
+        /// <summary>Default preview page url for the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
@@ -9268,18 +8752,11 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
         public virtual string FolderId { get; set; }
 
-        /// <summary>
-        /// Folder display name. @mutable tagmanager.accounts.containers.workspaces.folders.create @mutable
-        /// tagmanager.accounts.containers.workspaces.folders.update
-        /// </summary>
+        /// <summary>Folder display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this folder in the container. @mutable
-        /// tagmanager.accounts.containers.workspaces.folders.create @mutable
-        /// tagmanager.accounts.containers.workspaces.folders.update
-        /// </summary>
+        /// <summary>User notes on how to apply this folder in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -9423,10 +8900,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gtagConfigId")]
         public virtual string GtagConfigId { get; set; }
 
-        /// <summary>
-        /// The Google tag config's parameters. @mutable tagmanager.accounts.containers.workspaces.gtag_config.create
-        /// @mutable tagmanager.accounts.containers.workspaces.gtag_config.update
-        /// </summary>
+        /// <summary>The Google tag config's parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -9438,12 +8912,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagManagerUrl")]
         public virtual string TagManagerUrl { get; set; }
 
-        /// <summary>
-        /// Google tag config type. @required tagmanager.accounts.containers.workspaces.gtag_config.create @required
-        /// tagmanager.accounts.containers.workspaces.gtag_config.update @mutable
-        /// tagmanager.accounts.containers.workspaces.gtag_config.create @mutable
-        /// tagmanager.accounts.containers.workspaces.gtag_config.update
-        /// </summary>
+        /// <summary>Google tag config type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -9730,45 +9199,22 @@ namespace Google.Apis.TagManager.v2.Data
     {
         /// <summary>
         /// Whether or not a reference type parameter is strongly or weakly referenced. Only used by Transformations.
-        /// @mutable tagmanager.accounts.containers.workspaces.transformations.create @mutable
-        /// tagmanager.accounts.containers.workspaces.transformations.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isWeakReference")]
         public virtual System.Nullable<bool> IsWeakReference { get; set; }
 
         /// <summary>
         /// The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map
-        /// values. Ignored for list values. @mutable tagmanager.accounts.containers.workspaces.variables.create
-        /// @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// values. Ignored for list values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>
-        /// This list parameter's parameters (keys will be ignored). @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>This list parameter's parameters (keys will be ignored).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("list")]
         public virtual System.Collections.Generic.IList<Parameter> List { get; set; }
 
-        /// <summary>
-        /// This map parameter's parameters (must have keys; keys must be unique). @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>This map parameter's parameters (must have keys; keys must be unique).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("map")]
         public virtual System.Collections.Generic.IList<Parameter> Map { get; set; }
 
@@ -9778,25 +9224,13 @@ namespace Google.Apis.TagManager.v2.Data
         /// parameters should be specified - map: A map of parameters should be specified - template: The value
         /// represents any text; this can include variable references (even variable references that might return
         /// non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id -
-        /// tag_reference: The value represents a tag, represented as the tag name @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// tag_reference: The value represents a tag, represented as the tag name
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// A parameter's value (may contain variable references such as "{{myVariable}}") as appropriate to the
-        /// specified type. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// A parameter's value (may contain variable references). as appropriate to the specified type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -10023,26 +9457,17 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire. @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingRuleId")]
         public virtual System.Collections.Generic.IList<string> BlockingRuleId { get; set; }
 
         /// <summary>
-        /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingTriggerId")]
         public virtual System.Collections.Generic.IList<string> BlockingTriggerId { get; set; }
 
-        /// <summary>
-        /// Consent settings of a tag. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>Consent settings of a tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentSettings")]
         public virtual TagConsentSetting ConsentSettings { get; set; }
 
@@ -10059,25 +9484,20 @@ namespace Google.Apis.TagManager.v2.Data
 
         /// <summary>
         /// Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if
-        /// any specified) are false. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// any specified) are false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firingRuleId")]
         public virtual System.Collections.Generic.IList<string> FiringRuleId { get; set; }
 
         /// <summary>
         /// Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its
-        /// blockingTriggerIds (if any specified) are false. @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// blockingTriggerIds (if any specified) are false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firingTriggerId")]
         public virtual System.Collections.Generic.IList<string> FiringTriggerId { get; set; }
 
         /// <summary>
         /// If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode).
-        /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveOnly")]
         public virtual System.Nullable<bool> LiveOnly { get; set; }
@@ -10085,39 +9505,27 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>
         /// A map of key-value pairs of tag metadata to be included in the event data for tag monitoring. Notes: - This
         /// parameter must be type MAP. - Each parameter in the map are type TEMPLATE, however cannot contain variable
-        /// references. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// references.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringMetadata")]
         public virtual Parameter MonitoringMetadata { get; set; }
 
         /// <summary>
         /// If non-empty, then the tag display name will be included in the monitoring metadata map using the key
-        /// specified. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringMetadataTagNameKey")]
         public virtual string MonitoringMetadataTagNameKey { get; set; }
 
-        /// <summary>
-        /// Tag display name. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>Tag display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this tag in the container. @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>User notes on how to apply this tag in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>
-        /// The tag's parameters. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>The tag's parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -10129,36 +9537,23 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>
-        /// Indicates whether the tag is paused, which prevents the tag from firing. @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>Indicates whether the tag is paused, which prevents the tag from firing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paused")]
         public virtual System.Nullable<bool> Paused { get; set; }
 
         /// <summary>
         /// User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with
         /// higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is
-        /// 0. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual Parameter Priority { get; set; }
 
-        /// <summary>
-        /// The end timestamp in milliseconds to schedule a tag. @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>The end timestamp in milliseconds to schedule a tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; }
 
-        /// <summary>
-        /// The start timestamp in milliseconds to schedule a tag. @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>The start timestamp in milliseconds to schedule a tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; }
 
@@ -10182,10 +9577,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("teardownTag")]
         public virtual System.Collections.Generic.IList<TeardownTag> TeardownTag { get; set; }
 
-        /// <summary>
-        /// GTM Tag Type. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
-        /// tagmanager.accounts.containers.workspaces.tags.update
-        /// </summary>
+        /// <summary>GTM Tag Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -10253,25 +9645,15 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Transformation display name. @mutable tagmanager.accounts.containers.workspaces.transformations.create
-        /// @mutable tagmanager.accounts.containers.workspaces.transformations.update
-        /// </summary>
+        /// <summary>Transformation display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this transformation in the container. @mutable
-        /// tagmanager.accounts.containers.workspaces.transformations.create @mutable
-        /// tagmanager.accounts.containers.workspaces.transformations.update
-        /// </summary>
+        /// <summary>User notes on how to apply this transformation in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>
-        /// The transformation's parameters. @mutable tagmanager.accounts.containers.workspaces.transformations.create
-        /// @mutable tagmanager.accounts.containers.workspaces.transformations.update
-        /// </summary>
+        /// <summary>The transformation's parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -10291,10 +9673,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transformationId")]
         public virtual string TransformationId { get; set; }
 
-        /// <summary>
-        /// Transformation type. @mutable tagmanager.accounts.containers.workspaces.transformations.create @mutable
-        /// tagmanager.accounts.containers.workspaces.transformations.update
-        /// </summary>
+        /// <summary>Transformation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -10313,18 +9692,13 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// Used in the case of auto event tracking. @mutable tagmanager.accounts.containers.workspaces.triggers.create
-        /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Used in the case of auto event tracking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> AutoEventFilter { get; set; }
 
         /// <summary>
         /// Whether or not we should only fire tags if the form submit or link click event is not cancelled by some
         /// other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers.
-        /// @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkValidation")]
         public virtual Parameter CheckValidation { get; set; }
@@ -10335,33 +9709,20 @@ namespace Google.Apis.TagManager.v2.Data
 
         /// <summary>
         /// A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility
-        /// trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// trigger.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continuousTimeMinMilliseconds")]
         public virtual Parameter ContinuousTimeMinMilliseconds { get; set; }
 
-        /// <summary>
-        /// Used in the case of custom event, which is fired iff all Conditions are true. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Used in the case of custom event, which is fired iff all Conditions are true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> CustomEventFilter { get; set; }
 
-        /// <summary>
-        /// Name of the GTM event that is fired. Only valid for Timer triggers. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Name of the GTM event that is fired. Only valid for Timer triggers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
         public virtual Parameter EventName { get; set; }
 
-        /// <summary>
-        /// The trigger will only fire iff all Conditions are true. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>The trigger will only fire iff all Conditions are true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual System.Collections.Generic.IList<Condition> Filter { get; set; }
 
@@ -10374,65 +9735,41 @@ namespace Google.Apis.TagManager.v2.Data
 
         /// <summary>
         /// List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached
-        /// when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// when the view is scrolled horizontally. Only valid for AMP scroll triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalScrollPercentageList")]
         public virtual Parameter HorizontalScrollPercentageList { get; set; }
 
         /// <summary>
-        /// Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual Parameter Interval { get; set; }
 
-        /// <summary>
-        /// Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervalSeconds")]
         public virtual Parameter IntervalSeconds { get; set; }
 
         /// <summary>
         /// Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire
-        /// GTM events until the user leaves the page. Only valid for Timer triggers. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// GTM events until the user leaves the page. Only valid for Timer triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual Parameter Limit { get; set; }
 
-        /// <summary>
-        /// Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimerLengthSeconds")]
         public virtual Parameter MaxTimerLengthSeconds { get; set; }
 
-        /// <summary>
-        /// Trigger display name. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Trigger display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this trigger in the container. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>User notes on how to apply this trigger in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>
-        /// Additional parameters. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Additional parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -10444,11 +9781,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>
-        /// A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual Parameter Selector { get; set; }
 
@@ -10458,8 +9791,6 @@ namespace Google.Apis.TagManager.v2.Data
 
         /// <summary>
         /// A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger.
-        /// @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTimeMinMilliseconds")]
         public virtual Parameter TotalTimeMinMilliseconds { get; set; }
@@ -10468,11 +9799,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual string TriggerId { get; set; }
 
-        /// <summary>
-        /// Defines the data layer event that causes this trigger. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Defines the data layer event that causes this trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -10480,60 +9807,41 @@ namespace Google.Apis.TagManager.v2.Data
         /// Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if
         /// any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This
         /// value is populated during output generation since the tags implied by triggers don't exist until then. Only
-        /// valid for Form Submit, Link Click and Timer triggers. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// valid for Form Submit, Link Click and Timer triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueTriggerId")]
         public virtual Parameter UniqueTriggerId { get; set; }
 
         /// <summary>
         /// List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached
-        /// when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// when the view is scrolled vertically. Only valid for AMP scroll triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalScrollPercentageList")]
         public virtual Parameter VerticalScrollPercentageList { get; set; }
 
-        /// <summary>
-        /// A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibilitySelector")]
         public virtual Parameter VisibilitySelector { get; set; }
 
-        /// <summary>
-        /// A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMax")]
         public virtual Parameter VisiblePercentageMax { get; set; }
 
-        /// <summary>
-        /// A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMin")]
         public virtual Parameter VisiblePercentageMin { get; set; }
 
         /// <summary>
         /// Whether or not we should delay the form submissions or link opening until all of the tags have fired (by
         /// preventing the default action and later simulating the default action). Only valid for Form Submission and
-        /// Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// Link Click triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitForTags")]
         public virtual Parameter WaitForTags { get; set; }
 
         /// <summary>
         /// How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only
-        /// valid for Form Submission and Link Click triggers. @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// valid for Form Submission and Link Click triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitForTagsTimeout")]
         public virtual Parameter WaitForTagsTimeout { get; set; }
@@ -10549,10 +9857,7 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Represents a user's permissions to an account and its container.</summary>
     public class UserPermission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>GTM Account access permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountAccess")]
         public virtual AccountAccess AccountAccess { get; set; }
 
@@ -10560,14 +9865,11 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// GTM Container access permissions. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>GTM Container access permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerAccess")]
         public virtual System.Collections.Generic.IList<ContainerAccess> ContainerAccess { get; set; }
 
-        /// <summary>User's email address. @mutable tagmanager.accounts.permissions.create</summary>
+        /// <summary>User's email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
@@ -10593,8 +9895,7 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>
         /// For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is
         /// enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an
-        /// unordered set. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update
+        /// unordered set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablingTriggerId")]
         public virtual System.Collections.Generic.IList<string> DisablingTriggerId { get; set; }
@@ -10602,8 +9903,7 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>
         /// For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is
         /// enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an
-        /// unordered set. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update
+        /// unordered set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablingTriggerId")]
         public virtual System.Collections.Generic.IList<string> EnablingTriggerId { get; set; }
@@ -10619,25 +9919,15 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formatValue")]
         public virtual VariableFormatValue FormatValue { get; set; }
 
-        /// <summary>
-        /// Variable display name. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update
-        /// </summary>
+        /// <summary>Variable display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this variable in the container. @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update
-        /// </summary>
+        /// <summary>User notes on how to apply this variable in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>
-        /// The variable's parameters. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update
-        /// </summary>
+        /// <summary>The variable's parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -10649,19 +9939,11 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>
-        /// The end timestamp in milliseconds to schedule a variable. @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update
-        /// </summary>
+        /// <summary>The end timestamp in milliseconds to schedule a variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; }
 
-        /// <summary>
-        /// The start timestamp in milliseconds to schedule a variable. @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update
-        /// </summary>
+        /// <summary>The start timestamp in milliseconds to schedule a variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; }
 
@@ -10669,10 +9951,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagManagerUrl")]
         public virtual string TagManagerUrl { get; set; }
 
-        /// <summary>
-        /// GTM Variable Type. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
-        /// tagmanager.accounts.containers.workspaces.variables.update
-        /// </summary>
+        /// <summary>GTM Variable Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -10725,10 +10004,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>
-        /// Workspace description. @mutable tagmanager.accounts.containers.workspaces.create @mutable
-        /// tagmanager.accounts.containers.workspaces.update
-        /// </summary>
+        /// <summary>Workspace description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -10739,10 +10015,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Workspace display name. @mutable tagmanager.accounts.containers.workspaces.create @mutable
-        /// tagmanager.accounts.containers.workspaces.update
-        /// </summary>
+        /// <summary>Workspace display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
