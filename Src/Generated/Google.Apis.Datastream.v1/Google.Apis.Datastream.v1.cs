@@ -3871,6 +3871,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the MySQL connection password. Mutually
+        /// exclusive with the `password` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredPassword")]
+        public virtual string SecretManagerStoredPassword { get; set; }
+
         /// <summary>SSL configuration for the MySQL connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslConfig")]
         public virtual MysqlSslConfig SslConfig { get; set; }
@@ -3958,8 +3965,7 @@ namespace Google.Apis.Datastream.v1.Data
 
         /// <summary>
         /// Optional. Input only. PEM-encoded private key associated with the Client Certificate. If this field is used
-        /// then the 'client_certificate' and the 'ca_certificate' fields are mandatory. Mutually exclusive with the
-        /// `secret_manager_stored_client_key` field.
+        /// then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; }
@@ -4193,13 +4199,23 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleSslConfig")]
         public virtual OracleSslConfig OracleSslConfig { get; set; }
 
-        /// <summary>Optional. Password for the Oracle ASM connection.</summary>
+        /// <summary>
+        /// Optional. Password for the Oracle ASM connection. Mutually exclusive with the
+        /// `secret_manager_stored_password` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
         /// <summary>Required. Port for the Oracle ASM connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the Oracle ASM connection password. Mutually
+        /// exclusive with the `password` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredPassword")]
+        public virtual string SecretManagerStoredPassword { get; set; }
 
         /// <summary>Required. Username for the Oracle ASM connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
@@ -4517,6 +4533,13 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Port for the PostgreSQL connection, default value is 5432.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the PostgreSQL connection password. Mutually
+        /// exclusive with the `password` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredPassword")]
+        public virtual string SecretManagerStoredPassword { get; set; }
 
         /// <summary>
         /// Optional. SSL configuration for the PostgreSQL connection. In case PostgresqlSslConfig is not set, the
@@ -5008,7 +5031,7 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>
         /// Optional. Input only. PEM-encoded private key associated with the client certificate. This value will be
         /// used during the SSL/TLS handshake, allowing the PostgreSQL server to authenticate the client's identity,
-        /// i.e. identity of the Datastream. Mutually exclusive with the `secret_manager_stored_client_key` field.
+        /// i.e. identity of the Datastream.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; }
@@ -5235,6 +5258,13 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Port for the SQLServer connection, default value is 1433.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>
+        /// Optional. A reference to a Secret Manager resource name storing the SQLServer connection password. Mutually
+        /// exclusive with the `password` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerStoredPassword")]
+        public virtual string SecretManagerStoredPassword { get; set; }
 
         /// <summary>Required. Username for the SQLServer connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
