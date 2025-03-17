@@ -5096,6 +5096,59 @@ namespace Google.Apis.Contactcenterinsights.v1
                 }
             }
 
+            /// <summary>Delete feedback labels in bulk using a filter.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent resource for new feedback labels.</param>
+            public virtual BulkDeleteFeedbackLabelsRequest BulkDeleteFeedbackLabels(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest body, string parent)
+            {
+                return new BulkDeleteFeedbackLabelsRequest(this.service, body, parent);
+            }
+
+            /// <summary>Delete feedback labels in bulk using a filter.</summary>
+            public class BulkDeleteFeedbackLabelsRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new BulkDeleteFeedbackLabels request.</summary>
+                public BulkDeleteFeedbackLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent resource for new feedback labels.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkDeleteFeedbackLabels";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:bulkDeleteFeedbackLabels";
+
+                /// <summary>Initializes BulkDeleteFeedbackLabels parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Download feedback labels in bulk from an external source. Currently supports exporting Quality AI
             /// example conversations with transcripts and question bodies.
@@ -6313,6 +6366,50 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The response for a bulk delete conversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Partial errors during deletion operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions
+        /// (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` *
+        /// `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI,
+        /// TOPIC_MODELING
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The parent resource for new feedback labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12146,6 +12243,50 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The response for a bulk delete conversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Partial errors during deletion operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions
+        /// (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` *
+        /// `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI,
+        /// TOPIC_MODELING
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The parent resource for new feedback labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the BulkDeleteFeedbackLabels endpoint.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
