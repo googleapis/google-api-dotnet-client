@@ -17105,6 +17105,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Query understanding specification.</summary>
     public class GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Whether to disable spell correction. The default value is `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSpellCorrection")]
+        public virtual System.Nullable<bool> DisableSpellCorrection { get; set; }
+
         /// <summary>Query classification specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryClassificationSpec")]
         public virtual GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec QueryClassificationSpec { get; set; }
@@ -23879,7 +23883,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Required. The URL for the page the user wants to promote.</summary>
+        /// <summary>
+        /// Optional. The URL for the page the user wants to promote. Must be set for site search. For other verticals,
+        /// this is optional.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -23927,6 +23934,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
+
+        /// <summary>Optional. Config for display feature, like match highlighting on search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displaySpec")]
+        public virtual GoogleCloudDiscoveryengineV1SearchRequestDisplaySpec DisplaySpec { get; set; }
 
         /// <summary>
         /// Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are
@@ -24501,6 +24512,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies features for display, like match highlighting.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchRequestDisplaySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which match highlighting should occur.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchHighlightingCondition")]
+        public virtual string MatchHighlightingCondition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26610,6 +26632,36 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The connector level alert config.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The enrollment states of each alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertEnrollments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment> AlertEnrollments { get; set; }
+
+        /// <summary>Immutable. The fully qualified resource name of the AlertPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyName")]
+        public virtual string AlertPolicyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The alert enrollment status.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The id of an alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
+        public virtual string AlertId { get; set; }
+
+        /// <summary>Required. The enrollment status of a customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollState")]
+        public virtual string EnrollState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines an answer.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28519,6 +28571,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Action configurations to make the connector support actions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaActionConfig ActionConfig { get; set; }
+
+        /// <summary>Optional. The connector level alert config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicyConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig> AlertPolicyConfigs { get; set; }
 
         /// <summary>
         /// Indicates whether the connector is disabled for auto run. It can be used to pause periodical and real time
@@ -32967,7 +33023,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Required. The URL for the page the user wants to promote.</summary>
+        /// <summary>
+        /// Optional. The URL for the page the user wants to promote. Must be set for site search. For other verticals,
+        /// this is optional.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -38999,7 +39058,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Required. The URL for the page the user wants to promote.</summary>
+        /// <summary>
+        /// Optional. The URL for the page the user wants to promote. Must be set for site search. For other verticals,
+        /// this is optional.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -39047,6 +39109,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
+
+        /// <summary>Optional. Config for display feature, like match highlighting on search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displaySpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec DisplaySpec { get; set; }
 
         /// <summary>
         /// Uses the provided embedding to do additional semantic document retrieval. The retrieval is based on the dot
@@ -39693,6 +39759,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies features for display, like match highlighting.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which match highlighting should occur.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchHighlightingCondition")]
+        public virtual string MatchHighlightingCondition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
