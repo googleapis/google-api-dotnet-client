@@ -889,7 +889,7 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
         public virtual MerchantReviewAttributes Attributes { get; set; }
 
         /// <summary>
-        /// Required. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
+        /// Optional. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
         /// of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`).
         /// This is useful for submitting attributes not explicitly exposed by the API, such as experimental attributes.
         /// Maximum allowed number of characters for each custom attribute is 10240 (represents sum of characters for
@@ -992,7 +992,7 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewCountry")]
         public virtual string ReviewCountry { get; set; }
 
-        /// <summary>Required. The language of the review defined by BCP-47 language code.</summary>
+        /// <summary>Optional. The language of the review defined by BCP-47 language code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewLanguage")]
         public virtual string ReviewLanguage { get; set; }
 
@@ -1646,7 +1646,10 @@ namespace Google.Apis.Merchant.reviews_v1beta.Data
 
         private object _eventTime;
 
-        /// <summary>The time at which the event was generated.</summary>
+        /// <summary>
+        /// The time at which the event was generated. If you want to order the notification messages you receive you
+        /// should rely on this field not on the order of receiving the notifications.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual string EventTimeRaw
         {
