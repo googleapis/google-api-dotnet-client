@@ -1376,6 +1376,7 @@ namespace Google.Apis.DLP.v2
                 DiscoveryConfigs = new DiscoveryConfigsResource(service);
                 DlpJobs = new DlpJobsResource(service);
                 FileStoreDataProfiles = new FileStoreDataProfilesResource(service);
+                InfoTypes = new InfoTypesResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
                 JobTriggers = new JobTriggersResource(service);
                 ProjectDataProfiles = new ProjectDataProfilesResource(service);
@@ -3199,6 +3200,121 @@ namespace Google.Apis.DLP.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the InfoTypes resource.</summary>
+            public virtual InfoTypesResource InfoTypes { get; }
+
+            /// <summary>The "infoTypes" collection of methods.</summary>
+            public class InfoTypesResource
+            {
+                private const string Resource = "infoTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InfoTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Returns a list of the sensitive information types that the DLP API supports. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
+                /// </summary>
+                /// <param name="parent">
+                /// The parent resource name. The format of this value is as follows: `locations/{location_id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of the sensitive information types that the DLP API supports. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
+                /// </summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The parent resource name. The format of this value is as follows: `locations/{location_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// filter to only return infoTypes supported by certain parts of the API. Defaults to
+                    /// supported_by=INSPECT.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// BCP-47 language code for localized infoType friendly names. If omitted, or if localized strings
+                    /// are not available, en-US strings will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/infoTypes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7513,6 +7629,7 @@ namespace Google.Apis.DLP.v2
                 DlpJobs = new DlpJobsResource(service);
                 FileStoreDataProfiles = new FileStoreDataProfilesResource(service);
                 Image = new ImageResource(service);
+                InfoTypes = new InfoTypesResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
                 JobTriggers = new JobTriggersResource(service);
                 ProjectDataProfiles = new ProjectDataProfilesResource(service);
@@ -10084,6 +10201,121 @@ namespace Google.Apis.DLP.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the InfoTypes resource.</summary>
+            public virtual InfoTypesResource InfoTypes { get; }
+
+            /// <summary>The "infoTypes" collection of methods.</summary>
+            public class InfoTypesResource
+            {
+                private const string Resource = "infoTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InfoTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Returns a list of the sensitive information types that the DLP API supports. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
+                /// </summary>
+                /// <param name="parent">
+                /// The parent resource name. The format of this value is as follows: `locations/{location_id}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Returns a list of the sensitive information types that the DLP API supports. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
+                /// </summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The parent resource name. The format of this value is as follows: `locations/{location_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// filter to only return infoTypes supported by certain parts of the API. Defaults to
+                    /// supported_by=INSPECT.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// BCP-47 language code for localized infoType friendly names. If omitted, or if localized strings
+                    /// are not available, en-US strings will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/infoTypes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -16602,6 +16834,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>The tags attached to the resource, including any tags attached during profiling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Tag> Tags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17227,6 +17463,15 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The default sensitivity of the infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
         public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>
+        /// If this field is set, this infoType is a general infoType and these specific infoTypes are contained within
+        /// it. General infoTypes are infoTypes that encompass multiple specific infoTypes. For example, the
+        /// "GEOGRAPHIC_DATA" general infoType would have set for this field "LOCATION", "LOCATION_COORDINATES", and
+        /// "STREET_ADDRESS".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specificInfoTypes")]
+        public virtual System.Collections.Generic.IList<string> SpecificInfoTypes { get; set; }
 
         /// <summary>Which parts of the API supports this InfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedBy")]
@@ -20401,6 +20646,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableSizeBytes")]
         public virtual System.Nullable<long> TableSizeBytes { get; set; }
 
+        /// <summary>
+        /// The tags attached to the table, including any tags attached during profiling. Because tags are attached to
+        /// Cloud SQL instances rather than Cloud SQL tables, this field is empty for Cloud SQL table profiles.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Tag> Tags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -20448,6 +20700,35 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Name of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A tag associated with a resource.</summary>
+    public class GooglePrivacyDlpV2Tag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The key of a tag key-value pair. For Google Cloud resources, this is the resource name of the key, for
+        /// example, "tagKeys/123456".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// The namespaced name for the tag value to attach to Google Cloud resources. Must be in the format
+        /// `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod". This is only set
+        /// for Google Cloud resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespacedTagValue")]
+        public virtual string NamespacedTagValue { get; set; }
+
+        /// <summary>
+        /// The value of a tag key-value pair. For Google Cloud resources, this is the resource name of the value, for
+        /// example, "tagValues/123456".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
