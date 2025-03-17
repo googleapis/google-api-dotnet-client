@@ -4235,7 +4235,7 @@ namespace Google.Apis.CloudRetail.v2
                     public virtual string Query { get; set; }
 
                     /// <summary>
-                    /// Required field. A unique identifier for tracking visitors. For example, this could be
+                    /// Recommended field. A unique identifier for tracking visitors. For example, this could be
                     /// implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single
                     /// device. This unique identifier should not change if the visitor logs in or out of the website.
                     /// The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
@@ -9912,6 +9912,13 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personalizationSpec")]
         public virtual GoogleCloudRetailV2SearchRequestPersonalizationSpec PersonalizationSpec { get; set; }
+
+        /// <summary>
+        /// Optional. An id corresponding to a place, such as a store id or region id. When specified, we use the price
+        /// from the local inventory with the matching product's LocalInventory.place_id for revenue optimization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
 
         /// <summary>
         /// Raw search query. If this field is empty, the request is considered a category browsing request and returned
