@@ -3511,7 +3511,10 @@ namespace Google.Apis.Networkconnectivity.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. Unique id of the Regional Endpoint to be created.</summary>
+                    /// <summary>
+                    /// Required. Unique id of the Regional Endpoint to be created. @pattern:
+                    /// ^[-a-z0-9](?:[-a-z0-9]{0,44})[a-z0-9]$
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("regionalEndpointId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RegionalEndpointId { get; set; }
 
@@ -9036,8 +9039,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The name of a RegionalEndpoint. Format:
-        /// `projects/{project}/locations/{location}/regionalEndpoints/{regional_endpoint}`.
+        /// Output only. The name of a RegionalEndpoint. Pattern:
+        /// `projects/{project}/locations/{location}/regionalEndpoints/^[-a-z0-9](?:[-a-z0-9]{0,44})[a-z0-9]$`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
