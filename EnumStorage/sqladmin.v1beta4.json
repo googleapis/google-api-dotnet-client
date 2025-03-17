@@ -1,4 +1,9 @@
 {
+  "Google.Apis.SQLAdmin.v1beta4.FlagsResource+ListRequest.FlagScopeEnum": [
+    "SQL_FLAG_SCOPE_UNSPECIFIED",
+    "SQL_FLAG_SCOPE_DATABASE",
+    "SQL_FLAG_SCOPE_CONNECTION_POOL"
+  ],
   "Google.Apis.SQLAdmin.v1beta4.ProjectsResource+InstancesResource+StartExternalSyncRequest.SyncModeEnum": [
     "EXTERNAL_SYNC_MODE_UNSPECIFIED",
     "ONLINE",
