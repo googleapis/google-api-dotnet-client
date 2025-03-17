@@ -4122,6 +4122,113 @@ namespace Google.Apis.Appengine.v1
                         }
                     }
                 }
+
+                /// <summary>
+                /// Updates the specified Application resource. You can update the following fields: auth_domain -
+                /// Google authentication domain for controlling user access to the application.
+                /// default_cookie_expiration - Cookie expiration policy for the application. iap - Identity-Aware Proxy
+                /// properties for the application.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectsId">
+                /// Part of `name`. Name of the Application resource to update. Example: apps/myapp.
+                /// </param>
+                /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                public virtual PatchRequest Patch(Google.Apis.Appengine.v1.Data.Application body, string projectsId, string locationsId, string applicationsId)
+                {
+                    return new PatchRequest(this.service, body, projectsId, locationsId, applicationsId);
+                }
+
+                /// <summary>
+                /// Updates the specified Application resource. You can update the following fields: auth_domain -
+                /// Google authentication domain for controlling user access to the application.
+                /// default_cookie_expiration - Cookie expiration policy for the application. iap - Identity-Aware Proxy
+                /// properties for the application.
+                /// </summary>
+                public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.Application body, string projectsId, string locationsId, string applicationsId) : base(service)
+                    {
+                        ProjectsId = projectsId;
+                        LocationsId = locationsId;
+                        ApplicationsId = applicationsId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Part of `name`. Name of the Application resource to update. Example: apps/myapp.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectsId { get; private set; }
+
+                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string LocationsId { get; private set; }
+
+                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ApplicationsId { get; private set; }
+
+                    /// <summary>Required. Standard field mask for the set of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Appengine.v1.Data.Application Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "applicationsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
         }
     }
