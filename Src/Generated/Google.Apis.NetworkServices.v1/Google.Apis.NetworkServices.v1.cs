@@ -7381,8 +7381,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. A set of events during request or response processing for which this extension is called. This
-        /// field is required for the `LbTrafficExtension` resource. It must not be set for the `LbRouteExtension`
-        /// resource, otherwise a validation error is returned.
+        /// field is required for the `LbTrafficExtension` resource. It is optional for the `LbRouteExtension` resource.
+        /// If unspecified `REQUEST_HEADERS` event is assumed as supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedEvents")]
         public virtual System.Collections.Generic.IList<string> SupportedEvents { get; set; }
@@ -9109,6 +9109,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Unreachable resources. Populated when the request attempts to list all resources across all supported
+        /// locations, while some locations are temporarily unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9238,6 +9245,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>
+        /// Unreachable resources. Populated when the request attempts to list all resources across all supported
+        /// locations, while some locations are temporarily unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9296,6 +9310,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceBindings")]
         public virtual System.Collections.Generic.IList<ServiceBinding> ServiceBindings { get; set; }
 
+        /// <summary>
+        /// Unreachable resources. Populated when the request attempts to list all resources across all supported
+        /// locations, while some locations are temporarily unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9313,6 +9334,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>List of ServiceLbPolicy resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLbPolicies")]
         public virtual System.Collections.Generic.IList<ServiceLbPolicy> ServiceLbPolicies { get; set; }
+
+        /// <summary>
+        /// Unreachable resources. Populated when the request attempts to list all resources across all supported
+        /// locations, while some locations are temporarily unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
