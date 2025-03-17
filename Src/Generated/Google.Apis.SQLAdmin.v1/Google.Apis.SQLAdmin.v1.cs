@@ -1669,6 +1669,32 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("databaseVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DatabaseVersion { get; set; }
 
+            /// <summary>
+            /// Optional. Specify the scope of flags to be returned by SqlFlagsListService. Return list of database
+            /// flags if unspecified.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("flagScope", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<FlagScopeEnum> FlagScope { get; set; }
+
+            /// <summary>
+            /// Optional. Specify the scope of flags to be returned by SqlFlagsListService. Return list of database
+            /// flags if unspecified.
+            /// </summary>
+            public enum FlagScopeEnum
+            {
+                /// <summary>Assume database flags if unspecified</summary>
+                [Google.Apis.Util.StringValueAttribute("SQL_FLAG_SCOPE_UNSPECIFIED")]
+                SQLFLAGSCOPEUNSPECIFIED = 0,
+
+                /// <summary>database flags</summary>
+                [Google.Apis.Util.StringValueAttribute("SQL_FLAG_SCOPE_DATABASE")]
+                SQLFLAGSCOPEDATABASE = 1,
+
+                /// <summary>connection pool configuration flags</summary>
+                [Google.Apis.Util.StringValueAttribute("SQL_FLAG_SCOPE_CONNECTION_POOL")]
+                SQLFLAGSCOPECONNECTIONPOOL = 2,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -1685,6 +1711,14 @@ namespace Google.Apis.SQLAdmin.v1
                 RequestParameters.Add("databaseVersion", new Google.Apis.Discovery.Parameter
                 {
                     Name = "databaseVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("flagScope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "flagScope",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -5516,6 +5550,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual string BackupRun { get; set; }
 
+        /// <summary>Output only. The database version of the instance of when this backup was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
+
         /// <summary>The description of this backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -5806,6 +5844,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupKind")]
         public virtual string BackupKind { get; set; }
+
+        /// <summary>Output only. The instance database version when this backup was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
 
         /// <summary>The description of this run, only applicable to on-demand backups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -6168,6 +6210,29 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a single node of a read pool.</summary>
+    public class ConnectPoolNodeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The DNS name of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; }
+
+        /// <summary>Output only. The list of DNS names used by this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsNames")]
+        public virtual System.Collections.Generic.IList<DnsNameMapping> DnsNames { get; set; }
+
+        /// <summary>Output only. Mappings containing IP addresses that can be used to connect to the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
+        public virtual System.Collections.Generic.IList<IpMapping> IpAddresses { get; set; }
+
+        /// <summary>Output only. The name of the node. Doesn't include the project ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Connect settings retrieval response.</summary>
     public class ConnectSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6209,6 +6274,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>The number of nodes in a read pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>Output only. Entries containing information about each node of the read pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<ConnectPoolNodeConfig> Nodes { get; set; }
+
         /// <summary>Whether PSC connectivity is enabled for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
         public virtual System.Nullable<bool> PscEnabled { get; set; }
@@ -6227,6 +6300,63 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Specify what type of CA is used for the server certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCaMode")]
         public virtual string ServerCaMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The managed connection pooling configuration.</summary>
+    public class ConnectionPoolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Client idle timeout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientConnectionIdleTimeout")]
+        public virtual object ClientConnectionIdleTimeout { get; set; }
+
+        /// <summary>Managed connection pool size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connPoolSize")]
+        public virtual System.Nullable<int> ConnPoolSize { get; set; }
+
+        /// <summary>Whether managed connection pooling is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionPoolingEnabled")]
+        public virtual System.Nullable<bool> ConnectionPoolingEnabled { get; set; }
+
+        /// <summary>Optional. List of connection pool configuration flags</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flags")]
+        public virtual System.Collections.Generic.IList<ConnectionPoolFlags> Flags { get; set; }
+
+        /// <summary>Maximum number of client connections in connection pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxClientConnections")]
+        public virtual System.Nullable<int> MaxClientConnections { get; set; }
+
+        /// <summary>The managed connection pool mode for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poolMode")]
+        public virtual string PoolMode { get; set; }
+
+        /// <summary>Query wait timeout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryWaitTimeout")]
+        public virtual object QueryWaitTimeout { get; set; }
+
+        /// <summary>Server idle timeout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverConnectionIdleTimeout")]
+        public virtual object ServerConnectionIdleTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Connection pool flags for Cloud SQL instances managed connection pool configuration.</summary>
+    public class ConnectionPoolFlags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The value of the flag. Boolean flags are set to `on` for true and `off` for false. This field must
+        /// be omitted if the flag doesn't take a value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6470,6 +6600,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Name of the Cloud SQL instance. This does not include the project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The number of nodes in a read pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>Output only. Entries containing information about each node of the read pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<PoolNodeConfig> Nodes { get; set; }
 
         /// <summary>Configuration specific to on-premises instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onPremisesConfiguration")]
@@ -7189,6 +7327,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliesTo")]
         public virtual System.Collections.Generic.IList<string> AppliesTo { get; set; }
 
+        /// <summary>Scope of flag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagScope")]
+        public virtual string FlagScope { get; set; }
+
         /// <summary>Whether or not the flag is considered in beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inBeta")]
         public virtual System.Nullable<bool> InBeta { get; set; }
@@ -7211,6 +7353,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Recommended int value in integer format for UI display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedIntValue")]
+        public virtual System.Nullable<long> RecommendedIntValue { get; set; }
+
+        /// <summary>Recommended string value in string format for UI display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedStringValue")]
+        public virtual string RecommendedStringValue { get; set; }
 
         /// <summary>
         /// Indicates whether changing this flag will trigger a database restart. Only applicable to Second Generation
@@ -8790,6 +8940,39 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a single node of a read pool.</summary>
+    public class PoolNodeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The DNS name of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; }
+
+        /// <summary>Output only. The list of DNS names used by this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsNames")]
+        public virtual System.Collections.Generic.IList<DnsNameMapping> DnsNames { get; set; }
+
+        /// <summary>Output only. The serving zone of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
+        public virtual string GceZone { get; set; }
+
+        /// <summary>Output only. Mappings containing IP addresses that can be used to connect to the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
+        public virtual System.Collections.Generic.IList<IpMapping> IpAddresses { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the node, to be used for retrieving metrics and logs for the node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current state of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Settings for an automatically-setup Private Service Connect consumer endpoint that is used to connect to a Cloud
     /// SQL instance.
@@ -9092,6 +9275,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collation")]
         public virtual string Collation { get; set; }
 
+        /// <summary>Optional. The managed connection pooling configuration for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionPoolConfig")]
+        public virtual ConnectionPoolConfig ConnectionPoolConfig { get; set; }
+
         /// <summary>
         /// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED`
         /// (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections
@@ -9112,6 +9299,20 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Configuration for data cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataCacheConfig")]
         public virtual DataCacheConfig DataCacheConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Provisioned number of I/O operations per second for the data disk. This field is only used for
+        /// hyperdisk-balanced disk types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiskProvisionedIops")]
+        public virtual System.Nullable<long> DataDiskProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Optional. Provisioned throughput measured in MiB per second for the data disk. This field is only used for
+        /// hyperdisk-balanced disk types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiskProvisionedThroughput")]
+        public virtual System.Nullable<long> DataDiskProvisionedThroughput { get; set; }
 
         /// <summary>The size of data disk, in GB. The data disk size minimum is 10GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDiskSizeGb")]
