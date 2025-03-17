@@ -1,4 +1,11 @@
 {
+  "Google.Apis.WorkloadManager.v1.ProjectsResource+LocationsResource+RulesResource+ListRequest.EvaluationTypeEnum": [
+    "EVALUATION_TYPE_UNSPECIFIED",
+    "SAP",
+    "SQL_SERVER",
+    "OTHER",
+    "SCC_IAC"
+  ],
   "Google.Apis.WorkloadManager.v1.WorkloadManagerBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",
