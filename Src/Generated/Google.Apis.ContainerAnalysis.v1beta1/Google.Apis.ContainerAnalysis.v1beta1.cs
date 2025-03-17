@@ -4136,7 +4136,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A step in the build pipeline. Next ID: 21</summary>
+    /// <summary>A step in the build pipeline. Next ID: 22</summary>
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4221,6 +4221,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Output only. Stores timing information for pulling this build step's builder image only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual TimeSpan PullTiming { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<StepResult> Results { get; set; }
 
         /// <summary>
         /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint
@@ -8942,6 +8945,22 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>StepResult is the declaration of a result for a build step.</summary>
+    public class StepResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationContentName")]
+        public virtual string AttestationContentName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationType")]
+        public virtual string AttestationType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
