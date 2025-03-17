@@ -518,6 +518,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
             Crashrate = new CrashrateResource(service);
             Errors = new ErrorsResource(service);
             Excessivewakeuprate = new ExcessivewakeuprateResource(service);
+            Lmkrate = new LmkrateResource(service);
             Slowrenderingrate = new SlowrenderingrateResource(service);
             Slowstartrate = new SlowstartrateResource(service);
             Stuckbackgroundwakelockrate = new StuckbackgroundwakelockrateResource(service);
@@ -1880,6 +1881,122 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
             }
         }
 
+        /// <summary>Gets the Lmkrate resource.</summary>
+        public virtual LmkrateResource Lmkrate { get; }
+
+        /// <summary>The "lmkrate" collection of methods.</summary>
+        public class LmkrateResource
+        {
+            private const string Resource = "lmkrate";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LmkrateResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/lmkRateMetricSet</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            public class GetRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1LmkRateMetricSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/lmkRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/lmkRateMetricSet$",
+                    });
+                }
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/lmkRateMetricSet</param>
+            public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest body, string name)
+            {
+                return new QueryRequest(this.service, body, name);
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            public class QueryRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse>
+            {
+                /// <summary>Constructs a new Query request.</summary>
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/lmkRateMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Playdeveloperreporting.v1beta1.Data.GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "query";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:query";
+
+                /// <summary>Initializes Query parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/lmkRateMetricSet$",
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the Slowrenderingrate resource.</summary>
         public virtual SlowrenderingrateResource Slowrenderingrate { get; }
 
@@ -2912,6 +3029,58 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Singleton resource representing the set of LMK (Low Memory Kill) metrics. This metric set contains LMKs data
+    /// combined with usage data to produce a normalized metric independent of user counts. **Supported aggregation
+    /// periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only
+    /// supported timezone is `America/Los_Angeles`. **Supported metrics:** * `userPerceivedLmkRate`
+    /// (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one
+    /// LMK while they were actively using your app (a user-perceived LMK). An app is considered to be in active use if
+    /// it is displaying any activity or executing any foreground service. * `userPerceivedLmkRate7dUserWeighted`
+    /// (`google.type.Decimal`): Rolling average value of `userPerceivedLmkRate` in the last 7 days. The daily values
+    /// are weighted by the count of distinct users for the day. * `userPerceivedLmkRate28dUserWeighted`
+    /// (`google.type.Decimal`): Rolling average value of `userPerceivedLmkRate` in the last 28 days. The daily values
+    /// are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of
+    /// distinct users in the aggregation period that were used as normalization value for the `userPerceivedLmkRate`
+    /// metrics. A user is counted in this metric if they used the app in the foreground during the aggregation period.
+    /// Care must be taken not to aggregate this count further, as it may result in users being counted multiple times.
+    /// The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the
+    /// value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's
+    /// device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. *
+    /// `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is
+    /// 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
+    /// google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. *
+    /// `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode`
+    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
+    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
+    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
+    /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
+    /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
+    /// device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. *
+    /// `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string):
+    /// OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+    /// NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. **Required
+    /// permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission
+    /// for the app. **Related metric sets:** * vitals.errors contains normalized metrics about crashes, another
+    /// stability metric. * vitals.errors contains normalized metrics about ANRs, another stability metric.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1beta1LmkRateMetricSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary about data freshness in this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
+        public virtual GooglePlayDeveloperReportingV1beta1FreshnessInfo FreshnessInfo { get; set; }
+
+        /// <summary>Identifier. The resource name. Format: apps/{app}/lmkRateMetricSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the value of a metric.</summary>
     public class GooglePlayDeveloperReportingV1beta1MetricValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3358,6 +3527,111 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
 
     /// <summary>Response message for QueryExcessiveWakeupRateMetricSet.</summary>
     public class GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned rows of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1beta1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for QueryLmkRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level
+        /// of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung.
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+        /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+        /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
+        /// Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g.,
+        /// "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string):
+        /// Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g.,
+        /// T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion`
+        /// (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the
+        /// device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `userPerceivedLmkRate` (`google.type.Decimal`):
+        /// Percentage of distinct users in the aggregation period that experienced at least one LMK while they were
+        /// actively using your app (a user-perceived LMK). An app is considered to be in active use if it is displaying
+        /// any activity or executing any foreground service. * `userPerceivedLmkRate7dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `userPerceivedLmkRate` in the last 7 days. The daily
+        /// values are weighted by the count of distinct users for the day. * `userPerceivedLmkRate28dUserWeighted`
+        /// (`google.type.Decimal`): Rolling average value of `userPerceivedLmkRate` in the last 28 days. The daily
+        /// values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`):
+        /// Count of distinct users in the aggregation period that were used as normalization value for the
+        /// `userPerceivedLmkRate` metrics. A user is counted in this metric if they used the app in the foreground
+        /// during the aggregation period. Care must be taken not to aggregate this count further, as it may result in
+        /// users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or
+        /// 1,000,000, depending on the magnitude of the value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100,000; values above 100,000 will be coerced to 100,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only
+        /// supported timezone is `America/Los_Angeles`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
+        public virtual GooglePlayDeveloperReportingV1beta1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// Optional. User view to select. The output data will correspond to the selected view. **Supported values:** *
+        /// `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all
+        /// the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports
+        /// all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from
+        /// released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of
+        /// the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g.,
+        /// "T1B2.220916.004".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryLmkRateMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Continuation token to fetch the next page of data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
