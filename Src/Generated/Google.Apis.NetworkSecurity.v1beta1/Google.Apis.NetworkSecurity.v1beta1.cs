@@ -10635,6 +10635,15 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. Setting this field to `true` will opt the request into returning the resources that
+                    /// are reachable, and into including the names of those that were unreachable in the
+                    /// [ListServerTlsPoliciesResponse.unreachable] field. This can only be `true` when reading across
+                    /// collections e.g. when `parent` is set to `"projects/example/locations/-"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -10667,6 +10676,14 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "returnPartialSuccess",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -13741,7 +13758,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The regional forwarding rule that fronts the intercept collectors, for example:
+        /// Required. Immutable. The regional forwarding rule that fronts the interceptors, for example:
         /// `projects/123456789/regions/us-central1/forwardingRules/my-rule`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
@@ -13882,6 +13899,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Output only. The list of locations where the deployment group is present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<InterceptLocation> Locations { get; set; }
+
         /// <summary>
         /// Immutable. Identifier. The resource name of this deployment group, for example:
         /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/122 for
@@ -14000,6 +14021,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<InterceptEndpointGroupAssociationDetails> Associations { get; set; }
 
+        /// <summary>Output only. Details about the connected deployment group to this endpoint group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedDeploymentGroup")]
+        public virtual InterceptEndpointGroupConnectedDeploymentGroup ConnectedDeploymentGroup { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -14047,7 +14072,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Immutable. The deployment group that this endpoint group is connected to, for example:
+        /// Required. Immutable. The deployment group that this endpoint group is connected to, for example:
         /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptDeploymentGroup")]
@@ -14169,7 +14194,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         }
 
         /// <summary>
-        /// Immutable. The endpoint group that this association is connected to, for example:
+        /// Required. Immutable. The endpoint group that this association is connected to, for example:
         /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptEndpointGroup")]
@@ -14178,6 +14203,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Optional. Labels are key/value pairs that help to organize and filter resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The list of locations where the association is configured. This information is retrieved from
+        /// the linked endpoint group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<InterceptLocation> Locations { get; set; }
 
         /// <summary>
         /// Output only. The list of locations where the association is present. This information is retrieved from the
@@ -14195,8 +14227,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. The VPC network that is associated. for example: `projects/123456789/global/networks/my-network`.
-        /// See https://google.aip.dev/124.
+        /// Required. Immutable. The VPC network that is associated. for example:
+        /// `projects/123456789/global/networks/my-network`. See https://google.aip.dev/124.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -14285,6 +14317,39 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
     /// <summary>Contains details about the state of an association in a specific cloud location.</summary>
     public class InterceptEndpointGroupAssociationLocationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Output only. The current state of the association in this location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The endpoint group's view of a connected deployment group.</summary>
+    public class InterceptEndpointGroupConnectedDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of locations where the deployment group is present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<InterceptLocation> Locations { get; set; }
+
+        /// <summary>
+        /// Output only. The connected deployment group's resource name, for example:
+        /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about intercept in a specific cloud location.</summary>
+    public class InterceptLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
@@ -14748,6 +14813,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serverTlsPolicies")]
         public virtual System.Collections.Generic.IList<ServerTlsPolicy> ServerTlsPolicies { get; set; }
 
+        /// <summary>
+        /// Unreachable resources. Populated when the request opts into `return_partial_success` and reading across
+        /// collections e.g. when attempting to list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15052,6 +15124,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Output only. The list of locations where the deployment group is present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<MirroringLocation> Locations { get; set; }
+
         /// <summary>
         /// Immutable. Identifier. The resource name of this deployment group, for example:
         /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/122 for
@@ -15169,6 +15245,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Output only. List of associations to this endpoint group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<MirroringEndpointGroupAssociationDetails> Associations { get; set; }
+
+        /// <summary>
+        /// Output only. List of details about the connected deployment groups to this endpoint group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedDeploymentGroups")]
+        public virtual System.Collections.Generic.IList<MirroringEndpointGroupConnectedDeploymentGroup> ConnectedDeploymentGroups { get; set; }
 
         private string _createTimeRaw;
 
@@ -15343,6 +15425,13 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Output only. The list of locations where the association is configured. This information is retrieved from
+        /// the linked endpoint group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<MirroringLocation> Locations { get; set; }
+
+        /// <summary>
         /// Output only. The list of locations where the association is present. This information is retrieved from the
         /// linked endpoint group, and not configured as part of the association itself.
         /// </summary>
@@ -15455,6 +15544,39 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
 
     /// <summary>Contains details about the state of an association in a specific cloud location.</summary>
     public class MirroringEndpointGroupAssociationLocationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Output only. The current state of the association in this location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The endpoint group's view of a connected deployment group.</summary>
+    public class MirroringEndpointGroupConnectedDeploymentGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of locations where the deployment group is present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<MirroringLocation> Locations { get; set; }
+
+        /// <summary>
+        /// Output only. The connected deployment group's resource name, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about mirroring in a specific cloud location.</summary>
+    public class MirroringLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The cloud location, e.g. "us-central1-a" or "asia-south1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
