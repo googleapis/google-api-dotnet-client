@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -4005,16 +4005,11 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Account display name. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
-        /// </summary>
+        /// <summary>Account display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Whether the account shares data anonymously with Google and others. @mutable tagmanager.accounts.create
-        /// @mutable tagmanager.accounts.update
-        /// </summary>
+        /// <summary>Whether the account shares data anonymously with Google and others.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareData")]
         public virtual System.Nullable<bool> ShareData { get; set; }
 
@@ -4025,10 +4020,7 @@ namespace Google.Apis.TagManager.v1.Data
     /// <summary>Defines the Google Tag Manager Account access permissions.</summary>
     public class AccountAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// List of Account permissions. Valid account permissions are read and manage. @mutable
-        /// tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>List of Account permissions. Valid account permissions are read and manage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual System.Collections.Generic.IList<string> Permission { get; set; }
 
@@ -4045,16 +4037,12 @@ namespace Google.Apis.TagManager.v1.Data
         /// time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching,
         /// include a boolean parameter named ignore_case that is set to true. If not specified or set to any other
         /// value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named
-        /// negate boolean parameter that is set to true. @mutable tagmanager.accounts.containers.triggers.create
-        /// @mutable tagmanager.accounts.containers.triggers.update
+        /// negate boolean parameter that is set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
-        /// <summary>
-        /// The type of operator for this condition. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>The type of operator for this condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -4073,10 +4061,7 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>
-        /// Optional list of domain names associated with the Container. @mutable tagmanager.accounts.containers.create
-        /// @mutable tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>Optional list of domain names associated with the Container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
         public virtual System.Collections.Generic.IList<string> DomainName { get; set; }
 
@@ -4085,7 +4070,6 @@ namespace Google.Apis.TagManager.v1.Data
         /// clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId,
         /// formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment,
         /// newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId.
-        /// @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledBuiltInVariable")]
         public virtual System.Collections.Generic.IList<string> EnabledBuiltInVariable { get; set; }
@@ -4097,17 +4081,11 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Container display name. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>Container display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Container Notes. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>Container Notes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -4115,24 +4093,15 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicId")]
         public virtual string PublicId { get; set; }
 
-        /// <summary>
-        /// Container Country ID. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>Container Country ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneCountryId")]
         public virtual string TimeZoneCountryId { get; set; }
 
-        /// <summary>
-        /// Container Time Zone ID. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>Container Time Zone ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneId")]
         public virtual string TimeZoneId { get; set; }
 
-        /// <summary>
-        /// List of Usage Contexts for the Container. Valid values include: web, android, ios. @mutable
-        /// tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update
-        /// </summary>
+        /// <summary>List of Usage Contexts for the Container. Valid values include: web, android, ios.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageContext")]
         public virtual System.Collections.Generic.IList<string> UsageContext { get; set; }
 
@@ -4143,16 +4112,12 @@ namespace Google.Apis.TagManager.v1.Data
     /// <summary>Defines the Google Tag Manager Container access permissions.</summary>
     public class ContainerAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>GTM Container ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
         /// <summary>
-        /// List of Container permissions. Valid container permissions are: read, edit, delete, publish. @mutable
-        /// tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update
+        /// List of Container permissions. Valid container permissions are: read, edit, delete, publish.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual System.Collections.Generic.IList<string> Permission { get; set; }
@@ -4199,14 +4164,11 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("macro")]
         public virtual System.Collections.Generic.IList<Macro> Macro { get; set; }
 
-        /// <summary>Container version display name. @mutable tagmanager.accounts.containers.versions.update</summary>
+        /// <summary>Container version display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this container version in the container. @mutable
-        /// tagmanager.accounts.containers.versions.update
-        /// </summary>
+        /// <summary>User notes on how to apply this container version in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -4336,19 +4298,11 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersionId")]
         public virtual string ContainerVersionId { get; set; }
 
-        /// <summary>
-        /// The environment description. Can be set or changed only on USER type environments. @mutable
-        /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update
-        /// </summary>
+        /// <summary>The environment description. Can be set or changed only on USER type environments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// Whether or not to enable debug by default on for the environment. @mutable
-        /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update
-        /// </summary>
+        /// <summary>Whether or not to enable debug by default on for the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDebug")]
         public virtual System.Nullable<bool> EnableDebug { get; set; }
 
@@ -4363,11 +4317,7 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// The environment display name. Can be set or changed only on USER type environments. @mutable
-        /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update
-        /// </summary>
+        /// <summary>The environment display name. Can be set or changed only on USER type environments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4375,10 +4325,7 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>
-        /// Default preview page url for the environment. @mutable tagmanager.accounts.containers.environments.create
-        /// @mutable tagmanager.accounts.containers.environments.update
-        /// </summary>
+        /// <summary>Default preview page url for the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
@@ -4408,10 +4355,7 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
         public virtual string FolderId { get; set; }
 
-        /// <summary>
-        /// Folder display name. @mutable tagmanager.accounts.containers.folders.create @mutable
-        /// tagmanager.accounts.containers.folders.update
-        /// </summary>
+        /// <summary>Folder display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4554,16 +4498,14 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>
         /// For mobile containers only: A list of rule IDs for disabling conditional macros; the macro is enabled if one
-        /// of the enabling rules is true while all the disabling rules are false. Treated as an unordered set. @mutable
-        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update
+        /// of the enabling rules is true while all the disabling rules are false. Treated as an unordered set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablingRuleId")]
         public virtual System.Collections.Generic.IList<string> DisablingRuleId { get; set; }
 
         /// <summary>
         /// For mobile containers only: A list of rule IDs for enabling conditional macros; the macro is enabled if one
-        /// of the enabling rules is true while all the disabling rules are false. Treated as an unordered set. @mutable
-        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update
+        /// of the enabling rules is true while all the disabling rules are false. Treated as an unordered set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablingRuleId")]
         public virtual System.Collections.Generic.IList<string> EnablingRuleId { get; set; }
@@ -4579,24 +4521,15 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("macroId")]
         public virtual string MacroId { get; set; }
 
-        /// <summary>
-        /// Macro display name. @mutable tagmanager.accounts.containers.macros.create @mutable
-        /// tagmanager.accounts.containers.macros.update
-        /// </summary>
+        /// <summary>Macro display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this macro in the container. @mutable
-        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update
-        /// </summary>
+        /// <summary>User notes on how to apply this macro in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>
-        /// The macro's parameters. @mutable tagmanager.accounts.containers.macros.create @mutable
-        /// tagmanager.accounts.containers.macros.update
-        /// </summary>
+        /// <summary>The macro's parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -4604,24 +4537,15 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; }
 
-        /// <summary>
-        /// The end timestamp in milliseconds to schedule a macro. @mutable tagmanager.accounts.containers.macros.create
-        /// @mutable tagmanager.accounts.containers.macros.update
-        /// </summary>
+        /// <summary>The end timestamp in milliseconds to schedule a macro.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; }
 
-        /// <summary>
-        /// The start timestamp in milliseconds to schedule a macro. @mutable
-        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update
-        /// </summary>
+        /// <summary>The start timestamp in milliseconds to schedule a macro.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; }
 
-        /// <summary>
-        /// GTM Macro Type. @mutable tagmanager.accounts.containers.macros.create @mutable
-        /// tagmanager.accounts.containers.macros.update
-        /// </summary>
+        /// <summary>GTM Macro Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -4634,31 +4558,16 @@ namespace Google.Apis.TagManager.v1.Data
     {
         /// <summary>
         /// The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map
-        /// values. Ignored for list values. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create
-        /// @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update
+        /// values. Ignored for list values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>
-        /// This list parameter's parameters (keys will be ignored). @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
-        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>This list parameter's parameters (keys will be ignored).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("list")]
         public virtual System.Collections.Generic.IList<Parameter> List { get; set; }
 
-        /// <summary>
-        /// This map parameter's parameters (must have keys; keys must be unique). @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
-        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>This map parameter's parameters (must have keys; keys must be unique).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("map")]
         public virtual System.Collections.Generic.IList<Parameter> Map { get; set; }
 
@@ -4668,21 +4577,13 @@ namespace Google.Apis.TagManager.v1.Data
         /// parameters should be specified - map: A map of parameters should be specified - template: The value
         /// represents any text; this can include variable references (even variable references that might return
         /// non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id -
-        /// tag_reference: The value represents a tag, represented as the tag name @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
-        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update
+        /// tag_reference: The value represents a tag, represented as the tag name
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// A parameter's value (may contain variable references such as "{{myVariable}}") as appropriate to the
-        /// specified type. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create
-        /// @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update
+        /// A parameter's value (may contain variable references). as appropriate to the specified type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -4713,10 +4614,7 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// The list of conditions that make up this rule (implicit AND between them). @mutable
-        /// tagmanager.accounts.containers.rules.create @mutable tagmanager.accounts.containers.rules.update
-        /// </summary>
+        /// <summary>The list of conditions that make up this rule (implicit AND between them).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual System.Collections.Generic.IList<Condition> Condition { get; set; }
 
@@ -4731,17 +4629,11 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Rule display name. @mutable tagmanager.accounts.containers.rules.create @mutable
-        /// tagmanager.accounts.containers.rules.update
-        /// </summary>
+        /// <summary>Rule display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this rule in the container. @mutable tagmanager.accounts.containers.rules.create
-        /// @mutable tagmanager.accounts.containers.rules.update
-        /// </summary>
+        /// <summary>User notes on how to apply this rule in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -4777,16 +4669,12 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire. @mutable
-        /// tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingRuleId")]
         public virtual System.Collections.Generic.IList<string> BlockingRuleId { get; set; }
 
         /// <summary>
-        /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. @mutable
-        /// tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update
+        /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingTriggerId")]
         public virtual System.Collections.Generic.IList<string> BlockingTriggerId { get; set; }
@@ -4804,45 +4692,33 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>
         /// Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if
-        /// any specified) are false. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update
+        /// any specified) are false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firingRuleId")]
         public virtual System.Collections.Generic.IList<string> FiringRuleId { get; set; }
 
         /// <summary>
         /// Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its
-        /// blockingTriggerIds (if any specified) are false. @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update
+        /// blockingTriggerIds (if any specified) are false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firingTriggerId")]
         public virtual System.Collections.Generic.IList<string> FiringTriggerId { get; set; }
 
         /// <summary>
         /// If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode).
-        /// @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveOnly")]
         public virtual System.Nullable<bool> LiveOnly { get; set; }
 
-        /// <summary>
-        /// Tag display name. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>Tag display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this tag in the container. @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>User notes on how to apply this tag in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>
-        /// The tag's parameters. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>The tag's parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -4850,32 +4726,23 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; }
 
-        /// <summary>
-        /// True if the tag is paused. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>True if the tag is paused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paused")]
         public virtual System.Nullable<bool> Paused { get; set; }
 
         /// <summary>
         /// User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with
         /// higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is
-        /// 0. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update
+        /// 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual Parameter Priority { get; set; }
 
-        /// <summary>
-        /// The end timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>The end timestamp in milliseconds to schedule a tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; }
 
-        /// <summary>
-        /// The start timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>The start timestamp in milliseconds to schedule a tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; }
 
@@ -4895,10 +4762,7 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("teardownTag")]
         public virtual System.Collections.Generic.IList<TeardownTag> TeardownTag { get; set; }
 
-        /// <summary>
-        /// GTM Tag Type. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update
-        /// </summary>
+        /// <summary>GTM Tag Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -4930,18 +4794,13 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// Used in the case of auto event tracking. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>Used in the case of auto event tracking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> AutoEventFilter { get; set; }
 
         /// <summary>
         /// Whether or not we should only fire tags if the form submit or link click event is not cancelled by some
         /// other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers.
-        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkValidation")]
         public virtual Parameter CheckValidation { get; set; }
@@ -4952,30 +4811,20 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>
         /// A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility
-        /// trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update
+        /// trigger.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continuousTimeMinMilliseconds")]
         public virtual Parameter ContinuousTimeMinMilliseconds { get; set; }
 
-        /// <summary>
-        /// Used in the case of custom event, which is fired iff all Conditions are true. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>Used in the case of custom event, which is fired iff all Conditions are true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> CustomEventFilter { get; set; }
 
-        /// <summary>
-        /// Name of the GTM event that is fired. Only valid for Timer triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>Name of the GTM event that is fired. Only valid for Timer triggers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
         public virtual Parameter EventName { get; set; }
 
-        /// <summary>
-        /// The trigger will only fire iff all Conditions are true. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>The trigger will only fire iff all Conditions are true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual System.Collections.Generic.IList<Condition> Filter { get; set; }
 
@@ -4988,52 +4837,37 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>
         /// List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached
-        /// when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// when the view is scrolled horizontally. Only valid for AMP scroll triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalScrollPercentageList")]
         public virtual Parameter HorizontalScrollPercentageList { get; set; }
 
         /// <summary>
-        /// Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual Parameter Interval { get; set; }
 
-        /// <summary>
-        /// Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervalSeconds")]
         public virtual Parameter IntervalSeconds { get; set; }
 
         /// <summary>
         /// Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire
-        /// GTM events until the user leaves the page. Only valid for Timer triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// GTM events until the user leaves the page. Only valid for Timer triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual Parameter Limit { get; set; }
 
-        /// <summary>
-        /// Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimerLengthSeconds")]
         public virtual Parameter MaxTimerLengthSeconds { get; set; }
 
-        /// <summary>
-        /// Trigger display name. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>Trigger display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Additional parameters. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update
-        /// </summary>
+        /// <summary>Additional parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -5041,17 +4875,12 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; }
 
-        /// <summary>
-        /// A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual Parameter Selector { get; set; }
 
         /// <summary>
         /// A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger.
-        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTimeMinMilliseconds")]
         public virtual Parameter TotalTimeMinMilliseconds { get; set; }
@@ -5060,10 +4889,7 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual string TriggerId { get; set; }
 
-        /// <summary>
-        /// Defines the data layer event that causes this trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>Defines the data layer event that causes this trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -5071,54 +4897,41 @@ namespace Google.Apis.TagManager.v1.Data
         /// Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if
         /// any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This
         /// value is populated during output generation since the tags implied by triggers don't exist until then. Only
-        /// valid for Form Submit, Link Click and Timer triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// valid for Form Submit, Link Click and Timer triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueTriggerId")]
         public virtual Parameter UniqueTriggerId { get; set; }
 
         /// <summary>
         /// List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached
-        /// when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// when the view is scrolled vertically. Only valid for AMP scroll triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalScrollPercentageList")]
         public virtual Parameter VerticalScrollPercentageList { get; set; }
 
-        /// <summary>
-        /// A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibilitySelector")]
         public virtual Parameter VisibilitySelector { get; set; }
 
-        /// <summary>
-        /// A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMax")]
         public virtual Parameter VisiblePercentageMax { get; set; }
 
-        /// <summary>
-        /// A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
-        /// </summary>
+        /// <summary>A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMin")]
         public virtual Parameter VisiblePercentageMin { get; set; }
 
         /// <summary>
         /// Whether or not we should delay the form submissions or link opening until all of the tags have fired (by
         /// preventing the default action and later simulating the default action). Only valid for Form Submission and
-        /// Link Click triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update
+        /// Link Click triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitForTags")]
         public virtual Parameter WaitForTags { get; set; }
 
         /// <summary>
         /// How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only
-        /// valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.triggers.create
-        /// @mutable tagmanager.accounts.containers.triggers.update
+        /// valid for Form Submission and Link Click triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitForTagsTimeout")]
         public virtual Parameter WaitForTagsTimeout { get; set; }
@@ -5130,10 +4943,7 @@ namespace Google.Apis.TagManager.v1.Data
     /// <summary>Represents a user's permissions to an account and its container.</summary>
     public class UserAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>GTM Account access permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountAccess")]
         public virtual AccountAccess AccountAccess { get; set; }
 
@@ -5141,14 +4951,11 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// GTM Container access permissions. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update
-        /// </summary>
+        /// <summary>GTM Container access permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerAccess")]
         public virtual System.Collections.Generic.IList<ContainerAccess> ContainerAccess { get; set; }
 
-        /// <summary>User's email address. @mutable tagmanager.accounts.permissions.create</summary>
+        /// <summary>User's email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
@@ -5174,8 +4981,7 @@ namespace Google.Apis.TagManager.v1.Data
         /// <summary>
         /// For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is
         /// enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an
-        /// unordered set. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update
+        /// unordered set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablingTriggerId")]
         public virtual System.Collections.Generic.IList<string> DisablingTriggerId { get; set; }
@@ -5183,8 +4989,7 @@ namespace Google.Apis.TagManager.v1.Data
         /// <summary>
         /// For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is
         /// enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an
-        /// unordered set. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update
+        /// unordered set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablingTriggerId")]
         public virtual System.Collections.Generic.IList<string> EnablingTriggerId { get; set; }
@@ -5196,24 +5001,15 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>
-        /// Variable display name. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update
-        /// </summary>
+        /// <summary>Variable display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// User notes on how to apply this variable in the container. @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
-        /// </summary>
+        /// <summary>User notes on how to apply this variable in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>
-        /// The variable's parameters. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update
-        /// </summary>
+        /// <summary>The variable's parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -5221,24 +5017,15 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; }
 
-        /// <summary>
-        /// The end timestamp in milliseconds to schedule a variable. @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
-        /// </summary>
+        /// <summary>The end timestamp in milliseconds to schedule a variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; }
 
-        /// <summary>
-        /// The start timestamp in milliseconds to schedule a variable. @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
-        /// </summary>
+        /// <summary>The start timestamp in milliseconds to schedule a variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; }
 
-        /// <summary>
-        /// GTM Variable Type. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update
-        /// </summary>
+        /// <summary>GTM Variable Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
