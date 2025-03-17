@@ -2377,6 +2377,13 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
 
+        /// <summary>
+        /// IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom.
+        /// are allowed to perform in this ServicePerimeter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2496,6 +2503,13 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        /// <summary>
+        /// IAM roles that represent the set of operations that the sources specified in the corresponding IngressFrom
+        /// are allowed to perform in this ServicePerimeter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
