@@ -292,8 +292,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// To retrieve the products that can be resold by the partner. It should be autenticated with a service
-            /// account. - This API doesn't apply to YouTube products currently.
+            /// Currently, it doesn't support **YouTube** products. Retrieves the products that can be resold by the
+            /// partner. It should be autenticated with a service account.
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
@@ -304,8 +304,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// To retrieve the products that can be resold by the partner. It should be autenticated with a service
-            /// account. - This API doesn't apply to YouTube products currently.
+            /// Currently, it doesn't support **YouTube** products. Retrieves the products that can be resold by the
+            /// partner. It should be autenticated with a service account.
             /// </summary>
             public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse>
             {
@@ -415,8 +415,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// To find eligible promotions for the current user. The API requires user authorization via OAuth. The
-            /// bare minimum oauth scope `openid` is sufficient, which will skip the consent screen.
+            /// Currently, it is only enabeld for **YouTube**. Finds eligible promotions for the current user. The API
+            /// requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will
+            /// skip the consent screen.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -428,8 +429,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// To find eligible promotions for the current user. The API requires user authorization via OAuth. The
-            /// bare minimum oauth scope `openid` is sufficient, which will skip the consent screen.
+            /// Currently, it is only enabeld for **YouTube**. Finds eligible promotions for the current user. The API
+            /// requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will
+            /// skip the consent screen.
             /// </summary>
             public class FindEligibleRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse>
             {
@@ -476,8 +478,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Retrieves the promotions, such as free trial, that can be used by the partner. - This API doesn't apply
-            /// to YouTube promotions currently. It should be autenticated with a service account.
+            /// Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that
+            /// can be used by the partner. It should be autenticated with a service account.
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
@@ -488,8 +490,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Retrieves the promotions, such as free trial, that can be used by the partner. - This API doesn't apply
-            /// to YouTube promotions currently. It should be autenticated with a service account.
+            /// Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that
+            /// can be used by the partner. It should be autenticated with a service account.
             /// </summary>
             public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse>
             {
@@ -600,8 +602,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to cancel a subscription service either immediately or by the end of the current
-            /// billing cycle for their customers. It should be called directly by the partner using service accounts.
+            /// Cancels a subscription service either immediately or by the end of the current billing cycle for their
+            /// customers. It should be called directly by the partner using service accounts.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -614,8 +616,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to cancel a subscription service either immediately or by the end of the current
-            /// billing cycle for their customers. It should be called directly by the partner using service accounts.
+            /// Cancels a subscription service either immediately or by the end of the current billing cycle for their
+            /// customers. It should be called directly by the partner using service accounts.
             /// </summary>
             public class CancelRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse>
             {
@@ -748,9 +750,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to entitle a previously provisioned subscription to the current end user. The end user
-            /// identity is inferred from the authorized credential of the request. This API must be authorized by the
-            /// end user using OAuth.
+            /// Entitles a previously provisioned subscription to the current end user. The end user identity is
+            /// inferred from the authorized credential of the request. This API must be authorized by the end user
+            /// using OAuth.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -763,9 +765,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to entitle a previously provisioned subscription to the current end user. The end user
-            /// identity is inferred from the authorized credential of the request. This API must be authorized by the
-            /// end user using OAuth.
+            /// Entitles a previously provisioned subscription to the current end user. The end user identity is
+            /// inferred from the authorized credential of the request. This API must be authorized by the end user
+            /// using OAuth.
             /// </summary>
             public class EntitleRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse>
             {
@@ -815,9 +817,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// [Opt-in only] Most partners should be on auto-extend by default. Used by partners to extend a
-            /// subscription service for their customers on an ongoing basis for the subscription to remain active and
-            /// renewable. It should be called directly by the partner using service accounts.
+            /// [Opt-in only] Most partners should be on auto-extend by default. Extends a subscription service for
+            /// their customers on an ongoing basis for the subscription to remain active and renewable. It should be
+            /// called directly by the partner using service accounts.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -830,9 +832,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// [Opt-in only] Most partners should be on auto-extend by default. Used by partners to extend a
-            /// subscription service for their customers on an ongoing basis for the subscription to remain active and
-            /// renewable. It should be called directly by the partner using service accounts.
+            /// [Opt-in only] Most partners should be on auto-extend by default. Extends a subscription service for
+            /// their customers on an ongoing basis for the subscription to remain active and renewable. It should be
+            /// called directly by the partner using service accounts.
             /// </summary>
             public class ExtendRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse>
             {
@@ -882,8 +884,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to get a subscription by id. It should be called directly by the partner using service
-            /// accounts.
+            /// Gets a subscription by id. It should be called directly by the partner using service accounts.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the subscription resource to retrieve. It will have the format of
@@ -895,8 +896,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to get a subscription by id. It should be called directly by the partner using service
-            /// accounts.
+            /// Gets a subscription by id. It should be called directly by the partner using service accounts.
             /// </summary>
             public class GetRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1Subscription>
             {
@@ -1024,9 +1024,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Revokes the pending cancellation of a subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE`
-            /// state. If the subscription is already cancelled, the request will fail. - **This API doesn't apply to
-            /// YouTube subscriptions.** It should be called directly by the partner using service accounts.
+            /// Currently, it is used by **Google One, Play Pass** partners. Revokes the pending cancellation of a
+            /// subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already
+            /// cancelled, the request will fail. It should be called directly by the partner using service accounts.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1039,9 +1039,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Revokes the pending cancellation of a subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE`
-            /// state. If the subscription is already cancelled, the request will fail. - **This API doesn't apply to
-            /// YouTube subscriptions.** It should be called directly by the partner using service accounts.
+            /// Currently, it is used by **Google One, Play Pass** partners. Revokes the pending cancellation of a
+            /// subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already
+            /// cancelled, the request will fail. It should be called directly by the partner using service accounts.
             /// </summary>
             public class UndoCancelRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse>
             {
@@ -1109,10 +1109,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// This API replaces user authorized OAuth consent based APIs (Create, Entitle). Generates a short-lived
-            /// token for a user session based on the user intent. You can use the session token to redirect the user to
-            /// Google to finish the signup flow. You can re-generate new session token repeatedly for the same request
-            /// if necessary, regardless of the previous tokens being expired or not.
+            /// This API replaces user authorized OAuth consent based APIs (Create, Entitle). Issues a timed session
+            /// token for the given user intent. You can use the session token to redirect the user to Google to finish
+            /// the signup flow. You can re-generate new session token repeatedly for the same request if necessary,
+            /// regardless of the previous tokens being expired or not.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1124,10 +1124,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// This API replaces user authorized OAuth consent based APIs (Create, Entitle). Generates a short-lived
-            /// token for a user session based on the user intent. You can use the session token to redirect the user to
-            /// Google to finish the signup flow. You can re-generate new session token repeatedly for the same request
-            /// if necessary, regardless of the previous tokens being expired or not.
+            /// This API replaces user authorized OAuth consent based APIs (Create, Entitle). Issues a timed session
+            /// token for the given user intent. You can use the session token to redirect the user to Google to finish
+            /// the signup flow. You can re-generate new session token repeatedly for the same request if necessary,
+            /// regardless of the previous tokens being expired or not.
             /// </summary>
             public class GenerateRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse>
             {
@@ -1585,7 +1585,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     public class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Output only. This identifies whether the subscription is attached to a Google Home structure.
+        /// Output only. This identifies whether the subscription is attached to a Google Home structure.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachedToGoogleStructure")]
         public virtual System.Nullable<bool> AttachedToGoogleStructure { get; set; }
@@ -1696,7 +1696,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>A Product resource that defines a subscription service that can be resold.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1Product : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Output Only. Specifies the details for a bundle product.</summary>
+        /// <summary>Output only. Specifies the details for a bundle product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleDetails")]
         public virtual ProductBundleDetails BundleDetails { get; set; }
 
@@ -1718,7 +1718,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig> PriceConfigs { get; set; }
 
-        /// <summary>Output only. Output Only. Specifies the type of the product.</summary>
+        /// <summary>Output only. Specifies the type of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productType")]
         public virtual string ProductType { get; set; }
 
@@ -1857,7 +1857,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Output Only. Specifies the type of the promotion.</summary>
+        /// <summary>Output only. Specifies the type of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionType")]
         public virtual string PromotionType { get; set; }
 
@@ -1937,7 +1937,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discountRatioMicros")]
         public virtual System.Nullable<long> DiscountRatioMicros { get; set; }
 
-        /// <summary>Output only. Output Only. The duration of an introductory offer in billing cycles.</summary>
+        /// <summary>Output only. The duration of an introductory offer in billing cycles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrenceCount")]
         public virtual System.Nullable<int> RecurrenceCount { get; set; }
 
