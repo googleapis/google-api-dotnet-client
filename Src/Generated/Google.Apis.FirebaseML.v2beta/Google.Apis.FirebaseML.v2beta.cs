@@ -1334,6 +1334,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Chunk from the web.</summary>
     public class GoogleCloudAiplatformV1beta1GroundingChunkWeb : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Domain of the (original) URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
         /// <summary>Title of the chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
