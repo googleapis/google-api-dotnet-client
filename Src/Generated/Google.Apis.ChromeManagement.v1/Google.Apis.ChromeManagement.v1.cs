@@ -1003,16 +1003,16 @@ namespace Google.Apis.ChromeManagement.v1
                 /// Optional. The filter used to filter profiles. The following fields can be used in the filter: -
                 /// profile_id - display_name - user_email - last_activity_time - last_policy_sync_time -
                 /// last_status_report_time - first_enrollment_time - os_platform_type - os_version - browser_version -
-                /// browser_channel - policy_count - extension_count - identity_provider - affiliation_state - ouId Any
-                /// of the above fields can be used to specify a filter, and filtering by multiple fields is supported
-                /// with AND operator. String type fields and enum type fields support '=' and '!=' operators. The
-                /// integer type and the timestamp type fields support '=', '!=', '&amp;lt;', '&amp;gt;', '&amp;lt;='
-                /// and '&amp;gt;=' operators. Timestamps expect an RFC-3339 formatted string (e.g.
-                /// 2012-04-21T11:30:00-04:00). Wildcard '*' can be used with a string type field filter. In addition,
-                /// string literal filtering is also supported, for example, 'ABC' as a filter maps to a filter that
-                /// checks if any of the filterable string type fields contains 'ABC'. Organization unit number can be
-                /// used as a filtering criteria here by specifying 'ouId = ${your_org_unit_id}', please note that only
-                /// single OU ID matching is supported.
+                /// browser_channel - policy_count - extension_count - identity_provider - affiliation_state -
+                /// os_platform_version - ouId Any of the above fields can be used to specify a filter, and filtering by
+                /// multiple fields is supported with AND operator. String type fields and enum type fields support '='
+                /// and '!=' operators. The integer type and the timestamp type fields support '=', '!=', '&amp;lt;',
+                /// '&amp;gt;', '&amp;lt;=' and '&amp;gt;=' operators. Timestamps expect an RFC-3339 formatted string
+                /// (e.g. 2012-04-21T11:30:00-04:00). Wildcard '*' can be used with a string type field filter. In
+                /// addition, string literal filtering is also supported, for example, 'ABC' as a filter maps to a
+                /// filter that checks if any of the filterable string type fields contains 'ABC'. Organization unit
+                /// number can be used as a filtering criteria here by specifying 'ouId = ${your_org_unit_id}', please
+                /// note that only single OU ID matching is supported.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1021,9 +1021,10 @@ namespace Google.Apis.ChromeManagement.v1
                 /// Optional. The fields used to specify the ordering of the results. The supported fields are: -
                 /// profile_id - display_name - user_email - last_activity_time - last_policy_sync_time -
                 /// last_status_report_time - first_enrollment_time - os_platform_type - os_version - browser_version -
-                /// browser_channel - policy_count - extension_count - identity_provider - affiliation_state By default,
-                /// sorting is in ascending order, to specify descending order for a field, a suffix " desc" should be
-                /// added to the field name. The default ordering is the descending order of last_status_report_time.
+                /// browser_channel - policy_count - extension_count - identity_provider - affiliation_state -
+                /// os_platform_version By default, sorting is in ascending order, to specify descending order for a
+                /// field, a suffix " desc" should be added to the field name. The default ordering is the descending
+                /// order of last_status_report_time.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -6738,13 +6739,6 @@ namespace Google.Apis.ChromeManagement.v1.Data
     public class GoogleChromeManagementVersionsV1CertificateProvisioningProcess : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. A JSON string that contains the administrator-provided configuration for the certification
-        /// authority service. This field can be missing if no configuration was given.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("caConnectionAdapterConfigReference")]
-        public virtual string CaConnectionAdapterConfigReference { get; set; }
-
-        /// <summary>
         /// Output only. The client certificate is being provisioned for a ChromeOS device. This contains information
         /// about the device.
         /// </summary>
@@ -6752,15 +6746,15 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual GoogleChromeManagementVersionsV1ChromeOsDevice ChromeOsDevice { get; set; }
 
         /// <summary>
-        /// Output only. The client certificate is being provisioned for a ChromeOS user session. This contains
-        /// information about the user session.
+        /// Output only. The client certificate is being provisioned for a ChromeOS user. This contains information
+        /// about the current user session.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chromeOsUserSession")]
         public virtual GoogleChromeManagementVersionsV1ChromeOsUserSession ChromeOsUserSession { get; set; }
 
         /// <summary>
-        /// Output only. A message describing why this `CertificateProvisioningProcess` failed. Presence of this field
-        /// indicates that the `CertificateProvisioningProcess` has failed.
+        /// Output only. A message describing why this `CertificateProvisioningProcess` has failed. Presence of this
+        /// field indicates that the `CertificateProvisioningProcess` has failed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
         public virtual string FailureMessage { get; set; }
@@ -6788,13 +6782,6 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Output only. A JSON string that contains the administrator-provided configuration for the certificate
-        /// provisioning profile. This field can be missing if no configuration was given.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("profileAdapterConfigReference")]
-        public virtual string ProfileAdapterConfigReference { get; set; }
-
         /// <summary>Output only. The ID of the certificate provisioning profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningProfileId")]
         public virtual string ProvisioningProfileId { get; set; }
@@ -6808,7 +6795,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
 
         /// <summary>
         /// Output only. The signature of `signature_algorithm`, generated using the client's private key using
-        /// `signature_algorithm`. This field is only present after the`SignData` operation has finished.
+        /// `signature_algorithm`. This field is only present after the `SignData` operation has finished.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; }
@@ -7127,7 +7114,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string OsPlatformType { get; set; }
 
         /// <summary>
-        /// Output only. Major OS version of the device on which the profile exists. (i.e. Windows 10)
+        /// Output only. Major OS platform version of the device on which the profile exists, from profile reporting.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osPlatformVersion")]
         public virtual string OsPlatformVersion { get; set; }
@@ -7192,8 +7179,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
     {
         /// <summary>
         /// Output only. This field contains information about the ChromeOS device that the user session is running on.
-        /// It is only set if the user session is affiliated, i.e. if the user is managed by the same organization that
-        /// managed the ChromeOS device.
+        /// It is only set if the user is affiliated, i.e., if the user is managed by the same organization that manages
+        /// the ChromeOS device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chromeOsDevice")]
         public virtual GoogleChromeManagementVersionsV1ChromeOsDevice ChromeOsDevice { get; set; }
