@@ -3805,7 +3805,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Gets the space notification state setting. Requires [user
+                /// Gets the space notification setting. For an example, see [Get the caller's space notification
+                /// setting](https://developers.google.com/workspace/chat/get-space-notification-setting). Requires
+                /// [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
                 /// <param name="name">
@@ -3821,7 +3823,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Gets the space notification state setting. Requires [user
+                /// Gets the space notification setting. For an example, see [Get the caller's space notification
+                /// setting](https://developers.google.com/workspace/chat/get-space-notification-setting). Requires
+                /// [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
                 public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceNotificationSetting>
@@ -3868,7 +3872,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Updates the space notification state setting. Requires [user
+                /// Updates the space notification setting. For an example, see [Update the caller's space notification
+                /// setting](https://developers.google.com/workspace/chat/update-space-notification-setting). Requires
+                /// [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -3882,7 +3888,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Updates the space notification state setting. Requires [user
+                /// Updates the space notification setting. For an example, see [Update the caller's space notification
+                /// setting](https://developers.google.com/workspace/chat/update-space-notification-setting). Requires
+                /// [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
                 public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceNotificationSetting>
