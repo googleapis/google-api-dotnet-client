@@ -2975,6 +2975,25 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BaseImage describes a base image of a container image.</summary>
+    public class BaseImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of layers that the base image is composed of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layerCount")]
+        public virtual System.Nullable<int> LayerCount { get; set; }
+
+        /// <summary>The name of the base image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The repository name in which the base image is from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived
     /// from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
@@ -3410,7 +3429,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A step in the build pipeline. Next ID: 21</summary>
+    /// <summary>A step in the build pipeline. Next ID: 22</summary>
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3495,6 +3514,9 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Output only. Stores timing information for pulling this build step's builder image only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
         public virtual TimeSpan PullTiming { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<StepResult> Results { get; set; }
 
         /// <summary>
         /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint
@@ -6146,6 +6168,13 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
         public virtual string FilePath { get; set; }
 
+        /// <summary>
+        /// Each package found in a file should have its own layer metadata (that is, information from the origin layer
+        /// of the package).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layerDetails")]
+        public virtual LayerDetails LayerDetails { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6903,6 +6932,32 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The recovered Dockerfile directive used to construct this layer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directive")]
         public virtual string Directive { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the layer a package was found in.</summary>
+    public class LayerDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base images the layer is found within.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseImages")]
+        public virtual System.Collections.Generic.IList<BaseImage> BaseImages { get; set; }
+
+        /// <summary>
+        /// The layer build command that was used to build the layer. This may not be found in all layers depending on
+        /// how the container image is built.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual string Command { get; set; }
+
+        /// <summary>The diff ID (sha256 hash) of the layer in the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffId")]
+        public virtual string DiffId { get; set; }
+
+        /// <summary>The index of the layer in the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8831,6 +8886,22 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>StepResult is the declaration of a result for a build step.</summary>
+    public class StepResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationContentName")]
+        public virtual string AttestationContentName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationType")]
+        public virtual string AttestationType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
