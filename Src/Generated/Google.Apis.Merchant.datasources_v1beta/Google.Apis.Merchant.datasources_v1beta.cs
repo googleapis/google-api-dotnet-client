@@ -870,6 +870,26 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
     }
 
     /// <summary>
+    /// Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232) selections.
+    /// </summary>
+    public class Destination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Marketing methods](https://support.google.com/merchants/answer/15130232) (also known as destination)
+        /// selections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string DestinationValue { get; set; }
+
+        /// <summary>The state of the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -1169,6 +1189,18 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
         public virtual DefaultRule DefaultRule { get; set; }
 
         /// <summary>
+        /// Optional. A list of destinations describing where products of the data source can be shown. When retrieving
+        /// the data source, the list contains all the destinations that can be used for the data source, including the
+        /// ones that are disabled for the data source but enabled for the account. Only destinations that are enabled
+        /// on the account, for example through program participation, can be enabled on the data source. If unset,
+        /// during creation, the destinations will be inherited based on the account level program participation. If
+        /// set, during creation or update, the data source will be set only for the specified destinations. Updating
+        /// this field requires at least one destination.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
+
+        /// <summary>
         /// Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal
         /// to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). See also [migration to feed
         /// labels](https://developers.google.com/shopping-content/guides/products/feed-labels). `feedLabel` and
@@ -1245,7 +1277,10 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
 
         private object _eventTime;
 
-        /// <summary>The time at which the event was generated.</summary>
+        /// <summary>
+        /// The time at which the event was generated. If you want to order the notification messages you receive you
+        /// should rely on this field not on the order of receiving the notifications.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual string EventTimeRaw
         {
