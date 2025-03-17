@@ -304,8 +304,8 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. It contains the Firebase project id (i.e. the unique identifier for your Firebase project), in
-            /// the format of `projects/{project_id}`. For legacy support, the numeric project number with no padding is
-            /// also supported in the format of `projects/{project_number}`.
+            /// the format of `projects/{project_id}`. The numeric project number with no padding is also supported in
+            /// the format of `projects/{project_number}`.
             /// </param>
             public virtual SendRequest Send(Google.Apis.FirebaseCloudMessaging.v1.Data.SendMessageRequest body, string parent)
             {
@@ -325,8 +325,8 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
 
                 /// <summary>
                 /// Required. It contains the Firebase project id (i.e. the unique identifier for your Firebase
-                /// project), in the format of `projects/{project_id}`. For legacy support, the numeric project number
-                /// with no padding is also supported in the format of `projects/{project_number}`.
+                /// project), in the format of `projects/{project_id}`. The numeric project number with no padding is
+                /// also supported in the format of `projects/{project_number}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
