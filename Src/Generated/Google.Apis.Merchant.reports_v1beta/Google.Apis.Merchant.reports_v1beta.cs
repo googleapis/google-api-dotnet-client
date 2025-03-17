@@ -1444,7 +1444,10 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
 
         private object _eventTime;
 
-        /// <summary>The time at which the event was generated.</summary>
+        /// <summary>
+        /// The time at which the event was generated. If you want to order the notification messages you receive you
+        /// should rely on this field not on the order of receiving the notifications.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual string EventTimeRaw
         {
