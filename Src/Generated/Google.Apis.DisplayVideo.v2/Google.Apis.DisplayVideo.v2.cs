@@ -22881,23 +22881,16 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<int> MaxViews { get; set; }
 
         /// <summary>
-        /// The time unit in which the frequency cap will be applied. Required when unlimited is `false`. *Warning*: On
-        /// **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. This
-        /// field will no longer accept the value `TIME_UNIT_LIFETIME`. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap).
+        /// The time unit in which the frequency cap will be applied. Required when unlimited is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
         public virtual string TimeUnit { get; set; }
 
         /// <summary>
         /// The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following
-        /// restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output only and
-        /// will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be between 1 and
-        /// 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 *
-        /// `TIME_UNIT_MINUTES` - must be between 1 and 59 *Warning*: On **February 28, 2025**, frequency cap time
-        /// periods greater than 30 days will no longer be accepted. This field will no longer accept the value 2 if the
-        /// value of time_unit is `TIME_UNIT_MONTHS`. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap).
+        /// restrictions apply based on the value of time_unit: * `TIME_UNIT_MONTHS` - must be 1 * `TIME_UNIT_WEEKS` -
+        /// must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1
+        /// and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitCount")]
         public virtual System.Nullable<int> TimeUnitCount { get; set; }
@@ -23405,11 +23398,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
         public virtual string EntityStatus { get; set; }
 
-        /// <summary>
-        /// Required. The frequency capping setting of the insertion order. *Warning*: On **February 28, 2025**,
-        /// frequency cap time periods greater than 30 days will no longer be accepted. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
-        /// </summary>
+        /// <summary>Required. The frequency capping setting of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
 
@@ -24214,9 +24203,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// Required. The impression frequency cap settings of the line item. The max_impressions field in this settings
-        /// object must be used if assigning a limited cap. *Warning*: On **February 28, 2025**, frequency cap time
-        /// periods greater than 30 days will no longer be accepted. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
+        /// object must be used if assigning a limited cap.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
         public virtual FrequencyCap FrequencyCap { get; set; }
@@ -27678,9 +27665,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// The view frequency cap settings of the line item. The max_views field in this settings object must be used
-        /// if assigning a limited cap. *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30
-        /// days will no longer be accepted. [Read more about this announced
-        /// change](/display-video/api/deprecations#features.lifetime_frequency_cap)
+        /// if assigning a limited cap.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewFrequencyCap")]
         public virtual FrequencyCap ViewFrequencyCap { get; set; }
