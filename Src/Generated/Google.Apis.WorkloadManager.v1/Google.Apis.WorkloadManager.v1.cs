@@ -1844,6 +1844,40 @@ namespace Google.Apis.WorkloadManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("customRulesBucket", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CustomRulesBucket { get; set; }
 
+                    /// <summary>
+                    /// Optional. The evaluation type of the rules will be applied to. The Cloud Storage bucket name for
+                    /// custom rules.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("evaluationType", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<EvaluationTypeEnum> EvaluationType { get; set; }
+
+                    /// <summary>
+                    /// Optional. The evaluation type of the rules will be applied to. The Cloud Storage bucket name for
+                    /// custom rules.
+                    /// </summary>
+                    public enum EvaluationTypeEnum
+                    {
+                        /// <summary>Not specified</summary>
+                        [Google.Apis.Util.StringValueAttribute("EVALUATION_TYPE_UNSPECIFIED")]
+                        EVALUATIONTYPEUNSPECIFIED = 0,
+
+                        /// <summary>SAP best practices</summary>
+                        [Google.Apis.Util.StringValueAttribute("SAP")]
+                        SAP = 1,
+
+                        /// <summary>SQL best practices</summary>
+                        [Google.Apis.Util.StringValueAttribute("SQL_SERVER")]
+                        SQLSERVER = 2,
+
+                        /// <summary>Customized best practices</summary>
+                        [Google.Apis.Util.StringValueAttribute("OTHER")]
+                        OTHER = 3,
+
+                        /// <summary>SCC IaC (Infra as Code) best practices</summary>
+                        [Google.Apis.Util.StringValueAttribute("SCC_IAC")]
+                        SCCIAC = 4,
+                    }
+
                     /// <summary>Filter based on primary_category, secondary_category</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1883,6 +1917,14 @@ namespace Google.Apis.WorkloadManager.v1
                         RequestParameters.Add("customRulesBucket", new Google.Apis.Discovery.Parameter
                         {
                             Name = "customRulesBucket",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("evaluationType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "evaluationType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
